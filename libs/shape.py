@@ -1,8 +1,19 @@
 import maya.cmds as mc 
 
 def getDeltas(base, target): 
+    '''
+    Get deltas between two shapes.
+
+    :param base: Base object
+    :type base: str
+    :param target: Target object
+    :type target: str
+    :returns: List of tuples
+    :rtype: List
+    '''
      
-    bs = mc.blendShape(target, base, w=[0, 1])[0] 
+    # Target and base are reversed or else deltas will be negative 
+    bs = mc.blendShape(base, target, w=[0, 1])[0] 
     mc.pointPosition(base+'.vtx[0]') # Enforce refresh 
     mc.pointPosition(target+'.vtx[0]') # Enforce refresh 
      

@@ -1,37 +1,32 @@
 import maya.cmds as mc
-def setWeight(node, weight, map=None): 
+def setWeight(node, weights, map=None): 
     '''
-    import rigrepo.libs.shape
-    import rigrepo.libs.weights
-    reload(rigrepo.libs.weights)
-    import maya.cmds as mc
-    sc = 'skinCluster2'
-    
-    for joint in mc.ls('joint?'):
-        mc.move( 0, 1, 0, joint, r=1) 
-        deltas = rigrepo.libs.shape.pointDelta('pCylinder1_noDeformation', 'pCylinder1_wireDeformed')
-        mc.move( 0, -1, 0, joint, r=1) 
-        rigrepo.libs.weights.setWeight(sc, deltas, map=joint) 
+    Sets weights for specified deformers.
+
+    :param node: Deformer name
+    :type node: str
+    :param weights: List of tuples. [(pntIndex, value),...]
+    :type weights: List
+    :param map: Name of influence or deformer map to assing weights to.
+    :type map: str
+    :returns: None
     '''
- 
+
     if mc.nodeType(node) == 'skinCluster': 
         # find the inf index 
         inf = map
-        inf_index = str() 
+        infIndex = None 
         con = mc.listConnections(inf+'.worldMatrix[0]', p=1, d=1, s=0) 
         for c in con: 
             if node+'.matrix' in c: 
-                inf_index = c.split('[')[1][:-1] 
-         
-        n = 0 
-        for w in weight: 
-            pnt_index = str(w[0]) 
-            val = w[1] 
-            mc.setAttr(node+'.wl['+pnt_index+'].w['+inf_index+']', val) 
+                infIndex = c.split('[')[1][:-1] 
+        if infIndex:
+            for weight in weights: 
+                pntIndex,value = weight
+                mc.setAttr(node+'.wl['+pntIndex+'].w['+infIndex+']', value) 
 
     if mc.nodeType(node) == 'cluster': 
-        for w in weight: 
-            pnt_index = w[0] 
-            val = w[1] 
-            mc.setAttr(node+'.wl[0].w['+pnt_index+']', val) 
+        for w in weights: 
+            pntIndex,value = weight
+            mc.setAttr(node+'.wl[0].w['+pntIndex+']', value) 
  
