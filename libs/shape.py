@@ -2,18 +2,19 @@ import maya.cmds as mc
 
 def getDeltas(base, target): 
     '''
-    Get deltas between two shapes.
+    Get deltas between two shapes. 
+    Currently it only returns the deltas on the x axis, so when tugging
+    the target move it in the positive x axis for yanking.
 
     :param base: Base object
     :type base: str
     :param target: Target object
     :type target: str
-    :returns: List of tuples
+    :returns: List of tuples [(pntIndex, value),...]
     :rtype: List
     '''
      
-    # Target and base are reversed or else deltas will be negative 
-    bs = mc.blendShape(base, target, w=[0, 1])[0] 
+    bs = mc.blendShape(target, base, w=[0, 1])[0] 
     mc.pointPosition(base+'.vtx[0]') # Enforce refresh 
     mc.pointPosition(target+'.vtx[0]') # Enforce refresh 
      
@@ -41,6 +42,6 @@ def getDeltas(base, target):
     # ===============================================     
     weight_list = list()                       
     for n in range(len(index_flat_list)): 
-        weight_list.append([ index_flat_list[n].split('[')[1][:-1], delta_list[n][0] ]) 
+        weight_list.append([ index_flat_list[n].split('[')[1][:-1], delta_list[n][1] ]) 
      
     return(weight_list) 
