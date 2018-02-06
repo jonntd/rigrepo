@@ -17,7 +17,7 @@ def getDeltas(base, target):
     bs = mc.blendShape(target, base, w=[0, 1])[0] 
     mc.pointPosition(base+'.vtx[0]') # Enforce refresh 
     mc.pointPosition(target+'.vtx[0]') # Enforce refresh 
-     
+    mc.refresh()
     delta_list = mc.getAttr(bs+'.it[0].itg[0].iti[6000].ipt') 
     index_list = mc.getAttr(bs+'.it[0].itg[0].iti[6000].ict')                                
     mc.delete(bs) 
@@ -42,6 +42,6 @@ def getDeltas(base, target):
     # ===============================================     
     weight_list = list()                       
     for n in range(len(index_flat_list)): 
-        weight_list.append([ index_flat_list[n].split('[')[1][:-1], delta_list[n][1] ]) 
+        weight_list.append([ index_flat_list[n].split('[')[1][:-1], delta_list[n][0] ]) 
      
     return(weight_list) 

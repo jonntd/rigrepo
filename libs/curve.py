@@ -3,7 +3,17 @@ import maya.cmds as mc
 
 def createCurveFromPoints(points, degree=3, name='curve'):
         '''
-        docstring
+        :param points: Points you wish to use to create a curve
+        :type points: list
+
+        :param degree: The degree of the curve you want to create
+        :type degree: int
+
+        :param name: the name of the curve.
+        :type name: str
+
+        :return: The name of the curve that was created.
+        :rtype: str
         '''
         knotList = [0]
         if degree == 1:
@@ -21,3 +31,37 @@ def createCurveFromPoints(points, degree=3, name='curve'):
         curve = mc.curve(name=name, p=points,k=knotList,degree=degree)
         
         return curve
+
+
+#----------------------------------------------------
+# get information functions
+def getCVs(curve):
+    '''
+    Returns all of the cv's on a given curve
+
+    :param curve: The name of the curve you wish to get the cv's for.
+    :type curve: str
+
+    :return: Returns the list of cv's
+    :rtype: list
+    '''
+    return mc.ls('%s.cv[*]' % curve, flatten = True)
+    
+    
+def getCVpositions(cvList):
+    '''
+    This funtion will return the positions of the cvs
+
+    :param cvList: The points you wish to get the positions for.
+    :type cvList: list
+
+    :return: Positions in world space for the cv's given
+    :rtype: list
+    '''
+    positions = list()
+    
+    for point in cvList:
+        ws = mc.xform(point, q = True, ws = True, t = True)
+        positions.append(ws)
+    
+    return positions
