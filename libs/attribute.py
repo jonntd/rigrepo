@@ -1,4 +1,4 @@
-    '''
+'''
 '''
 
 import maya.cmds as mc
@@ -19,7 +19,7 @@ def lock(node,attr):
     attrList = common.toList(attr)
 
     for node in nodeList:
-        for attr in attrs:  
+        for attr in attrList:  
             mc.setAttr("{0}.{1}".format(node,attr), lock=True)
 
 def hide(node, attr):
@@ -35,7 +35,7 @@ def hide(node, attr):
     nodeList = common.toList(node)
     attrList = common.toList(attr)
 
-    for node in nodes:
+    for node in nodeList:
         for attr in attrList:  
             mc.setAttr("{0}.{1}".format(node,attr), keyable=False)
 
@@ -50,8 +50,8 @@ def lockAndHide(node, attr):
     :param attr: Attribute name(s) or path(s)
     :type attr: str or list
     '''
-    lock(nodes, attrs)
-    hide(nodes, attrs)
+    lock(node, attr)
+    hide(node, attr)
 
 
 def unlock(node, attr):
@@ -64,12 +64,13 @@ def unlock(node, attr):
     :param attr: Attribute name(s) or path(s)
     :type attr: str or list
     '''
-    attrs, nodes = attrNodeList(attr, node)
+    nodeList = common.toList(node)
+    attrList = common.toList(attr)
 
     #lock attributes
-    for node in nodes:
-        for attr in attrs:
-            mc.setAttr('%s.%s' % (node, attr), l = False)
+    for node in nodeList:
+        for attr in attrList:
+            mc.setAttr("{0}.{1}".format(node,attr), l = False)
 
 
 def unhide(node, attr):     
@@ -83,12 +84,13 @@ def unhide(node, attr):
     :type attr: str or list
     '''
 
-    attrs, nodes = attrNodeList(attr, node)
+    nodeList = common.toList(node)
+    attrList = common.toList(attr)
 
     #lock attributes
-    for node in nodes:
-        for attr in attrs:
-            mc.setAttr('%s.%s' % (node, attr), k = True)    
+    for node in nodeList:
+        for attr in attrList:
+            mc.setAttr("{0}.{1}".format(node,attr), k = True)    
 
 
 def unlockAndUnhide(attr, node):

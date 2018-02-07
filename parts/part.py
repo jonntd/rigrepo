@@ -3,13 +3,15 @@ This is the base module for all of your parts.
 '''
 import maya.cmds as mc
 import rigrepo.libs.attribute as attribute
+import pubs.pNode as pNode
 
-class Part(object):
+class Part(pNode.PNode):
     '''
     '''
     def __init__(self, name):
         '''
         '''
+        super(Part,self).__init__(name)
         self.name = name
         self.trsMaster = "trs_master"
         self.trsShot = "trs_shot"
@@ -47,7 +49,7 @@ class Part(object):
     def build(self):
         '''
         '''
-        pass
+        print self.name
 
     def postBuild(self):
         '''
@@ -83,3 +85,8 @@ class Part(object):
         mc.connectAttr("{0}.output".format(modelOverrideChoice),
             "{0}.overrideDisplayType".format(self.modelGroup), f=True)
 
+    def execute(self,*args,**kwargs):
+        super(Part,self).execute(*args,**kwargs)
+        self.setup()
+        self.build()
+        self.postBuild()
