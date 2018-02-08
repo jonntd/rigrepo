@@ -66,7 +66,7 @@ class AbstractData(object):
         :rtype: dict
         '''
         if not os.path.isfile(filepath):
-            raise RunTimeError("This {0} does not exists.".format(filepath))
+            raise RuntimeError("This {0} does not exists.".format(filepath))
 
         f = open(filepath, 'r')
         self._data = json.loads(f.read())

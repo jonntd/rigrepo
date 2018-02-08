@@ -39,7 +39,6 @@ class NodeData(abstract_data.AbstractData):
                 if self._data[node].has_key(attribute) and attribute in mc.listAttr(node):
                     if mc.listConnections('{0}.{1}'.format(node,attribute), d=False, s=True) or \
                         mc.getAttr('{0}.{1}'.format(node,attribute),l=True):
-                        print node, attribute
                         continue
                     value = self._data[node][attribute]
                     if isinstance(value, (list,tuple)):
