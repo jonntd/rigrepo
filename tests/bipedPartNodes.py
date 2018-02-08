@@ -1,7 +1,6 @@
 import pubs.ui.mainWindow
 import rigrepo.templates.biped.biped as biped
 import rigrepo.libs.data.joint_data
-reload(biped)
 import os
 
 buildPath = os.path.join(os.path.dirname(biped.__file__),"build")
