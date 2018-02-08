@@ -182,7 +182,7 @@ def getShape(ctrl, index = 0):
     :type index: int
     '''
     #get shapes
-    shapes = common.getShapes(ctrl)
+    shapes = mc.listRelatives(ctrl, c=True, type="shape")
 
     #return shape based off of index
     if shapes:
