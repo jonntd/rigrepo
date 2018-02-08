@@ -4,7 +4,7 @@ This is the module that will house functions and classes that have to do with cl
 
 import maya.cmds as mc
 
-def createCluster(mesh,suffix,parent=None,contraintTypes=['point','orient','scale']):
+def create(mesh,suffix,parent=None,contraintTypes=['point','orient','scale']):
     '''
     This will create a localized cluster.
 
