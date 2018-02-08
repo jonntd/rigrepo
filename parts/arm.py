@@ -29,7 +29,7 @@ class Arm(limb.Limb):
         '''
         '''
         super(Arm, self).build()
-        clavicleCtrlHierarchy = control.createControl(name="{0}_ctrl".format(self._clavicleJoint), 
+        clavicleCtrlHierarchy = control.create(name="{0}_ctrl".format(self._clavicleJoint), 
                                                 controlType="square",
                                                 hierarchy=['nul','ort'])
 

@@ -47,7 +47,7 @@ class Limb(part.Part):
         # get handle and create poleVector
         poleVectorPos = self.ikfkSystem.getPoleVectorFromHandle()
 
-        pvCtrlHierarchy = control.createControl(name="{0}_pv".format(self.name), 
+        pvCtrlHierarchy = control.create(name="{0}_pv".format(self.name), 
                                                 controlType="diamond",
                                                 hierarchy=['nul','ort'],
                                                 position=poleVectorPos)
@@ -65,7 +65,7 @@ class Limb(part.Part):
         parent = self.name
 
         endJointPos = mc.xform(ikJointList[-1], q=True, ws=True, t=True)
-        ikCtrlHierarchy = control.createControl(name="{0}_ik".format(self.name), 
+        ikCtrlHierarchy = control.create(name="{0}_ik".format(self.name), 
                                                 controlType="cube",
                                                 hierarchy=['nul','ort'],
                                                 position=endJointPos)     
@@ -89,7 +89,7 @@ class Limb(part.Part):
 
         self._ikControls.extend([pvCtrl, ikCtrl])
 
-        for ctrl in ikCtrlList:
+        for ctrl in self._ikControls:
             mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl), f=True)
 
         #-------------------------------------------------------------------------------------------
@@ -97,9 +97,10 @@ class Limb(part.Part):
         #-------------------------------------------------------------------------------------------
         for fkJnt in fkJointList:
             # create the fk control hierarchy
-            fkCtrlHierarchy = control.createControl(name="{0}_ctrl".format(fkJnt), 
+            fkCtrlHierarchy = control.create(name="{0}_ctrl".format(fkJnt), 
                                                 controlType="cube",
                                                 hierarchy=['nul','ort'])
+
             ctrl = fkCtrlHierarchy[-1]
             nul = fkCtrlHierarchy[0]
 
@@ -139,5 +140,3 @@ class Limb(part.Part):
         '''
         #turn of the visibility of the ikfk system
         mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
-
-

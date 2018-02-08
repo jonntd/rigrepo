@@ -90,7 +90,7 @@ def getControls(asset = None):
 #shapes
 #-----------------------
 def translateShape (ctrl,
-        translation = transform.ZERO,
+        translation = (0.0, 0.0, 0.0),
         index = 0 ,
         world = False):
     '''
@@ -124,7 +124,7 @@ def translateShape (ctrl,
                 relative = True,
                 objectSpace = True)
 
-def rotateShape (ctrl, rotation = transform.ZERO, index = 0):
+def rotateShape (ctrl, rotation = (0.0, 0.0, 0.0), index = 0):
     '''
     Rotate control shape
 
