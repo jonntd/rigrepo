@@ -1,8 +1,7 @@
 '''
-This is the limb base class.
+This is the arm class extending the limb class.
 
-Anything that uses a three joint chain ik/fk setup
-should start with this class.
+This is expecting one more joint then the limb to use as the clavicle joint.
 '''
 
 import maya.cmds as mc
