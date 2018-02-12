@@ -12,7 +12,7 @@ import rigrepo.libs.control as control
 class Arm(limb.Limb):
     '''
     '''
-    def __init__(self, name, jointList):
+    def __init__(self, name, jointList, anchor=None):
         '''
         This is the constructor.
         '''
@@ -21,7 +21,7 @@ class Arm(limb.Limb):
                 that exists in Maya.""".format(jointList))
 
         self._clavicleJoint = jointList.pop(0)
-        super(Arm, self).__init__(name, jointList) 
+        super(Arm, self).__init__(name, jointList, anchor) 
 
 
     def build(self):
@@ -45,6 +45,9 @@ class Arm(limb.Limb):
         mc.parentConstraint(self._clavicleJoint, self.ikfkSystem.getIkJointList()[0], mo=True)
 
         mc.parent(clavicleNul, self.name)
+  
+        if self._anchorGrp:
+            mc.parent(clavicleNul, self._anchorGrp) 
 
 
 

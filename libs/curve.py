@@ -18,11 +18,9 @@ def createCurveFromPoints(points, degree=3, name='curve'):
         knotList = [0]
         if degree == 1:
             knotList.extend(range(len(points))[1:])
-            print knotList
         elif degree == 2:
             knotList.extend(range(len(points) - 1))
             knotList.append(knotList[-1]) 
-            print knotList
         elif degree == 3:
             knotList.append(0) 
             knotList.extend(range(len(points) - 2))

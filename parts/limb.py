@@ -13,14 +13,17 @@ import rigrepo.libs.control as control
 class Limb(part.Part):
     '''
     '''
-    def __init__(self, name, jointList):
+    def __init__(self, name, jointList, anchor=None):
         '''
         This is the constructor.
         '''
         super(Limb, self).__init__(name) 
         self.ikfkSystem = ikfk.IKFKLimb(jointList)
+        self._anchor = anchor
         self._fkControls = list()
         self._ikControls = list()
+        self._anchorGrp = str()
+        self.addAttribute("arm", "anchor", attrType='str')
 
     def build(self):
         '''
@@ -45,6 +48,9 @@ class Limb(part.Part):
 
 
         # get handle and create poleVector
+        fkJointList = self.ikfkSystem.getFkJointList()
+        ikJointList = self.ikfkSystem.getIkJointList()
+        #poleVectorPos = self.ikfkSystem.getPoleVectorPosition(fkJointList)
         poleVectorPos = self.ikfkSystem.getPoleVectorFromHandle()
 
         pvCtrlHierarchy = control.create(name="{0}_pv".format(self.name), 
@@ -58,8 +64,6 @@ class Limb(part.Part):
         handle = self.ikfkSystem.getHandle()
         mc.poleVectorConstraint(pvCtrl, handle)
 
-        fkJointList = self.ikfkSystem.getFkJointList()
-        ikJointList = self.ikfkSystem.getIkJointList()
 
         # set the parent of the controls to be the rig group
         parent = self.name
@@ -95,6 +99,7 @@ class Limb(part.Part):
         #-------------------------------------------------------------------------------------------
         #FK Setup for the limb
         #-------------------------------------------------------------------------------------------
+        fkCtrlNul = str()
         for fkJnt in fkJointList:
             # create the fk control hierarchy
             fkCtrlHierarchy = control.create(name="{0}_ctrl".format(fkJnt), 
@@ -103,6 +108,7 @@ class Limb(part.Part):
 
             ctrl = fkCtrlHierarchy[-1]
             nul = fkCtrlHierarchy[0]
+            fkCtrlNul = nul
 
             # make sure that the control is in the same position as the joint
             fkJntMatrix = mc.xform(fkJnt, q=True, ws=True, matrix=True)
@@ -128,6 +134,14 @@ class Limb(part.Part):
         #rename ikfk group and parent it under the part name group
         self.ikfkSystem.setGroup("{0}_{1}".format(self.name,self.ikfkSystem.getGroup()))
         mc.parent(self.ikfkSystem.getGroup(), self.name)
+        if self._anchor:
+            anchor = self._anchor()
+            anchorGrp = mc.createNode('transform', n=self.name+'_anchor_grp', p=self.name) 
+            self._anchorGrp = anchorGrp
+            con = mc.parentConstraint(ikJointList[0], anchorGrp)
+            mc.delete(con)
+            mc.parentConstraint(anchor, anchorGrp, mo=1)
+            mc.parent(self.ikfkSystem.getGroup(), fkCtrlNul, anchorGrp)
 
 
         for jnt,blendJnt in zip(self.ikfkSystem.getJointList(), self.ikfkSystem.getBlendJointList()):

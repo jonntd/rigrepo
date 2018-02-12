@@ -71,7 +71,6 @@ class AbstractData(object):
         f = open(filepath, 'r')
         self._data = json.loads(f.read())
         f.close()
-        print self._data
 
         # set a new filepath on the class.
         self._filepath = filepath
