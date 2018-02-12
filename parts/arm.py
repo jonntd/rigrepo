@@ -22,8 +22,6 @@ class Arm(limb.Limb):
 
         self._clavicleJoint = jointList.pop(0)
         super(Arm, self).__init__(name, jointList, anchor) 
-        self.addAttribute("anchor", "chest", attrType='str')
-
 
     def build(self):
         '''
@@ -46,9 +44,14 @@ class Arm(limb.Limb):
         mc.parentConstraint(self._clavicleJoint, self.ikfkSystem.getIkJointList()[0], mo=True)
 
         mc.parent(clavicleNul, self.name)
-  
-        if self._anchorGrp:
-            mc.parent(clavicleNul, self._anchorGrp) 
+        
+        # Connect to passed anchor
+        #
+        anchor = self.getAttributeByName('anchor').getValue()
+        if mc.objExists(anchor):
+            mc.parent(clavicleNul, anchor) 
+        else:
+            mc.warning('Anchor object [ {} ] does not exist.'.format(anchor)) 
 
 
 

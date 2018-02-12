@@ -23,6 +23,7 @@ class Limb(part.Part):
         self._fkControls = list()
         self._ikControls = list()
         self._anchorGrp = str()
+        self.addAttribute("anchor", "chest", attrType='str')
 
     def build(self):
         '''
@@ -133,15 +134,19 @@ class Limb(part.Part):
         #rename ikfk group and parent it under the part name group
         self.ikfkSystem.setGroup("{0}_{1}".format(self.name,self.ikfkSystem.getGroup()))
         mc.parent(self.ikfkSystem.getGroup(), self.name)
-        if self._anchor:
-            anchor = self._anchor()
+
+        # Connect to passed anchor
+        #
+        anchor = self.getAttributeByName('anchor').getValue()
+        if mc.objExists(anchor):
             anchorGrp = mc.createNode('transform', n=self.name+'_anchor_grp', p=self.name) 
             self._anchorGrp = anchorGrp
             con = mc.parentConstraint(ikJointList[0], anchorGrp)
             mc.delete(con)
             mc.parentConstraint(anchor, anchorGrp, mo=1)
             mc.parent(self.ikfkSystem.getGroup(), fkCtrlNul, anchorGrp)
-
+        else:
+            mc.warning('Anchor object [ {} ] does not exist.'.format(anchor)) 
 
         for jnt,blendJnt in zip(self.ikfkSystem.getJointList(), self.ikfkSystem.getBlendJointList()):
             mc.pointConstraint(blendJnt, jnt)
