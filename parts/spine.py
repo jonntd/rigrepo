@@ -8,6 +8,7 @@ import maya.cmds as mc
 import rigrepo.parts.part as part
 import rigrepo.libs.control as control
 import rigrepo.libs.spline as spline
+import rigrepo.libs.common as common
 
 class Spine(part.Part):
     '''
@@ -56,6 +57,7 @@ class Spine(part.Part):
         # hip swivel
         ctrlHierarchy = control.create(name="hip_swivel", 
                                                 controlType="diamond",
+                                                color=common.TURQUOISE,
                                                 hierarchy=['nul'])
         hipSwivelCtrl = ctrlHierarchy[-1]
         hipSwivelNul = ctrlHierarchy[0]
@@ -95,8 +97,9 @@ class Spine(part.Part):
 
         # chest top 
         ctrlHierarchy = control.create(name="chest_top", 
-                                            controlType="diamond",
-                                            hierarchy=['nul'])
+                                             controlType="diamond",
+                                             color=common.TURQUOISE,
+                                             hierarchy=['nul'])
         chestTopCtrl = ctrlHierarchy[-1]
         chestTopNul = ctrlHierarchy[0]
 
