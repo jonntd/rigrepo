@@ -23,7 +23,6 @@ class Limb(part.Part):
         self._fkControls = list()
         self._ikControls = list()
         self._anchorGrp = str()
-        self.addAttribute("arm", "anchor", attrType='str')
 
     def build(self):
         '''

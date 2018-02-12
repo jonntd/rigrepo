@@ -24,4 +24,7 @@ class Biped(base.Base):
         self.addNode(l_leg)
         self.addNode(r_leg)
 
+        l_leg.addAttribute("anchor", "hip_swivel", attrType='str')
+        r_leg.addAttribute("anchor", "hip_swivel", attrType='str')
+
         

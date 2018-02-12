@@ -22,6 +22,7 @@ class Arm(limb.Limb):
 
         self._clavicleJoint = jointList.pop(0)
         super(Arm, self).__init__(name, jointList, anchor) 
+        self.addAttribute("anchor", "chest", attrType='str')
 
 
     def build(self):
