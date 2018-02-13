@@ -13,17 +13,16 @@ import rigrepo.libs.control as control
 class Limb(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, anchor=None):
+    def __init__(self, name, jointList, anchor='chest'):
         '''
         This is the constructor.
         '''
         super(Limb, self).__init__(name) 
         self.ikfkSystem = ikfk.IKFKLimb(jointList)
-        self._anchor = anchor
         self._fkControls = list()
         self._ikControls = list()
         self._anchorGrp = str()
-        self.addAttribute("anchor", "chest", attrType='str')
+        self.addAttribute("anchor", anchor, attrType='str')
 
     def build(self):
         '''

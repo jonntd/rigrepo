@@ -15,8 +15,12 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
     curveData = curve_data.CurveData()
     curveData.read(CONTROLPATH)
     data = curveData.getData()
-    control = curve.createCurveFromPoints(data[controlType]['cvPositions'], 
-        degree=data[controlType]['degree'],name=name)
+    if data.has_key(controlType):
+        control = curve.createCurveFromPoints(data[controlType]['cvPositions'], 
+            degree=data[controlType]['degree'],name=name)
+    else:
+        control = mc.createNode("transform", name=name)
+        mc.setAttr("{0}.displayHandle".format(control), 1)
 
     parent = parent
 

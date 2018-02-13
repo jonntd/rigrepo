@@ -3,6 +3,7 @@ This is a module for libraries used for transforms.
 '''
 import maya.api.OpenMaya as om
 import maya.cmds as mc
+import rigrepo.libs.common as common
 
 def getDagPath(node):
     '''
@@ -73,3 +74,28 @@ def decomposeRotation(object):
     mc.connectAttr(reverseEndTwist+'.outputX', object+'.decomposeTwist')
 
     return(aimSource) 
+
+def getAveragePosition(nodes):
+    '''
+    This will return an average position for nodes passed in.
+
+    :param nodes: Node list you wish to get the average position for.
+    :type param: list | tuple
+    '''
+    # make sure to pass a list to the loop
+    node = common.toList(nodes)
+
+    # set the default poition of the point
+    point = om.MPoint(0,0,0)
+    for node in nodes:
+        if not mc.objExists(node):
+            raise RuntimeError("{0} doesn't exists in the current Maya session!".format(node))
+
+        # add the new node position to the point
+        point += om.MPoint(*mc.xform(node, q=True, ws=True, t=True))
+
+    # devide the point by the amount of nodes that were passed in.
+    point = point / len(nodes)
+
+    return (point.x, point.y, point.z)
+
