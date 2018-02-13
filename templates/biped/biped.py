@@ -5,6 +5,7 @@ import rigrepo.templates.base.base as base
 import rigrepo.parts.arm as arm
 import rigrepo.parts.limb as limb
 import rigrepo.parts.spine as spine
+import rigrepo.parts.blink as blink
 
 class Biped(base.Base):
     def __init__(self,name):
@@ -17,14 +18,14 @@ class Biped(base.Base):
 
         l_leg = limb.Limb("l_leg",['thigh_l_bind', 'knee_l_bind', 'ankle_l_bind'], pSpine.getHipSwivelCtrl)
         r_leg = limb.Limb("r_leg",['thigh_r_bind', 'knee_r_bind', 'ankle_r_bind'], pSpine.getHipSwivelCtrl)
+        l_lowerLid = blink.Blink("l_lowerLid")
 
         self.addNode(pSpine)
         self.addNode(l_arm)
         self.addNode(r_arm)
         self.addNode(l_leg)
         self.addNode(r_leg)
+        self.addNode(l_lowerLid)
 
         l_leg.getAttributeByName('anchor').setValue('hip_swivel')
         r_leg.getAttributeByName('anchor').setValue('hip_swivel')
-
-        

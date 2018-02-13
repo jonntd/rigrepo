@@ -1,5 +1,7 @@
 
 import maya.cmds as mc
+import maya.api.OpenMaya as om
+import rigrepo.libs.transform
 
 def createCurveFromPoints(points, degree=3, name='curve'):
         '''
@@ -63,3 +65,28 @@ def getCVpositions(cvList):
         positions.append(ws)
     
     return positions
+
+def getParamFromPosition(curve, point):
+    '''
+    Gets a curves parameter value from a position or object in space
+    
+    :param curve: Curve you want to get paremter for
+    :type curve: *str* or *MObject*
+    
+    :param point: Point in space or Node to get MPoint from
+    :type: list | MPoint
+    '''
+    #get dag path for curve and assign it a nurbsCurve function object 
+    dagPath = rigrepo.libs.transform.getDagPath(curve)
+    mFnNurbsCurve = om.MFnNurbsCurve(dagPath)
+    
+    #Check to see if point is a list or tuple object
+    if not isinstance(point, list) and not isinstance(point, tuple):
+        if cmds.objExists(point):
+            point = cmds.xform(point, q = True, ws = True, t = True)
+
+    
+    #Get and MPoint object and a double ptr
+    mPoint = om.MPoint(point[0], point[1], point[2])
+    
+    return mFnNurbsCurve.getParamAtPoint(mPoint)

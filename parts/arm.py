@@ -21,6 +21,7 @@ class Arm(limb.Limb):
                 that exists in Maya.""".format(jointList))
 
         self._clavicleJoint = jointList.pop(0)
+        
         super(Arm, self).__init__(name, jointList, anchor) 
 
     def build(self):
