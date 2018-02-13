@@ -1,8 +1,30 @@
+'''
+This is a module for libraries used for transforms.
+'''
+import maya.api.OpenMaya as om
 import maya.cmds as mc
 
-'''
-Module for transform related operations
-'''
+def getDagPath(node):
+    '''
+    This will return the dag path of the first node
+    it finds with the value of the node name you pass in.
+
+    :param node: Name of the node you want the dagPath for.
+    :type node: str
+    '''
+
+    # Do some error checking
+    if not mc.objExists(node):
+        raise RuntimeError("{0} does not exist in the current Maya session.".format(node))
+
+
+    # get a selection list and the dagPath for the node.
+    selList = om.MSelectionList()
+    selList.add(node)
+    
+    return selList.getDagPath(0)
+
+
 
 def decomposeRotation(object):
     '''
@@ -13,10 +35,8 @@ def decomposeRotation(object):
     
     :param object: Object to decmpose twist for
     :type object: str
-
     :return: Swing transform 
     :rtype: list
-
     '''
     # Variables specific to which twist axis is being decomposed
     # If adding support for other axis these will need to be handled
@@ -53,6 +73,3 @@ def decomposeRotation(object):
     mc.connectAttr(reverseEndTwist+'.outputX', object+'.decomposeTwist')
 
     return(aimSource) 
-   
-
-    
