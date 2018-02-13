@@ -5,12 +5,14 @@ import rigrepo.templates.base.base as base
 import rigrepo.parts.arm as arm
 import rigrepo.parts.limb as limb
 import rigrepo.parts.spine as spine
+import rigrepo.parts.neck as neck
 
 class Biped(base.Base):
     def __init__(self,name):
         super(Biped, self).__init__(name)
 
         pSpine = spine.Spine(name='spine', jointList=mc.ls('spine_*_bind'))
+        pNeck = neck.Neck(name='pNeck', jointList=mc.ls('neck_*_bind'))
 
         l_arm = arm.Arm("l_arm",['clavicle_l_bind', 'shoulder_l_bind', 'elbow_l_bind', 'wrist_l_bind'])
         r_arm = arm.Arm("r_arm",['clavicle_r_bind', 'shoulder_r_bind', 'elbow_r_bind', 'wrist_r_bind'])
@@ -19,6 +21,7 @@ class Biped(base.Base):
         r_leg = limb.Limb("r_leg",['thigh_r_bind', 'knee_r_bind', 'ankle_r_bind'], pSpine.getHipSwivelCtrl)
 
         self.addNode(pSpine)
+        self.addNode(pNeck)
         self.addNode(l_arm)
         self.addNode(r_arm)
         self.addNode(l_leg)
