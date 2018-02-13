@@ -32,6 +32,8 @@ class NodeData(abstract_data.AbstractData):
         '''
         '''
         for node in nodes:
+            if not node in self._data:
+                continue
             if not attributes:
                 attributes = self._data[node].keys()
 

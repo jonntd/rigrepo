@@ -249,3 +249,8 @@ class Blink(part.Part):
                 mc.skinPercent(skinCluster, cv, tv=[(eyeCenter,1.0)]);
 
         # stopping point for now....... will cycle without Maya 2018 Update 2
+
+    def postBuild(self):
+        '''
+        '''
+        pass
