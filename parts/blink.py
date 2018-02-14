@@ -241,13 +241,12 @@ class Blink(part.Part):
         for crv in (neutralUpperCurve, neutralLowerCurve):
             cvList = rigrepo.libs.curve.getCVs(crv)
             print crv
-            skinCluster = mc.skinCluster([eyeCenter] + lidCornerJointList, crv)[0]
+            skinCluster = mc.skinCluster([eyeCenter] + lidCornerJointList, crv, tsb=True)[0]
             print skinCluster, lidCornerJointList
             mc.skinPercent(skinCluster, cvList[0], tv=[(lidCornerJointList[0],1.0)]);
             mc.skinPercent(skinCluster, cvList[-1], tv=[(lidCornerJointList[1],1.0)]);
             for cv in cvList[1:-1]:
                 mc.skinPercent(skinCluster, cv, tv=[(eyeCenter,1.0)]);
-
         # stopping point for now....... will cycle without Maya 2018 Update 2
 
     def postBuild(self):
