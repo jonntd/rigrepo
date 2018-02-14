@@ -14,12 +14,9 @@ class Biped(base.Base):
         super(Biped, self).__init__(name)
 
         # HERE THE THE LOAD FILE STUFF WE SHOULD TALK ABOUT.
-        '''
         loadSkeleton = base.LoadFile(name="loadSkeleton")
-        skeletonPath = os.path.join(os.path.dirname(__file__),'build','skeleton.ma')
-        print skeletonPath
+        skeletonPath = os.path.join(os.path.dirname(__file__),'build','skeleton.ma').replace('\\','/')
         loadSkeleton.getAttributeByName("filepath").setValue(skeletonPath)
-        '''
         pSpine = rigrepo.parts.spine.Spine(name='pSpine', jointList=mc.ls('spine_*_bind'))
         pNeck = rigrepo.parts.neck.Neck(name='pNeck', jointList=mc.ls('neck_*_bind'))
 
@@ -34,7 +31,7 @@ class Biped(base.Base):
         # update 2 to see if that takes care of it.
         l_blink = rigrepo.parts.blink.Blink("l_blink")
 
-        #self.addNode(loadSkeleton)
+        self.addNode(loadSkeleton)
         self.addNode(pSpine)
         self.addNode(pNeck)
         self.addNode(l_arm)
