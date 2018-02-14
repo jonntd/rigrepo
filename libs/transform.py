@@ -39,6 +39,9 @@ def decomposeRotation(object):
     :return: Swing transform 
     :rtype: list
     '''
+    if not mc.pluginInfo('matrixNodes', q=1, loaded=1):
+        mc.loadPlugin('matrixNodes')
+
     # Variables specific to which twist axis is being decomposed
     # If adding support for other axis these will need to be handled
     twistAxis = 'x'
