@@ -5,6 +5,7 @@ import os
 import maya.cmds as mc
 
 buildPath = os.path.join(os.path.dirname(biped.__file__),"build")
+mc.file(new=True, force=True)
 mc.file(os.path.join(buildPath,"skeleton.ma"), i=True,f=True)
 mc.file(os.path.join(buildPath,"blink_curves.ma"), i=True,f=True)
 
