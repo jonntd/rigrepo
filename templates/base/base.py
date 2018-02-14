@@ -3,6 +3,7 @@
 import pubs.pGraph as pGraph
 import pubs.pNode as pNode
 import maya.cmds as mc
+import os
 
 class Base(pGraph.PGraph):
     def __init__(self,name):
