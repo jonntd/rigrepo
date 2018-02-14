@@ -18,7 +18,8 @@ class Part(pubs.pNode.PNode):
         self.trsAux = "trs_aux"
         self.rigGroup = "rig"
         self.bindGroup = "bind"
-        self.modelGroup = "model"        
+        self.modelGroup = "model"    
+        self.noXformGroup = "noXform"    
 
     def setup(self):
         '''
@@ -26,7 +27,9 @@ class Part(pubs.pNode.PNode):
         parent = str()
 
         # iterate through the groups and create them if they don't exist yet.
-        for group in [self.trsMaster, self.trsShot, self.trsAux, self.rigGroup, self.bindGroup]:
+        groupList = [self.trsMaster, self.trsShot, self.trsAux, 
+                    self.modelGroup, self.rigGroup, self.noXformGroup, self.bindGroup]
+        for group in groupList:
             if not mc.objExists(group):
                 mc.createNode("transform", n=group)
 
@@ -37,6 +40,9 @@ class Part(pubs.pNode.PNode):
                     mc.parent(group, parent)
                 elif parentList[0] != parent:
                     mc.parent(group, parent)
+
+            if group in groupList[-3:] or group == groupList[3]:
+                continue
 
             parent = group
 

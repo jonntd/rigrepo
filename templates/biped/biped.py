@@ -30,6 +30,8 @@ class Biped(base.Base):
         # few moving pieces. Seems like the Point on curve info node is cycling. I am downloading 
         # update 2 to see if that takes care of it.
         l_blink = rigrepo.parts.blink.Blink("l_blink")
+        r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
+        r_blink.getAttributeByName("side").setValue("r")
 
         self.addNode(loadSkeleton)
         self.addNode(pSpine)
@@ -39,6 +41,7 @@ class Biped(base.Base):
         self.addNode(l_leg)
         self.addNode(r_leg)
         self.addNode(l_blink)
+        self.addNode(r_blink)
 
         l_leg.getAttributeByName('anchor').setValue('hip_swivel')
         r_leg.getAttributeByName('anchor').setValue('hip_swivel')

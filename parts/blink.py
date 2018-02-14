@@ -17,20 +17,20 @@ class Blink(part.Part):
         # Create the attributes that the user will be able to change on the part
         # that will affect the build.
         super(Blink, self).__init__(name)
-        self.addAttribute("side", "l", attrType=str)
-        self.addAttribute("eyeCenterJoint", "eyeSocket_l_bind", attrType=str)
-        self.addAttribute("neutralLowerCurve", "lidLower_neutral_l_curve", attrType=str)
-        self.addAttribute("neutralUpperCurve", "lidUpper_neutral_l_curve", attrType=str)
-        self.addAttribute("blinkLowerCurve", "lidLower_blink_l_curve", attrType=str)
-        self.addAttribute("blinkUpperCurve", "lidUpper_blink_l_curve", attrType=str)
+        self.addAttribute("side", side, attrType=str)
+        self.addAttribute("eyeCenterJoint", "eyeSocket_{}_bind".format(side), attrType=str)
+        self.addAttribute("neutralLowerCurve", "lidLower_neutral_{}_curve".format(side), attrType=str)
+        self.addAttribute("neutralUpperCurve", "lidUpper_neutral_{}_curve".format(side), attrType=str)
+        self.addAttribute("blinkLowerCurve", "lidLower_blink_{}_curve".format(side), attrType=str)
+        self.addAttribute("blinkUpperCurve", "lidUpper_blink_{}_curve".format(side), attrType=str)
         self.addAttribute("closeLowerCurves", 
-                            ['lidLower_middle_l_curve','lidLower_closed_l_curve'], 
+                            ['lidLower_middle_{}_curve'.format(side),'lidLower_closed_{}_curve'.format(side)], 
                             attrType=list)
         self.addAttribute("closeUpperCurves", 
-                            ['lidUpper_middle_l_curve','lidUpper_closed_l_curve'], 
+                            ['lidUpper_middle_{}_curve'.format(side),'lidUpper_closed_{}_curve'.format(side)], 
                             attrType=list)
-        self.addAttribute("openLowerCurves", ['lidLower_open_l_curve'], attrType=list)
-        self.addAttribute("openUpperCurves", ['lidUpper_open_l_curve'], attrType=list)
+        self.addAttribute("openLowerCurves", ['lidLower_open_{}_curve'.format(side)], attrType=list)
+        self.addAttribute("openUpperCurves", ['lidUpper_open_{}_curve'.format(side)], attrType=list)
 
     def build(self):
         '''
@@ -113,8 +113,8 @@ class Blink(part.Part):
                             itt="linear", 
                             ott= "linear", 
                             value=blendValue)
-                rotValue+=-40.0/len(closeCurves)
-                blendValue+=1.0/len(closeCurves)
+                rotValue+=-40.0/len(openCurves)
+                blendValue+=1.0/len(openCurves)
                 if crv != openCurves[-1]:
                     mc.blendShape(blendShape, e=True, ib=True, t=[neutralCurve, 1, crv, blendValue])
                 mc.setDrivenKeyframe("{0}.{1}".format(blendShape, openCurves[-1]), 
