@@ -2,6 +2,7 @@
 //Name: blink_curves.ma
 //Last modified: Mon, Feb 12, 2018 11:55:47 PM
 //Codeset: 1252
+requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2018";
