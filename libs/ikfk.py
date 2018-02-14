@@ -226,7 +226,7 @@ class IKFKLimb(IKFKBase):
         super(IKFKLimb, self).__init__(jointList)
 
         self._handle = str()
-        self.poleVectorScaler = 3.0
+        self.poleVectorScaler = 9.4
 
     # Get
     def getHandle(self):
