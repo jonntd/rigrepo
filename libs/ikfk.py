@@ -226,7 +226,6 @@ class IKFKLimb(IKFKBase):
         super(IKFKLimb, self).__init__(jointList)
 
         self._handle = str()
-        self.poleVectorScaler = 9.4
 
     # Get
     def getHandle(self):
@@ -275,8 +274,15 @@ class IKFKLimb(IKFKBase):
         '''
         if not mc.objExists(self._handle):
             raise RuntimeError("The handle doesn't exist in the current Maya session!!!!")
+        '''
+        startPoint = om.MPoint(*mc.xform(self._ikJointList[0], q=True, ws=True, t=True))
+        endPoint = om.MPoint(*mc.xform(self._ikJointList[-1], q=True, ws=True, t=True))
 
-        poleVector = om.MVector(*mc.getAttr("{0}.poleVector".format(self._handle))[0]) * self.poleVectorScaler
+        pvDistanceVector = (endPoint - startPoint) / 2
+        '''
+        pvDistanceVector = om.MVector(*mc.xform(self._ikJointList[1], q=True, relative=True, t=True))
+
+        poleVector = om.MVector(*mc.getAttr("{0}.poleVector".format(self._handle))[0]) * pvDistanceVector.length()
         poleVector = poleVector + om.MVector(*mc.xform(self._jointList[0], q=True, ws=True, t=True))
 
         return (poleVector.x, poleVector.y, poleVector.z)

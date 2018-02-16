@@ -7,8 +7,9 @@ should start with this class.
 
 import maya.cmds as mc
 import rigrepo.parts.part as part
-import rigrepo.libs.ikfk as ikfk
-import rigrepo.libs.control as control
+import rigrepo.libs.ikfk
+import rigrepo.libs.control
+import rigrepo.libs.attribute
 
 class Limb(part.Part):
     '''
@@ -18,7 +19,7 @@ class Limb(part.Part):
         This is the constructor.
         '''
         super(Limb, self).__init__(name) 
-        self.ikfkSystem = ikfk.IKFKLimb(jointList)
+        self.ikfkSystem = rigrepo.libs.ikfk.IKFKLimb(jointList)
         self._fkControls = list()
         self._ikControls = list()
         self._anchorGrp = str()
@@ -26,6 +27,7 @@ class Limb(part.Part):
 
     def build(self):
         '''
+        This will build the limb part
         '''
         super(Limb, self).build()
 
@@ -34,6 +36,10 @@ class Limb(part.Part):
         # create the param node and ikfk attribute for it
         paramNode = mc.createNode("locator", name="{0}_param".format(self.name))
         paramNodeTrs = mc.listRelatives(paramNode, p=True)[0]
+
+        # lock and hide attributes on the Param node that we don't need.
+        rigrepo.libs.attribute.lockAndHide(paramNode, ['lpx','lpy','lpz','lsx','lsy','lsz'])
+
         mc.setAttr("{0}.v".format(paramNode), 0)
         mc.addAttr(paramNode, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
         ikfkAttr = "{0}.ikfk".format(paramNode)
@@ -52,7 +58,7 @@ class Limb(part.Part):
         #poleVectorPos = self.ikfkSystem.getPoleVectorPosition(fkJointList)
         poleVectorPos = self.ikfkSystem.getPoleVectorFromHandle()
 
-        pvCtrlHierarchy = control.create(name="{0}_pv".format(self.name), 
+        pvCtrlHierarchy = rigrepo.libs.control.create(name="{0}_pv".format(self.name), 
                                                 controlType="diamond",
                                                 hierarchy=['nul','ort'],
                                                 position=poleVectorPos)
@@ -68,7 +74,7 @@ class Limb(part.Part):
         parent = self.name
 
         endJointPos = mc.xform(ikJointList[-1], q=True, ws=True, t=True)
-        ikCtrlHierarchy = control.create(name="{0}_ik".format(self.name), 
+        ikCtrlHierarchy = rigrepo.libs.control.create(name="{0}_ik".format(self.name), 
                                                 controlType="cube",
                                                 hierarchy=['nul','ort'],
                                                 position=endJointPos)     
@@ -76,11 +82,16 @@ class Limb(part.Part):
         ikCtrl = ikCtrlHierarchy[-1]
         mc.parent(paramNode, ikCtrl, add=True, s=True, r=True)
 
-        dupEndJnt = mc.duplicate(ikJointList[-1],po=True, rr=True)[0]
-        mc.setAttr('{0}.tx'.format(dupEndJnt),mc.getAttr('{0}.tx'.format(dupEndJnt))*2)
+        # duplicate the end ik joint and make it offset joint for the 
+        # ik control to drive the end joint
+        dupEndJnt = mc.duplicate(ikJointList[-1],
+                                po=True, 
+                                rr=True, 
+                                name="{}_offset".format(ikJointList[-1]))[0]
+        mc.setAttr('{0}.tx'.format(dupEndJnt),mc.getAttr('{0}.tx'.format(dupEndJnt))+2)
         mc.delete(mc.aimConstraint(dupEndJnt, ikCtrl)[0])
+        mc.setAttr('{0}.v'.format(dupEndJnt), 0)
 
-        
         mc.setAttr("{0}.v".format(handle), 0)
         mc.parent(dupEndJnt,ikCtrl)
         mc.setAttr("{0}.t".format(dupEndJnt),0,0,0)
@@ -101,7 +112,7 @@ class Limb(part.Part):
         fkControlsNulList = list()
         for fkJnt in fkJointList:
             # create the fk control hierarchy
-            fkCtrlHierarchy = control.create(name="{0}_ctrl".format(fkJnt), 
+            fkCtrlHierarchy = rigrepo.libs.control.create(name="{0}_ctrl".format(fkJnt), 
                                                 controlType="cube",
                                                 hierarchy=['nul','ort'])
 
