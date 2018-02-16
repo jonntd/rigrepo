@@ -8,16 +8,18 @@ import rigrepo.libs.curve
 import rigrepo.libs.control 
 import rigrepo.libs.transform
 import rigrepo.libs.common
+import rigrepo.libs.attribute
 import rigrepo.parts.part as part
 
 class Blink(part.Part):
-    def __init__(self, name, side="l"):
+    def __init__(self, name, side="l", anchor="head"):
         '''
         '''
         # Create the attributes that the user will be able to change on the part
         # that will affect the build.
         super(Blink, self).__init__(name)
         self.addAttribute("side", side, attrType=str)
+        self.addAttribute("anchor", anchor, attrType=str)
         self.addAttribute("eyeCenterJoint", "eyeSocket_{}_bind".format(side), attrType=str)
         self.addAttribute("neutralLowerCurve", "lidLower_neutral_{}_curve".format(side), attrType=str)
         self.addAttribute("neutralUpperCurve", "lidUpper_neutral_{}_curve".format(side), attrType=str)
@@ -31,6 +33,28 @@ class Blink(part.Part):
                             attrType=list)
         self.addAttribute("openLowerCurves", ['lidLower_open_{}_curve'.format(side)], attrType=list)
         self.addAttribute("openUpperCurves", ['lidUpper_open_{}_curve'.format(side)], attrType=list)
+        self.locatorGroup = "{}_locators".format(self.name)
+        self.controlGroup = "{}_controls".format(self.name)
+
+
+    def setup(self):
+        '''
+        This will create default nodes that should exists in the scene for the part to build.
+        '''
+        super(Blink, self).setup()
+
+        for node in [self.locatorGroup, self.controlGroup]:
+            if not mc.objExists(node):
+                mc.createNode("transform", name=node)
+
+        # parent the curve groups to the rig group
+        lowerNeutralCurve = self.getAttributeByName('neutralLowerCurve').getValue()
+        upperNeutralCurve = self.getAttributeByName('neutralUpperCurve').getValue()
+
+        for node in (lowerNeutralCurve,upperNeutralCurve):
+            parent = mc.listRelatives(node, p=True)[0]
+            if not mc.listRelatives(parent, p=True):
+                mc.parent(parent, self.rigGroup)
 
     def build(self):
         '''
@@ -39,6 +63,7 @@ class Blink(part.Part):
         super(Blink, self).build()
         eyeCenter = self.getAttributeByName("eyeCenterJoint").getValue()
         side = self.getAttributeByName("side").getValue()
+        anchor = self.getAttributeByName("anchor").getValue()
 
         # CREATE THE CONTROLS FOR THE BLINK RIG.
         # Create the eyeSocket control
@@ -47,6 +72,14 @@ class Blink(part.Part):
                                           color=rigrepo.libs.common.YELLOW,
                                           hierarchy=['nul'])
 
+        #parent the socket control to the anchor if it exist in the scene.
+        if mc.objExists(anchor):
+            mc.parent(eyeSocketNul, anchor)
+        else:
+            mc.warning("{} is not in the currnet Maya session!!!!".format(anchor))
+
+
+        # create the upper and lower lid corner controls.
         upperLidNul, upperLidCtrl = rigrepo.libs.control.create(name="lidUpper_{0}".format(side), 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
@@ -65,9 +98,21 @@ class Blink(part.Part):
         # rotate the lower lid so it's inverted to match the rotation on x for the upper lid.
         mc.setAttr("{0}.rotateZ".format(lowerLidNul), 180)
 
-        # set the handle positions by default
-        mc.setAttr("{0}.selectHandleY".format(lowerLidCtrl), .2)
-        mc.setAttr("{0}.selectHandleY".format(upperLidCtrl), .2)
+        # connect the rotate X axis of the lid controls to the rotateAxis X
+        # create a multDoubleLinear node
+        for node in (lowerLidCtrl, upperLidCtrl):
+            # set the handle positions by default
+            mc.setAttr("{0}.selectHandleY".format(node), .2)
+            mdl = mc.createNode("multDoubleLinear", n="{}_rot_mdl".format(node))
+            mc.connectAttr("{}.rx".format(node), "{}.input1".format(mdl), f=True)
+            mc.setAttr("{}.input2".format(mdl), -1)
+            mc.connectAttr("{}.output".format(mdl), "{}.rotateAxisX".format(node), f=True)
+
+        #point, orient constraint the socket joint to the socket control. Also connect scale
+        mc.pointConstraint(eyeSocketCtrl, eyeCenter)
+        mc.orientConstraint(eyeSocketCtrl, eyeCenter)
+        mc.scaleConstraint(eyeSocketCtrl, eyeCenter)
+        #mc.connectAttr("{}.scale".format(eyeSocketCtrl), "{}.scale".format(eyeCenter), f=True)
 
         lidControlList = list()
         for section in ["Upper", "Lower"]:
@@ -144,7 +189,7 @@ class Blink(part.Part):
                 mc.select(cl=True) 
                 jntBase = mc.joint(name="{0}_{1}_base".format(neutralCurve, str(i).zfill(3)), 
                                     position=eyeCenterPosition)
-                                    
+
                 #clear the selection before we create the bind joint.
                 mc.select(cl=True) 
                 #get the vertex position in world space.
@@ -179,7 +224,7 @@ class Blink(part.Part):
                 mc.connectAttr("{0}.position".format(poci), "{0}.t".format(ctrlHierarchy[0]),f=True)
                 mc.xform(ctrlHierarchy[1],ws=True,t=vrtPosition)
 
-                loc = mc.spaceLocator(name="{0}_{1}_loc".format(eyeSocketCtrl, str(i).zfill(3)))[0]
+                loc = mc.spaceLocator(name="{0}_{1}_loc".format(neutralCurve, str(i).zfill(3)))[0]
                 mc.setAttr("{0}Shape.localScale".format(loc),.2,.2,.2)
                 poci = mc.createNode("pointOnCurveInfo", name="{0}_loc_poci".format(jntBind))
                 mc.setAttr("{0}.parameter".format(poci), param)
@@ -191,6 +236,13 @@ class Blink(part.Part):
                 driverJntList.append(jntDriver)
 
                 lidControlList.append(ctrlHierarchy[-1])
+                # parent the locators and the controls to their respective groups
+                mc.parent(loc, self.locatorGroup)
+                mc.parent(ctrlHierarchy[0], self.controlGroup)
+
+                # setup a scale constraint on the base joints for the socket scale
+                #mc.scaleConstraint(eyeCenter, jntBase, mo=True)
+                mc.disconnectAttr('{}.scale'.format(eyeCenter), "{}.inverseScale".format(jntBase))
 
             mc.select(driverJntList + [blinkCurve],r=True)
 
@@ -247,9 +299,26 @@ class Blink(part.Part):
             mc.skinPercent(skinCluster, cvList[-1], tv=[(lidCornerJointList[1],1.0)]);
             for cv in cvList[1:-1]:
                 mc.skinPercent(skinCluster, cv, tv=[(eyeCenter,1.0)]);
-        # stopping point for now....... will cycle without Maya 2018 Update 2
+
+        # parent groups under the name of the part
+        mc.parent([self.controlGroup, self.locatorGroup], self.name)
 
     def postBuild(self):
         '''
         '''
-        pass
+        for node in [self.locatorGroup, self.controlGroup]:
+            if mc.getAttr("{}.v".format(node)):
+                rigrepo.libs.attribute.lockAndHide(node,['t','r','s'])
+        
+        #hide the locator group
+        mc.setAttr("{}.v".format(self.locatorGroup), 0)
+
+
+        # parent the curve groups to the rig group
+        lowerNeutralCurve = self.getAttributeByName('neutralLowerCurve').getValue()
+        upperNeutralCurve = self.getAttributeByName('neutralUpperCurve').getValue()
+
+        for node in (lowerNeutralCurve,upperNeutralCurve):
+            parent = mc.listRelatives(node, p=True)[0]
+            if mc.getAttr("{}.v".format(parent)):
+                mc.setAttr("{}.v".format(parent), 0)

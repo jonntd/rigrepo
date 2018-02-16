@@ -13,7 +13,7 @@ import rigrepo.libs.control as control
 class Limb(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, anchor='chest'):
+    def __init__(self, name, jointList, anchor=None):
         '''
         This is the constructor.
         '''
@@ -98,7 +98,7 @@ class Limb(part.Part):
         #-------------------------------------------------------------------------------------------
         #FK Setup for the limb
         #-------------------------------------------------------------------------------------------
-        fkCtrlNul = str()
+        fkControlsNulList = list()
         for fkJnt in fkJointList:
             # create the fk control hierarchy
             fkCtrlHierarchy = control.create(name="{0}_ctrl".format(fkJnt), 
@@ -107,7 +107,9 @@ class Limb(part.Part):
 
             ctrl = fkCtrlHierarchy[-1]
             nul = fkCtrlHierarchy[0]
-            fkCtrlNul = nul
+
+            #append nul to the nul list in case we need to use it for other things.
+            fkControlsNulList.append(nul)
 
             # make sure that the control is in the same position as the joint
             fkJntMatrix = mc.xform(fkJnt, q=True, ws=True, matrix=True)
@@ -140,10 +142,9 @@ class Limb(part.Part):
         if mc.objExists(anchor):
             anchorGrp = mc.createNode('transform', n=self.name+'_anchor_grp', p=self.name) 
             self._anchorGrp = anchorGrp
-            con = mc.parentConstraint(ikJointList[0], anchorGrp)
-            mc.delete(con)
+            mc.xform(anchorGrp, ws=True, matrix=mc.xform(ikJointList[0], q=True, ws=True, matrix=True))
             mc.parentConstraint(anchor, anchorGrp, mo=1)
-            mc.parent(self.ikfkSystem.getGroup(), fkCtrlNul, anchorGrp)
+            mc.parent(self.ikfkSystem.getGroup(), fkControlsNulList[0], anchorGrp)
         else:
             mc.warning('Anchor object [ {} ] does not exist.'.format(anchor)) 
 

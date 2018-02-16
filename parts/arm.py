@@ -12,7 +12,7 @@ import rigrepo.libs.control as control
 class Arm(limb.Limb):
     '''
     '''
-    def __init__(self, name, jointList, anchor=None):
+    def __init__(self, name, jointList, anchor='chest'):
         '''
         This is the constructor.
         '''

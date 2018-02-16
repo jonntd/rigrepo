@@ -37,7 +37,7 @@ def hide(node, attr):
 
     for node in nodeList:
         for attr in attrList:  
-            mc.setAttr("{0}.{1}".format(node,attr), keyable=False)
+            mc.setAttr("{0}.{1}".format(node,attr), keyable=False, cb=False)
 
 
 def lockAndHide(node, attr):
@@ -90,7 +90,7 @@ def unhide(node, attr):
     #lock attributes
     for node in nodeList:
         for attr in attrList:
-            mc.setAttr("{0}.{1}".format(node,attr), k = True)    
+            mc.setAttr("{0}.{1}".format(node,attr), k = True, cb=True)    
 
 
 def unlockAndUnhide(attr, node):
