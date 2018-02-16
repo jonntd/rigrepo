@@ -9,6 +9,7 @@ import rigrepo.libs.control
 import rigrepo.libs.transform
 import rigrepo.libs.common
 import rigrepo.libs.attribute
+import rigrepo.libs.skinCluster
 import rigrepo.parts.part as part
 
 class Blink(part.Part):
@@ -35,7 +36,7 @@ class Blink(part.Part):
         self.addAttribute("openUpperCurves", ['lidUpper_open_{}_curve'.format(side)], attrType=list)
         self.locatorGroup = "{}_locators".format(self.name)
         self.controlGroup = "{}_controls".format(self.name)
-
+        self._skinClusters = list()
 
     def setup(self):
         '''
@@ -247,7 +248,8 @@ class Blink(part.Part):
             mc.select(driverJntList + [blinkCurve],r=True)
 
             # do the bind pre-matrix for the skinCluster on the blink curve.
-            skinCluster = mc.skinCluster()[0]
+            skinCluster = mc.skinCluster(n=blinkCurve+'_skinCluster')[0]
+            self._skinClusters.append(skinCluster)
             for i,jnt in enumerate(driverJntList):
                 parentOfJnt = mc.listRelatives(jnt,p=True)[0]
                 mc.connectAttr('{0}.parentInverseMatrix[0]'.format(parentOfJnt),
@@ -293,7 +295,8 @@ class Blink(part.Part):
         for crv in (neutralUpperCurve, neutralLowerCurve):
             cvList = rigrepo.libs.curve.getCVs(crv)
             print crv
-            skinCluster = mc.skinCluster([eyeCenter] + lidCornerJointList, crv, tsb=True)[0]
+            skinCluster = mc.skinCluster([eyeCenter] + lidCornerJointList, crv, tsb=True, n=crv+'_skinCluster')[0]
+            self._skinClusters.append(skinCluster)
             print skinCluster, lidCornerJointList
             mc.skinPercent(skinCluster, cvList[0], tv=[(lidCornerJointList[0],1.0)]);
             mc.skinPercent(skinCluster, cvList[-1], tv=[(lidCornerJointList[1],1.0)]);
@@ -322,3 +325,6 @@ class Blink(part.Part):
             parent = mc.listRelatives(node, p=True)[0]
             if mc.getAttr("{}.v".format(parent)):
                 mc.setAttr("{}.v".format(parent), 0)
+
+        # localize skinClusters
+        rigrepo.libs.skinCluster.localize(self._skinClusters, self.name)
