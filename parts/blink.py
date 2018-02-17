@@ -243,7 +243,8 @@ class Blink(part.Part):
 
                 # setup a scale constraint on the base joints for the socket scale
                 #mc.scaleConstraint(eyeCenter, jntBase, mo=True)
-                mc.disconnectAttr('{}.scale'.format(eyeCenter), "{}.inverseScale".format(jntBase))
+                #mc.disconnectAttr('{}.scale'.format(eyeCenter), "{}.inverseScale".format(jntBase))
+                mc.setAttr("{}.segmentScaleCompensate".format(jntBase))
 
             mc.select(driverJntList + [blinkCurve],r=True)
 
