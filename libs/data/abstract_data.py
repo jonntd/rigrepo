@@ -52,10 +52,7 @@ class AbstractData(object):
         writeData = OrderedDict(user=getpass.getuser(), 
                                 type= self.__class__.__name__,
                                 time=strftime("%Y-%m-%d %H:%M:%S", gmtime()))
-
-        # pass the data on this object to the updateData dict
-        writeData.update(self._data)
-
+        writeData['data'] = self._data
         # dump data to json format and write it out to disk.
         data = json.dumps(writeData, indent=4)
         f = open(filepath, 'w')
@@ -79,12 +76,12 @@ class AbstractData(object):
             raise RuntimeError("This {0} does not exists.".format(filepath))
 
         f = open(filepath, 'r')
-        self._data = json.loads(f.read())
+        data = json.loads(f.read())
         f.close()
 
         # set a new filepath on the class.
         self._filepath = filepath
-
+        self._data = data['data']
         return self._data
 
     def applyData(node, attributes=None):
