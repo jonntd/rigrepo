@@ -2,6 +2,7 @@
 import maya.cmds as mc
 import maya.api.OpenMaya as om
 import rigrepo.libs.transform
+import rigrepo.libs.common
 
 def createCurveFromPoints(points, degree=3, name='curve'):
         '''
@@ -82,11 +83,67 @@ def getParamFromPosition(curve, point):
     
     #Check to see if point is a list or tuple object
     if not isinstance(point, list) and not isinstance(point, tuple):
-        if cmds.objExists(point):
-            point = cmds.xform(point, q = True, ws = True, t = True)
+        if mc.objExists(point):
+            point = mc.xform(point, q = True, ws = True, t = True)
 
     
     #Get and MPoint object and a double ptr
     mPoint = om.MPoint(point[0], point[1], point[2])
     
     return mFnNurbsCurve.getParamAtPoint(mPoint)
+
+
+def mirror (curve, search = '_l_', replace = '_r_', axis = "x"):
+    '''
+    Mirror joint orientation
+    It won't create a new joint, it will only mirror the oriention from one existing joint to another.
+
+    ..example ::
+         mirror( mc.ls(sl=True) )
+
+    :param joint: Point you want to mirror
+    :type joint: str | list
+
+    :param search: Search side token
+    :type search: str
+
+    :param replace: Replace side token
+    :type replace: str
+    '''
+
+    # get given points
+    curveList = rigrepo.libs.common.toList(curve)
+
+    # get selection
+    selection = mc.ls(sl=True)
+
+    posVector = ()
+    if axis.lower() == 'x':
+        posVector = (-1,1,1)
+    elif axis.lower() == 'y':
+        posVector = (1,-1,1)
+    elif axis.lower() == 'z':
+        posVector = (1,1,-1)
+
+    # loop through the curve list and mirror across worldspace
+    for curve in curveList:
+        cvList=getCVs(curve)
+        for cv in cvList:
+            toCV = cv.replace( search, replace )
+
+            # check to make sure that both objects exist in the scnene
+            if mc.objExists(cv) and mc.objExists(toCV) and cv != toCV:
+                # get position and rotation
+                pos = mc.xform( cv, q=True, t=True, ws=True )
+
+                # set rotation orientation
+                mc.xform( toCV, ws = True, t = ( pos[0]*posVector[0], pos[1]*posVector[1], pos[2]*posVector[2] ))
+            else:
+                raise RuntimeError, 'Node not found: %s' % toCV
+
+    # --------------------------------------------------------------------------
+    # re-select objects
+    if selection:
+        mc.select( selection )
+    else:
+        mc.select( cl= True)
