@@ -13,7 +13,7 @@ class LoadFileNode(commandNode.CommandNode):
         super(LoadFileNode, self).__init__(*args, **kwargs)
         commandAttribute = self.getAttributeByName('command')
         self.addAttribute('filepath', "/disk1/temp", attrType='file')
-        commandAttribute.setValue('import maya.cmds as mc; import os; if os.path.isfile({filepath}):mc.file({filepath}, i=True, f=True);')
+        commandAttribute.setValue('import maya.cmds as mc; import os;\\nif os.path.isfile("{filepath}"):mc.file("{filepath}", i=True, f=True);')
 
     def execute(self, *args, **kwargs):
         '''
