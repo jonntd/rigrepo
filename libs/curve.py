@@ -138,7 +138,7 @@ def mirror (curve, search = '_l_', replace = '_r_', axis = "x"):
                 # set rotation orientation
                 mc.xform( toCV, ws = True, t = ( pos[0]*posVector[0], pos[1]*posVector[1], pos[2]*posVector[2] ))
             else:
-                raise RuntimeError, 'Node not found: %s' % toCV
+                raise RuntimeError, 'Node not found: {}'.format(toCV)
 
     # --------------------------------------------------------------------------
     # re-select objects

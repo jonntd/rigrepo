@@ -1,4 +1,5 @@
 import maya.cmds as mc
+import rigrepo.libs.common
 
 def rotateToOrient(jointList):
     '''
@@ -33,3 +34,89 @@ def rotateToOrient(jointList):
             mc.parent(children[0],jnt)
         else:
             mc.setAttr("{0}.rotateAxis".format(jnt),0,0,0)
+
+
+
+def mirror (joint, search = '_l_', replace = '_r_', axis = "x"):
+    '''
+    Mirror joint orientation
+    It will not create a new joint. It will only mirror to an existing joint that hase the same
+    name with the search and replace different.
+
+    ..example ::
+         mirror( mc.ls(sl=True) )
+
+    :param joint: Point you want to mirror
+    :type joint: str | list
+
+    :param search: Search side token
+    :type search: str
+
+    :param replace: Replace side token
+    :type replace: str
+    '''
+
+
+    # get given joints
+    jointList = rigrepo.libs.common.toList(joint)
+
+    # get selection
+    selection = mc.ls(sl=True)
+
+    trsVector = ()
+    rotVector = ()
+    if axis.lower() == 'x':
+        trsVector = (-1,1,1)
+        rotVector = (0,180,180)
+    elif axis.lower() == 'y':
+        trsVector = (1,-1,1)
+        rotVector = (180,0,180)
+    elif axis.lower() == 'z':
+        trsVector = (1,1,-1)
+        rotVector = (180,180,0)
+
+    for i,jnt in enumerate(jointList):
+
+        jnt2 = jnt.replace( search, replace )
+
+        if mc.objExists(jnt) and mc.objExists(jnt2) and jnt != jnt2:
+
+            # parent children
+            jointGroup = mc.createNode('transform')
+            children   = mc.listRelatives( jnt2, type='transform' )
+            if children:
+                mc.parent( list(set(children)), jointGroup )
+
+            # get position and rotation
+            trs = mc.xform( jnt, q=True, rp=True, ws=True )
+            rot = mc.xform( jnt, q=True, ro=True, ws=True )
+
+            # set rotation orientation
+            mc.xform( jnt2, ws = True, 
+                        t = ( trs[0]*trsVector[0], trs[1]*trsVector[1], trs[2]*trsVector[2] ), 
+                        ro=rot )
+            mc.xform( jnt2, ws = True, r = True, ro = rotVector )
+
+            # set prefered angle
+            if mc.objExists( '{}.{}'.format(jnt, 'preferredAngle') ):
+                preferredAngle = mc.getAttr( '{}.{}'.format(jnt, 'preferredAngle'))[0]
+                if mc.objExists( '{}.{}'.format(jnt2, 'preferredAngle')):
+                    mc.setAttr( '{}.{}'.format(jnt2, 'preferredAngle'),
+                                  preferredAngle[0],
+                                  preferredAngle[1],
+                                  preferredAngle[2] )
+
+            # re-parent children to jnt2
+            if children:
+                mc.parent( children, jnt2 )
+            mc.delete( jointGroup )
+
+        else:
+            raise RuntimeError, 'Node not found: {}}'.format(jnt2)
+
+    # --------------------------------------------------------------------------
+    # re-select objects
+    if selection:
+        mc.select( selection )
+    else:
+        mc.select( cl= True)
