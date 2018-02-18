@@ -5,6 +5,8 @@ import os
 from collections import OrderedDict
 import maya.cmds as mc
 import json
+import getpass
+from time import gmtime, strftime
 
 class AbstractData(object):
     '''
@@ -21,6 +23,7 @@ class AbstractData(object):
         '''
         if not mc.objExists(node):
             mc.warning("{0} does not exists in the current Maya session.".format(node))
+        
         self._data[node] = OrderedDict(dagPath=mc.ls(node,l=True)[0])
 
     def gatherDataIterate(self, nodes):
@@ -45,9 +48,16 @@ class AbstractData(object):
         '''
         if not isinstance(self._data, (dict, OrderedDict)):
             raise TypeError("The data must be passed in as a dictionary.")
+        # writeData is user specific just on export
+        writeData = OrderedDict(user=getpass.getuser(), 
+                                type= self.__class__.__name__,
+                                time=strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+
+        # pass the data on this object to the updateData dict
+        writeData.update(self._data)
 
         # dump data to json format and write it out to disk.
-        data = json.dumps(self._data, indent=4, sort_keys=True)
+        data = json.dumps(writeData, indent=4)
         f = open(filepath, 'w')
         f.write(data)
         f.close()
