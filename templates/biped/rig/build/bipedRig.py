@@ -3,8 +3,10 @@
 import maya.cmds as mc
 import rigrepo.templates.archetype.rig.build.archetypeRig as archetypeRig
 import pubs.pNode
+import rigrepo.libs.fileIO as fileIO
 import rigrepo.nodes.loadFileNode
 import rigrepo.nodes.newSceneNode
+import rigrepo.nodes.dataNode
 import rigrepo.parts.arm
 import rigrepo.parts.leg
 import rigrepo.parts.spine 
@@ -17,21 +19,21 @@ import os
 class BipedRig(archetypeRig.ArchetypeRig):
     def __init__(self,name):
         super(BipedRig, self).__init__(name)
-        buildPath = os.path.dirname(__file__)
+        variant = 'base'
+        buildPath = fileIO.joinPath(os.path.dirname(__file__), variant)
 
         # New Scene
         newSceneNode = rigrepo.nodes.newSceneNode.NewSceneNode('newScene')
 
         # Load
         load = pubs.pNode.PNode('load')
-        # Skeleton
+        # Skeleton 
         skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton")
-        skeletonPath = os.path.join(buildPath,'base','skeleton.ma').replace('\\','/')
+        skeletonPath = fileIO.joinPath(buildPath, 'skeleton.ma')
         skeletonFileNode.getAttributeByName("filepath").setValue(skeletonPath)
-        
         # Curve
         curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves")
-        curvePath = os.path.join(buildPath,'base','blink_curves.ma').replace('\\','/')
+        curvePath = fileIO.joinPath(buildPath, 'blink_curves.ma')
         curveFileNode.getAttributeByName("filepath").setValue(curvePath)
 
         # Parts

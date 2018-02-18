@@ -63,3 +63,8 @@ def loadPlugin(name):
             mc.loadPlugin(name)
     except:
         mc.warning('%s plugin cannot be loaded' % name)
+
+def joinPath(*argv):
+    path = os.path.join(*argv).replace('\\','/')
+    return(path)
+
