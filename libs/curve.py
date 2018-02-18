@@ -1,4 +1,3 @@
-
 import maya.cmds as mc
 import maya.api.OpenMaya as om
 import rigrepo.libs.transform
@@ -92,11 +91,11 @@ def getParamFromPosition(curve, point):
     
     return mFnNurbsCurve.getParamAtPoint(mPoint)
 
-
 def mirror (curve, search = '_l_', replace = '_r_', axis = "x"):
     '''
-    Mirror joint orientation
-    It won't create a new joint, it will only mirror the oriention from one existing joint to another.
+    Mirror curves
+    It won't create a new curve, it will only mirror the if there is an existing curve with the 
+    replace in it matching the name of search and the currvent curve hase search in it.
 
     ..example ::
          mirror( mc.ls(sl=True) )
