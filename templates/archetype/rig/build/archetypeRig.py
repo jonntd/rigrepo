@@ -25,7 +25,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
 
         #perspective frame
         frameNode = rigrepo.nodes.commandNode.CommandNode('frameCamera')
-        frameNode.getAttributeByName('command').setValue('import maya.cmds as mc; mc.viewFit("persp")')
+        frameNode.getAttributeByName('command').setValue('import maya.cmds as mc\nmc.viewFit("persp")')
 
         animRigNode.addChild(newSceneNode)
         animRigNode.addChild(loadNode)

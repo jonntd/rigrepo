@@ -24,6 +24,7 @@ class Limb(part.Part):
         self._anchorGrp = str()
         self.addAttribute("anchor", anchor, attrType='str')
         self.jointList = jointList
+        self._stretchTargetJointList = list()
 
     def build(self):
         '''
@@ -45,6 +46,8 @@ class Limb(part.Part):
         mc.setAttr("{0}.v".format(paramNode), 0)
         mc.addAttr(paramNode, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
         ikfkAttr = "{0}.ikfk".format(paramNode)
+
+
         #connect the param ikfk attr to the ikfk system group ikfk attribute
         mc.connectAttr(ikfkAttr, "{0}.ikfk".format(self.ikfkSystem.getGroup()), f=True)
 
@@ -71,6 +74,19 @@ class Limb(part.Part):
         handle = self.ikfkSystem.getHandle()
         mc.poleVectorConstraint(pvCtrl, handle)
 
+        # create the ik stretchy system
+        self._stretchTargetJointList = self.ikfkSystem.createStretchIK(handle, self.ikfkSystem.getGroup())
+
+
+        #create attributes on param node and connect them to the grp node
+        mc.addAttr(paramNode, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
+        mc.addAttr(paramNode, ln='stretchTop', at='double', dv = 1, k=True)
+        mc.addAttr(paramNode, ln='stretchBottom', at='double', dv = 1, k=True)
+        grp = self.ikfkSystem.getGroup()
+        for attr in ['stretch','stretchTop', 'stretchBottom']:
+            mc.connectAttr('{}.{}'.format(paramNode, attr), 
+                        '{}.{}'.format(grp, attr), f=True)
+
 
         # set the parent of the controls to be the rig group
         parent = self.name
@@ -83,6 +99,7 @@ class Limb(part.Part):
 
         ikCtrl = ikCtrlHierarchy[-1]
         mc.parent(paramNode, ikCtrl, add=True, s=True, r=True)
+        
 
         # duplicate the end ik joint and make it offset joint for the 
         # ik control to drive the end joint
@@ -97,7 +114,8 @@ class Limb(part.Part):
         mc.setAttr("{0}.v".format(handle), 0)
         mc.parent(dupEndJnt,ikCtrl)
         mc.setAttr("{0}.t".format(dupEndJnt),0,0,0)
-        mc.parent(handle, dupEndJnt)
+        #mc.parent(handle, dupEndJnt)
+        mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
         mc.orientConstraint(dupEndJnt, ikJointList[-1])
 
         # parent the controls to the parent group

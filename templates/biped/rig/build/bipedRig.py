@@ -47,25 +47,31 @@ class BipedRig(archetypeRig.ArchetypeRig):
         r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
         r_blink.getAttributeByName("side").setValue("r")
 
-        # get the load node which is derived from archetype.
-        load = self.getNodeByName('load')
-        load.addChild(skeletonFileNode) 
-        load.addChild(jointDataNode) 
-        load.addChild(curveFileNode) 
+        # add childrent to nodes
         l_arm.addChild(l_hand)
         r_arm.addChild(r_hand)
 
-        # declare the build order for the anim rig node that you want to go in front of frame camera
-        AnimRigBuildOrder = [pSpine,
-                            pNeck,
-                            l_arm,
-                            r_arm,
-                            l_leg, 
-                            r_leg,
-                            l_blink,
-                            r_blink]
+        
+        # create both face and body builds
+        bodyBuildNode = pubs.pNode.PNode("body")
+        faceBuildNode = pubs.pNode.PNode("face")
+        # add nodes ass children of body
+        bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
+        faceBuildNode.addChildren([l_blink, r_blink])
+        # get the load node which is derived from archetype.
+        loadNode = self.getNodeByName('load')
+        loadNode.addChild(skeletonFileNode) 
+        loadNode.addChild(jointDataNode) 
+        loadNode.addChild(curveFileNode) 
 
-        animRigNode.addChildren(AnimRigBuildOrder, 
+        # create a build node to put builds under.
+        buildNode = pubs.pNode.PNode("build")
+        # add nodes to the build
+        buildNode.addChildren([bodyBuildNode, faceBuildNode])
+        
+
+        # add children to the animRigNode
+        animRigNode.addChildren([buildNode], 
                                 index=animRigNode.getChild('frameCamera').index())
 
         l_leg.getAttributeByName('anchor').setValue('hip_swivel')

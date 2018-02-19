@@ -40,7 +40,7 @@ class Arm(limb.Limb):
         mc.pointConstraint(clavicleCtrl, self._clavicleJoint)
         mc.orientConstraint(clavicleCtrl, self._clavicleJoint)
 
-        mc.parent(self._fkControls[0], clavicleCtrl)
+        mc.parent((self._fkControls[0], self._stretchTargetJointList[0]), clavicleCtrl)
 
         mc.parentConstraint(self._clavicleJoint, self.ikfkSystem.getIkJointList()[0], mo=True)
 

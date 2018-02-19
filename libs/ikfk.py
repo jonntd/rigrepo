@@ -4,6 +4,8 @@ This module is used for everything ikfk
 
 import maya.cmds as mc
 import maya.api.OpenMaya as om
+import rigrepo.libs.common as common
+import rigrepo.libs.transform as transform
 
 class IKFKBase(object):
     '''
@@ -246,7 +248,156 @@ class IKFKLimb(IKFKBase):
         super(IKFKLimb, self).setJointList(value)
 
     @staticmethod
-    def getPoleVectorPosition(jointList, scaler=3):
+    def createStretchIK(ikHandle, grp):
+        '''
+        creates a stretchy joint chain based off of influences on ikHandle
+        
+        Example:
+    
+        ..python:
+            createStrecthIK('l_leg_ik_hdl')
+            #Return: 
+    
+        :param ikHandle: ik handle you influencing joint chain you want to stretch
+        :type ikHandle: str
+        
+        :retrun targetJnts: Joints that are used to calculate the distance
+        :rtype: list
+        '''
+        if not grp or not mc.objExists(grp):
+            grp = mc.createNode('transform', n = 'ik_stretch_grp')
+    
+        #create attributes on grp node
+        mc.addAttr(grp, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
+        mc.addAttr(grp, ln='stretchTop', at='double', dv = 1, k=True)
+        mc.addAttr(grp, ln='stretchBottom', at='double', dv = 1, k=True)
+        stretchAttr  = '{}.stretch'.format(grp)
+        stretchTopAttr = '{}.stretchTop'.format(grp)
+        stretchBottomAttr = '{}.stretchBottom'.format(grp)
+        
+        #get joints influenced by the ikHandle
+        jnts = mc.ikHandle(ikHandle, q = True, jl = True)
+        jnts.append(mc.listRelatives(jnts[-1], c = True)[0])
+        #create tgt joints for distance node
+        targetJnt1 = mc.createNode('joint', n = '{}_{}'.format(jnts[0], common.TARGET))
+        targetJnt2 = mc.createNode('joint', n = '{}_{}'.format(jnts[2], common.TARGET))
+        mc.xform(targetJnt1, ws=True, t=mc.xform(jnts[0], q=True, ws=True, t=True))
+        mc.xform(targetJnt2, ws=True, t=mc.xform(jnts[2], q=True, ws=True, t=True))
+        
+        #create distance and matrix nodes
+        distanceBetween = mc.createNode('distanceBetween', n = '{}_{}'.format(ikHandle, common.DISTANCEBETWEEN))
+        startDecomposeMatrix = mc.createNode('decomposeMatrix', n = '{}_{}'.format(targetJnt1, common.DECOMPOSEMATRIX))
+        endDecomposeMatrix = mc.createNode('decomposeMatrix', n = '{}_{}'.format(targetJnt2, common.DECOMPOSEMATRIX))
+        
+        #create condition and multplyDivide nodes
+        multiplyDivide = mc.createNode('multiplyDivide', n = '{}_{}'.format(ikHandle, common.MULTIPLYDIVIDE))
+        condition = mc.createNode('condition', n = '{}_{}'.format(ikHandle, common.CONDITION))
+        multiplyDivideJnt1 = mc.createNode('multiplyDivide', n = '{}_{}'.format(jnts[1], common.MULTIPLYDIVIDE))
+        
+        blendColorStretch = mc.createNode('blendColors', n = '{}_stretch_{}'.format(grp, common.BLEND))
+        multiplyStretch = mc.createNode('multiplyDivide', n = '{}_stretch_{}'.format(grp, common.MULTIPLYDIVIDE))
+        plusMinusStretch = mc.createNode('plusMinusAverage', n = '{}_stretch_{}'.format(grp, common.PLUSMINUSAVERAGE))
+        
+        #connect matrix nodes to distance between node
+        mc.connectAttr('{}.worldMatrix[0]'.format(targetJnt1), '{}.inputMatrix'.format(startDecomposeMatrix), f = True)
+        mc.connectAttr('{}.worldMatrix[0]'.format(targetJnt2), '{}.inputMatrix'.format(endDecomposeMatrix), f = True)
+        mc.connectAttr('{}.outputTranslate'.format(startDecomposeMatrix), '{}.point1'.format(distanceBetween), f = True)
+        mc.connectAttr('{}.outputTranslate'.format(endDecomposeMatrix), '{}.point2'.format(distanceBetween), f = True)
+        
+        #connect multiplyDivide and condition nodes
+        aimAxis = transform.getAimAxis(jnts[1], False)
+        jnt1Distance = mc.getAttr('{}.t{}'.format(jnts[1], aimAxis))
+        jnt2Distance = mc.getAttr('{}.t{}'.format(jnts[2], aimAxis))
+        jntLength = jnt1Distance + jnt2Distance
+        mc.setAttr('{}.operation'.format(multiplyDivide), 2)    
+        if jntLength < 0:
+            negDistanceMultiply = mc.createNode('multiplyDivide', n = '{}_distanceNeg_{}'.format(grp, common.MULTIPLYDIVIDE))
+            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.input1X'.format(negDistanceMultiply), f = True)
+            mc.setAttr('{}.input2X'.format(negDistanceMultiply), -1)
+            mc.connectAttr('{}.outputX'.format(negDistanceMultiply), '{}.input1X'.format(multiplyDivide), f = True)
+            mc.connectAttr('{}.outputX'.format(negDistanceMultiply), '{}.firstTerm'.format(condition), f = True)
+            mc.setAttr('{}.operation'.format(condition), 4)
+        else:
+            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.input1X'.format(multiplyDivide), f = True)
+            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.firstTerm'.format(condition), f = True)
+            mc.setAttr('{}.operation'.format(condition), 2)
+    
+        mc.connectAttr('{}.outputX'.format(multiplyDivide), '{}.input1X'.format(multiplyDivideJnt1), f = True)
+        mc.connectAttr('{}.outputX'.format(multiplyDivide), '{}.input1Y'.format(multiplyDivideJnt1), f = True)
+        mc.connectAttr('{}.outputX'.format(multiplyDivideJnt1), '{}.colorIfTrueR'.format(condition), f = True)
+        mc.connectAttr('{}.outputY'.format(multiplyDivideJnt1), '{}.colorIfTrueG'.format(condition), f = True)
+        mc.connectAttr('{}.outColorR'.format(condition), '{}.t{}'.format(jnts[1], aimAxis), f = True)
+        mc.connectAttr('{}.outColorG'.format(condition), '{}.t{}'.format(jnts[2], aimAxis), f = True)
+    
+        mc.connectAttr(stretchAttr, '{}.blender'.format(blendColorStretch), f=True)
+        mc.connectAttr(stretchTopAttr, '{}.input1X'.format(multiplyStretch), f=True)
+        mc.setAttr('{}.input2X'.format(multiplyStretch), jnt1Distance)
+        mc.connectAttr(stretchBottomAttr, '{}.input1Y'.format(multiplyStretch), f=True)
+        mc.setAttr('{}.input2Y'.format(multiplyStretch), jnt2Distance)
+        mc.connectAttr('{}.outputX'.format(multiplyStretch), '{}.input2D[0].input2Dx'.format(plusMinusStretch), f=True)
+        mc.connectAttr('{}.outputY'.format(multiplyStretch), '{}.input2D[1].input2Dx'.format(plusMinusStretch), f=True)
+        mc.connectAttr('{}.output2Dx'.format(plusMinusStretch), '{}.input2X'.format(multiplyDivide), f=True)
+        mc.connectAttr('{}.output2Dx'.format(plusMinusStretch), '{}.secondTerm'.format(condition), f=True)
+        mc.connectAttr('{}.outputX'.format(multiplyStretch), '{}.colorIfFalseR'.format(condition), f=True)
+        mc.connectAttr('{}.outputY'.format(multiplyStretch), '{}.colorIfFalseG'.format(condition), f=True)
+        mc.connectAttr('{}.outputX'.format(multiplyStretch), '{}.input2X'.format(multiplyDivideJnt1), f=True)
+        mc.connectAttr('{}.outputY'.format(multiplyStretch), '{}.input2Y'.format(multiplyDivideJnt1), f=True)
+        
+        mc.connectAttr('{}.outColorR'.format(condition), '{}.color1R'.format(blendColorStretch), f=True)
+        mc.connectAttr('{}.outputX'.format(multiplyStretch), '{}.color2R'.format(blendColorStretch), f=True)
+        mc.connectAttr('{}.outColorG'.format(condition), '{}.color1G'.format(blendColorStretch), f=True)
+        mc.connectAttr('{}.outputY'.format(multiplyStretch), '{}.color2G'.format(blendColorStretch), f=True)
+        
+        mc.connectAttr('{}.outputR'.format(blendColorStretch), '{}.t{}'.format(jnts[1], aimAxis), f=True)
+        mc.connectAttr('{}.outputG'.format(blendColorStretch), '{}.t{}'.format(jnts[2], aimAxis), f=True)
+        
+        #parent ikHandle under targetJnt2
+        mc.parent(ikHandle, targetJnt2)
+        
+        #turn off visibility of targetJnts and parent under grp node
+        for jnt in [targetJnt1, targetJnt2]:
+            mc.setAttr('{}.v'.format(jnt), 0)
+            #mc.parent(jnt, grp)
+    
+        return [targetJnt1, targetJnt2]
+    
+    @staticmethod
+    def ikMatchFk(fkJoints, ikDriver, pvDriver):
+        newPvPos = IKFKLimb.getPoleVectorPosition(fkJoints)
+        endJntPos = mc.xform(fkJoints[2], q = True, ws = True, t = True)
+        endJntRot = mc.xform(fkJoints[2], q = True, ws = True, ro = True)
+        
+        mc.xform(pvDriver, ws = True, t = newPvPos)
+        mc.xform(ikDriver, ws = True, t = endJntPos)
+        mc.xform(ikDriver, ws = True, ro = endJntRot)
+        
+    @staticmethod
+    def fkMatchIk(joints, ikJoints):
+        if not joints:
+            try:
+                joints = mc.ls(sl =True)
+            except:
+                raise RuntimeError('Nothing selected')
+        #end if        
+        if not isinstance(joints, list) and not isinstance(joints, tuple):
+            raise RuntimeError('{} must be a list or tuple of 3 joints'.format(joints))
+        #end if
+        if len(joints) != 3:
+            raise RuntimeError('{} must have 3 joints in the list'.format(joints))
+        #end if
+        for jnt in joints:
+            if mc.nodeType(jnt) != 'joint':
+                raise TypeError('{} must be a joint'.format(jnt))
+            
+        for jnt, ikJnt in zip(joints, ikJoints):
+            trs = mc.xform(ikJnt, q = True, ws = True, t = True)
+            rot = mc.xform(ikJnt, q = True, ws = True, ro = True)
+            
+            mc.xform(jnt, ws = True, t = trs)
+            mc.xform(jnt, ws = True, ro = rot)
+
+    @staticmethod
+    def getPoleVectorPosition(jointList, scaler=6):
         '''
         This will return a position for the polevector
         '''

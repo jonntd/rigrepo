@@ -102,3 +102,106 @@ def getAveragePosition(nodes):
 
     return (point.x, point.y, point.z)
 
+def getAxis( transform, vector=(0,1,0) ):
+    '''Returns the closest axis to the given vector.
+
+    .. python ::
+
+        import maya.cmds as cmds
+
+        # Simple Example
+        t = mc.createNode('transform')
+        getAxis( t, (1,0,0) )
+        # Result: 'x'
+
+        # Joint Example
+        j1 = mc.joint(p=(0, 0, 0))
+        j2 = mc.joint(p=(0, 0, 2))
+        mc.joint( j1, e=True, zso=True, oj='xyz', sao='yup')
+        getAxis( j1, (1,0,0) )
+        # Result: '-z'
+
+    :param transform: Transform node to calculate the vector from
+    :type transform: str
+    :param vector: Vector to compare with the transform matrix.
+    :type vector: list or tuple
+    :returns: x,-x,y,-y,z,-z
+    :rtype: str
+    '''
+
+    # get dag path
+    dpath = getDagPath( transform )
+
+    # get world matrix
+    matrix = dpath.inclusiveMatrix()
+
+    # get vectors
+    xVector = om.MVector( matrix[0], matrix[1], matrix[2]) 
+    yVector = om.MVector( matrix[3], matrix[4], matrix[5])
+    zVector = om.MVector( matrix[6], matrix[7], matrix[8])
+    vVector = om.MVector( vector[0], vector[1], vector[2] )
+    axis   = None
+    factor = -1
+
+    # x
+    dot = xVector * vVector
+    if dot > factor:
+        factor = dot
+        axis = 'x'
+
+    # -x
+    dot = -xVector * vVector
+    if dot > factor:
+        factor = dot
+        axis = '-x'
+
+    # y
+    dot = yVector * vVector
+    if dot > factor:
+        factor = dot
+        axis = 'y'
+
+    # -y
+    dot = -yVector * vVector
+    if dot > factor:
+        factor = dot
+        axis = '-y'
+
+    # z
+    dot = zVector * vVector
+    if dot > factor:
+        factor = dot
+        axis = 'z'
+
+    # -z
+    dot = -zVector * vVector
+    if dot > factor:
+        factor = dot
+        axis = '-z'
+
+    return axis      
+
+
+def getAimAxis ( transform, allowNegative = True):
+    '''
+    Get transform aim axis based on relatives.
+    This is a wrap of getAxis(), uses the average position of the children to pass the vector.
+
+    :param transform: Transform to get the aim axis from.
+    :type transform: str
+
+    :param allowNegative: Allow negative axis
+    :type allowNegative: bool
+
+    :return: Return aim axis
+    :rtype: str
+    '''
+
+    pos  = mc.xform( transform, q=True, ws=True, rp=True )
+    rel  = getAveragePosition( mc.listRelatives(transform, type="transform"))
+    axis = getAxis( transform, (rel[0]-pos[0], rel[1]-pos[1], rel[2]-pos[2] ) )
+
+    if not allowNegative:
+        return axis[-1]
+
+    return axis
