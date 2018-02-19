@@ -2,7 +2,7 @@
 //Name: skeleton.ma
 //Last modified: Fri, Feb 16, 2018 12:29:22 AM
 //Codeset: 1252
-requires maya "2018ff07";
+requires maya "2018";
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
