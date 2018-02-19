@@ -21,7 +21,8 @@ class BipedRig(archetypeRig.ArchetypeRig):
     def __init__(self,name):
         super(BipedRig, self).__init__(name)
 
-        variant = 'base'
+        animRigNode = self.getNodeByName("animRig")
+
         buildPath = joinPath(os.path.dirname(__file__), self.variant)
 
         # Skeleton 
@@ -46,20 +47,25 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         # get the load node which is derived from archetype.
         load = self.getNodeByName('load')
-
         load.addChild(skeletonFileNode) 
         load.addChild(jointDataNode) 
         load.addChild(curveFileNode) 
-        self.addNode(pSpine)
-        self.addNode(pNeck)
         l_arm.addChild(l_hand)
-        self.addNode(l_arm)
         r_arm.addChild(r_hand)
-        self.addNode(r_arm)
-        self.addNode(l_leg)
-        self.addNode(r_leg)
-        self.addNode(l_blink)
-        self.addNode(r_blink)
+
+        # declare the build order for the anim rig node that you want to go in front of frame camera
+        AnimRigBuildOrder = [skeletonFileNode,
+                            jointDataNode,
+                            curveFileNode,
+                            pSpine,
+                            pNeck,
+                            l_arm,
+                            r_arm,
+                            l_blink,
+                            r_blink]
+
+        animRigNode.addChildren(AnimRigBuildOrder, 
+                                index=animRigNode.getChild('frameCamera').index())
 
         l_leg.getAttributeByName('anchor').setValue('hip_swivel')
         r_leg.getAttributeByName('anchor').setValue('hip_swivel')
