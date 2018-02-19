@@ -14,21 +14,23 @@ import rigrepo.libs.attribute
 class Limb(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, anchor=None):
+    def __init__(self, name, jointList, anchor=None, dataObj=None):
         '''
         This is the constructor.
         '''
-        super(Limb, self).__init__(name) 
-        self.ikfkSystem = rigrepo.libs.ikfk.IKFKLimb(jointList)
+        super(Limb, self).__init__(name, dataObj) 
         self._fkControls = list()
         self._ikControls = list()
         self._anchorGrp = str()
         self.addAttribute("anchor", anchor, attrType='str')
+        self.jointList = jointList
 
     def build(self):
         '''
         This will build the limb part
         '''
+        self.ikfkSystem = rigrepo.libs.ikfk.IKFKLimb(self.jointList)
+
         super(Limb, self).build()
 
         self.ikfkSystem.create()

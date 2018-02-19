@@ -9,7 +9,7 @@ import rigrepo.libs.control as control
 class Hand(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, anchor="wrist_l_bind_blend"):
+    def __init__(self, name, jointList, anchor="wrist_l_bind_blend", dataObj=None):
         '''
         This is the constructor.
 
@@ -19,7 +19,7 @@ class Hand(part.Part):
         :param anchor: What we will anchor this part to.
         :type anchor: str
         '''
-        super(Hand, self).__init__(name)         
+        super(Hand, self).__init__(name, dataObj)         
         self.jointList = jointList
         self._group = "{}_grp".format(self.name)
         self.addAttribute('anchor', anchor, attrType=str)

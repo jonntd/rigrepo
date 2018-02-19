@@ -8,7 +8,7 @@ import pubs.pNode
 class Part(pubs.pNode.PNode):
     '''
     '''
-    def __init__(self, name):
+    def __init__(self, name, dataObj=None):
         '''
         This is the constructor for the base part
         :param name: Name of the part you are creating.
@@ -24,6 +24,7 @@ class Part(pubs.pNode.PNode):
         self.rigGroup = "rig"
         self.bindGroup = "bind"
         self.modelGroup = "model"
+        self.dataObj = dataObj 
 
     def setup(self):
         '''

@@ -60,6 +60,8 @@ import rigrepo.nodes.newSceneNode
 reload(rigrepo.nodes.newSceneNode)
 import rigrepo.nodes.loadFileNode
 reload(rigrepo.nodes.loadFileNode)
+import rigrepo.nodes.dataNode
+reload(rigrepo.nodes.dataNode)
 
 # reload parts
 import rigrepo.parts.part
@@ -89,17 +91,9 @@ reload(rigrepo.templates.biped.rig.build.bipedRig)
 import os
 import maya.cmds as mc
 
-buildPath = os.path.join(os.path.dirname(rigrepo.templates.biped.rig.build.bipedRig.__file__),"base")
-mc.file(new=True, force=True)
-mc.file(os.path.join(buildPath,"skeleton.ma"), i=True,f=True)
-mc.file(os.path.join(buildPath,"blink_curves.ma"), i=True,f=True)
-
-data = rigrepo.libs.data.joint_data.JointData()
-data.read(os.path.join(buildPath,"joint_positions.data"))
-joints = mc.ls(type='joint')
-data.applyData(joints)
 
 # the right arm is all messed up and we have to fix it. Also, you can't run nodes more than once
 # in the same scene at th moment. We will have to fix this.
 matt_graph = rigrepo.templates.biped.rig.build.bipedRig.BipedRig('matt')
 pubs.ui.mainWindow.launch(graph=matt_graph)
+

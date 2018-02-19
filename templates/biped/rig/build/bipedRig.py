@@ -3,7 +3,7 @@
 import maya.cmds as mc
 import rigrepo.templates.archetype.rig.build.archetypeRig as archetypeRig
 import pubs.pNode
-import rigrepo.libs.fileIO as fileIO
+from rigrepo.libs.fileIO import joinPath 
 import rigrepo.nodes.loadFileNode
 import rigrepo.nodes.newSceneNode
 import rigrepo.nodes.dataNode
@@ -20,7 +20,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
     def __init__(self,name):
         super(BipedRig, self).__init__(name)
         variant = 'base'
-        buildPath = fileIO.joinPath(os.path.dirname(__file__), variant)
+        buildPath = joinPath(os.path.dirname(__file__), variant)
 
         # New Scene
         newSceneNode = rigrepo.nodes.newSceneNode.NewSceneNode('newScene')
@@ -28,17 +28,14 @@ class BipedRig(archetypeRig.ArchetypeRig):
         # Load
         load = pubs.pNode.PNode('load')
         # Skeleton 
-        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton")
-        skeletonPath = fileIO.joinPath(buildPath, 'skeleton.ma')
-        skeletonFileNode.getAttributeByName("filepath").setValue(skeletonPath)
+        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", filePath=joinPath(buildPath, 'skeleton.ma'))
+        jointDataNode = rigrepo.nodes.dataNode.DataNode('jointPositions',dataFile=joinPath(buildPath, 'joint_positions.data'), dataType='joint', apply=True)
         # Curve
-        curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves")
-        curvePath = fileIO.joinPath(buildPath, 'blink_curves.ma')
-        curveFileNode.getAttributeByName("filepath").setValue(curvePath)
+        curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves", filePath=joinPath(buildPath, 'blink_curves.ma'))
 
         # Parts
-        pSpine = rigrepo.parts.spine.Spine(name='pSpine', jointList=mc.ls('spine_*_bind'))
-        pNeck = rigrepo.parts.neck.Neck(name='pNeck', jointList=mc.ls('neck_*_bind'))
+        pSpine = rigrepo.parts.spine.Spine(name='pSpine', jointList="mc.ls('spine_*_bind')")
+        pNeck = rigrepo.parts.neck.Neck(name='pNeck', jointList="mc.ls('neck_*_bind')")
         l_arm = rigrepo.parts.arm.Arm("l_arm",['clavicle_l_bind', 'shoulder_l_bind', 'elbow_l_bind', 'wrist_l_bind'], anchor='chest')
         r_arm = rigrepo.parts.arm.Arm("r_arm",['clavicle_r_bind', 'shoulder_r_bind', 'elbow_r_bind', 'wrist_r_bind'], anchor='chest')
         l_hand = rigrepo.parts.hand.Hand("l_hand",['ring_001_l_bind', 'middle_001_l_bind', 'index_001_l_bind', 'pinkyCup_l_bind', 'thumbCup_l_bind'])
@@ -53,6 +50,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
         self.addNode(newSceneNode)
         self.addNode(load)
         load.addChild(skeletonFileNode) 
+        load.addChild(jointDataNode) 
         load.addChild(curveFileNode) 
         self.addNode(pSpine)
         self.addNode(pNeck)

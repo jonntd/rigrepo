@@ -8,12 +8,12 @@ import rigrepo.parts.arm as arm
 class Leg(arm.Arm):
     '''
     '''
-    def __init__(self, name, jointList, anchor='hip_swivel'):
+    def __init__(self, name, jointList, anchor='hip_swivel', dataObj=None):
         '''
         This is the constructor.
         '''
 
-        super(Leg, self).__init__(name, jointList, anchor) 
+        super(Leg, self).__init__(name, jointList, anchor, dataObj) 
 
 
     def build(self):

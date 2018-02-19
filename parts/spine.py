@@ -13,12 +13,11 @@ import rigrepo.libs.common as common
 class Spine(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, chestBind='chest_bind', hipsBind='hips_bind', splineName='spineIk'):
+    def __init__(self, name, jointList, chestBind='chest_bind', hipsBind='hips_bind', splineName='spineIk', dataObj=None):
         '''
         This is the constructor.
         '''
-        super(Spine, self).__init__(name) 
-        self.spline = spline.SplineBase(jointList=jointList, splineName=splineName)
+        super(Spine, self).__init__(name, dataObj) 
         self._hipsCtrl = str()
         self._hipSwivelCtrl = str()
         self._torsoCtrl = str()
@@ -26,6 +25,8 @@ class Spine(part.Part):
         self._chestTopCtrl = str()
         self._chestBind = chestBind
         self._hipsBind = hipsBind
+        self.jointList = jointList
+        self._splineName = splineName
 
     def getChestCtrl(self):
         return(self._chestCtrl)
@@ -41,8 +42,9 @@ class Spine(part.Part):
         '''
         super(Spine, self).build()
 
+        jointList = eval(self.jointList)
+        self.spline = spline.SplineBase(jointList=jointList, splineName=self._splineName)
         self.spline.create()
-        jointList = self.spline.getJointList()
 
         # Hips
         hipsCtrlHierarchy = control.create(name="hips", 

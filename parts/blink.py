@@ -13,7 +13,7 @@ import rigrepo.libs.skinCluster
 import rigrepo.parts.part as part
 
 class Blink(part.Part):
-    def __init__(self, name, side="l", anchor="head"):
+    def __init__(self, name, side="l", anchor="head", dataObj=None):
         '''
         '''
         # Create the attributes that the user will be able to change on the part

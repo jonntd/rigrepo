@@ -18,17 +18,18 @@ class Neck(part.Part):
         This is the constructor.
         '''
         super(Neck, self).__init__(name) 
-        self.spline = spline.SplineBase(jointList=jointList, splineName=splineName)
         self._skullBind=skullBind
         self.addAttribute("anchor", "chest", attrType='str')
+        self._splineName = splineName
+        self.jointList = jointList
 
     def build(self):
         '''
         '''
         super(Neck, self).build()
-
+        jointList = eval(self.jointList)
+        self.spline = spline.SplineBase(jointList=jointList, splineName=self._splineName)
         self.spline.create()
-        jointList = self.spline.getJointList()
 
         # Neck
         neckNul,neckCtrl = control.create(name="neck", 
