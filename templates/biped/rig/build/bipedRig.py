@@ -54,8 +54,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
         r_arm.addChild(r_hand)
 
         # declare the build order for the anim rig node that you want to go in front of frame camera
-        AnimRigBuildOrder = [load,
-                            pSpine,
+        AnimRigBuildOrder = [pSpine,
                             pNeck,
                             l_arm,
                             r_arm,
