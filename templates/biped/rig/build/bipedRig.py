@@ -33,7 +33,9 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         # Parts
         pSpine = rigrepo.parts.spine.Spine(name='pSpine', jointList="mc.ls('spine_*_bind')")
+        pSpine.setNiceName("spine")
         pNeck = rigrepo.parts.neck.Neck(name='pNeck', jointList="mc.ls('neck_*_bind')")
+        pNeck.setNiceName("neck")
         l_arm = rigrepo.parts.arm.Arm("l_arm",['clavicle_l_bind', 'shoulder_l_bind', 'elbow_l_bind', 'wrist_l_bind'], anchor='chest')
         r_arm = rigrepo.parts.arm.Arm("r_arm",['clavicle_r_bind', 'shoulder_r_bind', 'elbow_r_bind', 'wrist_r_bind'], anchor='chest')
         l_hand = rigrepo.parts.hand.Hand("l_hand",['ring_001_l_bind', 'middle_001_l_bind', 'index_001_l_bind', 'pinkyCup_l_bind', 'thumbCup_l_bind'])
