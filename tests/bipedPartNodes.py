@@ -60,8 +60,10 @@ import rigrepo.nodes.newSceneNode
 reload(rigrepo.nodes.newSceneNode)
 import rigrepo.nodes.loadFileNode
 reload(rigrepo.nodes.loadFileNode)
-import rigrepo.nodes.dataNode
-reload(rigrepo.nodes.dataNode)
+import rigrepo.nodes.importDataNode
+reload(rigrepo.nodes.importDataNode)
+import rigrepo.nodes.exportDataNode
+reload(rigrepo.nodes.exportDataNode)
 
 # reload parts
 import rigrepo.parts.part

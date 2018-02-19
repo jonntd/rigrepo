@@ -4,13 +4,13 @@ This is the base data node
 import pubs.pNode
 import rigrepo.libs.data.joint_data
 import maya.cmds as mc
+import os
 
 
-class DataNode(pubs.pNode.PNode):
+class ExportDataNode(pubs.pNode.PNode):
     def __init__(self, name, dataFile=None, dataType=None, apply=False):
-        super(DataNode, self).__init__(name)
+        super(ExportDataNode, self).__init__(name)
         self.addAttribute('filepath', dataFile, attrType='file')
-        self.addAttribute('Apply', apply, attrType='bool')
         self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')
 
         self._dataType = dataType
@@ -19,9 +19,12 @@ class DataNode(pubs.pNode.PNode):
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()
-        self.dataObj.read(dataFile)
+        nodes = eval(self.getAttributeByName('Nodes').getValue())
+        if nodes: 
+            self.dataObj.gatherDataIterate(nodes)
+            self.dataObj.write(dataFile)
+            print('Writing: {}'.format(dataFile))
+        else:
+            mc.warning('No nodes found to write')
 
-        if self.getAttributeByName('Apply').getValue():
-             nodes = eval(self.getAttributeByName('Nodes').getValue())
-             self.dataObj.applyData(nodes)
 
