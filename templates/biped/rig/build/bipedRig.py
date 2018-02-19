@@ -60,6 +60,8 @@ class BipedRig(archetypeRig.ArchetypeRig):
                             pNeck,
                             l_arm,
                             r_arm,
+                            l_leg, 
+                            r_leg,
                             l_blink,
                             r_blink]
 
