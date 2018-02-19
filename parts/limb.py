@@ -106,7 +106,8 @@ class Limb(part.Part):
         self._ikControls.extend([pvCtrl, ikCtrl])
 
         for ctrl in self._ikControls:
-            mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl), f=True)
+            if not mc.isConnected("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl)):
+                mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl), f=True)
 
         #-------------------------------------------------------------------------------------------
         #FK Setup for the limb

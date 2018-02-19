@@ -295,10 +295,8 @@ class Blink(part.Part):
         # put the eyeSocket as a skinCluster onto the neutral curve so it follows the rig.
         for crv in (neutralUpperCurve, neutralLowerCurve):
             cvList = rigrepo.libs.curve.getCVs(crv)
-            print crv
             skinCluster = mc.skinCluster([eyeCenter] + lidCornerJointList, crv, tsb=True, n=crv+'_skinCluster')[0]
             self._skinClusters.append(skinCluster)
-            print skinCluster, lidCornerJointList
             mc.skinPercent(skinCluster, cvList[0], tv=[(lidCornerJointList[0],1.0)]);
             mc.skinPercent(skinCluster, cvList[-1], tv=[(lidCornerJointList[1],1.0)]);
             for cv in cvList[1:-1]:
