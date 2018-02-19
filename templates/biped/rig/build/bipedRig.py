@@ -22,13 +22,8 @@ class BipedRig(archetypeRig.ArchetypeRig):
         super(BipedRig, self).__init__(name)
 
         variant = 'base'
-        buildPath = joinPath(os.path.dirname(__file__), variant)
+        buildPath = joinPath(os.path.dirname(__file__), self.variant)
 
-        # New Scene
-        newSceneNode = rigrepo.nodes.newSceneNode.NewSceneNode('newScene')
-
-        # Load
-        load = pubs.pNode.PNode('load')
         # Skeleton 
         skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", filePath=joinPath(buildPath, 'skeleton.ma'))
         jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions',dataFile=joinPath(buildPath, 'joint_positions.data'), dataType='joint', apply=True)
@@ -49,8 +44,9 @@ class BipedRig(archetypeRig.ArchetypeRig):
         r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
         r_blink.getAttributeByName("side").setValue("r")
 
-        self.addNode(newSceneNode)
-        self.addNode(load)
+        # get the load node which is derived from archetype.
+        load = self.getNodeByName('load')
+
         load.addChild(skeletonFileNode) 
         load.addChild(jointDataNode) 
         load.addChild(curveFileNode) 
