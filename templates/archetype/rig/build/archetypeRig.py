@@ -36,14 +36,12 @@ class ArchetypeRig(pubs.pGraph.PGraph):
 
         # add the nodes to the graph
         self.addNode(animRigNode)
-
-
-         # Workflow
+        # Workflow
         workflow = pubs.pNode.PNode('workflow')
         workflow.disable()
         exporters = pubs.pNode.PNode('exporters')
-        jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions',dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), dataType='joint')
-        curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions',dataFile=joinPath(buildPath, 'curve_positions.data'), dataType='curve')
+        jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions',dataFile= self.resolveDataFilePath('joint_positions.data', self.variant), dataType='joint')
+        curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions',dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), dataType='curve')
         self.addNode(workflow)
         workflow.addChild(exporters)
         exporters.addChild(jointExportDataNode)
@@ -56,9 +54,10 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         '''
         '''
         filepath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, filename)
+        #print filepath
         if not os.path.isfile(filepath):
             try:
-                return super(cls.__class__.__bases__[0], cls).resolveDataFilePath(filename)
+                return cls.__bases__[0].resolveDataFilePath(filename, variant)
             except:
                 pass
 

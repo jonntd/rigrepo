@@ -1,7 +1,7 @@
 {
     "type": "JointData", 
-    "user": "Walter Yoder", 
-    "time": "2018-02-18 00:13:09", 
+    "user": "Matt", 
+    "time": "2018-02-19 07:23:51", 
     "data": {
         "ankleTwist_l_bind": {
             "dagPath": "|bind|hips_bind|pelvis_l_bind|thigh_l_bind|knee_l_bind|ankle_l_bind|ankleTwist_l_bind", 
