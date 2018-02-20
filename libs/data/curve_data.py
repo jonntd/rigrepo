@@ -27,4 +27,17 @@ class CurveData(node_data.NodeData):
 
         self._data[node].update(data)
 
-    
+    def applyData(self, nodes, attributes=None):
+        '''
+        '''
+        super(CurveData, self).applyData(nodes, attributes)
+        for node in nodes:
+            if not node in self._data:
+                continue
+            if not attributes:
+                attributes = self._data[node].keys()
+
+            for attribute in attributes:
+                if attribute == 'cvPositions':
+                    for i,position in enumerate(self._data[node][attribute]):
+                        mc.xform("{}.cv[{}]".format(node,i), ws=True, t=position)

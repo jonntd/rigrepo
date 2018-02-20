@@ -11,11 +11,13 @@ class ImportDataNode(pubs.pNode.PNode):
         super(ImportDataNode, self).__init__(name)
         self.addAttribute('filepath', dataFile, attrType='file')
         self.addAttribute('Apply', apply, attrType='bool')
-        self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')
-
+        nodesAttr = self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')
         self._dataType = dataType
         if dataType == 'joint':
             self.dataObj = rigrepo.libs.data.joint_data.JointData()
+        elif dataType == 'curve':
+            self.dataObj = rigrepo.libs.data.curve_data.CurveData()
+            nodesAttr.setValue('mc.ls(type="nurbsCurve")')
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()
@@ -23,5 +25,7 @@ class ImportDataNode(pubs.pNode.PNode):
 
         if self.getAttributeByName('Apply').getValue():
              nodes = eval(self.getAttributeByName('Nodes').getValue())
+             print nodes
+             print self.dataObj
              self.dataObj.applyData(nodes)
 

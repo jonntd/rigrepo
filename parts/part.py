@@ -66,9 +66,6 @@ class Part(pubs.pNode.PNode):
         '''
         # lock attributes on groups
         groupTuple = (self.name,
-                    self.trsMaster,
-                    self.trsShot,
-                    self.trsAux,
                     self.rigGroup,
                     self.bindGroup,
                     self.modelGroup)

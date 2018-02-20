@@ -8,14 +8,17 @@ import os
 
 
 class ExportDataNode(pubs.pNode.PNode):
-    def __init__(self, name, dataFile=None, dataType=None, apply=False):
+    def __init__(self, name, dataFile=None, dataType=None):
         super(ExportDataNode, self).__init__(name)
         self.addAttribute('filepath', dataFile, attrType='file')
-        self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')
+        nodesAttr = self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')
 
         self._dataType = dataType
         if dataType == 'joint':
             self.dataObj = rigrepo.libs.data.joint_data.JointData()
+        elif dataType == 'curve':
+            self.dataObj = rigrepo.libs.data.curve_data.CurveData()
+            nodesAttr.setValue('mc.ls(type="nurbsCurve")')
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()

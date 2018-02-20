@@ -18,8 +18,8 @@ import rigrepo.parts.hand
 import os
 
 class BipedRig(archetypeRig.ArchetypeRig):
-    def __init__(self,name):
-        super(BipedRig, self).__init__(name)
+    def __init__(self,name, variant='base'):
+        super(BipedRig, self).__init__(name, variant)
 
         animRigNode = self.getNodeByName("animRig")
 
@@ -27,10 +27,10 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         # Skeleton 
         skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", filePath=joinPath(buildPath, 'skeleton.ma'))
-        jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions',dataFile=joinPath(buildPath, 'joint_positions.data'), dataType='joint', apply=True)
+        jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions',dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), dataType='joint', apply=True)
         # Curve
         curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves", filePath=joinPath(buildPath, 'blink_curves.ma'))
-
+        curveDataNode = rigrepo.nodes.importDataNode.ImportDataNode('curvePosition',dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), dataType='curve', apply=True)
         # Parts
         pSpine = rigrepo.parts.spine.Spine(name='pSpine', jointList="mc.ls('spine_*_bind')")
         pSpine.setNiceName("spine")
@@ -63,7 +63,8 @@ class BipedRig(archetypeRig.ArchetypeRig):
         loadNode.addChild(skeletonFileNode) 
         loadNode.addChild(jointDataNode) 
         loadNode.addChild(curveFileNode) 
-
+        loadNode.addChild(curveDataNode)
+        
         # create a build node to put builds under.
         buildNode = pubs.pNode.PNode("build")
         # add nodes to the build
@@ -76,15 +77,3 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         l_leg.getAttributeByName('anchor').setValue('hip_swivel')
         r_leg.getAttributeByName('anchor').setValue('hip_swivel')
-
-        # Workflow
-        workflow = pubs.pNode.PNode('workflow')
-        workflow.disable()
-        exporters = pubs.pNode.PNode('exporters')
-        jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions',dataFile=joinPath(buildPath, 'joint_positions.data'), dataType='joint', apply=True)
-        #curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions',dataFile=joinPath(buildPath, 'joint_positions.data'), dataType='joint', apply=True)
-        self.addNode(workflow)
-        workflow.addChild(exporters)
-        exporters.addChild(jointExportDataNode)
-        #exporters.addChild(curveExportDataNode)
-
