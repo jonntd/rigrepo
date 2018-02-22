@@ -4,7 +4,7 @@ This is the base data node
 import pubs.pNode
 import rigrepo.libs.data.joint_data
 import maya.cmds as mc
-
+import os
 
 class ImportDataNode(pubs.pNode.PNode):
     def __init__(self, name, dataFile=None, dataType=None, apply=False):
@@ -22,7 +22,11 @@ class ImportDataNode(pubs.pNode.PNode):
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()
-        self.dataObj.read(dataFile)
+        if os.path.isfile(dataFile):
+            self.dataObj.read(dataFile)
+        else:
+            mc.warning('{} does not exist'.format(dataFile)) 
+            return
 
         if self.getAttributeByName('Apply').getValue():
              nodes = eval(self.getAttributeByName('Nodes').getValue())
