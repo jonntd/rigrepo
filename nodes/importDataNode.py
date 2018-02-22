@@ -9,6 +9,7 @@ import maya.cmds as mc
 class ImportDataNode(pubs.pNode.PNode):
     def __init__(self, name, dataFile=None, dataType=None, apply=False):
         super(ImportDataNode, self).__init__(name)
+        print dataFile
         self.addAttribute('filepath', dataFile, attrType='file')
         self.addAttribute('Apply', apply, attrType='bool')
         nodesAttr = self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')
@@ -17,7 +18,7 @@ class ImportDataNode(pubs.pNode.PNode):
             self.dataObj = rigrepo.libs.data.joint_data.JointData()
         elif dataType == 'curve':
             self.dataObj = rigrepo.libs.data.curve_data.CurveData()
-            nodesAttr.setValue('mc.ls(type="nurbsCurve")')
+            nodesAttr.setValue('mc.ls("*_curve", type="transform")')
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()
@@ -25,7 +26,5 @@ class ImportDataNode(pubs.pNode.PNode):
 
         if self.getAttributeByName('Apply').getValue():
              nodes = eval(self.getAttributeByName('Nodes').getValue())
-             print nodes
-             print self.dataObj
              self.dataObj.applyData(nodes)
 

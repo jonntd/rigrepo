@@ -26,10 +26,10 @@ class BipedRig(archetypeRig.ArchetypeRig):
         buildPath = joinPath(os.path.dirname(__file__), self.variant)
 
         # Skeleton 
-        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", filePath=joinPath(buildPath, 'skeleton.ma'))
+        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", filePath=self.resolveDataFilePath('skeleton.ma', self.variant))
         jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions',dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), dataType='joint', apply=True)
         # Curve
-        curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves", filePath=joinPath(buildPath, 'blink_curves.ma'))
+        curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves", filePath=self.resolveDataFilePath('blink_curves.ma', self.variant))
         curveDataNode = rigrepo.nodes.importDataNode.ImportDataNode('curvePosition',dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), dataType='curve', apply=True)
         # Parts
         pSpine = rigrepo.parts.spine.Spine(name='pSpine', jointList="mc.ls('spine_*_bind')")
