@@ -148,10 +148,11 @@ class IKFKBase(object):
         if not mc.objExists(self._group):
             mc.createNode("transform",n = self._group)
 
-        mc.addAttr(self._group, ln='ikfk', at="double", 
-            min=0, max=1, keyable=True)
-
         ikfkAttr = "{0}.ikfk".format(self._group)
+
+        if not mc.objExists(ikfkAttr):
+            mc.addAttr(self._group, ln='ikfk', at="double", 
+                min=0, max=1, keyable=True)
 
         #loop through the joints in the given jointList, and if they exists,
         #create the ik, fk, and blend joint setup.
@@ -164,54 +165,64 @@ class IKFKBase(object):
                 continue 
 
             #FK
-            fkJnt = mc.duplicate(joint, po=True, rr=True, 
-                        name= "{0}_fk".format(joint))[0]
+            fkJnt = "{0}_fk".format(joint)
+            if not mc.objExists(fkJnt):
+                mc.duplicate(joint, po=True, rr=True, 
+                        name= fkJnt)[0]
+                mc.parent(fkJnt,fkParent)
 
-            mc.parent(fkJnt,fkParent)
             self._fkJointList.append(fkJnt)
 
             fkParent = fkJnt
 
             #IK
-            ikJnt = mc.duplicate(joint, po=True, rr=True, 
-                        name= "{0}_ik".format(joint))[0]
-
-            mc.parent(ikJnt,ikParent)
+            ikJnt = "{0}_ik".format(joint)
+            if not mc.objExists(ikJnt):
+                mc.duplicate(joint, po=True, rr=True, 
+                        name= ikJnt)[0]
+                mc.parent(ikJnt,ikParent)
+            
             self._ikJointList.append(ikJnt)
 
             ikParent = ikJnt
 
             #Blend
-            blendJnt = mc.duplicate(joint, po=True, rr=True, 
-                        name= "{0}_blend".format(joint))[0]
+            blendJntExists = False
+            blendJnt = "{0}_blend".format(joint)
+            if not mc.objExists(blendJnt):
+                mc.duplicate(joint, po=True, rr=True, 
+                        name= blendJnt)[0]
+                mc.parent(blendJnt,blendParent)
+            else:
+                blendJntExists = True
 
-            mc.parent(blendJnt,blendParent)
             self._blendJointList.append(blendJnt)
 
             blendParent = blendJnt
 
-            # create the blend colors nodes and connect everything
-            rotbcn = mc.createNode("blendColors", n="{0}_rot_bcn".format(joint))
-            trsbcn = mc.createNode("blendColors", n="{0}_trs_bcn".format(joint))
+            if not blendJntExists:
+                # create the blend colors nodes and connect everything
+                rotbcn = mc.createNode("blendColors", n="{0}_rot_bcn".format(joint))
+                trsbcn = mc.createNode("blendColors", n="{0}_trs_bcn".format(joint))
 
-            # make the connections
-            mc.connectAttr(ikfkAttr,"{0}.blender".format(rotbcn),f=True)
-            mc.connectAttr(ikfkAttr,"{0}.blender".format(trsbcn),f=True)
+                # make the connections
+                mc.connectAttr(ikfkAttr,"{0}.blender".format(rotbcn),f=True)
+                mc.connectAttr(ikfkAttr,"{0}.blender".format(trsbcn),f=True)
 
-            mc.connectAttr("{0}.rotate".format(fkJnt),
-                "{0}.color1".format(rotbcn),f=True)
-            mc.connectAttr("{0}.rotate".format(ikJnt),
-                "{0}.color2".format(rotbcn),f=True)
+                mc.connectAttr("{0}.rotate".format(fkJnt),
+                    "{0}.color1".format(rotbcn),f=True)
+                mc.connectAttr("{0}.rotate".format(ikJnt),
+                    "{0}.color2".format(rotbcn),f=True)
 
-            mc.connectAttr("{0}.translate".format(fkJnt),
-                "{0}.color1".format(trsbcn),f=True)
-            mc.connectAttr("{0}.translate".format(ikJnt),
-                "{0}.color2".format(trsbcn),f=True)
+                mc.connectAttr("{0}.translate".format(fkJnt),
+                    "{0}.color1".format(trsbcn),f=True)
+                mc.connectAttr("{0}.translate".format(ikJnt),
+                    "{0}.color2".format(trsbcn),f=True)
 
-            mc.connectAttr("{0}.output".format(rotbcn), 
-                "{0}.rotate".format(blendJnt), f=True)
-            mc.connectAttr("{0}.output".format(trsbcn), 
-                "{0}.translate".format(blendJnt), f=True)
+                mc.connectAttr("{0}.output".format(rotbcn), 
+                    "{0}.rotate".format(blendJnt), f=True)
+                mc.connectAttr("{0}.output".format(trsbcn), 
+                    "{0}.translate".format(blendJnt), f=True)
 
 
 class IKFKLimb(IKFKBase):
@@ -356,7 +367,7 @@ class IKFKLimb(IKFKBase):
         
         #turn off visibility of targetJnts and parent under grp node
         for jnt in [targetJnt1, targetJnt2]:
-            mc.setAttr('{}.v'.format(jnt), 0)
+            mc.setAttr('{}.drawStyle'.format(jnt), 2)
             #mc.parent(jnt, grp)
     
         return [targetJnt1, targetJnt2]
@@ -451,3 +462,76 @@ class IKFKLimb(IKFKBase):
 
         # parent the handle into the ik/fk group
         mc.parent(self._handle, self._group)
+
+
+class IkFkFoot(IKFKBase):
+    def __init__(self, jointList, anklePivot):
+        '''
+        This is the constructor
+
+        :param jointList: List of joints to create ikfk setup on.
+        :type jointList: list
+        '''
+        super(IkFkFoot, self).__init__(jointList)
+
+        self._handles = list()
+        self.ankleHandle = str()
+        self.anklePivot = anklePivot
+        self.pivotList = None
+        if mc.objExists(anklePivot):
+            # gathering all the pivots into one list.
+            self.pivotList= mc.listRelatives(self.anklePivot, ad=True)
+            self.pivotList.reverse()
+
+    # Get
+    def getHandles(self):
+        '''
+        This will return the ikHandle for object
+        '''
+        return self._handles
+
+    # Set
+    def setJointList(self, value):
+        '''
+        This will check the lenght of the value passed in and then call the parent class 
+        to check the type of data.
+        '''
+        if len(value) != 3:
+            raise RuntimeError('This list must be a length of 3')
+
+        super(IkFkFoot, self).setJointList(value)
+
+
+    def create(self):
+        '''
+        This method will be used to construct the ikfk system.
+        '''
+        if not self._ikJointList:
+            super(IkFkFoot, self).create()
+
+        ankleConnections = mc.listConnections("{0}.tx".format(self._ikJointList[0]), source=False, destination=True)
+        if ankleConnections: 
+            effectors = mc.ls(ankleConnections,type='ikEffector')
+            if effectors:
+                self.ankleHandle = mc.listConnections("{}.handlePath[0]".format(effectors[0]), 
+                                    source=False, destination=True)[0]
+
+        # gathering all the pivots into one list.
+        if not self.pivotList:
+            self.pivotList= mc.listRelatives(self.anklePivot, ad=True)
+            self.pivotList.reverse()
+
+        if not self._handles:
+            self._handles.append(mc.ikHandle(sj=self._ikJointList[0],  ee=self._ikJointList[1], 
+                                        sol="ikSCsolver", 
+                                        name="{0}_hdl".format(self._ikJointList[1]))[0])
+            self._handles.append(mc.ikHandle(sj=self._ikJointList[1],  ee=self._ikJointList[2], 
+                                        sol="ikSCsolver", 
+                                        name="{0}_hdl".format(self._ikJointList[2]))[0])
+
+        # parent the handles to the pivot
+        mc.parent(self._handles[1], self.pivotList[-1])
+        if mc.objExists(self.ankleHandle):
+            mc.parent(self.ankleHandle, self.pivotList[-2])
+
+        mc.parent(self._handles[0], self.pivotList[-2])

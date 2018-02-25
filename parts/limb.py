@@ -10,6 +10,7 @@ import rigrepo.parts.part as part
 import rigrepo.libs.ikfk
 import rigrepo.libs.control
 import rigrepo.libs.attribute
+import rigrepo.libs.common
 
 class Limb(part.Part):
     '''
@@ -66,7 +67,8 @@ class Limb(part.Part):
         pvCtrlHierarchy = rigrepo.libs.control.create(name="{0}_pv".format(self.name), 
                                                 controlType="diamond",
                                                 hierarchy=['nul','ort'],
-                                                position=poleVectorPos)
+                                                position=poleVectorPos,
+                                                color=rigrepo.libs.common.GREEN)
 
         # get the handle and pv control
         pvCtrl = pvCtrlHierarchy[-1]
@@ -95,7 +97,8 @@ class Limb(part.Part):
         ikCtrlHierarchy = rigrepo.libs.control.create(name="{0}_ik".format(self.name), 
                                                 controlType="cube",
                                                 hierarchy=['nul','ort'],
-                                                position=endJointPos)     
+                                                position=endJointPos,
+                                                color=rigrepo.libs.common.GREEN)     
 
         ikCtrl = ikCtrlHierarchy[-1]
         mc.parent(paramNode, ikCtrl, add=True, s=True, r=True)
@@ -109,7 +112,7 @@ class Limb(part.Part):
                                 name="{}_offset".format(ikJointList[-1]))[0]
         mc.setAttr('{0}.tx'.format(dupEndJnt),mc.getAttr('{0}.tx'.format(dupEndJnt))+2)
         mc.delete(mc.aimConstraint(dupEndJnt, ikCtrl)[0])
-        mc.setAttr('{0}.v'.format(dupEndJnt), 0)
+        mc.setAttr('{0}.drawStyle'.format(dupEndJnt), 2)
 
         mc.setAttr("{0}.v".format(handle), 0)
         mc.parent(dupEndJnt,ikCtrl)
