@@ -30,6 +30,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
         :param variant: Name of the variant this template is being used for.
         :type variant: str
         '''
+        
         super(BipedRig, self).__init__(name, variant)
 
         animRigNode = self.getNodeByName("animRig")
@@ -133,9 +134,6 @@ class BipedRig(archetypeRig.ArchetypeRig):
         l_blink = rigrepo.parts.blink.Blink("l_blink")
         r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
         r_blink.getAttributeByName("side").setValue("r")
-
-        
-
         
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
@@ -155,7 +153,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
         # add nodes to the build
         buildNode.addChildren([bodyBuildNode, faceBuildNode])
         
-
+        print self.getNodes()
         # add children to the animRigNode
         animRigNode.addChildren([buildNode], 
                                 index=animRigNode.getChild('frameCamera').index())

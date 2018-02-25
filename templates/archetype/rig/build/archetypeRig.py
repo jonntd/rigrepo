@@ -34,8 +34,6 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         animRigNode.addChild(loadNode)
         animRigNode.addChild(frameNode)
 
-        # add the nodes to the graph
-        self.addNode(animRigNode)
         # Workflow
         workflow = pubs.pNode.PNode('workflow')
         workflow.disable()
