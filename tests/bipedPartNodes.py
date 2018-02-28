@@ -82,6 +82,8 @@ import rigrepo.parts.blink
 reload(rigrepo.parts.blink)
 import rigrepo.parts.hand
 reload(rigrepo.parts.hand)
+import rigrepo.parts.foot
+reload(rigrepo.parts.foot)
 
 #reload templates
 import rigrepo.templates.archetype.rig.build.archetypeRig
