@@ -97,6 +97,8 @@ class Part(pubs.pNode.PNode):
     def execute(self, *args, **kwargs):
         '''
         '''
+        mc.undoInfo(openChunk=True)
         self.setup()
         self.build()
         self.postBuild()
+        mc.undoInfo(closeChunk=True)
