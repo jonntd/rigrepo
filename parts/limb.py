@@ -82,10 +82,12 @@ class Limb(part.Part):
 
         #create attributes on param node and connect them to the grp node
         mc.addAttr(paramNode, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
-        mc.addAttr(paramNode, ln='stretchTop', at='double', dv = 1, k=True)
-        mc.addAttr(paramNode, ln='stretchBottom', at='double', dv = 1, k=True)
+        mc.addAttr(paramNode, ln='stretchTop', at='double', min=0, dv = 1, k=True)
+        mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
+        mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
+
         grp = self.ikfkSystem.getGroup()
-        for attr in ['stretch','stretchTop', 'stretchBottom']:
+        for attr in ['stretch','stretchTop', 'stretchBottom', 'softStretch']:
             mc.connectAttr('{}.{}'.format(paramNode, attr), 
                         '{}.{}'.format(grp, attr), f=True)
 

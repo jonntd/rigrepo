@@ -282,13 +282,16 @@ class IKFKLimb(IKFKBase):
         mc.addAttr(grp, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
         mc.addAttr(grp, ln='stretchTop', at='double', dv = 1, k=True)
         mc.addAttr(grp, ln='stretchBottom', at='double', dv = 1, k=True)
+        mc.addAttr(grp, ln='softStretch', at='double', min=0, max=1, dv=.2, k=True)
         stretchAttr  = '{}.stretch'.format(grp)
         stretchTopAttr = '{}.stretchTop'.format(grp)
         stretchBottomAttr = '{}.stretchBottom'.format(grp)
+        stretchSoftAttr = '{}.softStretch'.format(grp)
         
         #get joints influenced by the ikHandle
         jnts = mc.ikHandle(ikHandle, q = True, jl = True)
         jnts.append(mc.listRelatives(jnts[-1], c = True)[0])
+
         #create tgt joints for distance node
         targetJnt1 = mc.createNode('joint', n = '{}_{}'.format(jnts[0], common.TARGET))
         targetJnt2 = mc.createNode('joint', n = '{}_{}'.format(jnts[2], common.TARGET))
@@ -321,18 +324,7 @@ class IKFKLimb(IKFKBase):
         jnt2Distance = mc.getAttr('{}.t{}'.format(jnts[2], aimAxis))
         jntLength = jnt1Distance + jnt2Distance
         mc.setAttr('{}.operation'.format(multiplyDivide), 2)    
-        if jntLength < 0:
-            negDistanceMultiply = mc.createNode('multiplyDivide', n = '{}_distanceNeg_{}'.format(grp, common.MULTIPLYDIVIDE))
-            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.input1X'.format(negDistanceMultiply), f = True)
-            mc.setAttr('{}.input2X'.format(negDistanceMultiply), -1)
-            mc.connectAttr('{}.outputX'.format(negDistanceMultiply), '{}.input1X'.format(multiplyDivide), f = True)
-            mc.connectAttr('{}.outputX'.format(negDistanceMultiply), '{}.firstTerm'.format(condition), f = True)
-            mc.setAttr('{}.operation'.format(condition), 4)
-        else:
-            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.input1X'.format(multiplyDivide), f = True)
-            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.firstTerm'.format(condition), f = True)
-            mc.setAttr('{}.operation'.format(condition), 2)
-    
+
         mc.connectAttr('{}.outputX'.format(multiplyDivide), '{}.input1X'.format(multiplyDivideJnt1), f = True)
         mc.connectAttr('{}.outputX'.format(multiplyDivide), '{}.input1Y'.format(multiplyDivideJnt1), f = True)
         mc.connectAttr('{}.outputX'.format(multiplyDivideJnt1), '{}.colorIfTrueR'.format(condition), f = True)
@@ -347,8 +339,8 @@ class IKFKLimb(IKFKBase):
         mc.setAttr('{}.input2Y'.format(multiplyStretch), jnt2Distance)
         mc.connectAttr('{}.outputX'.format(multiplyStretch), '{}.input2D[0].input2Dx'.format(plusMinusStretch), f=True)
         mc.connectAttr('{}.outputY'.format(multiplyStretch), '{}.input2D[1].input2Dx'.format(plusMinusStretch), f=True)
-        mc.connectAttr('{}.output2Dx'.format(plusMinusStretch), '{}.input2X'.format(multiplyDivide), f=True)
-        mc.connectAttr('{}.output2Dx'.format(plusMinusStretch), '{}.secondTerm'.format(condition), f=True)
+        #mc.connectAttr('{}.output2Dx'.format(plusMinusStretch), '{}.input2X'.format(multiplyDivide), f=True)
+        #mc.connectAttr('{}.output2Dx'.format(plusMinusStretch), '{}.secondTerm'.format(condition), f=True)
         mc.connectAttr('{}.outputX'.format(multiplyStretch), '{}.colorIfFalseR'.format(condition), f=True)
         mc.connectAttr('{}.outputY'.format(multiplyStretch), '{}.colorIfFalseG'.format(condition), f=True)
         mc.connectAttr('{}.outputX'.format(multiplyStretch), '{}.input2X'.format(multiplyDivideJnt1), f=True)
@@ -369,7 +361,94 @@ class IKFKLimb(IKFKBase):
         for jnt in [targetJnt1, targetJnt2]:
             mc.setAttr('{}.drawStyle'.format(jnt), 2)
             #mc.parent(jnt, grp)
-    
+
+        #-------------------------------------------------------------------------------------------
+        # Add soft stretch
+        #-------------------------------------------------------------------------------------------
+        # distanceBetween.distance ---------------------------- Actual distance
+        # multiplyDivideJnt1.outx ----------------------------- defaultUpperLen
+        # multiplyDivideJnt1.outy ----------------------------- defaultLowerLen
+        # plusMinusStretch ------------------------------------ maxDistance
+        # stretchSoftAttr ------------------------------------- softP
+        # softDist -------------------------------------------- softDist
+        # shortd ---------------------------------------------- shortd
+        # scaleNode ------------------------------------------- scale
+        # ------Equation-----
+        # shortd = maxDistance - softP * (2.71828 ** (-(actualDistance-(softDist))/softP))
+
+        # get the soft distance
+        softDist = mc.createNode("plusMinusAverage", 
+                            name="{}_softDist_{}".format(ikHandle, common.PLUSMINUSAVERAGE))
+
+        mc.connectAttr('{}.output2Dx'.format(plusMinusStretch), "{}.input1D[0]".format(softDist))
+        mc.connectAttr(stretchSoftAttr, "{}.input1D[1]".format(softDist))
+        mc.setAttr("{}.operation".format(softDist), 2)
+        mc.connectAttr("{}.output1D".format(softDist), "{}.secondTerm".format(condition))
+
+        # get the soft distance
+        softDistSoftP = mc.createNode("plusMinusAverage", 
+                            name="{}_softDist_softP_{}".format(ikHandle, common.PLUSMINUSAVERAGE))
+
+        mc.connectAttr("{}.distance".format(distanceBetween), "{}.input1D[0]".format(softDistSoftP))
+        mc.connectAttr("{}.output1D".format(softDist), "{}.input1D[1]".format(softDistSoftP))
+        mc.setAttr("{}.operation".format(softDistSoftP), 2)
+
+        # divide softDistSoftP by softP
+        softPDivide = mc.createNode("multiplyDivide", 
+                            name="{}_softPDivide_{}".format(ikHandle, common.MULTIPLYDIVIDE))
+
+        mc.setAttr("{}.operation".format(softPDivide),2)
+
+        mc.connectAttr("{}.output1D".format(softDistSoftP),"{}.input1X".format(softPDivide))
+        mc.connectAttr(stretchSoftAttr, "{}.input2X".format(softPDivide))
+
+        # create mult double linear node and invert the softPDivide
+        softPDivideInvert = mc.createNode("multDoubleLinear", 
+                                name="{}_softPDivideInvert_mdl".format(ikHandle))
+        mc.connectAttr("{}.outputX".format(softPDivide), "{}.input1".format(softPDivideInvert))
+        mc.setAttr("{}.input2".format(softPDivideInvert), -1)
+
+        # get the exponent base of softPDivide
+        exponent = mc.createNode("multiplyDivide", 
+                            name="{}_exponent_{}".format(ikHandle, common.MULTIPLYDIVIDE))
+
+        mc.setAttr("{}.operation".format(exponent),3)
+        mc.setAttr("{}.input1X".format(exponent),2.71828)
+        mc.connectAttr("{}.output".format(softPDivideInvert), "{}.input2X".format(exponent))
+
+        # scale node setup
+        scaleNode = mc.createNode("multiplyDivide", 
+                            name="{}_scale_{}".format(ikHandle, common.MULTIPLYDIVIDE))
+
+        mc.connectAttr(stretchSoftAttr, "{}.input1X".format(scaleNode))
+        mc.connectAttr("{}.outputX".format(exponent), "{}.input2X".format(scaleNode))
+
+        # connect the plusMinus stretch to 
+        addStretch = mc.createNode("plusMinusAverage", 
+                            name="{}_addStretch_{}".format(ikHandle, common.PLUSMINUSAVERAGE))
+
+        # make sure you subtract the addStretch
+        mc.setAttr("{}.operation".format(addStretch), 2)
+        mc.connectAttr("{}.outputX".format(scaleNode), "{}.input1D[1]".format(addStretch))
+        mc.connectAttr("{}.output2Dx".format(plusMinusStretch), "{}.input1D[0]".format(addStretch))
+
+        mc.connectAttr("{}.output1D".format(addStretch), "{}.input2X".format(multiplyDivide))
+
+        if jntLength < 0:
+            negDistanceMultiply = mc.createNode('multiplyDivide', n = '{}_distanceNeg_{}'.format(grp, common.MULTIPLYDIVIDE))
+            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.input1X'.format(negDistanceMultiply), f = True)
+            mc.setAttr('{}.input2X'.format(negDistanceMultiply), -1)
+            mc.connectAttr('{}.outputX'.format(negDistanceMultiply), '{}.input1X'.format(multiplyDivide), f = True)
+            mc.connectAttr('{}.outputX'.format(negDistanceMultiply), '{}.firstTerm'.format(condition), f = True)
+            mc.setAttr('{}.operation'.format(condition), 4)
+            mc.setAttr("{}.operation".format(softDistSoftP), 1)
+            mc.setAttr("{}.operation".format(softDist), 1)
+            mc.setAttr("{}.operation".format(addStretch), 1)
+        else:
+            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.input1X'.format(multiplyDivide), f = True)
+            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.firstTerm'.format(condition), f = True)
+            mc.setAttr('{}.operation'.format(condition), 2)
+
         return [targetJnt1, targetJnt2]
     
     @staticmethod
