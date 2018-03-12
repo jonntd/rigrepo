@@ -76,24 +76,6 @@ class Limb(part.Part):
         handle = self.ikfkSystem.getHandle()
         mc.poleVectorConstraint(pvCtrl, handle)
 
-        # create the ik stretchy system
-        self._stretchTargetJointList = self.ikfkSystem.createStretchIK(handle, self.ikfkSystem.getGroup())
-
-
-        #create attributes on param node and connect them to the grp node
-        mc.addAttr(paramNode, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
-        mc.addAttr(paramNode, ln='stretchTop', at='double', min=0, dv = 1, k=True)
-        mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
-        mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
-
-        rigrepo.libs.control.tagAsControl(paramNode)
-
-        grp = self.ikfkSystem.getGroup()
-        for attr in ['stretch','stretchTop', 'stretchBottom', 'softStretch']:
-            mc.connectAttr('{}.{}'.format(paramNode, attr), 
-                        '{}.{}'.format(grp, attr), f=True)
-
-
         # set the parent of the controls to be the rig group
         parent = self.name
 
@@ -121,14 +103,33 @@ class Limb(part.Part):
         mc.setAttr("{0}.v".format(handle), 0)
         mc.parent(dupEndJnt,ikCtrl)
         mc.setAttr("{0}.t".format(dupEndJnt),0,0,0)
-        #mc.parent(handle, dupEndJnt)
-        mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
         mc.orientConstraint(dupEndJnt, ikJointList[-1])
 
         # parent the controls to the parent group
         mc.parent((pvCtrlHierarchy[0],ikCtrlHierarchy[0]), parent)
 
         self._ikControls.extend([pvCtrl, ikCtrl])
+
+        # create the ik stretchy system
+        self._stretchTargetJointList = self.ikfkSystem.createStretchIK(handle, self.ikfkSystem.getGroup())
+
+
+        #create attributes on param node and connect them to the grp node
+        mc.addAttr(paramNode, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
+        mc.addAttr(paramNode, ln='stretchTop', at='double', min=0, dv = 1, k=True)
+        mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
+        mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
+
+        rigrepo.libs.control.tagAsControl(paramNode)
+
+        grp = self.ikfkSystem.getGroup()
+        for attr in ['stretch','stretchTop', 'stretchBottom', 'softStretch']:
+            mc.connectAttr('{}.{}'.format(paramNode, attr), 
+                        '{}.{}'.format(grp, attr), f=True)
+
+        #mc.parent(handle, dupEndJnt)
+        mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
+
 
         for ctrl in self._ikControls:
             if not mc.isConnected("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl)):
