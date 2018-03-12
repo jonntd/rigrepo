@@ -16,6 +16,7 @@ import rigrepo.parts.neck
 import rigrepo.parts.neck
 import rigrepo.parts.hand
 import rigrepo.parts.foot
+import rigrepo.nodes.controlDefaultsNode as controlDefaultsNode
 import os
 
 class BipedRig(archetypeRig.ArchetypeRig):
@@ -134,29 +135,38 @@ class BipedRig(archetypeRig.ArchetypeRig):
         l_blink = rigrepo.parts.blink.Blink("l_blink")
         r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
         r_blink.getAttributeByName("side").setValue("r")
-        
+
+        controlsDefaults = controlDefaultsNode.ControlDefaultsNode("control_defaults",
+                                armControls=["shoulder*fk*ctrl","elbow*fk_ctrl","wrist*fk_ctrl"], 
+                                armParams=["*arm_param"])
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
         faceBuildNode = pubs.pNode.PNode("face")
+        
         # add nodes ass children of body
         bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
         faceBuildNode.addChildren([l_blink, r_blink])
+
         # get the load node which is derived from archetype.
         loadNode = self.getNodeByName('load')
         loadNode.addChild(skeletonFileNode) 
         loadNode.addChild(jointDataNode) 
         loadNode.addChild(curveFileNode) 
         loadNode.addChild(curveDataNode)
+
+        # get the postBuild node
+        postBuild = animRigNode.getChild('postBuild')
+        postBuild.addChild(controlsDefaults)
+        
         
         # create a build node to put builds under.
         buildNode = pubs.pNode.PNode("build")
         # add nodes to the build
         buildNode.addChildren([bodyBuildNode, faceBuildNode])
-        
-        print self.getNodes()
+
         # add children to the animRigNode
         animRigNode.addChildren([buildNode], 
-                                index=animRigNode.getChild('frameCamera').index())
+                                index=postBuild.index())
 
         l_leg.getAttributeByName('anchor').setValue('hip_swivel')
         r_leg.getAttributeByName('anchor').setValue('hip_swivel')

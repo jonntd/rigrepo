@@ -124,6 +124,9 @@ class Foot(part.Part):
                                                             controlType = "cube", 
                                                             hierarchy=['nul'])
 
+        rigrepo.libs.attribute.lockAndHide(ballFkctrlHierarchy[-1],
+                                            ['v', 'sx','sy','sz'])
+
         # position the ball control
         ballJointMatrix = mc.xform(fkJointList[1], q=True, ws=True, matrix=True)
         mc.xform(ballFkctrlHierarchy[0], ws=True, matrix=ballJointMatrix)
@@ -135,6 +138,9 @@ class Foot(part.Part):
                                                             controlType = "cube", 
                                                             hierarchy=['nul'], 
                                                             parent= ballFkctrlHierarchy[-1])
+        
+        rigrepo.libs.attribute.lockAndHide(toeFkctrlHierarchy[-1],
+                                            ['v', 'sx','sy','sz'])
 
         toeJointMatrix = mc.xform(fkJointList[2], q=True, ws=True, matrix=True)
         mc.xform(toeFkctrlHierarchy[0], ws=True, matrix=toeJointMatrix)
@@ -217,6 +223,9 @@ class Foot(part.Part):
             pivotctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(pivot), 
                                                             controlType = "cube", 
                                                             hierarchy=['nul'])
+
+            rigrepo.libs.attribute.lockAndHide(pivotctrlHierarchy[-1],
+                                            ['tx', 'ty','tz','v','sx','sy','sz'])
 
             pivotMatrix = mc.xform(pivot, q=True, ws=True, matrix=True)
             mc.xform(pivotctrlHierarchy[0], ws=True, matrix=pivotMatrix)

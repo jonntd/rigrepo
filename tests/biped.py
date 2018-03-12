@@ -67,6 +67,8 @@ def nodes():
     reload(rigrepo.nodes.importDataNode)
     import rigrepo.nodes.exportDataNode
     reload(rigrepo.nodes.exportDataNode)
+    import rigrepo.nodes.controlDefaultsNode
+    reload(rigrepo.nodes.controlDefaultsNode)
     
     # reload parts
     import rigrepo.parts.part

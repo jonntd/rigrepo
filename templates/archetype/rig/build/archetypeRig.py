@@ -26,6 +26,9 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         # Load
         loadNode = pubs.pNode.PNode('load')
 
+        # postBuild
+        postBuild = pubs.pNode.PNode("postBuild")
+
         #perspective frame
         frameNode = rigrepo.nodes.commandNode.CommandNode('frameCamera')
         frameNode.getAttributeByName('command').setValue('import maya.cmds as mc\nmc.viewFit("persp")')
@@ -33,6 +36,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         animRigNode.addChild(newSceneNode)
         animRigNode.addChild(loadNode)
         animRigNode.addChild(frameNode)
+        animRigNode.addChild(postBuild)
 
         # Workflow
         workflow = pubs.pNode.PNode('workflow')

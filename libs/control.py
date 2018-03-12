@@ -1,22 +1,23 @@
 '''
 '''
 import os
-import rigrepo.libs.curve as curve
-import rigrepo.libs.common as common
-import rigrepo.libs.data.curve_data as curve_data
+from collections import OrderedDict
+import rigrepo.libs.curve 
+import rigrepo.libs.common 
+import rigrepo.libs.data.curve_data
 import maya.cmds as mc
 
 CONTROLPATH = os.path.join(os.path.dirname(os.path.dirname(__file__)),'etc','controls.data')
 
 def create(name="control", controlType = "square", hierarchy=['nul'], position=[0,0,0], 
-        rotation=[0,0,0], parent=None, color=common.BLUE):
+        rotation=[0,0,0], parent=None, color=rigrepo.libs.common.BLUE):
     '''
     '''
-    curveData = curve_data.CurveData()
+    curveData = rigrepo.libs.data.curve_data.CurveData()
     curveData.read(CONTROLPATH)
     data = curveData.getData()
     if data.has_key(controlType):
-        control = curve.createCurveFromPoints(data[controlType]['cvPositions'], 
+        control = rigrepo.libs.curve.createCurveFromPoints(data[controlType]['cvPositions'], 
             degree=data[controlType]['degree'],name=name)
     else:
         control = mc.createNode("transform", name=name)
@@ -59,9 +60,9 @@ def tagAsControl(ctrl):
     if not isinstance(ctrl, list):
         if not isinstance(ctrl, basestring):
             raise TypeError('{0} must be of type str, unicode, or list'.format(ctrl))
-        ctrls = common.toList(ctrl)
+        ctrls = rigrepo.libs.common.toList(ctrl)
     else:
-        ctrls = common.toList(ctrl)
+        ctrls = rigrepo.libs.common.toList(ctrl)
 
     for ctrl in ctrls:
         tagAttr = '{}.__control__'.format(ctrl)
@@ -88,9 +89,83 @@ def getControls(namespace = None):
         controls = mc.ls('{}:*.__control__'.format(namespace), fl=True)
 
     if controls:
-        return controls
+        return [ctrl.split(".")[0] for ctrl in controls]
 
     return None
+
+def setPoseAttr(controls, poseAttr=0):
+    '''
+    This will store all of the keyable attribute values at the time this function is called. 
+    It will use the pose attr argument to figure out where to store it. If the attribute 
+    already exist. It will just overwrite it.
+
+    .. example:
+        setPoseAttr(rigrepo.libs.control.getControls())
+        setPoseAttr(rigrepo.libs.control.getControls(),1)
+
+    :param controls: list of controls that you want to set pose on
+    :type controls: str | list
+
+    :param poseAttr: Attribute value you want to store this pose at.
+    :type poseAttr: int
+    '''
+    # make sure the controls are set as a list.
+    controls = rigrepo.libs.common.toList(controls)
+    for ctrl in controls:
+        # store the attribute names
+        ctrlPoseAttr = "{}.poseAttr_{}".format(ctrl,poseAttr)
+        poseAttrName = ctrlPoseAttr.split(".")[-1]
+        ctrlAttrDict = OrderedDict()
+
+        # go through each attribute and store it in the dictionary
+        for attr in mc.listAttr(ctrl, keyable=True):
+            ctrlAttrDict[str(attr)] = mc.getAttr("{}.{}".format(ctrl,attr))
+
+        # if the pose doesn't exist, then we will create it.
+        if not poseAttrName in mc.listAttr(ctrl):
+            mc.addAttr(ctrl, ln=poseAttrName, dt= "string")
+
+        # set the attribute
+        mc.setAttr(ctrlPoseAttr, str(ctrlAttrDict), type="string")
+
+def toPoseAttr(controls, poseAttr=0):
+    '''
+    This will set the pose based on the way it was stored using setPoseAttr
+
+    .. example:
+        toPoseAttr(rigrepo.libs.control.getControls())
+        toPoseAttr(rigrepo.libs.control.getControls(),1)
+
+    :param controls: list of controls that you want to set pose on
+    :type controls: str | list
+
+    :param poseAttr: Attribute value you want to store this pose at.
+    :type poseAttr: int
+    '''
+    # Make sure the controls are a list.
+    controls = rigrepo.libs.common.toList(controls)
+    
+    # loop throught the controls and try and set the attributes back to the way they were stored.
+    for ctrl in controls:
+        ctrlPoseAttr = "{}.poseAttr_{}".format(ctrl,poseAttr)
+        poseAttrName = ctrlPoseAttr.split(".")[-1]
+
+        # check to see if the attribute exists.
+        if not poseAttrName in mc.listAttr(ctrl):
+            continue
+
+        # if the attribute exists then we can eval it into an OrderedDict        
+        ctrlAttrDict = eval(mc.getAttr(ctrlPoseAttr))
+
+        # loop through the attributes and set them if we can.
+        for attr in ctrlAttrDict:
+            try:
+                # set the attributes if we can.
+                mc.setAttr("{}.{}".format(ctrl,attr), ctrlAttrDict[attr])
+            except:
+                # raise a warning for now if we can't set it. 
+                #Usually this is because it's connected or locked.
+                mc.warning("Couldn't set {}.".format(attr))
 
 #shapes
 #-----------------------
@@ -115,14 +190,14 @@ def translateShape (ctrl, translation = (0.0, 0.0, 0.0), index = 0 , world = Fal
         mc.move (translation [0],
                 translation [1],
                 translation [2],
-                curve.getCVs (shape),
+                rigrepo.libs.curve.getCVs (shape),
                 relative = True,
                 worldSpace = True)
     else:
         mc.move (translation [0],
                 translation [1],
                 translation [2],
-                curve.getCVs (shape),
+                rigrepo.libs.curve.getCVs (shape),
                 relative = True,
                 objectSpace = True)
 
@@ -146,7 +221,7 @@ def rotateShape (ctrl, rotation = (0.0, 0.0, 0.0), index = 0):
     mc.rotate (rotation [0],
             rotation [1],
             rotation [2],
-            curve.getCVs (shape),
+            rigrepo.libs.curve.getCVs (shape),
             relative = True,
             objectSpace = True)
 
@@ -170,7 +245,7 @@ def scaleShape (ctrl, scale = [1, 1, 1], index = 0):
     mc.scale (scale [0],
             scale [1],
             scale [2],
-            curve.getCVs (shape),
+            rigrepo.libs.curve.getCVs (shape),
             relative = True )
 
 def getShape(ctrl, index = 0):

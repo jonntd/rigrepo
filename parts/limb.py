@@ -86,6 +86,8 @@ class Limb(part.Part):
         mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
         mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
 
+        rigrepo.libs.control.tagAsControl(paramNode)
+
         grp = self.ikfkSystem.getGroup()
         for attr in ['stretch','stretchTop', 'stretchBottom', 'softStretch']:
             mc.connectAttr('{}.{}'.format(paramNode, attr), 
