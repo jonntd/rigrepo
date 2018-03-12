@@ -48,6 +48,8 @@ def nodes():
     reload(rigrepo.libs.skinCluster)
     import rigrepo.libs.curve
     reload(rigrepo.libs.curve)
+    import rigrepo.libs.control
+    reload(rigrepo.libs.control)
     import rigrepo.libs.joint
     reload(rigrepo.libs.joint)
     import rigrepo.libs.shape

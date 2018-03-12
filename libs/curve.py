@@ -29,6 +29,11 @@ def createCurveFromPoints(points, degree=3, name='curve'):
             knotList.extend([knotList[-1],knotList[-1]]) 
         
         curve = mc.curve(name=name, p=points,k=knotList,degree=degree)
+
+        # rename all of the shapes that are children of the curve. In this instance, there should
+        # only be one.
+        for shape in mc.listRelatives(curve, c=True, type="shape"):
+            mc.rename(shape, "{}Shape".format(curve))
         
         return curve
 

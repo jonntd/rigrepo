@@ -45,11 +45,13 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
         mc.setAttr("{0}.overrideEnabled".format(control), 1)
         mc.setAttr("{0}.overrideColor".format(control), color)
 
+    tagAsControl(control)
+
     return hierarchyList + [control]
 
 
 
-def tag_as_control(ctrl):
+def tagAsControl(ctrl):
     '''
     :param control: node to tag as a control
     :type control: str or list
@@ -62,29 +64,28 @@ def tag_as_control(ctrl):
         ctrls = common.toList(ctrl)
 
     for ctrl in ctrls:
-        tagAttr = attribute.addAttr(ctrl, 'tag_controls', attrType = 'message')
+        tagAttr = '{}.__control__'.format(ctrl)
+        mc.addAttr(ctrl, ln='__control__', at = 'message')
 
     return tagAttr
 
 
 
-def getControls(asset = None):
+def getControls(namespace = None):
     '''
     Gets all controls connect to an asset or every control in the scene depending on user input
 
-    :param asset: Asset you wish to look for controls on
-    :type asset: str
+    :param namespace: Asset you wish to look for controls on
+    :type namespace: str
 
     :return: List of controls
     :rtype: list
     '''
     controls = None
-    if not asset:
-        controls = mc.ls('.tag_controls', fl = True)
-    elif asset:
-        controls = attribute.getConnections('%s.tag_controls' % asset,
-                incoming = False,
-                plugs = False)
+    if not namespace:
+        controls = mc.ls('*.__control__'.format(), fl=True)
+    elif namespace:
+        controls = mc.ls('{}:*.__control__'.format(namespace), fl=True)
 
     if controls:
         return controls
@@ -93,10 +94,7 @@ def getControls(asset = None):
 
 #shapes
 #-----------------------
-def translateShape (ctrl,
-        translation = (0.0, 0.0, 0.0),
-        index = 0 ,
-        world = False):
+def translateShape (ctrl, translation = (0.0, 0.0, 0.0), index = 0 , world = False):
     '''
     Rotate control shape
 
