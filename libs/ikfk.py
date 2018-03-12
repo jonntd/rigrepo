@@ -385,11 +385,28 @@ class IKFKLimb(IKFKBase):
         mc.setAttr("{}.operation".format(softDist), 2)
         mc.connectAttr("{}.output1D".format(softDist), "{}.secondTerm".format(condition))
 
+        # create a decompose matrix node to track the scale of the grp node.
+        scaleTrackerDcm = mc.createNode("decomposeMatrix", 
+                            name="{}_scaleTracker_{}".format(grp, common.DECOMPOSEMATRIX))
+
+        mc.connectAttr("{}.worldMatrix[0]".format(grp), "{}.inputMatrix".format(scaleTrackerDcm))
+
+        # create a multiplyDivide node to divide the scale against the actual distance
+        invertScale = mc.createNode("multiplyDivide", 
+                            name="{}_invertScale_{}".format(grp, common.MULTIPLYDIVIDE))
+
+        # set it to use divide
+        mc.setAttr("{}.operation".format(invertScale), 2)
+
+        # connect the scale from the decompose matrix in as the second argument
+        mc.connectAttr("{}.distance".format(distanceBetween), "{}.input1X".format(invertScale))
+        mc.connectAttr("{}.outputScaleX".format(scaleTrackerDcm), "{}.input2X".format(invertScale))
+
         # get the soft distance
         softDistSoftP = mc.createNode("plusMinusAverage", 
                             name="{}_softDist_softP_{}".format(ikHandle, common.PLUSMINUSAVERAGE))
 
-        mc.connectAttr("{}.distance".format(distanceBetween), "{}.input1D[0]".format(softDistSoftP))
+        mc.connectAttr("{}.outputX".format(invertScale), "{}.input1D[0]".format(softDistSoftP))
         mc.connectAttr("{}.output1D".format(softDist), "{}.input1D[1]".format(softDistSoftP))
         mc.setAttr("{}.operation".format(softDistSoftP), 2)
 
@@ -436,7 +453,7 @@ class IKFKLimb(IKFKBase):
 
         if jntLength < 0:
             negDistanceMultiply = mc.createNode('multiplyDivide', n = '{}_distanceNeg_{}'.format(grp, common.MULTIPLYDIVIDE))
-            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.input1X'.format(negDistanceMultiply), f = True)
+            mc.connectAttr('{}.outputX'.format(invertScale), '{}.input1X'.format(negDistanceMultiply), f = True)
             mc.setAttr('{}.input2X'.format(negDistanceMultiply), -1)
             mc.connectAttr('{}.outputX'.format(negDistanceMultiply), '{}.input1X'.format(multiplyDivide), f = True)
             mc.connectAttr('{}.outputX'.format(negDistanceMultiply), '{}.firstTerm'.format(condition), f = True)
@@ -445,8 +462,8 @@ class IKFKLimb(IKFKBase):
             mc.setAttr("{}.operation".format(softDist), 1)
             mc.setAttr("{}.operation".format(addStretch), 1)
         else:
-            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.input1X'.format(multiplyDivide), f = True)
-            mc.connectAttr('{}.distance'.format(distanceBetween), '{}.firstTerm'.format(condition), f = True)
+            mc.connectAttr('{}.outputX'.format(invertScale), '{}.input1X'.format(multiplyDivide), f = True)
+            mc.connectAttr('{}.outputX'.format(invertScale), '{}.firstTerm'.format(condition), f = True)
             mc.setAttr('{}.operation'.format(condition), 2)
 
         return [targetJnt1, targetJnt2]
