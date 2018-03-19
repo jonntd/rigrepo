@@ -10,7 +10,7 @@ class ControlDefaultsNode(commandNode.CommandNode):
     This node will just create a new scene. I am making it available as a command node, in-case user wants to change it.
     '''
     def __init__(self, name, parent=None, 
-        armControls=["*shoulder","*_elbow","*_wrist*"],
+        armControls=["*_shoulder","*_elbow","*_wrist*"],
         armParams=["arm_*"]):
         '''
         This node is used to set the defaults. Currently it's set to use biped controls. 

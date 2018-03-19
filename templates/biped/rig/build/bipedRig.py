@@ -69,10 +69,10 @@ class BipedRig(archetypeRig.ArchetypeRig):
                                         'elbow_l_bind', 
                                         'wrist_l_bind'], 
                                     anchor='chest')
-        l_arm.getAttributeByName("fkControls").setValue(["l_shoulder","l_elbow", "l_wrist"]) 
-        l_arm.getAttributeByName("ikControls").setValue(["l_arm_pv","l_arm_ik"])
+        l_arm.getAttributeByName("fkControls").setValue(["shoulder_fk_l","elbow_fk_l", "wrist_fk_l"]) 
+        l_arm.getAttributeByName("ikControls").setValue(["arm_pv_l","arm_ik_l"])
         l_arm.getAttributeByName("paramNode").setValue("arm_L")
-        l_arm.getAttributeByName("clavicleCtrl").setValue("l_clavicle")
+        l_arm.getAttributeByName("clavicleCtrl").setValue("clavicle_l")
 
         l_hand = rigrepo.parts.hand.Hand("l_hand",
                                         ['ring_001_l_bind', 
@@ -90,11 +90,10 @@ class BipedRig(archetypeRig.ArchetypeRig):
                                         'wrist_r_bind'], 
                                     anchor='chest')
 
-        r_arm.getAttributeByName("side").setValue("r")
-        r_arm.getAttributeByName("fkControls").setValue(["r_shoulder","r_elbow", "r_wrist"]) 
-        r_arm.getAttributeByName("ikControls").setValue(["r_arm_pv","r_arm_ik"])
+        r_arm.getAttributeByName("fkControls").setValue(["shoulder_fk_r","elbow_fk_r", "wrist_fk_r"]) 
+        r_arm.getAttributeByName("ikControls").setValue(["arm_pv_r","arm_ik_r"])
         r_arm.getAttributeByName("paramNode").setValue("arm_R")
-        r_arm.getAttributeByName("clavicleCtrl").setValue("r_clavicle")
+        r_arm.getAttributeByName("clavicleCtrl").setValue("clavicle_r")
         
         
 
@@ -115,14 +114,14 @@ class BipedRig(archetypeRig.ArchetypeRig):
                                 pSpine.getHipSwivelCtrl)
 
         l_leg.getAttributeByName("side").setValue("l")
-        l_leg.getAttributeByName("fkControls").setValue(["l_thigh","l_knee", "l_ankle"]) 
-        l_leg.getAttributeByName("ikControls").setValue(["l_leg_pv","l_leg_ik"])
+        l_leg.getAttributeByName("fkControls").setValue(["thigh_fk_l","knee_fk_l", "ankle_fk_l"]) 
+        l_leg.getAttributeByName("ikControls").setValue(["leg_pv_l","leg_ik_l"])
         l_leg.getAttributeByName("paramNode").setValue("leg_L")
-        l_leg.getAttributeByName("clavicleCtrl").setValue("l_pelvis")
+        l_leg.getAttributeByName("clavicleCtrl").setValue("pelvis_l")
 
         l_foot = rigrepo.parts.foot.Foot("l_foot", ['ankle_l_bind', 'ball_l_bind', 'toe_l_bind'], 
                                         'ankle_l_bind_ik_hdl', 
-                                        fkAnchor='l_ankle', 
+                                        fkAnchor='ankle_fk_l', 
                                         ikAnchor='ankle_l_bind_ik_offset', 
                                         anklePivot='ankle_l_pivot', 
                                         ankleStretchTarget="ankle_l_bind_ik_tgt",
@@ -135,14 +134,14 @@ class BipedRig(archetypeRig.ArchetypeRig):
                                 pSpine.getHipSwivelCtrl)   
 
         r_leg.getAttributeByName("side").setValue("r")
-        r_leg.getAttributeByName("fkControls").setValue(["r_thigh","r_knee", "r_ankle"]) 
-        r_leg.getAttributeByName("ikControls").setValue(["r_leg_pv","r_leg_ik"])
+        r_leg.getAttributeByName("fkControls").setValue(["thigh_fk_r","knee_fk_r", "ankle_fk_r"]) 
+        r_leg.getAttributeByName("ikControls").setValue(["leg_pv_r","leg_ik_r"])
         r_leg.getAttributeByName("paramNode").setValue("leg_R")
-        r_leg.getAttributeByName("clavicleCtrl").setValue("r_pelvis")
+        r_leg.getAttributeByName("clavicleCtrl").setValue("pelvis_r")
 
         r_foot = rigrepo.parts.foot.Foot("r_foot", ['ankle_r_bind', 'ball_r_bind', 'toe_r_bind'], 
                                         'ankle_r_bind_ik_hdl', 
-                                        fkAnchor='r_ankle', 
+                                        fkAnchor='ankle_fk_r', 
                                         ikAnchor='ankle_r_bind_ik_offset', 
                                         anklePivot='ankle_r_pivot',
                                         ankleStretchTarget="ankle_r_bind_ik_tgt",
@@ -160,7 +159,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         controlsDefaults = controlDefaultsNode.ControlDefaultsNode("control_defaults",
                                 armControls=["*shoulder","*elbow","*wrist"], 
-                                armParams=["arm_*"])
+                                armParams=["arm_?"])
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
         faceBuildNode = pubs.pNode.PNode("face")
