@@ -471,12 +471,10 @@ class IKFKLimb(IKFKBase):
     @staticmethod
     def ikMatchFk(fkJoints, ikDriver, pvDriver):
         newPvPos = IKFKLimb.getPoleVectorPosition(fkJoints)
-        endJntPos = mc.xform(fkJoints[2], q = True, ws = True, t = True)
-        endJntRot = mc.xform(fkJoints[2], q = True, ws = True, ro = True)
+        endJntMatrix = mc.xform(fkJoints[2], q=True, ws=True, matrix=True)
         
-        mc.xform(pvDriver, ws = True, t = newPvPos)
-        mc.xform(ikDriver, ws = True, t = endJntPos)
-        mc.xform(ikDriver, ws = True, ro = endJntRot)
+        mc.xform(pvDriver, ws=True, t=newPvPos)
+        mc.xform(ikDriver, ws=True, matrix=endJntMatrix)
         
     @staticmethod
     def fkMatchIk(joints, ikJoints):
@@ -492,16 +490,14 @@ class IKFKLimb(IKFKBase):
         if len(joints) != 3:
             raise RuntimeError('{} must have 3 joints in the list'.format(joints))
         #end if
+        '''
         for jnt in joints:
             if mc.nodeType(jnt) != 'joint':
                 raise TypeError('{} must be a joint'.format(jnt))
-            
+        '''
         for jnt, ikJnt in zip(joints, ikJoints):
-            trs = mc.xform(ikJnt, q = True, ws = True, t = True)
-            rot = mc.xform(ikJnt, q = True, ws = True, ro = True)
-            
-            mc.xform(jnt, ws = True, t = trs)
-            mc.xform(jnt, ws = True, ro = rot)
+            matrix = mc.xform(ikJnt, q = True, ws = True, matrix=True)
+            mc.xform(jnt, ws = True, matrix = matrix)
 
     @staticmethod
     def getPoleVectorPosition(jointList, scaler=6):

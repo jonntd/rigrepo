@@ -12,7 +12,7 @@ import rigrepo.libs.control as control
 class Arm(limb.Limb):
     '''
     '''
-    def __init__(self, name, jointList, anchor='chest', dataObj=None):
+    def __init__(self, name, jointList, anchor='chest', dataObj=None, side='l'):
         '''
         This is the constructor.
         '''
@@ -22,13 +22,15 @@ class Arm(limb.Limb):
 
         self._clavicleJoint = jointList.pop(0)
         
-        super(Arm, self).__init__(name, jointList, anchor, dataObj) 
+        super(Arm, self).__init__(name, jointList, anchor, dataObj, side) 
+        self.addAttribute("clavicleCtrl", "{}_clavicle".format(side), attrType=str)
 
     def build(self):
         '''
         '''
         super(Arm, self).build()
-        clavicleCtrlHierarchy = control.create(name="{0}_ctrl".format(self._clavicleJoint), 
+        clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
+        clavicleCtrlHierarchy = control.create(name=clavicleCtrl, 
                                                 controlType="square",
                                                 hierarchy=['nul','ort'])
 
