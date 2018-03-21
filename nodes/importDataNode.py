@@ -9,7 +9,6 @@ import os
 class ImportDataNode(pubs.pNode.PNode):
     def __init__(self, name, dataFile=None, dataType=None, apply=False):
         super(ImportDataNode, self).__init__(name)
-        print dataFile
         self.addAttribute('filepath', dataFile, attrType='file')
         self.addAttribute('Apply', apply, attrType='bool')
         nodesAttr = self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')

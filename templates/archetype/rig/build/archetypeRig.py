@@ -57,7 +57,6 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         '''
         filepath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, filename)
         if not os.path.isfile(filepath):
-            print cls
             try:
                 return cls.__bases__[0].resolveDataFilePath(filename, variant)
             except:
