@@ -13,7 +13,6 @@ import rigrepo.parts.leg
 import rigrepo.parts.spine 
 import rigrepo.parts.blink
 import rigrepo.parts.neck
-import rigrepo.parts.neck
 import rigrepo.parts.hand
 import rigrepo.parts.foot
 import rigrepo.nodes.controlDefaultsNode as controlDefaultsNode
