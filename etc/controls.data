@@ -244,7 +244,6 @@
             ], 
             "degree": 1
         }, 
-        "user": "Walter Yoder", 
         "arrow": {
             "dagPath": "|arrow", 
             "translate": [
@@ -306,8 +305,6 @@
                 ]
             ], 
             "degree": 1
-        }, 
-        "time": "2018-02-17 23:54:37", 
-        "type": "CurveData"
+        }
     }
 }
