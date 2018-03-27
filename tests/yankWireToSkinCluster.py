@@ -13,6 +13,6 @@ for joint in mc.ls('joint?'):
     deltas = rigrepo.libs.shape.getDeltas(base, target)
     #print(deltas)
     mc.move( -1, 0, 0, joint, r=1) 
-    rigrepo.libs.weights.setWeight(sc, deltas, map=joint) 
+    rigrepo.libs.weights.setWeights(sc, deltas, map=joint) 
     
 mc.skinPercent(sc, mc.deformer(sc, q=1, geometry=1)[0], normalize=1) # in case of floating point precision 
