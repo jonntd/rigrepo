@@ -26,6 +26,12 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         # Load
         loadNode = pubs.pNode.PNode('load')
 
+        modelFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("model", filePath=self.resolveModelFilePath('{}_{}_model.ma'.format(self.element, self.variant)))
+        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", filePath=self.resolveDataFilePath('skeleton.ma', self.variant))
+        jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions',dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), dataType='joint', apply=True)
+
+        loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode])
+
         # postBuild
         postBuild = pubs.pNode.PNode("postBuild")
 
@@ -33,10 +39,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         frameNode = rigrepo.nodes.commandNode.CommandNode('frameCamera')
         frameNode.getAttributeByName('command').setValue('import maya.cmds as mc\nmc.viewFit("persp")')
 
-        animRigNode.addChild(newSceneNode)
-        animRigNode.addChild(loadNode)
-        animRigNode.addChild(frameNode)
-        animRigNode.addChild(postBuild)
+        animRigNode.addChildren([newSceneNode, loadNode, frameNode, postBuild])
 
         # Workflow
         workflow = pubs.pNode.PNode('workflow')
@@ -46,16 +49,27 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions',dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), dataType='curve')
         self.addNode(workflow)
         workflow.addChild(exporters)
-        exporters.addChild(jointExportDataNode)
-        exporters.addChild(curveExportDataNode)
-
-        #rigrepo.nodes.exportDataNode.exportDataNode()
+        exporters.addChildren([jointExportDataNode, curveExportDataNode])
     
     @classmethod
     def resolveDataFilePath(cls, filename, variant):
         '''
         '''
         filepath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, filename)
+        if not os.path.isfile(filepath):
+            try:
+                return cls.__bases__[0].resolveDataFilePath(filename, variant)
+            except:
+                pass
+
+        return filepath
+
+    @classmethod
+    def resolveModelFilePath(cls, filename):
+        '''
+        '''
+        modelPath = joinPath(os.path.dirname(os.path.dirname(os.path.dirname(inspect.getfile(cls)))), 'model')
+        filepath = joinPath(modelPath, filename)
         if not os.path.isfile(filepath):
             try:
                 return cls.__bases__[0].resolveDataFilePath(filename, variant)

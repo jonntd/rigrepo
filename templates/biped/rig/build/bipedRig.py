@@ -38,9 +38,6 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         buildPath = joinPath(os.path.dirname(__file__), self.variant)
 
-        # Skeleton 
-        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", filePath=self.resolveDataFilePath('skeleton.ma', self.variant))
-        jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions',dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), dataType='joint', apply=True)
         # Curve
         curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves", 
                             filePath=self.resolveDataFilePath('blink_curves.ma', self.variant))
@@ -88,7 +85,8 @@ class BipedRig(archetypeRig.ArchetypeRig):
                                         'shoulder_r_bind', 
                                         'elbow_r_bind', 
                                         'wrist_r_bind'], 
-                                    anchor='chest')
+                                    anchor='chest', 
+                                    side='r')
 
         r_arm.getAttributeByName("fkControls").setValue(["shoulder_fk_r","elbow_fk_r", "wrist_fk_r"]) 
         r_arm.getAttributeByName("ikControls").setValue(["arm_pv_r","arm_ik_r"])
@@ -131,7 +129,8 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         r_leg = rigrepo.parts.leg.Leg("r_leg",
                                 ['pelvis_r_bind', 'thigh_r_bind', 'knee_r_bind', 'ankle_r_bind'], 
-                                pSpine.getHipSwivelCtrl)   
+                                pSpine.getHipSwivelCtrl,
+                                side="r")
 
         r_leg.getAttributeByName("side").setValue("r")
         r_leg.getAttributeByName("fkControls").setValue(["thigh_fk_r","knee_fk_r", "ankle_fk_r"]) 
@@ -170,10 +169,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         # get the load node which is derived from archetype.
         loadNode = self.getNodeByName('load')
-        loadNode.addChild(skeletonFileNode) 
-        loadNode.addChild(jointDataNode) 
-        loadNode.addChild(curveFileNode) 
-        loadNode.addChild(curveDataNode)
+        loadNode.addChildren([curveFileNode, curveDataNode]) 
 
         # get the postBuild node
         postBuild = animRigNode.getChild('postBuild')

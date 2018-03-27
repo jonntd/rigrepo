@@ -8,12 +8,15 @@ import rigrepo.parts.arm as arm
 class Leg(arm.Arm):
     '''
     '''
-    def __init__(self, name, jointList, anchor='hip_swivel', dataObj=None):
+    def __init__(self, name, jointList, anchor='hip_swivel', dataObj=None, side='l'):
         '''
         This is the constructor.
         '''
 
-        super(Leg, self).__init__(name, jointList, anchor, dataObj) 
+        super(Leg, self).__init__(name, jointList, anchor, dataObj, side) 
+
+        self.getAttributeByName("clavicleCtrl").setValue("pelvis_{}".format(side))
+        self.getAttributeByName("swingCtrl").setValue("thighSwing_{}".format(side))
 
 
     def build(self):

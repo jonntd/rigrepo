@@ -103,6 +103,6 @@ def nodes():
     
     # the right arm is all messed up and we have to fix it. Also, you can't run nodes more than once
     # in the same scene at th moment. We will have to fix this.
-    matt_graph = rigrepo.templates.biped.rig.build.bipedRig.BipedRig('matt')
-    pubs.ui.mainWindow.launch(graph=matt_graph)
+    biped_graph = rigrepo.templates.biped.rig.build.bipedRig.BipedRig('biped')
+    pubs.ui.mainWindow.launch(graph=biped_graph)
     
