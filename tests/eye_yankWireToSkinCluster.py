@@ -15,7 +15,7 @@ for cv,jnt in zip(cvList,jointList):
     deltas = rigShape.getDeltas("base_geo","head_geo")
     #print(deltas)
     mc.move( -1, 0, 0, cv, r=1) 
-    rigWeights.setWeight(skinCls,deltas, jnt)
+    rigWeights.setWeights(skinCls,deltas, jnt)
     mc.setAttr("{0}.liw".format(jnt),1)
     
     
