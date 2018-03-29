@@ -21,7 +21,7 @@ class CurveData(node_data.NodeData):
         data['cvPositions'] = list()
 
         for i,cv in enumerate(mc.ls("{0}.cv[*]".format(node),fl=True)):
-            data['cvPositions'].append(mc.xform(cv,q=True,ws=True,t=True))
+            data['cvPositions'].append(mc.getAttr("{}.controlPoints[{}]".format(node,i))[0])
 
         data['degree'] = mc.getAttr('{0}.degree'.format(node))
 
@@ -38,6 +38,9 @@ class CurveData(node_data.NodeData):
                 attributes = self._data[node].keys()
 
             for attribute in attributes:
+                if not self._data[node].has_key(attribute):
+                    continue
+
                 if attribute == 'cvPositions':
                     for i,position in enumerate(self._data[node][attribute]):
-                        mc.xform("{}.cv[{}]".format(node,i), ws=True, t=position)
+                        mc.setAttr("{}.controlPoints[{}]".format(node,i), *position)

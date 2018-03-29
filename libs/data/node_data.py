@@ -39,8 +39,13 @@ class NodeData(abstract_data.AbstractData):
 
             for attribute in attributes:
                 if self._data[node].has_key(attribute) and attribute in mc.listAttr(node):
-                    if mc.listConnections('{0}.{1}'.format(node,attribute), d=False, s=True) or \
-                        mc.getAttr('{0}.{1}'.format(node,attribute),l=True):
+                    setAttr = True
+                    for attr in mc.listAttr("{}.{}".format(node, attribute)):
+                        if mc.listConnections('{0}.{1}'.format(node,attr), d=False, s=True) or \
+                            mc.getAttr('{0}.{1}'.format(node,attr),l=True):
+                                setAttr = False
+                                break
+                    if not setAttr:
                         continue
                     value = self._data[node][attribute]
                     if isinstance(value, (list,tuple)):
