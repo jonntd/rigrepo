@@ -55,7 +55,9 @@ class BipedRig(archetypeRig.ArchetypeRig):
         pSpine = rigrepo.parts.spine.Spine(name='pSpine', jointList="mc.ls('spine_*_bind')")
         pSpine.setNiceName("spine")
 
-        pNeck = rigrepo.parts.neck.Neck(name='pNeck', jointList="mc.ls('neck_*_bind')")
+        pNeck = rigrepo.parts.neck.Neck(name='pNeck', 
+                                        jointList="mc.ls('neck_*_bind')", 
+                                        anchor="chest_top")
         pNeck.setNiceName("neck")
         
         # Arm
@@ -64,7 +66,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
                                         'shoulder_l_bind', 
                                         'elbow_l_bind', 
                                         'wrist_l_bind'], 
-                                    anchor='chest')
+                                    anchor='chest_top')
         l_arm.getAttributeByName("fkControls").setValue(["shoulder_fk_l","elbow_fk_l", "wrist_fk_l"]) 
         l_arm.getAttributeByName("ikControls").setValue(["arm_pv_l","arm_ik_l"])
         l_arm.getAttributeByName("paramNode").setValue("arm_L")
@@ -84,7 +86,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
                                         'shoulder_r_bind', 
                                         'elbow_r_bind', 
                                         'wrist_r_bind'], 
-                                    anchor='chest', 
+                                    anchor='chest_top', 
                                     side='r')
 
         r_arm.getAttributeByName("fkControls").setValue(["shoulder_fk_r","elbow_fk_r", "wrist_fk_r"]) 

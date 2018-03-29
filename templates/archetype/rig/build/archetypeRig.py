@@ -26,14 +26,28 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         # Load
         loadNode = pubs.pNode.PNode('load')
 
-        modelFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("model", filePath=self.resolveModelFilePath('{}_{}_model.ma'.format(self.element, self.variant)))
-        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", filePath=self.resolveDataFilePath('skeleton.ma', self.variant))
-        jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions',dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), dataType='joint', apply=True)
+        modelFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("model", 
+            filePath=self.resolveModelFilePath('{}_{}_model.ma'.format(self.element, self.variant)))
+        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", 
+                filePath=self.resolveDataFilePath('skeleton.ma', self.variant))
+        jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions', 
+                dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), 
+                dataType='joint', 
+                apply=True)
 
         loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode])
 
         # postBuild
         postBuild = pubs.pNode.PNode("postBuild")
+
+        controlDataNode = rigrepo.nodes.importDataNode.ImportDataNode('controlPositions', 
+                dataFile=self.resolveDataFilePath('control_positions.data', self.variant), 
+                dataType='curve', 
+                apply=True)
+
+        controlDataNode.getAttributeByName("Nodes").setValue("rigrepo.libs.control.getControls()")
+
+        postBuild.addChild(controlDataNode)
 
         #perspective frame
         frameNode = rigrepo.nodes.commandNode.CommandNode('frameCamera')
@@ -45,8 +59,13 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         workflow = pubs.pNode.PNode('workflow')
         workflow.disable()
         exporters = pubs.pNode.PNode('exporters')
-        jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions',dataFile= self.resolveDataFilePath('joint_positions.data', self.variant), dataType='joint')
-        curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions',dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), dataType='curve')
+        jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions', 
+            dataFile= self.resolveDataFilePath('joint_positions.data', self.variant), 
+            dataType='joint')
+        curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions', 
+            dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), 
+            dataType='curve')
+
         self.addNode(workflow)
         workflow.addChild(exporters)
         exporters.addChildren([jointExportDataNode, curveExportDataNode])
@@ -57,6 +76,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         '''
         filepath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, filename)
         if not os.path.isfile(filepath):
+            filepath = ""
             try:
                 return cls.__bases__[0].resolveDataFilePath(filename, variant)
             except:
@@ -71,6 +91,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         modelPath = joinPath(os.path.dirname(os.path.dirname(os.path.dirname(inspect.getfile(cls)))), 'model')
         filepath = joinPath(modelPath, filename)
         if not os.path.isfile(filepath):
+            filepath = ""
             try:
                 return cls.__bases__[0].resolveDataFilePath(filename, variant)
             except:

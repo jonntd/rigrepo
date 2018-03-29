@@ -93,6 +93,9 @@ class Part(pubs.pNode.PNode):
             mc.connectAttr("{0}.output".format(modelOverrideChoice),
                 "{0}.overrideDisplayType".format(self.modelGroup), f=True)
 
+        # turn off the visibility of the bind group.
+        mc.setAttr("{}.v".format(self.bindGroup), 0)
+
 
     def execute(self, *args, **kwargs):
         '''

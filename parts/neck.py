@@ -13,13 +13,13 @@ import rigrepo.libs.common as common
 class Neck(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, skullBind='skull_bind', splineName='neckIk'):
+    def __init__(self, name, jointList, skullBind='skull_bind', splineName='neckIk', anchor="chest_top"):
         '''
         This is the constructor.
         '''
         super(Neck, self).__init__(name) 
         self._skullBind=skullBind
-        self.addAttribute("anchor", "chest", attrType='str')
+        self.addAttribute("anchor", anchor, attrType='str')
         self._splineName = splineName
         self.jointList = jointList
 
@@ -34,7 +34,7 @@ class Neck(part.Part):
         # Neck
         neckNul,neckCtrl = control.create(name="neck", 
                                           controlType="cube",
-                                          color=common.RED,
+                                          color=common.BLUE,
                                           hierarchy=['nul'])
 
         matrix = mc.xform(jointList[0], q=True, ws=True, matrix=True)
@@ -46,7 +46,7 @@ class Neck(part.Part):
         # head 
         headNul,headCtrl = control.create(name="head", 
                                           controlType="cube",
-                                          color=common.RED,
+                                          color=common.BLUE,
                                           hierarchy=['nul'])
 
         clusters = self.spline._clusters

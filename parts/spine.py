@@ -9,6 +9,7 @@ import rigrepo.parts.part as part
 import rigrepo.libs.control as control
 import rigrepo.libs.spline as spline
 import rigrepo.libs.common as common
+import rigrepo.libs.transform
 
 class Spine(part.Part):
     '''
@@ -53,13 +54,13 @@ class Spine(part.Part):
         hipsCtrl = hipsCtrlHierarchy[-1]
         hipsNul = hipsCtrlHierarchy[0]
 
-        matrix = mc.xform(jointList[0], q=True, ws=True, matrix=True)
+        matrix = mc.xform(self._hipsBind, q=True, ws=True, matrix=True)
         mc.xform(hipsNul, ws=True, matrix=matrix)
 
         # hip swivel
         ctrlHierarchy = control.create(name="hip_swivel", 
-                                                controlType="diamond",
-                                                color=common.TURQUOISE,
+                                                controlType="cube",
+                                                color=common.GREEN,
                                                 hierarchy=['nul'])
         hipSwivelCtrl = ctrlHierarchy[-1]
         hipSwivelNul = ctrlHierarchy[0]
@@ -81,35 +82,39 @@ class Spine(part.Part):
                                             hierarchy=['nul'])
         torsoCtrl = ctrlHierarchy[-1]
         torsoNul = ctrlHierarchy[0]
-
-        con = mc.pointConstraint(jointList[0], jointList[-1], torsoNul)
-        mc.delete(con)
+        
+        rotation = mc.xform(hipsCtrl, q=True, ws=True, rotation=True)
+        averagePos = rigrepo.libs.transform.getAveragePosition(jointList[:2])
+        mc.xform(torsoNul, ws=True, rotation=rotation)
+        mc.xform(torsoNul, ws=True, t=averagePos)
         mc.parent(torsoNul, hipsCtrl) 
 
         # chest 
         ctrlHierarchy = control.create(name="chest", 
                                             controlType="cube",
+                                            color=common.GREEN,
                                             hierarchy=['nul'])
         chestCtrl = ctrlHierarchy[-1]
         chestNul = ctrlHierarchy[0]
 
-        con = mc.parentConstraint(self._chestBind, chestNul)
-        mc.delete(con)
+        matrix = mc.xform(jointList[-3], q=True, ws=True, matrix=True)
+        averagePos = rigrepo.libs.transform.getAveragePosition(jointList[-3:-1])
+        mc.xform(chestNul, ws=True, matrix=matrix)
+        mc.xform(chestNul, ws=True, t=averagePos)
         mc.parent(chestNul, torsoCtrl)
 
         # chest top 
         ctrlHierarchy = control.create(name="chest_top", 
-                                             controlType="diamond",
-                                             color=common.TURQUOISE,
+                                             controlType="cube",
                                              hierarchy=['nul'])
         chestTopCtrl = ctrlHierarchy[-1]
         chestTopNul = ctrlHierarchy[0]
 
-        con = mc.parentConstraint(jointList[-1], chestTopNul)
-        mc.delete(con)
+        matrix = mc.xform(self._chestBind, q=True, ws=True, matrix=True)
+        mc.xform(chestTopNul, ws=True, matrix=matrix)
         mc.parent(chestTopNul, chestCtrl)
 
-        mc.parent(clusters[2:], chestTopCtrl)
+        mc.parent(clusters[2:], chestCtrl)
         mc.orientConstraint(chestTopCtrl, self.spline._endTwistNul, mo=1)
 
         self._hipsCtrl = hipsCtrl

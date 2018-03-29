@@ -134,6 +134,8 @@ class Foot(part.Part):
         mc.orientConstraint(ballFkctrlHierarchy[-1], fkJointList[1])
 
         # create the toe fk control
+        # TAKING OUT THE TOE FK CONTROL FOR NOW.
+        '''
         toeFkctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(fkJointList[2]), 
                                                             controlType = "cube", 
                                                             hierarchy=['nul'], 
@@ -146,6 +148,7 @@ class Foot(part.Part):
         mc.xform(toeFkctrlHierarchy[0], ws=True, matrix=toeJointMatrix)
         mc.pointConstraint(toeFkctrlHierarchy[-1], fkJointList[2])
         mc.orientConstraint(toeFkctrlHierarchy[-1], fkJointList[2])
+        '''
 
 
         if mc.objExists(self._fkAnchor):
@@ -242,3 +245,7 @@ class Foot(part.Part):
         # turn of the joint display on the anklePivot
         if mc.nodeType(self._anklePivot) == "joint":
                 mc.setAttr("{}.drawStyle".format(self._anklePivot), 2)
+
+        # turn off the visibility of handles
+        for handle in self.ikfkSystem.getHandles():
+            mc.setAttr("{}.v".format(handle), 0)

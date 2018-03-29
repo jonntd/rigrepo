@@ -188,6 +188,8 @@ class Limb(part.Part):
         mc.select(clear=True)
         fkOffsetJnt = mc.joint(name="{}_offset".format(fkJointList[-1]))
         mc.xform(fkOffsetJnt, ws=True, matrix=mc.xform(ikCtrl, q=True, ws=True, matrix=True))
+        # turn off the visibility of the offset joint
+        mc.setAttr('{0}.drawStyle'.format(fkOffsetJnt), 2)
 
         # parent the offset joint to the fk wrist control.
         mc.parent(fkOffsetJnt, self._fkControls[-1])
