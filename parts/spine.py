@@ -67,6 +67,8 @@ class Spine(part.Part):
 
         matrix = mc.xform(hipsCtrl, q=True, ws=True, matrix=True)
         mc.xform(hipSwivelNul, ws=True, matrix=matrix)
+        averagePos = rigrepo.libs.transform.getAveragePosition(jointList[0:3])
+        mc.xform(hipSwivelNul, ws=True, t=averagePos)
         mc.parent(hipSwivelNul, hipsCtrl)
         clusters = self.spline._clusters
         mc.parent(clusters[0:2], hipSwivelCtrl)
