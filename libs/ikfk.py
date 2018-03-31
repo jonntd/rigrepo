@@ -139,7 +139,6 @@ class IKFKBase(object):
 
         self._group = value
 
-
     def create(self):
         '''
         This will create the ik/fk joint chains and connect/blend them together.
@@ -592,7 +591,6 @@ class IkFkFoot(IKFKBase):
             raise RuntimeError('This list must be a length of 3')
 
         super(IkFkFoot, self).setJointList(value)
-
 
     def create(self):
         '''

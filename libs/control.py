@@ -8,7 +8,7 @@ import rigrepo.libs.data.curve_data
 import maya.cmds as mc
 
 CONTROLPATH = os.path.join(os.path.dirname(os.path.dirname(__file__)),'etc','controls.data')
-
+DEBUG = False
 def create(name="control", controlType = "square", hierarchy=['nul'], position=[0,0,0], 
         rotation=[0,0,0], parent=None, color=rigrepo.libs.common.BLUE):
     '''
@@ -165,7 +165,8 @@ def toPoseAttr(controls, poseAttr=0):
             except:
                 # raise a warning for now if we can't set it. 
                 #Usually this is because it's connected or locked.
-                mc.warning("Couldn't set {}.".format(attr))
+                if DEBUG:
+                    mc.warning("Couldn't set {}.".format(attr))
 
 #shapes
 #-----------------------
