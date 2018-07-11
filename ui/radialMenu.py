@@ -12,18 +12,17 @@ class RadialMenuItem(QtWidgets.QPushButton):
         self.function = function
 
 class RadialMenu(QtWidgets.QMenu):
-    def __init__(self, parent=None, items=None):
-        QtWidgets.QMenu.__init__(self, parent)
+    def __init__(self, items=None):
+        QtWidgets.QMenu.__init__(self)
         self.startPos = QtCore.QPoint(0,0)
         self.width    = 1000
         self.height   = 500
         self.cnRadius = 8
+        self.rightClickWidgetMousePressEvent = None
         
         # Returns true if a an existing qt loop is running
         self.inMaya   =  QtWidgets.QApplication.activeWindow()
 
-        self.parent = self.parentWidget()
-        self.parentDefaultMousePressEvent = self.parent.mousePressEvent
         self.setFixedSize(self.width, self.height)
         self.maskPixmap = QtGui.QPixmap(self.width, self.height)
         # Stores which position is active
@@ -100,6 +99,10 @@ class RadialMenu(QtWidgets.QMenu):
             item.setStyleSheet('background-color:rgb({},{},{});'.format(c[0], c[1], c[2]))
             anglesUsed += self.angles[pos]
 
+        # The new wayt to deal with the Maya highlight problem
+        #self.setStyleSheet('background-color:rgb({},{},{});'.format(hl[0], hl[1], hl[2]))
+        #item.setStyleSheet('QPushButton:hover{{background-color:rgb({},{},{})}};'.format(hl[0], hl[1], hl[2]))
+
         # If some locations are not being used
         # This loop will give thier slices to the next closest existing location.
         # So the mouse will always active at least one location at all times.
@@ -165,7 +168,7 @@ class RadialMenu(QtWidgets.QMenu):
             traceback.print_exc()
 
     def mouseMoveEvent(self, event):
-        self.livePos = self.parent.mapFrom(self.parent, QtGui.QCursor.pos())
+        self.livePos = QtGui.QCursor.pos()
         length       = math.hypot(self.startPosCn.x() - self.livePos.x(),self.startPosCn.y() - self.livePos.y())
         angle        = self.angleFromPoints([self.startPosCn.x(), self.startPosCn.y()], [self.livePos.x(), self.livePos.y()])
         angle        = int(angle/22.5)
@@ -205,21 +208,27 @@ class RadialMenu(QtWidgets.QMenu):
             if self.activeItem.function:
                 self.activeItem.function()
 
-    def popup(self, event):
-        if type(event) == QtGui.QMouseEvent:
-            if event.buttons() != QtCore.Qt.RightButton:
-                self.parentDefaultMousePressEvent(event)
-                return()
-        self.startPosCn = self.parent.mapFrom(self.parent, QtGui.QCursor.pos())
-        self.startPos = QtCore.QPoint(self.startPosCn.x()+(self.width*.5),
+    def popup(self, pos=None):
+        self.startPosCn = pos
+        self.startPos   = QtCore.QPoint(self.startPosCn.x()+(self.width*.5),
                                       self.startPosCn.y()+(self.height*.5))
-        self.show()
         # Window
         rect = QtCore.QRect(self.startPos.x()-self.width,
                             self.startPos.y()-self.height,
                             self.width,
                             self.height)
         self.setGeometry(rect)
+        self.show()
+
+    def rightClickConnect(self, widget=None):
+        self.rightClickWidgetMousePressEvent = widget.mousePressEvent
+        widget.mousePressEvent = self.rightClickPopup
+
+    def rightClickPopup(self, event):
+        self.rightClickWidgetMousePressEvent(event)
+        if event.buttons() != QtCore.Qt.RightButton:
+            return()
+        self.popup(QtGui.QCursor.pos())
 
     def drawItems(self):
         # Mask

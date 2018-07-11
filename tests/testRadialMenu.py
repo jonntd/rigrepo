@@ -41,7 +41,8 @@ class MyWindow(QtWidgets.QMainWindow):
                 item.setCheckable(1)
             buttons.append(item)
         # Menu
-        pieQMenu = RadialMenu(parent=ui.targetList, items=buttons)
+        self.pieQMenu = RadialMenu(items=buttons)
+        self.pieQMenu.rightClickConnect(ui.targetList)
 
         #####################################################################################
         # CONTEXT MENU - connect right click to popup up menu
@@ -51,25 +52,27 @@ class MyWindow(QtWidgets.QMainWindow):
         #                          for the parent widget of the radialMenu so I can call it the radial
         #                          menu is not needed 
         #
-        ui.targetList.mousePressEvent = pieQMenu.popup
+        #ui.targetList.mousePressEvent = self.showMenu 
         
         #  CUSTOM CONTEXT MENU - Doesn't work because signal is only emitted after right click
         #                       is released.
         #
         #ui.targetList.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
-        #ui.targetList.customContextMenuRequested.connect(pieQMenu.popup)
+        #ui.targetList.customContextMenuRequested.connect(self.showMenu)
 
         #  DEFUALT CONTEXT MENU - Doesn't work because event is only emitted after right click
         #                         is released.
         #
-        ui.targetList.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        ui.targetList.contextMenuEvent = pieQMenu.popup
+        #ui.targetList.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        #ui.targetList.contextMenuEvent = pieQMenu.popup
 
         #  ACTIONS CONEXT MENU - Only works if actions have been added to the widget
         #                         
         #
-        ui.targetList.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
-        ui.targetList.contextMenuEvent = pieQMenu.popup
+        self.pieQMenu.addAction('hi')
+        #ui.targetList.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
+        #ui.targetList.customContextMenuRequested.connect(self.showMenu)
+        #ui.targetList.contextMenuEvent = self.showMenu
 
         #  NO CONTEXT MENU - Blocks any context menu call and lets the parent widget handle it.
         #                    This could be useful if I create a signal in the parent widget 
@@ -77,6 +80,7 @@ class MyWindow(QtWidgets.QMainWindow):
         #                    issue of opening the radial menu on right click press.    
         #
         #ui.targetList.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+
 
 ##############################
 # TEST WINDOW FROM QT DESIGNER
