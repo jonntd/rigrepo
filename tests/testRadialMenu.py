@@ -37,8 +37,6 @@ class MyWindow(QtWidgets.QMainWindow):
             item = RadialMenuItem(position=pos)
             item.setText(items[pos])
             item.connect(partial(self.tempPrint, pos))
-            if pos == 'W':
-                item.setCheckable(1)
             buttons.append(item)
         # Menu
         self.pieQMenu = RadialMenu(items=buttons)

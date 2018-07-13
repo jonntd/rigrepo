@@ -3,10 +3,11 @@ import traceback
 import math
 from PySide2 import QtWidgets, QtGui, QtCore, QtUiTools
 
-class RadialMenuItem(QtWidgets.QPushButton):
+class RadialMenuItem(QtWidgets.QLabel):
     def __init__(self, position=None):
-        QtWidgets.QPushButton.__init__(self)
+        QtWidgets.QLabel.__init__(self)
         self.position = position
+        self.setAlignment(QtCore.Qt.AlignCenter)
 
     def connect(self, function):
         self.function = function
@@ -21,7 +22,7 @@ class RadialMenu(QtWidgets.QMenu):
         self.rightClickWidgetMousePressEvent = None
         
         # Returns true if a an existing qt loop is running
-        self.inMaya   =  QtWidgets.QApplication.activeWindow()
+        activeWindow =  QtWidgets.QApplication.activeWindow()
 
         self.setFixedSize(self.width, self.height)
         self.maskPixmap = QtGui.QPixmap(self.width, self.height)
@@ -33,17 +34,21 @@ class RadialMenu(QtWidgets.QMenu):
         self.penOrigin      = QtGui.QPen(gray,             5,  QtCore.Qt.SolidLine)
         self.penCursorLine  = QtGui.QPen(gray,             3,  QtCore.Qt.SolidLine)
         self.penBlack       = QtGui.QPen(QtCore.Qt.black,  2,  QtCore.Qt.SolidLine)
-        self.penActive      = QtGui.QPen(QtCore.Qt.red,   20, QtCore.Qt.SolidLine)
+        self.penActive      = QtGui.QPen(QtCore.Qt.red,    20, QtCore.Qt.SolidLine)
         self.penWhite       = QtGui.QPen(QtCore.Qt.white,  5,  QtCore.Qt.SolidLine)
 
         # Color - Query the default background and highlight colors.
         #         Note: For native QT, the color for push buttons is the midlight color group 
         #               For native maya, it is the light color group 
-        self.bgColor   = self.palette().midlight().color().getRgb()
-        if self.inMaya:
-            self.bgColor   = self.palette().light().color().getRgb()
-        self.highlight = self.palette().highlight().color().getRgb()
+        c = self.palette().light().color().getRgb()
+        t = self.palette().buttonText().color().getRgb()
+        h = self.palette().highlight().color().getRgb()
 
+        tempButton = QtWidgets.QPushButton()
+        self.itemStyleSheetDefault   =  ('background-color:rgb({0},{1},{2});'
+                                                    'color:rgb({3},{4},{5});'.format(c[0], c[1], c[2], t[0], t[1], t[2]))
+        self.itemStyleSheetHighlight =  ('background-color:rgb({0},{1},{2});'
+                                                    'color:rgb({3},{4},{5});'.format(h[0], h[1], h[2], t[0], t[1], t[2]))
         # menu items
         self.itemHeight = 38
         self.itemWidgets = dict()
@@ -95,13 +100,8 @@ class RadialMenu(QtWidgets.QMenu):
                 self.items[pos][1] += 20
             self.itemWidgets[pos] = item
             self.itemWidth[pos] = itemWidth
-            c = self.bgColor
-            item.setStyleSheet('background-color:rgb({},{},{});'.format(c[0], c[1], c[2]))
+            item.setStyleSheet(self.itemStyleSheetDefault)
             anglesUsed += self.angles[pos]
-
-        # The new wayt to deal with the Maya highlight problem
-        #self.setStyleSheet('background-color:rgb({},{},{});'.format(hl[0], hl[1], hl[2]))
-        #item.setStyleSheet('QPushButton:hover{{background-color:rgb({},{},{})}};'.format(hl[0], hl[1], hl[2]))
 
         # If some locations are not being used
         # This loop will give thier slices to the next closest existing location.
@@ -172,41 +172,40 @@ class RadialMenu(QtWidgets.QMenu):
         length       = math.hypot(self.startPosCn.x() - self.livePos.x(),self.startPosCn.y() - self.livePos.y())
         angle        = self.angleFromPoints([self.startPosCn.x(), self.startPosCn.y()], [self.livePos.x(), self.livePos.y()])
         angle        = int(angle/22.5)
-        c  = self.bgColor
-        hl = self.highlight
         # Highlight items
         self.activeItem = None
         for position in self.items:
             if not position in self.itemWidgets:
                 continue
             item = self.itemWidgets[position]
-            item.setStyleSheet('background-color:rgb({},{},{});'.format(c[0], c[1], c[2]))
-            if self.inMaya:
-                if item.underMouse():
-                    item.setStyleSheet('background-color:rgb({},{},{});'.format(c[0]*.85, c[1]*.85, c[2]*.85))
+            item.setStyleSheet(self.itemStyleSheetDefault)
+            # Highlight item if we are in its slice
             if length > 20:
                 if angle in self.angles[position]:
-                    item.setStyleSheet('background-color:rgb({},{},{});'.format(hl[0], hl[1], hl[2]))
-                    if self.inMaya:
-                        if item.underMouse():
-                             item.setStyleSheet('background-color:rgb({},{},{});'.format(hl[0]*.85, hl[1]*.85, hl[2]*.85))
+                    item.setStyleSheet(self.itemStyleSheetHighlight)
                     self.activeItem = item
+            # Highlight button if the mouse is over it, overrides slice highlight
+            if item.underMouse():
+                if self.activeItem:
+                    self.activeItem.setStyleSheet(self.itemStyleSheetDefault)
+                self.activeItem = item
+                item.setStyleSheet(self.itemStyleSheetHighlight)
                 
         # Call paint event
         self.update()
 
     def mouseReleaseEvent(self, event):
         self.hide()
-        c  = self.bgColor
         for position in self.items:
             if not position in self.itemWidgets:
                 continue
             item = self.itemWidgets[position]
-            item.setStyleSheet('background-color:rgb({},{},{});'.format(c[0], c[1], c[2]))
+            item.setStyleSheet(self.itemStyleSheetDefault)
         # Run items function if it exists
         if self.activeItem:
             if self.activeItem.function:
                 self.activeItem.function()
+        self.activeItem = None
 
     def popup(self, pos=None):
         self.startPosCn = pos
@@ -225,8 +224,8 @@ class RadialMenu(QtWidgets.QMenu):
         widget.mousePressEvent = self.rightClickPopup
 
     def rightClickPopup(self, event):
-        self.rightClickWidgetMousePressEvent(event)
         if event.buttons() != QtCore.Qt.RightButton:
+            self.rightClickWidgetMousePressEvent(event)
             return()
         self.popup(QtGui.QCursor.pos())
 
@@ -242,6 +241,7 @@ class RadialMenu(QtWidgets.QMenu):
                 continue
             pos  = self.items[position]
             item = self.itemWidgets[position]
+            # Solid rectangle
             rect = QtCore.QRect(pos[0]+self.width *.5,
                                 pos[1]+self.height*.5,
                                 self.itemWidth[position],
