@@ -36,9 +36,9 @@ class MyWindow(QtWidgets.QMainWindow):
                         'W': 'West',
                         'W': 'West',
                         'NE':'NorthEast',
-                        'NW':'NorthWest'
-                        #'SE':'SouthEast',
-                        #'SW':'SouthWest'
+                        'NW':'NorthWest',
+                        'SE':'SouthEast',
+                        'SW':'SouthWest'
                         }
         itemWidgets = list()
         for pos in items:

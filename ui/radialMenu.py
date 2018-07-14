@@ -3,7 +3,7 @@ import traceback
 import math
 from PySide2 import QtWidgets, QtGui, QtCore, QtUiTools
 
-class RadialMenuItem(QtWidgets.QLabel):
+class RadialMenuItem_(QtWidgets.QLabel):
     def __init__(self, position=None):
         QtWidgets.QLabel.__init__(self)
         self.position = position
@@ -11,6 +11,52 @@ class RadialMenuItem(QtWidgets.QLabel):
 
     def connect(self, function):
         self.function = function
+
+class StopHoverEvent(QtCore.QObject):
+    def eventFilter(self, obj, event):
+        hoverEvents = [QtCore.QEvent.HoverLeave,
+                       QtCore.QEvent.HoverEnter,
+                       QtCore.QEvent.GraphicsSceneHoverEnter,
+                       QtCore.QEvent.GraphicsSceneHoverLeave,
+                       QtCore.QEvent.GraphicsSceneHoverMove,
+                       QtCore.QEvent.HoverMove]
+        if event.type() in hoverEvents:
+            #print "Ate hover enter"
+            return False
+        else:
+            return QtCore.QObject.eventFilter(self, obj, event)
+
+class RadialMenuItem(QtWidgets.QPushButton):
+    def __init__(self, position=None):
+        QtWidgets.QPushButton.__init__(self)
+        self.position = position
+        #self.setWidnowFlags = QtCore.Qt.WA_Hover
+        #stopHoverEvent = StopHoverEvent(self)
+        #self.installEventFilter(stopHoverEvent)
+
+    def connect(self, function):
+        self.function = function
+
+    #def enterEvent(self, event):
+    #    pass
+    #def leaveEvent(self, event):
+    #    pass
+
+    #def event(self, e):
+    #    if e.type() not in (127, 128, 129):
+    #        print e.type()
+    #        return super(RadialMenuItem, self).event(e)
+    #    return False
+
+    #def event(self, event):
+    #    hoverEvents = [QtCore.QEvent.HoverLeave,
+    #                   QtCore.QEvent.HoverEnter,
+    #                   QtCore.QEvent.HoverMove]
+    #    if event.type() in hoverEvents:
+    #        print('pos', event.pos())
+    #    else:
+    #        QtWidgets.QPushButton.event(self, event)
+    #    return(True)
 
 class RadialMenu(QtWidgets.QMenu):
     def __init__(self, items=None):
@@ -100,7 +146,7 @@ class RadialMenu(QtWidgets.QMenu):
                 self.items[pos][1] += 20
             self.itemWidgets[pos] = item
             self.itemWidth[pos] = itemWidth
-            item.setStyleSheet(self.itemStyleSheetDefault)
+            #item.setStyleSheet(self.itemStyleSheetDefault)
             anglesUsed += self.angles[pos]
 
         # If some locations are not being used
@@ -178,18 +224,23 @@ class RadialMenu(QtWidgets.QMenu):
             if not position in self.itemWidgets:
                 continue
             item = self.itemWidgets[position]
-            item.setStyleSheet(self.itemStyleSheetDefault)
+            #item.setStyleSheet(self.itemStyleSheetDefault)
             # Highlight item if we are in its slice
             if length > 20:
                 if angle in self.angles[position]:
-                    item.setStyleSheet(self.itemStyleSheetHighlight)
+                    #item.setStyleSheet(self.itemStyleSheetHighlight)
+                    #hoverEvent = QtGui.QHoverEvent(QtCore.QEvent.HoverEnter, QtCore.QPointF(), QtCore.QPointF())
+                    hoverEvent = QtGui.QHoverEvent(QtCore.QEvent.HoverEnter, QtCore.QPointF(1,1), QtCore.QPointF(0,0))
+                    hoverMove = QtGui.QHoverEvent(QtCore.QEvent.HoverMove, QtCore.QPointF(1,1), QtCore.QPointF(0,0))
+                    item.event(hoverEvent)
+                    item.event(hoverMove)
                     self.activeItem = item
             # Highlight button if the mouse is over it, overrides slice highlight
-            if item.underMouse():
-                if self.activeItem:
-                    self.activeItem.setStyleSheet(self.itemStyleSheetDefault)
-                self.activeItem = item
-                item.setStyleSheet(self.itemStyleSheetHighlight)
+            #if item.underMouse():
+            #    if self.activeItem:
+            #        self.activeItem.setStyleSheet(self.itemStyleSheetDefault)
+            #    self.activeItem = item
+            #    item.setStyleSheet(self.itemStyleSheetHighlight)
                 
         # Call paint event
         self.update()
@@ -200,7 +251,7 @@ class RadialMenu(QtWidgets.QMenu):
             if not position in self.itemWidgets:
                 continue
             item = self.itemWidgets[position]
-            item.setStyleSheet(self.itemStyleSheetDefault)
+            #item.setStyleSheet(self.itemStyleSheetDefault)
         # Run items function if it exists
         if self.activeItem:
             if self.activeItem.function:
@@ -266,3 +317,4 @@ class RadialMenu(QtWidgets.QMenu):
         if(degrees < 0.0):
             degrees += 360.0
         return(degrees)
+
