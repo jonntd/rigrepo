@@ -19,9 +19,17 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def __init__(self):
         super(MyWindow, self).__init__()
+
+        ########################################################
+        # Build test window
+        ########################################################
         ui = Ui_MainWindow()
         ui.setupUi(self)
-        # Items
+ 
+        ########################################################
+        # Main Radial Menu
+        ########################################################
+        # Built items
         items=     {    'N': 'North',
                         'S': 'South',
                         'E': 'East',
@@ -32,53 +40,20 @@ class MyWindow(QtWidgets.QMainWindow):
                         #'SE':'SouthEast',
                         #'SW':'SouthWest'
                         }
-        buttons = list()
+        itemWidgets = list()
         for pos in items:
             item = RadialMenuItem(position=pos)
             item.setText(items[pos])
             item.connect(partial(self.tempPrint, pos))
-            buttons.append(item)
-        # Menu
-        self.pieQMenu = RadialMenu(items=buttons)
+            itemWidgets.append(item)
+        # Build menu
+        self.pieQMenu = RadialMenu(items=itemWidgets)
         self.pieQMenu.rightClickConnect(ui.targetList)
 
-        #####################################################################################
-        # CONTEXT MENU - connect right click to popup up menu
-        #####################################################################################
-        
-        #  DIRECT METHOD CONNECT - This works, but requires me to store the default mousePressEvent
-        #                          for the parent widget of the radialMenu so I can call it the radial
-        #                          menu is not needed 
-        #
-        #ui.targetList.mousePressEvent = self.showMenu 
-        
-        #  CUSTOM CONTEXT MENU - Doesn't work because signal is only emitted after right click
-        #                       is released.
-        #
-        #ui.targetList.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
-        #ui.targetList.customContextMenuRequested.connect(self.showMenu)
-
-        #  DEFUALT CONTEXT MENU - Doesn't work because event is only emitted after right click
-        #                         is released.
-        #
-        #ui.targetList.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        #ui.targetList.contextMenuEvent = pieQMenu.popup
-
-        #  ACTIONS CONEXT MENU - Only works if actions have been added to the widget
-        #                         
-        #
-        self.pieQMenu.addAction('hi')
-        #ui.targetList.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
-        #ui.targetList.customContextMenuRequested.connect(self.showMenu)
-        #ui.targetList.contextMenuEvent = self.showMenu
-
-        #  NO CONTEXT MENU - Blocks any context menu call and lets the parent widget handle it.
-        #                    This could be useful if I create a signal in the parent widget 
-        #                    that emits on right click press. But it doesn't help me with the main
-        #                    issue of opening the radial menu on right click press.    
-        #
-        #ui.targetList.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-
+        ########################################################
+        # Sub Radial menu
+        ########################################################
+        #itemWidget[0].connectSub
 
 ##############################
 # TEST WINDOW FROM QT DESIGNER
@@ -154,15 +129,3 @@ def test():
         window = MyWindow()
         window.show()
         sys.exit(app.exec_())
-
-#if __name__ == '__main__':
-#    activeWindow = QtWidgets.QApplication.activeWindow()
-#    if activeWindow:
-#        title = activeWindow.windowTitle()
-#        print("Inside QT {} app".format(title))
-#    if not activeWindow:
-#        app = QtWidgets.QApplication(sys.argv)
-#    window = MyWindow()
-#    window.show()
-#    if not activeWindow:
-#        sys.exit(app.exec_())
