@@ -53,7 +53,19 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         frameNode = rigrepo.nodes.commandNode.CommandNode('frameCamera')
         frameNode.getAttributeByName('command').setValue('import maya.cmds as mc\nmc.viewFit("persp")')
 
-        animRigNode.addChildren([newSceneNode, loadNode, frameNode, postBuild])
+        # apply data
+        applyNode = pubs.pNode.PNode("apply")
+
+        deformersNode = pubs.pNode.PNode("deformers")
+
+        # apply
+        skinWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("skinCluster", 
+            dirPath=self.resolveDirPath('skin_wts', self.variant))
+        skinWtsFileNode.disable()
+        applyNode.addChild(deformersNode)
+        deformersNode.addChildren([skinWtsFileNode])
+
+        animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, frameNode])
 
         # Workflow
         workflow = pubs.pNode.PNode('workflow')
@@ -93,8 +105,22 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         if not os.path.isfile(filepath):
             filepath = ""
             try:
-                return cls.__bases__[0].resolveDataFilePath(filename, variant)
+                return cls.__bases__[0].resolveDataFilePath(filename)
             except:
                 pass
 
         return filepath
+
+    @classmethod
+    def resolveDirPath(cls, dirname, variant):
+        '''
+        '''
+        dirpath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, dirname)
+        if not os.path.isdir(dirpath):
+            dirpath = ""
+            try:
+                return cls.__bases__[0].resolveDirPath(dirname, variant)
+            except:
+                pass
+
+        return dirpath
