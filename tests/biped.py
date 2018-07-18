@@ -69,7 +69,9 @@ def nodes():
     reload(rigrepo.nodes.exportDataNode)
     import rigrepo.nodes.controlDefaultsNode
     reload(rigrepo.nodes.controlDefaultsNode)
-    
+    import rigrepo.nodes.loadWtsDirNode
+    reload(rigrepo.nodes.loadWtsDirNode)
+
     # reload parts
     import rigrepo.parts.part
     reload(rigrepo.parts.part)

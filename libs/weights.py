@@ -2,6 +2,7 @@ import maya.cmds as mc
 import rigrepo.libs.common
 import os
 import maya.api.OpenMaya as om
+
 def setWeights(node, weights, map=None): 
     '''
     Sets weights for specified deformers.
@@ -33,7 +34,6 @@ def setWeights(node, weights, map=None):
             pntIndex,value = weight
             mc.setAttr(node+'.wl[0].w['+pntIndex+']', value) 
 
-
 def getWeights(node, map=None):
     '''
     Gets weights for specified deformers.
@@ -64,7 +64,6 @@ def getWeights(node, map=None):
         for w in weights: 
             pntIndex,value = weight
             mc.setAttr(node+'.wl[0].w['+pntIndex+']', value) 
-
 
 def exportWeights(geometry, deformer, directory):
     '''
