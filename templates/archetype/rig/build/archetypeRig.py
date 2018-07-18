@@ -61,7 +61,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         # apply
         skinWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("skinCluster", 
             dirPath=self.resolveDirPath('skin_wts', self.variant))
-        skinWtsFileNode.disable()
+        #skinWtsFileNode.disable()
         applyNode.addChild(deformersNode)
         deformersNode.addChildren([skinWtsFileNode])
 

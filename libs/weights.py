@@ -2,6 +2,7 @@ import maya.cmds as mc
 import rigrepo.libs.common
 import os
 import maya.api.OpenMaya as om
+import xml.etree.ElementTree as et
 
 def setWeights(node, weights, map=None): 
     '''
@@ -187,3 +188,45 @@ def importWeights(geometry, deformer, filepath):
 
     #import the weights for the given deformer and filepath
     mc.deformerWeights(filename, im=True, deformer=deformer, skip=skipGeo, path=directory)
+
+
+def applyWtsDir(directory):
+    '''
+    This function will take a directory with properly named weight files,
+    i.e.(geometryName__deformerName.xml), and apply them if both the deformer and geometry
+    are in the current scene.
+
+    .. TODO::
+        We need to make sure we create the other deformers if they don't exist. Currently We're only
+        creating skinClusters.
+
+    If the deformers isn't in the scene but the geometry is, we will create the deformer for you.
+
+    :param directory: Directory path with weight files inside of it.
+    :type directory: str
+    '''
+    # Check to see if the directory past into this function exists.
+    if os.path.isdir(directory):
+        # loop through all of the files in the directory and make sure they're weights files.
+        for filename in os.listdir(directory):
+            filepath = os.path.join(directory, filename)
+            fileSplit = filename.split("__")
+            # get the geometry, deformer, and deformerType from the file name.
+            geometry = fileSplit[0]
+            deformer = fileSplit[1].split(".")[0]
+            deformerType = deformer.split("_")[-1]
+            # if the deformer doesn't exist, then we will create it.
+            if not mc.objExists(deformer):
+                tree = et.parse(filepath)
+                root = tree.getroot()
+                # create skinCluster deformer if it doesn't exist in the current session.
+                if deformerType == "skinCluster":
+                    jointList = [wts.get('source') for wts in root.findall('weights')]
+                    mc.select(jointList + [geometry])
+                    mc.skinCluster(name=deformer)
+            
+            # apply the weights
+            rigrepo.libs.weights.importWeights(geometry, deformer, filepath)
+            # this ensures that our skinCluster is normalized. 
+            if deformerType == "skinCluster":
+                mc.skinCluster(deformer, e=True, fnw=True)
