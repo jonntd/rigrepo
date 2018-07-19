@@ -16,15 +16,7 @@ class LoadWtsDirNode(commandNode.CommandNode):
         self.addAttribute('dirPath', dirPath, attrType='dir', index=0)
         # command 
         cmd='import rigrepo.libs.weights\n\
-import os\n\
-if os.path.isdir("{dirPath}"):\n\t\
-    for filename in os.listdir("{dirPath}"):\n\t\t\
-        filepath = os.path.join(dirPath, filename)\n\t\t\
-        fileSplit = filename.split("__")\n\t\t\
-        geo = fileSplit[0]\n\t\t\
-        deformer = fileSplit[1].split(".")[0]\n\t\t\
-        print geo, deformer\n\t\t\
-        rigrepo.libs.weights.importWeights(geo, deformer, filepath)'
+rigrepo.libs.weights.applyWtsDir("{dirPath}")'
         
         commandAttribute.setValue(cmd)
 

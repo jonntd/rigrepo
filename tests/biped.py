@@ -54,6 +54,8 @@ def nodes():
     reload(rigrepo.libs.joint)
     import rigrepo.libs.shape
     reload(rigrepo.libs.shape)
+    import rigrepo.libs.weights
+    reload(rigrepo.libs.weights)
     
     
     #reload nodes
