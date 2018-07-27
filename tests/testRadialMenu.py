@@ -2,9 +2,9 @@
 '''
 TO RUN TEST 
 In Maya
-import rigrepo; from rigrepo.tests import testRadialMenu; reload(rigrepo.ui.radialMenu); reload(testRadialMenu); testRadialMenu.test()
+import rigrepo; from rigrepo.tests import testRadialMenu; reload(testRadialMenu); reload(rigrepo.ui.radialMenu); testRadialMenu.test()
 In giged Shell
-python -c "import rigrepo; from rigrepo.tests import testRadialMenu; reload(rigrepo.ui.radialMenu); reload(testRadialMenu); testRadialMenu.test()"
+python -c "import rigrepo; from rigrepo.tests import testRadialMenu; reload(testRadialMenu); reload(rigrepo.ui.radialMenu); testRadialMenu.test()"
 '''
 #############################################################
 
@@ -14,8 +14,10 @@ from rigrepo.ui.radialMenu import RadialMenu, RadialMenuItem
 from PySide2 import QtWidgets, QtGui, QtCore, QtUiTools
 
 class MyWindow(QtWidgets.QMainWindow):
-    def tempPrint(self, printStuff):
+    def tempPrint(self, printStuff, widget):
         print(printStuff)
+        if widget.checkBox:
+            widget.checkBox.setChecked(not(widget.checkBox.checkState()))
 
     def __init__(self):
         super(MyWindow, self).__init__()
@@ -33,8 +35,7 @@ class MyWindow(QtWidgets.QMainWindow):
         items=     {    'N': 'North',
                         'S': 'South',
                         'E': 'East',
-                        'W': 'West',
-                        'W': 'West',
+                        #'W': 'West',
                         'NE':'NorthEast',
                         'NW':'NorthWest',
                         'SE':'SouthEast',
@@ -44,10 +45,17 @@ class MyWindow(QtWidgets.QMainWindow):
         for pos in items:
             item = RadialMenuItem(position=pos)
             item.setText(items[pos])
-            item.connect(partial(self.tempPrint, pos))
             itemWidgets.append(item)
+            #item.setCheckable(True)
+            item.connect(partial(self.tempPrint, pos, item))
+        itemWidgets[0].setCheckable(True)
+        itemWidgets[1].setCheckable(True)
+        #itemWidgets[1].setCheckable(False)
         # Build menu
         self.pieQMenu = RadialMenu(items=itemWidgets)
+        radialAction = RadialMenuItem(position='W')
+        self.pieQMenu.addItem(radialAction)
+        #self.pieQMenu = RadialMenu(items=None)
         self.pieQMenu.rightClickConnect(ui.targetList)
 
         ########################################################
