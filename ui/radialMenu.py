@@ -51,6 +51,48 @@ class RadialMenuItem(QtWidgets.QPushButton):
                 self.checkBox.hide()
 
 class RadialMenu(QtWidgets.QMenu):
+    '''
+    Glossary
+      item ----- A child widget which is displayed either in a cardinal
+                 position or in a standard column menu.
+
+      position - The 8 avialable cardinal directions that an item can
+                 occupy. ['E', 'NE', 'N', 'NW', 'W', 'SW', 'S', 'SE]
+
+      slice ---- One of the 16 divisions of the pie. Each slice is
+                 22.5 degrees of the pie. As the cursor moves the menu
+                 tracks what slice it is in. The slice is traced to 
+                 its position and the position traces to its item. 
+
+                 cursor(x,y)-->angle-->slice-->position-->item
+
+                 A position is assocaited with two slices so its slices
+                 can be given to its neighboring positions when the 
+                 position is not in use (No item has mapped it). 
+                 
+                 For example, if only one item in the menu has has 
+                 declared its position, it will eat up all the slices.
+                 So no matter where the cursor is it will activate that
+                 item.
+
+    Data structure
+        self.items    - contains the RaidialMenuItems that have been 
+                        added to the menu.
+        item.position - The position associated with item. If None the 
+                        item will display in the column menu. 
+        item.x        - The x and y coordinate of the top left corner
+        item.y          of the item widget. This is assigned in the
+                        addItem method.
+    Item sizing
+        item.width  - The setText method of the RadialItem calculates
+                      the width of the text plus margins and assigns
+                      it to item.width.
+        item.height - The height does not need to change per item
+                      so it is statically set in the __init__ of the
+                      RadialItem.
+        
+
+    '''
     def __init__(self, items=None):
         '''
         Base custom QMenu
@@ -93,25 +135,33 @@ class RadialMenu(QtWidgets.QMenu):
         ##########################################################
         # location menu items
         ##########################################################
-        self.itemHeight = items[0].height
+        self.itemHeight = 40
         # Stores item widget objects
         self.itemWidgets = dict()
-        # Ordered items from 0 degrees to 360 degrees - clockwise
-        self.itemsOrdered = ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE']
+        self.items = list()
         # Item rectangles - used in mouseMove event to check if mouse if over item
         self.itemRect = dict()
         # Item positions relative to center of radial menu
-        self.items = {'N':  [   0, - 90],
-                      'S':  [   0,   90],
-                      'E':  [ 120,    0],
-                      'W':  [-120,    0],
-                      'NE': [  85,  -45],
-                      'NW': [ -85,  -45],
-                      'SE': [  85,   45],
-                      'SW': [ -85,   45]}
-        # Angles - Each number = 22.5 degree slice, so each position gets a
+        self.position_xy = {'N':  [   0, - 90],
+                            'S':  [   0,   90],
+                            'E':  [ 120,    0],
+                            'W':  [-120,    0],
+                            'NE': [  85,  -45],
+                            'NW': [ -85,  -45],
+                            'SE': [  85,   45],
+                            'SW': [ -85,   45]}
+        # Slices - Each number = 22.5 degree slice, so each position gets a
         #          45 degree slice of the pie
         self.angles = {'E':  [15,  0],
+                       'SE': [ 1,  2],
+                       'S':  [ 3,  4],
+                       'SW': [ 5,  6],
+                       'W':  [ 7,  8],
+                       'NW': [ 9, 10],
+                       'N':  [11, 12],
+                       'NE': [13, 14]}
+
+        self.slices = {'E':  [15,  0],
                        'SE': [ 1,  2],
                        'S':  [ 3,  4],
                        'SW': [ 5,  6],
@@ -126,47 +176,34 @@ class RadialMenu(QtWidgets.QMenu):
         self.anglesUsed = list()
 
         # Calculate the x and y coordinates of the button items
-        for item in items:
-            item.setParent(self)
-            itemPos = item.position
-            # Calculate the width of the text
-            font = item.property('font')
-            fm = QtGui.QFontMetrics(font)
-            itemWidth = fm.width(item.text()) + 110
+        #for item in items:
+        #    item.setParent(self)
+        #    itemPos = item.position
+        #    # Calculate the width of the text
+        #    font = item.property('font')
+        #    fm = QtGui.QFontMetrics(font)
+        #    itemWidth = fm.width(item.text()) + 110
 
-            # Offset the positions because the buttons are drawn from the top left corner
-            # and the stored positions are the center around the origin
-            if 'W' in itemPos:
-                self.items[itemPos][0] -= itemWidth
-                self.items[itemPos][1] -= self.itemHeight * .5
-            if 'E' in itemPos:
-                self.items[itemPos][1] -= self.itemHeight * .5
-            if 'N' == itemPos:
-                self.items[itemPos][0] -= itemWidth * .5
-                self.items[itemPos][1] -= self.itemHeight
-            if 'S' == itemPos:
-                self.items[itemPos][0] -= itemWidth * .5
-            if 'NE' == itemPos or 'NW' == itemPos:
-                self.items[itemPos][1] -= 20
-            if 'SE' == itemPos or 'SW' == itemPos:
-                self.items[itemPos][1] += 20
-            self.itemWidgets[itemPos] = item
-            self.itemWidth[itemPos] = itemWidth
-            self.anglesUsed += self.angles[itemPos]
-
-        # Consolodate slices - If some item locations are not being used this loop
-        #                      will give thier slices to the next closest existing item location.
-        while len(self.anglesUsed) < 16:
-            for item in items:
-                itemPos = item.position
-                n = self.pieLast(self.angles[itemPos][0])
-                l = self.pieNext(self.angles[itemPos][-1])
-                if not n in self.anglesUsed:
-                    self.angles[itemPos] = [n]+self.angles[itemPos]
-                    self.anglesUsed.append(n)
-                if not l in self.anglesUsed:
-                    self.angles[itemPos].append(l)
-                    self.anglesUsed.append(l)
+        #    # Offset the positions because the buttons are drawn from the top left corner
+        #    # and the stored positions are the center around the origin
+        #    if 'W' in itemPos:
+        #        self.position_xy[itemPos][0] -= itemWidth
+        #        self.position_xy[itemPos][1] -= self.itemHeight * .5
+        #    if 'E' in itemPos:
+        #        self.position_xy[itemPos][1] -= self.itemHeight * .5
+        #    if 'N' == itemPos:
+        #        self.position_xy[itemPos][0] -= itemWidth * .5
+        #        self.position_xy[itemPos][1] -= self.itemHeight
+        #    if 'S' == itemPos:
+        #        self.position_xy[itemPos][0] -= itemWidth * .5
+        #    if 'NE' == itemPos or 'NW' == itemPos:
+        #        self.position_xy[itemPos][1] -= 20
+        #    if 'SE' == itemPos or 'SW' == itemPos:
+        #        self.position_xy[itemPos][1] += 20
+        #    self.itemWidgets[itemPos] = item
+        #    self.items.append(item)
+        #    self.itemWidth[itemPos] = itemWidth
+        #    self.anglesUsed += self.angles[itemPos]
 
         # Draw radial menu and its mask
         self.maskPixmap.fill(QtCore.Qt.white)
@@ -177,81 +214,105 @@ class RadialMenu(QtWidgets.QMenu):
     def addItem(self, item=None, text=None):
         """
         """
+        item.setParent(self)
+        self.items.append(item)
         self.painterMask.begin(self.maskPixmap)
-        coords = self.items[item.position]
-        x = coords[0]
-        y = coords[1]
 
         # Calculate the width of the text
-        item.setText('hi')
+        item.setText('hialsdkfsld')
         font = item.property('font')
-        fm = QtGui.QFontMetrics(font)
-        width = fm.width(item.text()) + 110
-        height = self.itemHeight
+        metric = QtGui.QFontMetrics(font)
+        width = metric.width(item.text()) + 110
+        height = item.height
 
-        # Offset the positions because the buttons are drawn from the top left corner
-        # and the stored positions are the center around the origin
-        position = item.position
-        if 'W' in position:
-            x -= width
-            y -= height * .5
-        if 'E' in position:
-            y -= height * .5
-        if 'N' == position:
-            x -= width * .5
-            y -= height
-        if 'S' == position:
-            x -= width * .5
-        if 'NE' == position or 'NW' == position:
-            y -= 20
-        if 'SE' == position or 'SW' == position:
-            y += 20
+        # Radial item specific settings
+        if item.position:
+            # Get base coordinates for position
+            position = item.position
+            x,y = self.position_xy[position]
 
-        self.itemWidgets[position] = item
-        self.itemWidth[position] = width
-        self.anglesUsed += self.angles[position]
+            # Calculate top left x,y - Offset the positions because the 
+            #                          buttons are drawn from the top left
+            #                          corner and the stored positions are 
+            #                          the center around the origin
+            if 'W' in position:
+                x -= width
+                y -= height * .5
+            if 'E' in position:
+                y -= height * .5
+            if 'N' == position:
+                x -= width * .5
+                y -= height
+            if 'S' == position:
+                x -= width * .5
+            if 'NE' == position or 'NW' == position:
+                y -= 20
+            if 'SE' == position or 'SW' == position:
+                y += 20
 
-        # Widget rectangle
-        x = x+(self.width*.5)
-        y = y+(self.height*.5)
-        w = width
-        h = height
-        rect = QtCore.QRect(x,y,w,h)
-                                    
+            self.itemWidgets[position] = item
+            self.itemWidth[position] = width
+
+            # Widget rectangle
+            x += self.width*.5
+            y += self.height*.5
+            # slice 
+            item.slices = self.slices[position]
+            self.updateSliceMembership()
+
+        # Define rect
+        rect = QtCore.QRect(x,y,width,height)
         # Store rect for mouse over detection 
         self.itemRect[item.position] = rect
-        # Mask rectangle
+        item.p_rect = rect
+                                    
+        # Paint rect mask
         self.painterMask.fillRect(rect, QtCore.Qt.black)
-        # Apply widget rectangle
+        # Apply widget rect
         item.setGeometry(rect)
-        item.setParent(self)
-        # Manage slices
-        #    Slices are predefined for each position.
-        #    RadialMenu __init__ defines this in self.angles[position] 
-        #    
-        #    We loop through the active positions and store 
-        #    their slices in self.anglesUsed.
-        #
-        #    Now we need to loop through and give unused slices
-        #    To the nearest active position.
-
-        #while len(self.anglesUsed) < 16:
-        #    for item in self.itemWidgets:
-        #        itemPos = item.position
-        #        n = self.pieLast(self.angles[itemPos][0])
-        #        l = self.pieNext(self.angles[itemPos][-1])
-        #        if not n in self.anglesUsed:
-        #            self.angles[itemPos] = [n]+self.angles[itemPos]
-        #            self.anglesUsed.append(n)
-        #        if not l in self.anglesUsed:
-        #            self.angles[itemPos].append(l)
-        #            self.anglesUsed.append(l)
-
+        # Stop paint
         self.painterMask.end()
-
         # Apply mask
         if not self.transparent:
             self.setMask(self.maskPixmap.createMaskFromColor(QtCore.Qt.white))
+
+    def updateSliceMembership(self):
+        """
+        Manage mapping pie slices to active positions
+           This needs to be updated for all the slices
+           each time an item is added or removed.
+        
+           Default slice membership is predefined for each 
+           position in the menu __init__.  self.angles[position] 
+           
+           We loop through the positional items 
+           and store their angles in self.slicesUsed.
+        
+           Now we need to loop through and give unused slices
+           To the nearest active position.
+        """
+
+        self.slicesUsed = list()
+        for item in self.items:
+            position = item.position
+            self.slicesUsed += self.slices[position]
+
+        while len(self.slicesUsed) < 16:
+            for item in self.items:
+                position = item.position
+                # Find surrounding slices from the current items slices
+                n = self.pieLast(self.slices[position][0])
+                l = self.pieNext(self.slices[position][-1])
+                # If slices is not used add it to its own slices
+                if not n in self.slicesUsed:
+                    self.slices[position] = [n]+self.slices[position]
+                    self.slicesUsed.append(n)
+                if not l in self.slicesUsed:
+                    self.slices[position].append(l)
+                    self.slicesUsed.append(l)
+
+
+        # Main widget column items live in
 
     def drawColumnItems(self):
         # Main widget column items live in
@@ -295,10 +356,10 @@ class RadialMenu(QtWidgets.QMenu):
         self.painterMask.begin(self.maskPixmap)
 
         # Draw item rectangles
-        for itemPosition in self.items:
+        for itemPosition in self.position_xy:
             if not itemPosition in self.itemWidgets:
                 continue
-            pos  = self.items[itemPosition]
+            pos  = self.position_xy[itemPosition]
             item = self.itemWidgets[itemPosition]
             # Widget rectangle
             x = pos[0]+self.width *.5
@@ -309,6 +370,7 @@ class RadialMenu(QtWidgets.QMenu):
                                         
             # Store rect for mouse over detection 
             self.itemRect[itemPosition] = rect
+            item.p_rect = rect
             # Mask rectangle
             self.painterMask.fillRect(rect, QtCore.Qt.black)
             # Apply widget rectangle
@@ -373,7 +435,7 @@ class RadialMenu(QtWidgets.QMenu):
         angle  = self.angleFromPoints([self.startPos.x(), self.startPos.y()], 
                                       [self.livePos.x(),  self.livePos.y()])
         # Item locations are broken into two 22.5 degree slices
-        angle  = int(angle/22.5)
+        slice  = int(angle/22.5)
         ############################################################################
         # Highlight items - Highlighting is managed by sending leave and enter 
         #                   events to the items instead of explicingly setting the 
@@ -397,11 +459,11 @@ class RadialMenu(QtWidgets.QMenu):
                         break
             # Radial items check
             else:
-                for position in self.items:
-                    if not position in self.itemWidgets:
+                for item in self.items:
+                    position = item.position
+                    if not position:
                         continue
-                    item = self.itemWidgets[position]
-                    rect = self.itemRect[position]
+                    rect = item.p_rect
                     # Clear any existing highlighting
                     QtCore.QCoreApplication.sendEvent(item, self.leaveButtonEvent)
                     # Radial rectangle check
@@ -409,9 +471,8 @@ class RadialMenu(QtWidgets.QMenu):
                         self.activeItem = item
                         break
                     # Slice check
-                    if angle in self.angles[position]:
+                    if slice in self.slices[position]:
                         self.activeItem = item
-                        continue
         if self.activeItem:
             QtCore.QCoreApplication.sendEvent(self.activeItem, self.enterButtonEvent)
         # Call paint event
@@ -419,7 +480,7 @@ class RadialMenu(QtWidgets.QMenu):
 
     def mouseReleaseEvent(self, event):
         QtWidgets.QMenu.mouseReleaseEvent(self, event)
-        for position in self.items:
+        for position in self.position_xy:
             if not position in self.itemWidgets:
                 continue
             item = self.itemWidgets[position]

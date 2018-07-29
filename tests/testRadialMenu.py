@@ -36,26 +36,26 @@ class MyWindow(QtWidgets.QMainWindow):
                         'S': 'South',
                         'E': 'East',
                         #'W': 'West',
-                        'NE':'NorthEast',
+                        #'NE':'NorthEast',
                         'NW':'NorthWest',
                         'SE':'SouthEast',
                         'SW':'SouthWest'
                         }
+
+        self.pieQMenu = RadialMenu()
         itemWidgets = list()
         for pos in items:
             item = RadialMenuItem(position=pos)
+            self.pieQMenu.addItem(item)
             item.setText(items[pos])
             itemWidgets.append(item)
             #item.setCheckable(True)
             item.connect(partial(self.tempPrint, pos, item))
         itemWidgets[0].setCheckable(True)
         itemWidgets[1].setCheckable(True)
-        #itemWidgets[1].setCheckable(False)
         # Build menu
-        self.pieQMenu = RadialMenu(items=itemWidgets)
-        radialAction = RadialMenuItem(position='W')
-        self.pieQMenu.addItem(radialAction)
-        #self.pieQMenu = RadialMenu(items=None)
+        item = RadialMenuItem(position='W')
+        self.pieQMenu.addItem(item)
         self.pieQMenu.rightClickConnect(ui.targetList)
 
         ########################################################
