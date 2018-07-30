@@ -46,17 +46,22 @@ class MyWindow(QtWidgets.QMainWindow):
         itemWidgets = list()
         for pos in items:
             item = RadialMenuItem(position=pos)
-            self.pieQMenu.addItem(item)
             item.setText(items[pos])
+            self.pieQMenu.addItem(item)
             itemWidgets.append(item)
-            #item.setCheckable(True)
             item.connect(partial(self.tempPrint, pos, item))
         itemWidgets[0].setCheckable(True)
         itemWidgets[1].setCheckable(True)
         # Build menu
         item = RadialMenuItem(position='W')
+        item.setText('WESTSIDE!')
         self.pieQMenu.addItem(item)
         self.pieQMenu.rightClickConnect(ui.targetList)
+        # Test column menu
+        item = RadialMenuItem(position=None)
+        item.setText('I am in a column')
+        self.pieQMenu.addItem(item)
+
 
         ########################################################
         # Sub Radial menu
