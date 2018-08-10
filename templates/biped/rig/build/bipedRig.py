@@ -56,7 +56,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
         pSpine.setNiceName("spine")
 
         pNeck = rigrepo.parts.neck.Neck(name='pNeck', 
-                                        jointList="mc.ls('neck_*_bind')", 
+                                        jointList="mc.ls('neck_?_bind')", 
                                         anchor="chest_top")
         pNeck.setNiceName("neck")
         
