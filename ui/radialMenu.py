@@ -2,12 +2,13 @@ import sys
 import traceback
 import math
 from PySide2 import QtWidgets, QtGui, QtCore, QtUiTools
+import timeit
 
 '''
 TODO
-- Add item for column items
-- Timer to control when column itmes can be selected
-- Signal and slot structure for the item function calls
+[x] Add item for column items
+[x] Timer to control when column itmes can be selected
+[x] Signal and slot structure for the item function calls
 - Icons for items
 - Option boxes for items
 - Sub menus
@@ -24,17 +25,29 @@ class RadialMenuItem(QtWidgets.QPushButton):
         # Style
         h = self.palette().highlight().color().getRgb()
         c = self.palette().light().color().getRgb()
-        style =  """RadialMenuItem:hover{{
-                        background-color:rgb({},{},{});
-                        border: 2px solid black;
-                    }}
-                    RadialMenuItem{{
-                        border: 2px solid black; 
-                        background-color:rgb({},{},{})
-                    }}
-                 """.format(h[0], h[1], h[2], c[0], c[1], c[2] )
+        if position:
+            style =  """RadialMenuItem:hover{{
+                            background-color:rgb({},{},{});
+                            border: 2px solid black;
+                        }}
+                        RadialMenuItem{{
+                            border: 2px solid black; 
+                            background-color:rgb({},{},{})
+                        }}
+                     """.format(h[0], h[1], h[2], c[0], c[1], c[2] )
+        else:
+            style =  """RadialMenuItem:hover{{
+                            background-color:rgb({},{},{});
+                        }}
+                        RadialMenuItem{{
+                            background-color:rgb({},{},{});
+                            Text-align:left;
+                            padding-left: 20px
+                        }}
+                     """.format(h[0], h[1], h[2], c[0], c[1], c[2] )
         self.setStyleSheet(style)
         self.checkBox = None
+        self.function = None
 
     def connect(self, function):
         self.function = function
@@ -59,27 +72,27 @@ class RadialMenuItem(QtWidgets.QPushButton):
 class RadialMenu(QtWidgets.QMenu):
     '''
     Glossary
-      item ----- A child widget which is displayed either in a cardinal
-                 position or in a standard column menu.
+        item ----- A child widget which is displayed either in a cardinal
+                   position or in a standard column menu.
 
-      position - The 8 avialable cardinal directions that an item can
-                 occupy. ['E', 'NE', 'N', 'NW', 'W', 'SW', 'S', 'SE]
+        position - The 8 avialable cardinal directions that an item can
+                   occupy. ['E', 'NE', 'N', 'NW', 'W', 'SW', 'S', 'SE]
 
-      slice ---- One of the 16 divisions of the pie. Each slice is
-                 22.5 degrees of the pie. As the cursor moves the menu
-                 tracks what slice it is in. The slice is traced to 
-                 its position and the position traces to its item. 
+        slice ---- One of the 16 divisions of the pie. Each slice is
+                   22.5 degrees of the pie. As the cursor moves the menu
+                   tracks what slice it is in. The slice is traced to 
+                   its position and the position traces to its item. 
 
-                 cursor(x,y)-->angle-->slice-->position-->item
+                   cursor(x,y)-->angle-->slice-->position-->item
 
-                 A position is assocaited with two slices so its slices
-                 can be given to its neighboring positions when the 
-                 position is not in use (No item has mapped it). 
-                 
-                 For example, if only one item in the menu has has 
-                 declared its position, it will eat up all the slices.
-                 So no matter where the cursor is it will activate that
-                 item.
+                   A position is assocaited with two slices so its slices
+                   can be given to its neighboring positions when the 
+                   position is not in use (No item has mapped it). 
+                   
+                   For example, if only one item in the menu has has 
+                   declared its position, it will eat up all the slices.
+                   So no matter where the cursor is it will activate that
+                   item.
 
     Data structure
         self.items    - contains the RaidialMenuItems that have been 
@@ -96,8 +109,6 @@ class RadialMenu(QtWidgets.QMenu):
         item.height - The height does not need to change per item
                       so it is statically set in the __init__ of the
                       RadialItem.
-        
-
     '''
     def __init__(self, items=None):
         '''
@@ -114,6 +125,15 @@ class RadialMenu(QtWidgets.QMenu):
         self.width    = 1000
         self.height   = 2000
         self.setFixedSize(self.width, self.height)
+
+        # Timer for gestures
+        self.timer = QtCore.QTimer()
+        self.timer.setTimerType(QtCore.Qt.PreciseTimer)
+        self.timer.timeout.connect(self.trackCursor)
+        self.timer.setInterval(2)
+
+        # Turns off when the cursor stops moving
+        self.gesture = True
 
         # Main painter
         self.painter = QtGui.QPainter()
@@ -186,9 +206,6 @@ class RadialMenu(QtWidgets.QMenu):
         else:
             self.addColumnItem(item=item)
 
-        rect = item.p_rect
-        self.painterMask.fillRect(rect, QtCore.Qt.black)
-        item.setGeometry(rect)
         self.painterMask.end()
         if not self.transparent:
             self.setMask(self.maskPixmap.createMaskFromColor(QtCore.Qt.white))
@@ -231,11 +248,12 @@ class RadialMenu(QtWidgets.QMenu):
         self.updateSliceMembership()
         # Define rect
         rect = QtCore.QRect(x,y,width,height)
+        # Mask and draw
+        self.painterMask.fillRect(rect, QtCore.Qt.black)
+        item.setGeometry(rect)
         item.p_rect = rect
 
     def addColumnItem(self, item=None):
-
-        item.setParent(self.column_widget)
 
         greatest_width = 0.0
         columnItems = list()
@@ -248,20 +266,27 @@ class RadialMenu(QtWidgets.QMenu):
         w = greatest_width
         h = self.itemHeight
         i = len(columnItems)
-        rect = QtCore.QRect(0,(i*(h-2)),w,h)
-        self.column_widget.rects.append(rect)
-        item.p_rect = rect 
+        item.p_rect = QtCore.QRect(35,((i-1)*(h-1)),w,h)
 
-        # column dimensions
+        # update class
+        self.column_widget.rects.append(item.p_rect)
+        self.column_widget.items.append(item)
+
+        # Main column dimensions
         x = (self.width*.5)-(w*.5)
         y = (self.height*.5)+150  
 
+        # Mask and draw main column
         rect = QtCore.QRect(x,y,w,((h*i)-((i-1)*2)))
         self.column_widget.setGeometry(rect)
         self.column_widget_rect = rect
 
-        # Column items
+        # Column mask for all items
         self.painterMask.fillRect(rect, QtCore.Qt.black)
+
+        # Draw item on column
+        item.setParent(self.column_widget)
+        item.setGeometry(item.p_rect)
 
     def getTextWidth(self, item):
         font = item.property('font')
@@ -398,12 +423,17 @@ class RadialMenu(QtWidgets.QMenu):
 
     def mouseMoveEvent(self, event):
         QtWidgets.QMenu.mouseMoveEvent(self, event)
+        self.updateWidget()
+
+    def updateWidget(self):
         self.livePos = QtGui.QCursor.pos()
         # Calculate how far has the mouse moved from origin
-        length = math.hypot(self.startPos.x() - self.livePos.x(), self.startPos.y() - self.livePos.y())
+        length = math.hypot(self.startPos.x() - self.livePos.x(), 
+                            self.startPos.y() - self.livePos.y())
         # Calculate angle of current cursor position to origin
         angle  = self.angleFromPoints([self.startPos.x(), self.startPos.y()], 
                                       [self.livePos.x(),  self.livePos.y()])
+            
         # Item locations are broken into two 22.5 degree slices
         slice  = int(angle/22.5)
         ############################################################################
@@ -416,19 +446,24 @@ class RadialMenu(QtWidgets.QMenu):
             QtCore.QCoreApplication.sendEvent(self.activeItem, self.leaveButtonEvent)
             self.activeItem = None
 
-        # Check if mouse is outside the origin circle
+        if not self.gesture and self.column_widget_rect:
+            self.column_widget.setEnabled(True)
         cursorPos = self.mapFromParent(self.livePos)
+        # Check if mouse is outside the origin circle
         if length > 20:
+            # Check cursor speed, when the cursor is moving quickly 
+            # then we need to ignore the column items
             # Column items check
-            if self.column_widget_rect.contains(cursorPos):
-                cursorPos = self.column_widget.mapFromGlobal(self.livePos)
-                for i in xrange(len(self.column_widget.rects)):
-                    rect = self.column_widget.rects[i]
-                    if rect.contains(cursorPos):
-                        self.activeItem = self.column_widget.items[i]
-                        break
-            # Radial items check
-            else:
+            if not self.gesture and self.column_widget_rect:
+                if self.column_widget_rect.contains(cursorPos):
+                    cursorPos = self.column_widget.mapFromGlobal(self.livePos)
+                    for i in xrange(len(self.column_widget.rects)):
+                        rect = self.column_widget.rects[i]
+                        if rect.contains(cursorPos):
+                            self.activeItem = self.column_widget.items[i]
+                            break
+            # Radial items check 
+            if not self.activeItem:
                 for item in self.items:
                     position = item.position
                     if not position:
@@ -457,6 +492,20 @@ class RadialMenu(QtWidgets.QMenu):
             if self.activeItem.function:
                 self.activeItem.function()
         self.activeItem = None
+        self.hide()
+        self.column_widget.setEnabled(False)
+        self.timer.stop()
+
+    def timerStart(self):
+        self.gesture = True
+        self.startTime = timeit.default_timer()
+
+        self.lastCursorPosition = None
+        self.lastTime= None
+
+        self.cursorChange = list()
+        self.timeChange = list()
+        self.timer.start()
 
     def angleFromPoints(self, p1=None, p2=None):
         '''
@@ -474,14 +523,10 @@ class RadialMenu(QtWidgets.QMenu):
         x = (pos.x()+(self.width*.5))-self.width 
         y = (pos.y()+(self.height*.5))-self.height 
         self.menuRect = QtCore.QRect(x,y,self.width,self.height)
-        #self.setAttribute(QtCore.Qt.WA_NoSystemBackground, 1)
-        #self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        #self.setAttribute(QtCore.Qt.WA_NoSystemBackground, 0)
         QtWidgets.QMenu.popup(self, QtCore.QPoint(x,y))
 
-    def rightClickConnect(self, widget=None):
-        self.rightClickWidgetMousePressEvent = widget.mousePressEvent
-        widget.mousePressEvent = self.rightClickPopup
+        # Tracks cursor speed
+        self.timerStart() 
 
     def rightClickPopup(self, event):
         if event.buttons() != QtCore.Qt.RightButton:
@@ -490,6 +535,54 @@ class RadialMenu(QtWidgets.QMenu):
 
         pos = QtGui.QCursor.pos()
         self.popup(pos)
+
+    def rightClickConnect(self, widget=None):
+        self.rightClickWidgetMousePressEvent = widget.mousePressEvent
+        widget.mousePressEvent = self.rightClickPopup
+
+    def trackCursor(self):
+        # Track cursor - When the mouse is first pressed start a timer (x).
+        #                At each interval track how much the cursor has moved.
+        #                If cursor speed is less then specified threshold
+        #                turn of gestuer mode and allow any colum items to be 
+        #                selected.
+        #       
+        pos =  QtGui.QCursor.pos()
+        currentTime = timeit.default_timer()
+        # Time samples before judging if we have left gesture mode
+        samples = 40
+        # When the cursor speed is below this value turn gesture mode off
+        cursorSpeedTolerance = .02
+
+        if self.lastCursorPosition and self.gesture:
+            #timeChange = self.lastTime - currentTime 
+            timeChange = currentTime - self.lastTime 
+            change = math.hypot(self.lastCursorPosition.x() - pos.x(), 
+                                self.lastCursorPosition.y() - pos.y())
+            if len(self.cursorChange) < samples:
+                self.cursorChange.append(change)
+                self.timeChange.append(timeChange)
+            else:
+                for i in xrange(samples-1):
+                    self.cursorChange[i] = self.cursorChange[i+1]
+                    self.timeChange[i] = self.timeChange[i+1]
+                self.cursorChange[samples-1] = change
+                self.timeChange[samples-1] = timeChange
+
+            cursorSpeed = self.mean(self.cursorChange)
+            rateOfTimeChange = self.mean(self.timeChange)
+            # If the cursor speed is less than .01 pixels 
+            # when averaged over the numner of samples then
+            # Turn of gesture mode and allow all column items 
+            # to be selected
+            if len(self.cursorChange) > samples-1:
+                if cursorSpeed < cursorSpeedTolerance:
+                    self.gesture = False
+                    self.updateWidget()
+                    self.timer.stop()
+
+        self.lastCursorPosition = pos
+        self.lastTime = currentTime
 
     def pieNext(self, value, max=15):
         if value == max:
@@ -504,4 +597,8 @@ class RadialMenu(QtWidgets.QMenu):
         else:
             value-=1
             return(value)
+
+    def mean(self, numbers):
+        return float(sum(numbers)) / max(len(numbers), 1)
+
 

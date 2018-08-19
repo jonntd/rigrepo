@@ -62,6 +62,11 @@ class MyWindow(QtWidgets.QMainWindow):
         item.setText('I am in a column')
         self.pieQMenu.addItem(item)
 
+        for itemText in ['suck', 'a', 'stupid', 'duck', 'hi', 'hi', 'hi','hi','hi']:
+            item = RadialMenuItem(position=None)
+            item.setText(itemText)
+            item.connect(partial(self.tempPrint, itemText, item))
+            self.pieQMenu.addItem(item)
 
         ########################################################
         # Sub Radial menu
