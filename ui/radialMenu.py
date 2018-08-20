@@ -16,11 +16,13 @@ TODO
 '''
 
 class RadialMenuItem(QtWidgets.QPushButton):
-    def __init__(self, position=None):
+    def __init__(self, position=None, text=None):
         QtWidgets.QPushButton.__init__(self)
         self.position = position
         # Stop mouse events from affecting radial widgets
         self.setAttribute(QtCore.Qt.WA_TransparentForMouseEvents)
+        if text:
+            self.setText(text)
 
         # Style
         h = self.palette().highlight().color().getRgb()
@@ -197,7 +199,7 @@ class RadialMenu(QtWidgets.QMenu):
         self.column_widget_rect = None
         self.paintMask()
 
-    def addItem(self, item=None):
+    def addItem(self, item=None, text=None):
         self.items.append(item)
         self.painterMask.begin(self.maskPixmap)
 
@@ -254,7 +256,6 @@ class RadialMenu(QtWidgets.QMenu):
         item.p_rect = rect
 
     def addColumnItem(self, item=None):
-
         greatest_width = 0.0
         columnItems = list()
         for item in self.items: 
@@ -263,10 +264,10 @@ class RadialMenu(QtWidgets.QMenu):
                 width = self.getTextWidth(item)
                 if width > greatest_width:
                     greatest_width = width
-        w = greatest_width
+        w = greatest_width+10
         h = self.itemHeight
         i = len(columnItems)
-        item.p_rect = QtCore.QRect(35,((i-1)*(h-1)),w,h)
+        item.p_rect = QtCore.QRect(40,((i-1)*(h-1)),w,h)
 
         # update class
         self.column_widget.rects.append(item.p_rect)
@@ -274,7 +275,7 @@ class RadialMenu(QtWidgets.QMenu):
 
         # Main column dimensions
         x = (self.width*.5)-(w*.5)
-        y = (self.height*.5)+150  
+        y = (self.height*.5)+170  
 
         # Mask and draw main column
         rect = QtCore.QRect(x,y,w,((h*i)-((i-1)*2)))
@@ -487,12 +488,18 @@ class RadialMenu(QtWidgets.QMenu):
         QtWidgets.QMenu.mouseReleaseEvent(self, event)
         for item in self.items:
             QtCore.QCoreApplication.sendEvent(item, self.leaveButtonEvent)
+        self.hide()
+
         # Run items function if it exists
         if self.activeItem:
             if self.activeItem.function:
-                self.activeItem.function()
+                try:
+                    self.activeItem.function()
+                except:
+                    traceback.print_exc()
+
+        # Reset widgets
         self.activeItem = None
-        self.hide()
         self.column_widget.setEnabled(False)
         self.timer.stop()
 
@@ -523,16 +530,14 @@ class RadialMenu(QtWidgets.QMenu):
         x = (pos.x()+(self.width*.5))-self.width 
         y = (pos.y()+(self.height*.5))-self.height 
         self.menuRect = QtCore.QRect(x,y,self.width,self.height)
-        QtWidgets.QMenu.popup(self, QtCore.QPoint(x,y))
-
-        # Tracks cursor speed
+        self.setGeometry(self.menuRect)
+        self.show()
         self.timerStart() 
 
     def rightClickPopup(self, event):
         if event.buttons() != QtCore.Qt.RightButton:
             self.rightClickWidgetMousePressEvent(event)
             return()
-
         pos = QtGui.QCursor.pos()
         self.popup(pos)
 
