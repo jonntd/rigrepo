@@ -19,6 +19,7 @@ class RadialMenuItem(QtWidgets.QPushButton):
     def __init__(self, position=None, text=None):
         QtWidgets.QPushButton.__init__(self)
         self.position = position
+        self.screenRatio, self.screenFontRatio = getScreenRatio()
         # Stop mouse events from affecting radial widgets
         self.setAttribute(QtCore.Qt.WA_TransparentForMouseEvents)
         if text:
@@ -27,16 +28,20 @@ class RadialMenuItem(QtWidgets.QPushButton):
         # Style
         h = self.palette().highlight().color().getRgb()
         c = self.palette().light().color().getRgb()
+        if self.screenRatio < 1.0:
+            b = 1.0
+        else:
+            b = 2.0
         if position:
             style =  """RadialMenuItem:hover{{
-                            background-color:rgb({},{},{});
-                            border: 2px solid black;
+                            background-color:rgb({hr},{hg},{hb});
+                            border: {border}px solid black
                         }}
                         RadialMenuItem{{
-                            border: 2px solid black; 
-                            background-color:rgb({},{},{})
+                            background-color:rgb({cr},{cg},{cb});
+                            border: {border}px solid black 
                         }}
-                     """.format(h[0], h[1], h[2], c[0], c[1], c[2] )
+                     """.format(hr=h[0], hg=h[1], hb=h[2], cr=c[0], cg=c[1], cb=c[2], border=b )
         else:
             style =  """RadialMenuItem:hover{{
                             background-color:rgb({},{},{});
@@ -56,13 +61,14 @@ class RadialMenuItem(QtWidgets.QPushButton):
 
     def setCheckable(self, state):
         # ON
+        r = self.screenFontRatio
         if state:
             if self.checkBox:
                 # checkBox already exists, just show it
                 self.checkBox.show()
                 return
             box = QtWidgets.QCheckBox(self)
-            rect = QtCore.QRect(10,7,25, 25)
+            rect = QtCore.QRect(10*r,7*r,25*r, 25*r)
             box.setGeometry(rect)
             box.setChecked(True)
             self.checkBox = box
@@ -123,9 +129,12 @@ class RadialMenu(QtWidgets.QMenu):
         self.setWindowFlags(self.windowFlags() | QtCore.Qt.FramelessWindowHint | QtCore.Qt.NoDropShadowWindowHint)
         if self.transparent:
             self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        # Ratio for different screen sizes
+        self.screenRatio, self.screenFontRatio = getScreenRatio()
         # Dimensions
-        self.width    = 1000
-        self.height   = 2000
+        self.width    = 1000 * self.screenRatio
+        self.height   = 2000 * self.screenRatio
+
         self.setFixedSize(self.width, self.height)
 
         # Timer for gestures
@@ -144,7 +153,7 @@ class RadialMenu(QtWidgets.QMenu):
         self.maskPixmap = QtGui.QPixmap(self.width, self.height)
         self.maskPixmap.fill(QtCore.Qt.white)
         # Radius of origin circle
-        self.originRadius = 8
+        self.originRadius = 8.0 * self.screenRatio
         # Right click widget - Stores the mouse press event of the widget 
         #                      the menu is opened from when right clicked
         self.rightClickWidgetMousePressEvent = None
@@ -162,21 +171,22 @@ class RadialMenu(QtWidgets.QMenu):
         ##########################################################
         # Items
         ##########################################################
-        self.itemHeight = 40.0
+        self.itemHeight = 40.0 * self.screenFontRatio
         self.items = list()
         # Events sent to items to highlight them
         self.leaveButtonEvent = QtCore.QEvent(QtCore.QEvent.Leave)
         self.enterButtonEvent = QtCore.QEvent(QtCore.QEvent.Enter)
 
         # Radial item positions relative to center of radial menu
-        self.position_xy = {'N':  [   0, - 90],
-                            'S':  [   0,   90],
-                            'E':  [ 120,    0],
-                            'W':  [-120,    0],
-                            'NE': [  85,  -45],
-                            'NW': [ -85,  -45],
-                            'SE': [  85,   45],
-                            'SW': [ -85,   45]}
+        r = self.screenRatio
+        self.position_xy = {'N':  [   0*r, - 90*r],
+                            'S':  [   0*r,   90*r],
+                            'E':  [ 120*r,    0*r],
+                            'W':  [-120*r,    0*r],
+                            'NE': [  85*r,  -45*r],
+                            'NW': [ -85*r,  -45*r],
+                            'SE': [  85*r,   45*r],
+                            'SW': [ -85*r,   45*r]}
         # Slices - Each number represents a 22.5 degree slice, so each 
         #          position gets a 45 degree slice of the pie
         self.slices = {'E':  [15,  0],
@@ -215,10 +225,13 @@ class RadialMenu(QtWidgets.QMenu):
     def addRadialItem(self, item=None):
         """
         """
+        r = self.screenRatio
         item.setParent(self)
         # Calculate the width of the text
-        width = self.getTextWidth(item)
-        height = self.itemHeight
+        w,h = self.getTextDimensions(item)
+        width = w + (110*r) 
+        #height = h+((h*1.2)*r)
+        height = h+(h*.75)
 
         # Get base coordinates for position
         position = item.position
@@ -230,22 +243,22 @@ class RadialMenu(QtWidgets.QMenu):
         #                          the center around the origin
         if 'W' in position:
             x -= width
-            y -= height * .5
+            y -= height * (.5)
         if 'E' in position:
-            y -= height * .5
+            y -= height * (.5)
         if 'N' == position:
-            x -= width * .5
+            x -= width * (.5)
             y -= height
         if 'S' == position:
-            x -= width * .5
+            x -= width * (.5)
         if 'NE' == position or 'NW' == position:
-            y -= 20
+            y -= (20*self.screenFontRatio)
         if 'SE' == position or 'SW' == position:
-            y += 20
+            y += (20*self.screenFontRatio)
 
         # Widget rectangle
-        x += self.width*.5
-        y += self.height*.5
+        x += self.width*(.5)
+        y += self.height*(.5)
         # slice 
         self.updateSliceMembership()
         # Define rect
@@ -256,26 +269,27 @@ class RadialMenu(QtWidgets.QMenu):
         item.p_rect = rect
 
     def addColumnItem(self, item=None):
+        r = self.screenRatio
         greatest_width = 0.0
         columnItems = list()
         for item in self.items: 
             if not item.position:
                 columnItems.append(item)
-                width = self.getTextWidth(item)
+                width = self.getTextDimensions(item)[0] + (110*self.screenFontRatio)
                 if width > greatest_width:
                     greatest_width = width
         w = greatest_width+10
         h = self.itemHeight
         i = len(columnItems)
-        item.p_rect = QtCore.QRect(40,((i-1)*(h-1)),w,h)
+        item.p_rect = QtCore.QRect(40*r,((i-1)*(h-1)),w,h)
 
         # update class
         self.column_widget.rects.append(item.p_rect)
         self.column_widget.items.append(item)
 
         # Main column dimensions
-        x = (self.width*.5)-(w*.5)
-        y = (self.height*.5)+170  
+        x = (self.width*(.5))-(w*(.5))
+        y = (self.height*(.5))+(170*r) 
 
         # Mask and draw main column
         rect = QtCore.QRect(x,y,w,((h*i)-((i-1)*2)))
@@ -289,11 +303,12 @@ class RadialMenu(QtWidgets.QMenu):
         item.setParent(self.column_widget)
         item.setGeometry(item.p_rect)
 
-    def getTextWidth(self, item):
+    def getTextDimensions(self, item):
         font = item.property('font')
         metric = QtGui.QFontMetrics(font)
-        width = metric.width(item.text()) + 110
-        return(width)
+        width = metric.width(item.text())
+        height = metric.ascent() 
+        return(width, height)
 
     def updateSliceMembership(self):
         """
@@ -331,39 +346,6 @@ class RadialMenu(QtWidgets.QMenu):
                     item.slices.append(l)
                     slicesUsed.append(l)
 
-    def drawColumnItems(self):
-        # Main widget column items live in
-        self.column_widget = QtWidgets.QWidget()
-        self.column_widget.setAttribute(QtCore.Qt.WA_TransparentForMouseEvents)
-        self.column_widget.setParent(self)
-
-        self.column_widget.items = list()
-
-        # column dimensions
-        w = 300
-        x = (self.width*.5)-(w*.5)
-        y = (self.height*.5)+150  
-
-        itemText = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6']
-        for i, itemText in enumerate(itemText):
-            item = RadialMenuItem()
-            self.column_widget.items.append(item)
-            if not i:
-                h = self.itemHeight
-            else:
-                item.setCheckable(True)
-            item.setParent(self.column_widget)
-            item.setText(itemText)
-            #item.setFixedWidth(w)
-            rect = QtCore.QRect(0,(i*(h-2)),w,h)
-            item.setGeometry(rect)
-            self.column_widget.rects.append(rect)
-
-        i = len(self.column_widget.items)
-        rect = QtCore.QRect(x,y,w,((h*i)-((i-1)*2)))
-        self.column_widget.setGeometry(rect)
-        self.column_widget_rect = rect
-
     def paintMask(self):
         '''
         Paint a mask for the items so it is transparent around them.
@@ -375,7 +357,7 @@ class RadialMenu(QtWidgets.QMenu):
         self.painterMask.setBrush(QtCore.Qt.black)
         # Origin offset - how big the visible circles is 
         #                 around the origin dot
-        offset = 30
+        offset = 30*self.screenRatio
 
         x = (self.width* .5)-((self.originRadius+offset)*.5)
         y = (self.height*.5)-((self.originRadius+offset)*.5)
@@ -409,8 +391,8 @@ class RadialMenu(QtWidgets.QMenu):
             # Origin circle - black outline
             offset = 2
             self.painter.setPen(self.penOrigin)
-            self.painter.drawArc((self.width *.5)-self.originRadius*.5,
-                                 (self.height*.5)-self.originRadius*.5,
+            self.painter.drawArc((self.width *.5)-(self.originRadius*.5),
+                                 (self.height*.5)-(self.originRadius*.5),
                                   self.originRadius,  self.originRadius, 16, (360*16))
             # Origin circle - gray center
             self.painter.setPen(self.penBlack)
@@ -606,4 +588,18 @@ class RadialMenu(QtWidgets.QMenu):
     def mean(self, numbers):
         return float(sum(numbers)) / max(len(numbers), 1)
 
+def getScreenRatio():
+    refDpi = 192.0
+    refHeight = 3240.0
+    refWidth = 2160.0
+
+    rect = QtGui.QGuiApplication.primaryScreen().geometry()
+    height = max(rect.width(), rect.height())
+    width = min(rect.width(), rect.height())
+    dpi = QtGui.QGuiApplication.primaryScreen().logicalDotsPerInch()
+    screenRatio = min(height/refHeight, width/refWidth);
+    if screenRatio < .8:
+        screenRatio = .8
+    screenFontRatio = min(height*refDpi/(dpi*refHeight), width*refDpi/(dpi*refWidth))
+    return(screenRatio, screenFontRatio)
 
