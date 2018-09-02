@@ -5,6 +5,7 @@ import pubs.pNode
 import rigrepo.nodes.newSceneNode
 import rigrepo.nodes.commandNode 
 import rigrepo.nodes.exportDataNode
+import rigrepo.nodes.exportWtsDirNode
 import maya.cmds as mc
 from rigrepo.libs.fileIO import joinPath 
 import os
@@ -77,10 +78,14 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions', 
             dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), 
             dataType='curve')
+        skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('skinCluster', 
+            dirPath=self.resolveDirPath('skin_wts', self.variant))
+        skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode('skinCluster Selected', 
+            dirPath=self.resolveDirPath('skin_wts', self.variant))
 
         self.addNode(workflow)
         workflow.addChild(exporters)
-        exporters.addChildren([jointExportDataNode, curveExportDataNode])
+        exporters.addChildren([jointExportDataNode, curveExportDataNode, skinClusterExportWtsNode, skinClusterExportWtsSelectedNode])
     
     @classmethod
     def resolveDataFilePath(cls, filename, variant):
@@ -114,6 +119,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
     @classmethod
     def resolveDirPath(cls, dirname, variant):
         '''
+        :pararm: cls: Class
         '''
         dirpath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, dirname)
         if not os.path.isdir(dirpath):

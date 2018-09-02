@@ -6,9 +6,6 @@ import timeit
 
 '''
 TODO
-[x] Add item for column items
-[x] Timer to control when column itmes can be selected
-[x] Signal and slot structure for the item function calls
 - Icons for items
 - Option boxes for items
 - Sub menus
@@ -61,14 +58,15 @@ class RadialMenuItem(QtWidgets.QPushButton):
 
     def setCheckable(self, state):
         # ON
-        r = self.screenFontRatio
+        rf = self.screenFontRatio
+        r = self.screenRatio
         if state:
             if self.checkBox:
                 # checkBox already exists, just show it
                 self.checkBox.show()
                 return
             box = QtWidgets.QCheckBox(self)
-            rect = QtCore.QRect(10*r,7*r,25*r, 25*r)
+            rect = QtCore.QRect(10*rf,7*rf,25*r, 25*r)
             box.setGeometry(rect)
             box.setChecked(True)
             self.checkBox = box
@@ -375,9 +373,6 @@ class RadialMenu(QtWidgets.QMenu):
         Main paint event that handles the orginn circle and the line 
         from the origin to the moust direction.
         '''
-        # Using try statement to capture the traceback errors, no errors were printing
-        # sometimes without out it.
-        #QtWidgets.QMenu.paintEvent(self, event)
         try:
             # init painter - QPainting on self does not work outside this method
             #self.painter  = QtGui.QPainter(self)

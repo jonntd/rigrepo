@@ -73,6 +73,10 @@ def nodes():
     reload(rigrepo.nodes.controlDefaultsNode)
     import rigrepo.nodes.loadWtsDirNode
     reload(rigrepo.nodes.loadWtsDirNode)
+    import rigrepo.nodes.exportWtsDirNode
+    reload(rigrepo.nodes.exportWtsDirNode)
+    import rigrepo.nodes.exportWtsSelectedNode
+    reload(rigrepo.nodes.exportWtsSelectedNode)
 
     # reload parts
     import rigrepo.parts.part

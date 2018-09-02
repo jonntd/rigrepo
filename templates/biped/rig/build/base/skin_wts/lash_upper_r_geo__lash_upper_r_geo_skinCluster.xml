@@ -1,0 +1,651 @@
+<?xml version="1.0"?>
+<deformerWeight>
+  <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/lash_upper_r_geo__lash_upper_r_geo_skinCluster.xml"/>
+  <shape name="lash_upper_r_geoShape" group="66" stride="3" size="115" max="115" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+    <point index="0" value=" -1.190835 63.172474 3.135186"/>
+    <point index="1" value=" -1.193112 63.178967 3.159967"/>
+    <point index="2" value=" -1.054138 63.150272 3.175307"/>
+    <point index="3" value=" -1.051311 63.144966 3.149734"/>
+    <point index="4" value=" -0.833809 63.032646 3.171372"/>
+    <point index="5" value=" -0.827317 63.029301 3.149477"/>
+    <point index="6" value=" -0.716118 62.910927 3.150778"/>
+    <point index="7" value=" -0.713027 62.906147 3.135100"/>
+    <point index="8" value=" -0.607407 62.695961 3.105636"/>
+    <point index="9" value=" -0.606741 62.695126 3.098944"/>
+    <point index="10" value=" -0.577437 62.608250 3.081986"/>
+    <point index="11" value=" -0.577408 62.607956 3.077919"/>
+    <point index="12" value=" -1.979883 62.547932 2.635960"/>
+    <point index="13" value=" -1.970481 62.543438 2.635605"/>
+    <point index="14" value=" -1.953174 62.676521 2.680965"/>
+    <point index="15" value=" -1.944016 62.665962 2.677899"/>
+    <point index="16" value=" -1.808391 62.941925 2.848766"/>
+    <point index="17" value=" -1.798720 62.927635 2.835662"/>
+    <point index="18" value=" -1.703989 63.039726 2.931097"/>
+    <point index="19" value=" -1.696405 63.027935 2.914920"/>
+    <point index="20" value=" -1.322073 63.179562 3.128313"/>
+    <point index="21" value=" -1.316425 63.169964 3.106108"/>
+    <point index="22" value=" -0.607557 62.700512 3.125302"/>
+    <point index="23" value=" -0.563004 62.521973 3.058661"/>
+    <point index="24" value=" -0.716820 62.934357 3.195332"/>
+    <point index="25" value=" -0.840980 63.059319 3.233747"/>
+    <point index="26" value=" -1.066626 63.185860 3.247316"/>
+    <point index="27" value=" -1.204555 63.220612 3.229518"/>
+    <point index="28" value=" -1.345273 63.230068 3.192394"/>
+    <point index="29" value=" -1.733356 63.089573 2.979310"/>
+    <point index="30" value=" -1.841621 62.996464 2.885830"/>
+    <point index="31" value=" -1.982934 62.708336 2.690365"/>
+    <point index="32" value=" -2.009765 62.560562 2.637422"/>
+    <point index="33" value=" -0.562499 62.521797 3.054461"/>
+    <point index="34" value=" -1.978520 62.455936 2.615879"/>
+    <point index="35" value=" -0.577311 62.609264 3.094517"/>
+    <point index="36" value=" -0.564798 62.522373 3.071136"/>
+    <point index="37" value=" -1.580719 63.098507 2.985921"/>
+    <point index="38" value=" -1.587150 63.109852 3.005432"/>
+    <point index="39" value=" -1.614191 63.161942 3.063544"/>
+    <point index="40" value=" -1.880564 62.810570 2.755981"/>
+    <point index="41" value=" -1.890684 62.827122 2.765874"/>
+    <point index="42" value=" -1.926530 62.877991 2.791856"/>
+    <point index="43" value=" -0.765804 62.969337 3.143331"/>
+    <point index="44" value=" -0.768462 62.971390 3.160443"/>
+    <point index="45" value=" -0.766961 62.993450 3.208684"/>
+    <point index="46" value=" -0.637772 62.770901 3.114064"/>
+    <point index="47" value=" -0.638588 62.771809 3.122581"/>
+    <point index="48" value=" -0.636514 62.779808 3.147038"/>
+    <point index="49" value=" -2.011715 62.468494 2.613241"/>
+    <point index="50" value=" -1.986682 62.459206 2.615156"/>
+    <point index="51" value=" -2.003076 62.465828 2.613673"/>
+    <point index="52" value=" -1.999440 62.556568 2.636914"/>
+    <point index="53" value=" -1.972771 62.697548 2.687526"/>
+    <point index="54" value=" -1.914261 62.860321 2.784249"/>
+    <point index="55" value=" -1.830474 62.975937 2.874607"/>
+    <point index="56" value=" -1.723268 63.070168 2.964266"/>
+    <point index="57" value=" -1.604374 63.141827 3.045183"/>
+    <point index="58" value=" -1.336630 63.209820 3.172388"/>
+    <point index="59" value=" -1.199869 63.203098 3.207776"/>
+    <point index="60" value=" -1.060806 63.170250 3.224736"/>
+    <point index="61" value=" -0.840218 63.047085 3.213883"/>
+    <point index="62" value=" -0.768857 62.983082 3.193355"/>
+    <point index="63" value=" -0.717749 62.924629 3.181104"/>
+    <point index="64" value=" -0.638150 62.776546 3.139009"/>
+    <point index="65" value=" -0.608001 62.698635 3.118609"/>
+    <point index="66" value=" -0.577461 62.608837 3.090114"/>
+    <point index="67" value=" -0.564276 62.522289 3.066968"/>
+    <point index="68" value=" -0.552365 62.439693 3.050766"/>
+    <point index="69" value=" -0.552582 62.439579 3.047512"/>
+    <point index="70" value=" -0.552907 62.439068 3.041080"/>
+    <point index="71" value=" -0.553097 62.438805 3.037871"/>
+    <point index="72" value=" -1.977202 62.427547 2.616524"/>
+    <point index="73" value=" -1.983526 62.428310 2.616017"/>
+    <point index="74" value=" -1.996103 62.429852 2.614995"/>
+    <point index="75" value=" -2.002386 62.430630 2.614485"/>
+    <point index="76" value=" -1.989824 62.429047 2.615510"/>
+    <point index="77" value=" -1.994934 62.462559 2.614398"/>
+    <point index="78" value=" -1.989336 62.552464 2.636413"/>
+    <point index="79" value=" -1.962718 62.686970 2.684306"/>
+    <point index="80" value=" -1.901939 62.843643 2.776119"/>
+    <point index="81" value=" -1.819282 62.957291 2.862629"/>
+    <point index="82" value=" -1.713056 63.053146 2.948604"/>
+    <point index="83" value=" -1.595159 63.123775 3.026068"/>
+    <point index="84" value=" -1.328673 63.192127 3.151366"/>
+    <point index="85" value=" -1.195840 63.188305 3.184952"/>
+    <point index="86" value=" -1.056885 63.157745 3.201035"/>
+    <point index="87" value=" -0.838346 63.037434 3.193276"/>
+    <point index="88" value=" -0.769844 62.975163 3.177383"/>
+    <point index="89" value=" -0.717908 62.916473 3.166328"/>
+    <point index="90" value=" -0.638921 62.773335 3.130749"/>
+    <point index="91" value=" -0.607906 62.696968 3.112169"/>
+    <point index="92" value=" -0.577452 62.608524 3.086034"/>
+    <point index="93" value=" -0.563734 62.522186 3.062845"/>
+    <point index="94" value=" -0.552736 62.439327 3.044355"/>
+    <point index="95" value=" -0.554983 62.359535 3.033811"/>
+    <point index="96" value=" -0.555263 62.359566 3.032224"/>
+    <point index="97" value=" -0.555844 62.359627 3.029020"/>
+    <point index="98" value=" -0.556153 62.359673 3.027385"/>
+    <point index="99" value=" -0.555551 62.359596 3.030622"/>
+    <point index="100" value=" -0.669864 62.855591 3.170685"/>
+    <point index="101" value=" -0.674133 62.849949 3.160774"/>
+    <point index="102" value=" -0.676884 62.845646 3.150456"/>
+    <point index="103" value=" -0.676004 62.843430 3.139866"/>
+    <point index="104" value=" -0.673620 62.842442 3.128882"/>
+    <point index="105" value=" -0.944236 63.130722 3.254446"/>
+    <point index="106" value=" -0.940811 63.116302 3.230853"/>
+    <point index="107" value=" -0.937085 63.104580 3.206456"/>
+    <point index="108" value=" -0.932719 63.098415 3.180376"/>
+    <point index="109" value=" -0.927051 63.093857 3.154699"/>
+    <point index="110" value=" -1.470390 63.213333 3.140600"/>
+    <point index="111" value=" -1.462651 63.193581 3.120284"/>
+    <point index="112" value=" -1.455553 63.175858 3.099156"/>
+    <point index="113" value=" -1.449743 63.162201 3.076406"/>
+    <point index="114" value=" -1.445304 63.151199 3.054554"/>
+  </shape>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="hips_bind" shape="lash_upper_r_geoShape" layer="0" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="spine_0_bind" shape="lash_upper_r_geoShape" layer="1" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="spine_1_bind" shape="lash_upper_r_geoShape" layer="2" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="spine_2_bind" shape="lash_upper_r_geoShape" layer="3" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="spine_3_bind" shape="lash_upper_r_geoShape" layer="4" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="spine_4_bind" shape="lash_upper_r_geoShape" layer="5" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="spine_5_bind" shape="lash_upper_r_geoShape" layer="6" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="chest_bind" shape="lash_upper_r_geoShape" layer="7" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="clavicle_l_bind" shape="lash_upper_r_geoShape" layer="8" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="shoulder_l_bind" shape="lash_upper_r_geoShape" layer="9" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="elbow_l_bind" shape="lash_upper_r_geoShape" layer="10" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="wrist_l_bind" shape="lash_upper_r_geoShape" layer="11" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_001_l_bind" shape="lash_upper_r_geoShape" layer="12" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_002_l_bind" shape="lash_upper_r_geoShape" layer="13" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_003_l_bind" shape="lash_upper_r_geoShape" layer="14" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_004_l_bind" shape="lash_upper_r_geoShape" layer="15" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_005_l_bind" shape="lash_upper_r_geoShape" layer="16" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_001_l_bind" shape="lash_upper_r_geoShape" layer="17" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_002_l_bind" shape="lash_upper_r_geoShape" layer="18" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_003_l_bind" shape="lash_upper_r_geoShape" layer="19" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_004_l_bind" shape="lash_upper_r_geoShape" layer="20" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_005_l_bind" shape="lash_upper_r_geoShape" layer="21" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_001_l_bind" shape="lash_upper_r_geoShape" layer="22" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_002_l_bind" shape="lash_upper_r_geoShape" layer="23" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_003_l_bind" shape="lash_upper_r_geoShape" layer="24" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_004_l_bind" shape="lash_upper_r_geoShape" layer="25" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_005_l_bind" shape="lash_upper_r_geoShape" layer="26" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinkyCup_l_bind" shape="lash_upper_r_geoShape" layer="27" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_001_l_bind" shape="lash_upper_r_geoShape" layer="28" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_002_l_bind" shape="lash_upper_r_geoShape" layer="29" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_003_l_bind" shape="lash_upper_r_geoShape" layer="30" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_004_l_bind" shape="lash_upper_r_geoShape" layer="31" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_005_l_bind" shape="lash_upper_r_geoShape" layer="32" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumbCup_l_bind" shape="lash_upper_r_geoShape" layer="33" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumb_001_l_bind" shape="lash_upper_r_geoShape" layer="34" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumb_002_l_bind" shape="lash_upper_r_geoShape" layer="35" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumb_003_l_bind" shape="lash_upper_r_geoShape" layer="36" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumb_004_l_bind" shape="lash_upper_r_geoShape" layer="37" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="wristTwist_l_bind" shape="lash_upper_r_geoShape" layer="38" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="shoulderNoTwist_l_bind" shape="lash_upper_r_geoShape" layer="39" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="neck_base_bind" shape="lash_upper_r_geoShape" layer="40" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="neck_0_bind" shape="lash_upper_r_geoShape" layer="41" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="neck_1_bind" shape="lash_upper_r_geoShape" layer="42" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="neck_2_bind" shape="lash_upper_r_geoShape" layer="43" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="neck_3_bind" shape="lash_upper_r_geoShape" layer="44" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="skull_bind" shape="lash_upper_r_geoShape" layer="45" defaultValue="0.000" size="115" max="114">
+    <point index="0" value="0.500"/>
+    <point index="1" value="0.500"/>
+    <point index="2" value="0.500"/>
+    <point index="3" value="0.500"/>
+    <point index="4" value="0.500"/>
+    <point index="5" value="0.500"/>
+    <point index="6" value="0.500"/>
+    <point index="7" value="0.500"/>
+    <point index="8" value="0.500"/>
+    <point index="9" value="0.500"/>
+    <point index="10" value="0.500"/>
+    <point index="11" value="0.500"/>
+    <point index="12" value="0.500"/>
+    <point index="13" value="0.500"/>
+    <point index="14" value="0.500"/>
+    <point index="15" value="0.500"/>
+    <point index="16" value="0.500"/>
+    <point index="17" value="0.500"/>
+    <point index="18" value="0.500"/>
+    <point index="19" value="0.500"/>
+    <point index="20" value="0.500"/>
+    <point index="21" value="0.500"/>
+    <point index="22" value="0.500"/>
+    <point index="23" value="0.500"/>
+    <point index="24" value="0.500"/>
+    <point index="25" value="0.500"/>
+    <point index="26" value="0.500"/>
+    <point index="27" value="0.500"/>
+    <point index="28" value="0.500"/>
+    <point index="29" value="0.500"/>
+    <point index="30" value="0.500"/>
+    <point index="31" value="0.500"/>
+    <point index="32" value="0.500"/>
+    <point index="33" value="0.500"/>
+    <point index="34" value="0.500"/>
+    <point index="35" value="0.500"/>
+    <point index="36" value="0.500"/>
+    <point index="37" value="0.500"/>
+    <point index="38" value="0.500"/>
+    <point index="39" value="0.500"/>
+    <point index="40" value="0.500"/>
+    <point index="41" value="0.500"/>
+    <point index="42" value="0.500"/>
+    <point index="43" value="0.500"/>
+    <point index="44" value="0.500"/>
+    <point index="45" value="0.500"/>
+    <point index="46" value="0.500"/>
+    <point index="47" value="0.500"/>
+    <point index="48" value="0.500"/>
+    <point index="49" value="0.500"/>
+    <point index="50" value="0.500"/>
+    <point index="51" value="0.500"/>
+    <point index="52" value="0.500"/>
+    <point index="53" value="0.500"/>
+    <point index="54" value="0.500"/>
+    <point index="55" value="0.500"/>
+    <point index="56" value="0.500"/>
+    <point index="57" value="0.500"/>
+    <point index="58" value="0.500"/>
+    <point index="59" value="0.500"/>
+    <point index="60" value="0.500"/>
+    <point index="61" value="0.500"/>
+    <point index="62" value="0.500"/>
+    <point index="63" value="0.500"/>
+    <point index="64" value="0.500"/>
+    <point index="65" value="0.500"/>
+    <point index="66" value="0.500"/>
+    <point index="67" value="0.500"/>
+    <point index="68" value="0.500"/>
+    <point index="69" value="0.500"/>
+    <point index="70" value="0.500"/>
+    <point index="71" value="0.500"/>
+    <point index="72" value="0.500"/>
+    <point index="73" value="0.500"/>
+    <point index="74" value="0.500"/>
+    <point index="75" value="0.500"/>
+    <point index="76" value="0.500"/>
+    <point index="77" value="0.500"/>
+    <point index="78" value="0.500"/>
+    <point index="79" value="0.500"/>
+    <point index="80" value="0.500"/>
+    <point index="81" value="0.500"/>
+    <point index="82" value="0.500"/>
+    <point index="83" value="0.500"/>
+    <point index="84" value="0.500"/>
+    <point index="85" value="0.500"/>
+    <point index="86" value="0.500"/>
+    <point index="87" value="0.500"/>
+    <point index="88" value="0.500"/>
+    <point index="89" value="0.500"/>
+    <point index="90" value="0.500"/>
+    <point index="91" value="0.500"/>
+    <point index="92" value="0.500"/>
+    <point index="93" value="0.500"/>
+    <point index="94" value="0.500"/>
+    <point index="95" value="0.500"/>
+    <point index="96" value="0.500"/>
+    <point index="97" value="0.500"/>
+    <point index="98" value="0.500"/>
+    <point index="99" value="0.500"/>
+    <point index="100" value="0.500"/>
+    <point index="101" value="0.500"/>
+    <point index="102" value="0.500"/>
+    <point index="103" value="0.500"/>
+    <point index="104" value="0.500"/>
+    <point index="105" value="0.500"/>
+    <point index="106" value="0.500"/>
+    <point index="107" value="0.500"/>
+    <point index="108" value="0.500"/>
+    <point index="109" value="0.500"/>
+    <point index="110" value="0.500"/>
+    <point index="111" value="0.500"/>
+    <point index="112" value="0.500"/>
+    <point index="113" value="0.500"/>
+    <point index="114" value="0.500"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="face_upper_bind" shape="lash_upper_r_geoShape" layer="46" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="head_tip_bind" shape="lash_upper_r_geoShape" layer="47" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_inner_l_bind" shape="lash_upper_r_geoShape" layer="48" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_main_l_bind" shape="lash_upper_r_geoShape" layer="49" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_peak_l_bind" shape="lash_upper_r_geoShape" layer="50" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_inner_r_bind" shape="lash_upper_r_geoShape" layer="51" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_main_r_bind" shape="lash_upper_r_geoShape" layer="52" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_peak_r_bind" shape="lash_upper_r_geoShape" layer="53" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="eyeSocket_r_bind" shape="lash_upper_r_geoShape" layer="54" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="eye_r_bind" shape="lash_upper_r_geoShape" layer="55" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_000_base" shape="lash_upper_r_geoShape" layer="56" defaultValue="0.000" size="10" max="99">
+    <point index="68" value="0.250"/>
+    <point index="69" value="0.250"/>
+    <point index="70" value="0.250"/>
+    <point index="71" value="0.250"/>
+    <point index="94" value="0.250"/>
+    <point index="95" value="0.250"/>
+    <point index="96" value="0.250"/>
+    <point index="97" value="0.250"/>
+    <point index="98" value="0.250"/>
+    <point index="99" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_000_bind" shape="lash_upper_r_geoShape" layer="57" defaultValue="0.000" size="10" max="99">
+    <point index="68" value="0.250"/>
+    <point index="69" value="0.250"/>
+    <point index="70" value="0.250"/>
+    <point index="71" value="0.250"/>
+    <point index="94" value="0.250"/>
+    <point index="95" value="0.250"/>
+    <point index="96" value="0.250"/>
+    <point index="97" value="0.250"/>
+    <point index="98" value="0.250"/>
+    <point index="99" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_001_base" shape="lash_upper_r_geoShape" layer="58" defaultValue="0.000" size="20" max="93">
+    <point index="8" value="0.250"/>
+    <point index="9" value="0.250"/>
+    <point index="10" value="0.250"/>
+    <point index="11" value="0.250"/>
+    <point index="22" value="0.250"/>
+    <point index="23" value="0.250"/>
+    <point index="33" value="0.250"/>
+    <point index="35" value="0.250"/>
+    <point index="36" value="0.250"/>
+    <point index="46" value="0.250"/>
+    <point index="47" value="0.250"/>
+    <point index="48" value="0.250"/>
+    <point index="64" value="0.250"/>
+    <point index="65" value="0.250"/>
+    <point index="66" value="0.250"/>
+    <point index="67" value="0.250"/>
+    <point index="90" value="0.250"/>
+    <point index="91" value="0.250"/>
+    <point index="92" value="0.250"/>
+    <point index="93" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_001_bind" shape="lash_upper_r_geoShape" layer="59" defaultValue="0.000" size="20" max="93">
+    <point index="8" value="0.250"/>
+    <point index="9" value="0.250"/>
+    <point index="10" value="0.250"/>
+    <point index="11" value="0.250"/>
+    <point index="22" value="0.250"/>
+    <point index="23" value="0.250"/>
+    <point index="33" value="0.250"/>
+    <point index="35" value="0.250"/>
+    <point index="36" value="0.250"/>
+    <point index="46" value="0.250"/>
+    <point index="47" value="0.250"/>
+    <point index="48" value="0.250"/>
+    <point index="64" value="0.250"/>
+    <point index="65" value="0.250"/>
+    <point index="66" value="0.250"/>
+    <point index="67" value="0.250"/>
+    <point index="90" value="0.250"/>
+    <point index="91" value="0.250"/>
+    <point index="92" value="0.250"/>
+    <point index="93" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_002_base" shape="lash_upper_r_geoShape" layer="60" defaultValue="0.000" size="25" max="109">
+    <point index="4" value="0.250"/>
+    <point index="5" value="0.250"/>
+    <point index="6" value="0.250"/>
+    <point index="7" value="0.250"/>
+    <point index="24" value="0.250"/>
+    <point index="25" value="0.250"/>
+    <point index="43" value="0.250"/>
+    <point index="44" value="0.250"/>
+    <point index="45" value="0.250"/>
+    <point index="61" value="0.250"/>
+    <point index="62" value="0.250"/>
+    <point index="63" value="0.250"/>
+    <point index="87" value="0.250"/>
+    <point index="88" value="0.250"/>
+    <point index="89" value="0.250"/>
+    <point index="100" value="0.250"/>
+    <point index="101" value="0.250"/>
+    <point index="102" value="0.250"/>
+    <point index="103" value="0.250"/>
+    <point index="104" value="0.250"/>
+    <point index="105" value="0.250"/>
+    <point index="106" value="0.250"/>
+    <point index="107" value="0.250"/>
+    <point index="108" value="0.250"/>
+    <point index="109" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_002_bind" shape="lash_upper_r_geoShape" layer="61" defaultValue="0.000" size="25" max="109">
+    <point index="4" value="0.250"/>
+    <point index="5" value="0.250"/>
+    <point index="6" value="0.250"/>
+    <point index="7" value="0.250"/>
+    <point index="24" value="0.250"/>
+    <point index="25" value="0.250"/>
+    <point index="43" value="0.250"/>
+    <point index="44" value="0.250"/>
+    <point index="45" value="0.250"/>
+    <point index="61" value="0.250"/>
+    <point index="62" value="0.250"/>
+    <point index="63" value="0.250"/>
+    <point index="87" value="0.250"/>
+    <point index="88" value="0.250"/>
+    <point index="89" value="0.250"/>
+    <point index="100" value="0.250"/>
+    <point index="101" value="0.250"/>
+    <point index="102" value="0.250"/>
+    <point index="103" value="0.250"/>
+    <point index="104" value="0.250"/>
+    <point index="105" value="0.250"/>
+    <point index="106" value="0.250"/>
+    <point index="107" value="0.250"/>
+    <point index="108" value="0.250"/>
+    <point index="109" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_003_base" shape="lash_upper_r_geoShape" layer="62" defaultValue="0.000" size="20" max="114">
+    <point index="0" value="0.250"/>
+    <point index="1" value="0.250"/>
+    <point index="2" value="0.250"/>
+    <point index="3" value="0.250"/>
+    <point index="20" value="0.250"/>
+    <point index="21" value="0.250"/>
+    <point index="26" value="0.250"/>
+    <point index="27" value="0.250"/>
+    <point index="28" value="0.250"/>
+    <point index="58" value="0.250"/>
+    <point index="59" value="0.250"/>
+    <point index="60" value="0.250"/>
+    <point index="84" value="0.250"/>
+    <point index="85" value="0.250"/>
+    <point index="86" value="0.250"/>
+    <point index="110" value="0.250"/>
+    <point index="111" value="0.250"/>
+    <point index="112" value="0.250"/>
+    <point index="113" value="0.250"/>
+    <point index="114" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_003_bind" shape="lash_upper_r_geoShape" layer="63" defaultValue="0.000" size="20" max="114">
+    <point index="0" value="0.250"/>
+    <point index="1" value="0.250"/>
+    <point index="2" value="0.250"/>
+    <point index="3" value="0.250"/>
+    <point index="20" value="0.250"/>
+    <point index="21" value="0.250"/>
+    <point index="26" value="0.250"/>
+    <point index="27" value="0.250"/>
+    <point index="28" value="0.250"/>
+    <point index="58" value="0.250"/>
+    <point index="59" value="0.250"/>
+    <point index="60" value="0.250"/>
+    <point index="84" value="0.250"/>
+    <point index="85" value="0.250"/>
+    <point index="86" value="0.250"/>
+    <point index="110" value="0.250"/>
+    <point index="111" value="0.250"/>
+    <point index="112" value="0.250"/>
+    <point index="113" value="0.250"/>
+    <point index="114" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_004_base" shape="lash_upper_r_geoShape" layer="64" defaultValue="0.000" size="15" max="83">
+    <point index="16" value="0.250"/>
+    <point index="17" value="0.250"/>
+    <point index="18" value="0.250"/>
+    <point index="19" value="0.250"/>
+    <point index="29" value="0.250"/>
+    <point index="30" value="0.250"/>
+    <point index="37" value="0.250"/>
+    <point index="38" value="0.250"/>
+    <point index="39" value="0.250"/>
+    <point index="55" value="0.250"/>
+    <point index="56" value="0.250"/>
+    <point index="57" value="0.250"/>
+    <point index="81" value="0.250"/>
+    <point index="82" value="0.250"/>
+    <point index="83" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_004_bind" shape="lash_upper_r_geoShape" layer="65" defaultValue="0.000" size="15" max="83">
+    <point index="16" value="0.250"/>
+    <point index="17" value="0.250"/>
+    <point index="18" value="0.250"/>
+    <point index="19" value="0.250"/>
+    <point index="29" value="0.250"/>
+    <point index="30" value="0.250"/>
+    <point index="37" value="0.250"/>
+    <point index="38" value="0.250"/>
+    <point index="39" value="0.250"/>
+    <point index="55" value="0.250"/>
+    <point index="56" value="0.250"/>
+    <point index="57" value="0.250"/>
+    <point index="81" value="0.250"/>
+    <point index="82" value="0.250"/>
+    <point index="83" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_005_base" shape="lash_upper_r_geoShape" layer="66" defaultValue="0.000" size="10" max="80">
+    <point index="14" value="0.250"/>
+    <point index="15" value="0.250"/>
+    <point index="31" value="0.250"/>
+    <point index="40" value="0.250"/>
+    <point index="41" value="0.250"/>
+    <point index="42" value="0.250"/>
+    <point index="53" value="0.250"/>
+    <point index="54" value="0.250"/>
+    <point index="79" value="0.250"/>
+    <point index="80" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_005_bind" shape="lash_upper_r_geoShape" layer="67" defaultValue="0.000" size="10" max="80">
+    <point index="14" value="0.250"/>
+    <point index="15" value="0.250"/>
+    <point index="31" value="0.250"/>
+    <point index="40" value="0.250"/>
+    <point index="41" value="0.250"/>
+    <point index="42" value="0.250"/>
+    <point index="53" value="0.250"/>
+    <point index="54" value="0.250"/>
+    <point index="79" value="0.250"/>
+    <point index="80" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_006_base" shape="lash_upper_r_geoShape" layer="68" defaultValue="0.000" size="15" max="78">
+    <point index="12" value="0.250"/>
+    <point index="13" value="0.250"/>
+    <point index="32" value="0.250"/>
+    <point index="34" value="0.250"/>
+    <point index="49" value="0.250"/>
+    <point index="50" value="0.250"/>
+    <point index="51" value="0.250"/>
+    <point index="52" value="0.250"/>
+    <point index="72" value="0.250"/>
+    <point index="73" value="0.250"/>
+    <point index="74" value="0.250"/>
+    <point index="75" value="0.250"/>
+    <point index="76" value="0.250"/>
+    <point index="77" value="0.250"/>
+    <point index="78" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_r_curve_006_bind" shape="lash_upper_r_geoShape" layer="69" defaultValue="0.000" size="15" max="78">
+    <point index="12" value="0.250"/>
+    <point index="13" value="0.250"/>
+    <point index="32" value="0.250"/>
+    <point index="34" value="0.250"/>
+    <point index="49" value="0.250"/>
+    <point index="50" value="0.250"/>
+    <point index="51" value="0.250"/>
+    <point index="52" value="0.250"/>
+    <point index="72" value="0.250"/>
+    <point index="73" value="0.250"/>
+    <point index="74" value="0.250"/>
+    <point index="75" value="0.250"/>
+    <point index="76" value="0.250"/>
+    <point index="77" value="0.250"/>
+    <point index="78" value="0.250"/>
+  </weights>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_000_base" shape="lash_upper_r_geoShape" layer="70" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_000_bind" shape="lash_upper_r_geoShape" layer="71" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_001_base" shape="lash_upper_r_geoShape" layer="72" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_001_bind" shape="lash_upper_r_geoShape" layer="73" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_002_base" shape="lash_upper_r_geoShape" layer="74" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_002_bind" shape="lash_upper_r_geoShape" layer="75" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_003_base" shape="lash_upper_r_geoShape" layer="76" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_003_bind" shape="lash_upper_r_geoShape" layer="77" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_004_base" shape="lash_upper_r_geoShape" layer="78" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_004_bind" shape="lash_upper_r_geoShape" layer="79" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_005_base" shape="lash_upper_r_geoShape" layer="80" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_005_bind" shape="lash_upper_r_geoShape" layer="81" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_006_base" shape="lash_upper_r_geoShape" layer="82" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_r_curve_006_bind" shape="lash_upper_r_geoShape" layer="83" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="eyeSocket_l_bind" shape="lash_upper_r_geoShape" layer="84" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="eye_l_bind" shape="lash_upper_r_geoShape" layer="85" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_000_base" shape="lash_upper_r_geoShape" layer="86" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_000_bind" shape="lash_upper_r_geoShape" layer="87" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_001_base" shape="lash_upper_r_geoShape" layer="88" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_001_bind" shape="lash_upper_r_geoShape" layer="89" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_002_base" shape="lash_upper_r_geoShape" layer="90" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_002_bind" shape="lash_upper_r_geoShape" layer="91" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_003_base" shape="lash_upper_r_geoShape" layer="92" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_003_bind" shape="lash_upper_r_geoShape" layer="93" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_004_base" shape="lash_upper_r_geoShape" layer="94" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_004_bind" shape="lash_upper_r_geoShape" layer="95" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_005_base" shape="lash_upper_r_geoShape" layer="96" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_005_bind" shape="lash_upper_r_geoShape" layer="97" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_006_base" shape="lash_upper_r_geoShape" layer="98" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidUpper_neutral_l_curve_006_bind" shape="lash_upper_r_geoShape" layer="99" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_000_base" shape="lash_upper_r_geoShape" layer="100" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_000_bind" shape="lash_upper_r_geoShape" layer="101" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_001_base" shape="lash_upper_r_geoShape" layer="102" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_001_bind" shape="lash_upper_r_geoShape" layer="103" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_002_base" shape="lash_upper_r_geoShape" layer="104" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_002_bind" shape="lash_upper_r_geoShape" layer="105" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_003_base" shape="lash_upper_r_geoShape" layer="106" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_003_bind" shape="lash_upper_r_geoShape" layer="107" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_004_base" shape="lash_upper_r_geoShape" layer="108" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_004_bind" shape="lash_upper_r_geoShape" layer="109" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_005_base" shape="lash_upper_r_geoShape" layer="110" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_005_bind" shape="lash_upper_r_geoShape" layer="111" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_006_base" shape="lash_upper_r_geoShape" layer="112" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="lidLower_neutral_l_curve_006_bind" shape="lash_upper_r_geoShape" layer="113" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="face_lower_bind" shape="lash_upper_r_geoShape" layer="114" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="face_mid_bind" shape="lash_upper_r_geoShape" layer="115" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="teeth_upper_bind" shape="lash_upper_r_geoShape" layer="116" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="nose_bridge_bind" shape="lash_upper_r_geoShape" layer="117" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="nose_bind" shape="lash_upper_r_geoShape" layer="118" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="jaw_bind" shape="lash_upper_r_geoShape" layer="119" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="jaw_end" shape="lash_upper_r_geoShape" layer="120" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="teeth_lower_bind" shape="lash_upper_r_geoShape" layer="121" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="clavicle_r_bind" shape="lash_upper_r_geoShape" layer="122" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="shoulder_r_bind" shape="lash_upper_r_geoShape" layer="123" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="elbow_r_bind" shape="lash_upper_r_geoShape" layer="124" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="wrist_r_bind" shape="lash_upper_r_geoShape" layer="125" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_001_r_bind" shape="lash_upper_r_geoShape" layer="126" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_002_r_bind" shape="lash_upper_r_geoShape" layer="127" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_003_r_bind" shape="lash_upper_r_geoShape" layer="128" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_004_r_bind" shape="lash_upper_r_geoShape" layer="129" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ring_005_r_bind" shape="lash_upper_r_geoShape" layer="130" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_001_r_bind" shape="lash_upper_r_geoShape" layer="131" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_002_r_bind" shape="lash_upper_r_geoShape" layer="132" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_003_r_bind" shape="lash_upper_r_geoShape" layer="133" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_004_r_bind" shape="lash_upper_r_geoShape" layer="134" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="middle_005_r_bind" shape="lash_upper_r_geoShape" layer="135" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_001_r_bind" shape="lash_upper_r_geoShape" layer="136" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_002_r_bind" shape="lash_upper_r_geoShape" layer="137" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_003_r_bind" shape="lash_upper_r_geoShape" layer="138" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_004_r_bind" shape="lash_upper_r_geoShape" layer="139" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="index_005_r_bind" shape="lash_upper_r_geoShape" layer="140" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinkyCup_r_bind" shape="lash_upper_r_geoShape" layer="141" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_001_r_bind" shape="lash_upper_r_geoShape" layer="142" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_002_r_bind" shape="lash_upper_r_geoShape" layer="143" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_003_r_bind" shape="lash_upper_r_geoShape" layer="144" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_004_r_bind" shape="lash_upper_r_geoShape" layer="145" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pinky_005_r_bind" shape="lash_upper_r_geoShape" layer="146" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumbCup_r_bind" shape="lash_upper_r_geoShape" layer="147" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumb_001_r_bind" shape="lash_upper_r_geoShape" layer="148" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumb_002_r_bind" shape="lash_upper_r_geoShape" layer="149" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumb_003_r_bind" shape="lash_upper_r_geoShape" layer="150" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thumb_004_r_bind" shape="lash_upper_r_geoShape" layer="151" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="wristTwist_r_bind" shape="lash_upper_r_geoShape" layer="152" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="shoulderNoTwist_r_bind" shape="lash_upper_r_geoShape" layer="153" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pelvis_l_bind" shape="lash_upper_r_geoShape" layer="154" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thigh_l_bind" shape="lash_upper_r_geoShape" layer="155" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="knee_l_bind" shape="lash_upper_r_geoShape" layer="156" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ankle_l_bind" shape="lash_upper_r_geoShape" layer="157" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ball_l_bind" shape="lash_upper_r_geoShape" layer="158" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="toe_l_bind" shape="lash_upper_r_geoShape" layer="159" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ankleTwist_l_bind" shape="lash_upper_r_geoShape" layer="160" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thighNoTwist_l_bind" shape="lash_upper_r_geoShape" layer="161" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="pelvis_r_bind" shape="lash_upper_r_geoShape" layer="162" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thigh_r_bind" shape="lash_upper_r_geoShape" layer="163" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="knee_r_bind" shape="lash_upper_r_geoShape" layer="164" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ankle_r_bind" shape="lash_upper_r_geoShape" layer="165" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ball_r_bind" shape="lash_upper_r_geoShape" layer="166" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="toe_r_bind" shape="lash_upper_r_geoShape" layer="167" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="ankleTwist_r_bind" shape="lash_upper_r_geoShape" layer="168" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="thighNoTwist_r_bind" shape="lash_upper_r_geoShape" layer="169" defaultValue="0.000" size="0" max="0"/>
+</deformerWeight>
