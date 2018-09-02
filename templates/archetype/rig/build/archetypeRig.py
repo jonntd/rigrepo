@@ -80,7 +80,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
             dataType='curve')
         skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('skinCluster', 
             dirPath=self.resolveDirPath('skin_wts', self.variant))
-        skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode('skinCluster Selected', 
+        skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode('skinClusterSelected', 
             dirPath=self.resolveDirPath('skin_wts', self.variant))
 
         self.addNode(workflow)
