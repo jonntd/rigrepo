@@ -215,6 +215,10 @@ def applyWtsDir(directory):
             geometry = fileSplit[0]
             deformer = fileSplit[1].split(".")[0]
             deformerType = deformer.split("_")[-1]
+            # Continue if the geo doesn't exist
+            if not mc.objExists(geometry):
+                print('Loading {}: Geometry [ {} ] does not exist'.format(deformer, geometry))
+                continue
             # if the deformer doesn't exist, then we will create it.
             if not mc.objExists(deformer):
                 tree = et.parse(filepath)
@@ -222,6 +226,11 @@ def applyWtsDir(directory):
                 # create skinCluster deformer if it doesn't exist in the current session.
                 if deformerType == "skinCluster":
                     jointList = [wts.get('source') for wts in root.findall('weights')]
+                    jointListExists = mc.ls(jointList)
+                    jointListMissing = list(set(jointListExists) - set(jointList))
+                    if jointListMissing:
+                        print('Loading {}: Missing joints [ {} ]'.format(deformer, jointListMissinga))
+                        continue
                     mc.select(jointList + [geometry])
                     mc.skinCluster(name=deformer)
             

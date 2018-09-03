@@ -74,15 +74,15 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         workflow.disable()
         exporters = pubs.pNode.PNode('exporters')
         jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions', 
-            dataFile= self.resolveDataFilePath('joint_positions.data', self.variant), 
+            dataFile= self.buildExportPath('joint_positions.data', self.variant), 
             dataType='joint')
         curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions', 
-            dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), 
+            dataFile=self.buildExportPath('curve_positions.data', self.variant), 
             dataType='curve')
         skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('skinCluster', 
-            dirPath=self.resolveDirPath('skin_wts', self.variant))
+            dirPath=self.buildExportPath('skin_wts', self.variant))
         skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode('skinClusterSelected', 
-            dirPath=self.resolveDirPath('skin_wts', self.variant))
+            dirPath=self.buildExportPath('skin_wts', self.variant))
 
         self.addNode(workflow)
         workflow.addChild(exporters)
@@ -169,4 +169,21 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
             except:
                 pass
 
+        return dirpath
+
+    @classmethod
+    def buildExportPath(cls, dirname, variant):
+        '''
+        This will search for a given directory using the variant you pass. 
+
+        .. example::
+            ArchetypeBaseRig.buildExportPath('skind_wts', 'base')
+
+        :param dirname: Name of the directory you're looking for.
+        :type dirname: str
+
+        :param variant: Name of the the variant you wish to search for.
+        type variant: str
+        '''
+        dirpath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, dirname)
         return dirpath
