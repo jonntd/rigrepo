@@ -2,7 +2,6 @@
 //Name: curves.ma
 //Last modified: Sun, Sep 02, 2018 02:05:13 PM
 //Codeset: 1252
-requires maya "2018ff08";
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
