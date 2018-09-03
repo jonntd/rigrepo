@@ -1,5 +1,6 @@
 '''
 '''
+import traceback
 import pubs.pGraph
 import pubs.pNode
 import rigrepo.nodes.newSceneNode
@@ -11,9 +12,9 @@ from rigrepo.libs.fileIO import joinPath
 import os
 import inspect
 
-class ArchetypeRig(pubs.pGraph.PGraph):
+class ArchetypeBaseRig(pubs.pGraph.PGraph):
     def __init__(self,name, variant='base'):
-        super(ArchetypeRig, self).__init__(name)
+        super(ArchetypeBaseRig, self).__init__(name)
 
         self.element = self._name
         self.variant = variant
@@ -28,7 +29,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         loadNode = pubs.pNode.PNode('load')
 
         modelFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("model", 
-            filePath=self.resolveModelFilePath('{}_{}_model.ma'.format(self.element, self.variant)))
+            filePath=self.resolveModelFilePath(self.variant))
         skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", 
                 filePath=self.resolveDataFilePath('skeleton.ma', self.variant))
         jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions', 
@@ -95,6 +96,7 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         if not os.path.isfile(filepath):
             filepath = ""
             try:
+                variant = cls.__bases__[0].__module__.split('.')[-1].split('_')[1]
                 return cls.__bases__[0].resolveDataFilePath(filename, variant)
             except:
                 pass
@@ -102,17 +104,22 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         return filepath
 
     @classmethod
-    def resolveModelFilePath(cls, filename):
+    def resolveModelFilePath(cls, variant):
         '''
         '''
-        modelPath = joinPath(os.path.dirname(os.path.dirname(os.path.dirname(inspect.getfile(cls)))), 'model')
-        filepath = joinPath(modelPath, filename)
+        elementDir = os.path.dirname(os.path.dirname(os.path.dirname(inspect.getfile(cls))))
+        element = os.path.basename(elementDir)
+        modelPath = joinPath(elementDir, 'model')
+        filepath = joinPath(modelPath, '{}_{}_model.ma'.format(element, variant))
+        print filepath
         if not os.path.isfile(filepath):
             filepath = ""
             try:
-                return cls.__bases__[0].resolveDataFilePath(filename)
+                variant = cls.__bases__[0].__module__.split('.')[-1].split('_')[1]
+                print variant
+                return cls.__bases__[0].resolveModelFilePath(variant)
             except:
-                pass
+                traceback.print_exc()
 
         return filepath
 
@@ -122,9 +129,11 @@ class ArchetypeRig(pubs.pGraph.PGraph):
         :pararm: cls: Class
         '''
         dirpath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, dirname)
+        print dirpath
         if not os.path.isdir(dirpath):
             dirpath = ""
             try:
+                variant = cls.__bases__[0].__module__.split('.')[-1].split('_')[1]
                 return cls.__bases__[0].resolveDirPath(dirname, variant)
             except:
                 pass

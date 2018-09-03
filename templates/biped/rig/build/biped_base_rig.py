@@ -1,24 +1,28 @@
 '''
 '''
 import maya.cmds as mc
-import rigrepo.templates.archetype.rig.build.archetypeRig as archetypeRig
+import rigrepo.templates.archetype.rig.build.archetype_base_rig as archetype_base_rig
 import pubs.pNode
 from rigrepo.libs.fileIO import joinPath 
 import rigrepo.nodes.loadFileNode
 import rigrepo.nodes.newSceneNode
 import rigrepo.nodes.importDataNode
 import rigrepo.nodes.exportDataNode
+# body parts import
 import rigrepo.parts.arm
 import rigrepo.parts.leg
 import rigrepo.parts.spine 
-import rigrepo.parts.blink
 import rigrepo.parts.neck
 import rigrepo.parts.hand
 import rigrepo.parts.foot
+
+# face parts import
+import rigrepo.parts.mouth
+
 import rigrepo.nodes.controlDefaultsNode as controlDefaultsNode
 import os
 
-class BipedRig(archetypeRig.ArchetypeRig):
+class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
     def __init__(self,name, variant='base'):
         '''
         This is the constructor for the biped template. Here is where you will put nodes onto 
@@ -31,7 +35,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
         :type variant: str
         '''
         
-        super(BipedRig, self).__init__(name, variant)
+        super(BipedBaseRig, self).__init__(name, variant)
 
         animRigNode = self.getNodeByName("animRig")
 
@@ -39,8 +43,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
 
         # Curve
         curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves", 
-                            filePath=self.resolveDataFilePath('blink_curves.ma', self.variant))
-
+                            filePath=self.resolveDataFilePath('curves.ma', self.variant))
         curveDataNode = rigrepo.nodes.importDataNode.ImportDataNode('curvePosition',
                             dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), 
                             dataType='curve', 
@@ -156,6 +159,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
         l_blink = rigrepo.parts.blink.Blink("l_blink")
         r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
         r_blink.getAttributeByName("side").setValue("r")
+        mouth = rigrepo.parts.mouth.Mouth("mouth", curve='lip_main_curve')
 
         controlsDefaults = controlDefaultsNode.ControlDefaultsNode("control_defaults",
                                 armControls=["*shoulder","*elbow","*wrist"], 
@@ -166,7 +170,7 @@ class BipedRig(archetypeRig.ArchetypeRig):
         
         # add nodes ass children of body
         bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
-        faceBuildNode.addChildren([l_blink, r_blink])
+        faceBuildNode.addChildren([l_blink, r_blink, mouth])
 
         # get the load node which is derived from archetype.
         loadNode = self.getNodeByName('load')

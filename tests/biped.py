@@ -1,4 +1,4 @@
-def nodes():
+def nodes(variant='base'):
     # import pubs
     import pubs.pObject
     reload(pubs.pObject)
@@ -93,16 +93,20 @@ def nodes():
     reload(rigrepo.parts.neck)
     import rigrepo.parts.blink
     reload(rigrepo.parts.blink)
+    import rigrepo.parts.mouth
+    reload(rigrepo.parts.mouth)
     import rigrepo.parts.hand
     reload(rigrepo.parts.hand)
     import rigrepo.parts.foot
     reload(rigrepo.parts.foot)
     
     #reload templates
-    import rigrepo.templates.archetype.rig.build.archetypeRig
-    reload(rigrepo.templates.archetype.rig.build.archetypeRig)
-    import rigrepo.templates.biped.rig.build.bipedRig
-    reload(rigrepo.templates.biped.rig.build.bipedRig)
+    import rigrepo.templates.archetype.rig.build.archetype_base_rig
+    reload(rigrepo.templates.archetype.rig.build.archetype_base_rig)
+    import rigrepo.templates.biped.rig.build.biped_base_rig
+    reload(rigrepo.templates.biped.rig.build.biped_base_rig)
+    import rigrepo.templates.biped.rig.build.biped_female_rig
+    reload(rigrepo.templates.biped.rig.build.biped_female_rig)
     
     #regular imports
     import os
@@ -111,6 +115,9 @@ def nodes():
     
     # the right arm is all messed up and we have to fix it. Also, you can't run nodes more than once
     # in the same scene at th moment. We will have to fix this.
-    biped_graph = rigrepo.templates.biped.rig.build.bipedRig.BipedRig('biped')
+    if variant == 'base':
+        biped_graph = rigrepo.templates.biped.rig.build.biped_base_rig.BipedBaseRig(name='Biped_base')
+    elif variant == 'female':
+        biped_graph = rigrepo.templates.biped.rig.build.biped_female_rig.BipedFemaleRig(name='Biped_female')
     pubs.ui.mainWindow.launch(graph=biped_graph)
     
