@@ -91,6 +91,17 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
     @classmethod
     def resolveDataFilePath(cls, filename, variant):
         '''
+        This will search for a given directory using the variant you pass. It will recursively
+        go through all inherited classes until it finds a directory.
+
+        .. example::
+            ArchetypeBaseRig.resolveDataFilePath('control_positions.data', 'base')
+
+        :param dirname: Name of the directory you're looking for.
+        :type dirname: str
+
+        :param variant: Name of the the variant you wish to search for.
+        type variant: str
         '''
         filepath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, filename)
         if not os.path.isfile(filepath):
@@ -106,12 +117,23 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
     @classmethod
     def resolveModelFilePath(cls, variant):
         '''
+        This recursively searches for a model filepath given a proper folder structure and filename
+
+        .. note:: 
+            file names should be save in the model directory as follows: 
+                "elementName_variant_model.ma"
+
+        . example::
+            ArchetypeBaseRig.resolveModelFilePath('base')
+
+        :param variant: Name of the the variant you wish to search for.
+        type variant: str
         '''
         elementDir = os.path.dirname(os.path.dirname(os.path.dirname(inspect.getfile(cls))))
         element = os.path.basename(elementDir)
         modelPath = joinPath(elementDir, 'model')
         filepath = joinPath(modelPath, '{}_{}_model.ma'.format(element, variant))
-        print filepath
+
         if not os.path.isfile(filepath):
             filepath = ""
             try:
@@ -126,10 +148,19 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
     @classmethod
     def resolveDirPath(cls, dirname, variant):
         '''
-        :pararm: cls: Class
+        This will search for a given directory using the variant you pass. It will recursively
+        go through all inherited classes until it finds a directory.
+
+        .. example::
+            ArchetypeBaseRig.resolveDirPath('skind_wts', 'base')
+
+        :param dirname: Name of the directory you're looking for.
+        :type dirname: str
+
+        :param variant: Name of the the variant you wish to search for.
+        type variant: str
         '''
         dirpath = joinPath(os.path.dirname(inspect.getfile(cls)), variant, dirname)
-        print dirpath
         if not os.path.isdir(dirpath):
             dirpath = ""
             try:
