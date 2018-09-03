@@ -37,7 +37,7 @@ class AbstractData(object):
         '''
         return self._data
 
-    def write(self, filepath):
+    def write(self, filepath, createDirectory=True):
         '''
         This will write a dictionary of information out to disc in .json format.
 
@@ -55,6 +55,15 @@ class AbstractData(object):
         writeData['data'] = self._data
         # dump data to json format and write it out to disk.
         data = json.dumps(writeData, indent=4)
+
+        # Create directory if needed
+        directory = os.path.dirname(filepath)
+        if createDirectory:
+            if not os.path.isdir(directory):
+                print('making directory', directory)
+                os.makedirs(directory, 755)
+
+        # Write
         f = open(filepath, 'w')
         f.write(data)
         f.close()
