@@ -77,6 +77,8 @@ def nodes(variant='base'):
     reload(rigrepo.nodes.exportWtsDirNode)
     import rigrepo.nodes.exportWtsSelectedNode
     reload(rigrepo.nodes.exportWtsSelectedNode)
+    import rigrepo.nodes.mirrorControlCurveNode
+    reload(rigrepo.nodes.mirrorControlCurveNode)
 
     # reload parts
     import rigrepo.parts.part

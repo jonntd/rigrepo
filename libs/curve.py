@@ -2,6 +2,7 @@ import maya.cmds as mc
 import maya.api.OpenMaya as om
 import rigrepo.libs.transform
 import rigrepo.libs.common
+from rigrepo.libs.common import getMirrorName
 
 def createCurveFromPoints(points, degree=3, name='curve'):
         '''
@@ -96,7 +97,7 @@ def getParamFromPosition(curve, point):
     
     return mFnNurbsCurve.getParamAtPoint(mPoint)
 
-def mirror (curve, search = '_l_', replace = '_r_', axis = "x"):
+def mirror (curve, axis = "x"):
     '''
     Mirror curves
     It won't create a new curve, it will only mirror the if there is an existing curve with the 
@@ -132,8 +133,11 @@ def mirror (curve, search = '_l_', replace = '_r_', axis = "x"):
     # loop through the curve list and mirror across worldspace
     for curve in curveList:
         cvList=getCVs(curve)
+        mirrorCurve = getMirrorName(curve)
+        if not mc.objExists(mirrorCurve):
+            continue
         for cv in cvList:
-            toCV = cv.replace( search, replace )
+            toCV = cv.replace( curve, mirrorCurve )
 
             # check to make sure that both objects exist in the scnene
             if mc.objExists(cv) and mc.objExists(toCV) and cv != toCV:

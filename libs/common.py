@@ -181,3 +181,30 @@ def toList(values):
         values = [values]
 
     return values
+
+def getMirrorName(name):
+    mirror = name
+    
+    if '_l_' in name:
+        mirror = name.replace('_l_', '_r_')
+    elif '_r_' in name:
+        mirror = name.replace('_r_', '_l_')
+    elif name.endswith('_l'):
+        mirror = name[:-2]+'_r'
+    elif name.endswith('_r'):
+        mirror = name[:-2]+'_l'
+        
+    return mirror
+
+def getSideToken(name):
+    token = None
+    if '_l_' in name:
+        token = 'l'
+    elif '_r_' in name:
+        token = 'r'
+    elif name.endswith('_l'):
+        token = 'l'
+    elif name.endswith('_r'):
+        token = 'r'
+        
+    return token

@@ -7,6 +7,7 @@ import rigrepo.nodes.newSceneNode
 import rigrepo.nodes.commandNode 
 import rigrepo.nodes.exportDataNode
 import rigrepo.nodes.exportWtsDirNode
+import rigrepo.nodes.mirrorControlCurveNode
 import maya.cmds as mc
 from rigrepo.libs.fileIO import joinPath 
 import os
@@ -53,7 +54,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         #perspective frame
         frameNode = rigrepo.nodes.commandNode.CommandNode('frameCamera')
-        frameNode.getAttributeByName('command').setValue('import maya.cmds as mc\nmc.viewFit("persp")')
+        frameNode.getAttributeByName('command').setValue('import maya.cmds as mc\nmc.select(cl=1)\nmc.viewFit("persp")')
 
         # apply data
         applyNode = pubs.pNode.PNode("apply")
@@ -79,6 +80,9 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions', 
             dataFile=self.buildExportPath('curve_positions.data', self.variant), 
             dataType='curve')
+        controlCurveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('controlCurvePositions', 
+            dataFile=self.buildExportPath('control_positions.data', self.variant), 
+            dataType='controlCurve')
         skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('skinCluster', 
             dirPath=self.buildExportPath('skin_wts', self.variant))
         skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode('skinClusterSelected', 
@@ -86,7 +90,14 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         self.addNode(workflow)
         workflow.addChild(exporters)
-        exporters.addChildren([jointExportDataNode, curveExportDataNode, skinClusterExportWtsNode, skinClusterExportWtsSelectedNode])
+        exporters.addChildren([jointExportDataNode, curveExportDataNode, controlCurveExportDataNode,
+                               skinClusterExportWtsNode, skinClusterExportWtsSelectedNode])
+
+        mirroring = pubs.pNode.PNode('mirror')
+        workflow.addChild(mirroring)
+        mirrorControlCurveNode = rigrepo.nodes.mirrorControlCurveNode.MirrorControlCurveNode('mirrorControlCurves')
+
+        mirroring.addChildren([mirrorControlCurveNode])
     
     @classmethod
     def resolveDataFilePath(cls, filename, variant):

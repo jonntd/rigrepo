@@ -227,11 +227,13 @@ def applyWtsDir(directory):
                 if deformerType == "skinCluster":
                     jointList = [wts.get('source') for wts in root.findall('weights')]
                     jointListExists = mc.ls(jointList)
-                    jointListMissing = list(set(jointListExists) - set(jointList))
+                    jointListMissing = list(set(jointList) - set(jointListExists))
                     if jointListMissing:
-                        print('Loading {}: Missing joints [ {} ]'.format(deformer, jointListMissinga))
+                        print('Loading {}: Missing joints [ {} ]'.format(deformer, jointListMissing))
+                    if not jointListExists:
+                        print('No joints could be fournd for [ {} ]'.format(deformer))
                         continue
-                    mc.select(jointList + [geometry])
+                    mc.select(jointListExists + [geometry])
                     mc.skinCluster(name=deformer)
             
             # apply the weights
