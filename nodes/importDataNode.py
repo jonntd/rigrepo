@@ -30,4 +30,3 @@ class ImportDataNode(pubs.pNode.PNode):
         if self.getAttributeByName('Apply').getValue():
              nodes = eval(self.getAttributeByName('Nodes').getValue())
              self.dataObj.applyData(nodes)
-

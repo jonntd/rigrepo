@@ -40,7 +40,7 @@ def rotateToOrient(jointList):
 def mirror (joint, search = '_l_', replace = '_r_', axis = "x"):
     '''
     Mirror joint orientation
-    It will not create a new joint. It will only mirror to an existing joint that hase the same
+    It will not create a new joint. It will only mirror to an existing joint that has the same
     name with the search and replace different.
 
     ..example ::

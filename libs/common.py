@@ -183,8 +183,12 @@ def toList(values):
     return values
 
 def getMirrorName(name):
+    '''
+    :param name: String to search for mirror token to replace
+    :return: Name with the side token replaced. If no token is found
+             the unchanged string is returned.
+    '''
     mirror = name
-    
     if '_l_' in name:
         mirror = name.replace('_l_', '_r_')
     elif '_r_' in name:
@@ -193,10 +197,13 @@ def getMirrorName(name):
         mirror = name[:-2]+'_r'
     elif name.endswith('_r'):
         mirror = name[:-2]+'_l'
-        
     return mirror
 
 def getSideToken(name):
+    '''
+    :param name: Find the simplified token from the passed string
+    :return: Side token l, r. None if no token is found.
+    '''
     token = None
     if '_l_' in name:
         token = 'l'
@@ -206,5 +213,4 @@ def getSideToken(name):
         token = 'l'
     elif name.endswith('_r'):
         token = 'r'
-        
     return token

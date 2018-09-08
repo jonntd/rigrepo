@@ -1,29 +1,29 @@
-
+import inspect
 '''
-This is a node for mirroring curves
+This is a node for mirroring joints
 '''
 
 import rigrepo.nodes.commandNode as commandNode
 
-class MirrorControlCurveNode(commandNode.CommandNode):
+class MirrorJointsNode(commandNode.CommandNode):
     '''
     Define cmd to be executed
     '''
     def __init__(self, name, parent=None):
-        super(MirrorControlCurveNode, self).__init__(name, parent)
+        super(MirrorJointsNode, self).__init__(name, parent)
         commandAttribute = self.getAttributeByName('command')
         cmd = '''
 import maya.cmds as mc
-import rigrepo.libs.curve
+import rigrepo.libs.joint
 import traceback
 from rigrepo.libs.common import getSideToken
 
 mc.undoInfo(openChunk=1)
 try:
-    nodes = mc.listRelatives(mc.listRelatives(mc.ls("*.__control__", o=1), s=1, ni=1, type='nurbsCurve'), p=1) or []
+    nodes = mc.ls('*_bind', type='joint')
     for n in nodes:
         if getSideToken(n) is 'l':
-            rigrepo.libs.curve.mirror(n)
+            rigrepo.libs.joint.mirror(n)
 except:
     mc.undoInfo(closeChunk=1)
     traceback.print_exc()

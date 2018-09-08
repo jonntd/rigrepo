@@ -79,6 +79,10 @@ def nodes(variant='base'):
     reload(rigrepo.nodes.exportWtsSelectedNode)
     import rigrepo.nodes.mirrorControlCurveNode
     reload(rigrepo.nodes.mirrorControlCurveNode)
+    import rigrepo.nodes.modelOverrideToggleNode
+    reload(rigrepo.nodes.modelOverrideToggleNode)
+    import rigrepo.nodes.mirrorJointsNode
+    reload(rigrepo.nodes.mirrorJointsNode)
 
     # reload parts
     import rigrepo.parts.part
@@ -113,8 +117,7 @@ def nodes(variant='base'):
     #regular imports
     import os
     import maya.cmds as mc
-    
-    
+
     # the right arm is all messed up and we have to fix it. Also, you can't run nodes more than once
     # in the same scene at th moment. We will have to fix this.
     if variant == 'base':
@@ -122,4 +125,3 @@ def nodes(variant='base'):
     elif variant == 'female':
         biped_graph = rigrepo.templates.biped.rig.build.biped_female_rig.BipedFemaleRig(name='Biped_female')
     pubs.ui.mainWindow.launch(graph=biped_graph)
-    
