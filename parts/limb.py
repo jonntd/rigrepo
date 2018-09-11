@@ -252,6 +252,28 @@ class Limb(part.Part):
         #turn of the visibility of the ikfk system
         mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
 
+        # NO TWIST JOINT
+        side = self.getAttributeByName("side").getValue()
+        nameSplit = self.jointList[0].split('_{}_'.format(side))
+        noTwist = '{}NoTwist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
+        target = self.jointList[1]
+        aimVector = (1, 0, 0)
+        if side is 'r':
+            aimVector = (-1, 0, 0)
+        if mc.objExists(noTwist):
+            mc.aimConstraint(target, noTwist, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
+        else:
+            print('noTwist not found', noTwist)
+        # TWIST JOINT
+        joint = self.jointList[-1]
+        nameSplit = joint.split('_{}_'.format(side))
+        twistJoint = '{}Twist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
+        if mc.objExists(twistJoint):
+            deompose = rigrepo.libs.transform.decomposeRotation(joint)
+            mc.connectAttr(joint + '.decomposeTwist', twistJoint + '.rx', f=1)
+        else:
+            print('No twist joint found', noTwist)
+
     @staticmethod
     def switch(paramNode, value):
         '''
