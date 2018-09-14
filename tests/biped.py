@@ -83,6 +83,10 @@ def nodes(variant='base'):
     reload(rigrepo.nodes.modelOverrideToggleNode)
     import rigrepo.nodes.mirrorJointsNode
     reload(rigrepo.nodes.mirrorJointsNode)
+    import rigrepo.nodes.mirrorSkinClusterNode
+    reload(rigrepo.nodes.mirrorSkinClusterNode)
+    import rigrepo.nodes.goToRigPoseToggleNode
+    reload(rigrepo.nodes.goToRigPoseToggleNode)
 
     # reload parts
     import rigrepo.parts.part

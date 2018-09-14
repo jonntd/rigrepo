@@ -76,7 +76,8 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         self.addNode(workflow)
         # Model toggle
         modelToggleNode = rigrepo.nodes.modelOverrideToggleNode.ModelOverrideToggleNode('modelOverrideToggle')
-        workflow.addChild(modelToggleNode)
+        goToRigPoseToggleNode = rigrepo.nodes.goToRigPoseToggleNode.GoToRigPoseToggleNode('goToRigPoseToggle')
+        workflow.addChildren([modelToggleNode, goToRigPoseToggleNode])
         # Exporters
         exporters = pubs.pNode.PNode('exporters')
         jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions', 
@@ -102,8 +103,9 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         workflow.addChild(mirroring)
         mirrorControlCurveNode = rigrepo.nodes.mirrorControlCurveNode.MirrorControlCurveNode('controlCurves')
         mirrorJointsNode = rigrepo.nodes.mirrorJointsNode.MirrorJointsNode('joints')
+        mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('skinClusterSelected')
 
-        mirroring.addChildren([mirrorControlCurveNode, mirrorJointsNode])
+        mirroring.addChildren([mirrorControlCurveNode, mirrorJointsNode, mirrorSkinClusterNode])
     
     @classmethod
     def resolveDataFilePath(cls, filename, variant):
