@@ -24,8 +24,9 @@ try:
     for n in nodes:
         if getSideToken(n) is 'l':
             rigrepo.libs.joint.mirror(n)
+    # Freeze rotations
+    mc.makeIdentity(nodes, apply=1, t=0, r=1, s=0, pn=1)
 except:
-    mc.undoInfo(closeChunk=1)
     traceback.print_exc()
 mc.undoInfo(closeChunk=1)
 '''
