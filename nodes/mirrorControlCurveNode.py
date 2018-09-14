@@ -21,11 +21,20 @@ from rigrepo.libs.common import getSideToken
 mc.undoInfo(openChunk=1)
 try:
     nodes = mc.listRelatives(mc.listRelatives(mc.ls("*.__control__", o=1), s=1, ni=1, type='nurbsCurve'), p=1) or []
+    controls = rigrepo.libs.control.getControls()
+    if controls:
+        # Store current pose
+        rigrepo.libs.control.setPoseAttr(controls, 5)
+        # Got to bind pose
+        rigrepo.libs.control.toPoseAttr(controls, 0)
+    # Mirror
     for n in nodes:
         if getSideToken(n) is 'l':
             rigrepo.libs.curve.mirror(n)
+    if controls:
+        # Restore pose
+        rigrepo.libs.control.toPoseAttr(controls, 5)
 except:
-    mc.undoInfo(closeChunk=1)
     traceback.print_exc()
 mc.undoInfo(closeChunk=1)
 '''
