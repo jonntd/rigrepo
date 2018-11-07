@@ -3,16 +3,19 @@ This is the base data node
 '''
 import pubs.pNode
 import rigrepo.libs.data.joint_data
+import rigrepo.libs.data.node_data
+import rigrepo.libs.data.curve_data
 import maya.cmds as mc
 import os
 
 class ImportDataNode(pubs.pNode.PNode):
-    def __init__(self, name, dataFile=None, dataType=None, apply=False):
+    def __init__(self, name, dataFile=None, dataType="node", apply=False):
         super(ImportDataNode, self).__init__(name)
         self.addAttribute('filepath', dataFile, attrType='file')
         self.addAttribute('Apply', apply, attrType='bool')
         nodesAttr = self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')
         self._dataType = dataType
+        self.dataObj = rigrepo.libs.data.node_data.NodeData()
         if dataType == 'joint':
             self.dataObj = rigrepo.libs.data.joint_data.JointData()
         elif dataType == 'curve':

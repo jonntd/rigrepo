@@ -34,12 +34,16 @@ class ControlDefaultsNode(commandNode.CommandNode):
         self.addAttribute('armParams', armParams, attrType='list')
 
         # create the command that the user can change later.
-        cmd='''import maya.cmds as mc\nimport rigrepo.libs.control
-for ctrl in mc.ls({armParams}):\n\tmc.setAttr(ctrl+".ikfk",1)
+        cmd='''
+import maya.cmds as mc\nimport rigrepo.libs.control
+for ctrl in mc.ls({armParams}):
+    mc.setAttr(ctrl+".ikfk",1)
 rigrepo.libs.control.setPoseAttr(rigrepo.libs.control.getControls(), 0)
-for ctrl in mc.ls({armControls}):\n\tmc.setAttr(ctrl+".r", 0,0,0)
+for ctrl in mc.ls({armControls}):
+    mc.setAttr(ctrl+".r", 0,0,0)
 rigrepo.libs.control.setPoseAttr(rigrepo.libs.control.getControls(), 1)
-rigrepo.libs.control.toPoseAttr(rigrepo.libs.control.getControls())'''
+rigrepo.libs.control.toPoseAttr(rigrepo.libs.control.getControls())
+'''
 
         # set the command to the attributes value
         commandAttribute.setValue(cmd)

@@ -3,7 +3,7 @@ This is a module for libraries used for transforms.
 '''
 import maya.api.OpenMaya as om
 import maya.cmds as mc
-import rigrepo.libs.common as common
+import rigrepo.libs.common
 
 def getDagPath(node):
     '''
@@ -86,7 +86,7 @@ def getAveragePosition(nodes):
     :type param: list | tuple
     '''
     # make sure to pass a list to the loop
-    node = common.toList(nodes)
+    node = rigrepo.libs.common.toList(nodes)
 
     # set the default poition of the point
     point = om.MPoint(0,0,0)
@@ -205,3 +205,67 @@ def getAimAxis ( transform, allowNegative = True):
         return axis[-1]
 
     return axis
+
+def mirror (trs, search = '_l_', replace = '_r_', axis = "x"):
+    '''
+    Mirror trs
+    It won't create a new trs, it will only mirror the if there is an existing trs with the 
+    replace in it matching the name of search and the currvent trs hase search in it.
+
+    ..example ::
+         mirror( mc.ls(sl=True) )
+
+    :param joint: Point you want to mirror
+    :type joint: str | list
+
+    :param search: Search side token
+    :type search: str
+
+    :param replace: Replace side token
+    :type replace: str
+    '''
+
+    # get given points
+    trsList = rigrepo.libs.common.toList(trs)
+
+    # get selection
+    selection = mc.ls(sl=True)
+
+    posVector = ()
+    if axis.lower() == 'x':
+        posVector = (-1,1,1)
+        rotVector = (0,180,0)
+        scaleVector = (-1,1,1)
+    elif axis.lower() == 'y':
+        posVector = (1,-1,1)
+        rotVector = (180,0,180)
+        scaleVector = (1,1,1)
+    elif axis.lower() == 'z':
+        posVector = (1,1,-1)
+        rotVector = (180,180,0)
+        scaleVector = (1,1,1)
+
+    # loop through the trs list and mirror across worldspace
+    for trs in trsList:
+        toTrs = trs.replace( search, replace )
+
+        # check to make sure that both objects exist in the scnene
+        if mc.objExists(trs) and mc.objExists(toTrs) and trs != toTrs:
+            ortMatrix = om.MMatrix(mc.xform(trs,q=True, ws=True,matrix=True))
+            trsMatrix = om.MTransformationMatrix(ortMatrix)
+            mc.select(toTrs, r=True)
+            selectionList = om.MGlobal.getActiveSelectionList()
+            dagNode = selectionList.getDagPath(0)
+            fnTransform = om.MFnTransform(dagNode)
+            dagVector = fnTransform.translation(om.MSpace.kWorld)
+            dagNodeOrtMatrix = om.MMatrix(mc.xform(dagNode.fullPathName(),q=True, ws=True,matrix=True))
+            fnTransform.setTransformation(om.MTransformationMatrix(trsMatrix.asMatrixInverse()))
+            fnTransform.setTranslation(dagVector, om.MSpace.kWorld)
+            mc.setAttr("{}.scale".format(toTrs), *scaleVector)
+
+    # --------------------------------------------------------------------------
+    # re-select objects
+    if selection:
+        mc.select( selection, r=True )
+    else:
+        mc.select( cl= True)

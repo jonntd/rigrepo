@@ -43,13 +43,20 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         # postBuild
         postBuild = pubs.pNode.PNode("postBuild")
 
+        controlOrientDataNode = rigrepo.nodes.importDataNode.ImportDataNode('controlOrients', 
+                dataFile=self.resolveDataFilePath('control_orients.data', self.variant), 
+                dataType='node', 
+                apply=True)
+
         controlDataNode = rigrepo.nodes.importDataNode.ImportDataNode('controlPositions', 
                 dataFile=self.resolveDataFilePath('control_positions.data', self.variant), 
                 dataType='curve', 
                 apply=True)
 
+        controlOrientDataNode.getAttributeByName("Nodes").setValue("mc.ls('*_ort',type='transform')")
         controlDataNode.getAttributeByName("Nodes").setValue("rigrepo.libs.control.getControls()")
 
+        postBuild.addChild(controlOrientDataNode)
         postBuild.addChild(controlDataNode)
 
         #perspective frame
@@ -83,6 +90,9 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions', 
             dataFile= self.buildExportPath('joint_positions.data', self.variant), 
             dataType='joint')
+        controlOrientsExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('controlOrients', 
+            dataFile= self.buildExportPath('control_orients.data', self.variant), 
+            dataType='node')
         curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions', 
             dataFile=self.buildExportPath('curve_positions.data', self.variant), 
             dataType='curve')
@@ -93,10 +103,11 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
             dirPath=self.buildExportPath('skin_wts', self.variant))
         skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode('skinClusterSelected', 
             dirPath=self.buildExportPath('skin_wts', self.variant))
-
+        controlOrientsExportDataNode.getAttributeByName('Nodes').setValue('mc.ls("*_ort")')
         workflow.addChild(exporters)
         exporters.addChildren([jointExportDataNode, curveExportDataNode, controlCurveExportDataNode,
-                               skinClusterExportWtsNode, skinClusterExportWtsSelectedNode])
+                               controlOrientsExportDataNode, skinClusterExportWtsNode, 
+                               skinClusterExportWtsSelectedNode])
 
         # Mirroring
         mirroring = pubs.pNode.PNode('mirror')

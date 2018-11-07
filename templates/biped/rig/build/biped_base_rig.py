@@ -159,8 +159,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         l_blink = rigrepo.parts.blink.Blink("l_blink")
         r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
         r_blink.getAttributeByName("side").setValue("r")
-        mouth = rigrepo.parts.mouth.Mouth("mouth", curve='lip_main_curve')
-        mouth.disable()
+        mouth = rigrepo.parts.mouth.Mouth("mouth", lipMainCurve='lip_main_curve')
         controlsDefaults = controlDefaultsNode.ControlDefaultsNode("control_defaults",
                                 armControls=["*shoulder","*elbow","*wrist"], 
                                 armParams=["arm_?"])

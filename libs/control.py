@@ -27,6 +27,7 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
 
     hierarchyList = []
 
+    # If there is a hierarchy argument passed in. We will loop through and create the hiearchy.
     if hierarchy:
         for suffix in hierarchy:
             node = mc.createNode("transform", n="{0}_{1}".format(control,suffix))
@@ -35,12 +36,15 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
 
             parent = node
             hierarchyList.append(node)
-
+    # parent the control to the last hierachy node created.
     if parent:
         mc.parent(control, parent)
 
-    mc.xform(hierarchyList[0], ws=True, t=position)
-    mc.xform(hierarchyList[0], ws=True, rotation=rotation)
+    if position and hierarchyList:
+        mc.xform(hierarchyList[0], ws=True, t=position)
+        
+    if rotation and hierarchyList:
+        mc.xform(hierarchyList[0], ws=True, rotation=rotation)
 
     if color:
         mc.setAttr("{0}.overrideEnabled".format(control), 1)
