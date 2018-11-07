@@ -57,35 +57,6 @@ class Mouth(part.Part):
         mouthCorner_l_follicle = mc.rename(follicleList[0], follicleList[0].replace('_0_','_l_'))
         mouthCorner_r_follicle = mc.rename(follicleList[1], follicleList[1].replace('_1_','_r_'))
         mc.parent([mouthCorner_l_follicle, mouthCorner_r_follicle, bindmeshGeometry], self.name)
-        # create the controls
-        mouthCornerHierarchyList = list()
-        # If there is a hierarchy argument passed in. We will loop through and create the hiearchy.
-        for follicle in (mouthCorner_l_follicle, mouthCorner_r_follicle):
-            parent = follicle
-            controlName = follicle.split("_follicle")[0]
-            # create the control with a large enough hierarchy to create proper SDK's
-            ctrlHierarchy = control.create(name=controlName, 
-                controlType="square", 
-                hierarchy=['nul','ort'], 
-                color=common.BLACK,
-                parent=parent)
-            # turn on the handle for the mouth corner control and move it 
-            mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
-            mc.setAttr("{}.selectHandleX".format(ctrlHierarchy[-1]) ,0.2)
-            # zero out the mouth corner hierarchy so it's in the correct position.
-            mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)
-            #mc.setAttr("{}.rotate".format(ctrlHierarchy[0]), 0,0,0)
-            mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
-
-            # create the set driven keyframes
-            for attribute in ['x','y','z']:
-                for lipMainControl in lipMainControlHieracrchyList:
-                    mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                        cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
-                    mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                        cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=1, dv=1)
-                    mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                        cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-1, dv=-1)
 
         controlPrefix = "lip_main"
         # get the position of the controls for lip tweakers
@@ -163,6 +134,46 @@ class Mouth(part.Part):
             lipMainControlHieracrchyList[lipMainControlHieracrchyList.index(lowerRight[i])] = [mc.rename(ctrl, "_".join([name for name in ctrl.split("_") if not name.isdigit()]).replace(controlPrefix, "lipMain_low_{}_r".format(lowerRightPosXList.index(pos)))) for ctrl in lowerRight[i]]
 
 
+        
+        # create the controls
+        mouthCornerHierarchyList = list()
+        # If there is a hierarchy argument passed in. We will loop through and create the hiearchy.
+        for follicle in (mouthCorner_l_follicle, mouthCorner_r_follicle):
+            parent = follicle
+            controlName = follicle.split("_follicle")[0]
+            # create the control with a large enough hierarchy to create proper SDK's
+            ctrlHierarchy = control.create(name=controlName, 
+                controlType="square", 
+                hierarchy=['nul','ort'], 
+                color=common.BLACK,
+                parent=parent)
+            # turn on the handle for the mouth corner control and move it 
+            mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
+            mc.setAttr("{}.selectHandleX".format(ctrlHierarchy[-1]) ,0.2)
+            # zero out the mouth corner hierarchy so it's in the correct position.
+            mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)
+            #mc.setAttr("{}.rotate".format(ctrlHierarchy[0]), 0,0,0)
+            mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
+
+            # create the set driven keyframes
+            for attribute in ['x','y','z']:
+                for lipMainControl in lipMainControlHieracrchyList:
+                    if "_l_" in lipMainControl[3] and follicle == mouthCorner_l_follicle:
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
+                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
+                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=1, dv=1)
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
+                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-1, dv=-1)
+                    elif  "_r_" in lipMainControl[3] and follicle == mouthCorner_r_follicle:
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
+                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
+                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=1, dv=1)
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
+                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-1, dv=-1)
+
+        
         # control prefix for the lips
         controlPrefix = "lip"
         bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(lipCurve, controlPrefix , parentGroup)
