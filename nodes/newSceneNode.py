@@ -11,4 +11,8 @@ class NewSceneNode(commandNode.CommandNode):
     def __init__(self, *args, **kwargs):
         super(NewSceneNode, self).__init__(*args, **kwargs)
         commandAttribute = self.getAttributeByName('command')
-        commandAttribute.setValue('import maya.cmds as mc\nmc.file(new=True, f=True)')
+        cmd = '''
+import maya.cmds as mc
+mc.file(new=True, f=True)
+'''
+        commandAttribute.setValue(cmd)

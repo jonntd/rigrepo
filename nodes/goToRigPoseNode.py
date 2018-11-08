@@ -1,0 +1,41 @@
+import inspect
+'''
+This is a node for going to the rig pose (bind pose)
+'''
+
+import rigrepo.nodes.commandNode as commandNode
+
+class GoToRigPoseNode(commandNode.CommandNode):
+    '''
+    Define cmd to be executed
+    '''
+    def __init__(self, name, parent=None):
+        super(GoToRigPoseNode, self).__init__(name, parent)
+        commandAttribute = self.getAttributeByName('command')
+        cmd = '''
+import maya.cmds as mc
+import traceback
+import rigrepo.libs.control
+from rigrepo.libs.common import getSideToken
+global rigPoseSetState
+
+mc.undoInfo(openChunk=1)
+try:
+    controls = rigrepo.libs.control.getControls()
+    if controls:
+        # Got to bind pose
+        rigrepo.libs.control.toPoseAttr(controls, 0)
+
+except:
+    mc.undoInfo(closeChunk=1)
+    traceback.print_exc()
+mc.undoInfo(closeChunk=1)
+'''
+        # command 
+        commandAttribute.setValue(cmd)
+
+    def execute(self, *args, **kwargs):
+        '''
+        Execute node code
+        '''
+        exec(self.getAttributeByName('command').getValue())

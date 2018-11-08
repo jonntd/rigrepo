@@ -120,3 +120,28 @@ def mirror (joint, search = '_l_', replace = '_r_', axis = "x"):
         mc.select( selection )
     else:
         mc.select( cl= True)
+
+def duplicateChain(jointList, names=None, parent=None):
+    '''
+    Duplicates a list of joints into a chain. Generally used for ik chain building.
+
+    :param jointList: List of joints that will be duplicated into a chain.
+    :param names: Name for each of the created joints
+    :param parent: Parent of the new chain
+    :return: List of the newly created joints
+    '''
+    newJointList = list()
+    if not names:
+        names = [x + '_dup' for x in jointList]
+
+    for joint, name in zip(jointList, names):
+        if not mc.objExists(joint):
+            continue
+        dupJoint = mc.duplicate(joint, po=True, rr=True, name=name)[0]
+        newJointList.append(dupJoint)
+        if parent:
+            mc.parent(dupJoint, parent)
+        parent = dupJoint
+
+    return(newJointList)
+

@@ -21,6 +21,9 @@ class ImportDataNode(pubs.pNode.PNode):
         elif dataType == 'curve':
             self.dataObj = rigrepo.libs.data.curve_data.CurveData()
             nodesAttr.setValue('mc.ls("*_curve", type="transform")')
+        elif dataType == 'psd':
+            self.dataObj = rigrepo.libs.data.psd_data.PSDData()
+            nodesAttr.setValue('mc.ls(type="poseInterpolator")')
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()

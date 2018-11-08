@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/brow_r_geo__brow_r_geo_skinCluster.xml"/>
-  <shape name="brow_r_geoShape" group="51" stride="3" size="95" max="95" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="brow_r_geoShape" group="2416" stride="3" size="95" max="95" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" -0.682561 64.151215 3.815942"/>
     <point index="1" value=" -0.677863 63.980713 3.834847"/>
     <point index="2" value=" -0.814606 64.162598 3.782873"/>
@@ -169,7 +169,7 @@
     <point index="22" value="0.500"/>
     <point index="23" value="0.500"/>
     <point index="24" value="0.500"/>
-    <point index="25" value="0.500"/>
+    <point index="25" value="0.659"/>
     <point index="26" value="0.500"/>
     <point index="27" value="0.500"/>
     <point index="28" value="0.500"/>
@@ -207,7 +207,7 @@
     <point index="60" value="0.500"/>
     <point index="61" value="0.500"/>
     <point index="62" value="0.500"/>
-    <point index="63" value="0.500"/>
+    <point index="63" value="0.660"/>
     <point index="64" value="0.500"/>
     <point index="65" value="0.500"/>
     <point index="66" value="0.500"/>
@@ -236,7 +236,7 @@
     <point index="89" value="0.500"/>
     <point index="90" value="0.500"/>
     <point index="91" value="0.500"/>
-    <point index="92" value="0.500"/>
+    <point index="92" value="0.658"/>
     <point index="93" value="0.500"/>
     <point index="94" value="0.500"/>
   </weights>
@@ -267,7 +267,7 @@
     <point index="22" value="0.280"/>
     <point index="23" value="0.275"/>
     <point index="24" value="0.278"/>
-    <point index="25" value="0.259"/>
+    <point index="25" value="0.341"/>
     <point index="26" value="0.278"/>
     <point index="27" value="0.271"/>
     <point index="28" value="0.250"/>
@@ -305,7 +305,7 @@
     <point index="60" value="0.265"/>
     <point index="61" value="0.268"/>
     <point index="62" value="0.263"/>
-    <point index="63" value="0.258"/>
+    <point index="63" value="0.340"/>
     <point index="64" value="0.261"/>
     <point index="65" value="0.258"/>
     <point index="66" value="0.256"/>
@@ -334,7 +334,7 @@
     <point index="89" value="0.294"/>
     <point index="90" value="0.289"/>
     <point index="91" value="0.288"/>
-    <point index="92" value="0.260"/>
+    <point index="92" value="0.342"/>
     <point index="93" value="0.297"/>
     <point index="94" value="0.291"/>
   </weights>
@@ -440,122 +440,62 @@
   </weights>
   <weights deformer="brow_r_geo_skinCluster" source="eyeSocket_r_bind" shape="brow_r_geoShape" layer="54" defaultValue="0.000" size="0" max="0"/>
   <weights deformer="brow_r_geo_skinCluster" source="eye_r_bind" shape="brow_r_geoShape" layer="55" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_000_base" shape="brow_r_geoShape" layer="56" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_000_bind" shape="brow_r_geoShape" layer="57" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_001_base" shape="brow_r_geoShape" layer="58" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_001_bind" shape="brow_r_geoShape" layer="59" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_002_base" shape="brow_r_geoShape" layer="60" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_002_bind" shape="brow_r_geoShape" layer="61" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_003_base" shape="brow_r_geoShape" layer="62" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_003_bind" shape="brow_r_geoShape" layer="63" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_004_base" shape="brow_r_geoShape" layer="64" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_004_bind" shape="brow_r_geoShape" layer="65" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_005_base" shape="brow_r_geoShape" layer="66" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_005_bind" shape="brow_r_geoShape" layer="67" defaultValue="0.000" size="3" max="92">
-    <point index="25" value="0.241"/>
-    <point index="63" value="0.242"/>
-    <point index="92" value="0.240"/>
-  </weights>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_006_base" shape="brow_r_geoShape" layer="68" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_r_curve_006_bind" shape="brow_r_geoShape" layer="69" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_000_base" shape="brow_r_geoShape" layer="70" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_000_bind" shape="brow_r_geoShape" layer="71" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_001_base" shape="brow_r_geoShape" layer="72" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_001_bind" shape="brow_r_geoShape" layer="73" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_002_base" shape="brow_r_geoShape" layer="74" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_002_bind" shape="brow_r_geoShape" layer="75" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_003_base" shape="brow_r_geoShape" layer="76" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_003_bind" shape="brow_r_geoShape" layer="77" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_004_base" shape="brow_r_geoShape" layer="78" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_004_bind" shape="brow_r_geoShape" layer="79" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_005_base" shape="brow_r_geoShape" layer="80" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_005_bind" shape="brow_r_geoShape" layer="81" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_006_base" shape="brow_r_geoShape" layer="82" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_r_curve_006_bind" shape="brow_r_geoShape" layer="83" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="eyeSocket_l_bind" shape="brow_r_geoShape" layer="84" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="eye_l_bind" shape="brow_r_geoShape" layer="85" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_000_base" shape="brow_r_geoShape" layer="86" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_000_bind" shape="brow_r_geoShape" layer="87" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_001_base" shape="brow_r_geoShape" layer="88" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_001_bind" shape="brow_r_geoShape" layer="89" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_002_base" shape="brow_r_geoShape" layer="90" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_002_bind" shape="brow_r_geoShape" layer="91" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_003_base" shape="brow_r_geoShape" layer="92" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_003_bind" shape="brow_r_geoShape" layer="93" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_004_base" shape="brow_r_geoShape" layer="94" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_004_bind" shape="brow_r_geoShape" layer="95" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_005_base" shape="brow_r_geoShape" layer="96" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_005_bind" shape="brow_r_geoShape" layer="97" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_006_base" shape="brow_r_geoShape" layer="98" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidUpper_neutral_l_curve_006_bind" shape="brow_r_geoShape" layer="99" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_000_base" shape="brow_r_geoShape" layer="100" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_000_bind" shape="brow_r_geoShape" layer="101" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_001_base" shape="brow_r_geoShape" layer="102" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_001_bind" shape="brow_r_geoShape" layer="103" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_002_base" shape="brow_r_geoShape" layer="104" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_002_bind" shape="brow_r_geoShape" layer="105" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_003_base" shape="brow_r_geoShape" layer="106" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_003_bind" shape="brow_r_geoShape" layer="107" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_004_base" shape="brow_r_geoShape" layer="108" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_004_bind" shape="brow_r_geoShape" layer="109" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_005_base" shape="brow_r_geoShape" layer="110" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_005_bind" shape="brow_r_geoShape" layer="111" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_006_base" shape="brow_r_geoShape" layer="112" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="lidLower_neutral_l_curve_006_bind" shape="brow_r_geoShape" layer="113" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="face_lower_bind" shape="brow_r_geoShape" layer="114" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="face_mid_bind" shape="brow_r_geoShape" layer="115" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="teeth_upper_bind" shape="brow_r_geoShape" layer="116" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="nose_bridge_bind" shape="brow_r_geoShape" layer="117" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="nose_bind" shape="brow_r_geoShape" layer="118" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="jaw_bind" shape="brow_r_geoShape" layer="119" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="jaw_end" shape="brow_r_geoShape" layer="120" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="teeth_lower_bind" shape="brow_r_geoShape" layer="121" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="clavicle_r_bind" shape="brow_r_geoShape" layer="122" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="shoulder_r_bind" shape="brow_r_geoShape" layer="123" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="elbow_r_bind" shape="brow_r_geoShape" layer="124" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="wrist_r_bind" shape="brow_r_geoShape" layer="125" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ring_001_r_bind" shape="brow_r_geoShape" layer="126" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ring_002_r_bind" shape="brow_r_geoShape" layer="127" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ring_003_r_bind" shape="brow_r_geoShape" layer="128" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ring_004_r_bind" shape="brow_r_geoShape" layer="129" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ring_005_r_bind" shape="brow_r_geoShape" layer="130" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="middle_001_r_bind" shape="brow_r_geoShape" layer="131" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="middle_002_r_bind" shape="brow_r_geoShape" layer="132" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="middle_003_r_bind" shape="brow_r_geoShape" layer="133" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="middle_004_r_bind" shape="brow_r_geoShape" layer="134" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="middle_005_r_bind" shape="brow_r_geoShape" layer="135" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="index_001_r_bind" shape="brow_r_geoShape" layer="136" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="index_002_r_bind" shape="brow_r_geoShape" layer="137" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="index_003_r_bind" shape="brow_r_geoShape" layer="138" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="index_004_r_bind" shape="brow_r_geoShape" layer="139" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="index_005_r_bind" shape="brow_r_geoShape" layer="140" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="pinkyCup_r_bind" shape="brow_r_geoShape" layer="141" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="pinky_001_r_bind" shape="brow_r_geoShape" layer="142" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="pinky_002_r_bind" shape="brow_r_geoShape" layer="143" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="pinky_003_r_bind" shape="brow_r_geoShape" layer="144" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="pinky_004_r_bind" shape="brow_r_geoShape" layer="145" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="pinky_005_r_bind" shape="brow_r_geoShape" layer="146" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thumbCup_r_bind" shape="brow_r_geoShape" layer="147" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thumb_001_r_bind" shape="brow_r_geoShape" layer="148" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thumb_002_r_bind" shape="brow_r_geoShape" layer="149" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thumb_003_r_bind" shape="brow_r_geoShape" layer="150" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thumb_004_r_bind" shape="brow_r_geoShape" layer="151" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="wristTwist_r_bind" shape="brow_r_geoShape" layer="152" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="shoulderNoTwist_r_bind" shape="brow_r_geoShape" layer="153" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="pelvis_l_bind" shape="brow_r_geoShape" layer="154" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thigh_l_bind" shape="brow_r_geoShape" layer="155" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="knee_l_bind" shape="brow_r_geoShape" layer="156" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ankle_l_bind" shape="brow_r_geoShape" layer="157" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ball_l_bind" shape="brow_r_geoShape" layer="158" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="toe_l_bind" shape="brow_r_geoShape" layer="159" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ankleTwist_l_bind" shape="brow_r_geoShape" layer="160" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thighNoTwist_l_bind" shape="brow_r_geoShape" layer="161" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="pelvis_r_bind" shape="brow_r_geoShape" layer="162" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thigh_r_bind" shape="brow_r_geoShape" layer="163" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="knee_r_bind" shape="brow_r_geoShape" layer="164" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ankle_r_bind" shape="brow_r_geoShape" layer="165" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ball_r_bind" shape="brow_r_geoShape" layer="166" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="toe_r_bind" shape="brow_r_geoShape" layer="167" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="ankleTwist_r_bind" shape="brow_r_geoShape" layer="168" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="brow_r_geo_skinCluster" source="thighNoTwist_r_bind" shape="brow_r_geoShape" layer="169" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="eyeSocket_l_bind" shape="brow_r_geoShape" layer="56" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="eye_l_bind" shape="brow_r_geoShape" layer="57" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="face_lower_bind" shape="brow_r_geoShape" layer="58" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="face_mid_bind" shape="brow_r_geoShape" layer="59" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="teeth_upper_bind" shape="brow_r_geoShape" layer="60" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="nose_bridge_bind" shape="brow_r_geoShape" layer="61" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="nose_bind" shape="brow_r_geoShape" layer="62" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="jaw_bind" shape="brow_r_geoShape" layer="63" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="jaw_end" shape="brow_r_geoShape" layer="64" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="teeth_lower_bind" shape="brow_r_geoShape" layer="65" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="clavicle_r_bind" shape="brow_r_geoShape" layer="66" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="shoulder_r_bind" shape="brow_r_geoShape" layer="67" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="elbow_r_bind" shape="brow_r_geoShape" layer="68" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="wrist_r_bind" shape="brow_r_geoShape" layer="69" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ring_001_r_bind" shape="brow_r_geoShape" layer="70" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ring_002_r_bind" shape="brow_r_geoShape" layer="71" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ring_003_r_bind" shape="brow_r_geoShape" layer="72" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ring_004_r_bind" shape="brow_r_geoShape" layer="73" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ring_005_r_bind" shape="brow_r_geoShape" layer="74" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="middle_001_r_bind" shape="brow_r_geoShape" layer="75" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="middle_002_r_bind" shape="brow_r_geoShape" layer="76" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="middle_003_r_bind" shape="brow_r_geoShape" layer="77" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="middle_004_r_bind" shape="brow_r_geoShape" layer="78" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="middle_005_r_bind" shape="brow_r_geoShape" layer="79" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="index_001_r_bind" shape="brow_r_geoShape" layer="80" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="index_002_r_bind" shape="brow_r_geoShape" layer="81" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="index_003_r_bind" shape="brow_r_geoShape" layer="82" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="index_004_r_bind" shape="brow_r_geoShape" layer="83" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="index_005_r_bind" shape="brow_r_geoShape" layer="84" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="pinkyCup_r_bind" shape="brow_r_geoShape" layer="85" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="pinky_001_r_bind" shape="brow_r_geoShape" layer="86" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="pinky_002_r_bind" shape="brow_r_geoShape" layer="87" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="pinky_003_r_bind" shape="brow_r_geoShape" layer="88" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="pinky_004_r_bind" shape="brow_r_geoShape" layer="89" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="pinky_005_r_bind" shape="brow_r_geoShape" layer="90" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thumbCup_r_bind" shape="brow_r_geoShape" layer="91" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thumb_001_r_bind" shape="brow_r_geoShape" layer="92" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thumb_002_r_bind" shape="brow_r_geoShape" layer="93" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thumb_003_r_bind" shape="brow_r_geoShape" layer="94" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thumb_004_r_bind" shape="brow_r_geoShape" layer="95" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="wristTwist_r_bind" shape="brow_r_geoShape" layer="96" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="shoulderNoTwist_r_bind" shape="brow_r_geoShape" layer="97" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="pelvis_l_bind" shape="brow_r_geoShape" layer="98" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thigh_l_bind" shape="brow_r_geoShape" layer="99" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="knee_l_bind" shape="brow_r_geoShape" layer="100" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ankle_l_bind" shape="brow_r_geoShape" layer="101" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ball_l_bind" shape="brow_r_geoShape" layer="102" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="toe_l_bind" shape="brow_r_geoShape" layer="103" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ankleTwist_l_bind" shape="brow_r_geoShape" layer="104" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thighNoTwist_l_bind" shape="brow_r_geoShape" layer="105" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="pelvis_r_bind" shape="brow_r_geoShape" layer="106" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thigh_r_bind" shape="brow_r_geoShape" layer="107" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="knee_r_bind" shape="brow_r_geoShape" layer="108" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ankle_r_bind" shape="brow_r_geoShape" layer="109" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ball_r_bind" shape="brow_r_geoShape" layer="110" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="toe_r_bind" shape="brow_r_geoShape" layer="111" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="ankleTwist_r_bind" shape="brow_r_geoShape" layer="112" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="brow_r_geo_skinCluster" source="thighNoTwist_r_bind" shape="brow_r_geoShape" layer="113" defaultValue="0.000" size="0" max="0"/>
 </deformerWeight>

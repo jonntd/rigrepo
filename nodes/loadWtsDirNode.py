@@ -15,8 +15,10 @@ class LoadWtsDirNode(commandNode.CommandNode):
         commandAttribute = self.getAttributeByName('command')
         self.addAttribute('dirPath', dirPath, attrType='dir', index=0)
         # command 
-        cmd='import rigrepo.libs.weights\n\
-rigrepo.libs.weights.applyWtsDir("{dirPath}")'
+        cmd = '''
+import rigrepo.libs.weights
+rigrepo.libs.weights.applyWtsDir("{dirPath}")
+'''
         
         commandAttribute.setValue(cmd)
 

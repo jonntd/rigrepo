@@ -3,7 +3,7 @@ This is a module for libraries used for transforms.
 '''
 import maya.api.OpenMaya as om
 import maya.cmds as mc
-import rigrepo.libs.common
+import rigrepo.libs.common as common
 
 def getDagPath(node):
     '''
@@ -27,10 +27,10 @@ def getDagPath(node):
 
 
 
-def decomposeRotation(object):
+def decomposeRotation(object, swingOnly=False):
     '''
     Decompose the rotation of the given object. Adds a decomposeTwist attribute to the 
-    given object with the resutling decomposed twist. A transform that is only the swing is
+    given object with the resulting decomposed twist. A transform that is only the swing is
     returned.
     Currently assumes x is twist axis
     
@@ -39,6 +39,8 @@ def decomposeRotation(object):
     :return: Swing transform 
     :rtype: list
     '''
+    doTwist = not(swingOnly)
+
     if not mc.pluginInfo('matrixNodes', q=1, loaded=1):
         mc.loadPlugin('matrixNodes')
 
@@ -54,27 +56,34 @@ def decomposeRotation(object):
     aimSource = mc.createNode('transform', n=object+'_swing', p=aimSourceGrp)
     
     # Lock the aimSourceGrp to the parent's orientation.
+    # This allows the group to be parented to the object but not receive the objects rotation
     parentMatrixDcmp = mc.createNode('decomposeMatrix', n=object+'_parentMatrix_dcmp')
     mc.connectAttr(object+'.inverseMatrix', parentMatrixDcmp+'.inputMatrix')
     mc.connectAttr(parentMatrixDcmp+'.outputRotate', aimSourceGrp+'.rotate')
- 
-    # aim constriant
+
+    # Swing - get swing with aim constraint
     mc.aimConstraint(aimTarget, aimSource, offset=[0, 0, 0],
                      weight=1, aimVector=vector,
                      worldUpType="none",
                      upVector=[0, 0, 0])
-    # orient constrain the target to get the twist
-    mc.setAttr(aimTarget+'.rotateOrder', rotateOrder)
-    mc.orientConstraint(aimSource, aimTarget)
+    # Twist - get twist by orientConstraining the aim target to the aimSource (swing)
+    #         The aim target has no rotation values since it is a child of the object.
+    #         Constraining the aim target to the aimSource, which is only swinging, means
+    #         the only rotate values that end up on the aim target is the inverse twist difference
+    #         Once we reverse that twist value we have a clean twist.
+    if doTwist:
+        # orient constrain the target to get the twist
+        mc.setAttr(aimTarget+'.rotateOrder', rotateOrder)
+        mc.orientConstraint(aimSource, aimTarget)
 
-    # Twist attr
-    if not mc.objExists(object+'.decomposeTwist'):
-        mc.addAttr(object, ln='decomposeTwist', at='double', k=1)
-    mc.setAttr(object+'.decomposeTwist', cb=1, k=0)
-    reverseEndTwist = mc.createNode('multiplyDivide', n=object+'_reverse_mul')
-    mc.setAttr(reverseEndTwist+'.input2X', -1)
-    mc.connectAttr(aimTarget+'.r'+twistAxis, reverseEndTwist+'.input1X')
-    mc.connectAttr(reverseEndTwist+'.outputX', object+'.decomposeTwist')
+        # Twist attr
+        if not mc.objExists(object+'.decomposeTwist'):
+            mc.addAttr(object, ln='decomposeTwist', at='double', k=1)
+        mc.setAttr(object+'.decomposeTwist', cb=1, k=0)
+        reverseEndTwist = mc.createNode('multiplyDivide', n=object+'_reverse_mul')
+        mc.setAttr(reverseEndTwist+'.input2X', -1)
+        mc.connectAttr(aimTarget+'.r'+twistAxis, reverseEndTwist+'.input1X')
+        mc.connectAttr(reverseEndTwist+'.outputX', object+'.decomposeTwist')
 
     return(aimSource) 
 
@@ -86,7 +95,7 @@ def getAveragePosition(nodes):
     :type param: list | tuple
     '''
     # make sure to pass a list to the loop
-    node = rigrepo.libs.common.toList(nodes)
+    node = common.toList(nodes)
 
     # set the default poition of the point
     point = om.MPoint(0,0,0)
@@ -226,7 +235,7 @@ def mirror (trs, search = '_l_', replace = '_r_', axis = "x"):
     '''
 
     # get given points
-    trsList = rigrepo.libs.common.toList(trs)
+    trsList = common.toList(trs)
 
     # get selection
     selection = mc.ls(sl=True)

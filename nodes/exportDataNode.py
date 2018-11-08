@@ -26,6 +26,9 @@ class ExportDataNode(pubs.pNode.PNode):
         elif dataType == 'controlCurve':
             self.dataObj = rigrepo.libs.data.curve_data.CurveData()
             nodesAttr.setValue('mc.listRelatives(mc.listRelatives(mc.ls("*.__control__", o=1), s=1, ni=1, type="nurbsCurve"), p=1) or []')
+        elif dataType == 'psd':
+            self.dataObj = rigrepo.libs.data.psd_data.PSDData()
+            nodesAttr.setValue('mc.ls(type="poseInterpolator")')
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()

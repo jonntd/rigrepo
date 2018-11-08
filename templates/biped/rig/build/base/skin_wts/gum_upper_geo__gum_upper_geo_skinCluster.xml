@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/gum_upper_geo__gum_upper_geo_skinCluster.xml"/>
-  <shape name="gum_upper_geoShape" group="60" stride="3" size="582" max="582" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="gum_upper_geoShape" group="2425" stride="3" size="582" max="582" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" 0.000176 59.380733 3.713070"/>
     <point index="1" value=" 0.000176 59.416828 3.928929"/>
     <point index="2" value=" 0.000176 59.775959 3.646479"/>
@@ -663,7 +663,7 @@
     <point index="29" value="0.500"/>
     <point index="30" value="0.500"/>
     <point index="31" value="0.500"/>
-    <point index="32" value="0.500"/>
+    <point index="32" value="0.527"/>
     <point index="33" value="0.500"/>
     <point index="34" value="0.500"/>
     <point index="35" value="0.500"/>
@@ -685,12 +685,12 @@
     <point index="51" value="0.500"/>
     <point index="52" value="0.500"/>
     <point index="53" value="0.500"/>
-    <point index="54" value="0.500"/>
-    <point index="55" value="0.500"/>
-    <point index="56" value="0.500"/>
+    <point index="54" value="0.519"/>
+    <point index="55" value="0.505"/>
+    <point index="56" value="0.525"/>
     <point index="57" value="0.500"/>
     <point index="58" value="0.500"/>
-    <point index="59" value="0.500"/>
+    <point index="59" value="0.522"/>
     <point index="60" value="0.500"/>
     <point index="61" value="0.500"/>
     <point index="62" value="0.500"/>
@@ -703,12 +703,12 @@
     <point index="69" value="0.500"/>
     <point index="70" value="0.500"/>
     <point index="71" value="0.500"/>
-    <point index="72" value="0.500"/>
+    <point index="72" value="0.529"/>
     <point index="73" value="0.500"/>
     <point index="74" value="0.500"/>
     <point index="75" value="0.500"/>
     <point index="76" value="0.500"/>
-    <point index="77" value="0.500"/>
+    <point index="77" value="0.530"/>
     <point index="78" value="0.500"/>
     <point index="79" value="0.500"/>
     <point index="80" value="0.500"/>
@@ -839,12 +839,12 @@
     <point index="205" value="0.500"/>
     <point index="206" value="0.500"/>
     <point index="207" value="0.500"/>
-    <point index="208" value="0.500"/>
-    <point index="209" value="0.500"/>
+    <point index="208" value="0.505"/>
+    <point index="209" value="0.517"/>
     <point index="210" value="0.500"/>
-    <point index="211" value="0.500"/>
+    <point index="211" value="0.513"/>
     <point index="212" value="0.500"/>
-    <point index="213" value="0.500"/>
+    <point index="213" value="0.506"/>
     <point index="214" value="0.500"/>
     <point index="215" value="0.500"/>
     <point index="216" value="0.500"/>
@@ -881,10 +881,10 @@
     <point index="247" value="0.500"/>
     <point index="248" value="0.500"/>
     <point index="249" value="0.500"/>
-    <point index="250" value="0.500"/>
-    <point index="251" value="0.500"/>
-    <point index="252" value="0.500"/>
-    <point index="253" value="0.500"/>
+    <point index="250" value="0.512"/>
+    <point index="251" value="0.515"/>
+    <point index="252" value="0.517"/>
+    <point index="253" value="0.520"/>
     <point index="254" value="0.500"/>
     <point index="255" value="0.500"/>
     <point index="256" value="0.500"/>
@@ -949,7 +949,7 @@
     <point index="315" value="0.500"/>
     <point index="316" value="0.500"/>
     <point index="317" value="0.500"/>
-    <point index="318" value="0.500"/>
+    <point index="318" value="0.527"/>
     <point index="319" value="0.500"/>
     <point index="320" value="0.500"/>
     <point index="321" value="0.500"/>
@@ -971,12 +971,12 @@
     <point index="337" value="0.500"/>
     <point index="338" value="0.500"/>
     <point index="339" value="0.500"/>
-    <point index="340" value="0.500"/>
-    <point index="341" value="0.500"/>
-    <point index="342" value="0.500"/>
+    <point index="340" value="0.519"/>
+    <point index="341" value="0.505"/>
+    <point index="342" value="0.525"/>
     <point index="343" value="0.500"/>
     <point index="344" value="0.500"/>
-    <point index="345" value="0.500"/>
+    <point index="345" value="0.522"/>
     <point index="346" value="0.500"/>
     <point index="347" value="0.500"/>
     <point index="348" value="0.500"/>
@@ -989,12 +989,12 @@
     <point index="355" value="0.500"/>
     <point index="356" value="0.500"/>
     <point index="357" value="0.500"/>
-    <point index="358" value="0.500"/>
+    <point index="358" value="0.529"/>
     <point index="359" value="0.500"/>
     <point index="360" value="0.500"/>
     <point index="361" value="0.500"/>
     <point index="362" value="0.500"/>
-    <point index="363" value="0.500"/>
+    <point index="363" value="0.530"/>
     <point index="364" value="0.500"/>
     <point index="365" value="0.500"/>
     <point index="366" value="0.500"/>
@@ -1125,12 +1125,12 @@
     <point index="491" value="0.500"/>
     <point index="492" value="0.500"/>
     <point index="493" value="0.500"/>
-    <point index="494" value="0.500"/>
-    <point index="495" value="0.500"/>
+    <point index="494" value="0.505"/>
+    <point index="495" value="0.517"/>
     <point index="496" value="0.500"/>
-    <point index="497" value="0.500"/>
+    <point index="497" value="0.513"/>
     <point index="498" value="0.500"/>
-    <point index="499" value="0.500"/>
+    <point index="499" value="0.506"/>
     <point index="500" value="0.500"/>
     <point index="501" value="0.500"/>
     <point index="502" value="0.500"/>
@@ -1167,10 +1167,10 @@
     <point index="533" value="0.500"/>
     <point index="534" value="0.500"/>
     <point index="535" value="0.500"/>
-    <point index="536" value="0.500"/>
-    <point index="537" value="0.500"/>
-    <point index="538" value="0.500"/>
-    <point index="539" value="0.500"/>
+    <point index="536" value="0.512"/>
+    <point index="537" value="0.515"/>
+    <point index="538" value="0.517"/>
+    <point index="539" value="0.520"/>
     <point index="540" value="0.500"/>
     <point index="541" value="0.500"/>
     <point index="542" value="0.500"/>
@@ -1224,98 +1224,10 @@
   <weights deformer="gum_upper_geo_skinCluster" source="brow_peak_r_bind" shape="gum_upper_geoShape" layer="53" defaultValue="0.000" size="0" max="0"/>
   <weights deformer="gum_upper_geo_skinCluster" source="eyeSocket_r_bind" shape="gum_upper_geoShape" layer="54" defaultValue="0.000" size="0" max="0"/>
   <weights deformer="gum_upper_geo_skinCluster" source="eye_r_bind" shape="gum_upper_geoShape" layer="55" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_000_base" shape="gum_upper_geoShape" layer="56" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_000_bind" shape="gum_upper_geoShape" layer="57" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_001_base" shape="gum_upper_geoShape" layer="58" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_001_bind" shape="gum_upper_geoShape" layer="59" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_002_base" shape="gum_upper_geoShape" layer="60" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_002_bind" shape="gum_upper_geoShape" layer="61" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_003_base" shape="gum_upper_geoShape" layer="62" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_003_bind" shape="gum_upper_geoShape" layer="63" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_004_base" shape="gum_upper_geoShape" layer="64" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_004_bind" shape="gum_upper_geoShape" layer="65" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_005_base" shape="gum_upper_geoShape" layer="66" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_005_bind" shape="gum_upper_geoShape" layer="67" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_006_base" shape="gum_upper_geoShape" layer="68" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_r_curve_006_bind" shape="gum_upper_geoShape" layer="69" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_000_base" shape="gum_upper_geoShape" layer="70" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_000_bind" shape="gum_upper_geoShape" layer="71" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_001_base" shape="gum_upper_geoShape" layer="72" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_001_bind" shape="gum_upper_geoShape" layer="73" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_002_base" shape="gum_upper_geoShape" layer="74" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_002_bind" shape="gum_upper_geoShape" layer="75" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_003_base" shape="gum_upper_geoShape" layer="76" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_003_bind" shape="gum_upper_geoShape" layer="77" defaultValue="0.000" size="15" max="253">
-    <point index="32" value="0.051"/>
-    <point index="54" value="0.037"/>
-    <point index="55" value="0.010"/>
-    <point index="56" value="0.047"/>
-    <point index="59" value="0.043"/>
-    <point index="72" value="0.054"/>
-    <point index="77" value="0.057"/>
-    <point index="208" value="0.009"/>
-    <point index="209" value="0.033"/>
-    <point index="211" value="0.026"/>
-    <point index="213" value="0.012"/>
-    <point index="250" value="0.023"/>
-    <point index="251" value="0.030"/>
-    <point index="252" value="0.033"/>
-    <point index="253" value="0.038"/>
-  </weights>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_004_base" shape="gum_upper_geoShape" layer="78" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_004_bind" shape="gum_upper_geoShape" layer="79" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_005_base" shape="gum_upper_geoShape" layer="80" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_005_bind" shape="gum_upper_geoShape" layer="81" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_006_base" shape="gum_upper_geoShape" layer="82" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_r_curve_006_bind" shape="gum_upper_geoShape" layer="83" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="eyeSocket_l_bind" shape="gum_upper_geoShape" layer="84" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="eye_l_bind" shape="gum_upper_geoShape" layer="85" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_000_base" shape="gum_upper_geoShape" layer="86" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_000_bind" shape="gum_upper_geoShape" layer="87" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_001_base" shape="gum_upper_geoShape" layer="88" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_001_bind" shape="gum_upper_geoShape" layer="89" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_002_base" shape="gum_upper_geoShape" layer="90" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_002_bind" shape="gum_upper_geoShape" layer="91" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_003_base" shape="gum_upper_geoShape" layer="92" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_003_bind" shape="gum_upper_geoShape" layer="93" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_004_base" shape="gum_upper_geoShape" layer="94" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_004_bind" shape="gum_upper_geoShape" layer="95" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_005_base" shape="gum_upper_geoShape" layer="96" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_005_bind" shape="gum_upper_geoShape" layer="97" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_006_base" shape="gum_upper_geoShape" layer="98" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidUpper_neutral_l_curve_006_bind" shape="gum_upper_geoShape" layer="99" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_000_base" shape="gum_upper_geoShape" layer="100" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_000_bind" shape="gum_upper_geoShape" layer="101" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_001_base" shape="gum_upper_geoShape" layer="102" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_001_bind" shape="gum_upper_geoShape" layer="103" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_002_base" shape="gum_upper_geoShape" layer="104" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_002_bind" shape="gum_upper_geoShape" layer="105" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_003_base" shape="gum_upper_geoShape" layer="106" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_003_bind" shape="gum_upper_geoShape" layer="107" defaultValue="0.000" size="15" max="539">
-    <point index="318" value="0.051"/>
-    <point index="340" value="0.037"/>
-    <point index="341" value="0.010"/>
-    <point index="342" value="0.047"/>
-    <point index="345" value="0.043"/>
-    <point index="358" value="0.054"/>
-    <point index="363" value="0.057"/>
-    <point index="494" value="0.009"/>
-    <point index="495" value="0.033"/>
-    <point index="497" value="0.026"/>
-    <point index="499" value="0.012"/>
-    <point index="536" value="0.023"/>
-    <point index="537" value="0.030"/>
-    <point index="538" value="0.033"/>
-    <point index="539" value="0.038"/>
-  </weights>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_004_base" shape="gum_upper_geoShape" layer="108" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_004_bind" shape="gum_upper_geoShape" layer="109" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_005_base" shape="gum_upper_geoShape" layer="110" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_005_bind" shape="gum_upper_geoShape" layer="111" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_006_base" shape="gum_upper_geoShape" layer="112" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="lidLower_neutral_l_curve_006_bind" shape="gum_upper_geoShape" layer="113" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="face_lower_bind" shape="gum_upper_geoShape" layer="114" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="face_mid_bind" shape="gum_upper_geoShape" layer="115" defaultValue="0.000" size="480" max="581">
+  <weights deformer="gum_upper_geo_skinCluster" source="eyeSocket_l_bind" shape="gum_upper_geoShape" layer="56" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="eye_l_bind" shape="gum_upper_geoShape" layer="57" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="face_lower_bind" shape="gum_upper_geoShape" layer="58" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="face_mid_bind" shape="gum_upper_geoShape" layer="59" defaultValue="0.000" size="480" max="581">
     <point index="0" value="0.360"/>
     <point index="2" value="0.317"/>
     <point index="3" value="0.254"/>
@@ -1337,25 +1249,25 @@
     <point index="25" value="0.448"/>
     <point index="26" value="0.452"/>
     <point index="27" value="0.456"/>
-    <point index="32" value="0.449"/>
+    <point index="32" value="0.473"/>
     <point index="33" value="0.485"/>
     <point index="38" value="0.427"/>
     <point index="39" value="0.472"/>
     <point index="40" value="0.421"/>
-    <point index="54" value="0.463"/>
-    <point index="55" value="0.490"/>
-    <point index="56" value="0.453"/>
+    <point index="54" value="0.481"/>
+    <point index="55" value="0.495"/>
+    <point index="56" value="0.475"/>
     <point index="57" value="0.488"/>
     <point index="58" value="0.489"/>
-    <point index="59" value="0.457"/>
+    <point index="59" value="0.478"/>
     <point index="68" value="0.428"/>
     <point index="71" value="0.439"/>
-    <point index="72" value="0.446"/>
+    <point index="72" value="0.471"/>
     <point index="73" value="0.483"/>
     <point index="74" value="0.435"/>
     <point index="75" value="0.476"/>
     <point index="76" value="0.480"/>
-    <point index="77" value="0.443"/>
+    <point index="77" value="0.470"/>
     <point index="79" value="0.424"/>
     <point index="80" value="0.417"/>
     <point index="81" value="0.464"/>
@@ -1474,10 +1386,10 @@
     <point index="199" value="0.403"/>
     <point index="200" value="0.414"/>
     <point index="201" value="0.359"/>
-    <point index="208" value="0.491"/>
-    <point index="209" value="0.467"/>
-    <point index="211" value="0.474"/>
-    <point index="213" value="0.488"/>
+    <point index="208" value="0.495"/>
+    <point index="209" value="0.483"/>
+    <point index="211" value="0.487"/>
+    <point index="213" value="0.494"/>
     <point index="214" value="0.315"/>
     <point index="215" value="0.304"/>
     <point index="216" value="0.295"/>
@@ -1513,10 +1425,10 @@
     <point index="247" value="0.491"/>
     <point index="248" value="0.492"/>
     <point index="249" value="0.490"/>
-    <point index="250" value="0.477"/>
-    <point index="251" value="0.470"/>
-    <point index="252" value="0.467"/>
-    <point index="253" value="0.462"/>
+    <point index="250" value="0.488"/>
+    <point index="251" value="0.485"/>
+    <point index="252" value="0.483"/>
+    <point index="253" value="0.480"/>
     <point index="254" value="0.458"/>
     <point index="255" value="0.454"/>
     <point index="256" value="0.449"/>
@@ -1574,25 +1486,25 @@
     <point index="311" value="0.448"/>
     <point index="312" value="0.452"/>
     <point index="313" value="0.456"/>
-    <point index="318" value="0.449"/>
+    <point index="318" value="0.473"/>
     <point index="319" value="0.485"/>
     <point index="324" value="0.427"/>
     <point index="325" value="0.472"/>
     <point index="326" value="0.421"/>
-    <point index="340" value="0.463"/>
-    <point index="341" value="0.490"/>
-    <point index="342" value="0.453"/>
+    <point index="340" value="0.481"/>
+    <point index="341" value="0.495"/>
+    <point index="342" value="0.475"/>
     <point index="343" value="0.487"/>
     <point index="344" value="0.489"/>
-    <point index="345" value="0.457"/>
+    <point index="345" value="0.478"/>
     <point index="354" value="0.428"/>
     <point index="357" value="0.439"/>
-    <point index="358" value="0.446"/>
+    <point index="358" value="0.471"/>
     <point index="359" value="0.483"/>
     <point index="360" value="0.435"/>
     <point index="361" value="0.476"/>
     <point index="362" value="0.480"/>
-    <point index="363" value="0.443"/>
+    <point index="363" value="0.470"/>
     <point index="365" value="0.424"/>
     <point index="366" value="0.417"/>
     <point index="367" value="0.464"/>
@@ -1711,10 +1623,10 @@
     <point index="485" value="0.402"/>
     <point index="486" value="0.413"/>
     <point index="487" value="0.359"/>
-    <point index="494" value="0.491"/>
-    <point index="495" value="0.467"/>
-    <point index="497" value="0.474"/>
-    <point index="499" value="0.488"/>
+    <point index="494" value="0.495"/>
+    <point index="495" value="0.483"/>
+    <point index="497" value="0.487"/>
+    <point index="499" value="0.494"/>
     <point index="500" value="0.315"/>
     <point index="501" value="0.304"/>
     <point index="502" value="0.295"/>
@@ -1750,10 +1662,10 @@
     <point index="533" value="0.491"/>
     <point index="534" value="0.492"/>
     <point index="535" value="0.490"/>
-    <point index="536" value="0.477"/>
-    <point index="537" value="0.470"/>
-    <point index="538" value="0.467"/>
-    <point index="539" value="0.462"/>
+    <point index="536" value="0.488"/>
+    <point index="537" value="0.485"/>
+    <point index="538" value="0.483"/>
+    <point index="539" value="0.480"/>
     <point index="540" value="0.458"/>
     <point index="541" value="0.454"/>
     <point index="542" value="0.449"/>
@@ -1797,10 +1709,10 @@
     <point index="580" value="0.459"/>
     <point index="581" value="0.459"/>
   </weights>
-  <weights deformer="gum_upper_geo_skinCluster" source="teeth_upper_bind" shape="gum_upper_geoShape" layer="116" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="nose_bridge_bind" shape="gum_upper_geoShape" layer="117" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="nose_bind" shape="gum_upper_geoShape" layer="118" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="jaw_bind" shape="gum_upper_geoShape" layer="119" defaultValue="0.000" size="102" max="509">
+  <weights deformer="gum_upper_geo_skinCluster" source="teeth_upper_bind" shape="gum_upper_geoShape" layer="60" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="nose_bridge_bind" shape="gum_upper_geoShape" layer="61" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="nose_bind" shape="gum_upper_geoShape" layer="62" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="jaw_bind" shape="gum_upper_geoShape" layer="63" defaultValue="0.000" size="102" max="509">
     <point index="1" value="0.250"/>
     <point index="4" value="0.251"/>
     <point index="6" value="0.250"/>
@@ -1904,8 +1816,8 @@
     <point index="498" value="0.490"/>
     <point index="509" value="0.250"/>
   </weights>
-  <weights deformer="gum_upper_geo_skinCluster" source="jaw_end" shape="gum_upper_geoShape" layer="120" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="teeth_lower_bind" shape="gum_upper_geoShape" layer="121" defaultValue="0.000" size="552" max="581">
+  <weights deformer="gum_upper_geo_skinCluster" source="jaw_end" shape="gum_upper_geoShape" layer="64" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="teeth_lower_bind" shape="gum_upper_geoShape" layer="65" defaultValue="0.000" size="552" max="581">
     <point index="0" value="0.140"/>
     <point index="1" value="0.250"/>
     <point index="2" value="0.183"/>
@@ -2459,52 +2371,52 @@
     <point index="580" value="0.041"/>
     <point index="581" value="0.041"/>
   </weights>
-  <weights deformer="gum_upper_geo_skinCluster" source="clavicle_r_bind" shape="gum_upper_geoShape" layer="122" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="shoulder_r_bind" shape="gum_upper_geoShape" layer="123" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="elbow_r_bind" shape="gum_upper_geoShape" layer="124" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="wrist_r_bind" shape="gum_upper_geoShape" layer="125" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ring_001_r_bind" shape="gum_upper_geoShape" layer="126" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ring_002_r_bind" shape="gum_upper_geoShape" layer="127" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ring_003_r_bind" shape="gum_upper_geoShape" layer="128" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ring_004_r_bind" shape="gum_upper_geoShape" layer="129" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ring_005_r_bind" shape="gum_upper_geoShape" layer="130" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="middle_001_r_bind" shape="gum_upper_geoShape" layer="131" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="middle_002_r_bind" shape="gum_upper_geoShape" layer="132" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="middle_003_r_bind" shape="gum_upper_geoShape" layer="133" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="middle_004_r_bind" shape="gum_upper_geoShape" layer="134" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="middle_005_r_bind" shape="gum_upper_geoShape" layer="135" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="index_001_r_bind" shape="gum_upper_geoShape" layer="136" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="index_002_r_bind" shape="gum_upper_geoShape" layer="137" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="index_003_r_bind" shape="gum_upper_geoShape" layer="138" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="index_004_r_bind" shape="gum_upper_geoShape" layer="139" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="index_005_r_bind" shape="gum_upper_geoShape" layer="140" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="pinkyCup_r_bind" shape="gum_upper_geoShape" layer="141" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="pinky_001_r_bind" shape="gum_upper_geoShape" layer="142" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="pinky_002_r_bind" shape="gum_upper_geoShape" layer="143" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="pinky_003_r_bind" shape="gum_upper_geoShape" layer="144" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="pinky_004_r_bind" shape="gum_upper_geoShape" layer="145" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="pinky_005_r_bind" shape="gum_upper_geoShape" layer="146" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thumbCup_r_bind" shape="gum_upper_geoShape" layer="147" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thumb_001_r_bind" shape="gum_upper_geoShape" layer="148" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thumb_002_r_bind" shape="gum_upper_geoShape" layer="149" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thumb_003_r_bind" shape="gum_upper_geoShape" layer="150" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thumb_004_r_bind" shape="gum_upper_geoShape" layer="151" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="wristTwist_r_bind" shape="gum_upper_geoShape" layer="152" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="shoulderNoTwist_r_bind" shape="gum_upper_geoShape" layer="153" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="pelvis_l_bind" shape="gum_upper_geoShape" layer="154" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thigh_l_bind" shape="gum_upper_geoShape" layer="155" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="knee_l_bind" shape="gum_upper_geoShape" layer="156" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ankle_l_bind" shape="gum_upper_geoShape" layer="157" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ball_l_bind" shape="gum_upper_geoShape" layer="158" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="toe_l_bind" shape="gum_upper_geoShape" layer="159" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ankleTwist_l_bind" shape="gum_upper_geoShape" layer="160" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thighNoTwist_l_bind" shape="gum_upper_geoShape" layer="161" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="pelvis_r_bind" shape="gum_upper_geoShape" layer="162" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thigh_r_bind" shape="gum_upper_geoShape" layer="163" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="knee_r_bind" shape="gum_upper_geoShape" layer="164" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ankle_r_bind" shape="gum_upper_geoShape" layer="165" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ball_r_bind" shape="gum_upper_geoShape" layer="166" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="toe_r_bind" shape="gum_upper_geoShape" layer="167" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="ankleTwist_r_bind" shape="gum_upper_geoShape" layer="168" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="gum_upper_geo_skinCluster" source="thighNoTwist_r_bind" shape="gum_upper_geoShape" layer="169" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="clavicle_r_bind" shape="gum_upper_geoShape" layer="66" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="shoulder_r_bind" shape="gum_upper_geoShape" layer="67" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="elbow_r_bind" shape="gum_upper_geoShape" layer="68" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="wrist_r_bind" shape="gum_upper_geoShape" layer="69" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ring_001_r_bind" shape="gum_upper_geoShape" layer="70" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ring_002_r_bind" shape="gum_upper_geoShape" layer="71" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ring_003_r_bind" shape="gum_upper_geoShape" layer="72" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ring_004_r_bind" shape="gum_upper_geoShape" layer="73" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ring_005_r_bind" shape="gum_upper_geoShape" layer="74" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="middle_001_r_bind" shape="gum_upper_geoShape" layer="75" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="middle_002_r_bind" shape="gum_upper_geoShape" layer="76" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="middle_003_r_bind" shape="gum_upper_geoShape" layer="77" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="middle_004_r_bind" shape="gum_upper_geoShape" layer="78" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="middle_005_r_bind" shape="gum_upper_geoShape" layer="79" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="index_001_r_bind" shape="gum_upper_geoShape" layer="80" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="index_002_r_bind" shape="gum_upper_geoShape" layer="81" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="index_003_r_bind" shape="gum_upper_geoShape" layer="82" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="index_004_r_bind" shape="gum_upper_geoShape" layer="83" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="index_005_r_bind" shape="gum_upper_geoShape" layer="84" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="pinkyCup_r_bind" shape="gum_upper_geoShape" layer="85" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="pinky_001_r_bind" shape="gum_upper_geoShape" layer="86" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="pinky_002_r_bind" shape="gum_upper_geoShape" layer="87" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="pinky_003_r_bind" shape="gum_upper_geoShape" layer="88" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="pinky_004_r_bind" shape="gum_upper_geoShape" layer="89" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="pinky_005_r_bind" shape="gum_upper_geoShape" layer="90" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thumbCup_r_bind" shape="gum_upper_geoShape" layer="91" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thumb_001_r_bind" shape="gum_upper_geoShape" layer="92" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thumb_002_r_bind" shape="gum_upper_geoShape" layer="93" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thumb_003_r_bind" shape="gum_upper_geoShape" layer="94" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thumb_004_r_bind" shape="gum_upper_geoShape" layer="95" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="wristTwist_r_bind" shape="gum_upper_geoShape" layer="96" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="shoulderNoTwist_r_bind" shape="gum_upper_geoShape" layer="97" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="pelvis_l_bind" shape="gum_upper_geoShape" layer="98" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thigh_l_bind" shape="gum_upper_geoShape" layer="99" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="knee_l_bind" shape="gum_upper_geoShape" layer="100" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ankle_l_bind" shape="gum_upper_geoShape" layer="101" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ball_l_bind" shape="gum_upper_geoShape" layer="102" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="toe_l_bind" shape="gum_upper_geoShape" layer="103" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ankleTwist_l_bind" shape="gum_upper_geoShape" layer="104" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thighNoTwist_l_bind" shape="gum_upper_geoShape" layer="105" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="pelvis_r_bind" shape="gum_upper_geoShape" layer="106" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thigh_r_bind" shape="gum_upper_geoShape" layer="107" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="knee_r_bind" shape="gum_upper_geoShape" layer="108" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ankle_r_bind" shape="gum_upper_geoShape" layer="109" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ball_r_bind" shape="gum_upper_geoShape" layer="110" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="toe_r_bind" shape="gum_upper_geoShape" layer="111" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="ankleTwist_r_bind" shape="gum_upper_geoShape" layer="112" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="gum_upper_geo_skinCluster" source="thighNoTwist_r_bind" shape="gum_upper_geoShape" layer="113" defaultValue="0.000" size="0" max="0"/>
 </deformerWeight>

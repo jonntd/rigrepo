@@ -182,6 +182,21 @@ def toList(values):
 
     return values
 
+def pyListToMelArray(pyList):
+    pyList = str([str(x) for x in pyList])
+    pyList = pyList.replace("'", "\"")
+    pyList = pyList.replace("[", "{")
+    pyList = pyList.replace("]", "}")
+    return pyList
+
+def getFirstIndex(var):
+    if isinstance(var, (list, tuple)):
+        if not len(var):
+            return(var)
+        return(var[0])
+    else:
+        return(var)
+
 def getMirrorName(name):
     '''
     :param name: String to search for mirror token to replace
@@ -197,6 +212,10 @@ def getMirrorName(name):
         mirror = name[:-2]+'_r'
     elif name.endswith('_r'):
         mirror = name[:-2]+'_l'
+    elif '_l.' in name:
+        mirror = name.replace('_l.', '_r.')
+    elif '_r.' in name:
+        mirror = name.replace('_r.', '_l.')
     return mirror
 
 def getSideToken(name):
@@ -213,4 +232,19 @@ def getSideToken(name):
         token = 'l'
     elif name.endswith('_r'):
         token = 'r'
+    elif '_l.' in name:
+        token = 'l'
+    elif '_r.' in name:
+        token = 'r'
     return token
+
+def getIndex(name):
+    name = name.split('.')[-1]
+    name = name.split('[')[1]
+    index = name.replace(']', '')
+    return(index)
+
+def makeUnique(name, attribute=None):
+    pass
+
+

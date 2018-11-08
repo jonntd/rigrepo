@@ -1,0 +1,2557 @@
+{
+    "type": "PSDData", 
+    "user": "Matt", 
+    "time": "2018-10-21 00:07:10", 
+    "data": {
+        "clavicle_l_auto_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|clavicle_l_auto_poseInterpolator|clavicle_l_auto_poseInterpolatorShape", 
+            "drivers": {
+                "clavicle_l_auto_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "shoulder_fk_l.rotate", 
+                        "shoulder_fk_l.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "clavicle_l_auto_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[0].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_auto_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_auto_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -2.4434609
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -2.4434609
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_auto_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_auto_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[4].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_auto_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.61086524, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[5].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.61086524, 
+                                    1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_auto_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[6].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_auto_poseInterpolatorShape.pose[7]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[7].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    2.4434609
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    2.4434609
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_auto_poseInterpolatorShape.pose[8]": {
+                    "controllers": {
+                        "clavicle_l_auto_poseInterpolatorShape.pose[8].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.61086524, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "clavicle_l_auto_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.61086524, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "clavicle_l_driver_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|clavicle_l_driver_poseInterpolator|clavicle_l_driver_poseInterpolatorShape", 
+            "drivers": {
+                "clavicle_l_driver_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "clavicle_l.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "clavicle_l_driver_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.0471976
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.0471976
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "clavicle_r_auto_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|clavicle_r_auto_poseInterpolator|clavicle_r_auto_poseInterpolatorShape", 
+            "drivers": {
+                "clavicle_r_auto_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "shoulder_fk_r.rotate", 
+                        "shoulder_fk_r.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "clavicle_r_auto_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[0].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_auto_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_auto_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -2.4434609
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -2.4434609
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_auto_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_auto_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[4].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_auto_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[5].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.61086524, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.61086524, 
+                                    1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_auto_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[6].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_auto_poseInterpolatorShape.pose[7]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    2.4434609
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[7].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    2.4434609
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_auto_poseInterpolatorShape.pose[8]": {
+                    "controllers": {
+                        "clavicle_r_auto_poseInterpolatorShape.pose[8].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.61086524, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_auto_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.61086524, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "clavicle_r_driver_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|clavicle_r_driver_poseInterpolator|clavicle_r_driver_poseInterpolatorShape", 
+            "drivers": {
+                "clavicle_r_driver_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "clavicle_r.rotate", 
+                        "clavicle_r.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "clavicle_r_driver_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[2].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[3].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[3].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[4].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[4].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[4].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[4].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[5].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[5].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.0471976
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[5].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[5].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[5].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.0471976
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[6].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.0471976
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[6].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[6].poseControllerData[6].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.0471976
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[6].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.52359879, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[6].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.0471976
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[6].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "elbow_l_bind_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|elbow_l_bind_poseInterpolator|elbow_l_bind_poseInterpolatorShape", 
+            "drivers": {
+                "elbow_l_bind_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "elbow_fk_l.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "elbow_l_bind_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "elbow_l_bind_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "elbow_l_bind_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "elbow_l_bind_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "elbow_l_bind_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "elbow_l_bind_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "elbow_l_bind_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "elbow_l_bind_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "elbow_r_bind_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|elbow_r_bind_poseInterpolator|elbow_r_bind_poseInterpolatorShape", 
+            "drivers": {
+                "elbow_r_bind_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "elbow_fk_r.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "elbow_r_bind_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "elbow_r_bind_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "elbow_r_bind_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "elbow_r_bind_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "elbow_r_bind_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "elbow_r_bind_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "elbow_r_bind_poseInterpolatorShape.pose[2].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "elbow_r_bind_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "elbow_r_bind_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "elbow_r_bind_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "elbow_r_bind_poseInterpolatorShape.pose[3].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "elbow_r_bind_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "elbow_r_bind_poseInterpolatorShape.pose[3].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "elbow_r_bind_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "elbow_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "shoulder_l_bind_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|shoulder_l_bind_poseInterpolator|shoulder_l_bind_poseInterpolatorShape", 
+            "drivers": {
+                "shoulder_l_bind_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "shoulder_fk_l.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "shoulder_l_bind_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_l_bind_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_l_bind_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_l_bind_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_l_bind_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_l_bind_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_l_bind_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_l_bind_poseInterpolatorShape.pose[7]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_l_bind_poseInterpolatorShape.pose[8]": {
+                    "controllers": {
+                        "shoulder_l_bind_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "shoulder_r_bind_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|shoulder_r_bind_poseInterpolator|shoulder_r_bind_poseInterpolatorShape", 
+            "drivers": {
+                "shoulder_r_bind_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "shoulder_fk_r.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "shoulder_r_bind_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_r_bind_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_r_bind_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[2].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_r_bind_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[3].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[3].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_r_bind_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[4].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[4].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[4].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[4].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_r_bind_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[5].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[5].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[5].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[5].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[5].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_r_bind_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[6].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[6].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[6].poseControllerData[6].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[6].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[6].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[6].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_r_bind_poseInterpolatorShape.pose[7]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[7].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[7].poseControllerData[7].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[7].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[7].poseControllerData[6].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[7].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[7].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[7].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "shoulder_r_bind_poseInterpolatorShape.pose[8]": {
+                    "controllers": {
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[8].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[6].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[7].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_r_bind_poseInterpolatorShape.pose[8].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "wrist_l_bind_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|wrist_l_bind_poseInterpolator|wrist_l_bind_poseInterpolatorShape", 
+            "drivers": {
+                "wrist_l_bind_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "wrist_fk_l.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "wrist_l_bind_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_l_bind_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_l_bind_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_l_bind_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_l_bind_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_l_bind_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_l_bind_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_l_bind_poseInterpolatorShape.pose[7]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_l_bind_poseInterpolatorShape.pose[8]": {
+                    "controllers": {
+                        "wrist_l_bind_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }, 
+        "wrist_r_bind_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|wrist_r_bind_poseInterpolator|wrist_r_bind_poseInterpolatorShape", 
+            "drivers": {
+                "wrist_r_bind_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "wrist_fk_r.rotate"
+                    ]
+                }
+            }, 
+            "poses": {
+                "wrist_r_bind_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_r_bind_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_r_bind_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[2].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_r_bind_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[3].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[3].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_r_bind_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[4].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[4].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[4].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[4].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_r_bind_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[5].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[5].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[5].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[5].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[5].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_r_bind_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[6].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[6].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[6].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[6].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[6].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[6].poseControllerData[6].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_r_bind_poseInterpolatorShape.pose[7]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[7].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[7].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[7].poseControllerData[7].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[7].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[7].poseControllerData[6].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[7].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[7].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }
+                }, 
+                "wrist_r_bind_poseInterpolatorShape.pose[8]": {
+                    "controllers": {
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[4].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[5].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[7].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[6].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
+                        "wrist_r_bind_poseInterpolatorShape.pose[8].poseControllerData[8].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -3.1066861, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -233,8 +233,10 @@ def applyWtsDir(directory):
                     if not jointListExists:
                         print('No joints could be fournd for [ {} ]'.format(deformer))
                         continue
-                    mc.skinCluster(jointListExists, geometry, name=deformer, tsb=1)
-            
+                    sc = mc.skinCluster(jointListExists, geometry, name=deformer, tsb=1)[0]
+                    # Set to dual quaternion mode
+                    mc.setAttr(sc+'.skinningMethod', 1)
+
             # apply the weights
             if not mc.objExists(deformer):
                 print('skinCluster does not exist [ {} ]'.format(deformer))

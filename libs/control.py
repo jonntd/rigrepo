@@ -9,8 +9,8 @@ import maya.cmds as mc
 
 CONTROLPATH = os.path.join(os.path.dirname(os.path.dirname(__file__)),'etc','controls.data')
 DEBUG = False
-def create(name="control", controlType = "square", hierarchy=['nul'], position=[0,0,0], 
-        rotation=[0,0,0], parent=None, color=rigrepo.libs.common.BLUE):
+def create(name="control", controlType = "square", hierarchy=['nul'], position=[0,0,0],
+        rotation=[0,0,0], hideAttrs=['v'], parent=None, color=rigrepo.libs.common.BLUE):
     '''
     '''
     curveData = rigrepo.libs.data.curve_data.CurveData()
@@ -22,6 +22,9 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
     else:
         control = mc.createNode("transform", name=name)
         mc.setAttr("{0}.displayHandle".format(control), 1)
+    for attr in hideAttrs:
+        if mc.objExists(control+'.'+attr):
+            mc.setAttr(control+'.'+attr, k=0, cb=0)
 
     parent = parent
 

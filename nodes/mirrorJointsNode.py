@@ -15,8 +15,8 @@ class MirrorJointsNode(commandNode.CommandNode):
         cmd = '''
 import maya.cmds as mc
 import rigrepo.libs.joint
-import traceback
 from rigrepo.libs.common import getSideToken
+import traceback
 
 mc.undoInfo(openChunk=1)
 try:

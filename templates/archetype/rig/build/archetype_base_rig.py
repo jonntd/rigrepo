@@ -12,6 +12,7 @@ import maya.cmds as mc
 from rigrepo.libs.fileIO import joinPath 
 import os
 import inspect
+import copy
 
 class ArchetypeBaseRig(pubs.pGraph.PGraph):
     def __init__(self,name, variant='base'):
@@ -37,8 +38,10 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
                 dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), 
                 dataType='joint', 
                 apply=True)
+        labelJointsForMirroringNode = rigrepo.nodes.labelJointsForMirroringNode.LabelJointsForMirroringNode('labelJointsForMirroring')
 
         loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode])
+        jointDataNode.addChild(labelJointsForMirroringNode)
 
         # postBuild
         postBuild = pubs.pNode.PNode("postBuild")
@@ -65,29 +68,45 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         # apply data
         applyNode = pubs.pNode.PNode("apply")
-
         deformersNode = pubs.pNode.PNode("deformers")
 
         # apply
         skinWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("skinCluster", 
             dirPath=self.resolveDirPath('skin_wts', self.variant))
-        #skinWtsFileNode.disable()
+        importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDNode("psd",
+            dirPath=self.resolveDirPath('psd', self.variant),
+            fileName='skin_psd')
         applyNode.addChild(deformersNode)
-        deformersNode.addChildren([skinWtsFileNode])
+        deformersNode.addChildren([skinWtsFileNode, importPSDSystemNode])
 
         animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, frameNode])
 
+        # --------------------------------------------------------------------------------------------------------------
         # Workflow
+        # --------------------------------------------------------------------------------------------------------------
         workflow = pubs.pNode.PNode('workflow')
         workflow.disable()
         self.addNode(workflow)
+
+        # --------------------------------------------------------------------------------------------------------------
+        # Workflow nodes Un-categorized
+        # --------------------------------------------------------------------------------------------------------------
+
         # Model toggle
-        modelToggleNode = rigrepo.nodes.modelOverrideToggleNode.ModelOverrideToggleNode('modelOverrideToggle')
-        goToRigPoseToggleNode = rigrepo.nodes.goToRigPoseToggleNode.GoToRigPoseToggleNode('goToRigPoseToggle')
-        workflow.addChildren([modelToggleNode, goToRigPoseToggleNode])
-        # Exporters
+        modelToggleNode = rigrepo.nodes.modelOverrideToggleNode.ModelOverrideToggleNode('modelOverride')
+        # Rig Pose
+        goToRigPoseNode = rigrepo.nodes.goToRigPoseNode.GoToRigPoseNode('goToRigPose')
+        workflow.addChildren([modelToggleNode, goToRigPoseNode])
+
+        # --------------------------------------------------------------------------------------------------------------
+        # Workflow nodes grouped by action
+        # --------------------------------------------------------------------------------------------------------------
+
+        # EXPORTERS #
         exporters = pubs.pNode.PNode('exporters')
-        jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions', 
+        workflow.addChild(exporters)
+        # --------------------------------------------------------------------------------------------------------------
+        jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions',
             dataFile= self.buildExportPath('joint_positions.data', self.variant), 
             dataType='joint')
         controlOrientsExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('controlOrients', 
@@ -101,23 +120,55 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
             dataType='controlCurve')
         skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('skinCluster', 
             dirPath=self.buildExportPath('skin_wts', self.variant))
-        skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode('skinClusterSelected', 
-            dirPath=self.buildExportPath('skin_wts', self.variant))
-        controlOrientsExportDataNode.getAttributeByName('Nodes').setValue('mc.ls("*_ort")')
-        workflow.addChild(exporters)
-        exporters.addChildren([jointExportDataNode, curveExportDataNode, controlCurveExportDataNode,
-                               controlOrientsExportDataNode, skinClusterExportWtsNode, 
-                               skinClusterExportWtsSelectedNode])
+        skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode(
+            'skinClusterSelected', dirPath=self.buildExportPath('skin_wts', self.variant))
+        exportPSDNode = rigrepo.nodes.exportPSDNode.ExportPSDNode('psd',
+                                                                  dirPath=self.buildExportPath('psd', self.variant),
+                                                                  fileName='skin_psd')
+        # --------------------------------------------------------------------------------------------------------------
+        exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, curveExportDataNode, controlCurveExportDataNode,
+                               skinClusterExportWtsNode, skinClusterExportWtsSelectedNode, exportPSDNode])
 
-        # Mirroring
+        # Mirroring #
         mirroring = pubs.pNode.PNode('mirror')
         workflow.addChild(mirroring)
+        # --------------------------------------------------------------------------------------------------------------
         mirrorControlCurveNode = rigrepo.nodes.mirrorControlCurveNode.MirrorControlCurveNode('controlCurves')
         mirrorJointsNode = rigrepo.nodes.mirrorJointsNode.MirrorJointsNode('joints')
         mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('skinClusterSelected')
+        mirrorPSDNode = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psd')
+        # --------------------------------------------------------------------------------------------------------------
+        mirroring.addChildren([mirrorControlCurveNode, mirrorJointsNode, mirrorSkinClusterNode, mirrorPSDNode])
 
-        mirroring.addChildren([mirrorControlCurveNode, mirrorJointsNode, mirrorSkinClusterNode])
-    
+        # --------------------------------------------------------------------------------------------------------------
+        # Workflow nodes grouped by type
+        # --------------------------------------------------------------------------------------------------------------
+
+        # SkinCluster #
+        skinClusterNode = pubs.pNode.PNode('skinCluster')
+        workflow.addChild(skinClusterNode)
+        # --------------------------------------------------------------------------------------------------------------
+        yankSkinClusterNode = rigrepo.nodes.yankSkinClusterNode.YankSkinClusterNode('yank')
+        sc_mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('mirror')
+        sc_skinClusterExportWtsNode = copy.deepcopy(skinClusterExportWtsNode)
+        sc_skinClusterExportWtsNode.setNiceName('export')
+        sc_skinClusterExportSelectedWtsNode = copy.deepcopy(skinClusterExportWtsSelectedNode)
+        sc_skinClusterExportSelectedWtsNode.setNiceName('exportSel')
+        # --------------------------------------------------------------------------------------------------------------
+        skinClusterNode.addChildren([yankSkinClusterNode, sc_mirrorSkinClusterNode, sc_skinClusterExportWtsNode,
+                                     sc_skinClusterExportSelectedWtsNode])
+
+        # PSD #
+        psdNode = pubs.pNode.PNode('psd')
+        workflow.addChild(psdNode)
+        # --------------------------------------------------------------------------------------------------------------
+        addPosePSDNode = rigrepo.nodes.addPosePSDNode.AddPosePSDNode('addPose')
+        psd_mirrorPSDNodes = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('mirror')
+        psd_exportPSDNode = copy.deepcopy(exportPSDNode)
+        psd_exportPSDNode.setNiceName('export')
+        # --------------------------------------------------------------------------------------------------------------
+        psdNode.addChildren([addPosePSDNode, psd_mirrorPSDNodes, psd_exportPSDNode])
+
     @classmethod
     def resolveDataFilePath(cls, filename, variant):
         '''

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<deformerWeight>
+  <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/female/skin_wts/lowerLash_l_proxy__lowerLash_l_proxy_skinCluster.xml"/>
+  <shape name="lowerLash_l_proxyShape" group="2906" stride="3" size="30" max="30" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+    <point index="0" value=" 2.412429 148.507751 7.949019"/>
+    <point index="1" value=" 6.148733 149.064682 6.196564"/>
+    <point index="2" value=" 5.643820 148.693527 6.772565"/>
+    <point index="3" value=" 5.055671 148.431091 7.204502"/>
+    <point index="4" value=" 2.122238 148.606232 7.876053"/>
+    <point index="5" value=" 3.717230 148.362473 7.690345"/>
+    <point index="6" value=" 3.209972 148.366150 7.810980"/>
+    <point index="7" value=" 3.270351 148.301682 7.997024"/>
+    <point index="8" value=" 3.843544 148.258942 7.906441"/>
+    <point index="9" value=" 2.773584 148.419952 7.869617"/>
+    <point index="10" value=" 2.777396 148.394653 8.017298"/>
+    <point index="11" value=" 2.412545 148.507660 7.869392"/>
+    <point index="12" value=" 4.245771 148.452164 7.423188"/>
+    <point index="13" value=" 4.417970 148.300964 7.630404"/>
+    <point index="14" value=" 5.507522 149.147217 6.201740"/>
+    <point index="15" value=" 5.601549 149.300995 6.023028"/>
+    <point index="16" value=" 5.945015 148.904175 6.455975"/>
+    <point index="17" value=" 5.270678 148.889160 6.575395"/>
+    <point index="18" value=" 4.815051 148.606659 7.056111"/>
+    <point index="19" value=" 2.122256 148.606216 7.836897"/>
+    <point index="20" value=" 5.872488 149.252380 6.127147"/>
+    <point index="21" value=" 5.731387 149.083008 6.341194"/>
+    <point index="22" value=" 5.460572 148.824646 6.684926"/>
+    <point index="23" value=" 4.945247 148.545670 7.142592"/>
+    <point index="24" value=" 4.330206 148.387344 7.536172"/>
+    <point index="25" value=" 3.777570 148.330826 7.812537"/>
+    <point index="26" value=" 3.237701 148.343750 7.915302"/>
+    <point index="27" value=" 2.773346 148.420181 7.949160"/>
+    <point index="28" value=" 2.412160 148.508148 7.907592"/>
+    <point index="29" value=" 2.122202 148.606293 7.856303"/>
+  </shape>
+  <weights deformer="lowerLash_l_proxy_skinCluster" source="skull_bind" shape="lowerLash_l_proxyShape" layer="0" defaultValue="0.000" size="30" max="29">
+    <point index="0" value="1.000"/>
+    <point index="1" value="1.000"/>
+    <point index="2" value="1.000"/>
+    <point index="3" value="1.000"/>
+    <point index="4" value="1.000"/>
+    <point index="5" value="1.000"/>
+    <point index="6" value="1.000"/>
+    <point index="7" value="1.000"/>
+    <point index="8" value="1.000"/>
+    <point index="9" value="1.000"/>
+    <point index="10" value="1.000"/>
+    <point index="11" value="1.000"/>
+    <point index="12" value="1.000"/>
+    <point index="13" value="1.000"/>
+    <point index="14" value="1.000"/>
+    <point index="15" value="1.000"/>
+    <point index="16" value="1.000"/>
+    <point index="17" value="1.000"/>
+    <point index="18" value="1.000"/>
+    <point index="19" value="1.000"/>
+    <point index="20" value="1.000"/>
+    <point index="21" value="1.000"/>
+    <point index="22" value="1.000"/>
+    <point index="23" value="1.000"/>
+    <point index="24" value="1.000"/>
+    <point index="25" value="1.000"/>
+    <point index="26" value="1.000"/>
+    <point index="27" value="1.000"/>
+    <point index="28" value="1.000"/>
+    <point index="29" value="1.000"/>
+  </weights>
+</deformerWeight>

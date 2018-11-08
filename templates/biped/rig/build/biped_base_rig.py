@@ -81,14 +81,27 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         'index_001_l_bind', 
                                         'pinkyCup_l_bind', 
                                         'thumbCup_l_bind'])
+        # Auto clavicle
+        side = 'l'
+        l_autoClav = rigrepo.parts.autoParent.AutoParent(side+'_autoClav',
+                                                         parentControl='clavicle_'+side,
+                                                         inputControls=['shoulderSwing_'+side,
+                                                                        'shoulder_fk_'+side],
+                                                         ikJointList=['shoulder_'+side+'_bind_ik',
+                                                                      'elbow_'+side+'_bind_ik',
+                                                                      'wrist_'+side+'_bind_ik'],
+                                                         autoBlendAttr='autoClav',
+                                                         side=side,
+                                                         ikBlendAttr=side+'_arm_rvr.output.outputX',
+                                                         anchor=side+'_arm_anchor_grp')
         # add hand to arm node.
-        l_arm.addChild(l_hand)
+        l_arm.addChildren([l_hand, l_autoClav])
 
         r_arm = rigrepo.parts.arm.Arm("r_arm",
                                     ['clavicle_r_bind', 
-                                        'shoulder_r_bind', 
-                                        'elbow_r_bind', 
-                                        'wrist_r_bind'], 
+                                     'shoulder_r_bind',
+                                     'elbow_r_bind',
+                                     'wrist_r_bind'],
                                     anchor='chest_top', 
                                     side='r')
 
@@ -107,9 +120,22 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                             'thumbCup_r_bind'], 
                                         'wrist_r_bind_blend')
 
+        # Auto clavicle
+        side = 'r'
+        r_autoClav = rigrepo.parts.autoParent.AutoParent(side+'_autoClav',
+                                                         parentControl='clavicle_'+side,
+                                                         inputControls=['shoulderSwing_'+side,
+                                                                        'shoulder_fk_'+side],
+                                                         ikJointList=['shoulder_'+side+'_bind_ik',
+                                                                      'elbow_'+side+'_bind_ik',
+                                                                      'wrist_'+side+'_bind_ik'],
+                                                         autoBlendAttr='autoClav',
+                                                         side=side,
+                                                         ikBlendAttr=side+'_arm_rvr.output.outputX',
+                                                         anchor=side+'_arm_anchor_grp')
         # add hand to arm node.
-        r_arm.addChild(r_hand)
-        
+        r_arm.addChildren([r_hand, r_autoClav])
+
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",
                                 ['pelvis_l_bind', 'thigh_l_bind', 'knee_l_bind', 'ankle_l_bind'], 

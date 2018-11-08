@@ -34,6 +34,8 @@ def nodes(variant='base'):
     reload(rigrepo.libs.data.joint_data)
     import rigrepo.libs.data.curve_data
     reload(rigrepo.libs.data.curve_data)
+    import rigrepo.libs.data.psd_data
+    reload(rigrepo.libs.data.psd_data)
     import rigrepo.libs.common
     reload(rigrepo.libs.common)
     import rigrepo.libs.transform
@@ -56,9 +58,10 @@ def nodes(variant='base'):
     reload(rigrepo.libs.shape)
     import rigrepo.libs.weights
     reload(rigrepo.libs.weights)
+    import rigrepo.libs.psd
+    reload(rigrepo.libs.psd)
     import rigrepo.libs.bindmesh
     reload(rigrepo.libs.bindmesh)
-    
     
     #reload nodes
     import rigrepo.nodes.commandNode
@@ -87,8 +90,20 @@ def nodes(variant='base'):
     reload(rigrepo.nodes.mirrorJointsNode)
     import rigrepo.nodes.mirrorSkinClusterNode
     reload(rigrepo.nodes.mirrorSkinClusterNode)
-    import rigrepo.nodes.goToRigPoseToggleNode
-    reload(rigrepo.nodes.goToRigPoseToggleNode)
+    import rigrepo.nodes.goToRigPoseNode
+    reload(rigrepo.nodes.goToRigPoseNode)
+    import rigrepo.nodes.yankSkinClusterNode
+    reload(rigrepo.nodes.yankSkinClusterNode)
+    import rigrepo.nodes.labelJointsForMirroringNode
+    reload(rigrepo.nodes.labelJointsForMirroringNode)
+    import rigrepo.nodes.importPSDNode
+    reload(rigrepo.nodes.importPSDNode)
+    import rigrepo.nodes.exportPSDNode
+    reload(rigrepo.nodes.exportPSDNode)
+    import rigrepo.nodes.mirrorPSDNode
+    reload(rigrepo.nodes.mirrorPSDNode)
+    import rigrepo.nodes.addPosePSDNode
+    reload(rigrepo.nodes.addPosePSDNode)
 
     # reload parts
     import rigrepo.parts.part
@@ -111,7 +126,9 @@ def nodes(variant='base'):
     reload(rigrepo.parts.hand)
     import rigrepo.parts.foot
     reload(rigrepo.parts.foot)
-    
+    import rigrepo.parts.autoParent
+    reload(rigrepo.parts.autoParent)
+
     #reload templates
     import rigrepo.templates.archetype.rig.build.archetype_base_rig
     reload(rigrepo.templates.archetype.rig.build.archetype_base_rig)

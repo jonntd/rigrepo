@@ -15,17 +15,18 @@ def getDeltas(base, target):
     '''
      
     bs = mc.blendShape(target, base, w=[0, 1])[0] 
-    mc.pointPosition(base+'.vtx[0]') # Enforce refresh 
+    #mc.pointPosition(base+'.vtx[0]') # Enforce refresh
     mc.pointPosition(target+'.vtx[0]') # Enforce refresh 
-    mc.refresh()
-    delta_list = mc.getAttr(bs+'.it[0].itg[0].iti[6000].ipt') 
+    delta_list = mc.getAttr(bs+'.it[0].itg[0].iti[6000].ipt')
     index_list = mc.getAttr(bs+'.it[0].itg[0].iti[6000].ict')                                
-    mc.delete(bs) 
+    mc.delete(bs)
+    if not index_list:
+        return([])
  
     # =============================================== 
     # Point array 
     # =============================================== 
-     
+
     count = len(index_list) 
     index_flat_list = list() 
     for n in index_list: 

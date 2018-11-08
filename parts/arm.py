@@ -39,22 +39,58 @@ class Arm(limb.Limb):
                                                 controlType="square",
                                                 hierarchy=['nul','ort'])
 
+        '''
+        clavicle = 'clavicle_l'
+        child = 'shoulderSwing_l_nul'
+
+        aimTarget = mc.duplicate(clavicle, po=1, n=clavicle + '_aim_target')[0]
+        aim = mc.duplicate(clavicle, po=1, n=clavicle + '_aim')[0]
+
+        mc.delete(mc.pointConstraint(child, aimTarget))
+        mc.parent(aimTarget, clavicle)
+        mc.setAttr(aimTarget + '.tx', 1)
+
+        mc.aimConstraint(aimTarget, aim, offset=[0, 0, 0],
+                         weight=1, aimVector=[1, 0, 0],
+                         worldUpType="none",
+                         upVector=[0, 0, 0])
+
+        mc.pointConstraint(aimTarget, child)
+        '''
+
         clavicleCtrl = clavicleCtrlHierarchy[-1]
         clavicleNul = clavicleCtrlHierarchy[0]
         swingCtrl = swingCtrlHierarchy[-1]
         swingNul = swingCtrlHierarchy[0]
         clavicleJointMatrix = mc.xform(self._clavicleJoint, q=True, ws=True, matrix=True)
         mc.xform(clavicleNul, ws=True, matrix=clavicleJointMatrix)
+
         # move the shoulderSwing control to the correct location.
         shoulderCtrlMatrix = mc.xform(self._fkControls[0], q=True, ws=True, matrix=True)
         mc.xform(swingNul, ws=True, matrix=shoulderCtrlMatrix)
+
+        # Hookup clavicle connect nul, the direct connection for the rotate allow keeps the auto
+        # clav from causint a double rotation on the shoulder
+        clavicleConnect = mc.duplicate(clavicleCtrl, po=1, n=clavicleCtrl+'_connect')[0]
+        mc.parent(clavicleConnect, clavicleNul)
+        mc.connectAttr(clavicleCtrl+'.r', clavicleConnect+'.r')
+        mc.connectAttr(clavicleCtrl+'.s', clavicleConnect+'.s')
+        # PSD driver - transform that picks up the auto clav and anim control rotation
+        clavicleDriver = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver')[0]
+        mc.orientConstraint(clavicleCtrl, clavicleDriver)
+
+        # This allows the translates to come through with auto clav
+        clavicleConnectTranslate = mc.duplicate(swingNul, po=1, n=clavicleCtrl+'_connect_trans')[0]
+        mc.parent(clavicleConnectTranslate, clavicleCtrl)
+        mc.pointConstraint(clavicleConnectTranslate, clavicleConnect)
+
 
         mc.pointConstraint(clavicleCtrl, self._clavicleJoint)
         mc.orientConstraint(clavicleCtrl, self._clavicleJoint)
 
         # parent the shoulderSwing control to the clavicle control.
         mc.parent(("{}_nul".format(self._fkControls[0]), self._stretchTargetJointList[0]), swingCtrl)
-        mc.parent(swingNul, clavicleCtrl)
+        mc.parent(swingNul, clavicleConnect)
 
         # parent constrain the shoulder ik joint to the clavicle joint.
         mc.parentConstraint(self._clavicleJoint, self.ikfkSystem.getIkJointList()[0], mo=True)

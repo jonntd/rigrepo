@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<deformerWeight>
+  <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/female/skin_wts/eyeCornea_l_geo__eyeCornea_l_geo_skinCluster.xml"/>
+  <shape name="eyeCornea_l_geoShape" group="2890" stride="3" size="92" max="92" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+    <point index="0" value=" 2.816504 150.551392 1.627768"/>
+    <point index="1" value=" 2.366367 150.947327 1.755554"/>
+    <point index="2" value=" 1.770222 150.993774 1.890354"/>
+    <point index="3" value=" 1.255775 150.672989 1.980679"/>
+    <point index="4" value=" 1.019527 150.107498 1.992029"/>
+    <point index="5" value=" 1.151717 149.513306 1.920068"/>
+    <point index="6" value=" 1.601854 149.117371 1.792283"/>
+    <point index="7" value=" 2.197999 149.070923 1.657483"/>
+    <point index="8" value=" 2.712446 149.391708 1.567157"/>
+    <point index="9" value=" 2.948694 149.957199 1.555807"/>
+    <point index="10" value=" 3.665339 150.987625 1.940006"/>
+    <point index="11" value=" 2.809129 151.740738 2.183069"/>
+    <point index="12" value=" 1.675193 151.829086 2.439474"/>
+    <point index="13" value=" 0.696656 151.218918 2.611283"/>
+    <point index="14" value=" 0.247286 150.143295 2.632872"/>
+    <point index="15" value=" 0.498727 149.013077 2.495994"/>
+    <point index="16" value=" 1.354937 148.259949 2.252932"/>
+    <point index="17" value=" 2.488873 148.171600 1.996527"/>
+    <point index="18" value=" 3.467410 148.781784 1.824717"/>
+    <point index="19" value=" 3.916780 149.857391 1.803128"/>
+    <point index="20" value=" 4.413785 151.309387 2.527049"/>
+    <point index="21" value=" 3.235313 152.345963 2.861595"/>
+    <point index="22" value=" 1.674584 152.467560 3.214507"/>
+    <point index="23" value=" 0.327743 151.627731 3.450982"/>
+    <point index="24" value=" -0.290761 150.147263 3.480696"/>
+    <point index="25" value=" 0.055318 148.591644 3.292300"/>
+    <point index="26" value=" 1.233790 147.555069 2.957753"/>
+    <point index="27" value=" 2.794519 147.433472 2.604842"/>
+    <point index="28" value=" 4.141359 148.273300 2.368367"/>
+    <point index="29" value=" 4.759863 149.753769 2.338652"/>
+    <point index="30" value=" 4.988578 151.485168 3.331431"/>
+    <point index="31" value=" 3.603201 152.703735 3.724714"/>
+    <point index="32" value=" 1.768454 152.846680 4.139586"/>
+    <point index="33" value=" 0.185148 151.859406 4.417580"/>
+    <point index="34" value=" -0.541948 150.119019 4.452511"/>
+    <point index="35" value=" -0.135108 148.290283 4.231038"/>
+    <point index="36" value=" 1.250270 147.071716 3.837754"/>
+    <point index="37" value=" 3.085016 146.928757 3.422883"/>
+    <point index="38" value=" 4.668322 147.916031 3.144889"/>
+    <point index="39" value=" 5.395418 149.656433 3.109958"/>
+    <point index="40" value=" 5.333454 151.497757 4.274415"/>
+    <point index="41" value=" 3.876782 152.779037 4.687938"/>
+    <point index="42" value=" 1.947615 152.929337 5.124160"/>
+    <point index="43" value=" 0.282829 151.891266 5.416459"/>
+    <point index="44" value=" -0.481685 150.061310 5.453188"/>
+    <point index="45" value=" -0.053908 148.138458 5.220317"/>
+    <point index="46" value=" 1.402764 146.857178 4.806795"/>
+    <point index="47" value=" 3.331931 146.706879 4.370573"/>
+    <point index="48" value=" 4.996717 147.744965 4.078273"/>
+    <point index="49" value=" 5.761231 149.574921 4.041544"/>
+    <point index="50" value=" 5.414654 151.345947 5.263695"/>
+    <point index="51" value=" 4.029276 152.564514 5.656978"/>
+    <point index="52" value=" 2.194529 152.707458 6.071850"/>
+    <point index="53" value=" 0.611223 151.720184 6.349843"/>
+    <point index="54" value=" -0.115872 149.979797 6.384775"/>
+    <point index="55" value=" 0.290968 148.151062 6.163301"/>
+    <point index="56" value=" 1.676345 146.932480 5.770018"/>
+    <point index="57" value=" 3.511092 146.789536 5.355146"/>
+    <point index="58" value=" 5.094398 147.776810 5.077153"/>
+    <point index="59" value=" 5.821493 149.517212 5.042221"/>
+    <point index="60" value=" 5.224228 151.044571 6.202433"/>
+    <point index="61" value=" 4.045756 152.081146 6.536979"/>
+    <point index="62" value=" 2.485027 152.202744 6.889890"/>
+    <point index="63" value=" 1.138187 151.362915 7.126366"/>
+    <point index="64" value=" 0.519682 149.882446 7.156080"/>
+    <point index="65" value=" 0.865761 148.326843 6.967683"/>
+    <point index="66" value=" 2.044233 147.290268 6.633137"/>
+    <point index="67" value=" 3.604962 147.168655 6.280226"/>
+    <point index="68" value=" 4.951802 148.008484 6.043750"/>
+    <point index="69" value=" 5.570307 149.488953 6.014036"/>
+    <point index="70" value=" 4.780818 150.623154 6.998738"/>
+    <point index="71" value=" 3.924608 151.376266 7.241801"/>
+    <point index="72" value=" 2.790673 151.464615 7.498205"/>
+    <point index="73" value=" 1.812136 150.854446 7.670015"/>
+    <point index="74" value=" 1.362766 149.778824 7.691604"/>
+    <point index="75" value=" 1.614207 148.648605 7.554726"/>
+    <point index="76" value=" 2.470417 147.895477 7.311664"/>
+    <point index="77" value=" 3.604353 147.807144 7.055259"/>
+    <point index="78" value=" 4.582890 148.417313 6.883449"/>
+    <point index="79" value=" 5.032259 149.492935 6.861860"/>
+    <point index="80" value=" 4.127829 150.122910 7.574664"/>
+    <point index="81" value=" 3.677692 150.518845 7.702449"/>
+    <point index="82" value=" 3.081547 150.565292 7.837250"/>
+    <point index="83" value=" 2.567100 150.244507 7.927575"/>
+    <point index="84" value=" 2.330852 149.679016 7.938925"/>
+    <point index="85" value=" 2.463042 149.084824 7.866964"/>
+    <point index="86" value=" 2.913179 148.688889 7.739179"/>
+    <point index="87" value=" 3.509324 148.642441 7.604379"/>
+    <point index="88" value=" 4.023771 148.963226 7.514053"/>
+    <point index="89" value=" 4.260019 149.528717 7.502703"/>
+    <point index="90" value=" 1.950369 150.043365 1.620898"/>
+    <point index="91" value=" 3.329177 149.592850 7.873835"/>
+  </shape>
+  <weights deformer="eyeCornea_l_geo_skinCluster" source="skull_bind" shape="eyeCornea_l_geoShape" layer="0" defaultValue="0.000" size="92" max="91">
+    <point index="0" value="1.000"/>
+    <point index="1" value="1.000"/>
+    <point index="2" value="1.000"/>
+    <point index="3" value="1.000"/>
+    <point index="4" value="1.000"/>
+    <point index="5" value="1.000"/>
+    <point index="6" value="1.000"/>
+    <point index="7" value="1.000"/>
+    <point index="8" value="1.000"/>
+    <point index="9" value="1.000"/>
+    <point index="10" value="1.000"/>
+    <point index="11" value="1.000"/>
+    <point index="12" value="1.000"/>
+    <point index="13" value="1.000"/>
+    <point index="14" value="1.000"/>
+    <point index="15" value="1.000"/>
+    <point index="16" value="1.000"/>
+    <point index="17" value="1.000"/>
+    <point index="18" value="1.000"/>
+    <point index="19" value="1.000"/>
+    <point index="20" value="1.000"/>
+    <point index="21" value="1.000"/>
+    <point index="22" value="1.000"/>
+    <point index="23" value="1.000"/>
+    <point index="24" value="1.000"/>
+    <point index="25" value="1.000"/>
+    <point index="26" value="1.000"/>
+    <point index="27" value="1.000"/>
+    <point index="28" value="1.000"/>
+    <point index="29" value="1.000"/>
+    <point index="30" value="1.000"/>
+    <point index="31" value="1.000"/>
+    <point index="32" value="1.000"/>
+    <point index="33" value="1.000"/>
+    <point index="34" value="1.000"/>
+    <point index="35" value="1.000"/>
+    <point index="36" value="1.000"/>
+    <point index="37" value="1.000"/>
+    <point index="38" value="1.000"/>
+    <point index="39" value="1.000"/>
+    <point index="40" value="1.000"/>
+    <point index="41" value="1.000"/>
+    <point index="42" value="1.000"/>
+    <point index="43" value="1.000"/>
+    <point index="44" value="1.000"/>
+    <point index="45" value="1.000"/>
+    <point index="46" value="1.000"/>
+    <point index="47" value="1.000"/>
+    <point index="48" value="1.000"/>
+    <point index="49" value="1.000"/>
+    <point index="50" value="1.000"/>
+    <point index="51" value="1.000"/>
+    <point index="52" value="1.000"/>
+    <point index="53" value="1.000"/>
+    <point index="54" value="1.000"/>
+    <point index="55" value="1.000"/>
+    <point index="56" value="1.000"/>
+    <point index="57" value="1.000"/>
+    <point index="58" value="1.000"/>
+    <point index="59" value="1.000"/>
+    <point index="60" value="1.000"/>
+    <point index="61" value="1.000"/>
+    <point index="62" value="1.000"/>
+    <point index="63" value="1.000"/>
+    <point index="64" value="1.000"/>
+    <point index="65" value="1.000"/>
+    <point index="66" value="1.000"/>
+    <point index="67" value="1.000"/>
+    <point index="68" value="1.000"/>
+    <point index="69" value="1.000"/>
+    <point index="70" value="1.000"/>
+    <point index="71" value="1.000"/>
+    <point index="72" value="1.000"/>
+    <point index="73" value="1.000"/>
+    <point index="74" value="1.000"/>
+    <point index="75" value="1.000"/>
+    <point index="76" value="1.000"/>
+    <point index="77" value="1.000"/>
+    <point index="78" value="1.000"/>
+    <point index="79" value="1.000"/>
+    <point index="80" value="1.000"/>
+    <point index="81" value="1.000"/>
+    <point index="82" value="1.000"/>
+    <point index="83" value="1.000"/>
+    <point index="84" value="1.000"/>
+    <point index="85" value="1.000"/>
+    <point index="86" value="1.000"/>
+    <point index="87" value="1.000"/>
+    <point index="88" value="1.000"/>
+    <point index="89" value="1.000"/>
+    <point index="90" value="1.000"/>
+    <point index="91" value="1.000"/>
+  </weights>
+</deformerWeight>
