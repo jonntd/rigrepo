@@ -10,11 +10,14 @@ def setWeights(node, weights, map=None):
 
     :param node: Deformer name
     :type node: str
+
     :param weights: List of tuples. [(pntIndex, value),...]
     :type weights: List
+
     :param map: Name of influence or deformer map to assing weights to.
     :type map: str
-    :returns: None
+
+    :return: None
     '''
 
     if mc.nodeType(node) == 'skinCluster': 

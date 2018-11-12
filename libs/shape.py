@@ -1,3 +1,6 @@
+'''
+This module is for dealing with shape nodes in Maya
+'''
 import maya.cmds as mc 
 
 def getDeltas(base, target): 
@@ -8,8 +11,10 @@ def getDeltas(base, target):
 
     :param base: Base object
     :type base: str
+    
     :param target: Target object
     :type target: str
+
     :returns: List of tuples [(pntIndex, value),...]
     :rtype: List
     '''

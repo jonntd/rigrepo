@@ -1,3 +1,6 @@
+'''
+This module is for dealing with skinClusters inside Maya
+'''
 import maya.cmds as mc
 
 def localize(skinClusters, transform):

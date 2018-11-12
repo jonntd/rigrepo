@@ -134,7 +134,7 @@ class Mouth(part.Part):
             lipMainControlHieracrchyList[lipMainControlHieracrchyList.index(lowerRight[i])] = [mc.rename(ctrl, "_".join([name for name in ctrl.split("_") if not name.isdigit()]).replace(controlPrefix, "lipMain_low_{}_r".format(lowerRightPosXList.index(pos)))) for ctrl in lowerRight[i]]
 
 
-        
+
         # create the controls
         mouthCornerHierarchyList = list()
         # If there is a hierarchy argument passed in. We will loop through and create the hiearchy.
@@ -165,6 +165,13 @@ class Mouth(part.Part):
                             cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=1, dv=1)
                         mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
                             cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-1, dv=-1)
+                        if attribute == "x":
+                            mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
+                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
+                            mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
+                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=10, dv=1)
+                            mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
+                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-10, dv=-1)
                     elif  "_r_" in lipMainControl[3] and follicle == mouthCorner_r_follicle:
                         mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
                             cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
@@ -172,8 +179,14 @@ class Mouth(part.Part):
                             cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=1, dv=1)
                         mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
                             cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-1, dv=-1)
+                        if attribute == "x":
+                            mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
+                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
+                            mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
+                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=10, dv=1)
+                            mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
+                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-10, dv=-1)
 
-        
         # control prefix for the lips
         controlPrefix = "lip"
         bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(lipCurve, controlPrefix , parentGroup)

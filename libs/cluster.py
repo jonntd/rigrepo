@@ -1,7 +1,6 @@
 '''
 This is the module that will house functions and classes that have to do with clusters.
 '''
-
 import maya.cmds as mc
 
 def create(mesh,suffix,parent=None,contraintTypes=['point','orient','scale']):

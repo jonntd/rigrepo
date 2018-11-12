@@ -248,3 +248,19 @@ def makeUnique(name, attribute=None):
     pass
 
 
+def convertDictKeys(dictionary):
+    '''
+    Recursively converts dictionary keys from unicodes to strings.
+
+    :param dictionary: The dictionary you want to convert the keys on.
+    :type dictionary: dict
+
+    :return: The dictionary with all of it's keys set to strings.
+    :rtype: dict
+    '''
+    # If it's not a dictionary then return it.
+    if not isinstance(dictionary, dict):
+        return dictionary
+
+    # if it's a dictionary, then make sure to loop through keys/values and convert them
+    return dict((str(k), convertDictKeys(v)) for k, v in dictionary.items())

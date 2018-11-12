@@ -118,6 +118,9 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         controlCurveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('controlCurvePositions', 
             dataFile=self.buildExportPath('control_positions.data', self.variant), 
             dataType='controlCurve')
+        sdkExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('sdk', 
+            dataFile=self.buildExportPath('sdk.data', self.variant), 
+            dataType='sdk')
         skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('skinCluster', 
             dirPath=self.buildExportPath('skin_wts', self.variant))
         skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode(
@@ -126,8 +129,10 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
                                                                   dirPath=self.buildExportPath('psd', self.variant),
                                                                   fileName='skin_psd')
         # --------------------------------------------------------------------------------------------------------------
-        exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, curveExportDataNode, controlCurveExportDataNode,
-                               skinClusterExportWtsNode, skinClusterExportWtsSelectedNode, exportPSDNode])
+        exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, 
+                                curveExportDataNode, controlCurveExportDataNode, sdkExportDataNode,
+                                skinClusterExportWtsNode, skinClusterExportWtsSelectedNode, 
+                                exportPSDNode])
 
         # Mirroring #
         mirroring = pubs.pNode.PNode('mirror')

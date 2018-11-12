@@ -1,3 +1,6 @@
+'''
+This module will handle everything to do with how bindmesh's are handled.
+'''
 import maya.cmds as mc
 import maya.api.OpenMaya as om
 

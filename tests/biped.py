@@ -34,6 +34,7 @@ def nodes(variant='base'):
     reload(rigrepo.libs.data.joint_data)
     import rigrepo.libs.data.curve_data
     reload(rigrepo.libs.data.curve_data)
+
     import rigrepo.libs.data.psd_data
     reload(rigrepo.libs.data.psd_data)
     import rigrepo.libs.common
@@ -54,6 +55,8 @@ def nodes(variant='base'):
     reload(rigrepo.libs.control)
     import rigrepo.libs.joint
     reload(rigrepo.libs.joint)
+    import rigrepo.libs.sdk
+    reload(rigrepo.libs.sdk)
     import rigrepo.libs.shape
     reload(rigrepo.libs.shape)
     import rigrepo.libs.weights
@@ -62,6 +65,9 @@ def nodes(variant='base'):
     reload(rigrepo.libs.psd)
     import rigrepo.libs.bindmesh
     reload(rigrepo.libs.bindmesh)
+
+    import rigrepo.libs.data.sdk_data
+    reload(rigrepo.libs.data.sdk_data)
     
     #reload nodes
     import rigrepo.nodes.commandNode

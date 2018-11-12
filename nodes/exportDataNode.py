@@ -29,6 +29,9 @@ class ExportDataNode(pubs.pNode.PNode):
         elif dataType == 'psd':
             self.dataObj = rigrepo.libs.data.psd_data.PSDData()
             nodesAttr.setValue('mc.ls(type="poseInterpolator")')
+        elif dataType == 'sdk':
+            self.dataObj = rigrepo.libs.data.sdk_data.SdkData()
+            nodesAttr.setValue('mc.ls(type=["animCurveUU", "animCurveUA", "animCurveUL", "animCurveUT"])')
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()

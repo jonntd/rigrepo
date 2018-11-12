@@ -8,11 +8,17 @@ import json
 import getpass
 from time import gmtime, strftime
 
+import rigrepo.libs.common
+
 class AbstractData(object):
     '''
+    The template for all data classes. This doesn't define any specific data. Rather it is a
+    place where we describe how the data classes should be constructed.
     '''
     def __init__(self):
         '''
+        The constructor for the abstract class. This abstract class is used as a template for
+        all data classes. 
         '''
         # set class attributes defaults
         self._data = OrderedDict()
@@ -20,6 +26,11 @@ class AbstractData(object):
 
     def gatherData(self,node):
         '''
+        This method will gather data for the node that is passed in as an argument. It will
+        store this data on the self._data member/attribute on the class.
+
+        :param node: Node you wish to gather the data for.
+        :type node: str
         '''
         if not mc.objExists(node):
             mc.warning("{0} does not exists in the current Maya session.".format(node))
@@ -28,12 +39,18 @@ class AbstractData(object):
 
     def gatherDataIterate(self, nodes):
         '''
+        This method will iterate through the list of nodes passed in and use ther gatherData
+        method to store the data onto the self._data member/attribute.
+
+        :param nodes: Array of nodes you wish to gather the data from.
+        :type nodes: list | tuple
         '''
         for node in nodes:
             self.gatherData(node)
 
     def getData(self):
         '''
+        This will return the self._data member/attribute.
         '''
         return self._data
 
@@ -90,10 +107,13 @@ class AbstractData(object):
 
         # set a new filepath on the class.
         self._filepath = filepath
-        self._data = data['data']
+        self._data = rigrepo.libs.common.convertDictKeys(data['data'])
         return self._data
 
     def applyData(node, attributes=None):
         '''
+        Holder method for inherited classes to define how it will be used.
         '''
         pass
+
+

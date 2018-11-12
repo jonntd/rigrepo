@@ -1,0 +1,28 @@
+'''
+This is the base module for all of your parts.
+'''
+import maya.cmds as mc
+import rigrepo.parts.{parent} as {parent}
+
+class {EXAMPLE}({parent}.{PARENT}):
+    '''
+    '''
+    def __init__(self, name):
+        '''
+        '''
+        super({EXAMPLE}, self).__init__(name)
+
+    def setup(self):
+        '''
+        '''
+        super({EXAMPLE}, self).setup()
+        
+    def build(self):
+        '''
+        '''
+        super({EXAMPLE}, self).build()
+
+    def postBuild(self):
+        '''
+        '''
+        super({EXAMPLE}, self).postBuild()
