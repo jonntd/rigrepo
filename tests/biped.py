@@ -1,4 +1,4 @@
-def nodes(variant='base'):
+def nodes(variant='base', buildNow=False):
     # import pubs
     import pubs.pObject
     reload(pubs.pObject)
@@ -110,6 +110,8 @@ def nodes(variant='base'):
     reload(rigrepo.nodes.mirrorPSDNode)
     import rigrepo.nodes.addPosePSDNode
     reload(rigrepo.nodes.addPosePSDNode)
+    import rigrepo.nodes.gpuSpeedKey
+    reload(rigrepo.nodes.gpuSpeedKey)
 
     # reload parts
     import rigrepo.parts.part
@@ -153,4 +155,18 @@ def nodes(variant='base'):
         biped_graph = rigrepo.templates.biped.rig.build.biped_base_rig.BipedBaseRig(name='Biped_base')
     elif variant == 'female':
         biped_graph = rigrepo.templates.biped.rig.build.biped_female_rig.BipedFemaleRig(name='Biped_female')
-    pubs.ui.mainWindow.launch(graph=biped_graph)
+
+    if buildNow:
+        nodeList = biped_graph.getNodes()
+
+        for node in nodeList:
+            if not node.isActive():
+                nodeIndex = nodeList.index(node)
+                childList = node.descendants()
+                for child in childList:
+                    nodeList.pop(nodeIndex+1)
+                nodeList.pop(nodeIndex)
+            if node.isActive():
+                node.execute()
+    else:
+        pubs.ui.mainWindow.launch(graph=biped_graph)

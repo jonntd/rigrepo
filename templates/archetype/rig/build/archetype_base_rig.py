@@ -97,6 +97,9 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         # Rig Pose
         goToRigPoseNode = rigrepo.nodes.goToRigPoseNode.GoToRigPoseNode('goToRigPose')
         workflow.addChildren([modelToggleNode, goToRigPoseNode])
+        # Gpu Speed Key
+        gpuSpeedKey = rigrepo.nodes.gpuSpeedKey.GpuSpeedKeyNode('addGpuKeyframes')
+        workflow.addChildren([modelToggleNode, goToRigPoseNode, gpuSpeedKey])
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes grouped by action
