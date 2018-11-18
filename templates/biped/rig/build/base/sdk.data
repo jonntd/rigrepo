@@ -1,325 +1,28 @@
 {
     "type": "SdkData", 
     "user": "Walter Yoder", 
-    "time": "2018-11-12 07:55:20", 
+    "time": "2018-11-18 00:39:01", 
     "data": {
-        "blendShape1_lidUpper_closed_l_curve": {
-            "dagPath": "blendShape1_lidUpper_closed_l_curve", 
-            "driven": "blendShape1.lidUpper_closed_l_curve", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidUpper_l.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0596830820727041, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0596830820727041, 
-                    "ia": 0.0596830820727041, 
-                    "v": 0.5, 
-                    "dv": 20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0596830820727041, 
-                    "v": 1.0, 
-                    "dv": 40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blendShape1_lidUpper_open_l_curve": {
-            "dagPath": "blendShape1_lidUpper_open_l_curve", 
-            "driven": "blendShape1.lidUpper_open_l_curve", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidUpper_l.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": -0.0596830820727041, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": -40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": -0.0596830820727041, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blendShape3_lidLower_closed_l_curve": {
-            "dagPath": "blendShape3_lidLower_closed_l_curve", 
-            "driven": "blendShape3.lidLower_closed_l_curve", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidLower_l.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0596830820727041, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0596830820727041, 
-                    "ia": 0.0596830820727041, 
-                    "v": 0.5, 
-                    "dv": 20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0596830820727041, 
-                    "v": 1.0, 
-                    "dv": 40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blendShape3_lidLower_open_l_curve": {
-            "dagPath": "blendShape3_lidLower_open_l_curve", 
-            "driven": "blendShape3.lidLower_open_l_curve", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidLower_l.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": -0.0596830820727041, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": -40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": -0.0596830820727041, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blendShape5_lidUpper_closed_r_curve": {
-            "dagPath": "blendShape5_lidUpper_closed_r_curve", 
-            "driven": "blendShape5.lidUpper_closed_r_curve", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidUpper_r.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0596830820727041, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0596830820727041, 
-                    "ia": 0.0596830820727041, 
-                    "v": 0.5, 
-                    "dv": 20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0596830820727041, 
-                    "v": 1.0, 
-                    "dv": 40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blendShape5_lidUpper_open_r_curve": {
-            "dagPath": "blendShape5_lidUpper_open_r_curve", 
-            "driven": "blendShape5.lidUpper_open_r_curve", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidUpper_r.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": -0.0596830820727041, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": -40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": -0.0596830820727041, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blendShape7_lidLower_closed_r_curve": {
-            "dagPath": "blendShape7_lidLower_closed_r_curve", 
-            "driven": "blendShape7.lidLower_closed_r_curve", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidLower_r.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0596830820727041, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0596830820727041, 
-                    "ia": 0.0596830820727041, 
-                    "v": 0.5, 
-                    "dv": 20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0596830820727041, 
-                    "v": 1.0, 
-                    "dv": 40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blendShape7_lidLower_open_r_curve": {
-            "dagPath": "blendShape7_lidLower_open_r_curve", 
-            "driven": "blendShape7.lidLower_open_r_curve", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidLower_r.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": -0.0596830820727041, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": -40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": -0.0596830820727041, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_blend_mul_input1X": {
-            "dagPath": "clavicle_l_blend_mul_input1X", 
-            "driven": "clavicle_l_blend_mul.input1X", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l.autoClav", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.7161599454704085, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.7161599454704085, 
-                    "v": 0.3, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_poseInterp_add_input1D_0_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_0_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[0]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[0]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_poseInterp_add_input1D_1_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_1_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[1]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[1]", 
+        "lipMain_corner_l_def_auto_translateX": {
+            "dagPath": "lipMain_corner_l_def_auto_translateX", 
+            "driven": "lipMain_corner_l_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateX", 
             "keyframes": [
                 {
                     "l": true, 
                     "oa": 2.3859440303888126, 
-                    "ia": 0.0, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
                     "v": 0.0, 
                     "dv": 0.0, 
                     "itt": "linear", 
@@ -327,134 +30,35 @@
                 }, 
                 {
                     "l": true, 
-                    "oa": 0.0, 
+                    "oa": 2.3859440303888126, 
                     "ia": 2.3859440303888126, 
                     "v": 1.0, 
                     "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
-        "clavicle_l_poseInterp_add_input1D_2_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_2_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[2]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[2]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 4.763641690726177, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 4.763641690726177, 
-                    "v": 2.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_poseInterp_add_input1D_3_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_3_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[3]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[3]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_poseInterp_add_input1D_4_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_4_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[4]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[4]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 4.763641690726177, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 4.763641690726177, 
-                    "v": 2.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_poseInterp_add_input1D_5_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_5_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[5]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[5]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_poseInterp_add_input1D_6_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_6_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[6]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[6]", 
+        "lipMain_corner_l_def_auto_translateY": {
+            "dagPath": "lipMain_corner_l_def_auto_translateY", 
+            "driven": "lipMain_corner_l_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateY", 
             "keyframes": [
                 {
                     "l": true, 
                     "oa": 2.3859440303888126, 
-                    "ia": 0.0, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
                     "v": 0.0, 
                     "dv": 0.0, 
                     "itt": "linear", 
@@ -462,269 +66,35 @@
                 }, 
                 {
                     "l": true, 
-                    "oa": 0.0, 
+                    "oa": 2.3859440303888126, 
                     "ia": 2.3859440303888126, 
                     "v": 1.0, 
                     "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
-        "clavicle_l_poseInterp_add_input1D_7_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_7_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[7]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[7]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 4.763641690726177, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 4.763641690726177, 
-                    "v": 2.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_poseInterp_add_input1D_8_": {
-            "dagPath": "clavicle_l_poseInterp_add_input1D_8_", 
-            "driven": "clavicle_l_poseInterp_add.input1D[8]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_l_auto_poseInterpolatorShape.output[8]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_blend_mul_input1X": {
-            "dagPath": "clavicle_r_blend_mul_input1X", 
-            "driven": "clavicle_r_blend_mul.input1X", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r.autoClav", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.7161599454704085, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.7161599454704085, 
-                    "v": 0.3, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_0_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_0_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[0]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[0]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_1_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_1_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[1]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[1]", 
+        "lipMain_corner_l_def_auto_translateZ": {
+            "dagPath": "lipMain_corner_l_def_auto_translateZ", 
+            "driven": "lipMain_corner_l_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateZ", 
             "keyframes": [
                 {
                     "l": true, 
                     "oa": 2.3859440303888126, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
                     "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_2_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_2_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[2]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[2]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 4.763641690726177, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 4.763641690726177, 
-                    "v": 2.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_3_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_3_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[3]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[3]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_4_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_4_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[4]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[4]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 4.763641690726177, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 4.763641690726177, 
-                    "v": 2.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_5_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_5_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[5]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[5]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_6_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_6_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[6]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[6]", 
-            "keyframes": [
                 {
                     "l": true, 
                     "oa": 2.3859440303888126, 
-                    "ia": 0.0, 
+                    "ia": 2.3859440303888126, 
                     "v": 0.0, 
                     "dv": 0.0, 
                     "itt": "linear", 
@@ -732,228 +102,12 @@
                 }, 
                 {
                     "l": true, 
-                    "oa": 0.0, 
+                    "oa": 2.3859440303888126, 
                     "ia": 2.3859440303888126, 
                     "v": 1.0, 
                     "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_7_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_7_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[7]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[7]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 4.763641690726177, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 4.763641690726177, 
-                    "v": 2.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_r_poseInterp_add_input1D_8_": {
-            "dagPath": "clavicle_r_poseInterp_add_input1D_8_", 
-            "driven": "clavicle_r_poseInterp_add.input1D[8]", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "clavicle_r_auto_poseInterpolatorShape.output[8]", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 0.0, 
-                    "dv": 1.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "clavicle_l_auto_start_rotateX": {
-            "dagPath": "clavicle_l_auto_start_rotateX", 
-            "driven": "clavicle_l_auto_start.rotateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "clavicle_l_addRotation_dcmpMatrix.outputRotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": -180.0, 
-                    "dv": -180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": 180.0, 
-                    "dv": 180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }
-            ]
-        }, 
-        "clavicle_l_auto_start_rotateY": {
-            "dagPath": "clavicle_l_auto_start_rotateY", 
-            "driven": "clavicle_l_auto_start.rotateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "clavicle_l_addRotation_dcmpMatrix.outputRotateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": -180.0, 
-                    "dv": -180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": 180.0, 
-                    "dv": 180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }
-            ]
-        }, 
-        "clavicle_l_auto_start_rotateZ": {
-            "dagPath": "clavicle_l_auto_start_rotateZ", 
-            "driven": "clavicle_l_auto_start.rotateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "clavicle_l_addRotation_dcmpMatrix.outputRotateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": -180.0, 
-                    "dv": -180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": 180.0, 
-                    "dv": 180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }
-            ]
-        }, 
-        "clavicle_r_auto_start_rotateX": {
-            "dagPath": "clavicle_r_auto_start_rotateX", 
-            "driven": "clavicle_r_auto_start.rotateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "clavicle_r_addRotation_dcmpMatrix.outputRotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": -180.0, 
-                    "dv": -180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": 180.0, 
-                    "dv": 180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }
-            ]
-        }, 
-        "clavicle_r_auto_start_rotateY": {
-            "dagPath": "clavicle_r_auto_start_rotateY", 
-            "driven": "clavicle_r_auto_start.rotateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "clavicle_r_addRotation_dcmpMatrix.outputRotateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": -180.0, 
-                    "dv": -180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": 180.0, 
-                    "dv": 180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }
-            ]
-        }, 
-        "clavicle_r_auto_start_rotateZ": {
-            "dagPath": "clavicle_r_auto_start_rotateZ", 
-            "driven": "clavicle_r_auto_start.rotateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "clavicle_r_addRotation_dcmpMatrix.outputRotateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": -180.0, 
-                    "dv": -180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440582072855, 
-                    "ia": 2.3859440582072855, 
-                    "v": 180.0, 
-                    "dv": 180.0, 
-                    "itt": "spline", 
-                    "ott": "spline"
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
@@ -993,6 +147,114 @@
                 }
             ]
         }, 
+        "lipMain_corner_r_def_auto_translateX": {
+            "dagPath": "lipMain_corner_r_def_auto_translateX", 
+            "driven": "lipMain_corner_r_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_corner_r_def_auto_translateY": {
+            "dagPath": "lipMain_corner_r_def_auto_translateY", 
+            "driven": "lipMain_corner_r_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_corner_r_def_auto_translateZ": {
+            "dagPath": "lipMain_corner_r_def_auto_translateZ", 
+            "driven": "lipMain_corner_r_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
         "lipMain_corner_r_rot_def_auto_rotateY": {
             "dagPath": "lipMain_corner_r_rot_def_auto_rotateY", 
             "driven": "lipMain_corner_r_rot_def_auto.rotateY", 
@@ -1026,6 +288,114 @@
                     "dv": 1.0, 
                     "itt": "auto", 
                     "ott": "auto"
+                }
+            ]
+        }, 
+        "lipMain_low_0_l_def_auto_translateX": {
+            "dagPath": "lipMain_low_0_l_def_auto_translateX", 
+            "driven": "lipMain_low_0_l_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_0_l_def_auto_translateY": {
+            "dagPath": "lipMain_low_0_l_def_auto_translateY", 
+            "driven": "lipMain_low_0_l_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_0_l_def_auto_translateZ": {
+            "dagPath": "lipMain_low_0_l_def_auto_translateZ", 
+            "driven": "lipMain_low_0_l_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
@@ -1065,6 +435,114 @@
                 }
             ]
         }, 
+        "lipMain_low_0_r_def_auto_translateX": {
+            "dagPath": "lipMain_low_0_r_def_auto_translateX", 
+            "driven": "lipMain_low_0_r_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_0_r_def_auto_translateY": {
+            "dagPath": "lipMain_low_0_r_def_auto_translateY", 
+            "driven": "lipMain_low_0_r_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_0_r_def_auto_translateZ": {
+            "dagPath": "lipMain_low_0_r_def_auto_translateZ", 
+            "driven": "lipMain_low_0_r_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
         "lipMain_low_0_r_rot_def_auto_rotateY": {
             "dagPath": "lipMain_low_0_r_rot_def_auto_rotateY", 
             "driven": "lipMain_low_0_r_rot_def_auto.rotateY", 
@@ -1098,6 +576,114 @@
                     "dv": 1.0, 
                     "itt": "auto", 
                     "ott": "auto"
+                }
+            ]
+        }, 
+        "lipMain_low_1_l_def_auto_translateX": {
+            "dagPath": "lipMain_low_1_l_def_auto_translateX", 
+            "driven": "lipMain_low_1_l_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.5, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_1_l_def_auto_translateY": {
+            "dagPath": "lipMain_low_1_l_def_auto_translateY", 
+            "driven": "lipMain_low_1_l_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.7656101812259508, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.7656101812259508, 
+                    "ia": 0.7656101812259508, 
+                    "v": 0.32071713147410374, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_1_l_def_auto_translateZ": {
+            "dagPath": "lipMain_low_1_l_def_auto_translateZ", 
+            "driven": "lipMain_low_1_l_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.5, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
@@ -1137,6 +723,114 @@
                 }
             ]
         }, 
+        "lipMain_low_1_r_def_auto_translateX": {
+            "dagPath": "lipMain_low_1_r_def_auto_translateX", 
+            "driven": "lipMain_low_1_r_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.5, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_1_r_def_auto_translateY": {
+            "dagPath": "lipMain_low_1_r_def_auto_translateY", 
+            "driven": "lipMain_low_1_r_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.7656101812259508, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.7656101812259508, 
+                    "ia": 0.7656101812259508, 
+                    "v": 0.32071713147410374, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_1_r_def_auto_translateZ": {
+            "dagPath": "lipMain_low_1_r_def_auto_translateZ", 
+            "driven": "lipMain_low_1_r_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.5, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
         "lipMain_low_1_r_rot_def_auto_rotateY": {
             "dagPath": "lipMain_low_1_r_rot_def_auto_rotateY", 
             "driven": "lipMain_low_1_r_rot_def_auto.rotateY", 
@@ -1170,6 +864,114 @@
                     "dv": 1.0, 
                     "itt": "auto", 
                     "ott": "auto"
+                }
+            ]
+        }, 
+        "lipMain_low_2_l_def_auto_translateX": {
+            "dagPath": "lipMain_low_2_l_def_auto_translateX", 
+            "driven": "lipMain_low_2_l_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.25, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_2_l_def_auto_translateY": {
+            "dagPath": "lipMain_low_2_l_def_auto_translateY", 
+            "driven": "lipMain_low_2_l_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.2569189968176924, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.2569189968176924, 
+                    "ia": 0.2569189968176924, 
+                    "v": 0.10761869902653154, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_2_l_def_auto_translateZ": {
+            "dagPath": "lipMain_low_2_l_def_auto_translateZ", 
+            "driven": "lipMain_low_2_l_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.25, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
@@ -1209,6 +1011,114 @@
                 }
             ]
         }, 
+        "lipMain_low_2_r_def_auto_translateX": {
+            "dagPath": "lipMain_low_2_r_def_auto_translateX", 
+            "driven": "lipMain_low_2_r_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.25, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_2_r_def_auto_translateY": {
+            "dagPath": "lipMain_low_2_r_def_auto_translateY", 
+            "driven": "lipMain_low_2_r_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.2569189968176924, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.2569189968176924, 
+                    "ia": 0.2569189968176924, 
+                    "v": 0.10761869902653154, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_low_2_r_def_auto_translateZ": {
+            "dagPath": "lipMain_low_2_r_def_auto_translateZ", 
+            "driven": "lipMain_low_2_r_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.25, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
         "lipMain_low_2_r_rot_def_auto_rotateY": {
             "dagPath": "lipMain_low_2_r_rot_def_auto_rotateY", 
             "driven": "lipMain_low_2_r_rot_def_auto.rotateY", 
@@ -1242,6 +1152,114 @@
                     "dv": 1.0, 
                     "itt": "auto", 
                     "ott": "auto"
+                }
+            ]
+        }, 
+        "lipMain_up_0_l_def_auto_translateX": {
+            "dagPath": "lipMain_up_0_l_def_auto_translateX", 
+            "driven": "lipMain_up_0_l_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_0_l_def_auto_translateY": {
+            "dagPath": "lipMain_up_0_l_def_auto_translateY", 
+            "driven": "lipMain_up_0_l_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_0_l_def_auto_translateZ": {
+            "dagPath": "lipMain_up_0_l_def_auto_translateZ", 
+            "driven": "lipMain_up_0_l_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
@@ -1281,6 +1299,114 @@
                 }
             ]
         }, 
+        "lipMain_up_0_r_def_auto_translateX": {
+            "dagPath": "lipMain_up_0_r_def_auto_translateX", 
+            "driven": "lipMain_up_0_r_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_0_r_def_auto_translateY": {
+            "dagPath": "lipMain_up_0_r_def_auto_translateY", 
+            "driven": "lipMain_up_0_r_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_0_r_def_auto_translateZ": {
+            "dagPath": "lipMain_up_0_r_def_auto_translateZ", 
+            "driven": "lipMain_up_0_r_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": -0.75, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.789910608246069, 
+                    "ia": 1.789910608246069, 
+                    "v": 0.75, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
         "lipMain_up_0_r_rot_def_auto_rotateY": {
             "dagPath": "lipMain_up_0_r_rot_def_auto_rotateY", 
             "driven": "lipMain_up_0_r_rot_def_auto.rotateY", 
@@ -1314,6 +1440,114 @@
                     "dv": 1.0, 
                     "itt": "auto", 
                     "ott": "auto"
+                }
+            ]
+        }, 
+        "lipMain_up_1_l_def_auto_translateX": {
+            "dagPath": "lipMain_up_1_l_def_auto_translateX", 
+            "driven": "lipMain_up_1_l_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.5, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_1_l_def_auto_translateY": {
+            "dagPath": "lipMain_up_1_l_def_auto_translateY", 
+            "driven": "lipMain_up_1_l_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.7656101812259508, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.7656101812259508, 
+                    "ia": 0.7656101812259508, 
+                    "v": 0.32071713147410374, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_1_l_def_auto_translateZ": {
+            "dagPath": "lipMain_up_1_l_def_auto_translateZ", 
+            "driven": "lipMain_up_1_l_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.5, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
@@ -1353,6 +1587,114 @@
                 }
             ]
         }, 
+        "lipMain_up_1_r_def_auto_translateX": {
+            "dagPath": "lipMain_up_1_r_def_auto_translateX", 
+            "driven": "lipMain_up_1_r_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.5, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_1_r_def_auto_translateY": {
+            "dagPath": "lipMain_up_1_r_def_auto_translateY", 
+            "driven": "lipMain_up_1_r_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.7656101812259508, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.7656101812259508, 
+                    "ia": 0.7656101812259508, 
+                    "v": 0.32071713147410374, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_1_r_def_auto_translateZ": {
+            "dagPath": "lipMain_up_1_r_def_auto_translateZ", 
+            "driven": "lipMain_up_1_r_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": -0.5, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 1.193489423982035, 
+                    "ia": 1.193489423982035, 
+                    "v": 0.5, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
         "lipMain_up_1_r_rot_def_auto_rotateY": {
             "dagPath": "lipMain_up_1_r_rot_def_auto_rotateY", 
             "driven": "lipMain_up_1_r_rot_def_auto.rotateY", 
@@ -1386,6 +1728,114 @@
                     "dv": 1.0, 
                     "itt": "auto", 
                     "ott": "auto"
+                }
+            ]
+        }, 
+        "lipMain_up_2_l_def_auto_translateX": {
+            "dagPath": "lipMain_up_2_l_def_auto_translateX", 
+            "driven": "lipMain_up_2_l_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.25, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_2_l_def_auto_translateY": {
+            "dagPath": "lipMain_up_2_l_def_auto_translateY", 
+            "driven": "lipMain_up_2_l_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.2569189968176924, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.2569189968176924, 
+                    "ia": 0.2569189968176924, 
+                    "v": 0.10761869902653154, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_2_l_def_auto_translateZ": {
+            "dagPath": "lipMain_up_2_l_def_auto_translateZ", 
+            "driven": "lipMain_up_2_l_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_l.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.25, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
                 }
             ]
         }, 
@@ -1425,6 +1875,114 @@
                 }
             ]
         }, 
+        "lipMain_up_2_r_def_auto_translateX": {
+            "dagPath": "lipMain_up_2_r_def_auto_translateX", 
+            "driven": "lipMain_up_2_r_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.25, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_2_r_def_auto_translateY": {
+            "dagPath": "lipMain_up_2_r_def_auto_translateY", 
+            "driven": "lipMain_up_2_r_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.2569189968176924, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.2569189968176924, 
+                    "ia": 0.2569189968176924, 
+                    "v": 0.10761869902653154, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
+        "lipMain_up_2_r_def_auto_translateZ": {
+            "dagPath": "lipMain_up_2_r_def_auto_translateZ", 
+            "driven": "lipMain_up_2_r_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "mouth_corner_r.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": -0.25, 
+                    "dv": -1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.5968094512291771, 
+                    "ia": 0.5968094512291771, 
+                    "v": 0.25, 
+                    "dv": 1.0, 
+                    "itt": "clamped", 
+                    "ott": "clamped"
+                }
+            ]
+        }, 
         "lipMain_up_2_r_rot_def_auto_rotateY": {
             "dagPath": "lipMain_up_2_r_rot_def_auto_rotateY", 
             "driven": "lipMain_up_2_r_rot_def_auto.rotateY", 
@@ -1433,7 +1991,7 @@
             "driver": "mouth_corner_r.translateX", 
             "keyframes": [
                 {
-                    "l": true, 
+                    "l": false, 
                     "oa": 0.0, 
                     "ia": 0.0, 
                     "v": -10.0, 
@@ -1442,7 +2000,7 @@
                     "ott": "auto"
                 }, 
                 {
-                    "l": true, 
+                    "l": false, 
                     "oa": 22.619865185485075, 
                     "ia": 22.619865185485075, 
                     "v": 0.0, 
@@ -1451,1523 +2009,20 @@
                     "ott": "auto"
                 }, 
                 {
-                    "l": true, 
+                    "l": false, 
                     "oa": 0.0, 
                     "ia": 0.0, 
                     "v": 10.0, 
                     "dv": 1.0, 
                     "itt": "auto", 
                     "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_corner_l_def_auto_translateX": {
-            "dagPath": "lipMain_corner_l_def_auto_translateX", 
-            "driven": "lipMain_corner_l_def_auto.translateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3497442807604862, 
-                    "ia": 2.3497442807604862, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.31354265405338, 
-                    "ia": 2.31354265405338, 
-                    "v": 0.9696215139442228, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_corner_l_def_auto_translateY": {
-            "dagPath": "lipMain_corner_l_def_auto_translateY", 
-            "driven": "lipMain_corner_l_def_auto.translateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_corner_l_def_auto_translateZ": {
-            "dagPath": "lipMain_corner_l_def_auto_translateZ", 
-            "driven": "lipMain_corner_l_def_auto.translateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_corner_r_def_auto_translateX": {
-            "dagPath": "lipMain_corner_r_def_auto_translateX", 
-            "driven": "lipMain_corner_r_def_auto.translateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
                 }, 
                 {
                     "l": true, 
                     "oa": 0.0, 
                     "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_corner_r_def_auto_translateY": {
-            "dagPath": "lipMain_corner_r_def_auto_translateY", 
-            "driven": "lipMain_corner_r_def_auto.translateY", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_corner_r_def_auto_translateZ": {
-            "dagPath": "lipMain_corner_r_def_auto_translateZ", 
-            "driven": "lipMain_corner_r_def_auto.translateZ", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_0_l_def_auto_translateX": {
-            "dagPath": "lipMain_low_0_l_def_auto_translateX", 
-            "driven": "lipMain_low_0_l_def_auto.translateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 1.507198652723259, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 1.507198652723259, 
-                    "ia": 1.507198652723259, 
-                    "v": 0.6314795598482563, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_0_l_def_auto_translateY": {
-            "dagPath": "lipMain_low_0_l_def_auto_translateY", 
-            "driven": "lipMain_low_0_l_def_auto.translateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_0_l_def_auto_translateZ": {
-            "dagPath": "lipMain_low_0_l_def_auto_translateZ", 
-            "driven": "lipMain_low_0_l_def_auto.translateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_0_r_def_auto_translateX": {
-            "dagPath": "lipMain_low_0_r_def_auto_translateX", 
-            "driven": "lipMain_low_0_r_def_auto.translateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_0_r_def_auto_translateY": {
-            "dagPath": "lipMain_low_0_r_def_auto_translateY", 
-            "driven": "lipMain_low_0_r_def_auto.translateY", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_0_r_def_auto_translateZ": {
-            "dagPath": "lipMain_low_0_r_def_auto_translateZ", 
-            "driven": "lipMain_low_0_r_def_auto.translateZ", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_1_l_def_auto_translateX": {
-            "dagPath": "lipMain_low_1_l_def_auto_translateX", 
-            "driven": "lipMain_low_1_l_def_auto.translateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.7632327915575668, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.7632327915575668, 
-                    "ia": 0.7632327915575668, 
-                    "v": 0.31972111553784854, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_1_l_def_auto_translateY": {
-            "dagPath": "lipMain_low_1_l_def_auto_translateY", 
-            "driven": "lipMain_low_1_l_def_auto.translateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_1_l_def_auto_translateZ": {
-            "dagPath": "lipMain_low_1_l_def_auto_translateZ", 
-            "driven": "lipMain_low_1_l_def_auto.translateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_1_r_def_auto_translateX": {
-            "dagPath": "lipMain_low_1_r_def_auto_translateX", 
-            "driven": "lipMain_low_1_r_def_auto.translateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_1_r_def_auto_translateY": {
-            "dagPath": "lipMain_low_1_r_def_auto_translateY", 
-            "driven": "lipMain_low_1_r_def_auto.translateY", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_1_r_def_auto_translateZ": {
-            "dagPath": "lipMain_low_1_r_def_auto_translateZ", 
-            "driven": "lipMain_low_1_r_def_auto.translateZ", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_2_l_def_auto_translateX": {
-            "dagPath": "lipMain_low_2_l_def_auto_translateX", 
-            "driven": "lipMain_low_2_l_def_auto.translateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.7133070139935729, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.7133070139935729, 
-                    "ia": 0.7133070139935729, 
-                    "v": 0.2988047808764942, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_2_l_def_auto_translateY": {
-            "dagPath": "lipMain_low_2_l_def_auto_translateY", 
-            "driven": "lipMain_low_2_l_def_auto.translateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_2_l_def_auto_translateZ": {
-            "dagPath": "lipMain_low_2_l_def_auto_translateZ", 
-            "driven": "lipMain_low_2_l_def_auto.translateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_low_2_r_def_auto_translateX": {
-            "dagPath": "lipMain_low_2_r_def_auto_translateX", 
-            "driven": "lipMain_low_2_r_def_auto.translateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_2_r_def_auto_translateY": {
-            "dagPath": "lipMain_low_2_r_def_auto_translateY", 
-            "driven": "lipMain_low_2_r_def_auto.translateY", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_low_2_r_def_auto_translateZ": {
-            "dagPath": "lipMain_low_2_r_def_auto_translateZ", 
-            "driven": "lipMain_low_2_r_def_auto.translateZ", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_0_l_def_auto_translateX": {
-            "dagPath": "lipMain_up_0_l_def_auto_translateX", 
-            "driven": "lipMain_up_0_l_def_auto.translateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 1.507198652723259, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 1.507198652723259, 
-                    "ia": 1.507198652723259, 
-                    "v": 0.6314795598482563, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_0_l_def_auto_translateY": {
-            "dagPath": "lipMain_up_0_l_def_auto_translateY", 
-            "driven": "lipMain_up_0_l_def_auto.translateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_0_l_def_auto_translateZ": {
-            "dagPath": "lipMain_up_0_l_def_auto_translateZ", 
-            "driven": "lipMain_up_0_l_def_auto.translateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_0_r_def_auto_translateX": {
-            "dagPath": "lipMain_up_0_r_def_auto_translateX", 
-            "driven": "lipMain_up_0_r_def_auto.translateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_0_r_def_auto_translateY": {
-            "dagPath": "lipMain_up_0_r_def_auto_translateY", 
-            "driven": "lipMain_up_0_r_def_auto.translateY", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_0_r_def_auto_translateZ": {
-            "dagPath": "lipMain_up_0_r_def_auto_translateZ", 
-            "driven": "lipMain_up_0_r_def_auto.translateZ", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_1_l_def_auto_translateX": {
-            "dagPath": "lipMain_up_1_l_def_auto_translateX", 
-            "driven": "lipMain_up_1_l_def_auto.translateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.7632327915575668, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.7632327915575668, 
-                    "ia": 0.7632327915575668, 
-                    "v": 0.31972111553784854, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_1_l_def_auto_translateY": {
-            "dagPath": "lipMain_up_1_l_def_auto_translateY", 
-            "driven": "lipMain_up_1_l_def_auto.translateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_1_l_def_auto_translateZ": {
-            "dagPath": "lipMain_up_1_l_def_auto_translateZ", 
-            "driven": "lipMain_up_1_l_def_auto.translateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_1_r_def_auto_translateX": {
-            "dagPath": "lipMain_up_1_r_def_auto_translateX", 
-            "driven": "lipMain_up_1_r_def_auto.translateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_1_r_def_auto_translateY": {
-            "dagPath": "lipMain_up_1_r_def_auto_translateY", 
-            "driven": "lipMain_up_1_r_def_auto.translateY", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_1_r_def_auto_translateZ": {
-            "dagPath": "lipMain_up_1_r_def_auto_translateZ", 
-            "driven": "lipMain_up_1_r_def_auto.translateZ", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_2_l_def_auto_translateX": {
-            "dagPath": "lipMain_up_2_l_def_auto_translateX", 
-            "driven": "lipMain_up_2_l_def_auto.translateX", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.7133070139935729, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.7133070139935729, 
-                    "ia": 0.7133070139935729, 
-                    "v": 0.2988047808764942, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_2_l_def_auto_translateY": {
-            "dagPath": "lipMain_up_2_l_def_auto_translateY", 
-            "driven": "lipMain_up_2_l_def_auto.translateY", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_2_l_def_auto_translateZ": {
-            "dagPath": "lipMain_up_2_l_def_auto_translateZ", 
-            "driven": "lipMain_up_2_l_def_auto.translateZ", 
-            "preInfinity": 1, 
-            "postInfinity": 1, 
-            "driver": "mouth_corner_l.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "clamped", 
-                    "ott": "clamped"
-                }
-            ]
-        }, 
-        "lipMain_up_2_r_def_auto_translateX": {
-            "dagPath": "lipMain_up_2_r_def_auto_translateX", 
-            "driven": "lipMain_up_2_r_def_auto.translateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_2_r_def_auto_translateY": {
-            "dagPath": "lipMain_up_2_r_def_auto_translateY", 
-            "driven": "lipMain_up_2_r_def_auto.translateY", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateY", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }
-            ]
-        }, 
-        "lipMain_up_2_r_def_auto_translateZ": {
-            "dagPath": "lipMain_up_2_r_def_auto_translateZ", 
-            "driven": "lipMain_up_2_r_def_auto.translateZ", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "mouth_corner_r.translateZ", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": -1.0, 
-                    "dv": -1.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 2.3859440303888126, 
-                    "ia": 2.3859440303888126, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 0.0, 
-                    "v": 1.0, 
-                    "dv": 1.0, 
+                    "v": 10.0, 
+                    "dv": 1000001.0, 
                     "itt": "auto", 
                     "ott": "auto"
                 }

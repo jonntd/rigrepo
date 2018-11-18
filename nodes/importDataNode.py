@@ -5,6 +5,7 @@ import pubs.pNode
 import rigrepo.libs.data.joint_data
 import rigrepo.libs.data.node_data
 import rigrepo.libs.data.curve_data
+import rigrepo.libs.data.sdk_data
 import maya.cmds as mc
 import os
 
@@ -26,7 +27,7 @@ class ImportDataNode(pubs.pNode.PNode):
             nodesAttr.setValue('mc.ls(type="poseInterpolator")')
         elif dataType == 'sdk':
             self.dataObj = rigrepo.libs.data.sdk_data.SdkData()
-            nodesAttr.setValue('mc.ls(type="poseInterpolator")')
+            nodesAttr.setValue('mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL", "animCurveUT"])')
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()

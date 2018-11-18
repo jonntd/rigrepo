@@ -53,8 +53,8 @@ class SdkData(abstract_data.AbstractData):
             driverValue=mc.keyframe(node, index=(i,i), q=True, floatChange=True)[0]
             drivenValue=mc.keyframe(node, index=(i,i), q=True, valueChange=True)[0]
 
-            inTangentType=mc.keyTangent(node, index=(i,i), q=True, itt=True)[0]
-            outTangentType=mc.keyTangent(node, index=(i,i), q=True, ott=True)[0]
+            inTangent=mc.keyTangent(node, index=(i,i), q=True, itt=True)[0]
+            outTangent=mc.keyTangent(node, index=(i,i), q=True, ott=True)[0]
             inAngle=mc.keyTangent(node, index=(i,i), q=True, ia=True)[0]
             outAngle=mc.keyTangent(node, index=(i,i), q=True, oa=True)[0]
             lockTangents=mc.keyTangent(node, index=(i,i), q=True, lock=True)[0]
@@ -65,8 +65,8 @@ class SdkData(abstract_data.AbstractData):
 
             keyframeValues={'dv':driverValue, 
                             'v':drivenValue, 
-                            'itt':inTangentType, 
-                            'ott':outTangentType, 
+                            'itt':inTangent, 
+                            'ott':outTangent, 
                             'ia':inAngle, 
                             'oa':outAngle, 
                             'l':lockTangents}

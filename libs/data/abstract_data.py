@@ -54,6 +54,28 @@ class AbstractData(object):
         '''
         return self._data
 
+    # Set
+    def setData(self, value):
+        '''
+        This should only be setting the data on this class if the data is a dictionary.
+
+        .. warning::
+            We're not checking to make sure the data is correct. Only if it's a dictionary.
+
+        :param value: The data for what it is you're trying to set.
+        :type value: dict
+        '''
+        if not isinstance(value, dict):
+            raise TypeError("The value argument must be a dictionary.")
+
+        self._data = value
+
+    def applyData(node, attributes=None):
+        '''
+        Holder method for inherited classes to define how it will be used.
+        '''
+        pass
+
     def write(self, filepath, createDirectory=True):
         '''
         This will write a dictionary of information out to disc in .json format.
@@ -109,11 +131,4 @@ class AbstractData(object):
         self._filepath = filepath
         self._data = rigrepo.libs.common.convertDictKeys(data['data'])
         return self._data
-
-    def applyData(node, attributes=None):
-        '''
-        Holder method for inherited classes to define how it will be used.
-        '''
-        pass
-
 

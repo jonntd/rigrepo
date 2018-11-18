@@ -76,7 +76,11 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDNode("psd",
             dirPath=self.resolveDirPath('psd', self.variant),
             fileName='skin_psd')
-        applyNode.addChild(deformersNode)
+        importSdkDataNode = rigrepo.nodes.importDataNode.ImportDataNode('sdk', 
+                dataFile=self.resolveDataFilePath('sdk.data', self.variant), 
+                dataType='sdk', 
+                apply=True)
+        applyNode.addChildren([deformersNode, importSdkDataNode])
         deformersNode.addChildren([skinWtsFileNode, importPSDSystemNode])
 
         animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, frameNode])
@@ -84,9 +88,9 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         # --------------------------------------------------------------------------------------------------------------
         # Workflow
         # --------------------------------------------------------------------------------------------------------------
-        workflow = pubs.pNode.PNode('workflow')
-        workflow.disable()
-        self.addNode(workflow)
+        workflowNode = pubs.pNode.PNode('workflow')
+        workflowNode.disable()
+        self.addNode(workflowNode)
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes Un-categorized
@@ -96,10 +100,10 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         modelToggleNode = rigrepo.nodes.modelOverrideToggleNode.ModelOverrideToggleNode('modelOverride')
         # Rig Pose
         goToRigPoseNode = rigrepo.nodes.goToRigPoseNode.GoToRigPoseNode('goToRigPose')
-        workflow.addChildren([modelToggleNode, goToRigPoseNode])
+        workflowNode.addChildren([modelToggleNode, goToRigPoseNode])
         # Gpu Speed Key
         gpuSpeedKey = rigrepo.nodes.gpuSpeedKey.GpuSpeedKeyNode('addGpuKeyframes')
-        workflow.addChildren([modelToggleNode, goToRigPoseNode, gpuSpeedKey])
+        workflowNode.addChildren([modelToggleNode, goToRigPoseNode, gpuSpeedKey])
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes grouped by action
@@ -107,7 +111,6 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         # EXPORTERS #
         exporters = pubs.pNode.PNode('exporters')
-        workflow.addChild(exporters)
         # --------------------------------------------------------------------------------------------------------------
         jointExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('jointPositions',
             dataFile= self.buildExportPath('joint_positions.data', self.variant), 
@@ -139,14 +142,34 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         # Mirroring #
         mirroring = pubs.pNode.PNode('mirror')
-        workflow.addChild(mirroring)
         # --------------------------------------------------------------------------------------------------------------
         mirrorControlCurveNode = rigrepo.nodes.mirrorControlCurveNode.MirrorControlCurveNode('controlCurves')
         mirrorJointsNode = rigrepo.nodes.mirrorJointsNode.MirrorJointsNode('joints')
         mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('skinClusterSelected')
         mirrorPSDNode = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psd')
+        mirrorOrients = rigrepo.nodes.commandNode.CommandNode('orients')
+        mirrorOrientsCmd = '''
+import maya.cmds as mc
+import rigrepo.libs.transform
+rigrepo.libs.transform.mirror (mc.ls(["lip*_l_ort"], type="transform"), search='_l_', replace='_r_', axis="x")
+'''
+        mirrorOrients.getAttributeByName('command').setValue(mirrorOrientsCmd)
+        mirrorSDKNode = rigrepo.nodes.commandNode.CommandNode('sdk')
+        mirrorSDKCmd = '''
+import maya.cmds as mc
+import rigrepo.libs.data.sdk_data as sdk_data
+currentData = sdk_data.SdkData()
+currentData.gatherDataIterate(mc.ls("*_l_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL", "animCurveUT"]))
+data = currentData.getData()
+for k in data.keys():
+    data[k.replace('_l_','_r_')] = data[k]
+
+currentData.applyData(data.keys())
+'''
+        mirrorSDKNode.getAttributeByName('command').setValue(mirrorSDKCmd)
+        #mirrorOrients = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psd')
         # --------------------------------------------------------------------------------------------------------------
-        mirroring.addChildren([mirrorControlCurveNode, mirrorJointsNode, mirrorSkinClusterNode, mirrorPSDNode])
+        mirroring.addChildren([mirrorControlCurveNode, mirrorJointsNode, mirrorSkinClusterNode, mirrorOrients, mirrorPSDNode, mirrorSDKNode])
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes grouped by type
@@ -154,7 +177,6 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         # SkinCluster #
         skinClusterNode = pubs.pNode.PNode('skinCluster')
-        workflow.addChild(skinClusterNode)
         # --------------------------------------------------------------------------------------------------------------
         yankSkinClusterNode = rigrepo.nodes.yankSkinClusterNode.YankSkinClusterNode('yank')
         sc_mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('mirror')
@@ -166,9 +188,25 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         skinClusterNode.addChildren([yankSkinClusterNode, sc_mirrorSkinClusterNode, sc_skinClusterExportWtsNode,
                                      sc_skinClusterExportSelectedWtsNode])
 
+        # SDK #
+        sdkNode = pubs.pNode.PNode('SDK')
+        # --------------------------------------------------------------------------------------------------------------
+        sdk_selectNode = rigrepo.nodes.commandNode.CommandNode('selectSDKs')
+        sdk_selectCmd = '''
+import maya.cmds as mc
+mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL", "animCurveUT"]))
+        '''
+        sdk_mirrorNode =  rigrepo.nodes.commandNode.CommandNode('mirror')
+        sdk_mirrorNode.getAttributeByName('command').setValue(mirrorSDKCmd)
+        sdk_selectNode.getAttributeByName('command').setValue(sdk_selectCmd)
+        sdk_exportNode = copy.deepcopy(sdkExportDataNode)
+        sdk_exportNode.setNiceName('export')
+        # --------------------------------------------------------------------------------------------------------------
+        sdkNode.addChildren([sdk_selectNode, sdk_mirrorNode, sdk_exportNode])
+
         # PSD #
         psdNode = pubs.pNode.PNode('psd')
-        workflow.addChild(psdNode)
+
         # --------------------------------------------------------------------------------------------------------------
         addPosePSDNode = rigrepo.nodes.addPosePSDNode.AddPosePSDNode('addPose')
         psd_mirrorPSDNodes = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('mirror')
@@ -176,6 +214,9 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         psd_exportPSDNode.setNiceName('export')
         # --------------------------------------------------------------------------------------------------------------
         psdNode.addChildren([addPosePSDNode, psd_mirrorPSDNodes, psd_exportPSDNode])
+
+        # add all of the nodes in order to the workflow node.
+        workflowNode.addChildren([exporters, mirroring, skinClusterNode, psdNode, sdkNode])
 
     @classmethod
     def resolveDataFilePath(cls, filename, variant):
