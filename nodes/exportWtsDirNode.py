@@ -47,4 +47,29 @@ print('\\nexported '+str(len(sc_nodes))+' skinClusters'),
         exec(self.getAttributeByName('command').getValue().format(dirPath=dirPath))
         
 
-        
+
+class ExportWireWtsDirNode(ExportWtsDirNode):   
+    def __init__(self, name, parent=None, dirPath="/disk1/temp"):
+        super(ExportWireWtsDirNode, self).__init__(name, parent, dirPath)
+        commandAttribute = self.getAttributeByName('command')
+        cmd = '''
+import rigrepo.libs.weights
+import maya.cmds as mc
+
+model_grp = 'model'
+wire_nodes = list()
+if mc.objExists(model_grp):
+    meshes = mc.listRelatives(model_grp, ad=True, type=('mesh', 'nurbsCurve'))
+    for mesh in meshes:
+        wire_nodes.extend(mc.ls(mc.listHistory(mesh, pdo=True, il=True), type='wire'))
+    for wire in wire_nodes:
+        geo = mc.ls(list(set(mc.deformer(wire, g=True, q=True)).intersection(set(meshes))))
+        if geo:
+            geo = mc.listRelatives(geo, p=True)[0]
+            print('exporting ' + wire)
+            rigrepo.libs.weights.exportWeights(geo, wire, "{dirPath}")
+
+    print('\\nexported '+str(len(wire_nodes))+' wire deformers')
+'''
+        # command 
+        commandAttribute.setValue(cmd)

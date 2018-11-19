@@ -49,4 +49,4 @@ else:
         exec(self.getAttributeByName('command').getValue().format(dirPath=dirPath))
         
 
-        
+

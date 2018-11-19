@@ -236,13 +236,13 @@ def applyWtsDir(directory):
                     if not jointListExists:
                         print('No joints could be fournd for [ {} ]'.format(deformer))
                         continue
-                    sc = mc.skinCluster(jointListExists, geometry, name=deformer, tsb=1)[0]
+                    skin = mc.skinCluster(jointListExists, geometry, name=deformer, tsb=True)[0]
                     # Set to dual quaternion mode
-                    mc.setAttr(sc+'.skinningMethod', 1)
+                    mc.setAttr('{}.skinningMethod'.format(skin), 1)
 
             # apply the weights
             if not mc.objExists(deformer):
-                print('skinCluster does not exist [ {} ]'.format(deformer))
+                print('deformer does not exist [ {} ]'.format(deformer))
                 continue
             rigrepo.libs.weights.importWeights(geometry, deformer, filepath)
             # this ensures that our skinCluster is normalized. 

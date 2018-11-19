@@ -186,9 +186,38 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
         r_blink.getAttributeByName("side").setValue("r")
         mouth = rigrepo.parts.mouth.Mouth("mouth", lipMainCurve='lip_main_curve')
+        mouthBindGeometry = rigrepo.nodes.commandNode.CommandNode('bindGeometry')
+        mouthBindGeometryCmd = '''
+import maya.cmds as mc
+for curve in ["lip_main_curve", "lip_curve"]:
+    wireDeformer = "{}_wire".format(curve)
+    if mc.objExists(wireDeformer):
+        mc.sets(mc.ls("body_geo.vtx[*]")[0], e=True, add="{}Set".format(wireDeformer))
+        mc.rename(wireDeformer, curve.replace("_curve", "_wire"))
+    else:
+        wireDeformer = mc.wire("body_geo", gw=False, en=1.00, ce=0.00, li=0.00, 
+                        w=curve, name=curve.replace("_curve", "_wire"))[0]
+        # set the default values for the wire deformer
+        mc.setAttr("{}.rotation".format(wireDeformer), 0)
+        mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
+
+bindJointList = list(set(mc.ls("lip_*_baseCurve_jnt")).difference(set(mc.ls("lip_main_*_baseCurve_jnt"))))
+skinCluster = mc.skinCluster(*bindJointList + ["lip_curveBaseWire"],
+                                rui=False,
+                                tsb=True,
+                                name="lip_curveBaseWire_skinCluster")[0]
+
+for jnt in bindJointList:
+    index = [int(s) for s in jnt.split("_") if s.isdigit()][0]
+    mc.skinPercent(skinCluster, "lip_curveBaseWire.cv[{}]".format(index), tv=["lip_{}_baseCurve_jnt".format(index), 1])
+    
+'''
+        mouthBindGeometry.getAttributeByName('command').setValue(mouthBindGeometryCmd)
+        mouth.addChildren([mouthBindGeometry])
         controlsDefaults = controlDefaultsNode.ControlDefaultsNode("control_defaults",
                                 armControls=["*shoulder","*elbow","*wrist"], 
                                 armParams=["arm_?"])
+
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
         faceBuildNode = pubs.pNode.PNode("face")
@@ -204,8 +233,16 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # get the postBuild node
         postBuild = animRigNode.getChild('postBuild')
         postBuild.addChild(controlsDefaults)
-        
-        
+
+        applyDeformerNode = animRigNode.getChild('apply').getChild('deformers')
+        bindmeshTransferSkinWtsNode = rigrepo.nodes.transferDeformer.TransferDeformer('bindmesh', 
+                                                            source="body_geo",
+                                                            target=["lip*_bindmesh", "mouth*_bindmesh"],
+                                                            deformerTypes = ["skinCluster"],
+                                                            surfaceAccosiation="closestPoint")
+
+        applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode])
+    
         # create a build node to put builds under.
         buildNode = pubs.pNode.PNode("build")
         # add nodes to the build

@@ -8,6 +8,7 @@ import rigrepo.nodes.commandNode
 import rigrepo.nodes.exportDataNode
 import rigrepo.nodes.exportWtsDirNode
 import rigrepo.nodes.mirrorControlCurveNode
+import rigrepo.nodes.transferDeformer
 import maya.cmds as mc
 from rigrepo.libs.fileIO import joinPath 
 import os
@@ -73,6 +74,8 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         # apply
         skinWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("skinCluster", 
             dirPath=self.resolveDirPath('skin_wts', self.variant))
+        wireWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("wire", 
+            dirPath=self.resolveDirPath('wire_wts', self.variant))
         importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDNode("psd",
             dirPath=self.resolveDirPath('psd', self.variant),
             fileName='skin_psd')
@@ -80,8 +83,15 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
                 dataFile=self.resolveDataFilePath('sdk.data', self.variant), 
                 dataType='sdk', 
                 apply=True)
-        applyNode.addChildren([deformersNode, importSdkDataNode])
-        deformersNode.addChildren([skinWtsFileNode, importPSDSystemNode])
+        importDeformerDataNode = rigrepo.nodes.importDataNode.ImportDataNode('deformerOrder', 
+                dataFile=self.resolveDataFilePath('deformer_order.data', self.variant), 
+                dataType='deformerOrder', 
+                apply=True)
+
+        skinWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("skinCluster", 
+            dirPath=self.resolveDirPath('skin_wts', self.variant))
+        applyNode.addChildren([deformersNode, importDeformerDataNode, importSdkDataNode])
+        deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, importPSDSystemNode])
 
         animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, frameNode])
 
@@ -127,8 +137,13 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         sdkExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('sdk', 
             dataFile=self.buildExportPath('sdk.data', self.variant), 
             dataType='sdk')
+        deformerOrderExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('deformerOrder', 
+            dataFile=self.buildExportPath('deformer_order.data', self.variant), 
+            dataType='deformerOrder')
         skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('skinCluster', 
             dirPath=self.buildExportPath('skin_wts', self.variant))
+        wireExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWireWtsDirNode('wire',
+            dirPath=self.buildExportPath('wire_wts', self.variant))
         skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode(
             'skinClusterSelected', dirPath=self.buildExportPath('skin_wts', self.variant))
         exportPSDNode = rigrepo.nodes.exportPSDNode.ExportPSDNode('psd',
@@ -138,7 +153,8 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, 
                                 curveExportDataNode, controlCurveExportDataNode, sdkExportDataNode,
                                 skinClusterExportWtsNode, skinClusterExportWtsSelectedNode, 
-                                exportPSDNode])
+                                wireExportWtsNode, exportPSDNode, deformerOrderExportDataNode])
+                                
 
         # Mirroring #
         mirroring = pubs.pNode.PNode('mirror')
@@ -180,13 +196,19 @@ currentData.applyData(data.keys())
         # --------------------------------------------------------------------------------------------------------------
         yankSkinClusterNode = rigrepo.nodes.yankSkinClusterNode.YankSkinClusterNode('yank')
         sc_mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('mirror')
+        sc_transferSkinClusterNode = rigrepo.nodes.transferDeformer.TransferDeformer('transfer', 
+                                                                source="body_geo",
+                                                                target=["gum_upper_geo"],
+                                                                deformerTypes = ["skinCluster"],
+                                                                surfaceAccosiation="closestPoint")
         sc_skinClusterExportWtsNode = copy.deepcopy(skinClusterExportWtsNode)
         sc_skinClusterExportWtsNode.setNiceName('export')
         sc_skinClusterExportSelectedWtsNode = copy.deepcopy(skinClusterExportWtsSelectedNode)
         sc_skinClusterExportSelectedWtsNode.setNiceName('exportSel')
+
         # --------------------------------------------------------------------------------------------------------------
         skinClusterNode.addChildren([yankSkinClusterNode, sc_mirrorSkinClusterNode, sc_skinClusterExportWtsNode,
-                                     sc_skinClusterExportSelectedWtsNode])
+                                     sc_skinClusterExportSelectedWtsNode, sc_transferSkinClusterNode])
 
         # SDK #
         sdkNode = pubs.pNode.PNode('SDK')
@@ -196,9 +218,9 @@ currentData.applyData(data.keys())
 import maya.cmds as mc
 mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL", "animCurveUT"]))
         '''
+        sdk_selectNode.getAttributeByName('command').setValue(sdk_selectCmd)
         sdk_mirrorNode =  rigrepo.nodes.commandNode.CommandNode('mirror')
         sdk_mirrorNode.getAttributeByName('command').setValue(mirrorSDKCmd)
-        sdk_selectNode.getAttributeByName('command').setValue(sdk_selectCmd)
         sdk_exportNode = copy.deepcopy(sdkExportDataNode)
         sdk_exportNode.setNiceName('export')
         # --------------------------------------------------------------------------------------------------------------
@@ -214,6 +236,7 @@ mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL"
         psd_exportPSDNode.setNiceName('export')
         # --------------------------------------------------------------------------------------------------------------
         psdNode.addChildren([addPosePSDNode, psd_mirrorPSDNodes, psd_exportPSDNode])
+
 
         # add all of the nodes in order to the workflow node.
         workflowNode.addChildren([exporters, mirroring, skinClusterNode, psdNode, sdkNode])

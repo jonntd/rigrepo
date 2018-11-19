@@ -34,6 +34,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.libs.data.joint_data)
     import rigrepo.libs.data.curve_data
     reload(rigrepo.libs.data.curve_data)
+    import rigrepo.libs.data.deformer_order_data
+    reload(rigrepo.libs.data.deformer_order_data)
 
     import rigrepo.libs.data.psd_data
     reload(rigrepo.libs.data.psd_data)
@@ -65,6 +67,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.libs.psd)
     import rigrepo.libs.bindmesh
     reload(rigrepo.libs.bindmesh)
+    import rigrepo.libs.deformer
+    reload(rigrepo.libs.deformer)
 
     import rigrepo.libs.data.sdk_data
     reload(rigrepo.libs.data.sdk_data)
@@ -112,6 +116,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.nodes.addPosePSDNode)
     import rigrepo.nodes.gpuSpeedKey
     reload(rigrepo.nodes.gpuSpeedKey)
+    import rigrepo.nodes.transferDeformer
+    reload(rigrepo.nodes.transferDeformer)
 
     # reload parts
     import rigrepo.parts.part

@@ -40,7 +40,14 @@ class Mouth(part.Part):
         
         bindmeshGeometry, follicleList, lipMainControlHieracrchyList, jointList = self.__buildCurveRig(lipMainCurve, "lip_main" , parentGroup)
         # delete the controls, tparent joint to the node above the control
+        mainBaseCurveJointList = list()
         for jnt, lipMainControlList in zip(jointList, lipMainControlHieracrchyList):
+            # create the joint that we will use later to deform the base wire.
+            baseCurveJoint = mc.joint(name=jnt.replace("_jnt","_baseCurve_jnt"))
+            mainBaseCurveJointList.append(baseCurveJoint)
+            # hide the base curve joint. Then parent it under the null node
+            mc.setAttr("{}.v".format(baseCurveJoint), 0)
+            mc.parent(baseCurveJoint, lipMainControlList[0])
             mc.parent(jnt,lipMainControlList[-2])
             mc.delete(lipMainControlList.pop(-1))
 
@@ -203,6 +210,11 @@ class Mouth(part.Part):
         mouthCornerLeftPosY = round(mc.xform(mouthCorner_l_follicle, q=True, ws=True, t=True)[1], 3)
         mouthCornerRightPosY = round(mc.xform(mouthCorner_r_follicle, q=True, ws=True, t=True)[1], 3)
         for controlHieracrchy in controlHieracrchyList:
+            # create the joint that we will use later to deform the base wire.
+            baseCurveJoint = mc.joint(name=jointList[controlHieracrchyList.index(controlHieracrchy)].replace("_jnt","_baseCurve_jnt"))
+            # hide the base curve joint. Then parent it under the null node
+            mc.setAttr("{}.v".format(baseCurveJoint), 0)
+            mc.parent(baseCurveJoint, controlHieracrchy[0])
             #position of control
             controlPosition = mc.xform(controlHieracrchy[0], q=True, ws=True, t=True)
             posX = round(controlPosition[0], 3)
@@ -271,7 +283,16 @@ class Mouth(part.Part):
         mc.parent(lipCurve, "lip")
 
         #deform the lip bindmesh with the lip_main curve using a wire deformer.
-        mc.wire(bindmeshGeometry, gw=False, en=1.00, ce=0.00, li=0.00, w=lipMainCurve)
+        wireDeformer = mc.wire(bindmeshGeometry, gw=False, en=1.00, ce=0.00, li=0.00, 
+                w=lipMainCurve, name="{}_wire".format(lipMainCurve))[0]
+        # set the default values for the wire deformer
+        mc.setAttr("{}.rotation".format(wireDeformer), 0)
+        mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
+
+        # create skinCluster for the base wire
+        baseCurve = "{}BaseWire".format(lipMainCurve)
+        mc.skinCluster(*mainBaseCurveJointList+mc.ls(baseCurve),n="{}_skinCluster".format(baseCurve))
+
 
     def __buildCurveRig(self, curve, name='lip', parent=None):
         '''
