@@ -18,6 +18,9 @@ import rigrepo.parts.foot
 
 # face parts import
 import rigrepo.parts.mouth
+import rigrepo.parts.blink
+import rigrepo.parts.face
+
 
 import rigrepo.nodes.controlDefaultsNode as controlDefaultsNode
 import os
@@ -182,8 +185,9 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         #-------------------------------------------------------------------------------------------
         # FACE
         #-------------------------------------------------------------------------------------------
-        l_blink = rigrepo.parts.blink.Blink("l_blink")
-        r_blink = rigrepo.parts.blink.Blink("r_blink",side="r")
+        faceParts = rigrepo.parts.face.Face("face_parts")
+        l_blink = rigrepo.parts.blink.Blink("l_blink", anchor="face_upper")
+        r_blink = rigrepo.parts.blink.Blink("r_blink",side="r", anchor="face_upper")
         r_blink.getAttributeByName("side").setValue("r")
         mouth = rigrepo.parts.mouth.Mouth("mouth", lipMainCurve='lip_main_curve')
         mouthBindGeometry = rigrepo.nodes.commandNode.CommandNode('bindGeometry')
@@ -224,7 +228,7 @@ for jnt in bindJointList:
         
         # add nodes ass children of body
         bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
-        faceBuildNode.addChildren([l_blink, r_blink, mouth])
+        faceBuildNode.addChildren([faceParts, l_blink, r_blink, mouth])
 
         # get the load node which is derived from archetype.
         loadNode = self.getNodeByName('load')
@@ -235,13 +239,18 @@ for jnt in bindJointList:
         postBuild.addChild(controlsDefaults)
 
         applyDeformerNode = animRigNode.getChild('apply').getChild('deformers')
-        bindmeshTransferSkinWtsNode = rigrepo.nodes.transferDeformer.TransferDeformer('bindmesh', 
+        bindmeshTransferSkinWtsNode = rigrepo.nodes.transferDeformer.TransferDeformerBindmesh('bindmesh', 
                                                             source="body_geo",
                                                             target=["lip*_bindmesh", "mouth*_bindmesh"],
                                                             deformerTypes = ["skinCluster"],
-                                                            surfaceAccosiation="closestPoint")
+                                                            surfaceAssociation="closestPoint")
 
-        applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode])
+
+        freezeWireNode = rigrepo.nodes.goToRigPoseNode.GoToFreezePoseNode('freezeWire')
+        applyWireNode = applyDeformerNode.getChild("wire")
+        applyWireNode.addChild(freezeWireNode)
+
+        applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode], 1)
     
         # create a build node to put builds under.
         buildNode = pubs.pNode.PNode("build")

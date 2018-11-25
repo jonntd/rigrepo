@@ -39,3 +39,44 @@ mc.undoInfo(closeChunk=1)
         Execute node code
         '''
         exec(self.getAttributeByName('command').getValue())
+
+
+class GoToFreezePoseNode(GoToRigPoseNode):
+    '''
+    Define cmd to be executed
+    '''
+    def __init__(self, name, parent=None):
+        super(GoToFreezePoseNode, self).__init__(name, parent)
+        commandAttribute = self.getAttributeByName('command')
+        cmd = '''
+import maya.cmds as mc
+import traceback
+import rigrepo.libs.control
+from rigrepo.libs.common import getSideToken
+global rigPoseSetState
+
+mc.undoInfo(openChunk=1)
+try:
+    controls = rigrepo.libs.control.getControls()
+    if controls:
+        # Got to bind pose
+        rigrepo.libs.control.toPoseAttr(controls, 0)
+    mc.setAttr('jaw.rx', -15)
+
+    for deformer in mc.ls(mc.listHistory("body_geo"), type="wire"):
+        mc.setAttr(deformer+".freezeGeometry", 1)
+
+    if controls:
+        # Got to bind pose
+        rigrepo.libs.control.toPoseAttr(controls, 0)
+
+
+except:
+    mc.undoInfo(closeChunk=1)
+    traceback.print_exc()
+mc.undoInfo(closeChunk=1)
+
+
+'''
+        # command 
+        commandAttribute.setValue(cmd)

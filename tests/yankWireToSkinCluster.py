@@ -11,8 +11,7 @@ sc = 'skinCluster2'
 for joint in mc.ls('joint?'):
     mc.move( 1, 0, 0, joint, r=1) 
     deltas = rigrepo.libs.shape.getDeltas(base, target)
-    #print(deltas)
     mc.move( -1, 0, 0, joint, r=1) 
-    rigrepo.libs.weights.setWeights(sc, deltas, map=joint) 
+    rigrepo.libs.weights.setWeights(sc, deltas, mapList=joint) 
     
 mc.skinPercent(sc, mc.deformer(sc, q=1, geometry=1)[0], normalize=1) # in case of floating point precision 

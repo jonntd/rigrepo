@@ -1,73 +1,129 @@
+'''
+This will deal with getting, setting, importing, exporting weights.
+'''
 import maya.cmds as mc
-import rigrepo.libs.common
-import os
 import maya.api.OpenMaya as om
-import xml.etree.ElementTree as et
+# using this one for the MItGeometry 
+import maya.OpenMaya as OpenMaya
 
-def setWeights(node, weights, map=None): 
+import os
+import xml.etree.ElementTree as et
+import numpy
+
+import rigrepo.libs.common
+import rigrepo.libs.weightObject
+
+def setWeights(deformer, weights, mapList=None, geometry=None): 
     '''
     Sets weights for specified deformers.
 
-    :param node: Deformer name
-    :type node: str
+    :param deformer: Deformer name
+    :type deformer: str
 
-    :param weights: List of tuples. [(pntIndex, value),...]
-    :type weights: List
+    :param weights: WeightObject or list of numpy arrays or tuples or lists
+    :type weights: WeightObject | list | tuple
 
     :param map: Name of influence or deformer map to assing weights to.
-    :type map: str
+    :type map: str | list
 
     :return: None
     '''
+    # make sure we have the mapList
+    if isinstance(mapList, basestring):
+        mapList = rigrepo.libs.common.toList(mapList)
+    elif mapList == None:
+        mapList = getMaps(deformer)
 
-    if mc.nodeType(node) == 'skinCluster': 
-        # find the inf index 
-        inf = map
-        infIndex = None 
-        con = mc.listConnections(inf+'.worldMatrix[0]', p=1, d=1, s=0) 
-        for c in con: 
-            if node+'.matrix' in c: 
-                infIndex = c.split('[')[1][:-1] 
-        if infIndex:
-            for weight in weights: 
-                pntIndex,value = weight
-                mc.setAttr(node+'.wl['+pntIndex+'].w['+infIndex+']', value) 
+    # make sure we have the correct weights for what we're going to set.
+    if isinstance(weights, (list, tuple)):
+        weightList = [numpy.array(weights)]
+    elif isinstance(weights, numpy.ndarray):
+        weightList = [weights]
+    elif isinstance(weights, rigrepo.libs.weightObject.WeightObject):
+        weightList = weights.getWeights()
 
-    if mc.nodeType(node) == 'cluster': 
-        for w in weights: 
-            pntIndex,value = weight
-            mc.setAttr(node+'.wl[0].w['+pntIndex+']', value) 
+    if mc.nodeType(deformer) == 'skinCluster': 
+        # iterate through the mesh and set the values on each point
+        for mapIndex, inf in enumerate(mapList):
+            # find the inf index 
+            infIndex = None 
+            con = mc.listConnections(inf+'.worldMatrix[0]', p=True, d=True, s=False) 
+            for c in con: 
+                if deformer+'.matrix' in c: 
+                    infIndex = c.split('[')[1][:-1] 
+            if infIndex:
+                for pntIndex, value in enumerate(weightList[mapIndex]):
+                    mc.setAttr('{}.wl[{}].w[{}]'.format(deformer, pntIndex, infIndex), value) 
 
-def getWeights(node, map=None):
+    if mc.nodeType(deformer) == 'cluster': 
+        for pntIndex, value in enumerate(weights[0]):
+            mc.setAttr('{}.wl[0].w[{}]'.format(deformer, pntIndex), value) 
+
+def getWeights(deformer, mapList=None):
     '''
     Gets weights for specified deformers.
 
-    :param node: Deformer name
-    :type node: str
-    :param weights: List of tuples. [(pntIndex, value),...]
-    :type weights: List
+    :param deformer: Deformer name
+    :type deformer: str
     :param map: Name of influence or deformer map to assing weights to.
-    :type map: str
-    :returns: None
+    :type map: str | list
+    :returns: Returns a weight object that you are able to use or manipulate.
+    :rtype: WeightObject
+    '''
+    weightList = list()
+    # make sure there is a mapList
+    if not mapList:
+        mapList = getMaps(deformer)
+    elif not isinstance(mapList, (list, tuple)):
+        rigrepo.libs.common.toList(mapList)
+    # get the geometry and the iterator to use for looping through the mesh points for wts.
+    geometry = mc.deformer(deformer, q=True, g=True)[0]
+    selList = OpenMaya.MSelectionList()
+    selList.add(geometry)
+    dagPath = OpenMaya.MDagPath()
+    selList.getDagPath(0, dagPath)
+    geoIterator = OpenMaya.MItGeometry(dagPath)
+    weightList = [numpy.array([]) for map_ in mapList]
+
+    if mc.nodeType(deformer) == 'skinCluster': 
+        # iterate over the geometry
+        while not geoIterator.isDone():
+            # find the inf index 
+            for inf in mapList:
+                # get the connections so we can get to the weight list
+                infIndex = None 
+                con = mc.listConnections('{}.worldMatrix[0]'.format(inf), p=True, d=True, s=False) 
+                for c in con: 
+                    if deformer+'.matrix' in c: 
+                        infIndex = c.split('[')[1][:-1] 
+                if infIndex:
+                    weightList[mapList.index(inf)] = numpy.append(weightList[mapList.index(inf)], numpy.array(round(mc.getAttr('{}.wl[{}].w[{}]'.format(deformer, geoIterator.index(), infIndex)), 4)))
+            geoIterator.next()
+
+    if mc.nodeType(deformer) == 'cluster': 
+        # iterate over the geometry
+        while not geoIterator.isDone():
+            weightList[0] = numpy.append(weightList[0], numpy.array(round(round(mc.getAttr('{}.wl[0].w[{}]'.format(deformer, geoIterator.index())), 4))))
+
+    return rigrepo.libs.weightObject.WeightObject(maps=mapList, weights=weightList)
+
+def getMaps(deformer):
+    '''
+    This will return the list of maps that live on the deformer passed into this funciton.
+
+    :param deformer: The deformer name
+    :type deformer: str
+
+    :return: List of deformers
+    :rtype: list
     '''
 
-    if mc.nodeType(node) == 'skinCluster': 
-        # find the inf index 
-        inf = map
-        infIndex = None 
-        con = mc.listConnections(inf+'.worldMatrix[0]', p=1, d=1, s=0) 
-        for c in con: 
-            if node+'.matrix' in c: 
-                infIndex = c.split('[')[1][:-1] 
-        if infIndex:
-            for weight in weights: 
-                pntIndex,value = weight
-                mc.getAttr(node+'.wl['+pntIndex+'].w['+infIndex+']', value) 
+    # first we will make sure the deformer exist in the current Maya session
+    if not mc.objExists(deformer):
+        raise RuntimeError("{} doesn't exist in the current Maya session!".format(deformer))
 
-    if mc.nodeType(node) == 'cluster': 
-        for w in weights: 
-            pntIndex,value = weight
-            mc.setAttr(node+'.wl[0].w['+pntIndex+']', value) 
+    if mc.nodeType(deformer) == "skinCluster":
+        return mc.skinCluster(deformer, q=True, inf=True)
 
 def exportWeights(geometry, deformer, directory):
     '''

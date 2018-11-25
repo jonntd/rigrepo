@@ -61,6 +61,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.libs.sdk)
     import rigrepo.libs.shape
     reload(rigrepo.libs.shape)
+    import rigrepo.libs.weightObject
+    reload(rigrepo.libs.weightObject)
     import rigrepo.libs.weights
     reload(rigrepo.libs.weights)
     import rigrepo.libs.psd
@@ -118,6 +120,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.nodes.gpuSpeedKey)
     import rigrepo.nodes.transferDeformer
     reload(rigrepo.nodes.transferDeformer)
+    import rigrepo.nodes.mirrorWiresNode
+    reload(rigrepo.nodes.mirrorWiresNode)
 
     # reload parts
     import rigrepo.parts.part
@@ -136,6 +140,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.parts.blink)
     import rigrepo.parts.mouth
     reload(rigrepo.parts.mouth)
+    import rigrepo.parts.face
+    reload(rigrepo.parts.face)
     import rigrepo.parts.hand
     reload(rigrepo.parts.hand)
     import rigrepo.parts.foot

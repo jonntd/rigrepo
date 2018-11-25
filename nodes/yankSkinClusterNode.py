@@ -16,7 +16,7 @@ class YankSkinClusterNode(commandNode.CommandNode):
 import maya.cmds as mc
 import traceback
 import rigrepo.libs.shape
-reload(rigrepo.libs.shape)
+import rigrepo.libs.weightObject
 
 mc.undoInfo(openChunk=1)
 try:
@@ -32,7 +32,7 @@ try:
                     mc.setAttr(d+'.envelope', 1)
             base = mc.listRelatives(sel, p=1)[0]
             target = mc.duplicate(base)[0]
-            weights = dict()
+            weightList = list()
             sc = sc[0]
             infs = mc.skinCluster(sc, q=1, inf=1)
             for inf in infs:
@@ -47,12 +47,11 @@ try:
                     tempInf = mc.duplicate(inf, po=1)[0]
                     mc.connectAttr(tempInf+'.worldMatrix[0]', sc+'.matrix[{}]'.format(infIndex), f=1)
                     mc.move( -1, 0, 0, tempInf, r=1, worldSpaceDistance=1) 
-                    weights[inf] = rigrepo.libs.shape.getDeltas(base, target)
+                    weightList.append(numpy.array(rigrepo.libs.shape.getDeltas(base, target)))
                     mc.connectAttr(inf+'.worldMatrix[0]', sc+'.matrix[{}]'.format(infIndex), f=1)                         
                     mc.delete(tempInf)
             # Set Weights
-            for inf in infs:
-                rigrepo.libs.weights.setWeights(sc, weights[inf], map=inf) 
+            rigrepo.libs.weights.setWeights(sc, rigrepo.libs.weightObject.WeightObject(maps=infs, weights=weightList)) 
             if deltaMush:
                 for d in deltaMush:
                     mc.setAttr(d+'.envelope', 0)

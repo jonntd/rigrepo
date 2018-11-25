@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
-  <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/brow_r_geo__brow_r_geo_skinCluster.xml"/>
-  <shape name="brow_r_geoShape" group="2416" stride="3" size="95" max="95" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <headerInfo fileName="C:/Users/Walter Yoder/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/brow_r_geo__brow_r_geo_skinCluster.xml"/>
+  <shape name="brow_r_geoShape" group="146" stride="3" size="95" max="95" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" -0.682561 64.151215 3.815942"/>
     <point index="1" value=" -0.677863 63.980713 3.834847"/>
     <point index="2" value=" -0.814606 64.162598 3.782873"/>

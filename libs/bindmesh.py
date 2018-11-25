@@ -27,7 +27,7 @@ def create(name, positionList):
         for attr in ["subdivisionsHeight","subdivisionsWidth"]:
             mc.setAttr("{0}.{1}".format(createNode,attr),1)
         for attr in ["height","width"]:
-            mc.setAttr("{0}.{1}".format(createNode,attr),.2)
+            mc.setAttr("{0}.{1}".format(createNode,attr),.02)
         mc.xform(geo,ws=True,t=position)
         geoList.append(geo)
         pointList.append(om.MPoint(*position))

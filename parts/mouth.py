@@ -1,12 +1,14 @@
 '''
 This is the base module for all of your parts.
 '''
+import numpy
 import maya.cmds as mc
 import rigrepo.libs.attribute as attribute
 import rigrepo.libs.bindmesh as bindmesh
 import rigrepo.libs.control as control
 import rigrepo.libs.common as common
 import rigrepo.parts.part as part
+import rigrepo.libs.weights 
 
 class Mouth(part.Part):
     '''
@@ -47,7 +49,8 @@ class Mouth(part.Part):
             mainBaseCurveJointList.append(baseCurveJoint)
             # hide the base curve joint. Then parent it under the null node
             mc.setAttr("{}.v".format(baseCurveJoint), 0)
-            mc.parent(baseCurveJoint, lipMainControlList[0])
+            mc.parent(baseCurveJoint, lipMainControlList[1])
+            mc.setAttr("{}.t".format(baseCurveJoint), 0, 0, 0)
             mc.parent(jnt,lipMainControlList[-2])
             mc.delete(lipMainControlList.pop(-1))
 
@@ -291,7 +294,18 @@ class Mouth(part.Part):
 
         # create skinCluster for the base wire
         baseCurve = "{}BaseWire".format(lipMainCurve)
-        mc.skinCluster(*mainBaseCurveJointList+mc.ls(baseCurve),n="{}_skinCluster".format(baseCurve))
+        lipMainBaseCurveSkin = mc.skinCluster(*mainBaseCurveJointList+mc.ls(baseCurve), 
+                                    n="{}_skinCluster".format(baseCurve),
+                                    tsb=True)[0]
+        # set the weights to have proper weighting
+        wtObj = rigrepo.libs.weights.getWeights(lipMainBaseCurveSkin)
+        weightList = list()
+        for i, inf in enumerate(wtObj):
+            array = numpy.zeros_like(wtObj.getWeights(inf))[0]
+            array[i] = 1
+            weightList.append(array)
+        wtObj.setWeights(weightList)
+        rigrepo.libs.weights.setWeights(lipMainBaseCurveSkin, wtObj)
 
 
     def __buildCurveRig(self, curve, name='lip', parent=None):

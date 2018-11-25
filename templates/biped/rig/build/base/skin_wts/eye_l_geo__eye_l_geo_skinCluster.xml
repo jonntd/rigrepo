@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
-  <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/eye_l_geo__eye_l_geo_skinCluster.xml"/>
-  <shape name="eye_l_geoShape" group="2419" stride="3" size="386" max="386" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <headerInfo fileName="C:/Users/Walter Yoder/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/eye_l_geo__eye_l_geo_skinCluster.xml"/>
+  <shape name="eye_l_geoShape" group="149" stride="3" size="386" max="386" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" 0.411037 61.860706 2.641768"/>
     <point index="1" value=" 1.650982 61.860706 2.641767"/>
     <point index="2" value=" 0.411031 63.165855 2.641773"/>

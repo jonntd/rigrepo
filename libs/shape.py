@@ -2,12 +2,11 @@
 This module is for dealing with shape nodes in Maya
 '''
 import maya.cmds as mc 
-
+import numpy
 def getDeltas(base, target): 
     '''
-    Get deltas between two shapes. 
-    Currently it only returns the deltas on the x axis, so when tugging
-    the target move it in the positive x axis for yanking.
+    Get deltas between two shapes. This will return the magnitude which will be the difference
+    between the two points.
 
     :param base: Base object
     :type base: str
@@ -15,9 +14,11 @@ def getDeltas(base, target):
     :param target: Target object
     :type target: str
 
-    :returns: List of tuples [(pntIndex, value),...]
-    :rtype: List
+    :returns: List of deltas in the order of point index
+    :rtype: list
     '''
+    if not mc.objExists(base) or not mc.objExists(target):
+        raise RuntimeError("Either {} or {} doesn't exist in the current Maya session".format(base, target))
      
     bs = mc.blendShape(target, base, w=[0, 1])[0] 
     #mc.pointPosition(base+'.vtx[0]') # Enforce refresh
@@ -41,13 +42,13 @@ def getDeltas(base, target):
     index_only_list = list() 
      
     for n in index_flat_list: 
-        index_only_list.append(n.split('[')[1][:-1]) 
+        index_only_list.append(int(n.split('[')[1][:-1])) 
      
     # =============================================== 
     # Weight array 
     # ===============================================     
-    weight_list = list()                       
+    weight_list = numpy.zeros(len(mc.ls("{}.cp[*]".format(target),fl=True)), dtype=float)                      
     for n in range(len(index_flat_list)): 
-        weight_list.append([ index_flat_list[n].split('[')[1][:-1], delta_list[n][0] ]) 
-     
-    return(weight_list) 
+        weight_list[index_only_list[n]] = round(delta_list[n][0], 4)
+
+    return weight_list

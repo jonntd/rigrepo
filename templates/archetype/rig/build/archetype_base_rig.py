@@ -9,6 +9,7 @@ import rigrepo.nodes.exportDataNode
 import rigrepo.nodes.exportWtsDirNode
 import rigrepo.nodes.mirrorControlCurveNode
 import rigrepo.nodes.transferDeformer
+import rigrepo.nodes.mirrorWiresNode
 import maya.cmds as mc
 from rigrepo.libs.fileIO import joinPath 
 import os
@@ -160,6 +161,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         mirroring = pubs.pNode.PNode('mirror')
         # --------------------------------------------------------------------------------------------------------------
         mirrorControlCurveNode = rigrepo.nodes.mirrorControlCurveNode.MirrorControlCurveNode('controlCurves')
+        mirrorWireCurveNode = rigrepo.nodes.mirrorWiresNode.MirrorWiresNode('wireCurves')
         mirrorJointsNode = rigrepo.nodes.mirrorJointsNode.MirrorJointsNode('joints')
         mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('skinClusterSelected')
         mirrorPSDNode = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psd')
@@ -185,7 +187,7 @@ currentData.applyData(data.keys())
         mirrorSDKNode.getAttributeByName('command').setValue(mirrorSDKCmd)
         #mirrorOrients = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psd')
         # --------------------------------------------------------------------------------------------------------------
-        mirroring.addChildren([mirrorControlCurveNode, mirrorJointsNode, mirrorSkinClusterNode, mirrorOrients, mirrorPSDNode, mirrorSDKNode])
+        mirroring.addChildren([mirrorControlCurveNode, mirrorWireCurveNode, mirrorJointsNode, mirrorSkinClusterNode, mirrorOrients, mirrorPSDNode, mirrorSDKNode])
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes grouped by type
@@ -200,7 +202,7 @@ currentData.applyData(data.keys())
                                                                 source="body_geo",
                                                                 target=["gum_upper_geo"],
                                                                 deformerTypes = ["skinCluster"],
-                                                                surfaceAccosiation="closestPoint")
+                                                                surfaceAssociation="closestPoint")
         sc_skinClusterExportWtsNode = copy.deepcopy(skinClusterExportWtsNode)
         sc_skinClusterExportWtsNode.setNiceName('export')
         sc_skinClusterExportSelectedWtsNode = copy.deepcopy(skinClusterExportWtsSelectedNode)
