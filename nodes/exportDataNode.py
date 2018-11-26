@@ -20,7 +20,7 @@ class ExportDataNode(pubs.pNode.PNode):
         self.dataObj = rigrepo.libs.data.node_data.NodeData()
         if dataType == 'joint':
             self.dataObj = rigrepo.libs.data.joint_data.JointData()
-            nodesAttr.setValue('[mc.ls(*_bind",type="joint", ni=True)]')
+            nodesAttr.setValue('mc.ls(mc.listRelatives("bind", ad=True),type="joint", ni=True) + mc.ls("*_pivot",type="joint", ni=True)')
         elif dataType == 'curve':
             self.dataObj = rigrepo.libs.data.curve_data.CurveData()
             nodesAttr.setValue('[mc.listRelatives(shape, p=True)[0] for shape in mc.ls(type="nurbsCurve", ni=True)]')

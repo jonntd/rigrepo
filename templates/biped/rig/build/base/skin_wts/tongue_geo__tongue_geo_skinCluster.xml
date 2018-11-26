@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Walter Yoder/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/tongue_geo__tongue_geo_skinCluster.xml"/>
-  <shape name="tongue_geoShape" group="170" stride="3" size="315" max="315" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="tongue_geoShape" group="4229" stride="3" size="315" max="315" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" 0.450083 59.116482 3.331413"/>
     <point index="1" value=" 0.463414 58.769417 3.290205"/>
     <point index="2" value=" 0.002613 59.150734 3.436170"/>

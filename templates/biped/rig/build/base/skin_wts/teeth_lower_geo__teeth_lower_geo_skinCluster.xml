@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Walter Yoder/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/teeth_lower_geo__teeth_lower_geo_skinCluster.xml"/>
-  <shape name="teeth_lower_geoShape" group="164" stride="3" size="645" max="645" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="teeth_lower_geoShape" group="4223" stride="3" size="645" max="645" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" 0.000176 59.021126 3.739270"/>
     <point index="1" value=" 0.000176 59.005058 3.784699"/>
     <point index="2" value=" 0.000176 58.980885 3.797925"/>

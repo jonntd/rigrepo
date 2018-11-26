@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Walter Yoder/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/gum_upper_geo__gum_upper_geo_skinCluster.xml"/>
-  <shape name="gum_upper_geoShape" group="155" stride="3" size="582" max="582" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="gum_upper_geoShape" group="4214" stride="3" size="582" max="582" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" 0.000176 59.380733 3.713070"/>
     <point index="1" value=" 0.000176 59.416828 3.928929"/>
     <point index="2" value=" 0.000176 59.775959 3.646479"/>

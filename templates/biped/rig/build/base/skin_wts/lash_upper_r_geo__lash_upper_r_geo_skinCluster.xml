@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Walter Yoder/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/lash_upper_r_geo__lash_upper_r_geo_skinCluster.xml"/>
-  <shape name="lash_upper_r_geoShape" group="161" stride="3" size="115" max="115" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="lash_upper_r_geoShape" group="4220" stride="3" size="115" max="115" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" -1.190835 63.172474 3.135186"/>
     <point index="1" value=" -1.193112 63.178967 3.159967"/>
     <point index="2" value=" -1.054138 63.150272 3.175307"/>
@@ -163,7 +163,16 @@
   <weights deformer="lash_upper_r_geo_skinCluster" source="neck_1_bind" shape="lash_upper_r_geoShape" layer="42" defaultValue="0.000" size="0" max="0"/>
   <weights deformer="lash_upper_r_geo_skinCluster" source="neck_2_bind" shape="lash_upper_r_geoShape" layer="43" defaultValue="0.000" size="0" max="0"/>
   <weights deformer="lash_upper_r_geo_skinCluster" source="neck_3_bind" shape="lash_upper_r_geoShape" layer="44" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="skull_bind" shape="lash_upper_r_geoShape" layer="45" defaultValue="0.000" size="115" max="114">
+  <weights deformer="lash_upper_r_geo_skinCluster" source="skull_bind" shape="lash_upper_r_geoShape" layer="45" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="face_upper_bind" shape="lash_upper_r_geoShape" layer="46" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="head_tip_bind" shape="lash_upper_r_geoShape" layer="47" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_inner_l_bind" shape="lash_upper_r_geoShape" layer="48" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_main_l_bind" shape="lash_upper_r_geoShape" layer="49" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_peak_l_bind" shape="lash_upper_r_geoShape" layer="50" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_inner_r_bind" shape="lash_upper_r_geoShape" layer="51" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_main_r_bind" shape="lash_upper_r_geoShape" layer="52" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_peak_r_bind" shape="lash_upper_r_geoShape" layer="53" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lash_upper_r_geo_skinCluster" source="eyeSocket_r_bind" shape="lash_upper_r_geoShape" layer="54" defaultValue="0.000" size="115" max="114">
     <point index="0" value="1.000"/>
     <point index="1" value="1.000"/>
     <point index="2" value="1.000"/>
@@ -280,15 +289,6 @@
     <point index="113" value="1.000"/>
     <point index="114" value="1.000"/>
   </weights>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="face_upper_bind" shape="lash_upper_r_geoShape" layer="46" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="head_tip_bind" shape="lash_upper_r_geoShape" layer="47" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_inner_l_bind" shape="lash_upper_r_geoShape" layer="48" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_main_l_bind" shape="lash_upper_r_geoShape" layer="49" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_peak_l_bind" shape="lash_upper_r_geoShape" layer="50" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_inner_r_bind" shape="lash_upper_r_geoShape" layer="51" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_main_r_bind" shape="lash_upper_r_geoShape" layer="52" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="brow_peak_r_bind" shape="lash_upper_r_geoShape" layer="53" defaultValue="0.000" size="0" max="0"/>
-  <weights deformer="lash_upper_r_geo_skinCluster" source="eyeSocket_r_bind" shape="lash_upper_r_geoShape" layer="54" defaultValue="0.000" size="0" max="0"/>
   <weights deformer="lash_upper_r_geo_skinCluster" source="eye_r_bind" shape="lash_upper_r_geoShape" layer="55" defaultValue="0.000" size="0" max="0"/>
   <weights deformer="lash_upper_r_geo_skinCluster" source="eyeSocket_l_bind" shape="lash_upper_r_geoShape" layer="56" defaultValue="0.000" size="0" max="0"/>
   <weights deformer="lash_upper_r_geo_skinCluster" source="eye_l_bind" shape="lash_upper_r_geoShape" layer="57" defaultValue="0.000" size="0" max="0"/>

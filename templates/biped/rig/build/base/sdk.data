@@ -1,8 +1,97 @@
 {
     "type": "SdkData", 
     "user": "Walter Yoder", 
-    "time": "2018-11-18 00:39:01", 
+    "time": "2018-11-26 07:47:15", 
     "data": {
+        "face_mid_def_auto_rotateX": {
+            "dagPath": "face_mid_def_auto_rotateX", 
+            "driven": "face_mid_def_auto.rotateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "jaw_compression_driver.translateY", 
+            "keyframes": [
+                {
+                    "wl": false, 
+                    "l": true, 
+                    "oa": -35.17902440081475, 
+                    "ia": -35.17902647496921, 
+                    "wt": true, 
+                    "iw": 9.387041091918945, 
+                    "v": 9.312749003984068, 
+                    "dv": -0.699999988079071, 
+                    "itt": "fixed", 
+                    "ott": "fixed", 
+                    "ow": 6.851360956827799
+                }, 
+                {
+                    "wl": false, 
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "wt": true, 
+                    "iw": 3.7132393519083657, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "fixed", 
+                    "ott": "fixed", 
+                    "ow": 3.7132393519083657
+                }
+            ]
+        }, 
+        "face_mid_def_auto_translateY": {
+            "dagPath": "face_mid_def_auto_translateY", 
+            "driven": "face_mid_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "jaw_compression_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.2347531661399768, 
+                    "ia": 0.2347531661399768, 
+                    "v": -0.06883360740305716, 
+                    "dv": -0.699999988079071, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "face_mid_def_auto_translateZ": {
+            "dagPath": "face_mid_def_auto_translateZ", 
+            "driven": "face_mid_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "jaw_compression_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.2652200425518359, 
+                    "ia": -0.2652200425518359, 
+                    "v": 0.07776713226774179, 
+                    "dv": -0.699999988079071, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
         "lipMain_corner_l_def_auto_translateX": {
             "dagPath": "lipMain_corner_l_def_auto_translateX", 
             "driven": "lipMain_corner_l_def_auto.translateX", 
@@ -2016,15 +2105,95 @@
                     "dv": 1.0, 
                     "itt": "auto", 
                     "ott": "auto"
+                }
+            ]
+        }, 
+        "nose_bridge_def_auto_translateY": {
+            "dagPath": "nose_bridge_def_auto_translateY", 
+            "driven": "nose_bridge_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 0, 
+            "driver": "jaw_compression_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.419206295869507, 
+                    "ia": 1.4192057630653172, 
+                    "v": -0.28123791645021295, 
+                    "dv": -0.699999988079071, 
+                    "itt": "fixed", 
+                    "ott": "fixed"
                 }, 
                 {
                     "l": true, 
                     "oa": 0.0, 
                     "ia": 0.0, 
-                    "v": 10.0, 
-                    "dv": 1000001.0, 
-                    "itt": "auto", 
-                    "ott": "auto"
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "nose_bridge_def_auto_translateZ": {
+            "dagPath": "nose_bridge_def_auto_translateZ", 
+            "driven": "nose_bridge_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "jaw_compression_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.6349530167298088, 
+                    "ia": -0.6349530190134921, 
+                    "v": 0.09860651671007492, 
+                    "dv": -0.699999988079071, 
+                    "itt": "fixed", 
+                    "ott": "fixed"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "nose_bridge_rot_def_auto_rotateX": {
+            "dagPath": "nose_bridge_rot_def_auto_rotateX", 
+            "driven": "nose_bridge_rot_def_auto.rotateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "jaw_compression_driver.translateY", 
+            "keyframes": [
+                {
+                    "wl": false, 
+                    "l": true, 
+                    "oa": -2.2642294770392737, 
+                    "ia": -2.2642295407470243, 
+                    "wt": true, 
+                    "iw": 1.040459118352022, 
+                    "v": 0.4713742153625811, 
+                    "dv": -0.699999988079071, 
+                    "itt": "fixed", 
+                    "ott": "fixed", 
+                    "ow": 1.0404583758219692
+                }, 
+                {
+                    "wl": false, 
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "wt": true, 
+                    "iw": 6.155850728352864, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "fixed", 
+                    "ott": "fixed", 
+                    "ow": 6.155850728352864
                 }
             ]
         }
