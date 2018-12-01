@@ -43,11 +43,17 @@ try:
             psd.setPoseKernalFalloff(poseInterp, pose)
         psd.goToNeutralPose(poseInterp)
         
-    file = '{dirPath}/{fileName}.pose'
-    if os.path.isfile(file):
-        mm.eval('poseInterpolatorImportPoses("'+file+'", 1)')
+    filePose = '{dirPath}/{fileName}.pose'
+    fileShape = '{dirPath}/{fileName}.{fileName}.shp'
+    if os.path.isfile(filePose):
+        # Import shapes
+        mc.blendShape(ip=fileShape, ignoreSelected=1, name=fileName, frontOfChain=1, suppressDialog=1)
+        
+        # Import pose interpolators - Selection must be cleared for this command to work
+        mc.select(cl=1)
+        mc.poseInterpolator(im=filePose)
     
-        # Pose Control Data
+        # Import pose control data
         nodes = {nodes}
         dataObj = rigrepo.libs.data.psd_data.PSDData()
         dataFile = '{dirPath}/{fileName}_poseControls.data'
