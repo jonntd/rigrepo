@@ -25,59 +25,51 @@ import rigrepo.libs.psd as psd
 import rigrepo.libs.data.psd_data
 import os
 
-import traceback
+if not mc.pluginInfo('poseInterpolator', q=1, l=1):  
+    mc.loadPlugin('poseInterpolator')
 
-mc.undoInfo(openChunk=1)
-try:
-    if not mc.pluginInfo('poseInterpolator', q=1, l=1):  
-        mc.loadPlugin('poseInterpolator')
+# Re-sync procedurally built poseInterpolators 
+# Note: Not sure why this can't be done when the procedural system is built
+#       but it is not working when I do it at the same time.
+for poseInterp in {nodes}:
+    poses = psd.getPoses(poseInterp)
+    for pose in poses:
+        psd.syncPose(poseInterp, pose)
+    for pose in poses:
+        psd.setPoseKernalFalloff(poseInterp, pose)
+    psd.goToNeutralPose(poseInterp)
     
-    # Re-sync procedurally built poseInterpolators 
-    # Note: Not sure why this can't be done when the procedural system is built
-    #       but it is not working when I do it at the same time.
-    for poseInterp in {nodes}:
-        poses = psd.getPoses(poseInterp)
-        for pose in poses:
-            psd.syncPose(poseInterp, pose)
-        for pose in poses:
-            psd.setPoseKernalFalloff(poseInterp, pose)
-        psd.goToNeutralPose(poseInterp)
-        
-    filePose = '{dirPath}/{fileName}.pose'
-    fileShape = '{dirPath}/{fileName}.{fileName}.shp'
-    if os.path.isfile(filePose):
-        # Import shapes
-        mc.blendShape(ip=fileShape, ignoreSelected=1, name=fileName, frontOfChain=1, suppressDialog=1)
-        
-        # Import pose interpolators - Selection must be cleared for this command to work
-        mc.select(cl=1)
-        mc.poseInterpolator(im=filePose)
+filePose = '{dirPath}/{fileName}.pose'
+fileShape = '{dirPath}/{fileName}.{fileName}.shp'
+if os.path.isfile(filePose):
+    # Import shapes
+    mc.blendShape(ip=fileShape,  name=fileName, frontOfChain=1, suppressDialog=1)
     
-        # Import pose control data
-        nodes = {nodes}
-        dataObj = rigrepo.libs.data.psd_data.PSDData()
-        dataFile = '{dirPath}/{fileName}_poseControls.data'
-        dataObj.read(dataFile)
-        dataObj.applyData(nodes)
-    else:
-        print('Warning: PSD File does not exist [ '+file + ' ]')
-    
-    # Move nodes into a group
+    # Import pose interpolators - Selection must be cleared for this command to work
+    mc.select(cl=1)
+    mc.poseInterpolator(im=filePose)
+
+    # Import pose control data
     nodes = {nodes}
-    if nodes:
-        group = 'psd_grp'
-        if not mc.objExists(group):
-            mc.group(empty=1, n=group)
-        if mc.objExists('rig'):
-            mc.parent(group, 'rig')
-        mc.parent(nodes, group)
-        if mc.objExists('numericPSD_geo'):
-            mc.parent('numericPSD_geo', group)
+    dataObj = rigrepo.libs.data.psd_data.PSDData()
+    dataFile = '{dirPath}/{fileName}_poseControls.data'
+    dataObj.read(dataFile)
+    dataObj.applyData(nodes)
+else:
+    print('Warning: PSD File does not exist [ '+filePose + ' ]')
 
-except:
-    traceback.print_exc()
-mc.undoInfo(closeChunk=1)
-
+# Move nodes into a group
+nodes = {nodes}
+if nodes:
+    group = 'psd_grp'
+    if not mc.objExists(group):
+        mc.group(empty=1, n=group)
+    if mc.objExists('rig'):
+        mc.parent(group, 'rig')
+    mc.parent(nodes, group)
+    if mc.objExists('numericPSD_geo'):
+        mc.parent('numericPSD_geo', group)
+    
 '''
         # command 
         commandAttribute.setValue(cmd)
