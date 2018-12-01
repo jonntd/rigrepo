@@ -20,7 +20,7 @@ import rigrepo.parts.foot
 import rigrepo.parts.mouth
 import rigrepo.parts.blink
 import rigrepo.parts.face
-
+import rigrepo.parts.brow
 
 import rigrepo.nodes.controlDefaultsNode as controlDefaultsNode
 import os
@@ -222,13 +222,37 @@ for jnt in bindJointList:
                                 armControls=["*shoulder","*elbow","*wrist"], 
                                 armParams=["arm_?"])
 
+        l_brow = rigrepo.parts.brow.Brow("l_brow", anchor="head_tip")
+        r_brow = rigrepo.parts.brow.Brow("r_brow", side="r", anchor="head_tip")
+        r_brow_orient = rigrepo.nodes.commandNode.CommandNode('scaleOrients')
+        r_brow_orientCmd = '''
+import maya.cmds as mc
+brow_orients = mc.ls("brow*_r_ort")
+brow_nuls = mc.ls("brow*_r_nul")
+brow_nul_parents = [mc.listRelatives(nul, p=True)[0] for nul in brow_nuls]
+for nul, ort in zip(brow_nuls,brow_orients):
+    mc.parent(nul, w=True)
+    mc.setAttr("{}.sz".format(ort), -1)
+    
+for nul,parent in zip(brow_nuls, brow_nul_parents):
+    mc.parent(nul, parent)
+'''
+        r_brow_orient.getAttributeByName('command').setValue(r_brow_orientCmd)
+        r_brow.addChild(r_brow_orient)
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
         faceBuildNode = pubs.pNode.PNode("face")
+
+        browsNode = pubs.pNode.PNode("brows")
+        browsNode.addChildren([l_brow, r_brow])
+
+        eyesNode = pubs.pNode.PNode("eyes")
+        eyesNode.addChildren([l_blink, r_blink])
+
         
         # add nodes ass children of body
         bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
-        faceBuildNode.addChildren([faceParts, l_blink, r_blink, mouth])
+        faceBuildNode.addChildren([faceParts, browsNode, eyesNode, mouth])
 
         # get the load node which is derived from archetype.
         loadNode = self.getNodeByName('load')

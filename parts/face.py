@@ -20,6 +20,7 @@ class Face(part.Part):
 
         self.addAttribute("jawJoint", "jaw_bind", attrType=str)
         self.addAttribute("faceUpperJoint", "face_upper_bind", attrType=str)
+        self.addAttribute("headTipJoint", "head_tip_bind", attrType=str)
         self.addAttribute("faceLowerJoint", "face_lower_bind", attrType=str)
         self.addAttribute("faceMidJoint", "face_mid_bind", attrType=str)
         self.addAttribute("noseBridge", "nose_bridge_bind", attrType=str)
@@ -41,6 +42,7 @@ class Face(part.Part):
         # get all of the inputs to the node.
         jawJoint = self.getAttributeByName("jawJoint").getValue()
         faceUpperJoint = self.getAttributeByName("faceUpperJoint").getValue()
+        headTipJoint = self.getAttributeByName("headTipJoint").getValue()
         faceLowerJoint = self.getAttributeByName("faceLowerJoint").getValue()
         faceMidJoint = self.getAttributeByName("faceMidJoint").getValue()
         noseBridgeJoint = self.getAttributeByName("noseBridge").getValue()
@@ -129,6 +131,19 @@ class Face(part.Part):
             # turn off the visibility of the joints
             for jnt in [faceDiff, jawCompressionJnt]:
                 mc.setAttr("{}.v".format(jnt), 0)
+
+            if mc.objExists(headTipJoint):
+                # Create the faceLower and jaw control
+                headTipNul, headTipCtrl = rigrepo.libs.control.create(name="head_tip", 
+                                              controlType="null",
+                                              color=rigrepo.libs.common.YELLOW,
+                                              hierarchy=['nul'],
+                                              parent=faceUpperCtrl)
+
+            # position the faceLowerNul and connect the joint to the control
+            mc.xform(headTipNul, ws=True, matrix=mc.xform(headTipJoint, q=True, ws=True, matrix=True))
+            mc.pointConstraint(headTipCtrl, headTipJoint)
+            mc.orientConstraint(headTipCtrl, headTipJoint)
 
         if mc.objExists(noseBridgeJoint):
             # Create the faceLower and jaw control

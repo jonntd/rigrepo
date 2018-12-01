@@ -307,7 +307,6 @@ class Mouth(part.Part):
         wtObj.setWeights(weightList)
         rigrepo.libs.weights.setWeights(lipMainBaseCurveSkin, wtObj)
 
-
     def __buildCurveRig(self, curve, name='lip', parent=None):
         '''
         This will build a rig setup based on the curve that is passed in.

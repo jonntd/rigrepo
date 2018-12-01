@@ -142,6 +142,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.parts.mouth)
     import rigrepo.parts.face
     reload(rigrepo.parts.face)
+    import rigrepo.parts.brow
+    reload(rigrepo.parts.brow)
     import rigrepo.parts.hand
     reload(rigrepo.parts.hand)
     import rigrepo.parts.foot

@@ -129,6 +129,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         controlOrientsExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('controlOrients', 
             dataFile= self.buildExportPath('control_orients.data', self.variant), 
             dataType='node')
+        controlOrientsExportDataNode.getAttributeByName("Nodes").setValue('mc.ls("*_ort", type="transform")')
         curveExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('curvePositions', 
             dataFile=self.buildExportPath('curve_positions.data', self.variant), 
             dataType='curve')

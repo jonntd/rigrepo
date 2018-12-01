@@ -1,10 +1,10 @@
 {
     "type": "NodeData", 
     "user": "Walter Yoder", 
-    "time": "2018-11-07 08:16:17", 
+    "time": "2018-12-01 17:42:31", 
     "data": {
         "ankle_fk_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_ort|pelvis_l|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -23,7 +23,7 @@
             "rotateOrder": 0
         }, 
         "ankle_fk_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_ort|pelvis_r|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort|thigh_fk_r|knee_fk_r_nul|knee_fk_r_ort|knee_fk_r|ankle_fk_r_nul|ankle_fk_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort|thigh_fk_r|knee_fk_r_nul|knee_fk_r_ort|knee_fk_r|ankle_fk_r_nul|ankle_fk_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -120,9 +120,9 @@
         "bank_l_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_ik_l_nul|leg_ik_l_ort|leg_ik_l|ankle_l_bind_ik_offset|ankle_l_pivot|bank_l_ctrl_nul|bank_l_ctrl_ort", 
             "translate": [
-                -1.4708648085509748e-31, 
-                4.4408920985006257e-16, 
-                -2.220446049250313e-16
+                -1.1913482207831187e-32, 
+                4.755712977759291e-48, 
+                2.220446049250313e-16
             ], 
             "rotate": [
                 0.0, 
@@ -139,9 +139,9 @@
         "bank_r_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_ik_r_nul|leg_ik_r_ort|leg_ik_r|ankle_r_bind_ik_offset|ankle_r_pivot|bank_r_ctrl_nul|bank_r_ctrl_ort", 
             "translate": [
-                -9.901536737866923e-32, 
-                5.487174482506798e-47, 
-                -2.220446049250313e-16
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -152,6 +152,234 @@
                 1.0, 
                 1.0, 
                 1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_inner_l_driver_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|brow_inner_l_driver_nul|brow_inner_l_driver_ort", 
+            "translate": [
+                4.762914505910317e-112, 
+                5.030221126846121e-128, 
+                1.5592798834923442e-127
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_inner_l_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|head_tip_nul|head_tip|brow_main_l_nul|brow_main_l_ort|brow_main_l|brow_inner_l_nul|brow_inner_l_ort", 
+            "translate": [
+                4.762914505910317e-112, 
+                5.030221126846121e-128, 
+                1.5592798834923442e-127
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_inner_r_driver_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|brow_inner_r_driver_nul|brow_inner_r_driver_ort", 
+            "translate": [
+                4.762914505910317e-112, 
+                5.030221126846121e-128, 
+                1.5592798834923442e-127
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                -1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_inner_r_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|head_tip_nul|head_tip|brow_main_r_nul|brow_main_r_ort|brow_main_r|brow_inner_r_nul|brow_inner_r_ort", 
+            "translate": [
+                4.762914505910317e-112, 
+                5.030221126846121e-128, 
+                1.5592798834923442e-127
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                -1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_main_l_driver_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|brow_main_l_driver_nul|brow_main_l_driver_ort", 
+            "translate": [
+                -6.95109350124873e-31, 
+                7.105427357601002e-15, 
+                -5.55111512312562e-17
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_main_l_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|head_tip_nul|head_tip|brow_main_l_nul|brow_main_l_ort", 
+            "translate": [
+                -6.95109350124873e-31, 
+                7.105427357601002e-15, 
+                -5.55111512312562e-17
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_main_r_driver_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|brow_main_r_driver_nul|brow_main_r_driver_ort", 
+            "translate": [
+                -6.95109350124873e-31, 
+                7.105427357601002e-15, 
+                -5.55111512312562e-17
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                -1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_main_r_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|head_tip_nul|head_tip|brow_main_r_nul|brow_main_r_ort", 
+            "translate": [
+                -6.95109350124873e-31, 
+                7.105427357601002e-15, 
+                -5.55111512312562e-17
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                -1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_peak_l_driver_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|brow_peak_l_driver_nul|brow_peak_l_driver_ort", 
+            "translate": [
+                4.762914505910317e-112, 
+                5.030221126846121e-128, 
+                1.5592798834923442e-127
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_peak_l_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|head_tip_nul|head_tip|brow_main_l_nul|brow_main_l_ort|brow_main_l|brow_peak_l_nul|brow_peak_l_ort", 
+            "translate": [
+                4.762914505910317e-112, 
+                5.030221126846121e-128, 
+                1.5592798834923442e-127
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_peak_r_driver_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|brow_peak_r_driver_nul|brow_peak_r_driver_ort", 
+            "translate": [
+                4.762914505910317e-112, 
+                5.030221126846121e-128, 
+                1.5592798834923442e-127
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                -1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_peak_r_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|head_tip_nul|head_tip|brow_main_r_nul|brow_main_r_ort|brow_main_r|brow_peak_r_nul|brow_peak_r_ort", 
+            "translate": [
+                4.762914505910317e-112, 
+                5.030221126846121e-128, 
+                1.5592798834923442e-127
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                -1.0
             ], 
             "rotateOrder": 0
         }, 
@@ -194,7 +422,7 @@
             "rotateOrder": 0
         }, 
         "elbow_fk_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort|clavicle_l|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort|shoulder_fk_l|elbow_fk_l_nul|elbow_fk_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort|shoulder_fk_l|elbow_fk_l_nul|elbow_fk_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -213,11 +441,30 @@
             "rotateOrder": 0
         }, 
         "elbow_fk_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort|clavicle_r|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort|shoulder_fk_r|elbow_fk_r_nul|elbow_fk_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort|shoulder_fk_r|elbow_fk_r_nul|elbow_fk_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
                 0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "face_mid_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_lower_nul|face_lower|face_mid_nul|face_upper_driver|face_mid_offset|face_mid_ort", 
+            "translate": [
+                7.798179475496446e-96, 
+                -7.82578888761076e-80, 
+                -1.791976520581739e-95
             ], 
             "rotate": [
                 0.0, 
@@ -234,28 +481,9 @@
         "index_001_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort", 
             "translate": [
-                3.9404526662162854e-31, 
-                -7.105427357601003e-15, 
-                2.220446049250319e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0000000000000002, 
-                1.0000000000000002
-            ], 
-            "rotateOrder": 0
-        }, 
-        "index_001_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort", 
-            "translate": [
-                0.0, 
-                0.0, 
-                0.0
+                -4.8148248609680896e-33, 
+                2.6963019221421305e-33, 
+                -2.220446049250313e-16
             ], 
             "rotate": [
                 0.0, 
@@ -269,11 +497,49 @@
             ], 
             "rotateOrder": 0
         }, 
+        "index_001_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort", 
+            "translate": [
+                1.183291357831518e-30, 
+                -7.105427357601003e-15, 
+                -4.31408307542741e-31
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0000000000000002, 
+                1.0000000000000002, 
+                1.0000000000000002
+            ], 
+            "rotateOrder": 0
+        }, 
         "index_002_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort", 
             "translate": [
-                -5.135492196708564e-31, 
-                7.105427357601002e-15, 
+                -3.552713678800498e-15, 
+                7.105427357601003e-15, 
+                5.5511151231257784e-17
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                0.9999999999999998, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "index_002_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort", 
+            "translate": [
+                -1.9259299443872348e-33, 
+                -3.9481563859938314e-33, 
                 -5.5511151231257815e-17
             ], 
             "rotate": [
@@ -283,36 +549,17 @@
             ], 
             "scale": [
                 1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "index_002_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort", 
-            "translate": [
-                7.105427357601002e-15, 
-                1.1666320638125681e-31, 
-                5.551115123125782e-17
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
+                0.9999999999999998, 
+                0.9999999999999998
             ], 
             "rotateOrder": 0
         }, 
         "index_003_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl|index_003_l_bind_ctrl_nul|index_003_l_bind_ctrl_ort", 
             "translate": [
-                3.552713678800504e-15, 
-                7.105427357601002e-15, 
-                2.220446049250318e-16
+                -3.552713678800497e-15, 
+                -7.105427357601003e-15, 
+                4.930380657631331e-32
             ], 
             "rotate": [
                 0.0, 
@@ -320,18 +567,18 @@
                 0.0
             ], 
             "scale": [
-                0.9999999999999999, 
+                1.0000000000000002, 
                 1.0, 
-                1.0000000000000002
+                1.0
             ], 
             "rotateOrder": 0
         }, 
         "index_003_r_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl|index_003_r_bind_ctrl_nul|index_003_r_bind_ctrl_ort", 
             "translate": [
-                -7.105427357601e-15, 
-                2.2803010541544864e-31, 
-                -4.9960036108132e-16
+                5.931864228712695e-32, 
+                -8.628166150854824e-32, 
+                7.771561172376099e-16
             ], 
             "rotate": [
                 0.0, 
@@ -339,18 +586,18 @@
                 0.0
             ], 
             "scale": [
-                0.9999999999999998, 
-                0.9999999999999998, 
-                0.9999999999999996
+                1.0000000000000002, 
+                1.0000000000000004, 
+                1.0000000000000004
             ], 
             "rotateOrder": 0
         }, 
         "index_004_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl|index_003_l_bind_ctrl_nul|index_003_l_bind_ctrl_ort|index_003_l_bind_ctrl|index_004_l_bind_ctrl_nul|index_004_l_bind_ctrl_ort", 
             "translate": [
-                -3.552713678800501e-15, 
-                -7.105427357601002e-15, 
-                -1.2212453270876722e-15
+                3.6627335682356444e-30, 
+                7.105427357601e-15, 
+                -5.5511151231257445e-17
             ], 
             "rotate": [
                 0.0, 
@@ -358,18 +605,18 @@
                 0.0
             ], 
             "scale": [
-                0.9999999999999998, 
                 1.0, 
-                1.0
+                0.9999999999999998, 
+                1.0000000000000002
             ], 
             "rotateOrder": 0
         }, 
         "index_004_r_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl|index_003_r_bind_ctrl_nul|index_003_r_bind_ctrl_ort|index_003_r_bind_ctrl|index_004_r_bind_ctrl_nul|index_004_r_bind_ctrl_ort", 
             "translate": [
-                -3.5527136788005e-15, 
-                7.105427357601002e-15, 
-                -5.66993775627602e-31
+                -7.1054273576009995e-15, 
+                1.4210854715202004e-14, 
+                2.2204460492503123e-15
             ], 
             "rotate": [
                 0.0, 
@@ -377,14 +624,14 @@
                 0.0
             ], 
             "scale": [
-                0.9999999999999998, 
+                1.0000000000000002, 
                 1.0, 
-                0.9999999999999998
+                1.0
             ], 
             "rotateOrder": 0
         }, 
         "knee_fk_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_ort|pelvis_l|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -403,7 +650,7 @@
             "rotateOrder": 0
         }, 
         "knee_fk_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_ort|pelvis_r|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort|thigh_fk_r|knee_fk_r_nul|knee_fk_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort|thigh_fk_r|knee_fk_r_nul|knee_fk_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -1076,7 +1323,7 @@
             ], 
             "rotate": [
                 0.0, 
-                52.598000000000006, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1095,11 +1342,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -52.598000000000006, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1114,7 +1361,7 @@
             ], 
             "rotate": [
                 0.0, 
-                48.15, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1133,11 +1380,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -48.150000000000006, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1152,7 +1399,7 @@
             ], 
             "rotate": [
                 0.0, 
-                44.874, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1171,11 +1418,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -44.873999999999995, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1190,7 +1437,7 @@
             ], 
             "rotate": [
                 0.0, 
-                37.982, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1209,11 +1456,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -37.982, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1228,7 +1475,7 @@
             ], 
             "rotate": [
                 0.0, 
-                48.15, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1247,11 +1494,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -48.150000000000006, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1266,7 +1513,7 @@
             ], 
             "rotate": [
                 0.0, 
-                44.874, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1285,11 +1532,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -44.873999999999995, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1304,7 +1551,7 @@
             ], 
             "rotate": [
                 0.0, 
-                37.982, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1323,11 +1570,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -37.982, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1380,7 +1627,7 @@
             ], 
             "rotate": [
                 0.0, 
-                52.597795401485364, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1399,11 +1646,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -52.597795401485364, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1418,7 +1665,7 @@
             ], 
             "rotate": [
                 0.0, 
-                48.149546864307354, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1437,11 +1684,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -48.149546864307354, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1456,7 +1703,7 @@
             ], 
             "rotate": [
                 0.0, 
-                44.873745707852635, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1475,11 +1722,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -44.87374570785264, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1494,7 +1741,7 @@
             ], 
             "rotate": [
                 0.0, 
-                37.98181932419016, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1513,11 +1760,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -37.98181932419016, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1532,7 +1779,7 @@
             ], 
             "rotate": [
                 0.0, 
-                48.149546864307354, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1551,11 +1798,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -48.149546864307354, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1570,7 +1817,7 @@
             ], 
             "rotate": [
                 0.0, 
-                44.873745707852635, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1589,11 +1836,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -44.87374570785264, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1608,7 +1855,7 @@
             ], 
             "rotate": [
                 0.0, 
-                37.98181932419016, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1627,11 +1874,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -37.98181932419016, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1640,28 +1887,9 @@
         "middle_001_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort", 
             "translate": [
-                3.9404526662162854e-31, 
-                -7.105427357601003e-15, 
-                2.220446049250319e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0000000000000002, 
-                1.0000000000000002
-            ], 
-            "rotateOrder": 0
-        }, 
-        "middle_001_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort", 
-            "translate": [
-                0.0, 
-                0.0, 
-                0.0
+                -4.8148248609680896e-33, 
+                2.6963019221421305e-33, 
+                -2.220446049250313e-16
             ], 
             "rotate": [
                 0.0, 
@@ -1675,12 +1903,31 @@
             ], 
             "rotateOrder": 0
         }, 
+        "middle_001_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort", 
+            "translate": [
+                1.183291357831518e-30, 
+                -7.105427357601003e-15, 
+                -4.31408307542741e-31
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0000000000000002, 
+                1.0000000000000002, 
+                1.0000000000000002
+            ], 
+            "rotateOrder": 0
+        }, 
         "middle_002_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort", 
             "translate": [
-                -2.467597741246146e-31, 
-                -7.105427357601002e-15, 
-                -1.1102230246251565e-16
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1697,9 +1944,9 @@
         "middle_002_r_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort", 
             "translate": [
-                -3.5527136788005025e-15, 
-                7.105427357601002e-15, 
-                -2.220446049250312e-16
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1708,17 +1955,17 @@
             ], 
             "scale": [
                 1.0, 
-                1.0, 
-                1.0
+                0.9999999999999998, 
+                0.9999999999999998
             ], 
             "rotateOrder": 0
         }, 
         "middle_003_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort|middle_002_l_bind_ctrl|middle_003_l_bind_ctrl_nul|middle_003_l_bind_ctrl_ort", 
             "translate": [
-                -3.552713678800502e-15, 
-                -6.99690348795883e-31, 
-                2.220446049250313e-16
+                -7.509200853165836e-31, 
+                7.105427357601005e-15, 
+                1.1102230246251575e-16
             ], 
             "rotate": [
                 0.0, 
@@ -1726,8 +1973,8 @@
                 0.0
             ], 
             "scale": [
-                1.0000000000000002, 
                 1.0, 
+                1.0000000000000004, 
                 1.0
             ], 
             "rotateOrder": 0
@@ -1735,9 +1982,9 @@
         "middle_003_r_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl|middle_003_r_bind_ctrl_nul|middle_003_r_bind_ctrl_ort", 
             "translate": [
-                3.5527136788005005e-15, 
-                -6.644458308135964e-32, 
-                -2.220446049250313e-16
+                -7.105427357601001e-15, 
+                7.105427357601003e-15, 
+                -2.2204460492503096e-16
             ], 
             "rotate": [
                 0.0, 
@@ -1745,7 +1992,7 @@
                 0.0
             ], 
             "scale": [
-                0.9999999999999999, 
+                1.0, 
                 1.0000000000000002, 
                 1.0
             ], 
@@ -1754,9 +2001,9 @@
         "middle_004_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort|middle_002_l_bind_ctrl|middle_003_l_bind_ctrl_nul|middle_003_l_bind_ctrl_ort|middle_003_l_bind_ctrl|middle_004_l_bind_ctrl_nul|middle_004_l_bind_ctrl_ort", 
             "translate": [
-                -3.552713678800497e-15, 
-                7.105427357601e-15, 
-                -1.1102230246251568e-16
+                3.552713678800501e-15, 
+                -5.725789724663253e-31, 
+                3.3306690738754696e-16
             ], 
             "rotate": [
                 0.0, 
@@ -1764,8 +2011,8 @@
                 0.0
             ], 
             "scale": [
-                0.9999999999999998, 
-                0.9999999999999998, 
+                1.0, 
+                1.0000000000000002, 
                 1.0
             ], 
             "rotateOrder": 0
@@ -1773,9 +2020,9 @@
         "middle_004_r_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl|middle_003_r_bind_ctrl_nul|middle_003_r_bind_ctrl_ort|middle_003_r_bind_ctrl|middle_004_r_bind_ctrl_nul|middle_004_r_bind_ctrl_ort", 
             "translate": [
-                2.8888949165808476e-33, 
-                -8.088905766426389e-33, 
-                -1.1102230246251563e-16
+                3.5527136788004934e-15, 
+                -1.4210854715202004e-14, 
+                -1.1102230246251637e-16
             ], 
             "rotate": [
                 0.0, 
@@ -1785,7 +2032,7 @@
             "scale": [
                 1.0000000000000002, 
                 1.0, 
-                0.9999999999999998
+                1.0000000000000002
             ], 
             "rotateOrder": 0
         }, 
@@ -1798,7 +2045,7 @@
             ], 
             "rotate": [
                 0.0, 
-                67.86276265895329, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1817,11 +2064,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -67.86276265895329, 
+                0.0, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1868,255 +2115,8 @@
         "pinkyCup_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort", 
             "translate": [
-                3.9404526662162854e-31, 
-                -7.105427357601003e-15, 
-                2.220446049250319e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0000000000000002, 
-                1.0000000000000002
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinkyCup_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort", 
-            "translate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinky_001_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort", 
-            "translate": [
-                3.552713678800501e-15, 
-                -3.944304526105059e-31, 
-                1.9259299443872365e-31
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0000000000000002
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinky_001_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort", 
-            "translate": [
-                -3.5527136788005e-15, 
-                -7.105427357601002e-15, 
-                -2.2204460492502995e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                0.9999999999999996, 
-                0.9999999999999998, 
-                0.9999999999999998
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinky_002_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort", 
-            "translate": [
-                -3.5527136788004954e-15, 
-                -1.4210854715202004e-14, 
-                4.440892098500627e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0000000000000002
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinky_002_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort", 
-            "translate": [
-                -3.351118103233793e-32, 
-                -4.968899256519072e-32, 
-                4.440892098500627e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0000000000000002, 
-                1.0000000000000002
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinky_003_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl|pinky_003_l_bind_ctrl_nul|pinky_003_l_bind_ctrl_ort", 
-            "translate": [
-                1.3500768910154527e-30, 
-                -7.105427357601003e-15, 
-                -4.440892098500626e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0000000000000002, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinky_003_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort", 
-            "translate": [
-                -5.717508225902386e-30, 
-                -7.105427357601e-15, 
-                4.440892098500615e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                0.9999999999999998, 
-                0.9999999999999998
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinky_004_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl|pinky_003_l_bind_ctrl_nul|pinky_003_l_bind_ctrl_ort|pinky_003_l_bind_ctrl|pinky_004_l_bind_ctrl_nul|pinky_004_l_bind_ctrl_ort", 
-            "translate": [
-                -3.552713678800495e-15, 
-                -7.105427357601003e-15, 
-                -4.930380657631327e-32
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                0.9999999999999998, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "pinky_004_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort|pinky_003_r_bind_ctrl|pinky_004_r_bind_ctrl_nul|pinky_004_r_bind_ctrl_ort", 
-            "translate": [
-                -3.5527136788004997e-15, 
-                7.105427357601002e-15, 
-                1.0107280348144214e-30
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "ring_001_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort", 
-            "translate": [
-                3.9404526662162854e-31, 
-                -7.105427357601003e-15, 
-                2.220446049250319e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0000000000000002, 
-                1.0000000000000002
-            ], 
-            "rotateOrder": 0
-        }, 
-        "ring_001_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort", 
-            "translate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "ring_002_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort", 
-            "translate": [
-                -3.552713678800502e-15, 
-                -7.105427357601001e-15, 
-                2.773339119917619e-32
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "ring_002_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort", 
-            "translate": [
-                8.08890576642639e-33, 
-                1.2014912610836325e-49, 
+                -4.8148248609680896e-33, 
+                2.6963019221421305e-33, 
                 -2.220446049250313e-16
             ], 
             "rotate": [
@@ -2126,17 +2126,93 @@
             ], 
             "scale": [
                 1.0, 
-                1.0000000000000002, 
+                1.0, 
                 1.0
             ], 
             "rotateOrder": 0
         }, 
-        "ring_003_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl|ring_003_l_bind_ctrl_nul|ring_003_l_bind_ctrl_ort", 
+        "pinkyCup_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort", 
             "translate": [
-                -3.552713678800502e-15, 
-                -1.078520768856852e-31, 
-                6.661338147750938e-16
+                1.183291357831518e-30, 
+                -7.105427357601003e-15, 
+                -4.31408307542741e-31
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0000000000000002, 
+                1.0000000000000002, 
+                1.0000000000000002
+            ], 
+            "rotateOrder": 0
+        }, 
+        "pinky_001_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort", 
+            "translate": [
+                3.5527136788005e-15, 
+                -1.4215770402008283e-30, 
+                2.2204460492503175e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                0.9999999999999998, 
+                1.0, 
+                0.9999999999999998
+            ], 
+            "rotateOrder": 0
+        }, 
+        "pinky_001_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort", 
+            "translate": [
+                7.105427357601002e-15, 
+                -1.8782631782636518e-30, 
+                -4.4408920985006247e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0000000000000002
+            ], 
+            "rotateOrder": 0
+        }, 
+        "pinky_002_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort", 
+            "translate": [
+                7.105427357601002e-15, 
+                -1.3922547567975328e-30, 
+                -4.4408920985006247e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                0.9999999999999998
+            ], 
+            "rotateOrder": 0
+        }, 
+        "pinky_002_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort", 
+            "translate": [
+                3.552713678800502e-15, 
+                1.1317486576948545e-30, 
+                2.2204460492503136e-16
             ], 
             "rotate": [
                 0.0, 
@@ -2150,12 +2226,12 @@
             ], 
             "rotateOrder": 0
         }, 
-        "ring_003_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl|ring_003_r_bind_ctrl_nul|ring_003_r_bind_ctrl_ort", 
+        "pinky_003_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl|pinky_003_l_bind_ctrl_nul|pinky_003_l_bind_ctrl_ort", 
             "translate": [
-                1.7934259642133947e-30, 
-                7.105427357601003e-15, 
-                -4.440892098500625e-16
+                3.552713678800501e-15, 
+                -1.7612629341421276e-31, 
+                9.244463733058731e-33
             ], 
             "rotate": [
                 0.0, 
@@ -2163,8 +2239,179 @@
                 0.0
             ], 
             "scale": [
-                1.0000000000000004, 
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "pinky_003_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort", 
+            "translate": [
+                1.0890170870537623e-30, 
+                7.105427357601e-15, 
+                -6.162975822039154e-32
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                0.9999999999999998, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "pinky_004_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl|pinky_003_l_bind_ctrl_nul|pinky_003_l_bind_ctrl_ort|pinky_003_l_bind_ctrl|pinky_004_l_bind_ctrl_nul|pinky_004_l_bind_ctrl_ort", 
+            "translate": [
+                1.0658141036401508e-14, 
+                7.105427357601003e-15, 
+                -4.4408920985006257e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
                 1.0000000000000002, 
+                1.0000000000000002, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "pinky_004_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort|pinky_003_r_bind_ctrl|pinky_004_r_bind_ctrl_nul|pinky_004_r_bind_ctrl_ort", 
+            "translate": [
+                -3.5527136788004966e-15, 
+                7.105427357600999e-15, 
+                -4.440892098500626e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                0.9999999999999996, 
+                0.9999999999999996, 
+                0.9999999999999998
+            ], 
+            "rotateOrder": 0
+        }, 
+        "ring_001_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort", 
+            "translate": [
+                -4.8148248609680896e-33, 
+                2.6963019221421305e-33, 
+                -2.220446049250313e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "ring_001_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort", 
+            "translate": [
+                1.183291357831518e-30, 
+                -7.105427357601003e-15, 
+                -4.31408307542741e-31
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0000000000000002, 
+                1.0000000000000002, 
+                1.0000000000000002
+            ], 
+            "rotateOrder": 0
+        }, 
+        "ring_002_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort", 
+            "translate": [
+                -3.552713678800502e-15, 
+                9.940687407954723e-31, 
+                2.2204460492503136e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0000000000000002, 
+                1.0000000000000002, 
+                1.0000000000000002
+            ], 
+            "rotateOrder": 0
+        }, 
+        "ring_002_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort", 
+            "translate": [
+                3.2437475088342007e-31, 
+                7.105427357601e-15, 
+                -2.2204460492503136e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                0.9999999999999998, 
+                0.9999999999999998, 
+                0.9999999999999998
+            ], 
+            "rotateOrder": 0
+        }, 
+        "ring_003_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl|ring_003_l_bind_ctrl_nul|ring_003_l_bind_ctrl_ort", 
+            "translate": [
+                -7.105427357601002e-15, 
+                -3.975119405215256e-31, 
+                -2.2204460492503155e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0000000000000002
+            ], 
+            "rotateOrder": 0
+        }, 
+        "ring_003_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl|ring_003_r_bind_ctrl_nul|ring_003_r_bind_ctrl_ort", 
+            "translate": [
+                -3.5527136788005005e-15, 
+                7.105427357601002e-15, 
+                -6.661338147750931e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
                 1.0000000000000002
             ], 
             "rotateOrder": 0
@@ -2172,9 +2419,9 @@
         "ring_004_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl|ring_003_l_bind_ctrl_nul|ring_003_l_bind_ctrl_ort|ring_003_l_bind_ctrl|ring_004_l_bind_ctrl_nul|ring_004_l_bind_ctrl_ort", 
             "translate": [
-                2.942820955023697e-30, 
-                7.105427357601002e-15, 
-                -2.2204460492503114e-16
+                3.552713678800502e-15, 
+                3.3588218230113398e-31, 
+                -1.1102230246251567e-15
             ], 
             "rotate": [
                 0.0, 
@@ -2184,16 +2431,16 @@
             "scale": [
                 1.0000000000000002, 
                 1.0, 
-                1.0
+                1.0000000000000002
             ], 
             "rotateOrder": 0
         }, 
         "ring_004_r_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl|ring_003_r_bind_ctrl_nul|ring_003_r_bind_ctrl_ort|ring_003_r_bind_ctrl|ring_004_r_bind_ctrl_nul|ring_004_r_bind_ctrl_ort", 
             "translate": [
-                -3.552713678800502e-15, 
-                -7.642090019328552e-31, 
-                -8.881784197001252e-16
+                -3.5527136788005065e-15, 
+                1.4210854715202004e-14, 
+                -2.2204460492503127e-15
             ], 
             "rotate": [
                 0.0, 
@@ -2202,13 +2449,13 @@
             ], 
             "scale": [
                 1.0000000000000002, 
-                0.9999999999999998, 
-                0.9999999999999998
+                1.0000000000000002, 
+                1.0000000000000002
             ], 
             "rotateOrder": 0
         }, 
         "shoulderSwing_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort|clavicle_l|shoulderSwing_l_nul|shoulderSwing_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2227,7 +2474,7 @@
             "rotateOrder": 0
         }, 
         "shoulderSwing_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort|clavicle_r|shoulderSwing_r_nul|shoulderSwing_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2246,7 +2493,7 @@
             "rotateOrder": 0
         }, 
         "shoulder_fk_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort|clavicle_l|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2265,7 +2512,7 @@
             "rotateOrder": 0
         }, 
         "shoulder_fk_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort|clavicle_r|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2284,7 +2531,7 @@
             "rotateOrder": 0
         }, 
         "thighSwing_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_ort|pelvis_l|thighSwing_l_nul|thighSwing_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2303,7 +2550,7 @@
             "rotateOrder": 0
         }, 
         "thighSwing_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_ort|pelvis_r|thighSwing_r_nul|thighSwing_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2322,7 +2569,7 @@
             "rotateOrder": 0
         }, 
         "thigh_fk_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_ort|pelvis_l|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2341,7 +2588,7 @@
             "rotateOrder": 0
         }, 
         "thigh_fk_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_ort|pelvis_r|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2362,28 +2609,9 @@
         "thumbCup_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort", 
             "translate": [
-                3.9404526662162854e-31, 
-                -7.105427357601003e-15, 
-                2.220446049250319e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0000000000000002, 
-                1.0000000000000002
-            ], 
-            "rotateOrder": 0
-        }, 
-        "thumbCup_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort", 
-            "translate": [
-                0.0, 
-                0.0, 
-                0.0
+                -4.8148248609680896e-33, 
+                2.6963019221421305e-33, 
+                -2.220446049250313e-16
             ], 
             "rotate": [
                 0.0, 
@@ -2397,12 +2625,12 @@
             ], 
             "rotateOrder": 0
         }, 
-        "thumb_001_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort", 
+        "thumbCup_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort", 
             "translate": [
-                3.552713678800502e-15, 
-                1.4181103663009316e-30, 
-                1.1102230246251446e-16
+                1.183291357831518e-30, 
+                -7.105427357601003e-15, 
+                -4.31408307542741e-31
             ], 
             "rotate": [
                 0.0, 
@@ -2411,6 +2639,25 @@
             ], 
             "scale": [
                 1.0000000000000002, 
+                1.0000000000000002, 
+                1.0000000000000002
+            ], 
+            "rotateOrder": 0
+        }, 
+        "thumb_001_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort", 
+            "translate": [
+                3.5527136788005e-15, 
+                3.6347112875448104e-31, 
+                1.1102230246251554e-16
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                0.9999999999999998, 
                 1.0, 
                 1.0
             ], 
@@ -2419,9 +2666,9 @@
         "thumb_001_r_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort", 
             "translate": [
+                3.944304526105062e-31, 
                 -7.105427357601002e-15, 
-                7.105427357601002e-15, 
-                -2.2204460492502911e-16
+                1.16942466223193e-30
             ], 
             "rotate": [
                 0.0, 
@@ -2429,7 +2676,7 @@
                 0.0
             ], 
             "scale": [
-                1.0, 
+                1.0000000000000002, 
                 1.0, 
                 1.0000000000000002
             ], 
@@ -2438,47 +2685,9 @@
         "thumb_002_l_bind_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort|thumb_001_l_bind_ctrl|thumb_002_l_bind_ctrl_nul|thumb_002_l_bind_ctrl_ort", 
             "translate": [
-                2.993665505555517e-30, 
-                7.105427357600999e-15, 
-                1.1379786002407924e-15
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                0.9999999999999998, 
-                0.9999999999999998, 
-                0.9999999999999998
-            ], 
-            "rotateOrder": 0
-        }, 
-        "thumb_002_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl|thumb_002_r_bind_ctrl_nul|thumb_002_r_bind_ctrl_ort", 
-            "translate": [
-                -3.5527136788005e-15, 
-                7.105427357600999e-15, 
-                9.714451465470082e-16
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                0.9999999999999998, 
-                0.9999999999999998
-            ], 
-            "rotateOrder": 0
-        }, 
-        "thumb_003_l_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort|thumb_001_l_bind_ctrl|thumb_002_l_bind_ctrl_nul|thumb_002_l_bind_ctrl_ort|thumb_002_l_bind_ctrl|thumb_003_l_bind_ctrl_nul|thumb_003_l_bind_ctrl_ort", 
-            "translate": [
-                4.745491382970152e-31, 
-                -1.2880619468061833e-30, 
-                2.4424906541753444e-15
+                -3.552713678800501e-15, 
+                7.105427357601002e-15, 
+                6.93889390390724e-16
             ], 
             "rotate": [
                 0.0, 
@@ -2492,12 +2701,12 @@
             ], 
             "rotateOrder": 0
         }, 
-        "thumb_003_r_bind_ctrl_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl|thumb_002_r_bind_ctrl_nul|thumb_002_r_bind_ctrl_ort|thumb_002_r_bind_ctrl|thumb_003_r_bind_ctrl_nul|thumb_003_r_bind_ctrl_ort", 
+        "thumb_002_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl|thumb_002_r_bind_ctrl_nul|thumb_002_r_bind_ctrl_ort", 
             "translate": [
-                -3.552713678800503e-15, 
-                1.4210854715201997e-14, 
-                3.1086244689504344e-15
+                -3.5527136788005025e-15, 
+                7.105427357601003e-15, 
+                -1.2490009027032948e-15
             ], 
             "rotate": [
                 0.0, 
@@ -2505,14 +2714,52 @@
                 0.0
             ], 
             "scale": [
-                0.9999999999999998, 
+                1.0, 
+                1.0000000000000002, 
+                0.9999999999999999
+            ], 
+            "rotateOrder": 0
+        }, 
+        "thumb_003_l_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort|thumb_001_l_bind_ctrl|thumb_002_l_bind_ctrl_nul|thumb_002_l_bind_ctrl_ort|thumb_002_l_bind_ctrl|thumb_003_l_bind_ctrl_nul|thumb_003_l_bind_ctrl_ort", 
+            "translate": [
+                3.5527136788004986e-15, 
+                7.105427357601e-15, 
+                3.663735981263017e-15
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
                 0.9999999999999996, 
+                0.9999999999999998, 
                 0.9999999999999998
             ], 
             "rotateOrder": 0
         }, 
+        "thumb_003_r_bind_ctrl_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl|thumb_002_r_bind_ctrl_nul|thumb_002_r_bind_ctrl_ort|thumb_002_r_bind_ctrl|thumb_003_r_bind_ctrl_nul|thumb_003_r_bind_ctrl_ort", 
+            "translate": [
+                -3.8826747678846727e-31, 
+                -7.105427357601005e-15, 
+                2.3314683517128315e-15
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0000000000000004, 
+                1.0000000000000004, 
+                1.0000000000000004
+            ], 
+            "rotateOrder": 0
+        }, 
         "wrist_fk_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort|clavicle_l|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort|shoulder_fk_l|elbow_fk_l_nul|elbow_fk_l_ort|elbow_fk_l|wrist_fk_l_nul|wrist_fk_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort|shoulder_fk_l|elbow_fk_l_nul|elbow_fk_l_ort|elbow_fk_l|wrist_fk_l_nul|wrist_fk_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2531,7 +2778,7 @@
             "rotateOrder": 0
         }, 
         "wrist_fk_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort|clavicle_r|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort|shoulder_fk_r|elbow_fk_r_nul|elbow_fk_r_ort|elbow_fk_r|wrist_fk_r_nul|wrist_fk_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort|shoulder_fk_r|elbow_fk_r_nul|elbow_fk_r_ort|elbow_fk_r|wrist_fk_r_nul|wrist_fk_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 

@@ -1,8 +1,1304 @@
 {
     "type": "SdkData", 
     "user": "Walter Yoder", 
-    "time": "2018-11-26 07:47:15", 
+    "time": "2018-12-01 17:38:05", 
     "data": {
+        "brow_inner_l_sdk_def_auto_translateX": {
+            "dagPath": "brow_inner_l_sdk_def_auto_translateX", 
+            "driven": "brow_inner_l_sdk_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_inner_l_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_inner_l_sdk_def_auto_translateY": {
+            "dagPath": "brow_inner_l_sdk_def_auto_translateY", 
+            "driven": "brow_inner_l_sdk_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_inner_l_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_inner_l_sdk_def_auto_translateZ": {
+            "dagPath": "brow_inner_l_sdk_def_auto_translateZ", 
+            "driven": "brow_inner_l_sdk_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_inner_l_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_inner_l_sdk_rot_def_auto_rotateX": {
+            "dagPath": "brow_inner_l_sdk_rot_def_auto_rotateX", 
+            "driven": "brow_inner_l_sdk_rot_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_inner_l_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_inner_l_sdk_rot_def_auto_rotateY": {
+            "dagPath": "brow_inner_l_sdk_rot_def_auto_rotateY", 
+            "driven": "brow_inner_l_sdk_rot_def_auto.rotateY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_inner_l_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_inner_l_sdk_rot_def_auto_rotateZ": {
+            "dagPath": "brow_inner_l_sdk_rot_def_auto_rotateZ", 
+            "driven": "brow_inner_l_sdk_rot_def_auto.rotateZ", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_inner_l_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_inner_r_sdk_def_auto_translateX": {
+            "dagPath": "brow_inner_r_sdk_def_auto_translateX", 
+            "driven": "brow_inner_r_sdk_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_inner_r_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_inner_r_sdk_def_auto_translateY": {
+            "dagPath": "brow_inner_r_sdk_def_auto_translateY", 
+            "driven": "brow_inner_r_sdk_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_inner_r_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_inner_r_sdk_def_auto_translateZ": {
+            "dagPath": "brow_inner_r_sdk_def_auto_translateZ", 
+            "driven": "brow_inner_r_sdk_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_inner_r_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_inner_r_sdk_rot_def_auto_rotateX": {
+            "dagPath": "brow_inner_r_sdk_rot_def_auto_rotateX", 
+            "driven": "brow_inner_r_sdk_rot_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_inner_r_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_inner_r_sdk_rot_def_auto_rotateY": {
+            "dagPath": "brow_inner_r_sdk_rot_def_auto_rotateY", 
+            "driven": "brow_inner_r_sdk_rot_def_auto.rotateY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_inner_r_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_inner_r_sdk_rot_def_auto_rotateZ": {
+            "dagPath": "brow_inner_r_sdk_rot_def_auto_rotateZ", 
+            "driven": "brow_inner_r_sdk_rot_def_auto.rotateZ", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_inner_r_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_main_l_sdk_def_auto_translateX": {
+            "dagPath": "brow_main_l_sdk_def_auto_translateX", 
+            "driven": "brow_main_l_sdk_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_main_l_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_main_l_sdk_def_auto_translateY": {
+            "dagPath": "brow_main_l_sdk_def_auto_translateY", 
+            "driven": "brow_main_l_sdk_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_main_l_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_main_l_sdk_def_auto_translateZ": {
+            "dagPath": "brow_main_l_sdk_def_auto_translateZ", 
+            "driven": "brow_main_l_sdk_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_main_l_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_main_l_sdk_rot_def_auto_rotateX": {
+            "dagPath": "brow_main_l_sdk_rot_def_auto_rotateX", 
+            "driven": "brow_main_l_sdk_rot_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_main_l_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_main_l_sdk_rot_def_auto_rotateY": {
+            "dagPath": "brow_main_l_sdk_rot_def_auto_rotateY", 
+            "driven": "brow_main_l_sdk_rot_def_auto.rotateY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_main_l_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_main_l_sdk_rot_def_auto_rotateZ": {
+            "dagPath": "brow_main_l_sdk_rot_def_auto_rotateZ", 
+            "driven": "brow_main_l_sdk_rot_def_auto.rotateZ", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_main_l_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_main_r_sdk_def_auto_translateX": {
+            "dagPath": "brow_main_r_sdk_def_auto_translateX", 
+            "driven": "brow_main_r_sdk_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_main_r_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_main_r_sdk_def_auto_translateY": {
+            "dagPath": "brow_main_r_sdk_def_auto_translateY", 
+            "driven": "brow_main_r_sdk_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_main_r_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_main_r_sdk_def_auto_translateZ": {
+            "dagPath": "brow_main_r_sdk_def_auto_translateZ", 
+            "driven": "brow_main_r_sdk_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_main_r_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_main_r_sdk_rot_def_auto_rotateX": {
+            "dagPath": "brow_main_r_sdk_rot_def_auto_rotateX", 
+            "driven": "brow_main_r_sdk_rot_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_main_r_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_main_r_sdk_rot_def_auto_rotateY": {
+            "dagPath": "brow_main_r_sdk_rot_def_auto_rotateY", 
+            "driven": "brow_main_r_sdk_rot_def_auto.rotateY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_main_r_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_main_r_sdk_rot_def_auto_rotateZ": {
+            "dagPath": "brow_main_r_sdk_rot_def_auto_rotateZ", 
+            "driven": "brow_main_r_sdk_rot_def_auto.rotateZ", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_main_r_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_peak_l_sdk_def_auto_translateX": {
+            "dagPath": "brow_peak_l_sdk_def_auto_translateX", 
+            "driven": "brow_peak_l_sdk_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_peak_l_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_peak_l_sdk_def_auto_translateY": {
+            "dagPath": "brow_peak_l_sdk_def_auto_translateY", 
+            "driven": "brow_peak_l_sdk_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_peak_l_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_peak_l_sdk_def_auto_translateZ": {
+            "dagPath": "brow_peak_l_sdk_def_auto_translateZ", 
+            "driven": "brow_peak_l_sdk_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_peak_l_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_peak_l_sdk_rot_def_auto_rotateX": {
+            "dagPath": "brow_peak_l_sdk_rot_def_auto_rotateX", 
+            "driven": "brow_peak_l_sdk_rot_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_peak_l_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_peak_l_sdk_rot_def_auto_rotateY": {
+            "dagPath": "brow_peak_l_sdk_rot_def_auto_rotateY", 
+            "driven": "brow_peak_l_sdk_rot_def_auto.rotateY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_peak_l_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_peak_l_sdk_rot_def_auto_rotateZ": {
+            "dagPath": "brow_peak_l_sdk_rot_def_auto_rotateZ", 
+            "driven": "brow_peak_l_sdk_rot_def_auto.rotateZ", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_peak_l_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_peak_r_sdk_def_auto_translateX": {
+            "dagPath": "brow_peak_r_sdk_def_auto_translateX", 
+            "driven": "brow_peak_r_sdk_def_auto.translateX", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_peak_r_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_peak_r_sdk_def_auto_translateY": {
+            "dagPath": "brow_peak_r_sdk_def_auto_translateY", 
+            "driven": "brow_peak_r_sdk_def_auto.translateY", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_peak_r_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_peak_r_sdk_def_auto_translateZ": {
+            "dagPath": "brow_peak_r_sdk_def_auto_translateZ", 
+            "driven": "brow_peak_r_sdk_def_auto.translateZ", 
+            "preInfinity": 1, 
+            "postInfinity": 1, 
+            "driver": "brow_peak_r_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": -1.0, 
+                    "dv": -1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 2.3859440303888126, 
+                    "ia": 2.3859440303888126, 
+                    "v": 1.0, 
+                    "dv": 1.0, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }
+            ]
+        }, 
+        "brow_peak_r_sdk_rot_def_auto_rotateX": {
+            "dagPath": "brow_peak_r_sdk_rot_def_auto_rotateX", 
+            "driven": "brow_peak_r_sdk_rot_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_peak_r_driver.translateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_peak_r_sdk_rot_def_auto_rotateY": {
+            "dagPath": "brow_peak_r_sdk_rot_def_auto_rotateY", 
+            "driven": "brow_peak_r_sdk_rot_def_auto.rotateY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_peak_r_driver.translateY", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "brow_peak_r_sdk_rot_def_auto_rotateZ": {
+            "dagPath": "brow_peak_r_sdk_rot_def_auto_rotateZ", 
+            "driven": "brow_peak_r_sdk_rot_def_auto.rotateZ", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "brow_peak_r_driver.translateZ", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": -1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 1.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
         "face_mid_def_auto_rotateX": {
             "dagPath": "face_mid_def_auto_rotateX", 
             "driven": "face_mid_def_auto.rotateX", 
@@ -2117,7 +3413,7 @@
             "keyframes": [
                 {
                     "l": true, 
-                    "oa": 1.419206295869507, 
+                    "oa": 1.4192062958695069, 
                     "ia": 1.4192057630653172, 
                     "v": -0.28123791645021295, 
                     "dv": -0.699999988079071, 
@@ -2144,8 +3440,8 @@
             "keyframes": [
                 {
                     "l": true, 
-                    "oa": -0.6349530167298088, 
-                    "ia": -0.6349530190134921, 
+                    "oa": -0.6349530167298085, 
+                    "ia": -0.634953019013492, 
                     "v": 0.09860651671007492, 
                     "dv": -0.699999988079071, 
                     "itt": "fixed", 
@@ -2173,14 +3469,14 @@
                     "wl": false, 
                     "l": true, 
                     "oa": -2.2642294770392737, 
-                    "ia": -2.2642295407470243, 
+                    "ia": -2.2642295407470248, 
                     "wt": true, 
-                    "iw": 1.040459118352022, 
+                    "iw": 1.040459156036377, 
                     "v": 0.4713742153625811, 
                     "dv": -0.699999988079071, 
                     "itt": "fixed", 
                     "ott": "fixed", 
-                    "ow": 1.0404583758219692
+                    "ow": 1.0404583613077798
                 }, 
                 {
                     "wl": false, 
