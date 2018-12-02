@@ -17,6 +17,7 @@ import maya.cmds as mc
 import traceback
 import rigrepo.libs.shape
 import rigrepo.libs.weightObject
+import numpy
 
 mc.undoInfo(openChunk=1)
 try:
@@ -36,7 +37,6 @@ try:
             sc = sc[0]
             infs = mc.skinCluster(sc, q=1, inf=1)
             for inf in infs:
-                #tempInf = mc.duplicate(inf, po=1) 
                 matrixCon = mc.listConnections(inf+'.worldMatrix[0]', p=1, d=1, s=0)
                 infIndex = None
                 for con in matrixCon:
