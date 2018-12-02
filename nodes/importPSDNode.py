@@ -42,6 +42,7 @@ for poseInterp in {nodes}:
 filePose = '{dirPath}/{fileName}.pose'
 fileShape = '{dirPath}/{fileName}.{fileName}.shp'
 if os.path.isfile(filePose):
+    print('Loading PSD File: [ '+filePose + ' ]')
     # Import shapes
     mc.blendShape(ip=fileShape,  name=fileName, frontOfChain=1, suppressDialog=1)
     
@@ -66,6 +67,7 @@ if nodes:
         mc.group(empty=1, n=group)
     if mc.objExists('rig'):
         mc.parent(group, 'rig')
+    nodes = mc.listRelatives(nodes, p=1)
     mc.parent(nodes, group)
     if mc.objExists('numericPSD_geo'):
         mc.parent('numericPSD_geo', group)
