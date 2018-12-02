@@ -31,8 +31,8 @@ try:
             if deltaMush:
                 for d in deltaMush:
                     mc.setAttr(d+'.envelope', 1)
-            base = mc.listRelatives(sel, p=1)[0]
-            target = mc.duplicate(base)[0]
+            target = mc.listRelatives(sel, p=1)[0]
+            base = mc.duplicate(target)[0]
             weightList = list()
             sc = sc[0]
             infs = mc.skinCluster(sc, q=1, inf=1)
@@ -46,7 +46,7 @@ try:
                 if infIndex:
                     tempInf = mc.duplicate(inf, po=1)[0]
                     mc.connectAttr(tempInf+'.worldMatrix[0]', sc+'.matrix[{}]'.format(infIndex), f=1)
-                    mc.move( -1, 0, 0, tempInf, r=1, worldSpaceDistance=1) 
+                    mc.move( 1, 0, 0, tempInf, r=1, worldSpaceDistance=1) 
                     weightList.append(numpy.array(rigrepo.libs.shape.getDeltas(base, target)))
                     mc.connectAttr(inf+'.worldMatrix[0]', sc+'.matrix[{}]'.format(infIndex), f=1)                         
                     mc.delete(tempInf)
@@ -55,7 +55,7 @@ try:
             if deltaMush:
                 for d in deltaMush:
                     mc.setAttr(d+'.envelope', 0)
-            mc.delete(target)     
+            mc.delete(base)     
 except:
     traceback.print_exc()
 mc.undoInfo(closeChunk=1)
