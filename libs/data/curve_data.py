@@ -31,7 +31,7 @@ class CurveData(node_data.NodeData):
         data['cvPositions'] = list()
 
         for i,cv in enumerate(mc.ls("{0}.cv[*]".format(node),fl=True)):
-            data['cvPositions'].append(mc.getAttr("{}.controlPoints[{}]".format(node,i))[0])
+            data['cvPositions'].append([round(value, 4) for value in mc.getAttr("{}.controlPoints[{}]".format(node,i))[0]])
 
         data['degree'] = mc.getAttr('{0}.degree'.format(node))
 

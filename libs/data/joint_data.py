@@ -25,8 +25,8 @@ class JointData(node_data.NodeData):
         super(JointData, self).gatherData(node)
 
         data = OrderedDict()
-        data['jointOrient'] = mc.getAttr("{0}.jo".format(node))[0]
-        data['preferredAngle'] = mc.getAttr("{0}.preferredAngle".format(node))[0]
+        data['jointOrient'] = [round(value, 4) for value in mc.getAttr("{0}.jo".format(node))[0]]
+        data['preferredAngle'] = [round(value, 4) for value in mc.getAttr("{0}.preferredAngle".format(node))[0]]
         data['drawStyle'] = mc.getAttr("{0}.drawStyle".format(node))
 
         self._data[node].update(data)

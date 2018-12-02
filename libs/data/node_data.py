@@ -28,7 +28,7 @@ class NodeData(abstract_data.AbstractData):
 
         data = OrderedDict()
         for attr in ['translate','rotate','scale']:
-            data[attr] = mc.getAttr("{0}.{1}".format(node,attr))[0]
+            data[attr] = [round(value, 4) for value in mc.getAttr("{0}.{1}".format(node,attr))[0]]
 
         data['rotateOrder'] = mc.getAttr("{0}.rotateOrder".format(node))
 
