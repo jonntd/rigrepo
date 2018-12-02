@@ -44,12 +44,21 @@ class DeformerOrderData(abstract_data.AbstractData):
         for node in nodes:
             if self._data.has_key(node):
                 if len(self._data[node]["deformerOrder"]) > 1:
-                    try:
-                        for index, deformer in enumerate(self._data[node]["deformerOrder"]):
-                            if index == len(self._data[node]["deformerOrder"]):
-                                break
-                            mc.reorderDeformers(deformer, self._data[node]["deformerOrder"][index+1], [node])
-                    except:
-                        mc.warning("couldn't apply data: {} -------> {}".format(node, self._data[node]["deformerOrder"]))
+                    orderCurrent = mc.listHistory(node, pdo=True, interestLevel=1)
+                    orderStored = self._data[node]["deformerOrder"]
+                    for index, deformer in enumerate(orderStored):
+                        if index == len(orderStored)-1:
+                            break
+                        nextDeformer = orderStored[index+1]
+                        # If next deformer is not in deformer order break since we can't reorder to it.
+                        if not nextDeformer in orderCurrent:
+                            break
+                        # Test if the deformer order is all ready correct
+                        indexNextDeformerCurrent = orderCurrent.index(nextDeformer)
+                        indexCurrent = orderCurrent.index(deformer)
+                        if indexNextDeformerCurrent != indexCurrent+1:
+                            mc.reorderDeformers(deformer, nextDeformer, [node])
+                            # Update order current so it can be tested
+                            orderCurrent = mc.listHistory(node, pdo=True, interestLevel=1)
 
 

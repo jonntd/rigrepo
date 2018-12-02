@@ -1,5 +1,6 @@
 def nodes(variant='base', buildNow=False):
     # import pubs
+    import time
     import pubs.pObject
     reload(pubs.pObject)
     import pubs.pAttribute
@@ -181,6 +182,12 @@ def nodes(variant='base', buildNow=False):
                     nodeList.pop(nodeIndex+1)
                 nodeList.pop(nodeIndex)
             if node.isActive():
+                name = node.getName()
+                print('-'*100)
+                print(name + ' - executing')
+                t0 = time.time()
                 node.execute()
+                t1 = time.time()
+                print('{} - time: {} sec'.format(name, round(t1-t0, 5)))
     else:
         pubs.ui.mainWindow.launch(graph=biped_graph)
