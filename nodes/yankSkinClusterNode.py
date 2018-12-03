@@ -47,7 +47,7 @@ try:
                     tempInf = mc.duplicate(inf, po=1)[0]
                     mc.connectAttr(tempInf+'.worldMatrix[0]', sc+'.matrix[{}]'.format(infIndex), f=1)
                     mc.move( 1, 0, 0, tempInf, r=1, worldSpaceDistance=1) 
-                    weightList.append(numpy.array(rigrepo.libs.shape.getDeltas(base, target)))
+                    weightList.append(rigrepo.libs.shape.getDeltas(base, target))
                     mc.connectAttr(inf+'.worldMatrix[0]', sc+'.matrix[{}]'.format(infIndex), f=1)                         
                     mc.delete(tempInf)
             # Set Weights

@@ -12,6 +12,7 @@ import numpy
 
 import rigrepo.libs.common
 import rigrepo.libs.weightObject
+import rigrepo.libs.transform
 
 def setWeights(deformer, weights, mapList=None, geometry=None): 
     '''
@@ -33,6 +34,13 @@ def setWeights(deformer, weights, mapList=None, geometry=None):
         mapList = rigrepo.libs.common.toList(mapList)
     elif mapList == None:
         mapList = getMaps(deformer)
+
+    if geometry:
+        if not mc.objExists(geometry):
+            raise RuntimeError("{} doesn't exists in the current Maya session!".format(geometry))
+        # make sure we have the shape of the geometry for all deformers except the skinCluster
+        geoDagPath = rigrepo.libs.transform.getDagPath(geometry)
+        geoDagPath.extendToShape()
 
     # make sure we have the correct weights for what we're going to set.
     if isinstance(weights, (list, tuple)):
@@ -56,8 +64,11 @@ def setWeights(deformer, weights, mapList=None, geometry=None):
                     mc.setAttr('{}.wl[{}].w[{}]'.format(deformer, pntIndex, infIndex), value) 
 
     if mc.nodeType(deformer) == 'cluster': 
-        for pntIndex, value in enumerate(weights[0]):
-            mc.setAttr('{}.wl[0].w[{}]'.format(deformer, pntIndex), value) 
+        geometryindex = 0
+        if geometry:
+            geometryindex = mc.cluster(deformer,q=True, geometry=True).index(geoDagPath.partialPathName())
+        for pntIndex, value in enumerate(weightList[0]):
+            mc.setAttr('{}.wl[{}].w[{}]'.format(deformer, geometryindex, pntIndex), value) 
 
 def getWeights(deformer, mapList=None):
     '''
@@ -124,6 +135,8 @@ def getMaps(deformer):
 
     if mc.nodeType(deformer) == "skinCluster":
         return mc.skinCluster(deformer, q=True, inf=True)
+    elif mc.nodeType(deformer) == "cluster":
+        return None
 
 def exportWeights(geometry, deformer, directory):
     '''

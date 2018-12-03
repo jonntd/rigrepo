@@ -8,6 +8,7 @@ import rigrepo.nodes.loadFileNode
 import rigrepo.nodes.newSceneNode
 import rigrepo.nodes.importDataNode
 import rigrepo.nodes.exportDataNode
+import rigrepo.nodes.yankClusterNode
 # body parts import
 import rigrepo.parts.arm
 import rigrepo.parts.leg
@@ -221,7 +222,6 @@ for jnt in bindJointList:
         controlsDefaults = controlDefaultsNode.ControlDefaultsNode("control_defaults",
                                 armControls=["*shoulder","*elbow","*wrist"], 
                                 armParams=["arm_?"])
-
         l_brow = rigrepo.parts.brow.Brow("l_brow", anchor="head_tip")
         r_brow = rigrepo.parts.brow.Brow("r_brow", side="r", anchor="head_tip")
         r_brow_orient = rigrepo.nodes.commandNode.CommandNode('scaleOrients')
@@ -268,11 +268,31 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
                                                             target=["lip*_bindmesh", "mouth*_bindmesh"],
                                                             deformerTypes = ["skinCluster"],
                                                             surfaceAssociation="closestPoint")
-
-
         freezeWireNode = rigrepo.nodes.goToRigPoseNode.GoToFreezePoseNode('freezeWire')
+
+        lipClusterNode = rigrepo.nodes.commandNode.CommandNode('lipClusters')
+        lipClusterNodeCmd = '''
+import rigrepo.libs.cluster
+import maya.cmds as mc
+
+lipControls = mc.ls("lip_*.__control__", o=True)
+for node in lipControls:
+    rigrepo.libs.cluster.create("body_geo", "%s_cluster" % node , parent="%s_def_auto" % node, parallel=True)
+    nul = "%s_cluster_nul" % node
+    mc.xform(nul, ws=True, matrix=mc.xform(node, q=True, ws=True, matrix=True))
+    mc.connectAttr("%s.t" % node, "%s_cluster_auto.t" % node, f=True)
+    mc.connectAttr("%s.r"% node, "%s_cluster_cls_hdl.r"% node, f=True)
+    mc.connectAttr("%s.s"% node, "%s_cluster_cls_hdl.s"% node, f=True)
+mc.select("body_geo", r=True)
+'''
+        lipClusterNode.getAttributeByName('command').setValue(lipClusterNodeCmd)
+        lipYankNode = rigrepo.nodes.yankClusterNode.YankClusterNode('WireToClusters',
+                                                    clusters='[trs+"_cluster" for trs in mc.ls("lip_*.__control__", o=True)]',
+                                                    transforms='mc.ls("lip_*.__control__", o=True)')
+        lipClusterNode.addChild(lipYankNode)
         applyWireNode = applyDeformerNode.getChild("wire")
-        applyWireNode.addChild(freezeWireNode)
+        applyWireNode.addChildren([freezeWireNode, lipClusterNode])
+
 
         applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode], 1)
     

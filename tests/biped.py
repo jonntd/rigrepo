@@ -68,6 +68,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.libs.weights)
     import rigrepo.libs.psd
     reload(rigrepo.libs.psd)
+    import rigrepo.libs.cluster
+    reload(rigrepo.libs.cluster)
     import rigrepo.libs.bindmesh
     reload(rigrepo.libs.bindmesh)
     import rigrepo.libs.deformer
@@ -107,6 +109,8 @@ def nodes(variant='base', buildNow=False):
     reload(rigrepo.nodes.goToRigPoseNode)
     import rigrepo.nodes.yankSkinClusterNode
     reload(rigrepo.nodes.yankSkinClusterNode)
+    import rigrepo.nodes.yankClusterNode
+    reload(rigrepo.nodes.yankClusterNode)
     import rigrepo.nodes.labelJointsForMirroringNode
     reload(rigrepo.nodes.labelJointsForMirroringNode)
     import rigrepo.nodes.importPSDNode

@@ -3,15 +3,16 @@ This is the module that will house functions and classes that have to do with cl
 '''
 import maya.cmds as mc
 
-def create(mesh,suffix,parent=None,contraintTypes=['point','orient','scale']):
+def create(mesh,name,parent=None,contraintTypes=['point','orient','scale'], 
+    parallel=False, modelTransform="model", local=True):
     '''
     This will create a localized cluster.
 
     :param mesh: mesh to create cluster on.
     :type mesh: str
 
-    :param suffix: The suffix you wish to use for the cluster when naming it.
-    :type suffix: str
+    :param name: The name you wish to use for the cluster when naming it.
+    :type name: str
 
     :param parent: The parent of the cluster
     :type parent: str
@@ -22,31 +23,33 @@ def create(mesh,suffix,parent=None,contraintTypes=['point','orient','scale']):
     :return: The cluster which was created by this function
     :rtype: str 
     '''
-    for name in [suffix+'_nul',suffix+'_ort',suffix+'_auto',suffix+'_hdl',suffix+'_cls_hdl']:
-        node = mc.createNode('transform',n=name)
+    for nodeName in [name+'_nul',name+'_ort',name+'_auto',name+'_hdl',name+'_cls_hdl']:
+        node = mc.createNode('transform',n=nodeName)
         mc.parent(node,parent)
         parent = node
     
-    parent = suffix+'_auto'
-    for name in [suffix+'_def_auto',suffix+'_ctrl']:
-        node = mc.createNode('transform',n=name)
+    parent = name+'_auto'
+    for nodeName in [name+'_def_auto',name+'_ctrl']:
+        node = mc.createNode('transform',n=nodeName)
         mc.parent(node,parent)
         parent = node
     
     mc.select(mesh,r=True)
-    cls = mc.cluster(wn=[suffix+'_cls_hdl',suffix+'_cls_hdl'],bs=1)[0]
-    mc.connectAttr(suffix+'_hdl'+'.inverseMatrix',cls+'.weightedCompensationMatrix',f=True)
-    mc.connectAttr(suffix+'_def_auto'+'.parentInverseMatrix',cls+'.bindPreMatrix',f=True)
+    # create and localize the cluster
+    cls = mc.cluster(name=name, wn=[name+'_cls_hdl',name+'_cls_hdl'],bs=1, par=parallel)[0]
+    if local:
+        localize(cls, name+'_def_auto', modelTransform)
     
+
     if 'orient' in contraintTypes:
-        mc.orientConstraint(suffix+'_ctrl',suffix+'_hdl')
+        mc.orientConstraint(name+'_ctrl',name+'_hdl')
     if 'point' in contraintTypes:
-        mc.pointConstraint(suffix+'_ctrl',suffix+'_hdl')
+        mc.pointConstraint(name+'_ctrl',name+'_hdl')
     if 'scale' in contraintTypes:
-        mc.scaleConstraint(suffix+'_ctrl',suffix+'_hdl')
-        
-    return cls
+        mc.scaleConstraint(name+'_ctrl',name+'_hdl')
     
+    return cls
+
 def localize(cluster, transform, modelTransform):
     mc.connectAttr(modelTransform+'.worldMatrix', cluster+'.geomMatrix[0]', f=True)
     mc.connectAttr(transform+'.worldInverseMatrix', cluster+'.bindPreMatrix', f=True)
