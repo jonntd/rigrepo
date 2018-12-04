@@ -1,8 +1,9 @@
 import rigrepo.libs.cluster
 reload(rigrepo.libs.cluster)
 
-cluster = 'cluster1'
-transform = 'rig'
-modelTransform = 'model'
+def localizeCluster():
+    cluster = 'cluster1'
+    transform = 'rig'
+    modelTransform = 'model'
 
-rigrepo.libs.cluster.localize(cluster, transform, modelTransform)
+    rigrepo.libs.cluster.localize(cluster, transform, modelTransform)
