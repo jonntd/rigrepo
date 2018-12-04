@@ -1,4 +1,4 @@
-def nodes(variant='base', buildNow=False):
+def nodes(variant='base', buildNow=False, debug=True):
     # import pubs
     import time
     import pubs.pObject
@@ -178,6 +178,7 @@ def nodes(variant='base', buildNow=False):
     if buildNow:
         nodeList = biped_graph.getNodes()
 
+        total_time_0 = time.time()
         for node in nodeList:
             if not node.isActive():
                 nodeIndex = nodeList.index(node)
@@ -187,11 +188,18 @@ def nodes(variant='base', buildNow=False):
                 nodeList.pop(nodeIndex)
             if node.isActive():
                 name = node.getName()
-                print('-'*100)
-                print(name + ' - executing')
-                t0 = time.time()
+                if debug:
+                    print('-'*100)
+                    print(name + ' - executing')
+                    t0 = time.time()
+                    mc.refresh()
                 node.execute()
-                t1 = time.time()
-                print('{} - time: {} sec'.format(name, round(t1-t0, 5)))
+                if debug:
+                    t1 = time.time()
+                    print('{} - time: {} sec'.format(name, round(t1-t0, 5)))
+        total_time_1 = time.time()
+        print('-'*100)
+        print('Total build time : {} sec'.format(round(total_time_1-total_time_0, 5)))
+
     else:
         pubs.ui.mainWindow.launch(graph=biped_graph)
