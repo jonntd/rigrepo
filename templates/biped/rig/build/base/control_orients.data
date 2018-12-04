@@ -1,7 +1,7 @@
 {
     "type": "NodeData", 
     "user": "Walter Yoder", 
-    "time": "2018-12-02 18:17:08", 
+    "time": "2018-12-04 06:11:29", 
     "data": {
         "ankle_fk_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
@@ -150,6 +150,44 @@
             ], 
             "scale": [
                 1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_corrugator_l_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|head_tip_nul|head_tip|brow_main_l_nul|brow_main_l_ort|brow_main_l|brow_inner_l_nul|brow_inner_l_ort|brow_inner_l|brow_corrugator_l_nul|brow_corrugator_l_ort", 
+            "translate": [
+                0.3218, 
+                0.0, 
+                -0.0543
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                -23.9719
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "brow_corrugator_r_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|head_tip_nul|head_tip|brow_main_r_nul|brow_main_r_ort|brow_main_r|brow_inner_r_nul|brow_inner_r_ort|brow_inner_r|brow_corrugator_r_nul|brow_corrugator_r_ort", 
+            "translate": [
+                0.3218, 
+                0.0, 
+                0.0543
+            ], 
+            "rotate": [
+                -0.0, 
+                180.0, 
+                -23.972
+            ], 
+            "scale": [
+                -1.0, 
                 1.0, 
                 1.0
             ], 
@@ -1580,8 +1618,46 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_center_low_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_9_follicle|lip_center_low_nul|lip_center_low_ort|lip_center_low_rot_def_auto|lip_center_low_def_auto|lip_center_low_cluster_nul|lip_center_low_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_center_low_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_9_follicle|lip_center_low_nul|lip_center_low_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_center_up_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_1_follicle|lip_center_up_nul|lip_center_up_ort|lip_center_up_rot_def_auto|lip_center_up_def_auto|lip_center_up_cluster_nul|lip_center_up_cluster_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -1618,6 +1694,25 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_corner_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_13_follicle|lip_corner_l_nul|lip_corner_l_ort|lip_corner_l_rot_def_auto|lip_corner_l_def_auto|lip_corner_l_cluster_nul|lip_corner_l_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_corner_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_13_follicle|lip_corner_l_nul|lip_corner_l_ort", 
             "translate": [
@@ -1628,6 +1723,25 @@
             "rotate": [
                 0.0, 
                 52.5978, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_corner_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_5_follicle|lip_corner_r_nul|lip_corner_r_ort|lip_corner_r_rot_def_auto|lip_corner_r_def_auto|lip_corner_r_cluster_nul|lip_corner_r_cluster_ort", 
+            "translate": [
+                0.0, 
+                -0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1656,6 +1770,25 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_low_0_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_12_follicle|lip_low_0_l_nul|lip_low_0_l_ort|lip_low_0_l_rot_def_auto|lip_low_0_l_def_auto|lip_low_0_l_cluster_nul|lip_low_0_l_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_low_0_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_12_follicle|lip_low_0_l_nul|lip_low_0_l_ort", 
             "translate": [
@@ -1666,6 +1799,25 @@
             "rotate": [
                 0.0, 
                 48.1495, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_low_0_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_6_follicle|lip_low_0_r_nul|lip_low_0_r_ort|lip_low_0_r_rot_def_auto|lip_low_0_r_def_auto|lip_low_0_r_cluster_nul|lip_low_0_r_cluster_ort", 
+            "translate": [
+                0.0, 
+                -0.0, 
+                -0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1694,6 +1846,25 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_low_1_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_11_follicle|lip_low_1_l_nul|lip_low_1_l_ort|lip_low_1_l_rot_def_auto|lip_low_1_l_def_auto|lip_low_1_l_cluster_nul|lip_low_1_l_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_low_1_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_11_follicle|lip_low_1_l_nul|lip_low_1_l_ort", 
             "translate": [
@@ -1704,6 +1875,25 @@
             "rotate": [
                 0.0, 
                 44.8737, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_low_1_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_7_follicle|lip_low_1_r_nul|lip_low_1_r_ort|lip_low_1_r_rot_def_auto|lip_low_1_r_def_auto|lip_low_1_r_cluster_nul|lip_low_1_r_cluster_ort", 
+            "translate": [
+                0.0, 
+                -0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1732,6 +1922,25 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_low_2_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_10_follicle|lip_low_2_l_nul|lip_low_2_l_ort|lip_low_2_l_rot_def_auto|lip_low_2_l_def_auto|lip_low_2_l_cluster_nul|lip_low_2_l_cluster_ort", 
+            "translate": [
+                -0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_low_2_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_10_follicle|lip_low_2_l_nul|lip_low_2_l_ort", 
             "translate": [
@@ -1742,6 +1951,25 @@
             "rotate": [
                 0.0, 
                 37.9818, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_low_2_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_8_follicle|lip_low_2_r_nul|lip_low_2_r_ort|lip_low_2_r_rot_def_auto|lip_low_2_r_def_auto|lip_low_2_r_cluster_nul|lip_low_2_r_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1770,6 +1998,25 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_up_0_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_14_follicle|lip_up_0_l_nul|lip_up_0_l_ort|lip_up_0_l_rot_def_auto|lip_up_0_l_def_auto|lip_up_0_l_cluster_nul|lip_up_0_l_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_up_0_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_14_follicle|lip_up_0_l_nul|lip_up_0_l_ort", 
             "translate": [
@@ -1780,6 +2027,25 @@
             "rotate": [
                 0.0, 
                 48.1495, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_up_0_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_4_follicle|lip_up_0_r_nul|lip_up_0_r_ort|lip_up_0_r_rot_def_auto|lip_up_0_r_def_auto|lip_up_0_r_cluster_nul|lip_up_0_r_cluster_ort", 
+            "translate": [
+                -0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1808,6 +2074,25 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_up_1_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_15_follicle|lip_up_1_l_nul|lip_up_1_l_ort|lip_up_1_l_rot_def_auto|lip_up_1_l_def_auto|lip_up_1_l_cluster_nul|lip_up_1_l_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_up_1_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_15_follicle|lip_up_1_l_nul|lip_up_1_l_ort", 
             "translate": [
@@ -1818,6 +2103,25 @@
             "rotate": [
                 0.0, 
                 44.8737, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_up_1_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_3_follicle|lip_up_1_r_nul|lip_up_1_r_ort|lip_up_1_r_rot_def_auto|lip_up_1_r_def_auto|lip_up_1_r_cluster_nul|lip_up_1_r_cluster_ort", 
+            "translate": [
+                0.0, 
+                -0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "scale": [
@@ -1846,6 +2150,25 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_up_2_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_0_follicle|lip_up_2_l_nul|lip_up_2_l_ort|lip_up_2_l_rot_def_auto|lip_up_2_l_def_auto|lip_up_2_l_cluster_nul|lip_up_2_l_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_up_2_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_0_follicle|lip_up_2_l_nul|lip_up_2_l_ort", 
             "translate": [
@@ -1856,6 +2179,25 @@
             "rotate": [
                 0.0, 
                 37.9818, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_up_2_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_2_follicle|lip_up_2_r_nul|lip_up_2_r_ort|lip_up_2_r_rot_def_auto|lip_up_2_r_def_auto|lip_up_2_r_cluster_nul|lip_up_2_r_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "scale": [

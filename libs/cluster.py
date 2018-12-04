@@ -38,7 +38,7 @@ def create(mesh,name,parent=None,contraintTypes=['point','orient','scale'],
     # create and localize the cluster
     cls = mc.cluster(name=name, wn=[name+'_cls_hdl',name+'_cls_hdl'],bs=1, par=parallel)[0]
     if local:
-        localize(cls, name+'_def_auto', modelTransform)
+        localize(cls, name+'_auto', modelTransform)
     
 
     if 'orient' in contraintTypes:

@@ -36,6 +36,7 @@ class Brow(part.Part):
         self.addAttribute("browMainJoint", "{browMain}_bind", attrType=str)
         self.addAttribute("browPeakJoint", "{browPeak}_bind", attrType=str)
         self.addAttribute("driverParent", "face_upper", attrType=str)
+        self.addAttribute("geometry", "body_geo", attrType=str)
         
     def build(self):
         '''
@@ -53,6 +54,7 @@ class Brow(part.Part):
         browMainJoint = self.getAttributeByName("browMainJoint").getValue().format(browMain=browMain)
         browPeakJoint = self.getAttributeByName("browPeakJoint").getValue().format(browPeak=browPeak)
         driverParent = self.getAttributeByName("driverParent").getValue()
+        geometry = self.getAttributeByName("geometry").getValue()
         mc.parent(self.name, driverParent)
         # going to create the control hierarchies.
         browMainNul, browMainOrient, browMainCtrl = control.create(name=browMain, 
@@ -202,6 +204,16 @@ class Brow(part.Part):
             mc.pointConstraint(sdkNode, jnt)
             mc.orientConstraint(sdkNode, jnt)
 
+        # create the corrugator 
+        corrugatorName = "brow_corrugator_{}".format(side)
+        rigrepo.libs.cluster.create(geometry, name=corrugatorName, parent=browInnerCtrl)
+
+        # rename the cluster and control                                    
+        mc.rename(corrugatorName, '{}_cluster'.format(corrugatorName))
+        mc.rename('{}_ctrl'.format(corrugatorName), corrugatorName)
+        mc.xform("{}_nul".format(corrugatorName), ws=True, matrix=mc.xform(browInnerCtrl, q=True, ws=True, matrix=True))
+        mc.setAttr("{}.displayHandle".format(corrugatorName), 1)
+        rigrepo.libs.control.tagAsControl(corrugatorName)
 
 
     def postBuild(self):
