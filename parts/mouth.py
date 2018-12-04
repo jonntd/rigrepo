@@ -30,6 +30,7 @@ class Mouth(part.Part):
         self.addAttribute("lipMainCurve", lipMainCurve, attrType=str) 
         self.addAttribute("lipCurve", lipCurve, attrType=str)
         self.addAttribute("systemParent", self.name, attrType=str)      
+        self.addAttribute("geometry", "body_geo", attrType=str)
 
     def build(self):
         '''
@@ -39,6 +40,7 @@ class Mouth(part.Part):
         lipMainCurve = self.getAttributeByName('lipMainCurve').getValue()
         lipCurve = self.getAttributeByName('lipCurve').getValue()
         parentGroup = self.getAttributeByName('systemParent').getValue()
+        geometry = self.getAttributeByName('geometry').getValue()
         
         bindmeshGeometry, follicleList, lipMainControlHieracrchyList, jointList = self.__buildCurveRig(lipMainCurve, "lip_main" , parentGroup)
         # delete the controls, tparent joint to the node above the control
@@ -306,6 +308,20 @@ class Mouth(part.Part):
             weightList.append(array)
         wtObj.setWeights(weightList)
         rigrepo.libs.weights.setWeights(lipMainBaseCurveSkin, wtObj)
+
+        # create all of the lip clusters
+        lipControls = mc.ls("lip_*.__control__", o=True)
+        for node in lipControls:
+            rigrepo.libs.cluster.create(geometry, 
+                                        "{}_cluster".format(node), 
+                                        contraintTypes=["orient","scale"], 
+                                        parent="{}_def_auto".format(node), 
+                                        parallel=False)
+            nul = "{}_cluster_nul".format(node)
+            mc.xform(nul, ws=True, matrix=mc.xform(node, q=True, ws=True, matrix=True))
+            mc.connectAttr("{}.t".format(node), "{}_cluster_auto.t".format(node), f=True)
+            mc.connectAttr("{}.r".format(node), "{}_cluster_ctrl.r".format(node), f=True)
+            mc.connectAttr("{}.s".format(node), "{}_cluster_ctrl.s".format(node), f=True)
 
     def __buildCurveRig(self, curve, name='lip', parent=None):
         '''

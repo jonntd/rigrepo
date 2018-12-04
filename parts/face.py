@@ -3,7 +3,8 @@ This is the base module for all of your parts.
 '''
 import maya.cmds as mc
 import rigrepo.parts.part as part
-import rigrepo.libs.control
+import rigrepo.libs.control as control
+import rigrepo.libs.cluster as cluster
 
 class Face(part.Part):
     '''
@@ -27,6 +28,7 @@ class Face(part.Part):
         self.addAttribute("upperTeeth", "teeth_upper_bind", attrType=str)
         self.addAttribute("lowerTeeth", "teeth_upper_bind", attrType=str)
         self.addAttribute("nose", "nose_bind", attrType=str)
+        self.addAttribute("geometry", "body_geo", attrType=str)
 
     def setup(self):
         '''
@@ -50,12 +52,13 @@ class Face(part.Part):
         anchor = self.getAttributeByName("anchor").getValue()
         upperTeeth = self.getAttributeByName("upperTeeth").getValue()
         lowerTeeth = self.getAttributeByName("lowerTeeth").getValue()
+        geometry = self.getAttributeByName("geometry").getValue()
 
 
         # JAW
         if mc.objExists(jawJoint):
             # create the jaw control 
-            jawNul, jawDefAuto, jawCtrl = rigrepo.libs.control.create(name="jaw", 
+            jawNul, jawDefAuto, jawCtrl = control.create(name="jaw", 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul', 'def_auto'])
@@ -68,7 +71,7 @@ class Face(part.Part):
         # FACE LOWER
         if mc.objExists(faceLowerJoint):
             # Create the faceLower and jaw control
-            faceLowerNul, faceLowerCtrl = rigrepo.libs.control.create(name="face_lower", 
+            faceLowerNul, faceLowerCtrl = control.create(name="face_lower", 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul'],
@@ -88,7 +91,7 @@ class Face(part.Part):
 
         if mc.objExists(faceUpperJoint):
             # Create the faceLower and jaw control
-            faceUpperNul, faceUpperCtrl = rigrepo.libs.control.create(name="face_upper", 
+            faceUpperNul, faceUpperCtrl = control.create(name="face_upper", 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul'],
@@ -134,7 +137,7 @@ class Face(part.Part):
 
             if mc.objExists(headTipJoint):
                 # Create the faceLower and jaw control
-                headTipNul, headTipCtrl = rigrepo.libs.control.create(name="head_tip", 
+                headTipNul, headTipCtrl = control.create(name="head_tip", 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul'],
@@ -147,7 +150,7 @@ class Face(part.Part):
 
         if mc.objExists(noseBridgeJoint):
             # Create the faceLower and jaw control
-            noseBridgeNul, noseBridgeDefAuto, noseBridgeRotDefAuto, noseBridgeCtrl = rigrepo.libs.control.create(name="nose_bridge", 
+            noseBridgeNul, noseBridgeDefAuto, noseBridgeRotDefAuto, noseBridgeCtrl = control.create(name="nose_bridge", 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul', 'def_auto', 'rot_def_auto'])
@@ -173,7 +176,7 @@ class Face(part.Part):
 
         if mc.objExists(noseJoint):
             # Create the faceLower and jaw control
-            noseNul, noseDefAuto, noseCtrl = rigrepo.libs.control.create(name="nose", 
+            noseNul, noseDefAuto, noseCtrl = control.create(name="nose", 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul', 'def_auto'])
@@ -187,6 +190,28 @@ class Face(part.Part):
             mc.xform(noseNul, ws=True, matrix=mc.xform(noseJoint, q=True, ws=True, matrix=True))
             mc.pointConstraint(noseCtrl, noseJoint)
             mc.orientConstraint(noseCtrl, noseJoint)
+
+            # create the left sneer cluster
+            sneerNameL = "sneer_l"
+            cluster.create(geometry, name=sneerNameL, parent=noseCtrl)
+
+            # rename the cluster and control                                    
+            mc.rename(sneerNameL, '{}_cluster'.format(sneerNameL))
+            mc.rename('{}_ctrl'.format(sneerNameL), sneerNameL)
+            mc.xform("{}_nul".format(sneerNameL), ws=True, matrix=mc.xform(noseCtrl, q=True, ws=True, matrix=True))
+            mc.setAttr("{}.displayHandle".format(sneerNameL), 1)
+            control.tagAsControl(sneerNameL)
+
+            # create the right sneer cluster
+            sneerNameR = "sneer_r"
+            cluster.create(geometry, name=sneerNameR, parent=noseCtrl)
+
+            # rename the cluster and control                                    
+            mc.rename(sneerNameR, '{}_cluster'.format(sneerNameR))
+            mc.rename('{}_ctrl'.format(sneerNameR), sneerNameR)
+            mc.xform("{}_nul".format(sneerNameR), ws=True, matrix=mc.xform(noseCtrl, q=True, ws=True, matrix=True))
+            mc.setAttr("{}.displayHandle".format(sneerNameR), 1)
+            control.tagAsControl(sneerNameR)
 
         if mc.objExists(faceMidJoint):
             parent = faceLowerCtrl

@@ -270,28 +270,13 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
                                                             surfaceAssociation="closestPoint")
         freezeWireNode = rigrepo.nodes.goToRigPoseNode.GoToFreezePoseNode('freezeWire')
 
-        lipClusterNode = rigrepo.nodes.commandNode.CommandNode('lipClusters')
-        lipClusterNodeCmd = '''
-import rigrepo.libs.cluster
-import maya.cmds as mc
-
-lipControls = mc.ls("lip_*.__control__", o=True)
-for node in lipControls:
-    rigrepo.libs.cluster.create("body_geo", "%s_cluster" % node , contraintTypes=["orient","scale"], parent="%s_def_auto" % node, parallel=False)
-    nul = "%s_cluster_nul" % node
-    mc.xform(nul, ws=True, matrix=mc.xform(node, q=True, ws=True, matrix=True))
-    mc.connectAttr("%s.t" % node, "%s_cluster_auto.t" % node, f=True)
-    mc.connectAttr("%s.r"% node, "%s_cluster_ctrl.r"% node, f=True)
-    mc.connectAttr("%s.s"% node, "%s_cluster_ctrl.s"% node, f=True)
-mc.select("body_geo", r=True)
-'''
-        lipClusterNode.getAttributeByName('command').setValue(lipClusterNodeCmd)
         lipYankNode = rigrepo.nodes.yankClusterNode.YankClusterNode('WireToClusters',
                                                     clusters='[trs+"_cluster" for trs in mc.ls("lip_*.__control__", o=True)]',
-                                                    transforms='mc.ls("lip_*.__control__", o=True)')
-        lipClusterNode.addChild(lipYankNode)
+                                                    transforms='mc.ls("lip_*.__control__", o=True)',
+                                                    selected=False,
+                                                    geometry="body_geo")
         applyWireNode = applyDeformerNode.getChild("wire")
-        applyWireNode.addChildren([freezeWireNode, lipClusterNode])
+        applyWireNode.addChildren([freezeWireNode, lipYankNode])
 
 
         applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode], 1)

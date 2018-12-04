@@ -1,7 +1,7 @@
 {
     "type": "DeformerOrderData", 
     "user": "Walter Yoder", 
-    "time": "2018-12-04 06:44:19", 
+    "time": "2018-12-04 14:33:57", 
     "data": {
         "body_geo": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|body_geo", 
@@ -24,6 +24,8 @@
                 "lip_up_1_r_cluster", 
                 "lip_up_2_l_cluster", 
                 "lip_up_2_r_cluster", 
+                "sneer_l_cluster", 
+                "sneer_r_cluster", 
                 "lip_wire", 
                 "lip_main_wire", 
                 "body_geo_skinCluster", 
