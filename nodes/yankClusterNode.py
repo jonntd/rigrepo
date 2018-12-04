@@ -2,6 +2,7 @@
 This is a node for yanking clusters
 '''
 import inspect
+import maya.cmds as mc
 import rigrepo.nodes.commandNode as commandNode
 
 class YankClusterNode(commandNode.CommandNode):
