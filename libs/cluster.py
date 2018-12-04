@@ -42,11 +42,11 @@ def create(mesh,name,parent=None,contraintTypes=['point','orient','scale'],
     
 
     if 'orient' in contraintTypes:
-        mc.orientConstraint(name+'_ctrl',name+'_hdl')
+        mc.orientConstraint(name+'_ctrl',name+'_cls_hdl')
     if 'point' in contraintTypes:
-        mc.pointConstraint(name+'_ctrl',name+'_hdl')
+        mc.pointConstraint(name+'_ctrl',name+'_cls_hdl')
     if 'scale' in contraintTypes:
-        mc.scaleConstraint(name+'_ctrl',name+'_hdl')
+        mc.scaleConstraint(name+'_ctrl',name+'_cls_hdl')
     
     return cls
 

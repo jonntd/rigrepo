@@ -77,6 +77,8 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
             dirPath=self.resolveDirPath('skin_wts', self.variant))
         wireWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("wire", 
             dirPath=self.resolveDirPath('wire_wts', self.variant))
+        clusterWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("cluster", 
+            dirPath=self.resolveDirPath('cluster_wts', self.variant))
         importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDNode("psd",
             dirPath=self.resolveDirPath('psd', self.variant),
             fileName='skin_psd')
@@ -92,7 +94,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         skinWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("skinCluster", 
             dirPath=self.resolveDirPath('skin_wts', self.variant))
         applyNode.addChildren([deformersNode, importDeformerDataNode, importSdkDataNode])
-        deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, importPSDSystemNode])
+        deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, clusterWtsFileNode, importPSDSystemNode])
 
         animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, frameNode])
 
@@ -142,10 +144,15 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         deformerOrderExportDataNode = rigrepo.nodes.exportDataNode.ExportDataNode('deformerOrder', 
             dataFile=self.buildExportPath('deformer_order.data', self.variant), 
             dataType='deformerOrder')
-        skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('skinCluster', 
+        skinClusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportSkinWtsDirNode('skinCluster', 
             dirPath=self.buildExportPath('skin_wts', self.variant))
-        wireExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWireWtsDirNode('wire',
-            dirPath=self.buildExportPath('wire_wts', self.variant))
+        wireExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('wire',
+            dirPath=self.buildExportPath('wire_wts', self.variant), 
+            deformerType="wire")
+        clusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('cluster',
+            dirPath=self.buildExportPath('cluster_wts', self.variant), 
+            deformerType="cluster", 
+            excludeNodes='mc.ls("lip*",type="cluster")')
         skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode(
             'skinClusterSelected', dirPath=self.buildExportPath('skin_wts', self.variant))
         exportPSDNode = rigrepo.nodes.exportPSDNode.ExportPSDNode('psd',
@@ -155,7 +162,8 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, 
                                 curveExportDataNode, controlCurveExportDataNode, sdkExportDataNode,
                                 skinClusterExportWtsNode, skinClusterExportWtsSelectedNode, 
-                                wireExportWtsNode, exportPSDNode, deformerOrderExportDataNode])
+                                wireExportWtsNode, clusterExportWtsNode, exportPSDNode, 
+                                deformerOrderExportDataNode])
                                 
 
         # Mirroring #

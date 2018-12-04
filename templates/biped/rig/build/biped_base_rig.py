@@ -277,12 +277,12 @@ import maya.cmds as mc
 
 lipControls = mc.ls("lip_*.__control__", o=True)
 for node in lipControls:
-    rigrepo.libs.cluster.create("body_geo", "%s_cluster" % node , parent="%s_def_auto" % node, parallel=False)
+    rigrepo.libs.cluster.create("body_geo", "%s_cluster" % node , contraintTypes=["orient","scale"], parent="%s_def_auto" % node, parallel=False)
     nul = "%s_cluster_nul" % node
     mc.xform(nul, ws=True, matrix=mc.xform(node, q=True, ws=True, matrix=True))
     mc.connectAttr("%s.t" % node, "%s_cluster_auto.t" % node, f=True)
-    mc.connectAttr("%s.r"% node, "%s_cluster_cls_hdl.r"% node, f=True)
-    mc.connectAttr("%s.s"% node, "%s_cluster_cls_hdl.s"% node, f=True)
+    mc.connectAttr("%s.r"% node, "%s_cluster_ctrl.r"% node, f=True)
+    mc.connectAttr("%s.s"% node, "%s_cluster_ctrl.s"% node, f=True)
 mc.select("body_geo", r=True)
 '''
         lipClusterNode.getAttributeByName('command').setValue(lipClusterNodeCmd)

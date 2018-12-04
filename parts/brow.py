@@ -8,6 +8,7 @@ import maya.cmds as mc
 import rigrepo.parts.part as part
 import rigrepo.libs.control as control
 import rigrepo.libs.common as common
+import rigrepo.libs.cluster as cluster
 
 class Brow(part.Part):
     '''
@@ -206,14 +207,14 @@ class Brow(part.Part):
 
         # create the corrugator 
         corrugatorName = "brow_corrugator_{}".format(side)
-        rigrepo.libs.cluster.create(geometry, name=corrugatorName, parent=browInnerCtrl)
+        cluster.create(geometry, name=corrugatorName, parent=browInnerCtrl)
 
         # rename the cluster and control                                    
         mc.rename(corrugatorName, '{}_cluster'.format(corrugatorName))
         mc.rename('{}_ctrl'.format(corrugatorName), corrugatorName)
         mc.xform("{}_nul".format(corrugatorName), ws=True, matrix=mc.xform(browInnerCtrl, q=True, ws=True, matrix=True))
         mc.setAttr("{}.displayHandle".format(corrugatorName), 1)
-        rigrepo.libs.control.tagAsControl(corrugatorName)
+        control.tagAsControl(corrugatorName)
 
 
     def postBuild(self):
