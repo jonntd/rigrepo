@@ -191,6 +191,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         r_blink = rigrepo.parts.blink.Blink("r_blink",side="r", anchor="face_upper")
         r_blink.getAttributeByName("side").setValue("r")
         mouth = rigrepo.parts.mouth.Mouth("mouth", lipMainCurve='lip_main_curve')
+        mouth.getAttributeByName("orientFile").setValue(self.resolveDataFilePath('control_orients.data', self.variant))
         mouthBindGeometry = rigrepo.nodes.commandNode.CommandNode('bindGeometry')
         mouthBindGeometryCmd = '''
 import maya.cmds as mc

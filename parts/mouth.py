@@ -2,12 +2,14 @@
 This is the base module for all of your parts.
 '''
 import numpy
+import os
 import maya.cmds as mc
 import rigrepo.libs.attribute as attribute
 import rigrepo.libs.bindmesh as bindmesh
 import rigrepo.libs.control as control
 import rigrepo.libs.common as common
 import rigrepo.parts.part as part
+import rigrepo.libs.data.node_data as node_data
 import rigrepo.libs.weights 
 
 class Mouth(part.Part):
@@ -31,6 +33,9 @@ class Mouth(part.Part):
         self.addAttribute("lipCurve", lipCurve, attrType=str)
         self.addAttribute("systemParent", self.name, attrType=str)      
         self.addAttribute("geometry", "body_geo", attrType=str)
+        self.addAttribute("headPin", "face_mid_bind", attrType=str)
+        self.addAttribute("jawPin", "jaw_bind", attrType=str)
+        self.addAttribute("orientFile", "", attrType=str)
 
     def build(self):
         '''
@@ -41,6 +46,9 @@ class Mouth(part.Part):
         lipCurve = self.getAttributeByName('lipCurve').getValue()
         parentGroup = self.getAttributeByName('systemParent').getValue()
         geometry = self.getAttributeByName('geometry').getValue()
+        headPinTrs = self.getAttributeByName('headPin').getValue()
+        jawPinTrs = self.getAttributeByName('jawPin').getValue()
+        orientFile = self.getAttributeByName('orientFile').getValue()
         
         bindmeshGeometry, follicleList, lipMainControlHieracrchyList, jointList = self.__buildCurveRig(lipMainCurve, "lip_main" , parentGroup)
         # delete the controls, tparent joint to the node above the control
@@ -146,19 +154,30 @@ class Mouth(part.Part):
             lipMainControlHieracrchyList[lipMainControlHieracrchyList.index(lowerRight[i])] = [mc.rename(ctrl, "_".join([name for name in ctrl.split("_") if not name.isdigit()]).replace(controlPrefix, "lipMain_low_{}_r".format(lowerRightPosXList.index(pos)))) for ctrl in lowerRight[i]]
 
 
-
         # create the controls
-        mouthCornerHierarchyList = list()
         # If there is a hierarchy argument passed in. We will loop through and create the hiearchy.
+        # move the orients
+        nodeDataObj = None
+        if os.path.isfile(orientFile):
+            nodeDataObj = node_data.NodeData()
+            nodeDataObj.read(orientFile)
+
         for follicle in (mouthCorner_l_follicle, mouthCorner_r_follicle):
             parent = follicle
             controlName = follicle.split("_follicle")[0]
             # create the control with a large enough hierarchy to create proper SDK's
             ctrlHierarchy = control.create(name=controlName, 
                 controlType="square", 
-                hierarchy=['nul','ort'], 
+                hierarchy=['nul','ort', 'auto'], 
                 color=common.BLACK,
                 parent=parent)
+            driverMouthCorner = mc.createNode("joint", name="{}_driver".format(controlName))
+            # mover the driver to the orient and parent it under the orient
+            mc.parent(driverMouthCorner, ctrlHierarchy[1])
+            #mc.xform(driverMouthCorner, ws=True, matrix=mc.xform(ctrlHierarchy[1], q=True, ws=True, matrix=True))
+            
+            # turn off the visibility of the driver
+            mc.setAttr("{}.drawStyle".format(driverMouthCorner), 2)
             # turn on the handle for the mouth corner control and move it 
             mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
             mc.setAttr("{}.selectHandleX".format(ctrlHierarchy[-1]) ,0.2)
@@ -167,37 +186,80 @@ class Mouth(part.Part):
             #mc.setAttr("{}.rotate".format(ctrlHierarchy[0]), 0,0,0)
             mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
 
+            # create the drivers for the lip_L/R
+            neutral = mc.createNode("transform", name="{}_neutral".format(controlName))
+            headPin = mc.createNode("transform", name="{}_headPin".format(controlName))
+            jawPin = mc.createNode("transform", name="{}_jawPin".format(controlName))
+
+            for pinGrp in [neutral, headPin, jawPin]:
+                mc.xform(pinGrp, ws=True, matrix=mc.xform(ctrlHierarchy[1], q=True, ws=True, matrix=True))
+                mc.parent(pinGrp, ctrlHierarchy[1])
+                cst = mc.parentConstraint(pinGrp, ctrlHierarchy[2])[0]
+
+            # constrain the driver to the control
+            mc.pointConstraint(ctrlHierarchy[-1], driverMouthCorner, mo=True)
+
+            if nodeDataObj:
+                nodeDataObj.applyData([ctrlHierarchy[1]])
+
+            # constrain the head and jaw pinning.
+            mc.parentConstraint(jawPinTrs, jawPin, mo=True)
+            mc.parentConstraint(headPinTrs, headPin, mo=True)
+
+            # create the head and jaw pinning.
+            mc.addAttr(controlName, ln="pinning", nn="----------", at="enum", enumName="Pinning", keyable=True)
+            attribute.lock(controlName, "pinning")
+            mc.addAttr(controlName, ln="pin", at="double", min=-10, max=10, dv=0, keyable=True)
+            mc.setDrivenKeyframe("{}.{}W0".format(cst,neutral), 
+                cd="{}.pin".format(controlName), v=1, dv=0)
+            mc.setDrivenKeyframe("{}.{}W1".format(cst,headPin), 
+                cd="{}.pin".format(controlName), v=0, dv=0)
+            mc.setDrivenKeyframe("{}.{}W2".format(cst,jawPin), 
+                cd="{}.pin".format(controlName), v=0, dv=0)
+            mc.setDrivenKeyframe("{}.{}W0".format(cst,neutral), 
+                cd="{}.pin".format(controlName), v=0, dv=-10)
+            mc.setDrivenKeyframe("{}.{}W1".format(cst,headPin), 
+                cd="{}.pin".format(controlName), v=0, dv=-10)
+            mc.setDrivenKeyframe("{}.{}W2".format(cst,jawPin), 
+                cd="{}.pin".format(controlName), v=1, dv=-10)
+            mc.setDrivenKeyframe("{}.{}W0".format(cst,neutral), 
+                cd="{}.pin".format(controlName), v=0, dv=10)
+            mc.setDrivenKeyframe("{}.{}W1".format(cst,headPin), 
+                cd="{}.pin".format(controlName), v=1, dv=10)
+            mc.setDrivenKeyframe("{}.{}W2".format(cst,jawPin), 
+                cd="{}.pin".format(controlName), v=0, dv=10)
+
             # create the set driven keyframes
-            for attribute in ['x','y','z']:
+            for attr in ['x','y','z']:
                 for lipMainControl in lipMainControlHieracrchyList:
                     if "_l_" in lipMainControl[3] and follicle == mouthCorner_l_follicle:
-                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
-                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=1, dv=1)
-                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-1, dv=-1)
-                        if attribute == "x":
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
+                            cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
+                            cd="{}.t{}".format(driverMouthCorner,attr), v=1, dv=1)
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
+                            cd="{}.t{}".format(driverMouthCorner,attr), v=-1, dv=-1)
+                        if attr == "x":
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
-                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
+                                cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
-                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=10, dv=1)
+                                cd="{}.t{}".format(driverMouthCorner,attr), v=10, dv=1)
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
-                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-10, dv=-1)
+                                cd="{}.t{}".format(driverMouthCorner,attr), v=-10, dv=-1)
                     elif  "_r_" in lipMainControl[3] and follicle == mouthCorner_r_follicle:
-                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
-                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=1, dv=1)
-                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attribute), 
-                            cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-1, dv=-1)
-                        if attribute == "x":
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
+                            cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
+                            cd="{}.t{}".format(driverMouthCorner,attr), v=1, dv=1)
+                        mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
+                            cd="{}.t{}".format(driverMouthCorner,attr), v=-1, dv=-1)
+                        if attr == "x":
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
-                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=0, dv=0)
+                                cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
-                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=10, dv=1)
+                                cd="{}.t{}".format(driverMouthCorner,attr), v=10, dv=1)
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
-                                cd="{}.t{}".format(ctrlHierarchy[-1],attribute), v=-10, dv=-1)
+                                cd="{}.t{}".format(driverMouthCorner,attr), v=-10, dv=-1)
 
         # control prefix for the lips
         controlPrefix = "lip"

@@ -15,29 +15,36 @@ def localize(skinClusters, transform):
     :param transform: Transform to localize against
     :type transform: str
     '''
+    if not mc.objExists(transform):
+        raise RuntimeError("{} doesn't exist in the current Maya session.".format(transform))
+
+    transformDescedants = mc.listRelatives(transform, ad=True, type="transform")
     if isinstance(skinClusters, basestring):
-        skinClusters = [skinClusters]
+        skinClusters = rigrepo.libs.common.toList(skinClusters)
     for skinCluster in skinClusters:
-        infs = mc.listConnections(skinCluster+'.matrix', type='transform')
+        infs = mc.skinCluster(skinCluster, q=True, inf=True)
+        geoTransform = mc.listRelatives(mc.skinCluster(skinCluster, q=True, geometry=True)[0], p=True)[0]
+        if geoTransform not in transformDescedants:
+            transform = geoTransform
         if not infs:
             return()
         for inf in infs:
-           connection = mc.listConnections(inf+'.worldMatrix[0]', p=1, type='skinCluster')
-           for con in connection:
-               if skinCluster == con.split('.')[0]:
-                   index = con.split('[')[1].split(']')[0]
-                   # Nothing needs to be done if the bindPreMatrix is hooked up
-                   if mc.listConnections('{0}.bindPreMatrix[{1}]'.format(skinCluster, index)):
-                       continue
-                   multMatrix = '{}__{}_localizeMatrix'.format(inf, skinCluster)
-                   if not mc.objExists(multMatrix):
-                       multMatrix = mc.createNode('multMatrix', n=multMatrix)
-                   if not mc.isConnected(inf+'.worldMatrix[0]', multMatrix+'.matrixIn[1]'):
-                       mc.connectAttr(inf+'.worldMatrix[0]', multMatrix+'.matrixIn[1]', f=1)
-                   if not mc.isConnected(transform+'.worldInverseMatrix[0]', multMatrix+'.matrixIn[2]'):
-                       mc.connectAttr(transform+'.worldInverseMatrix[0]', multMatrix+'.matrixIn[2]', f=1)
-                   if not mc.isConnected(multMatrix+'.matrixSum', con):
-                       mc.connectAttr(multMatrix+'.matrixSum', con, f=1)
+            connection = mc.listConnections(inf+'.worldMatrix[0]', p=1, type='skinCluster')
+            for con in connection:
+                if skinCluster == con.split('.')[0]:
+                    index = con.split('[')[1].split(']')[0]
+                    # Nothing needs to be done if the bindPreMatrix is hooked up
+                    if mc.listConnections('{0}.bindPreMatrix[{1}]'.format(skinCluster, index)):
+                        continue
+                    multMatrix = '{}__{}_localizeMatrix'.format(inf, skinCluster)
+                    if not mc.objExists(multMatrix):
+                        multMatrix = mc.createNode('multMatrix', n=multMatrix)
+                    if not mc.isConnected(inf+'.worldMatrix[0]', multMatrix+'.matrixIn[1]'):
+                        mc.connectAttr(inf+'.worldMatrix[0]', multMatrix+'.matrixIn[1]', f=1)
+                    if not mc.isConnected(transform+'.worldInverseMatrix[0]', multMatrix+'.matrixIn[2]'):
+                        mc.connectAttr(transform+'.worldInverseMatrix[0]', multMatrix+'.matrixIn[2]', f=1)
+                    if not mc.isConnected(multMatrix+'.matrixSum', con):
+                        mc.connectAttr(multMatrix+'.matrixSum', con, f=1)
 
 def getSkinCluster(geometry):
     '''

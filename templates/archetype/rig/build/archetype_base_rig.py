@@ -96,7 +96,16 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         applyNode.addChildren([deformersNode, importDeformerDataNode, importSdkDataNode])
         deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, clusterWtsFileNode, importPSDSystemNode])
 
-        animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, frameNode])
+        localizeNode = rigrepo.nodes.commandNode.CommandNode('localize')
+        localizeNodeCmd = '''
+import rigrepo.libs.skinCluster
+import maya.cmds as mc
+
+rigrepo.libs.skinCluster.localize(mc.ls(type="skinCluster"), "model")
+'''
+        localizeNode.getAttributeByName('command').setValue(localizeNodeCmd)
+
+        animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, localizeNode, frameNode])
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow

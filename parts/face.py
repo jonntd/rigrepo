@@ -67,6 +67,19 @@ class Face(part.Part):
             mc.xform(jawNul, ws=True, matrix=mc.xform(jawJoint, q=True, ws=True, matrix=True))
             mc.pointConstraint(jawCtrl, jawJoint)
             mc.orientConstraint(jawCtrl, jawJoint)
+            # create jaw driver, parent it to the jaw nul, then move it to the correct position
+            jawDriver = mc.createNode("joint", name="jaw_driver")
+            mc.parent(jawDriver, jawNul)
+            mc.xform(jawDriver, ws=True, matrix=mc.xform(jawNul, q=True, ws=True, matrix=True))
+            mc.orientConstraint(jawCtrl, jawDriver)
+            # create normRX on the driver
+            mc.addAttr(jawDriver, ln="normRX", at="double", keyable=True)
+            multJaw = mc.createNode("multDoubleLinear", name="jaw_driver_norm_mult")
+            mc.connectAttr("{}.rx".format(jawJoint), "{}.input1".format(multJaw), f=True)
+            mc.setAttr("{}.input2".format(multJaw), .1)
+            mc.connectAttr("{}.output".format(multJaw), "{}.normRX".format(jawDriver), f=True)
+            # turn off the visibility of the driver
+            mc.setAttr("{}.drawStyle".format(jawDriver), 2)
 
         # FACE LOWER
         if mc.objExists(faceLowerJoint):
