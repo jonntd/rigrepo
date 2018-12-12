@@ -96,6 +96,10 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         applyNode.addChildren([deformersNode, importDeformerDataNode, importSdkDataNode])
         deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, clusterWtsFileNode, importPSDSystemNode])
 
+        importNodeEditorBookmarsNode = rigrepo.nodes.importNodeEditorBookmarksNode.ImportNodeEditorBookmarksNode("bookmarks",
+            dirPath=self.resolveDirPath('bookmarks', self.variant))
+
+
         localizeNode = rigrepo.nodes.commandNode.CommandNode('localize')
         localizeNodeCmd = '''
 import rigrepo.libs.skinCluster
@@ -105,7 +109,7 @@ rigrepo.libs.skinCluster.localize(mc.ls(type="skinCluster"), "model")
 '''
         localizeNode.getAttributeByName('command').setValue(localizeNodeCmd)
 
-        animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, localizeNode, frameNode])
+        animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, localizeNode, importNodeEditorBookmarsNode, frameNode])
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow
@@ -167,12 +171,14 @@ rigrepo.libs.skinCluster.localize(mc.ls(type="skinCluster"), "model")
         exportPSDNode = rigrepo.nodes.exportPSDNode.ExportPSDNode('psd',
                                                                   dirPath=self.buildExportPath('psd', self.variant),
                                                                   fileName='skin_psd')
+        nodeEditorBookmarks = rigrepo.nodes.exportNodeEditorBookmarksNode.ExportNodeEditorBookmarsNode('NodeEditorBookmarks',
+                                                                  dirPath=self.buildExportPath('bookmarks', self.variant))
         # --------------------------------------------------------------------------------------------------------------
         exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, 
                                 curveExportDataNode, controlCurveExportDataNode, sdkExportDataNode,
                                 skinClusterExportWtsNode, skinClusterExportWtsSelectedNode, 
                                 wireExportWtsNode, clusterExportWtsNode, exportPSDNode, 
-                                deformerOrderExportDataNode])
+                                deformerOrderExportDataNode, nodeEditorBookmarks])
                                 
 
         # Mirroring #

@@ -2,6 +2,7 @@
 This is the base module for all of your parts.
 '''
 import maya.cmds as mc
+import rigrepo
 import rigrepo.parts.part as part
 import rigrepo.libs.control as control
 import rigrepo.libs.cluster as cluster

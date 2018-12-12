@@ -36,6 +36,9 @@ class ExportDataNode(pubs.pNode.PNode):
         elif dataType == 'deformerOrder':
             self.dataObj = rigrepo.libs.data.deformer_order_data.DeformerOrderData()
             nodesAttr.setValue('[mc.listRelatives(node, p=True)[0] for node in mc.ls(type="mesh")+mc.ls(type="nurbsCurve")]')
+        elif dataType == 'nodeEditorBookmarks':
+            self.dataObj = rigrepo.libs.data.node_editor_bookmark_data.NodeEditorBookmarkData()
+            nodesAttr.setValue('mc.ls(type="nodeGraphEditorBookmarkInfo")')
 
     def execute(self, **kwargs):
         dataFile = self.getAttributeByName('filepath').getValue()

@@ -37,6 +37,8 @@ def nodes(variant='base', buildNow=False, debug=True):
     reload(rigrepo.libs.data.curve_data)
     import rigrepo.libs.data.deformer_order_data
     reload(rigrepo.libs.data.deformer_order_data)
+    import rigrepo.libs.data.node_editor_bookmark_data
+    reload(rigrepo.libs.data.node_editor_bookmark_data)
 
     import rigrepo.libs.data.psd_data
     reload(rigrepo.libs.data.psd_data)
@@ -127,6 +129,10 @@ def nodes(variant='base', buildNow=False, debug=True):
     reload(rigrepo.nodes.transferDeformer)
     import rigrepo.nodes.mirrorWiresNode
     reload(rigrepo.nodes.mirrorWiresNode)
+    import rigrepo.nodes.exportNodeEditorBookmarksNode
+    reload(rigrepo.nodes.exportNodeEditorBookmarksNode)
+    import rigrepo.nodes.importNodeEditorBookmarksNode
+    reload(rigrepo.nodes.importNodeEditorBookmarksNode)
 
     # reload parts
     import rigrepo.parts.part
