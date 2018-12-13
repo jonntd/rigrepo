@@ -1,7 +1,7 @@
 {
     "type": "NodeData", 
     "user": "Walter Yoder", 
-    "time": "2018-12-04 14:25:49", 
+    "time": "2018-12-13 07:17:57", 
     "data": {
         "ankle_fk_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
@@ -2365,6 +2365,25 @@
                 0.0, 
                 -0.0, 
                 -0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "mouthMain_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_lower_nul|face_lower|mouthMain_nul|mouthMain_ort", 
+            "translate": [
+                -0.0, 
+                -2.986, 
+                -2.8073
             ], 
             "rotate": [
                 0.0, 

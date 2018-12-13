@@ -195,6 +195,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         mouthBindGeometry = rigrepo.nodes.commandNode.CommandNode('bindGeometry')
         mouthBindGeometryCmd = '''
 import maya.cmds as mc
+import rigrepo.libs.cluster
 for curve in ["lip_main_curve", "lip_curve"]:
     wireDeformer = "{}_wire".format(curve)
     if mc.objExists(wireDeformer):
@@ -216,7 +217,12 @@ skinCluster = mc.skinCluster(*bindJointList + ["lip_curveBaseWire"],
 for jnt in bindJointList:
     index = [int(s) for s in jnt.split("_") if s.isdigit()][0]
     mc.skinPercent(skinCluster, "lip_curveBaseWire.cv[{}]".format(index), tv=["lip_{}_baseCurve_jnt".format(index), 1])
-    
+
+for mesh in mc.ls(["lip_main_bindmesh", "lip_bindmesh", "mouth_corner_bindmesh"]):
+    if mc.objExists(mesh) and mc.objExists("mouthMain_cls_hdl"):
+        mc.select(mesh, r=True)
+        cls = mc.cluster(name="{}_mouthMain_cluster".format(mesh), wn=['mouthMain_cls_hdl','mouthMain_cls_hdl'],bs=1)[0]
+        rigrepo.libs.cluster.localize(cls, 'mouthMain_auto', 'model')
 '''
         mouthBindGeometry.getAttributeByName('command').setValue(mouthBindGeometryCmd)
         mouth.addChildren([mouthBindGeometry])

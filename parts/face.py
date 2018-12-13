@@ -6,6 +6,7 @@ import rigrepo
 import rigrepo.parts.part as part
 import rigrepo.libs.control as control
 import rigrepo.libs.cluster as cluster
+import rigrepo.libs.common as common
 
 class Face(part.Part):
     '''
@@ -61,7 +62,7 @@ class Face(part.Part):
             # create the jaw control 
             jawNul, jawDefAuto, jawCtrl = control.create(name="jaw", 
                                               controlType="null",
-                                              color=rigrepo.libs.common.YELLOW,
+                                              color=common.YELLOW,
                                               hierarchy=['nul', 'def_auto'])
 
             # position the jaw control and connect the joint to the control
@@ -87,7 +88,7 @@ class Face(part.Part):
             # Create the faceLower and jaw control
             faceLowerNul, faceLowerCtrl = control.create(name="face_lower", 
                                               controlType="null",
-                                              color=rigrepo.libs.common.YELLOW,
+                                              color=common.YELLOW,
                                               hierarchy=['nul'],
                                               parent=anchor)
 
@@ -100,6 +101,16 @@ class Face(part.Part):
             if mc.objExists(jawJoint):
                 mc.parent(jawNul, faceLowerCtrl)
 
+            mouthMainName = "mouthMain"
+            cluster.create(geometry, name=mouthMainName, parent=faceLowerCtrl)
+
+             # rename the cluster and control                                    
+            mc.rename(mouthMainName, '{}_cluster'.format(mouthMainName))
+            mc.rename('{}_ctrl'.format(mouthMainName), mouthMainName)
+            mc.xform("{}_nul".format(mouthMainName), ws=True, matrix=mc.xform(faceLowerCtrl, q=True, ws=True, matrix=True))
+            mc.setAttr("{}.displayHandle".format(mouthMainName), 1)
+            control.tagAsControl(mouthMainName)
+
         elif mc.objExists(jawJoint) and mc.objExists(anchor):
             mc.parent(jawNul, anchor)
 
@@ -107,7 +118,7 @@ class Face(part.Part):
             # Create the faceLower and jaw control
             faceUpperNul, faceUpperCtrl = control.create(name="face_upper", 
                                               controlType="null",
-                                              color=rigrepo.libs.common.YELLOW,
+                                              color=common.YELLOW,
                                               hierarchy=['nul'],
                                               parent=anchor)
 
@@ -153,7 +164,7 @@ class Face(part.Part):
                 # Create the faceLower and jaw control
                 headTipNul, headTipCtrl = control.create(name="head_tip", 
                                               controlType="null",
-                                              color=rigrepo.libs.common.YELLOW,
+                                              color=common.YELLOW,
                                               hierarchy=['nul'],
                                               parent=faceUpperCtrl)
 
@@ -166,7 +177,7 @@ class Face(part.Part):
             # Create the faceLower and jaw control
             noseBridgeNul, noseBridgeDefAuto, noseBridgeRotDefAuto, noseBridgeCtrl = control.create(name="nose_bridge", 
                                               controlType="null",
-                                              color=rigrepo.libs.common.YELLOW,
+                                              color=common.YELLOW,
                                               hierarchy=['nul', 'def_auto', 'rot_def_auto'])
 
             if mc.objExists(faceUpperJoint):
@@ -192,7 +203,7 @@ class Face(part.Part):
             # Create the faceLower and jaw control
             noseNul, noseDefAuto, noseCtrl = control.create(name="nose", 
                                               controlType="null",
-                                              color=rigrepo.libs.common.YELLOW,
+                                              color=common.YELLOW,
                                               hierarchy=['nul', 'def_auto'])
 
             if mc.objExists(noseBridgeJoint):
@@ -260,8 +271,7 @@ class Face(part.Part):
             mc.pointConstraint(midDriver, faceMidJoint, mo=False)
             mc.orientConstraint(midDriver, faceMidJoint, mo=False)
             # parent the noseBridge to the proper group
-            mc.parent(noseBridgeNul, groupList[-1])
-            
+            mc.parent(noseBridgeNul, groupList[-1])            
 
 
 
