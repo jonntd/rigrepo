@@ -83,6 +83,17 @@ class Face(part.Part):
             # turn off the visibility of the driver
             mc.setAttr("{}.drawStyle".format(jawDriver), 2)
 
+            # create the lip lower cluster
+            lipLower = "lip_lower"
+            cluster.create(geometry, name=lipLower, parent=jawCtrl)
+
+            # rename the cluster and control                                    
+            mc.rename(lipLower, '{}_cluster'.format(lipLower))
+            mc.rename('{}_ctrl'.format(lipLower), lipLower)
+            mc.xform("{}_nul".format(lipLower), ws=True, matrix=mc.xform(jawCtrl, q=True, ws=True, matrix=True))
+            mc.setAttr("{}.displayHandle".format(lipLower), 1)
+            control.tagAsControl(lipLower)     
+
         # FACE LOWER
         if mc.objExists(faceLowerJoint):
             # Create the faceLower and jaw control
@@ -271,7 +282,18 @@ class Face(part.Part):
             mc.pointConstraint(midDriver, faceMidJoint, mo=False)
             mc.orientConstraint(midDriver, faceMidJoint, mo=False)
             # parent the noseBridge to the proper group
-            mc.parent(noseBridgeNul, groupList[-1])            
+            mc.parent(noseBridgeNul, groupList[-1]) 
+
+            # create the left sneer cluster
+            lipUpper = "lip_upper"
+            cluster.create(geometry, name=lipUpper, parent=midDriver)
+
+            # rename the cluster and control                                    
+            mc.rename(lipUpper, '{}_cluster'.format(lipUpper))
+            mc.rename('{}_ctrl'.format(lipUpper), lipUpper)
+            mc.xform("{}_nul".format(lipUpper), ws=True, matrix=mc.xform(midDriver, q=True, ws=True, matrix=True))
+            mc.setAttr("{}.displayHandle".format(lipUpper), 1)
+            control.tagAsControl(lipUpper)           
 
 
 

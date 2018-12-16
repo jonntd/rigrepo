@@ -1,7 +1,7 @@
 {
     "type": "NodeData", 
-    "user": "Walter Yoder", 
-    "time": "2018-12-13 07:17:57", 
+    "user": "wyoder", 
+    "time": "2018-12-16 16:39:19", 
     "data": {
         "ankle_fk_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
@@ -1998,6 +1998,25 @@
             ], 
             "rotateOrder": 0
         }, 
+        "lip_lower_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_lower_nul|face_lower|jaw_nul|jaw_def_auto|jaw|lip_lower_nul|lip_lower_ort", 
+            "translate": [
+                0.0, 
+                -1.0872, 
+                -4.0449
+            ], 
+            "rotate": [
+                10.7174, 
+                0.0, 
+                180.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                -1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "lip_up_0_l_cluster_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_14_follicle|lip_up_0_l_nul|lip_up_0_l_ort|lip_up_0_l_rot_def_auto|lip_up_0_l_def_auto|lip_up_0_l_cluster_nul|lip_up_0_l_cluster_ort", 
             "translate": [
@@ -2221,6 +2240,25 @@
             ], 
             "scale": [
                 -1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lip_upper_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_lower_nul|face_lower|face_mid_nul|face_upper_driver|face_mid_offset|face_mid_ort|face_mid_def_auto|face_mid_driver|lip_upper_nul|lip_upper_ort", 
+            "translate": [
+                0.0, 
+                -0.4636, 
+                -3.965
+            ], 
+            "rotate": [
+                -170.0, 
+                0.0, 
+                180.0
+            ], 
+            "scale": [
+                1.0, 
                 1.0, 
                 1.0
             ], 

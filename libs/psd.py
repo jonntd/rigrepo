@@ -6,6 +6,9 @@ import maya.cmds as mc
 import maya.mel as mm
 import rigrepo.libs.common as common
 
+# make sure the poseInterpolator plugin is loaded.
+mc.loadPlugin("poseInterpolator.so",qt=True)
+
 def addPoseInterp(name, driver=None, createNeutralPose=0, twistAxis=0):
     '''
 
