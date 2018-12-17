@@ -211,6 +211,8 @@ def nodes(variant='base', buildNow=False, debug=True):
                 if debug:
                     print('{} - time: {} sec'.format(name, nodeTime))
 
+        total_time_1 = time.time()
+        total_time = round(total_time_1-total_time_0, 5)
         if debug:
             nodesByTime = sorted(nodeTimeLog)
             output = '-'*100
@@ -219,11 +221,11 @@ def nodes(variant='base', buildNow=False, debug=True):
             for a, b, path in nodesByTime:
                 output += '\n{:<8}| {:<29} |{:<68}'.format(a, b, path)
             output += '\n'+'-'*100
-            output += '\n{:<8}| {:<90}'.format('Time', 'Node')
+            output += '\n{:<8}| {:<90}'.format(total_time, len(nodesByTime))
+            #output += '\n{:<8}| {:<90}'.format('Time', 'Node')
             print(output)
-        total_time_1 = time.time()
         print('-'*100)
-        print('Total build time : {} sec'.format(round(total_time_1-total_time_0, 5)))
+        print('Total build time : {} sec'.format(total_time))
 
     else:
         pubs.ui.mainWindow.launch(graph=biped_graph)
