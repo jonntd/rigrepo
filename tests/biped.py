@@ -185,24 +185,42 @@ def nodes(variant='base', buildNow=False, debug=True):
         nodeList = biped_graph.getNodes()
 
         total_time_0 = time.time()
+        nodeTimeLog = list()
         for node in nodeList:
+            classType = type(node)
+            nodeType = classType.__name__
+            nodeClassPath = str(node.__module__ + "." + nodeType)
+
             if not node.isActive():
                 nodeIndex = nodeList.index(node)
                 childList = node.descendants()
                 for child in childList:
                     nodeList.pop(nodeIndex+1)
                 nodeList.pop(nodeIndex)
-            if node.isActive():
+            if node.isActive() and nodeType != 'PNode':
                 name = node.getName()
+                t0 = time.time()
                 if debug:
                     print('-'*100)
                     print(name + ' - executing')
-                    t0 = time.time()
                     mc.refresh()
                 node.execute()
+                t1 = time.time()
+                nodeTime = round(t1-t0, 5)
+                nodeTimeLog.append((nodeTime, name, nodeClassPath))
                 if debug:
-                    t1 = time.time()
-                    print('{} - time: {} sec'.format(name, round(t1-t0, 5)))
+                    print('{} - time: {} sec'.format(name, nodeTime))
+
+        if debug:
+            nodesByTime = sorted(nodeTimeLog)
+            output = '-'*100
+            output += '\n{:<8}| {:<90}\n'.format('Time', 'Node')
+            output += '-'*100
+            for a, b, path in nodesByTime:
+                output += '\n{:<8}| {:<29} |{:<68}'.format(a, b, path)
+            output += '\n'+'-'*100
+            output += '\n{:<8}| {:<90}'.format('Time', 'Node')
+            print(output)
         total_time_1 = time.time()
         print('-'*100)
         print('Total build time : {} sec'.format(round(total_time_1-total_time_0, 5)))
