@@ -259,7 +259,7 @@ class Face(part.Part):
 
             # make the driver joint and parent it to the def auto and turn off visibility
             midDriver = mc.joint(name="face_mid_driver")
-            mc.setAttr("{}.v".format(drawStyle), 2 )
+            mc.setAttr("{}.drawStyle".format(midDriver), 2 )
 
             mc.xform(groupList[0], ws=True, matrix=mc.xform(faceUpperCtrl, q=True, ws=True, matrix=True))
             for attr in ['t', 'r', 's']:
