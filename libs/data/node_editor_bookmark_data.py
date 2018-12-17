@@ -37,7 +37,9 @@ class NodeEditorBookmarkData(abstract_data.AbstractData):
             x = mc.getAttr('{}.nodeInfo[{}].positionX'.format(node, i))
             y = mc.getAttr('{}.nodeInfo[{}].positionY'.format(node, i))
             nodeVisualState = mc.getAttr('{}.nodeInfo[{}].nodeVisualState '.format(node, i))
-            dependNode = mc.listConnections('{}.nodeInfo[{}].dependNode'.format(node, i))[0]
+            # Using the plug flag because the wrong node is returned sometimes without it
+            dependNode = mc.listConnections('{}.nodeInfo[{}].dependNode'.format(node, i), p=1)[0]
+            dependNode = dependNode.split('.')[0]
 
             data['nodeInfo'][i]['positionX'] = x
             data['nodeInfo'][i]['positionY'] = y
