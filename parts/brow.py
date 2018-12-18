@@ -91,8 +91,6 @@ class Brow(part.Part):
         mc.xform(browMainDriverNul, ws=True, matrix=mc.xform(browMainNul, q=True, ws=True, matrix=True))
         for attr in ['t', 'r', 's']:
             mc.connectAttr("{}.{}".format(browMainOrient, attr), "{}.{}".format(browMainDriverOrt, attr), f=True)
-            mc.connectAttr("{}.{}".format(browMainOrient, attr), "{}.{}".format(browMainDriverOrt, attr), f=True)
-            mc.connectAttr("{}.{}".format(browMainOrient, attr), "{}.{}".format(browMainDriverOrt, attr), f=True)
 
         mc.pointConstraint(browMainCtrl, browMainDriver)
 
@@ -105,8 +103,6 @@ class Brow(part.Part):
 
         for attr in ['t', 'r', 's']:
             mc.connectAttr("{}.{}".format(browInnerOrient, attr), "{}.{}".format(browInnerDriverOrt, attr), f=True)
-            mc.connectAttr("{}.{}".format(browInnerOrient, attr), "{}.{}".format(browInnerDriverOrt, attr), f=True)
-            mc.connectAttr("{}.{}".format(browInnerOrient, attr), "{}.{}".format(browInnerDriverOrt, attr), f=True)
 
         mc.pointConstraint(browInnerCtrl, browInnerDriver)
 
@@ -118,8 +114,6 @@ class Brow(part.Part):
         mc.xform(browPeakDriverNul, ws=True, matrix=mc.xform(browPeakNul, q=True, ws=True, matrix=True))
 
         for attr in ['t', 'r', 's']:
-            mc.connectAttr("{}.{}".format(browPeakOrient, attr), "{}.{}".format(browPeakDriverOrt, attr), f=True)
-            mc.connectAttr("{}.{}".format(browPeakOrient, attr), "{}.{}".format(browPeakDriverOrt, attr), f=True)
             mc.connectAttr("{}.{}".format(browPeakOrient, attr), "{}.{}".format(browPeakDriverOrt, attr), f=True)
 
         mc.pointConstraint(browPeakCtrl, browPeakDriver)
