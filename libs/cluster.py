@@ -2,7 +2,7 @@
 This is the module that will house functions and classes that have to do with clusters.
 '''
 import maya.cmds as mc
-
+import rigrepo.libs.common
 def create(mesh,name,parent=None,contraintTypes=['point','orient','scale'], 
     parallel=False, modelTransform="model", local=True):
     '''
@@ -54,3 +54,81 @@ def localize(cluster, transform, modelTransform):
     mc.connectAttr(modelTransform+'.worldMatrix', cluster+'.geomMatrix[0]', f=True)
     mc.connectAttr(transform+'.worldInverseMatrix', cluster+'.bindPreMatrix', f=True)
     #mc.connectAttr(transform+'.worldInverseMatrix', cluster+'.weightedCompensationMatrix', f=True)
+
+def getClusters(geometry):
+    '''
+    This will check the geometry to see if it has a skinCluster in it's histroy stack
+
+    :param geometry: The mesh you want to check for a skinCluster
+    :type geometry: str
+    '''
+    # check the history to see if there is a skinCluster
+    hist = [node for node in mc.listHistory(geometry, pdo=True) if mc.nodeType(node) == "cluster"]
+    hist.reverse()
+    return hist
+
+def transferCluster(source, target, deformer, handle=False, surfaceAssociation="closestPoint", createNew=True):
+    '''
+    This will transfer skinCluster from one mesh to another. If the target doesn't have a 
+    skinCluster on it, it will create a new skinCluster. Then once there is a skinCluster
+    We will copy weights over.
+
+    :param source: The geomertry you are transfer from
+    :type source:  str
+
+    :param target: The geometry you want to transfer to
+    :type target: str | list
+
+    :param surfaceAssociation: How to copy the weights from source to target available values 
+                                are "closestPoint", "rayCast", or "closestComponent"
+    :type surfaceAssociation: str
+    '''
+    # do some error checking
+    if not mc.objExists(source):
+        raise RuntimeError('The source mesh "{}" does not exist in the current Maya session.'.format(source))
+    if not isinstance(surfaceAssociation, basestring):
+        raise TypeError('The surfaceAssociation argument must be a string.')
+    if deformer:
+        if not mc.objExists(deformer):
+            raise RuntimeError("{} doesn't exist in the current Maya session!".format(deformer))
+
+    # first we will turn the target into a list if it's not already a list
+    meshList = rigrepo.libs.common.toList(target)
+    
+    # make sure we have a skinCluster on the source mesh 
+    sourceClusters = getClusters(source)
+    clusterList = list()
+    for mesh in meshList:
+        if not mc.objExists(mesh):
+            mc.warning('The target mesh "{}" does not exist in the current Maya session.'.format(target))
+            continue
+
+        # check to see if there is a skinCluster already  on the target mesh
+        hist = [node for node in mc.listHistory(mesh, pdo=True, lv=1) if mc.nodeType(node) == "cluster"]
+
+        # if there is no cluster, we will create one.
+        newDeformer = "{}__{}".format(mesh, deformer)
+        if deformer not in hist and not createNew:
+            mc.sets(mc.ls("{}.cp[*]".format(mesh))[0], e=True, add="{}Set".format(deformer))
+            newDeformer = deformer
+        elif createNew:
+            if not newDeformer in hist:
+                if handle:
+                    clsHandle = mc.cluster(deformer, q=True, wn=True)
+                    mc.cluster(mesh, name=newDeformer, wn=[clsHandle, clsHandle], bs=True)
+                else:
+                    mc.cluster(mesh, name=newDeformer, bs=True)
+        else:
+            newDeformer = deformer
+
+        clusterList.append(newDeformer)
+
+        # now we will transfer the wts
+        mc.copyDeformerWeights(ss=source, ds=mesh, sd=deformer, dd=newDeformer,
+                                sa=surfaceAssociation, noMirror=True)
+
+    return clusterList
+
+
+def mirror():
+    pass

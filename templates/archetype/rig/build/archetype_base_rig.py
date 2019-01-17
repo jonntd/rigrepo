@@ -82,6 +82,9 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDNode("psd",
             dirPath=self.resolveDirPath('psd', self.variant),
             fileName='skin_psd')
+        importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psd",
+            dirPath=self.resolveDirPath('psd', self.variant),
+            psdNames='["blinkLower_l_psd","blinkLower_r_psd", "blinkUpper_l_psd", "blinkUpper_r_psd", "skin_psd"]')
         importSdkDataNode = rigrepo.nodes.importDataNode.ImportDataNode('sdk', 
                 dataFile=self.resolveDataFilePath('sdk.data', self.variant), 
                 dataType='sdk', 
@@ -173,6 +176,7 @@ rigrepo.libs.skinCluster.localize(mc.ls(type="skinCluster"), "model")
                                                                   fileName='skin_psd')
         nodeEditorBookmarks = rigrepo.nodes.exportNodeEditorBookmarksNode.ExportNodeEditorBookmarsNode('NodeEditorBookmarks',
                                                                   dirPath=self.buildExportPath('bookmarks', self.variant))
+        nodeEditorBookmarks.disable()
         # --------------------------------------------------------------------------------------------------------------
         exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, 
                                 curveExportDataNode, controlCurveExportDataNode, sdkExportDataNode,

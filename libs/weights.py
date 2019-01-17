@@ -70,7 +70,7 @@ def setWeights(deformer, weights, mapList=None, geometry=None):
         for pntIndex, value in enumerate(weightList[0]):
             mc.setAttr('{}.wl[{}].w[{}]'.format(deformer, geometryindex, pntIndex), value) 
 
-def getWeights(deformer, mapList=None):
+def getWeights(deformer, mapList=None, geometry=None):
     '''
     Gets weights for specified deformers.
 
@@ -84,17 +84,30 @@ def getWeights(deformer, mapList=None):
     weightList = list()
     # make sure there is a mapList
     if not mapList:
-        mapList = getMaps(deformer)
+        mapList = getMaps(deformer) or list()
     elif not isinstance(mapList, (list, tuple)):
         rigrepo.libs.common.toList(mapList)
-    # get the geometry and the iterator to use for looping through the mesh points for wts.
-    geometry = mc.deformer(deformer, q=True, g=True)[0]
+
+    if geometry:
+        if not mc.objExists(geometry):
+            raise RuntimeError("{} doesn't exists in the current Maya session!".format(geometry))
+        # make sure we have the shape of the geometry for all deformers except the skinCluster
+        geoDagPath = rigrepo.libs.transform.getDagPath(geometry)
+        geoDagPath.extendToShape()
+        geometry = geoDagPath.fullPathName()
+    else:
+        # get the geometry and the iterator to use for looping through the mesh points for wts.
+        geometry = mc.deformer(deformer, q=True, g=True)[0]
+
     selList = OpenMaya.MSelectionList()
     selList.add(geometry)
-    dagPath = OpenMaya.MDagPath()
-    selList.getDagPath(0, dagPath)
-    geoIterator = OpenMaya.MItGeometry(dagPath)
-    weightList = [numpy.array([]) for map_ in mapList]
+    geoDagPath = OpenMaya.MDagPath()
+    selList.getDagPath(0, geoDagPath)
+    geoIterator = OpenMaya.MItGeometry(geoDagPath)
+    if not mapList:
+        weightList = [numpy.array([])]
+    else:
+        weightList = [numpy.array([]) for map_ in mapList]
 
     if mc.nodeType(deformer) == 'skinCluster': 
         # iterate over the geometry
@@ -113,8 +126,14 @@ def getWeights(deformer, mapList=None):
 
     if mc.nodeType(deformer) == 'cluster': 
         # iterate over the geometry
+        geometryindex = 0
+        if geometry:
+            geoList = mc.cluster(deformer,q=True, geometry=True)
+            if geoList and deformer in geoList:
+                geometryindex = geoList.index(geoDagPath.partialPathName())
         while not geoIterator.isDone():
-            weightList[0] = numpy.append(weightList[0], numpy.array(round(round(mc.getAttr('{}.wl[0].w[{}]'.format(deformer, geoIterator.index())), 4))))
+            weightList[0] = numpy.append(weightList[0], numpy.array(round(mc.getAttr('{}.wl[{}].w[{}]'.format(deformer, geometryindex, geoIterator.index())), 4)))
+            geoIterator.next()
 
     return rigrepo.libs.weightObject.WeightObject(maps=mapList, weights=weightList)
 
@@ -259,7 +278,10 @@ def importWeights(geometry, deformer, filepath):
         skipGeo = ";".join(list(set(shapes).difference(set([geoShape]))))
 
     #import the weights for the given deformer and filepath
-    mc.deformerWeights(filename, im=True, deformer=deformer, skip=skipGeo, path=directory)
+    try:
+        mc.deformerWeights(filename, im=True, deformer=deformer, skip=skipGeo, path=directory)
+    except:
+        mc.warning("couldn't apply {} to {}".format(filename, deformer))
 
 
 def applyWtsDir(directory):

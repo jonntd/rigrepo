@@ -9,6 +9,7 @@ import maya.cmds as mc
 # rigrepo Modules
 import rigrepo.libs.common
 import rigrepo.libs.skinCluster
+import rigrepo.libs.cluster
 
 def transferDeformers(source, target, deformerTypes = ["skinCluster"],
                         surfaceAssociation="closestPoint"):
@@ -30,3 +31,6 @@ def transferDeformers(source, target, deformerTypes = ["skinCluster"],
     if hist:
         if 'skinCluster' in deformerTypes:
             rigrepo.libs.skinCluster.transferSkinCluster(source, target, surfaceAssociation)
+        elif 'cluster' in deformerTypes:
+            for cluster in rigrepo.libs.cluster.getClusters(source):
+                rigrepo.libs.cluster.transferCluster(source, target, cluster, handle=True, surfaceAssociation="closestPoint", createNew=True)

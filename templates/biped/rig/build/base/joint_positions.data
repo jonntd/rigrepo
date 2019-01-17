@@ -1,7 +1,7 @@
 {
     "type": "JointData", 
     "user": "Walter Yoder", 
-    "time": "2018-12-02 18:17:31", 
+    "time": "2019-01-12 19:21:15", 
     "data": {
         "ring_005_l_bind": {
             "dagPath": "|bind|hips_bind|spine_0_bind|spine_1_bind|spine_2_bind|spine_3_bind|spine_4_bind|spine_5_bind|chest_bind|clavicle_l_bind|shoulder_l_bind|elbow_l_bind|wrist_l_bind|ring_001_l_bind|ring_002_l_bind|ring_003_l_bind|ring_004_l_bind|ring_005_l_bind", 

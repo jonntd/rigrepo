@@ -187,8 +187,8 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # FACE
         #-------------------------------------------------------------------------------------------
         faceParts = rigrepo.parts.face.Face("face_parts")
-        l_blink = rigrepo.parts.blink.Blink("l_blink", anchor="face_upper")
-        r_blink = rigrepo.parts.blink.Blink("r_blink",side="r", anchor="face_upper")
+        l_blink = rigrepo.parts.blink.BlinkNew("l_blink", anchor="face_upper")
+        r_blink = rigrepo.parts.blink.BlinkNew("r_blink",side="r", anchor="face_upper")
         r_blink.getAttributeByName("side").setValue("r")
         mouth = rigrepo.parts.mouth.Mouth("mouth", lipMainCurve='lip_main_curve')
         mouth.getAttributeByName("orientFile").setValue(self.resolveDataFilePath('control_orients.data', self.variant))
@@ -272,9 +272,13 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
         applyDeformerNode = animRigNode.getChild('apply').getChild('deformers')
         bindmeshTransferSkinWtsNode = rigrepo.nodes.transferDeformer.TransferDeformerBindmesh('bindmesh', 
                                                             source="body_geo",
-                                                            target=["lip*_bindmesh", "mouth*_bindmesh"],
+                                                            target=["lid*_bindmesh", "lip*_bindmesh", "mouth*_bindmesh"],
                                                             deformerTypes = ["skinCluster"],
                                                             surfaceAssociation="closestPoint")
+        bindmeshTransferClusterBlinksNode = rigrepo.nodes.transferDeformer.TransferClusterBlinks('transferBlinkClusters', 
+                                                            source="body_geo")
+        bindmeshTransferClusterLidsNode = rigrepo.nodes.transferDeformer.TransferClusterLids('transferLidsClusters', 
+                                                            source="body_geo")
         freezeWireNode = rigrepo.nodes.goToRigPoseNode.GoToFreezePoseNode('freezeWire')
 
         lipYankNode = rigrepo.nodes.yankClusterNode.YankClusterNode('WireToClusters',
@@ -287,6 +291,8 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
 
 
         applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode], 1)
+        applyDeformerNode.addChildren([bindmeshTransferClusterBlinksNode, bindmeshTransferClusterLidsNode], 4)
+        
     
         # create a build node to put builds under.
         buildNode = pubs.pNode.PNode("build")

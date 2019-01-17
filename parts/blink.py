@@ -3,6 +3,7 @@ This is not broken up into pieces yet. Just putting it here to hace access and w
 PLEASE DON'T MESS WITH THIS FILE!
 '''
 import maya.cmds as mc
+import numpy
 import maya.api.OpenMaya as om
 import rigrepo.libs.curve 
 import rigrepo.libs.control 
@@ -10,7 +11,10 @@ import rigrepo.libs.transform
 import rigrepo.libs.common
 import rigrepo.libs.attribute
 import rigrepo.libs.skinCluster
+import rigrepo.libs.cluster
+import rigrepo.libs.weights
 import rigrepo.parts.part as part
+import rigrepo.libs.bindmesh as bindmesh
 
 class Blink(part.Part):
     def __init__(self, name, side="l", anchor="face_upper", dataObj=None):
@@ -327,3 +331,352 @@ class Blink(part.Part):
 
         # localize skinClusters
         rigrepo.libs.skinCluster.localize(self._skinClusters, self.name)
+
+class BlinkNew(part.Part):
+    def __init__(self, name, side="l", anchor="face_upper", dataObj=None):
+        '''
+        '''
+        # Create the attributes that the user will be able to change on the part
+        # that will affect the build.
+        super(BlinkNew, self).__init__(name)
+        self.addAttribute("side", side, attrType=str)
+        self.addAttribute("anchor", anchor, attrType=str)
+        self.addAttribute("eyeCenterJoint", "eyeSocket_{}_bind".format(side), attrType=str)
+        self.addAttribute("lowerCurve", "blinkLower_{}_curve".format(side), attrType=str)
+        self.addAttribute("upperCurve", "blinkUpper_{}_curve".format(side), attrType=str)
+        self.addAttribute("lidCurve", "lid_{}_curve".format(side), attrType=str)
+        self.addAttribute("geometry", "body_geo", attrType=str)
+
+        self.controlGroup = "{}_controls".format(self.name)
+        self._skinClusters = list()
+
+    def setup(self):
+        '''
+        This will create default nodes that should exists in the scene for the part to build.
+        '''
+        super(BlinkNew, self).setup()
+
+        for node in [self.controlGroup]:
+            if not mc.objExists(node):
+                mc.createNode("transform", name=node)
+
+        # parent the curve groups to the rig group
+        lowerNeutralCurve = self.getAttributeByName('lowerCurve').getValue()
+        upperNeutralCurve = self.getAttributeByName('upperCurve').getValue()
+
+        for node in (lowerNeutralCurve,upperNeutralCurve):
+            parent = mc.listRelatives(node, p=True)[0]
+            if not mc.listRelatives(parent, p=True):
+                mc.parent(parent, self.rigGroup)
+
+    def build(self):
+        '''
+        This will run the build of the eye rig.
+        '''
+        super(BlinkNew, self).build()
+        eyeCenter = self.getAttributeByName("eyeCenterJoint").getValue()
+        side = self.getAttributeByName("side").getValue()
+        anchor = self.getAttributeByName("anchor").getValue()
+        geometry = self.getAttributeByName("geometry").getValue()
+        upperCurve = self.getAttributeByName("upperCurve").getValue()
+        lowerCurve = self.getAttributeByName("lowerCurve").getValue()
+        lidCurve = self.getAttributeByName("lidCurve").getValue()
+
+        # CREATE THE CONTROLS FOR THE BLINK RIG.
+        # Create the eyeSocket control
+        eyeSocketNul, eyeSocketCtrl = rigrepo.libs.control.create(name="eyeSocket_{0}".format(side), 
+                                          controlType="null",
+                                          color=rigrepo.libs.common.YELLOW,
+                                          hierarchy=['nul'])
+
+        #parent the socket control to the anchor if it exist in the scene.
+        if mc.objExists(anchor):
+            mc.parent(eyeSocketNul, anchor)
+        else:
+            mc.warning("{} is not in the currnet Maya session!!!!".format(anchor))
+
+
+        # create the upper and lower lid corner controls.
+        upperLidNul, upperLidCtrl = rigrepo.libs.control.create(name="lidUpper_{0}".format(side), 
+                                              controlType="null",
+                                              color=rigrepo.libs.common.YELLOW,
+                                              hierarchy=['nul'],
+                                              parent=eyeSocketCtrl)
+
+        lowerLidNul, lowerLidCtrl = rigrepo.libs.control.create(name="lidLower_{0}".format(side), 
+                                              controlType="null",
+                                              color=rigrepo.libs.common.YELLOW,
+                                              hierarchy=['nul'],
+                                              parent=eyeSocketCtrl)
+
+        # move the eyeSocket control to the position of the eyeCenter joint
+        mc.xform(eyeSocketNul, ws=True, t=mc.xform(eyeCenter, q=True, ws=True, t=True))
+
+        # rotate the lower lid so it's inverted to match the rotation on x for the upper lid.
+        mc.setAttr("{0}.rotateZ".format(lowerLidNul), 180)
+
+        # connect the rotate X axis of the lid controls to the rotateAxis X
+        # create a multDoubleLinear node
+        for node in (lowerLidCtrl, upperLidCtrl):
+            # set the handle positions by default
+            mc.setAttr("{0}.selectHandleY".format(node), .2)
+            mdl = mc.createNode("multDoubleLinear", n="{}_rot_mdl".format(node))
+            mc.connectAttr("{}.rx".format(node), "{}.input1".format(mdl), f=True)
+            mc.setAttr("{}.input2".format(mdl), -1)
+            mc.connectAttr("{}.output".format(mdl), "{}.rotateAxisX".format(node), f=True)
+
+        #point, orient constraint the socket joint to the socket control. Also connect scale
+        mc.pointConstraint(eyeSocketCtrl, eyeCenter)
+        mc.orientConstraint(eyeSocketCtrl, eyeCenter)
+        mc.scaleConstraint(eyeSocketCtrl, eyeCenter)
+        mc.connectAttr("{}.scale".format(eyeSocketCtrl), "{}.scale".format(eyeCenter), f=True)
+
+        for section in ["Upper", "Lower"]:
+            group = "lid{0}_{1}_{2}".format(section, side, rigrepo.libs.common.GROUP)
+            # create the cluster at the and position it at the same position as eyeCenter
+            lidCluster = rigrepo.libs.cluster.create(geometry, 
+                                        "blink{0}_{1}_cluster".format(section, side),
+                                        parent=self.name, 
+                                        parallel=False)
+            sectionCurve = self.getAttributeByName("{}Curve".format(section.lower())).getValue()
+
+            # move the lid cluster to match the eye center joint
+            mc.xform("{}_nul".format(lidCluster), ws=True, matrix=mc.xform(eyeCenter, q=True, ws=True, matrix=True))
+
+            bindmeshGeometry, follicleList, jointList = self.__buildBlinkRig(sectionCurve, name="blink{0}_{1}".format(section, side), parent=self.name)
+            # create the setDriven's for the cluster to follow the blink
+            for driverValue, value in zip((0, 20, 40, -20),(0, 35, 65, -15)):
+                mc.setDrivenKeyframe("{0}_def_auto.rotateX".format(lidCluster),
+                                        currentDriver="lid{0}_{1}.rotateX".format(section, side), 
+                                        dv=driverValue,
+                                        itt="linear",
+                                        ott= "linear", 
+                                        value=value)
+
+            # create the driver joint.
+            mc.select("{}_ort".format(lidCluster))
+            driverJnt = mc.joint(name="blink{}_{}_driver".format(section, side))
+            mc.setAttr("{}.drawStyle".format(driverJnt), 2)
+            mc.setAttr("{}.rotate".format(driverJnt), 0, 0, 0)
+            mc.setAttr("{}.translate".format(driverJnt), 0, 0, 0)
+            # constrain the driver to the ctrl of the cluster nodes
+            mc.orientConstraint("{0}_ctrl".format(lidCluster), driverJnt)
+
+            #deform the lid bindmesh with the lid curve using a wire deformer.
+            wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00, 
+                    w=sectionCurve, name="{}_wire".format(sectionCurve))[0]
+
+            # set the default values for the wire deformer
+            mc.setAttr("{}.rotation".format(wireDeformer), 0)
+            mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
+
+            # create skinCluster for the base wire
+            baseCurve = "{}BaseWire".format(sectionCurve)
+
+            mc.cluster(bindmeshGeometry, name='{}__{}'.format(bindmeshGeometry,lidCluster), wn=["{0}_cls_hdl".format(lidCluster),"{0}_cls_hdl".format(lidCluster)], bs=1)
+            rigrepo.libs.cluster.localize('{}__{}'.format(bindmeshGeometry,lidCluster), "{0}_auto".format(lidCluster), bindmeshGeometry)
+            mc.cluster(baseCurve, name='{}__{}'.format(baseCurve,lidCluster), wn=["{0}_cls_hdl".format(lidCluster),"{0}_cls_hdl".format(lidCluster)], bs=1)
+            rigrepo.libs.cluster.localize('{}__{}'.format(baseCurve,lidCluster), "{0}_auto".format(lidCluster), baseCurve) 
+
+
+        # create the lid tweaker rig
+        bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(lidCurve, "lid_{}".format(side), 'rig' )
+
+        #deform the lid bindmesh with the lid curve using a wire deformer.
+        wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00, 
+                w=lidCurve, name="{}_wire".format(lidCurve))[0]
+        baseCurveJointList=list()
+        for jnt, controlList in zip(jointList, controlHieracrchyList):
+            # create the joint that we will use later to deform the base wire.
+            baseCurveJoint = mc.joint(name=jnt.replace("_jnt","_baseCurve_jnt"))
+            baseCurveJointList.append(baseCurveJoint)
+            # hide the base curve joint. Then parent it under the null node
+            mc.setAttr("{}.v".format(baseCurveJoint), 0)
+            mc.parent(baseCurveJoint, controlList[1])
+            mc.setAttr("{}.t".format(baseCurveJoint), 0, 0, 0)
+
+        baseCurve = "{}BaseWire".format(lidCurve)
+        mc.parent(baseCurve, "lid_{}".format(side))
+        baseCurveSkin = mc.skinCluster(*baseCurveJointList+mc.ls(baseCurve), 
+                                    n="{}_skinCluster".format(baseCurve),
+                                    tsb=True)[0]
+
+        # set the weights to have proper weighting
+        wtObj = rigrepo.libs.weights.getWeights(baseCurveSkin)
+        weightList = list()
+        for i, inf in enumerate(wtObj):
+            array = numpy.zeros_like(wtObj.getWeights(inf))[0]
+            array[i] = 1
+            weightList.append(array)
+        wtObj.setWeights(weightList)
+        rigrepo.libs.weights.setWeights(baseCurveSkin, wtObj)
+
+        # set the default values for the wire deformer
+        mc.setAttr("{}.rotation".format(wireDeformer), 0)
+        mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
+        mc.parent(lidCurve, "lid_{}".format(side))          
+
+        # parent groups under the name of the part
+        mc.parent([self.controlGroup], self.name)
+
+    def postBuild(self):
+        '''
+        '''
+        for node in [self.controlGroup]:
+            if mc.getAttr("{}.v".format(node)):
+                rigrepo.libs.attribute.lockAndHide(node,['t','r','s'])
+
+
+        # parent the curve groups to the rig group
+        lowerNeutralCurve = self.getAttributeByName('lowerCurve').getValue()
+        upperNeutralCurve = self.getAttributeByName('upperCurve').getValue()
+
+        for node in (lowerNeutralCurve,upperNeutralCurve):
+            parent = mc.listRelatives(node, p=True)[0]
+            if mc.getAttr("{}.v".format(parent)):
+                mc.setAttr("{}.v".format(parent), 0)
+
+        # localize skinClusters
+        rigrepo.libs.skinCluster.localize(self._skinClusters, self.name)
+
+
+    def __buildBlinkRig(self, curve, name='blink', parent=None):
+        '''
+        This will build a rig setup based on the curve that is passed in.
+
+        :param curve: NurbsCurve name you want to build the rig on.
+        :type curve: str
+
+        :param name: This will be used to name the control hierachy and joints in the rig.
+        :type name: str
+
+        :return: This method will return the data needed to make adjustments to rig.
+        :rtype: tuple
+        '''
+        # Do some check
+        if not mc.objExists(curve):
+            raise RuntimeError("{} doesn't exist in the current Maya session.".format(curve))
+        # If the name passed in doesn't exist, we will create a transform as the parent group
+        # for the rig.
+        grp="{}_grp".format(name)
+        if not mc.objExists(grp):
+            mc.createNode("transform", n=grp)
+        # create the bindmesh 
+        #
+        # follicleList = (follicle transform, follicle shape) 
+        # bindmeshGeometry = geometry name of bindmesh
+        #
+        bindmeshGeometry, follicleList = bindmesh.createFromCurve(name, curve)
+        # emptry list to append controls to in the loop
+        controlHieracrchyList = list()
+        jointList = list()
+
+        # loop through and create controls on the follicles so we have controls to deform the wire.
+        for follicle in follicleList:
+            # get the follicle transform so we can use it to parent the control to it.
+            follicleIndex = follicleList.index(follicle)
+            mc.select(follicle, r=True)
+
+            # create the joint that will drive the curve.
+            jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))
+            mc.setAttr("{}.translate".format(jnt), 0,0,0)
+            mc.setAttr("{}.rotate".format(jnt), 0,0,0)
+            mc.setAttr("{}.drawStyle".format(jnt),2)
+            jointList.append(jnt)
+
+        # This will parent all of the data for the rig to the system group "name"
+        for data in (bindmeshGeometry, follicleList):
+            mc.parent(data, grp)
+
+        # If parent the parent is passed in we will parent the system to the parent.
+        if parent:
+            if not mc.objExists(parent):
+                mc.warning('Created the system but the current parent "{}" does not exist in the \
+                    current Maya session.'.format(parent))
+            else:
+                mc.parent(grp, parent)
+
+        # create the skinCluster for the lipMainCurve
+        mc.skinCluster(*jointList + [curve], tsb=True, name="{}_skinCluster".format(curve))
+
+        # set the visibility of the bindmesh.
+        mc.setAttr("{}.v".format(bindmeshGeometry), 0 )
+        mc.setAttr("{}.v".format(curve), 0 )
+        return bindmeshGeometry, follicleList, jointList
+
+    def __buildCurveRig(self, curve, name='lid', parent=None):
+        '''
+        This will build a rig setup based on the curve that is passed in.
+
+        :param curve: NurbsCurve name you want to build the rig on.
+        :type curve: str
+
+        :param name: This will be used to name the control hierachy and joints in the rig.
+        :type name: str
+
+        :return: This method will return the data needed to make adjustments to rig.
+        :rtype: tuple
+        '''
+        # Do some check
+        if not mc.objExists(curve):
+            raise RuntimeError("{} doesn't exist in the current Maya session.".format(curve))
+        # If the name passed in doesn't exist, we will create a transform as the parent group
+        # for the rig.
+        if not mc.objExists(name):
+            mc.createNode("transform", n=name)
+        # create the bindmesh 
+        #
+        # follicleList = (follicle transform, follicle shape) 
+        # bindmeshGeometry = geometry name of bindmesh
+        #
+        bindmeshGeometry, follicleList = bindmesh.createFromCurve(name, curve)
+        # emptry list to append controls to in the loop
+        controlHieracrchyList = list()
+        jointList = list()
+
+        # loop through and create controls on the follicles so we have controls to deform the wire.
+        for follicle in follicleList:
+            # get the follicle transform so we can use it to parent the control to it.
+            follicleIndex = follicleList.index(follicle)
+            # create the control with a large enough hierarchy to create proper SDK's
+            ctrlHierarchy = rigrepo.libs.control.create(name="{}_{}".format(name, follicleIndex), 
+                controlType="square", 
+                hierarchy=['nul','ort','rot_def_auto','def_auto'], 
+                parent=follicle)
+
+            # create the joint that will drive the curve.
+            jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))
+            # make sure the joint is in the correct space
+            mc.setAttr("{}.translate".format(jnt), 0,0,0)
+            mc.setAttr("{}.rotate".format(jnt), 0,0,0)
+            mc.setAttr("{}.drawStyle".format(jnt),2)
+            mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
+            mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
+
+            # zero out the nul for the control hierarchy so it's in the correct position.
+            mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)
+            #mc.setAttr("{}.rotate".format(ctrlHierarchy[0]), 0,0,0)
+            # set the visibility of the shape node for the follicle to be off.
+            # append the control and the follicle transform to their lists
+            controlHieracrchyList.append(ctrlHierarchy)
+            jointList.append(jnt)
+
+        # This will parent all of the data for the rig to the system group "name"
+        for data in (bindmeshGeometry, follicleList):
+            mc.parent(data, name)
+
+        # If parent the parent is passed in we will parent the system to the parent.
+        if parent:
+            if not mc.objExists(parent):
+                mc.warning('Created the system but the current parent "{}" does not exist in the \
+                    current Maya session.'.format(parent))
+            else:
+                mc.parent(name, parent)
+
+        # create the skinCluster for the lipMainCurve
+        mc.skinCluster(*jointList + [curve], tsb=True, name="{}_skinCluster".format(curve))
+
+        # set the visibility of the bindmesh.
+        mc.setAttr("{}.v".format(bindmeshGeometry), 0 )
+        mc.setAttr("{}.v".format(curve), 0 )
+        return bindmeshGeometry, follicleList, controlHieracrchyList, jointList
