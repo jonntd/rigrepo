@@ -1,7 +1,7 @@
 {
     "type": "DeformerOrderData", 
     "user": "Walter Yoder", 
-    "time": "2019-01-17 11:10:35", 
+    "time": "2019-01-18 08:51:46", 
     "data": {
         "blinkLower_l_bindmesh": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|blinkLower_l_grp|blinkLower_l_bindmesh", 
@@ -58,6 +58,8 @@
                 "lip_up_1_r_cluster", 
                 "lip_up_2_l_cluster", 
                 "lip_up_2_r_cluster", 
+                "ear_l_cluster", 
+                "ear_r_cluster", 
                 "sneer_l_cluster", 
                 "sneer_r_cluster", 
                 "lip_wire", 

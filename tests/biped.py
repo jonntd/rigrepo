@@ -83,6 +83,8 @@ def nodes(variant='base', buildNow=False, debug=True):
     #reload nodes
     import rigrepo.nodes.commandNode
     reload(rigrepo.nodes.commandNode)
+    import rigrepo.nodes.utilNodes
+    reload(rigrepo.nodes.utilNodes)
     import rigrepo.nodes.newSceneNode
     reload(rigrepo.nodes.newSceneNode)
     import rigrepo.nodes.loadFileNode

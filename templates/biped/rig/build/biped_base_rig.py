@@ -9,6 +9,7 @@ import rigrepo.nodes.newSceneNode
 import rigrepo.nodes.importDataNode
 import rigrepo.nodes.exportDataNode
 import rigrepo.nodes.yankClusterNode
+import rigrepo.nodes.utilNodes 
 # body parts import
 import rigrepo.parts.arm
 import rigrepo.parts.leg
@@ -187,6 +188,11 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # FACE
         #-------------------------------------------------------------------------------------------
         faceParts = rigrepo.parts.face.Face("face_parts")
+        earClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("ears")
+        earClusterNode.getAttributeByName("nameList").setValue("['ear_l', 'ear_r']")
+        earClusterNode.getAttributeByName("geometry").setValue("body_geo")
+        earClusterNode.getAttributeByName("parent").setValue("face_upper")
+        faceParts.addChild(earClusterNode)
         l_blink = rigrepo.parts.blink.BlinkNew("l_blink", anchor="face_upper")
         r_blink = rigrepo.parts.blink.BlinkNew("r_blink",side="r", anchor="face_upper")
         r_blink.getAttributeByName("side").setValue("r")

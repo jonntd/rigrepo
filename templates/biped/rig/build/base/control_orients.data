@@ -1,7 +1,7 @@
 {
     "type": "NodeData", 
-    "user": "wyoder", 
-    "time": "2018-12-16 16:39:19", 
+    "user": "Walter Yoder", 
+    "time": "2019-01-18 08:32:37", 
     "data": {
         "ankle_fk_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
@@ -142,6 +142,82 @@
                 -0.0, 
                 0.0, 
                 -0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "blinkLower_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|blinkLower_l_cluster_nul|blinkLower_l_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "blinkLower_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|blinkLower_r_cluster_nul|blinkLower_r_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "blinkUpper_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|blinkUpper_l_cluster_nul|blinkUpper_l_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "blinkUpper_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|blinkUpper_r_cluster_nul|blinkUpper_r_cluster_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -454,6 +530,44 @@
             ], 
             "scale": [
                 1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "ear_l_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|ear_l_nul|ear_l_ort", 
+            "translate": [
+                3.4231, 
+                1.3499, 
+                -0.3656
+            ], 
+            "rotate": [
+                0.0, 
+                39.6447, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "ear_r_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|ear_r_nul|ear_r_ort", 
+            "translate": [
+                -3.423, 
+                1.35, 
+                -0.366
+            ], 
+            "rotate": [
+                0.0, 
+                -39.6447, 
+                0.0
+            ], 
+            "scale": [
+                -1.0, 
                 1.0, 
                 1.0
             ], 
@@ -782,8 +896,8 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidLower_neutral_l_curve_000_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidLower_neutral_l_curve_000_nul|lidLower_neutral_l_curve_000_ort", 
+        "lid_l_0_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_0_follicle|lid_l_0_nul|lid_l_0_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -801,103 +915,8 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidLower_neutral_l_curve_001_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidLower_neutral_l_curve_001_nul|lidLower_neutral_l_curve_001_ort", 
-            "translate": [
-                -0.0082, 
-                -0.005, 
-                0.005
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_l_curve_002_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidLower_neutral_l_curve_002_nul|lidLower_neutral_l_curve_002_ort", 
-            "translate": [
-                -0.0113, 
-                -0.0193, 
-                0.0059
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_l_curve_003_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidLower_neutral_l_curve_003_nul|lidLower_neutral_l_curve_003_ort", 
-            "translate": [
-                0.0016, 
-                -0.04, 
-                0.0056
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_l_curve_004_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidLower_neutral_l_curve_004_nul|lidLower_neutral_l_curve_004_ort", 
-            "translate": [
-                0.0133, 
-                -0.014, 
-                0.0097
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_l_curve_005_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidLower_neutral_l_curve_005_nul|lidLower_neutral_l_curve_005_ort", 
-            "translate": [
-                0.0161, 
-                -0.01, 
-                -0.001
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_l_curve_006_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidLower_neutral_l_curve_006_nul|lidLower_neutral_l_curve_006_ort", 
+        "lid_l_1_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_1_follicle|lid_l_1_nul|lid_l_1_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -915,8 +934,8 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidLower_neutral_r_curve_000_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidLower_neutral_r_curve_000_nul|lidLower_neutral_r_curve_000_ort", 
+        "lid_l_2_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_2_follicle|lid_l_2_nul|lid_l_2_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -934,103 +953,8 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidLower_neutral_r_curve_001_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidLower_neutral_r_curve_001_nul|lidLower_neutral_r_curve_001_ort", 
-            "translate": [
-                0.0082, 
-                -0.005, 
-                0.005
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_r_curve_002_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidLower_neutral_r_curve_002_nul|lidLower_neutral_r_curve_002_ort", 
-            "translate": [
-                0.0113, 
-                -0.0193, 
-                0.0059
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_r_curve_003_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidLower_neutral_r_curve_003_nul|lidLower_neutral_r_curve_003_ort", 
-            "translate": [
-                -0.0016, 
-                -0.04, 
-                0.0056
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_r_curve_004_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidLower_neutral_r_curve_004_nul|lidLower_neutral_r_curve_004_ort", 
-            "translate": [
-                -0.0133, 
-                -0.014, 
-                0.0097
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_r_curve_005_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidLower_neutral_r_curve_005_nul|lidLower_neutral_r_curve_005_ort", 
-            "translate": [
-                -0.0161, 
-                -0.01, 
-                -0.001
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidLower_neutral_r_curve_006_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidLower_neutral_r_curve_006_nul|lidLower_neutral_r_curve_006_ort", 
+        "lid_l_3_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_3_follicle|lid_l_3_nul|lid_l_3_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -1048,8 +972,8 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_l_curve_000_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidUpper_neutral_l_curve_000_nul|lidUpper_neutral_l_curve_000_ort", 
+        "lid_l_4_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_4_follicle|lid_l_4_nul|lid_l_4_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -1067,103 +991,8 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_l_curve_001_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidUpper_neutral_l_curve_001_nul|lidUpper_neutral_l_curve_001_ort", 
-            "translate": [
-                -0.031, 
-                0.0078, 
-                0.013
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidUpper_neutral_l_curve_002_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidUpper_neutral_l_curve_002_nul|lidUpper_neutral_l_curve_002_ort", 
-            "translate": [
-                -0.0227, 
-                0.0298, 
-                0.0021
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidUpper_neutral_l_curve_003_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidUpper_neutral_l_curve_003_nul|lidUpper_neutral_l_curve_003_ort", 
-            "translate": [
-                0.0017, 
-                0.0355, 
-                0.0116
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidUpper_neutral_l_curve_004_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidUpper_neutral_l_curve_004_nul|lidUpper_neutral_l_curve_004_ort", 
-            "translate": [
-                0.0199, 
-                0.0226, 
-                0.0091
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidUpper_neutral_l_curve_005_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidUpper_neutral_l_curve_005_nul|lidUpper_neutral_l_curve_005_ort", 
-            "translate": [
-                0.0294, 
-                0.0168, 
-                -0.0148
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0
-        }, 
-        "lidUpper_neutral_l_curve_006_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|l_blink_controls|lidUpper_neutral_l_curve_006_nul|lidUpper_neutral_l_curve_006_ort", 
+        "lid_l_5_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_5_follicle|lid_l_5_nul|lid_l_5_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -1181,8 +1010,8 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_r_curve_000_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidUpper_neutral_r_curve_000_nul|lidUpper_neutral_r_curve_000_ort", 
+        "lid_l_6_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_6_follicle|lid_l_6_nul|lid_l_6_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -1200,12 +1029,12 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_r_curve_001_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidUpper_neutral_r_curve_001_nul|lidUpper_neutral_r_curve_001_ort", 
+        "lid_l_7_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_7_follicle|lid_l_7_nul|lid_l_7_ort", 
             "translate": [
-                0.031, 
-                0.0078, 
-                0.013
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1219,12 +1048,12 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_r_curve_002_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidUpper_neutral_r_curve_002_nul|lidUpper_neutral_r_curve_002_ort", 
+        "lid_l_8_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_8_follicle|lid_l_8_nul|lid_l_8_ort", 
             "translate": [
-                0.0227, 
-                0.0298, 
-                0.0021
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1238,12 +1067,12 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_r_curve_003_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidUpper_neutral_r_curve_003_nul|lidUpper_neutral_r_curve_003_ort", 
+        "lid_l_9_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_9_follicle|lid_l_9_nul|lid_l_9_ort", 
             "translate": [
-                -0.0017, 
-                0.0355, 
-                0.0116
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1257,12 +1086,12 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_r_curve_004_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidUpper_neutral_r_curve_004_nul|lidUpper_neutral_r_curve_004_ort", 
+        "lid_l_10_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_10_follicle|lid_l_10_nul|lid_l_10_ort", 
             "translate": [
-                -0.0199, 
-                0.0226, 
-                0.0091
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1276,12 +1105,12 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_r_curve_005_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidUpper_neutral_r_curve_005_nul|lidUpper_neutral_r_curve_005_ort", 
+        "lid_l_11_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_11_follicle|lid_l_11_nul|lid_l_11_ort", 
             "translate": [
-                -0.0294, 
-                0.0168, 
-                -0.0148
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1295,8 +1124,217 @@
             ], 
             "rotateOrder": 0
         }, 
-        "lidUpper_neutral_r_curve_006_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|r_blink_controls|lidUpper_neutral_r_curve_006_nul|lidUpper_neutral_r_curve_006_ort", 
+        "lid_r_0_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_0_follicle|lid_r_0_nul|lid_r_0_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_1_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_1_follicle|lid_r_1_nul|lid_r_1_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_2_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_2_follicle|lid_r_2_nul|lid_r_2_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_3_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_3_follicle|lid_r_3_nul|lid_r_3_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_4_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_4_follicle|lid_r_4_nul|lid_r_4_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_5_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_5_follicle|lid_r_5_nul|lid_r_5_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_6_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_6_follicle|lid_r_6_nul|lid_r_6_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_7_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_7_follicle|lid_r_7_nul|lid_r_7_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_8_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_8_follicle|lid_r_8_nul|lid_r_8_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_9_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_9_follicle|lid_r_9_nul|lid_r_9_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_10_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_10_follicle|lid_r_10_nul|lid_r_10_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lid_r_11_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_11_follicle|lid_r_11_nul|lid_r_11_ort", 
             "translate": [
                 0.0, 
                 0.0, 
