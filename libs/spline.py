@@ -125,7 +125,7 @@ class SplineBase(object):
             cluster,handle = mc.cluster(cv, n='{}_cluster_{}'.format(self._name, i))
             self._clusters.append(handle)
             mc.parent(handle, self._group)
-            rigrepo.libs.cluster.localize(cluster, self._group, 'model')
+            rigrepo.libs.cluster.localize(cluster, self._group, self._group, weightedCompensation=True)
 
         # Stretch 
         curve_info = mc.arclen(self._curve, ch=1)
