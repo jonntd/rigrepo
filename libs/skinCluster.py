@@ -37,9 +37,9 @@ def localize(skinClusters, transform):
                     if mc.listConnections('{0}.bindPreMatrix[{1}]'.format(skinCluster, index)):
                         continue
                     multMatrix = '{}__{}_localizeMatrix'.format(inf, skinCluster)
-                    mc.setAttr(multMatrix+'.isHistoricallyInteresting', 0)
                     if not mc.objExists(multMatrix):
                         multMatrix = mc.createNode('multMatrix', n=multMatrix)
+                        mc.setAttr(multMatrix+'.isHistoricallyInteresting', 0)
                     if not mc.isConnected(inf+'.worldMatrix[0]', multMatrix+'.matrixIn[1]'):
                         mc.connectAttr(inf+'.worldMatrix[0]', multMatrix+'.matrixIn[1]', f=1)
                     if not mc.isConnected(transform+'.worldInverseMatrix[0]', multMatrix+'.matrixIn[2]'):
