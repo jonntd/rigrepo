@@ -68,6 +68,7 @@
                 "lip_upper_cluster", 
                 "lip_lower_cluster", 
                 "body_geo_skinCluster", 
+                "skin_psd", 
                 "blinkUpper_r_curve_wire", 
                 "blinkLower_l_curve_wire", 
                 "blinkLower_r_curve_wire", 
