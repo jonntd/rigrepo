@@ -50,9 +50,10 @@ class DeformerOrderData(abstract_data.AbstractData):
                         if index == len(orderStored)-1:
                             break
                         nextDeformer = orderStored[index+1]
-                        # If next deformer is not in deformer order break since we can't reorder to it.
-                        if not nextDeformer in orderCurrent:
-                            break
+                        # Check if the deformers are on the object
+                        if not set([nextDeformer, deformer]).issubset(orderCurrent):
+                            continue
+
                         # Test if the deformer order is all ready correct
                         indexNextDeformerCurrent = orderCurrent.index(nextDeformer)
                         indexCurrent = orderCurrent.index(deformer)
