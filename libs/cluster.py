@@ -50,10 +50,11 @@ def create(mesh,name,parent=None,contraintTypes=['point','orient','scale'],
     
     return cls
 
-def localize(cluster, transform, modelTransform):
+def localize(cluster, transform, modelTransform, weightedCompensation=False):
     mc.connectAttr(modelTransform+'.worldMatrix', cluster+'.geomMatrix[0]', f=True)
     mc.connectAttr(transform+'.worldInverseMatrix', cluster+'.bindPreMatrix', f=True)
-    #mc.connectAttr(transform+'.worldInverseMatrix', cluster+'.weightedCompensationMatrix', f=True)
+    if weightedCompensation:
+        mc.connectAttr(transform+'.worldInverseMatrix', cluster+'.weightedCompensationMatrix', f=True)
 
 def getClusters(geometry):
     '''
