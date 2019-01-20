@@ -37,7 +37,7 @@ if os.path.isfile(fileData):
     
     dataObj.read(fileData)
     data = dataObj.getData()
-    mc.file(fileMaya, i=1)
+    mc.file(fileMaya, i=1, ignoreVersion=1)
     dataObj.applyData(None)
     
 else:
