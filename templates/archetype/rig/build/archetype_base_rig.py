@@ -44,11 +44,20 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         jointDataNode.addChild(labelJointsForMirroringNode)
 
+        # Curve
+        curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves",
+                                                                filePath=self.resolveDataFilePath('curves.ma', self.variant))
+        curveDataNode = rigrepo.nodes.importDataNode.ImportDataNode('curvePosition',
+                                                                    dataFile=self.resolveDataFilePath('curve_positions.data', self.variant),
+                                                                    dataType='curve',
+                                                                    apply=True)
+
+
         importPSDDeltaNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psdDeltas",
                                   dirPath=self.resolveDirPath('psd', self.variant),
                                   loadDeltas=True,
                                   psdNames='["blinkLower_l_psd","blinkLower_r_psd", "blinkUpper_l_psd", "blinkUpper_r_psd", "skin_psd"]')
-        loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode, importPSDDeltaNode])
+        loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode, curveFileNode, curveDataNode, importPSDDeltaNode])
 
         # postBuild
         postBuild = pubs.pNode.PNode("postBuild")

@@ -47,15 +47,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         buildPath = joinPath(os.path.dirname(__file__), self.variant)
 
-        # Curve
-        curveFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("curves", 
-                            filePath=self.resolveDataFilePath('curves.ma', self.variant))
-        curveDataNode = rigrepo.nodes.importDataNode.ImportDataNode('curvePosition',
-                            dataFile=self.resolveDataFilePath('curve_positions.data', self.variant), 
-                            dataType='curve', 
-                            apply=True)
 
-        
         # Parts
         #-------------------------------------------------------------------------------------------
         # BODY
@@ -273,7 +265,7 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
 
         # get the load node which is derived from archetype.
         loadNode = self.getNodeByName('load')
-        loadNode.addChildren([curveFileNode, curveDataNode]) 
+        #loadNode.addChildren([curveFileNode, curveDataNode])
 
         # get the postBuild node
         postBuild = animRigNode.getChild('postBuild')
