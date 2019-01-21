@@ -52,12 +52,14 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
                                                                     dataType='curve',
                                                                     apply=True)
 
+        # Bind meshes
+        bindMeshes = pubs.pNode.PNode('bindMeshes')
 
         importPSDDeltaNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psdDeltas",
                                   dirPath=self.resolveDirPath('psd', self.variant),
                                   loadDeltas=True,
                                   psdNames='["blinkLower_l_psd","blinkLower_r_psd", "blinkUpper_l_psd", "blinkUpper_r_psd", "skin_psd"]')
-        loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode, curveFileNode, curveDataNode, importPSDDeltaNode])
+        loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode, curveFileNode, curveDataNode, bindMeshes, importPSDDeltaNode])
 
         # postBuild
         postBuild = pubs.pNode.PNode("postBuild")
