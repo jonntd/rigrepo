@@ -31,14 +31,14 @@ import maya.cmds as mc
 import rigrepo.libs.control
 import rigrepo.libs.cluster
 for name in {nameList}:
-            rigrepo.libs.cluster.create("{geometry}", name=name, parent="{parent}")
+    rigrepo.libs.cluster.create("{geometry}", name=name, parent="{parent}")
 
-            # rename the cluster and control                                    
-            mc.rename(name, '%s_cluster' % name)
-            mc.rename('%s_ctrl' % name, name)
-            mc.xform("%s_nul" % name, ws=True, matrix=mc.xform("{parent}", q=True, ws=True, matrix=True))
-            mc.setAttr("%s.displayHandle" % name, 1)
-            rigrepo.libs.control.tagAsControl(name)
+    # rename the cluster and control                                    
+    mc.rename(name, '%s_cluster' % name)
+    mc.rename('%s_ctrl' % name, name)
+    mc.xform("%s_nul" % name, ws=True, matrix=mc.xform("{parent}", q=True, ws=True, matrix=True))
+    mc.setAttr("%s.displayHandle" % name, 1)
+    rigrepo.libs.control.tagAsControl(name)
 '''
 
         # set the command to the attributes value

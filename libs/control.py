@@ -39,6 +39,7 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
 
             parent = node
             hierarchyList.append(node)
+
     # parent the control to the last hierachy node created.
     if parent:
         mc.parent(control, parent)

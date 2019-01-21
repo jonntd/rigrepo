@@ -85,16 +85,16 @@ class Blink(part.Part):
 
 
         # create the upper and lower lid corner controls.
-        upperLidNul, upperLidCtrl = rigrepo.libs.control.create(name="lidUpper_{0}".format(side), 
+        upperLidNul, upperLidDefAuto, upperLidCtrl = rigrepo.libs.control.create(name="lidUpper_{0}".format(side), 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
-                                              hierarchy=['nul'],
+                                              hierarchy=['nul', 'def_auto'],
                                               parent=eyeSocketCtrl)
 
-        lowerLidNul, lowerLidCtrl = rigrepo.libs.control.create(name="lidLower_{0}".format(side), 
+        lowerLidNul, lowerLidDefAuto, lowerLidCtrl = rigrepo.libs.control.create(name="lidLower_{0}".format(side), 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
-                                              hierarchy=['nul'],
+                                              hierarchy=['nul', 'def_auto'],
                                               parent=eyeSocketCtrl)
 
         # move the eyeSocket control to the position of the eyeCenter joint
@@ -137,7 +137,7 @@ class Blink(part.Part):
             blendValue = 0.0
             for crv in closeCurves:
                 mc.setDrivenKeyframe("{0}.{1}".format(blendShape, closeCurves[-1]),
-                                    currentDriver="lid{0}_{1}.rotateX".format(section, side), 
+                                    currentDriver="lid{0}_{1}_driver.rotateX".format(section, side), 
                                     dv=rotValue, 
                                     itt="linear",
                                     ott= "linear", 
@@ -147,7 +147,7 @@ class Blink(part.Part):
                 if crv != closeCurves[-1]:
                     mc.blendShape(blendShape, e=True, ib=True, t=[neutralCurve, 0, crv, blendValue])
                 mc.setDrivenKeyframe("{0}.{1}".format(blendShape, closeCurves[-1]),
-                                    currentDriver="lid{0}_{1}.rotateX".format(section, side), 
+                                    currentDriver="lid{0}_{1}_driver.rotateX".format(section, side), 
                                     dv=rotValue, 
                                     itt="linear",
                                     ott= "linear", 
@@ -158,7 +158,7 @@ class Blink(part.Part):
             blendValue = 0.0
             for crv in openCurves:
                 mc.setDrivenKeyframe("{0}.{1}".format(blendShape, openCurves[-1]),
-                            currentDriver="lid{0}_{1}.rotateX".format(section, side), 
+                            currentDriver="lid{0}_{1}_driver.rotateX".format(section, side), 
                             dv=rotValue, 
                             itt="linear", 
                             ott= "linear", 
@@ -168,7 +168,7 @@ class Blink(part.Part):
                 if crv != openCurves[-1]:
                     mc.blendShape(blendShape, e=True, ib=True, t=[neutralCurve, 1, crv, blendValue])
                 mc.setDrivenKeyframe("{0}.{1}".format(blendShape, openCurves[-1]), 
-                            currentDriver="lid{0}_{1}.rotateX".format(section, side), 
+                            currentDriver="lid{0}_{1}_driver.rotateX".format(section, side), 
                             dv=rotValue, 
                             itt="linear", 
                             ott= "linear", 
@@ -397,17 +397,30 @@ class BlinkNew(part.Part):
 
 
         # create the upper and lower lid corner controls.
-        upperLidNul, upperLidCtrl = rigrepo.libs.control.create(name="lidUpper_{0}".format(side), 
+        upperLidNul, upperLidDefAuto, upperLidCtrl = rigrepo.libs.control.create(name="lidUpper_{0}".format(side), 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
-                                              hierarchy=['nul'],
+                                              hierarchy=['nul', 'def_auto'],
                                               parent=eyeSocketCtrl)
 
-        lowerLidNul, lowerLidCtrl = rigrepo.libs.control.create(name="lidLower_{0}".format(side), 
+        lowerLidNul, lowerLidDefAuto, lowerLidCtrl = rigrepo.libs.control.create(name="lidLower_{0}".format(side), 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
-                                              hierarchy=['nul'],
+                                              hierarchy=['nul', 'def_auto'],
                                               parent=eyeSocketCtrl)
+
+        # create drivers for the the lids.
+        lowerLidDriver = mc.createNode("joint", name="lidLower_{0}_driver".format(side))
+        mc.parent(lowerLidDriver, lowerLidNul)
+        mc.pointConstraint(lowerLidCtrl, lowerLidDriver)
+        mc.orientConstraint(lowerLidCtrl, lowerLidDriver)
+
+        # create drivers for the the lids.
+        upperLidDriver = mc.createNode("joint", name="lidUpper_{0}_driver".format(side))
+        mc.parent(upperLidDriver, upperLidNul)
+        mc.pointConstraint(upperLidCtrl, upperLidDriver)
+        mc.orientConstraint(upperLidCtrl, upperLidDriver)
+
 
         # move the eyeSocket control to the position of the eyeCenter joint
         mc.xform(eyeSocketNul, ws=True, t=mc.xform(eyeCenter, q=True, ws=True, t=True))
@@ -447,7 +460,7 @@ class BlinkNew(part.Part):
             # create the setDriven's for the cluster to follow the blink
             for driverValue, value in zip((0, 20, 40, -20),(0, 35, 65, -15)):
                 mc.setDrivenKeyframe("{0}_def_auto.rotateX".format(lidCluster),
-                                        currentDriver="lid{0}_{1}.rotateX".format(section, side), 
+                                        currentDriver="lid{0}_{1}_driver.rotateX".format(section, side), 
                                         dv=driverValue,
                                         itt="linear",
                                         ott= "linear", 

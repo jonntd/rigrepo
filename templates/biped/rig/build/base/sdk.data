@@ -1,8 +1,188 @@
 {
     "type": "SdkData", 
     "user": "Walter Yoder", 
-    "time": "2019-01-13 08:21:34", 
+    "time": "2019-01-21 20:10:50", 
     "data": {
+        "blinkLower_l_cluster_def_auto_rotateX": {
+            "dagPath": "blinkLower_l_cluster_def_auto_rotateX", 
+            "driven": "blinkLower_l_cluster_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "lidLower_l_driver.rotateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -1.7899106291257556, 
+                    "ia": 0.0, 
+                    "v": 14.999999999999998, 
+                    "dv": -20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": -3.581924185860814, 
+                    "ia": -1.7899106291257556, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": -4.164854573609056, 
+                    "ia": -3.581924185860814, 
+                    "v": -30.047011952191248, 
+                    "dv": 20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": -4.164854573609056, 
+                    "v": -64.99999999999997, 
+                    "dv": 40.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }
+            ]
+        }, 
+        "blinkLower_r_cluster_def_auto_rotateX": {
+            "dagPath": "blinkLower_r_cluster_def_auto_rotateX", 
+            "driven": "blinkLower_r_cluster_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "lidLower_r_driver.rotateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -1.7899106291257556, 
+                    "ia": 0.0, 
+                    "v": 14.999999999999998, 
+                    "dv": -20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": -3.581924185860814, 
+                    "ia": -1.7899106291257556, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": -4.164854573609056, 
+                    "ia": -3.581924185860814, 
+                    "v": -30.047011952191248, 
+                    "dv": 20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": -4.164854573609056, 
+                    "v": -64.99999999999997, 
+                    "dv": 40.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }
+            ]
+        }, 
+        "blinkUpper_l_cluster_def_auto_rotateX": {
+            "dagPath": "blinkUpper_l_cluster_def_auto_rotateX", 
+            "driven": "blinkUpper_l_cluster_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "lidUpper_l_driver.rotateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.7899106291257556, 
+                    "ia": 0.0, 
+                    "v": -14.999999999999998, 
+                    "dv": -20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 4.170436573351042, 
+                    "ia": 1.7899106291257556, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 3.576334416634858, 
+                    "ia": 4.170436573351042, 
+                    "v": 35.0, 
+                    "dv": 20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 3.576334416634858, 
+                    "v": 65.0, 
+                    "dv": 40.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }
+            ]
+        }, 
+        "blinkUpper_r_cluster_def_auto_rotateX": {
+            "dagPath": "blinkUpper_r_cluster_def_auto_rotateX", 
+            "driven": "blinkUpper_r_cluster_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "lidUpper_r_driver.rotateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": 1.7899106291257556, 
+                    "ia": 0.0, 
+                    "v": -14.999999999999998, 
+                    "dv": -20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 4.170436573351042, 
+                    "ia": 1.7899106291257556, 
+                    "v": 0.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 3.576334416634858, 
+                    "ia": 4.170436573351042, 
+                    "v": 35.0, 
+                    "dv": 20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 3.576334416634858, 
+                    "v": 65.0, 
+                    "dv": 40.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }
+            ]
+        }, 
         "brow_inner_l_sdk_def_auto_translateX": {
             "dagPath": "brow_inner_l_sdk_def_auto_translateX", 
             "driven": "brow_inner_l_sdk_def_auto.translateX", 
@@ -1299,6 +1479,276 @@
                 }
             ]
         }, 
+        "cheekLift_l_def_auto_rotateX": {
+            "dagPath": "cheekLift_l_def_auto_rotateX", 
+            "driven": "cheekLift_l_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_l_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -13.820113644081726, 
+                    "ia": -13.82011091825832, 
+                    "v": 8.38374501992031, 
+                    "dv": 1.6076817512512207, 
+                    "itt": "fixed", 
+                    "ott": "fixed"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 3.6076817512512207, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheekLift_r_def_auto_rotateX": {
+            "dagPath": "cheekLift_r_def_auto_rotateX", 
+            "driven": "cheekLift_r_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_r_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -13.820113644081726, 
+                    "ia": -13.82011091825832, 
+                    "v": 8.38374501992031, 
+                    "dv": 1.6076817512512207, 
+                    "itt": "fixed", 
+                    "ott": "fixed"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 3.6076817512512207, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheekPuff_l_def_auto_scaleX": {
+            "dagPath": "cheekPuff_l_def_auto_scaleX", 
+            "driven": "cheekPuff_l_def_auto.scaleX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_l_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.356380769104587, 
+                    "ia": -0.356380769104587, 
+                    "v": 1.298564705322138, 
+                    "dv": 1.6022906303405762, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 1.0, 
+                    "dv": 3.602290630340576, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheekPuff_l_def_auto_scaleY": {
+            "dagPath": "cheekPuff_l_def_auto_scaleY", 
+            "driven": "cheekPuff_l_def_auto.scaleY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_l_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.356380769104587, 
+                    "ia": -0.356380769104587, 
+                    "v": 1.298564705322138, 
+                    "dv": 1.6022906303405762, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 1.0, 
+                    "dv": 3.602290630340576, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheekPuff_l_def_auto_scaleZ": {
+            "dagPath": "cheekPuff_l_def_auto_scaleZ", 
+            "driven": "cheekPuff_l_def_auto.scaleZ", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_l_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.356380769104587, 
+                    "ia": -0.356380769104587, 
+                    "v": 1.298564705322138, 
+                    "dv": 1.6022906303405762, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 1.0, 
+                    "dv": 3.602290630340576, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheekPuff_r_def_auto_scaleX": {
+            "dagPath": "cheekPuff_r_def_auto_scaleX", 
+            "driven": "cheekPuff_r_def_auto.scaleX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_r_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.356380769104587, 
+                    "ia": -0.356380769104587, 
+                    "v": 1.298564705322138, 
+                    "dv": 1.6022906303405762, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 1.0, 
+                    "dv": 3.602290630340576, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheekPuff_r_def_auto_scaleY": {
+            "dagPath": "cheekPuff_r_def_auto_scaleY", 
+            "driven": "cheekPuff_r_def_auto.scaleY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_r_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.356380769104587, 
+                    "ia": -0.356380769104587, 
+                    "v": 1.298564705322138, 
+                    "dv": 1.6022906303405762, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 1.0, 
+                    "dv": 3.602290630340576, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheekPuff_r_def_auto_scaleZ": {
+            "dagPath": "cheekPuff_r_def_auto_scaleZ", 
+            "driven": "cheekPuff_r_def_auto.scaleZ", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_r_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.356380769104587, 
+                    "ia": -0.356380769104587, 
+                    "v": 1.298564705322138, 
+                    "dv": 1.6022906303405762, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 1.0, 
+                    "dv": 3.602290630340576, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheek_l_def_auto_translateY": {
+            "dagPath": "cheek_l_def_auto_translateY", 
+            "driven": "cheek_l_def_auto.translateY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_l_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.5797876214450339, 
+                    "ia": -0.5797876214450339, 
+                    "v": 0.4857383216139426, 
+                    "dv": 1.6022906303405762, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 3.602290630340576, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
+        "cheek_r_def_auto_translateY": {
+            "dagPath": "cheek_r_def_auto_translateY", 
+            "driven": "cheek_r_def_auto.translateY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_r_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.5797876214450339, 
+                    "ia": -0.5797876214450339, 
+                    "v": 0.4857383216139426, 
+                    "dv": 1.6022906303405762, 
+                    "itt": "spline", 
+                    "ott": "spline"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 3.602290630340576, 
+                    "itt": "flat", 
+                    "ott": "flat"
+                }
+            ]
+        }, 
         "face_mid_def_auto_rotateX": {
             "dagPath": "face_mid_def_auto_rotateX", 
             "driven": "face_mid_def_auto.rotateX", 
@@ -1383,6 +1833,60 @@
                     "ia": 0.0, 
                     "v": 0.0, 
                     "dv": 0.0, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "lidLower_l_def_auto_rotateX": {
+            "dagPath": "lidLower_l_def_auto_rotateX", 
+            "driven": "lidLower_l_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_l_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -9.25407127759929, 
+                    "ia": -9.254070029853384, 
+                    "v": 6.000000000000001, 
+                    "dv": 1.6076817512512207, 
+                    "itt": "fixed", 
+                    "ott": "fixed"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 3.6076817512512207, 
+                    "itt": "auto", 
+                    "ott": "auto"
+                }
+            ]
+        }, 
+        "lidLower_r_def_auto_rotateX": {
+            "dagPath": "lidLower_r_def_auto_rotateX", 
+            "driven": "lidLower_r_def_auto.rotateX", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "mouth_corner_r_distance.distance", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -9.25407127759929, 
+                    "ia": -9.254070029853384, 
+                    "v": 6.000000000000001, 
+                    "dv": 1.6076817512512207, 
+                    "itt": "fixed", 
+                    "ott": "fixed"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": 0.0, 
+                    "v": 0.0, 
+                    "dv": 3.6076817512512207, 
                     "itt": "auto", 
                     "ott": "auto"
                 }
@@ -3490,186 +3994,6 @@
                     "itt": "fixed", 
                     "ott": "fixed", 
                     "ow": 6.155850728352864
-                }
-            ]
-        }, 
-        "blinkLower_l_cluster_def_auto_rotateX": {
-            "dagPath": "blinkLower_l_cluster_def_auto_rotateX", 
-            "driven": "blinkLower_l_cluster_def_auto.rotateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidLower_l.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": -1.7899106291257556, 
-                    "ia": 0.0, 
-                    "v": 14.999999999999998, 
-                    "dv": -20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": -3.581924185860814, 
-                    "ia": -1.7899106291257556, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": -4.164854573609056, 
-                    "ia": -3.581924185860814, 
-                    "v": -30.047011952191248, 
-                    "dv": 20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": -4.164854573609056, 
-                    "v": -64.99999999999997, 
-                    "dv": 40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blinkLower_r_cluster_def_auto_rotateX": {
-            "dagPath": "blinkLower_r_cluster_def_auto_rotateX", 
-            "driven": "blinkLower_r_cluster_def_auto.rotateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidLower_r.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": -1.7899106291257556, 
-                    "ia": 0.0, 
-                    "v": 14.999999999999998, 
-                    "dv": -20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": -3.581924185860814, 
-                    "ia": -1.7899106291257556, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": -4.164854573609056, 
-                    "ia": -3.581924185860814, 
-                    "v": -30.047011952191248, 
-                    "dv": 20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": -4.164854573609056, 
-                    "v": -64.99999999999997, 
-                    "dv": 40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blinkUpper_l_cluster_def_auto_rotateX": {
-            "dagPath": "blinkUpper_l_cluster_def_auto_rotateX", 
-            "driven": "blinkUpper_l_cluster_def_auto.rotateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidUpper_l.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 1.7899106291257556, 
-                    "ia": 0.0, 
-                    "v": -14.999999999999998, 
-                    "dv": -20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 4.170436573351042, 
-                    "ia": 1.7899106291257556, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 3.576334416634858, 
-                    "ia": 4.170436573351042, 
-                    "v": 35.0, 
-                    "dv": 20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 3.576334416634858, 
-                    "v": 65.0, 
-                    "dv": 40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }
-            ]
-        }, 
-        "blinkUpper_r_cluster_def_auto_rotateX": {
-            "dagPath": "blinkUpper_r_cluster_def_auto_rotateX", 
-            "driven": "blinkUpper_r_cluster_def_auto.rotateX", 
-            "preInfinity": 0, 
-            "postInfinity": 0, 
-            "driver": "lidUpper_r.rotateX", 
-            "keyframes": [
-                {
-                    "l": true, 
-                    "oa": 1.7899106291257556, 
-                    "ia": 0.0, 
-                    "v": -14.999999999999998, 
-                    "dv": -20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 4.170436573351042, 
-                    "ia": 1.7899106291257556, 
-                    "v": 0.0, 
-                    "dv": 0.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 3.576334416634858, 
-                    "ia": 4.170436573351042, 
-                    "v": 35.0, 
-                    "dv": 20.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
-                }, 
-                {
-                    "l": true, 
-                    "oa": 0.0, 
-                    "ia": 3.576334416634858, 
-                    "v": 65.0, 
-                    "dv": 40.0, 
-                    "itt": "linear", 
-                    "ott": "linear"
                 }
             ]
         }

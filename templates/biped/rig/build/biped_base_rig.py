@@ -196,7 +196,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         tongueNode = rigrepo.parts.tongue.Tongue(name='tongue', 
                                         jointList="mc.ls('tongue_?_bind')", 
                                         anchor="jaw")
-        faceParts.addChild(earClusterNode)
+        faceParts.addChildren([earClusterNode])
         l_blink = rigrepo.parts.blink.BlinkNew("l_blink", anchor="face_upper")
         r_blink = rigrepo.parts.blink.BlinkNew("r_blink",side="r", anchor="face_upper")
         r_blink.getAttributeByName("side").setValue("r")
@@ -256,6 +256,78 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
 '''
         r_brow_orient.getAttributeByName('command').setValue(r_brow_orientCmd)
         r_brow.addChild(r_brow_orient)
+
+        cheekClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("cheeks")
+        cheekClusterNode.getAttributeByName("nameList").setValue("['cheekPuff_l', 'cheekPuff_r', 'cheek_l', 'cheek_r']")
+        cheekClusterNode.getAttributeByName("geometry").setValue("body_geo")
+        cheekClusterNode.getAttributeByName("parent").setValue("face_mid_driver")
+        leftCheekLiftClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("l_cheekLift")
+        leftCheekLiftClusterNode.getAttributeByName("nameList").setValue("['cheekLift_l']")
+        leftCheekLiftClusterNode.getAttributeByName("geometry").setValue("body_geo")
+        leftCheekLiftClusterNode.getAttributeByName("parent").setValue("lidLower_l")
+        rightCheekLiftClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("r_cheekLift")
+        rightCheekLiftClusterNode.getAttributeByName("nameList").setValue("['cheekLift_r']")
+        rightCheekLiftClusterNode.getAttributeByName("geometry").setValue("body_geo")
+        rightCheekLiftClusterNode.getAttributeByName("parent").setValue("lidLower_r")
+        mouthCornerDistanceNode = rigrepo.nodes.commandNode.CommandNode('mouthCornerDistance')
+        mouthCornerDistanceNodeCmd = '''
+import maya.cmds as mc
+for side in ["l","r"]:
+    distanceLoc = mc.createNode("transform", n="distance_loc_{}".format(side))
+    mc.xform(distanceLoc, ws=True, matrix=mc.xform("eye_{}_bind".format(side), q=True, ws=True, matrix=True))
+    mc.parent(distanceLoc, "face_upper")
+    mouthCornerDCM = mc.createNode("decomposeMatrix", name="mouth_corner_{}_decomposeMatrix".format(side))
+    distanceLocDCM = mc.createNode("decomposeMatrix", name="distance_loc_{}_decomposeMatrix".format(side))
+    
+    mc.connectAttr("mouth_corner_{}.worldMatrix[0]".format(side), "{}.inputMatrix".format(mouthCornerDCM))
+    mc.connectAttr("distance_loc_{}.worldMatrix[0]".format(side), "{}.inputMatrix".format(distanceLocDCM))
+    
+    distanceNode = mc.createNode("distanceBetween", n="mouth_corner_{}_distance".format(side))
+    mc.connectAttr("{}.outputTranslate".format(mouthCornerDCM), "{}.point1".format(distanceNode), f=True)
+    mc.connectAttr("{}.outputTranslate".format(distanceLocDCM), "{}.point2".format(distanceNode), f=True)
+        
+
+    currentDistance = mc.getAttr("{}.distance".format(distanceNode))        
+    for axis in ['x', 'y', 'z']:
+        mc.setDrivenKeyframe("cheekPuff_{}_def_auto.s{}".format(side, axis), 
+                                    cd="{}.distance".format(distanceNode), v=1, dv=currentDistance)
+        mc.setDrivenKeyframe("cheekPuff_{}_def_auto.s{}".format(side, axis), 
+                                    cd="{}.distance".format(distanceNode), v=2, dv=currentDistance-2)
+                                    
+                                    
+        if axis == "y":
+            mc.setDrivenKeyframe("cheek_{}_def_auto.t{}".format(side, axis), 
+                                        cd="{}.distance".format(distanceNode), v=0, dv=currentDistance)
+            mc.setDrivenKeyframe("cheek_{}_def_auto.t{}".format(side, axis), 
+                                        cd="{}.distance".format(distanceNode), v=2, dv=currentDistance-2)
+
+    # lid lower rotation
+    mc.setDrivenKeyframe("lidLower_{}_def_auto.rx".format(side), 
+                                    cd="{}.distance".format(distanceNode), v=0, dv=currentDistance)
+    mc.setDrivenKeyframe("lidLower_{}_def_auto.rx".format(side), 
+                                    cd="{}.distance".format(distanceNode), v=6, dv=currentDistance-2)
+
+    if mc.objExists("cheekLift_{}_def_auto".format(side)):
+        mc.setDrivenKeyframe("cheekLift_{}_def_auto.rx".format(side), 
+                                        cd="{}.distance".format(distanceNode), v=0, dv=currentDistance)
+        mc.setDrivenKeyframe("cheekLift_{}_def_auto.rx".format(side), 
+                                        cd="{}.distance".format(distanceNode), v=6, dv=currentDistance-2)
+
+        mc.addAttr("lidLower_{}".format(side), ln="cheekLift", at="double", keyable=True)
+        mc.setDrivenKeyframe("cheekLift_{}.rx".format(side), 
+                                        cd="lidLower_{}.cheekLift".format(side), v=0, dv=0)
+        mc.setDrivenKeyframe("cheekLift_{}.rx".format(side), 
+                                        cd="lidLower_{}.cheekLift".format(side), v=50, dv=10)
+        mc.setDrivenKeyframe("cheekLift_{}.rx".format(side), 
+                                        cd="lidLower_{}.cheekLift".format(side), v=-50, dv=-10)
+
+        # turn off display handles for cheek lift
+        mc.setAttr("cheekLift_{}_def_auto.displayHandle".format(side), 0)
+                
+'''
+        mouthCornerDistanceNode.getAttributeByName('command').setValue(mouthCornerDistanceNodeCmd)
+        cheekClusterNode.addChildren([leftCheekLiftClusterNode, rightCheekLiftClusterNode, mouthCornerDistanceNode])
+
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
         faceBuildNode = pubs.pNode.PNode("face")
@@ -269,7 +341,7 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
         
         # add nodes ass children of body
         bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
-        faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth])
+        faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth, cheekClusterNode])
 
         # get the load node which is derived from archetype.
         loadNode = self.getNodeByName('load')
