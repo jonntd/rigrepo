@@ -23,6 +23,7 @@ import rigrepo.parts.mouth
 import rigrepo.parts.blink
 import rigrepo.parts.face
 import rigrepo.parts.brow
+import rigrepo.parts.tongue
 
 import rigrepo.nodes.controlDefaultsNode as controlDefaultsNode
 import os
@@ -192,6 +193,9 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         earClusterNode.getAttributeByName("nameList").setValue("['ear_l', 'ear_r']")
         earClusterNode.getAttributeByName("geometry").setValue("body_geo")
         earClusterNode.getAttributeByName("parent").setValue("face_upper")
+        tongueNode = rigrepo.parts.tongue.Tongue(name='tongue', 
+                                        jointList="mc.ls('tongue_?_bind')", 
+                                        anchor="jaw")
         faceParts.addChild(earClusterNode)
         l_blink = rigrepo.parts.blink.BlinkNew("l_blink", anchor="face_upper")
         r_blink = rigrepo.parts.blink.BlinkNew("r_blink",side="r", anchor="face_upper")
@@ -265,7 +269,7 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
         
         # add nodes ass children of body
         bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
-        faceBuildNode.addChildren([faceParts, browsNode, eyesNode, mouth])
+        faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth])
 
         # get the load node which is derived from archetype.
         loadNode = self.getNodeByName('load')
