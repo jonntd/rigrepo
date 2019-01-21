@@ -106,9 +106,17 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         localizeNode = rigrepo.nodes.commandNode.CommandNode('localize')
         localizeNodeCmd = '''
 import rigrepo.libs.skinCluster
+import rigrepo.libs.cluster
 import maya.cmds as mc
 
 rigrepo.libs.skinCluster.localize(mc.ls(type="skinCluster"), "model")
+
+# localize lid blink clusters
+# This is hard coded, may want to take a look at this later.
+lidClusters = mc.ls("lid*blink*cluster")
+for cluster in lidClusters:
+    clusterName = cluster.split("__")[-1]
+    rigrepo.libs.cluster.localize(cluster, "{}_auto".format(clusterName), "model")
 '''
         localizeNode.getAttributeByName('command').setValue(localizeNodeCmd)
 
