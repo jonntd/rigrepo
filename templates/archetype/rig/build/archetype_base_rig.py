@@ -42,8 +42,13 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
                 apply=True)
         labelJointsForMirroringNode = rigrepo.nodes.labelJointsForMirroringNode.LabelJointsForMirroringNode('labelJointsForMirroring')
 
-        loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode])
         jointDataNode.addChild(labelJointsForMirroringNode)
+
+        importPSDDeltaNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psdDeltas",
+                                  dirPath=self.resolveDirPath('psd', self.variant),
+                                  loadDeltas=True,
+                                  psdNames='["blinkLower_l_psd","blinkLower_r_psd", "blinkUpper_l_psd", "blinkUpper_r_psd", "skin_psd"]')
+        loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode, importPSDDeltaNode])
 
         # postBuild
         postBuild = pubs.pNode.PNode("postBuild")
@@ -79,9 +84,6 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
             dirPath=self.resolveDirPath('wire_wts', self.variant))
         clusterWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("cluster", 
             dirPath=self.resolveDirPath('cluster_wts', self.variant))
-        importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDNode("psd",
-            dirPath=self.resolveDirPath('psd', self.variant),
-            fileName='skin_psd')
         importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psd",
             dirPath=self.resolveDirPath('psd', self.variant),
             psdNames='["blinkLower_l_psd","blinkLower_r_psd", "blinkUpper_l_psd", "blinkUpper_r_psd", "skin_psd"]')

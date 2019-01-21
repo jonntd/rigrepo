@@ -45,6 +45,8 @@ class DeformerOrderData(abstract_data.AbstractData):
             if self._data.has_key(node):
                 if len(self._data[node]["deformerOrder"]) > 1:
                     orderCurrent = mc.listHistory(node, pdo=True, interestLevel=1)
+                    if not orderCurrent:
+                        continue
                     orderStored = self._data[node]["deformerOrder"]
                     for index, deformer in enumerate(orderStored):
                         if index == len(orderStored)-1:

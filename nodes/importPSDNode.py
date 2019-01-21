@@ -24,6 +24,7 @@ import maya.mel as mm
 import rigrepo.libs.psd as psd
 import rigrepo.libs.data.psd_data
 import os
+error()
 
 if not mc.pluginInfo('poseInterpolator', q=1, l=1):  
     mc.loadPlugin('poseInterpolator')
@@ -90,12 +91,13 @@ class ImportPSDDirNode(commandNode.CommandNode):
     '''
     Define cmd to be executed
     '''
-    def __init__(self, name, parent=None, dirPath="/disk1/temp", psdNames="[]", nodes='mc.ls(type="poseInterpolator")'):
+    def __init__(self, name, parent=None, dirPath="/disk1/temp", psdNames="[]", nodes='mc.ls(type="poseInterpolator")', loadDeltas=False):
         super(ImportPSDDirNode, self).__init__(name, parent)
         commandAttribute = self.getAttributeByName('command')
         self.addAttribute('dirPath', dirPath, attrType='dir', index=0)
         self.addAttribute('psdNames', psdNames, attrType='str', index=0)
         self.addAttribute('nodes', nodes, attrType='str', index=0)
+        self.addAttribute('loadDeltas', loadDeltas, attrType='bool')
         cmd = '''
 import maya.cmds as mc
 import maya.mel as mm
@@ -106,37 +108,47 @@ import os
 if not mc.pluginInfo('poseInterpolator', q=1, l=1):  
     mc.loadPlugin('poseInterpolator')
 
-# Re-sync procedurally built poseInterpolators 
-# Note: Not sure why this can't be done when the procedural system is built
-#       but it is not working when I do it at the same time.
-for poseInterp in {nodes}:
-    poses = psd.getPoses(poseInterp)
-    for pose in poses:
-        psd.syncPose(poseInterp, pose)
-    for pose in poses:
-        psd.setPoseKernalFalloff(poseInterp, pose)
-    psd.goToNeutralPose(poseInterp)
 
 for name in {psdNames}:    
     filePose = '{dirPath}/%s.pose' % name
     fileShapeList = [shapeFile for shapeFile in os.listdir('{dirPath}') if ".shp" in shapeFile and name in shapeFile]
     if os.path.isfile(filePose):
         print('Loading PSD File: [ '+filePose + ' ]')
-        # Import shapes
-        for fileShape in fileShapeList:
-            fileName = fileShape.split(".")[1]
-            mc.blendShape(ip=os.path.join('{dirPath}',fileShape),  name=fileName, frontOfChain=0, suppressDialog=1)
+        # DELTAS
+        #
+        if loadDeltas:
+            # Import shapes
+            for fileShape in fileShapeList:
+                fileName = fileShape.split(".")[1]
+                
+                #mc.blendShape(fileName, e=1, ip=os.path.join('{dirPath}',fileShape),  name=fileName, frontOfChain=0, suppressDialog=1)
+                mc.blendShape(ip=os.path.join('{dirPath}',fileShape),  name=fileName, frontOfChain=0, suppressDialog=1)
         
-        # Import pose interpolators - Selection must be cleared for this command to work
-        mc.select(cl=1)
-        mc.poseInterpolator(im=filePose)
+        # INTERPOLATORS
+        #
+        else:
+            # Re-sync procedurally built poseInterpolators 
+            # Note: Not sure why this can't be done when the procedural system is built
+            #       but it is not working when I do it at the same time.
+            for poseInterp in {nodes}:
+                poses = psd.getPoses(poseInterp)
+                for pose in poses:
+                    psd.syncPose(poseInterp, pose)
+                for pose in poses:
+                    psd.setPoseKernalFalloff(poseInterp, pose)
+                psd.goToNeutralPose(poseInterp)
+            
+            # Import pose interpolators - Selection must be cleared for this command to work
+            mc.select(cl=1)
+            mc.poseInterpolator(im=filePose)
 
-        # Import pose control data
-        nodes = {nodes}
-        dataObj = rigrepo.libs.data.psd_data.PSDData()
-        dataFile = '{dirPath}/%s_poseControls.data' % name
-        dataObj.read(dataFile)
-        dataObj.applyData(nodes)
+            # Import pose control data
+            nodes = {nodes}
+            dataObj = rigrepo.libs.data.psd_data.PSDData()
+            dataFile = '{dirPath}/%s_poseControls.data' % name
+            dataObj.read(dataFile)
+            dataObj.applyData(nodes)
+            
     else:
         print('Warning: PSD File does not exist [ '+filePose + ' ]')
 
@@ -163,6 +175,6 @@ if nodes:
         dirPath = self.getAttributeByName("dirPath").getValue()
         psdNames = eval(self.getAttributeByName("psdNames").getValue())
         nodes = self.getAttributeByName("nodes").getValue()
-        exec(self.getAttributeByName('command').getValue().format(dirPath=dirPath, psdNames=psdNames, nodes=nodes))
+        loadDeltas = self.getAttributeByName('loadDeltas').getValue()
+        exec(self.getAttributeByName('command').getValue().format(dirPath=dirPath, psdNames=psdNames, nodes=nodes, loadDeltas=loadDeltas))
 
-        
