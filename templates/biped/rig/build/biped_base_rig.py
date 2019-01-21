@@ -47,7 +47,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         buildPath = joinPath(os.path.dirname(__file__), self.variant)
 
-
+        
         # Parts
         #-------------------------------------------------------------------------------------------
         # BODY
@@ -334,10 +334,6 @@ for side in ["l","r"]:
         # add nodes ass children of body
         bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
         faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth, cheekClusterNode])
-
-        # get the load node which is derived from archetype.
-        loadNode = self.getNodeByName('load')
-        #loadNode.addChildren([curveFileNode, curveDataNode])
 
         # get the postBuild node
         postBuild = animRigNode.getChild('postBuild')

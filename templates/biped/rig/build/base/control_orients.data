@@ -1,7 +1,7 @@
 {
     "type": "NodeData", 
     "user": "Walter Yoder", 
-    "time": "2019-01-21 09:27:24", 
+    "time": "2019-01-21 20:37:30", 
     "data": {
         "ankle_fk_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
@@ -494,6 +494,44 @@
                 1.0, 
                 1.0, 
                 -1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "cheekLift_l_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|eyeSocket_l_nul|eyeSocket_l|lidLower_l_nul|lidLower_l_def_auto|lidLower_l|cheekLift_l_nul|cheekLift_l_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "cheekLift_r_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|eyeSocket_r_nul|eyeSocket_r|lidLower_r_nul|lidLower_r_def_auto|lidLower_r|cheekLift_r_nul|cheekLift_r_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
             ], 
             "rotateOrder": 0
         }, 
