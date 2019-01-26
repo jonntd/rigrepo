@@ -104,8 +104,8 @@ def getPointOnCurveFromPosition(curve, point, space=om.MSpace.kWorld):
     :param point: Point in space or Node to get MPoint from
     :type: list | MPoint
 
-    ::
-    :rtype: tuple
+    :return: This will return the position in world space on the curve
+    :rtype: MPoint
     '''
     #get dag path for curve and assign it a nurbsCurve function object 
     dagPath = rigrepo.libs.transform.getDagPath(curve)
