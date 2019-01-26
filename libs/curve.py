@@ -67,7 +67,7 @@ def getCVpositions(cvList):
     positions = list()
     
     for point in cvList:
-        ws = mc.xform(point, q = True, ws = True, t = True)
+        ws = mc.xform(point, q=True, ws=True, t=True)
         positions.append(ws)
     
     return positions
@@ -84,18 +84,41 @@ def getParamFromPosition(curve, point):
     '''
     #get dag path for curve and assign it a nurbsCurve function object 
     dagPath = rigrepo.libs.transform.getDagPath(curve)
+    dagPath.extendToShape()
     mFnNurbsCurve = om.MFnNurbsCurve(dagPath)
     
     #Check to see if point is a list or tuple object
     if not isinstance(point, list) and not isinstance(point, tuple):
         if mc.objExists(point):
-            point = mc.xform(point, q = True, ws = True, t = True)
+            point = mc.xform(point, q=True, ws=True, t=True)
+    
+    return mFnNurbsCurve.getParamAtPoint(om.MPoint(point[0], point[1], point[2]))
 
+def getPointOnCurveFromPosition(curve, point, space=om.MSpace.kWorld):
+    '''
+    Gets a curves point at curve from position. It will return a MPoint
     
-    #Get and MPoint object and a double ptr
-    mPoint = om.MPoint(point[0], point[1], point[2])
+    :param curve: Curve you want to get paremter for
+    :type curve: *str* or *MObject*
     
-    return mFnNurbsCurve.getParamAtPoint(mPoint)
+    :param point: Point in space or Node to get MPoint from
+    :type: list | MPoint
+
+    ::
+    :rtype: tuple
+    '''
+    #get dag path for curve and assign it a nurbsCurve function object 
+    dagPath = rigrepo.libs.transform.getDagPath(curve)
+    dagPath.extendToShape()
+    mFnNurbsCurve = om.MFnNurbsCurve(dagPath)
+    
+    #Check to see if point is a list or tuple object
+    if not isinstance(point, list) and not isinstance(point, tuple):
+        if mc.objExists(point):
+            point = mc.xform(point, q=True, ws=True, t=True)
+
+    return mFnNurbsCurve.closestPoint(om.MPoint(point[0], point[1], point[2]), space=space)[0]
+
 
 def mirror (curve, axis = "x"):
     '''

@@ -127,25 +127,39 @@ class TransferClusterBlinks(commandNode.CommandNode):
         commandAttribute = self.getAttributeByName('command')
         cmd='''
 import maya.cmds as mc
+import maya.api.OpenMaya as om
 import rigrepo.libs.deformer
 import rigrepo.libs.weights
 import rigrepo.libs.cluster
-deltaMush = mc.deltaMush("{source}",smoothingIterations=10,smoothingStep=1.0, pinBorderVertices=True,envelope=1, foc=True)[0]
-mc.setAttr(deltaMush+".displacement", 0)
+import rigrepo.libs.curve
+import rigrepo.libs.transform
+source = "{source}"
+temp = mc.createNode("closestPointOnMesh", name="temp")
+sourceDag = rigrepo.libs.transform.getDagPath(source)
+sourceDag.extendToShape()
+mc.connectAttr("%s.outMesh" % (sourceDag.fullPathName()), "%s.inMesh" % (temp), f=True)
 for side in ['l','r']:
     for section in ['Upper', 'Lower']:
+        baseWire = "blink%s_%s_curveBaseWire" % (section, side)
         mesh = "blink%s_%s_bindmesh" % (section, side)
-        newClusterList=rigrepo.libs.cluster.transferCluster("{source}", mesh, "blink%s_%s_cluster" % (section, side), handle=True, surfaceAssociation="closestPoint", createNew=True)
+        newClusterList=rigrepo.libs.cluster.transferCluster(source, mesh, "blink%s_%s_cluster" % (section, side), handle=True, surfaceAssociation="closestPoint", createNew=True)
         for deformer in newClusterList:
             wtObj = rigrepo.libs.weights.getWeights(deformer, geometry=mesh)
+            sourceWtObj = rigrepo.libs.weights.getWeights(deformer.split("__")[-1], geometry=source)
             weightList = list()
+            
             i = 0
             weights = wtObj.getWeights()[0]
+            sourceWeights = sourceWtObj.getWeights()[0]
             for wt in weights:
                 j = i
                 if j + 1 >= len(weights):
                     break
-                wtValue = weights[j]
+                # get the closest point on the curve so we can use that to get the closest
+                mPoint = rigrepo.libs.curve.getPointOnCurveFromPosition(baseWire, "%s.cp[%s]" % (mesh, j))
+                mc.setAttr("%s.inPosition" % (temp), mPoint.x, mPoint.y, mPoint.z)
+                vrtId = mc.getAttr("%s.closestVertexIndex" % (temp))
+                wtValue = sourceWeights[vrtId]
                 while i <= j + 3:
                     weights[i] = wtValue
                     i +=1
@@ -155,8 +169,8 @@ for side in ['l','r']:
             rigrepo.libs.weights.setWeights(deformer, wtObj, geometry=mesh)
                 
         # now we will transfer the wts
-        mc.copyDeformerWeights(ss=mesh, ds="blink%s_%s_curveBaseWire" % (section, side), sd="blink%s_%s_bindmesh__blink%s_%s_cluster" % (section, side, section, side), dd="blink%s_%s_curveBaseWire__blink%s_%s_cluster" % (section, side, section, side), sa="closestPoint", noMirror=True)
-mc.delete(deltaMush)
+        mc.copyDeformerWeights(ss=mesh, ds=baseWire, sd="blink%s_%s_bindmesh__blink%s_%s_cluster" % (section, side, section, side), dd="blink%s_%s_curveBaseWire__blink%s_%s_cluster" % (section, side, section, side), sa="closestPoint", noMirror=True)
+mc.delete(temp)
 '''
         # set the command to the attributes value
         commandAttribute.setValue(cmd)
@@ -183,26 +197,40 @@ class TransferClusterLids(commandNode.CommandNode):
         commandAttribute = self.getAttributeByName('command')
         cmd='''
 import maya.cmds as mc
+import maya.api.OpenMaya as om
 import rigrepo.libs.deformer
 import rigrepo.libs.weights
 import rigrepo.libs.cluster
-deltaMush = mc.deltaMush("{source}",smoothingIterations=10,smoothingStep=1.0, pinBorderVertices=True,envelope=1, foc=True)[0]
+import rigrepo.libs.curve
+import rigrepo.libs.transform
+source = "{source}"
+temp = mc.createNode("closestPointOnMesh", name="temp")
+sourceDag = rigrepo.libs.transform.getDagPath(source)
+sourceDag.extendToShape()
+mc.connectAttr("%s.outMesh" % (sourceDag.fullPathName()), "%s.inMesh" % (temp), f=True)
+deltaMush = mc.deltaMush(source,smoothingIterations=10,smoothingStep=1.0, pinBorderVertices=True,envelope=1, foc=True)[0]
 mc.setAttr(deltaMush+".displacement", 0)
 for side in ['l','r']:
     mesh = "lid_%s_bindmesh" % (side)
+    curve = "lid_%s_curve" % (side)
     for section in ['Upper', 'Lower']:
-        newClusterList=rigrepo.libs.cluster.transferCluster("{source}", mesh, "blink%s_%s_cluster" % (section, side), handle=True, surfaceAssociation="closestPoint", createNew=True)
-        print newClusterList
+        newClusterList=rigrepo.libs.cluster.transferCluster(source, mesh, "blink%s_%s_cluster" % (section, side), handle=True, surfaceAssociation="closestPoint", createNew=True)
         for deformer in newClusterList:
             wtObj = rigrepo.libs.weights.getWeights(deformer, geometry=mesh)
+            sourceWtObj = rigrepo.libs.weights.getWeights(deformer.split("__")[-1], geometry=source)
             weightList = list()
             i = 0
             weights = wtObj.getWeights()[0]
+            sourceWeights = sourceWtObj.getWeights()[0]
             for wt in weights:
                 j = i
                 if j + 1 >= len(weights):
                     break
-                wtValue = weights[j]
+                # get the closest point on the curve so we can use that to get the closest
+                mPoint = rigrepo.libs.curve.getPointOnCurveFromPosition(curve, "%s.cp[%s]" % (mesh, j))
+                mc.setAttr("%s.inPosition" % (temp), mPoint.x, mPoint.y, mPoint.z)
+                vrtId = mc.getAttr("%s.closestVertexIndex" % (temp))
+                wtValue = sourceWeights[vrtId]
                 while i <= j + 3:
                     weights[i] = wtValue
                     i +=1
@@ -212,6 +240,7 @@ for side in ['l','r']:
             rigrepo.libs.weights.setWeights(deformer, wtObj, geometry=mesh)
 
 mc.delete(deltaMush)
+mc.delete(temp)
 '''
         # set the command to the attributes value
         commandAttribute.setValue(cmd)
