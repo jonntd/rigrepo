@@ -118,11 +118,13 @@ for name in {psdNames}:
         #
         if loadDeltas:
             # Import shapes
+            mc.select(cl=1)
             for fileShape in fileShapeList:
                 fileName = fileShape.split(".")[1]
                 
                 #mc.blendShape(fileName, e=1, ip=os.path.join('{dirPath}',fileShape),  name=fileName, frontOfChain=0, suppressDialog=1)
-                mc.blendShape(ip=os.path.join('{dirPath}',fileShape),  name=fileName, frontOfChain=0, suppressDialog=1)
+                mc.blendShape(ip=os.path.join('{dirPath}',fileShape),  
+                               name=fileName, ignoreSelected=1, topologyCheck=0, suppressDialog=1)
         
         # INTERPOLATORS
         #

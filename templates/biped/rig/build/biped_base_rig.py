@@ -335,6 +335,20 @@ for side in ["l","r"]:
         bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
         faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth, cheekClusterNode])
 
+        bindMeshCurvePairs ="""[
+('blinkUpper_l_curve', 'blinkUpper_l'),
+('blinkUpper_r_curve', 'blinkUpper_r'),
+('blinkLower_l_curve', 'blinkLower_l'),
+('blinkLower_r_curve', 'blinkLower_r')
+]"""
+
+        # bindmeshes
+        bindMeshesNode = self.getNodeByName('bindMeshes')
+        lidBindMeshNode = rigrepo.nodes.buildBindMeshNode.BuildBindMeshNode('face',
+                          curves = bindMeshCurvePairs)
+
+        bindMeshesNode.addChild(lidBindMeshNode)
+
         # get the postBuild node
         postBuild = animRigNode.getChild('postBuild')
         postBuild.addChild(controlsDefaults)

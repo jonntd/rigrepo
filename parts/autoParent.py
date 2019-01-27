@@ -177,6 +177,8 @@ class AutoParent(part.Part):
             driven = add+'.input1D[{}]'.format(poseIndex)
             mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="linear", ott="linear")
             mc.setDrivenKeyframe(driven, cd=driver, value=drivenKeyValue, dv=1, itt="linear", ott="linear")
+            node = mc.listConnections(driven)[0]
+            mc.rename(node, '{}_driven_key'.format(poseName))
 
         # Connect blend attr
         mulDive = mc.createNode('multiplyDivide', n=parentControl+'_blend_mul')

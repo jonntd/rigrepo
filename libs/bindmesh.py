@@ -17,6 +17,17 @@ def create(name, positionList):
     :return: The bindmesh and the follicle information 
     :trype: tuple
     '''
+    # Check if the bindmesh has already been created.
+    # If it exists return existing bindmesh and follicle names
+    #
+    newGeoName = "{0}_bindmesh".format(name)
+    if mc.objExists(newGeoName):
+        follicleNameList = list()
+        for i in xrange(len(positionList)):
+            follicleName = "{0}_{1}_follicle".format(name, i)
+            follicleNameList.append(follicleName)
+        return newGeoName, follicleNameList
+
     # define variables we will be mutating
     geoList = list()
     follicleList = list()

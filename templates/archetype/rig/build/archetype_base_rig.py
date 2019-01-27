@@ -58,7 +58,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         importPSDDeltaNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psdDeltas",
                                   dirPath=self.resolveDirPath('psd', self.variant),
                                   loadDeltas=True,
-                                  psdNames='["blinkLower_l_psd","blinkLower_r_psd", "blinkUpper_l_psd", "blinkUpper_r_psd", "skin_psd"]')
+                                  psdNames='["blinks", "skin"]')
         loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode, curveFileNode, curveDataNode, bindMeshes, importPSDDeltaNode])
 
         # postBuild
@@ -97,7 +97,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
             dirPath=self.resolveDirPath('cluster_wts', self.variant))
         importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psd",
             dirPath=self.resolveDirPath('psd', self.variant),
-            psdNames='["blinkLower_l_psd","blinkLower_r_psd", "blinkUpper_l_psd", "blinkUpper_r_psd", "skin_psd"]')
+            psdNames='["blinks", "skin"]')
         importSdkDataNode = rigrepo.nodes.importDataNode.ImportDataNode('sdk', 
                 dataFile=self.resolveDataFilePath('sdk.data', self.variant), 
                 dataType='sdk', 
@@ -194,7 +194,11 @@ for cluster in lidClusters:
             'skinClusterSelected', dirPath=self.buildExportPath('skin_wts', self.variant))
         exportPSDNode = rigrepo.nodes.exportPSDNode.ExportPSDNode('psd',
                                                                   dirPath=self.buildExportPath('psd', self.variant),
+                                                                  nodesExclude="['clavicle_l_auto_poseInterpolatorShape','clavicle_r_auto_poseInterpolatorShape']",
                                                                   fileName='skin_psd')
+        exportPSDByGroupsNode = rigrepo.nodes.exportPSDNode.ExportPSDByGroupNode('psdByGroups',
+                                                                  dirPath=self.buildExportPath('psd', self.variant),
+                                                                  groups='rigrepo.libs.psd.getAllGroups()')
         nodeEditorBookmarks = rigrepo.nodes.exportNodeEditorBookmarksNode.ExportNodeEditorBookmarsNode('NodeEditorBookmarks',
                                                                   dirPath=self.buildExportPath('bookmarks', self.variant))
         nodeEditorBookmarks.disable()
@@ -202,7 +206,7 @@ for cluster in lidClusters:
         exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, 
                                 curveExportDataNode, controlCurveExportDataNode, sdkExportDataNode,
                                 skinClusterExportWtsNode, skinClusterExportWtsSelectedNode, 
-                                wireExportWtsNode, clusterExportWtsNode, exportPSDNode, 
+                                wireExportWtsNode, clusterExportWtsNode, exportPSDNode, exportPSDByGroupsNode,
                                 deformerOrderExportDataNode, nodeEditorBookmarks])
                                 
 

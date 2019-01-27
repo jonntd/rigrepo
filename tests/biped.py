@@ -135,6 +135,8 @@ def nodes(variant='base', buildNow=False, debug=True):
     reload(rigrepo.nodes.exportNodeEditorBookmarksNode)
     import rigrepo.nodes.importNodeEditorBookmarksNode
     reload(rigrepo.nodes.importNodeEditorBookmarksNode)
+    import rigrepo.nodes.buildBindMeshNode
+    reload(rigrepo.nodes.buildBindMeshNode)
 
     # reload parts
     import rigrepo.parts.part

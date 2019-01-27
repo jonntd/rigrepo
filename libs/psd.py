@@ -8,6 +8,7 @@ import rigrepo.libs.common as common
 
 # make sure the poseInterpolator plugin is loaded.
 mc.loadPlugin("poseInterpolator.so",qt=True)
+manager = 'poseInterpolatorManager'
 
 def addPoseInterp(name, driver=None, createNeutralPose=0, twistAxis=0):
     '''
@@ -229,4 +230,44 @@ def addShape(poseInterp, pose, bs=None):
 
     poseIndex = getPoseIndex(poseInterp, pose)
     mc.connectAttr(poseInterp+'.output[{}]'.format(poseIndex), bs+'.w[{}]'.format(shapeIndex))
+
+def getAllGroups():
+    groupIndexes = mc.ls(manager + '.poseInterpolatorDirectory[*]')
+    groups = list()
+    for group in groupIndexes:
+        name = mc.getAttr(group + '.directoryName')
+        groups.append(name)
+    # The first index is the default group, so we are excluding it
+    if len(groups) > 1:
+        return(groups[1:])
+
+def getGroupChildren(group):
+    groupAttrs = mc.ls(manager + '.poseInterpolatorDirectory[*]')
+    for groupAttr in groupAttrs:
+        name = mc.getAttr(groupAttr + '.directoryName')
+        if name != group:
+            continue
+        childAttrs = mc.getAttr(groupAttr + '.childIndices')
+        children = list()
+        for childAttr in childAttrs:
+            child = mc.listConnections(manager+'.poseInterpolatorParent[{}]'.format(childAttr))
+            child = common.getFirstIndex(child)
+            child = getPoseInterp(child)
+            if child:
+                children.append(child)
+        return(children)
+
+def getGroup(poseInterp):
+    poseInterp = getPoseInterp(poseInterp)
+    if not poseInterp:
+        return
+    con = mc.listConnections(poseInterp+'.midLayerParent', p=1)
+    con = common.getFirstIndex(con)
+    index = int(con.split('[')[1].replace(']',''))
+    groups = mc.ls(manager + '.poseInterpolatorDirectory[*]')
+    for group in groups:
+        name = mc.getAttr(group + '.directoryName')
+        childIndices = mc.getAttr(group + '.childIndices')
+        if index in childIndices:
+            return(name)
 
