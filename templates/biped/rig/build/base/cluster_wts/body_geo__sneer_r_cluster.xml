@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Walter Yoder/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/cluster_wts/body_geo__sneer_r_cluster.xml"/>
-  <shape name="body_geoShape" group="7299" stride="3" size="25074" max="25074" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="body_geoShape" group="3559" stride="3" size="25074" max="25074" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" -0.384781 62.073715 3.815948"/>
     <point index="1" value=" -0.600705 61.777069 3.724057"/>
     <point index="2" value=" -0.661506 61.678642 3.915531"/>

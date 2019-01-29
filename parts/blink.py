@@ -237,7 +237,6 @@ class Blink(part.Part):
                 mc.connectAttr("{0}.position".format(poci), "{0}.t".format(loc),f=True)
                 mc.parent(jntBase, eyeCenter)
                 mc.aimConstraint(loc,jntBase,aimVector=(1,0,0),upVector=(0,1,0),wut="none")
-                mc.setAttr("{0}.v".format(jntDriver))
                 driverJntList.append(jntDriver)
 
                 lidControlList.append(ctrlHierarchy[-1])
@@ -414,12 +413,14 @@ class BlinkNew(part.Part):
         mc.parent(lowerLidDriver, lowerLidNul)
         mc.pointConstraint(lowerLidCtrl, lowerLidDriver)
         mc.orientConstraint(lowerLidCtrl, lowerLidDriver)
+        mc.setAttr("{}.drawStyle".format(lowerLidDriver), 2)
 
         # create drivers for the the lids.
         upperLidDriver = mc.createNode("joint", name="lidUpper_{0}_driver".format(side))
         mc.parent(upperLidDriver, upperLidNul)
         mc.pointConstraint(upperLidCtrl, upperLidDriver)
         mc.orientConstraint(upperLidCtrl, upperLidDriver)
+        mc.setAttr("{}.drawStyle".format(upperLidDriver), 2)
 
 
         # move the eyeSocket control to the position of the eyeCenter joint
@@ -527,10 +528,63 @@ class BlinkNew(part.Part):
         # set the default values for the wire deformer
         mc.setAttr("{}.rotation".format(wireDeformer), 0)
         mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
-        mc.parent(lidCurve, "lid_{}".format(side))          
+        mc.parent(lidCurve, "lid_{}".format(side))
 
         # parent groups under the name of the part
         mc.parent([self.controlGroup], self.name)
+
+        # create the socket lift cluster
+        socketLiftCluster = rigrepo.libs.cluster.create(geometry, 
+                                        "socketLift_{0}_cluster".format(side),
+                                        parent=anchor, 
+                                        parallel=False)
+
+        # create the socket lift cluster
+        socketStretchCluster = rigrepo.libs.cluster.create(geometry, 
+                                        "socketStretch_{0}_cluster".format(side),
+                                        parent=anchor, 
+                                        parallel=False)
+
+        # move the cluster into the correct location
+        mc.xform("{}_nul".format(socketLiftCluster), ws=True, matrix=mc.xform(upperLidCtrl, q=True, ws=True, matrix=True))
+        mc.xform("{}_nul".format(socketStretchCluster), ws=True, matrix=mc.xform(upperLidCtrl, q=True, ws=True, matrix=True))
+
+        #turn off visibility of the handle and create the socket lift attribute on the upperLid
+        mc.setAttr("{}_ctrl.displayHandle".format(socketLiftCluster), 0)
+        mc.setAttr("{}_ctrl.displayHandle".format(socketStretchCluster), 0)
+        mc.addAttr(upperLidCtrl, ln="socketLift", at="double", min=-10, max=10, dv=0, keyable=True)
+
+        socketClusterList = rigrepo.libs.cluster.transferCluster(geometry, bindmeshGeometry, socketStretchCluster, handle=True)
+        #socketClusterList.extend(rigrepo.libs.cluster.transferCluster(geometry, baseCurve, socketLiftCluster, handle=True))
+
+        # this will localize the blink agains the model group and auto node
+        for cluster in socketClusterList:
+            clusterName = cluster.split("__")[-1]
+            rigrepo.libs.cluster.localize(cluster, "{}_auto".format(clusterName), "model")
+
+        # loop through and create the setDriven keyframe for the socketLift
+        for driverValue, value in zip((0, 10, -10), (1, 10, -10)):
+            mc.setDrivenKeyframe("{0}_ctrl.scaleY".format(socketLiftCluster),
+                                        currentDriver="{}.socketLift".format(upperLidCtrl), 
+                                        dv=driverValue,
+                                        itt="linear",
+                                        ott= "linear", 
+                                        value=value)
+
+        # handle the automation of the scaling through the rotation of the upperLid driver
+        for driverValue, value in zip((0, -20), (1, 10)):
+            mc.setDrivenKeyframe("{0}_def_auto.scaleY".format(socketStretchCluster),
+                                            currentDriver="{}.rotateX".format(upperLidCtrl), 
+                                            dv=driverValue,
+                                            itt="linear",
+                                            ott= "linear", 
+                                            value=value)
+
+        # connect the scale of the uppper lid control to the socket stretch cluster
+        mc.connectAttr("{}.scaleY".format(upperLidCtrl), "{}_ctrl.scaleY".format(socketStretchCluster), f=True)
+        # connect the position and rotation of socketStretchCluster to socketLiftCluster
+        mc.connectAttr("{}_ort.rotate".format(socketStretchCluster), "{}_ort.rotate".format(socketLiftCluster), f=True)
+        mc.connectAttr("{}_ort.translate".format(socketStretchCluster), "{}_ort.translate".format(socketLiftCluster), f=True)
 
     def postBuild(self):
         '''

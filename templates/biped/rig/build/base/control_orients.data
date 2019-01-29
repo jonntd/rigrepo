@@ -1,7 +1,7 @@
 {
     "type": "NodeData", 
     "user": "Walter Yoder", 
-    "time": "2019-01-29 05:06:49", 
+    "time": "2019-01-29 08:17:51", 
     "data": {
         "ankle_fk_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
@@ -3176,6 +3176,44 @@
             ], 
             "rotateOrder": 0
         }, 
+        "socketLift_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|socketLift_l_cluster_nul|socketLift_l_cluster_ort", 
+            "translate": [
+                0.2669, 
+                -0.8289, 
+                0.9648
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "socketLift_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|socketLift_r_cluster_nul|socketLift_r_cluster_ort", 
+            "translate": [
+                -0.267, 
+                -0.829, 
+                0.965
+            ], 
+            "rotate": [
+                0.0, 
+                -0.0, 
+                0.0
+            ], 
+            "scale": [
+                -1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
         "thighSwing_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort", 
             "translate": [
@@ -3437,6 +3475,44 @@
             ], 
             "scale": [
                 1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "socketStretch_l_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|socketStretch_l_cluster_nul|socketStretch_l_cluster_ort", 
+            "translate": [
+                0.2669, 
+                -0.8289, 
+                0.9648
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "socketStretch_r_cluster_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|socketStretch_r_cluster_nul|socketStretch_r_cluster_ort", 
+            "translate": [
+                -0.267, 
+                -0.829, 
+                0.965
+            ], 
+            "rotate": [
+                0.0, 
+                -0.0, 
+                0.0
+            ], 
+            "scale": [
+                -1.0, 
                 1.0, 
                 1.0
             ], 

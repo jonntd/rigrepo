@@ -213,31 +213,34 @@ mc.setAttr(deltaMush+".displacement", 0)
 for side in ['l','r']:
     mesh = "lid_%s_bindmesh" % (side)
     curve = "lid_%s_curve" % (side)
-    for section in ['Upper', 'Lower']:
-        newClusterList=rigrepo.libs.cluster.transferCluster(source, mesh, "blink%s_%s_cluster" % (section, side), handle=True, surfaceAssociation="closestPoint", createNew=True)
-        for deformer in newClusterList:
-            wtObj = rigrepo.libs.weights.getWeights(deformer, geometry=mesh)
-            sourceWtObj = rigrepo.libs.weights.getWeights(deformer.split("__")[-1], geometry=source)
-            weightList = list()
-            i = 0
-            weights = wtObj.getWeights()[0]
-            sourceWeights = sourceWtObj.getWeights()[0]
-            for wt in weights:
-                j = i
-                if j + 1 >= len(weights):
-                    break
-                # get the closest point on the curve so we can use that to get the closest
-                mPoint = rigrepo.libs.curve.getPointOnCurveFromPosition(curve, "%s.cp[%s]" % (mesh, j))
-                mc.setAttr("%s.inPosition" % (temp), mPoint.x, mPoint.y, mPoint.z)
-                vrtId = mc.getAttr("%s.closestVertexIndex" % (temp))
-                wtValue = sourceWeights[vrtId]
-                while i <= j + 3:
-                    weights[i] = wtValue
-                    i +=1
-                    
-            weightList.append(weights)
-            wtObj.setWeights(weightList)
-            rigrepo.libs.weights.setWeights(deformer, wtObj, geometry=mesh)
+    newClusterList = list()
+    newClusterList.extend(mc.ls("%s*socketStretch_%s_cluster" % (mesh,side)))
+    for section in ['Upper', 'Lower']: 
+        newClusterList.extend(rigrepo.libs.cluster.transferCluster(source, mesh, "blink%s_%s_cluster" % (section, side), handle=True, surfaceAssociation="closestPoint", createNew=True))
+        
+    for deformer in newClusterList:
+        wtObj = rigrepo.libs.weights.getWeights(deformer, geometry=mesh)
+        sourceWtObj = rigrepo.libs.weights.getWeights(deformer.split("__")[-1], geometry=source)
+        weightList = list()
+        i = 0
+        weights = wtObj.getWeights()[0]
+        sourceWeights = sourceWtObj.getWeights()[0]
+        for wt in weights:
+            j = i
+            if j + 1 >= len(weights):
+                break
+            # get the closest point on the curve so we can use that to get the closest
+            mPoint = rigrepo.libs.curve.getPointOnCurveFromPosition(curve, "%s.cp[%s]" % (mesh, j))
+            mc.setAttr("%s.inPosition" % (temp), mPoint.x, mPoint.y, mPoint.z)
+            vrtId = mc.getAttr("%s.closestVertexIndex" % (temp))
+            wtValue = sourceWeights[vrtId]
+            while i <= j + 3:
+                weights[i] = wtValue
+                i +=1
+                
+        weightList.append(weights)
+        wtObj.setWeights(weightList)
+        rigrepo.libs.weights.setWeights(deformer, wtObj, geometry=mesh)
 
 mc.delete(deltaMush)
 mc.delete(temp)

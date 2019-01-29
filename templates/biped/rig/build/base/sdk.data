@@ -1,7 +1,7 @@
 {
     "type": "SdkData", 
     "user": "Walter Yoder", 
-    "time": "2019-01-21 20:37:09", 
+    "time": "2019-01-29 08:49:37", 
     "data": {
         "blinkLower_l_cluster_def_auto_rotateX": {
             "dagPath": "blinkLower_l_cluster_def_auto_rotateX", 
@@ -1848,7 +1848,7 @@
                 {
                     "l": true, 
                     "oa": -9.25407127759929, 
-                    "ia": -9.254070029853384, 
+                    "ia": -9.254070029853388, 
                     "v": 6.000000000000001, 
                     "dv": 1.6076817512512207, 
                     "itt": "fixed", 
@@ -1875,7 +1875,7 @@
                 {
                     "l": true, 
                     "oa": -9.25407127759929, 
-                    "ia": -9.254070029853384, 
+                    "ia": -9.254070029853388, 
                     "v": 6.000000000000001, 
                     "dv": 1.6076817512512207, 
                     "itt": "fixed", 
@@ -3994,6 +3994,60 @@
                     "itt": "fixed", 
                     "ott": "fixed", 
                     "ow": 6.155850728352864
+                }
+            ]
+        }, 
+        "socketStretch_l_cluster_def_auto_scaleY": {
+            "dagPath": "socketStretch_l_cluster_def_auto_scaleY", 
+            "driven": "socketStretch_l_cluster_def_auto.scaleY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "lidUpper_l.rotateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.011936620559197999, 
+                    "ia": 0.0, 
+                    "v": 1.1, 
+                    "dv": -20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": -0.011936620559197999, 
+                    "v": 1.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }
+            ]
+        }, 
+        "socketStretch_r_cluster_def_auto_scaleY": {
+            "dagPath": "socketStretch_r_cluster_def_auto_scaleY", 
+            "driven": "socketStretch_r_cluster_def_auto.scaleY", 
+            "preInfinity": 0, 
+            "postInfinity": 0, 
+            "driver": "lidUpper_r.rotateX", 
+            "keyframes": [
+                {
+                    "l": true, 
+                    "oa": -0.011936620559197999, 
+                    "ia": 0.0, 
+                    "v": 1.1, 
+                    "dv": -20.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
+                }, 
+                {
+                    "l": true, 
+                    "oa": 0.0, 
+                    "ia": -0.011936620559197999, 
+                    "v": 1.0, 
+                    "dv": 0.0, 
+                    "itt": "linear", 
+                    "ott": "linear"
                 }
             ]
         }
