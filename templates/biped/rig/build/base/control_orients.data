@@ -1,7 +1,7 @@
 {
     "type": "NodeData", 
     "user": "Walter Yoder", 
-    "time": "2019-01-21 20:37:30", 
+    "time": "2019-01-29 05:06:49", 
     "data": {
         "ankle_fk_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort", 
@@ -708,6 +708,44 @@
         }, 
         "elbow_fk_r_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort|shoulder_fk_r|elbow_fk_r_nul|elbow_fk_r_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "eye_l_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|eyeSocket_l_nul|eyeSocket_l|eye_l_nul|eye_l_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "eye_r_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|eyeSocket_r_nul|eyeSocket_r|eye_r_nul|eye_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2408,6 +2446,25 @@
                 -170.0, 
                 0.0, 
                 180.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0
+        }, 
+        "lookAt_trs_ort": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|lookAt|lookAt_trs_nul|lookAt_trs_ort", 
+            "translate": [
+                0.0, 
+                0.0, 
+                23.807
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "scale": [
                 1.0, 

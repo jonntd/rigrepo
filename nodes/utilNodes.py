@@ -21,9 +21,11 @@ class ClusterControlNode(commandNode.CommandNode):
         commandAttribute = self.getAttributeByName('command')
 
         # these are the list attributes that will be used and replaced in the command.
+        self.addAttribute('displayHandle', True, attrType=bool, index=0)
         self.addAttribute('parent', 'rig', attrType=str, index=0)
         self.addAttribute('nameList', '["cluster_control"]', attrType=str, index=0)
         self.addAttribute('geometry', 'body_geo', attrType=str, index=0)
+
 
         # create the command that the user can change later.
         cmd='''
@@ -37,7 +39,8 @@ for name in {nameList}:
     mc.rename(name, '%s_cluster' % name)
     mc.rename('%s_ctrl' % name, name)
     mc.xform("%s_nul" % name, ws=True, matrix=mc.xform("{parent}", q=True, ws=True, matrix=True))
-    mc.setAttr("%s.displayHandle" % name, 1)
+    if {displayHandle}:
+        mc.setAttr("%s.displayHandle" % name, 1)
     rigrepo.libs.control.tagAsControl(name)
 '''
 
@@ -52,4 +55,6 @@ for name in {nameList}:
         parent = self.getAttributeByName("parent").getValue()
         nameList = eval(self.getAttributeByName("nameList").getValue())
         geometry = self.getAttributeByName('geometry').getValue()
-        exec(self.getAttributeByName('command').getValue().format(nameList=nameList,parent=parent, geometry=geometry))
+        displayHandle = self.getAttributeByName('displayHandle').getValue()
+        exec(self.getAttributeByName('command').getValue().format(nameList=nameList,parent=parent, 
+            geometry=geometry, displayHandle=displayHandle))

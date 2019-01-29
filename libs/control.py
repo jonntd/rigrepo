@@ -19,6 +19,9 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
     if data.has_key(controlType):
         control = rigrepo.libs.curve.createCurveFromPoints(data[controlType]['cvPositions'], 
             degree=data[controlType]['degree'],name=name)
+    elif controlType == "circle":
+        control = mc.circle(name=name, c=(0, 0, 0), nr=(0, 1, 0), sw=360, r=1, 
+                                d=3, ut=0, tol=0.01, s=8, ch=False) [0]
     else:
         control = mc.createNode("transform", name=name)
         mc.setAttr("{0}.displayHandle".format(control), 1)

@@ -167,6 +167,8 @@ def nodes(variant='base', buildNow=False, debug=True):
     reload(rigrepo.parts.autoParent)
     import rigrepo.parts.tongue
     reload(rigrepo.parts.tongue)
+    import rigrepo.parts.lookAt
+    reload(rigrepo.parts.lookAt)
 
     #reload templates
     import rigrepo.templates.archetype.rig.build.archetype_base_rig

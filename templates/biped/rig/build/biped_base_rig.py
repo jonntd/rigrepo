@@ -24,6 +24,7 @@ import rigrepo.parts.blink
 import rigrepo.parts.face
 import rigrepo.parts.brow
 import rigrepo.parts.tongue
+import rigrepo.parts.lookAt
 
 import rigrepo.nodes.controlDefaultsNode as controlDefaultsNode
 import os
@@ -192,6 +193,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         l_blink = rigrepo.parts.blink.BlinkNew("l_blink", anchor="face_upper")
         r_blink = rigrepo.parts.blink.BlinkNew("r_blink",side="r", anchor="face_upper")
         r_blink.getAttributeByName("side").setValue("r")
+        lookAtNode = rigrepo.parts.lookAt.LookAt("lookAt")
         mouth = rigrepo.parts.mouth.Mouth("mouth", lipMainCurve='lip_main_curve')
         mouth.getAttributeByName("orientFile").setValue(self.resolveDataFilePath('control_orients.data', self.variant))
         mouthBindGeometry = rigrepo.nodes.commandNode.CommandNode('bindGeometry')
@@ -257,10 +259,13 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
         leftCheekLiftClusterNode.getAttributeByName("nameList").setValue("['cheekLift_l']")
         leftCheekLiftClusterNode.getAttributeByName("geometry").setValue("body_geo")
         leftCheekLiftClusterNode.getAttributeByName("parent").setValue("lidLower_l")
+        leftCheekLiftClusterNode.getAttributeByName("displayHandle").setValue(False)
+
         rightCheekLiftClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("r_cheekLift")
         rightCheekLiftClusterNode.getAttributeByName("nameList").setValue("['cheekLift_r']")
         rightCheekLiftClusterNode.getAttributeByName("geometry").setValue("body_geo")
         rightCheekLiftClusterNode.getAttributeByName("parent").setValue("lidLower_r")
+        rightCheekLiftClusterNode.getAttributeByName("displayHandle").setValue(False)
         mouthCornerDistanceNode = rigrepo.nodes.commandNode.CommandNode('mouthCornerDistance')
         mouthCornerDistanceNodeCmd = '''
 import maya.cmds as mc
@@ -328,7 +333,7 @@ for side in ["l","r"]:
         browsNode.addChildren([l_brow, r_brow])
 
         eyesNode = pubs.pNode.PNode("eyes")
-        eyesNode.addChildren([l_blink, r_blink])
+        eyesNode.addChildren([l_blink, r_blink, lookAtNode])
 
         
         # add nodes ass children of body

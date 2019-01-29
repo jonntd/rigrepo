@@ -28,7 +28,7 @@ class Face(part.Part):
         self.addAttribute("faceMidJoint", "face_mid_bind", attrType=str)
         self.addAttribute("noseBridge", "nose_bridge_bind", attrType=str)
         self.addAttribute("upperTeeth", "teeth_upper_bind", attrType=str)
-        self.addAttribute("lowerTeeth", "teeth_upper_bind", attrType=str)
+        self.addAttribute("lowerTeeth", "teeth_lower_bind", attrType=str)
         self.addAttribute("nose", "nose_bind", attrType=str)
         self.addAttribute("geometry", "body_geo", attrType=str)
 
@@ -55,6 +55,8 @@ class Face(part.Part):
         upperTeeth = self.getAttributeByName("upperTeeth").getValue()
         lowerTeeth = self.getAttributeByName("lowerTeeth").getValue()
         geometry = self.getAttributeByName("geometry").getValue()
+        teethUpperJoint = self.getAttributeByName("upperTeeth").getValue()
+        teethLowerJoint = self.getAttributeByName("lowerTeeth").getValue()
 
 
         # JAW
@@ -92,7 +94,19 @@ class Face(part.Part):
             mc.rename('{}_ctrl'.format(lipLower), lipLower)
             mc.xform("{}_nul".format(lipLower), ws=True, matrix=mc.xform(jawCtrl, q=True, ws=True, matrix=True))
             mc.setAttr("{}.displayHandle".format(lipLower), 1)
-            control.tagAsControl(lipLower)     
+            control.tagAsControl(lipLower)   
+
+            # Lowerteeth control
+            if mc.objExists(teethLowerJoint):
+                teethLowerNul, teethLowerDefAuto, teethLowerCtrl = control.create(name="teeth_lower", 
+                                                                      controlType="null",
+                                                                      color=common.RED,
+                                                                      hierarchy=['nul', 'def_auto'],
+                                                                      parent=jawCtrl)
+
+                mc.xform(teethLowerNul, ws=True, matrix=mc.xform(teethLowerJoint, q=True, ws=True, matrix=True))
+                mc.pointConstraint(teethLowerCtrl, teethLowerJoint)
+                mc.orientConstraint(teethLowerCtrl, teethLowerJoint)
 
         # FACE LOWER
         if mc.objExists(faceLowerJoint):
@@ -293,7 +307,19 @@ class Face(part.Part):
             mc.rename('{}_ctrl'.format(lipUpper), lipUpper)
             mc.xform("{}_nul".format(lipUpper), ws=True, matrix=mc.xform(midDriver, q=True, ws=True, matrix=True))
             mc.setAttr("{}.displayHandle".format(lipUpper), 1)
-            control.tagAsControl(lipUpper)           
+            control.tagAsControl(lipUpper)   
+
+            # Lowerteeth control
+            if mc.objExists(teethUpperJoint):
+                teethUpperNul, teethUpperDefAuto, teethUpperCtrl = control.create(name="teeth_upper", 
+                                                                      controlType="null",
+                                                                      color=common.RED,
+                                                                      hierarchy=['nul', 'def_auto'],
+                                                                      parent=midDriver)
+
+                mc.xform(teethUpperNul, ws=True, matrix=mc.xform(teethUpperJoint, q=True, ws=True, matrix=True))
+                mc.pointConstraint(teethUpperCtrl, teethUpperJoint)
+                mc.orientConstraint(teethUpperCtrl, teethUpperJoint)        
 
 
 
