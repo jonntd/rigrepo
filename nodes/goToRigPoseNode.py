@@ -66,6 +66,8 @@ try:
     for deformer in mc.ls(mc.listHistory("body_geo"), type="wire"):
         mc.setAttr(deformer+".freezeGeometry", 1)
 
+    # set poseAttr for freezing when rig is loaded.
+    rigrepo.libs.control.setPoseAttr(controls, 9)
     if controls:
         # Got to bind pose
         rigrepo.libs.control.toPoseAttr(controls, 0)
@@ -75,8 +77,6 @@ except:
     mc.undoInfo(closeChunk=1)
     traceback.print_exc()
 mc.undoInfo(closeChunk=1)
-
-
 '''
         # command 
         commandAttribute.setValue(cmd)

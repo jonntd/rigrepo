@@ -369,12 +369,16 @@ for side in ["l","r"]:
         bindmeshTransferClusterLidsNode = rigrepo.nodes.transferDeformer.TransferClusterLids('transferLidsClusters', 
                                                             source="body_geo")
         freezeWireNode = rigrepo.nodes.goToRigPoseNode.GoToFreezePoseNode('freezeWire')
+        freezeWireExpression = rigrepo.nodes.utilNodes.FreezeWireExpressionNode("FreezeWireExpression")
+
+        freezeWireNode.addChild(freezeWireExpression)
 
         lipYankNode = rigrepo.nodes.yankClusterNode.YankClusterNode('WireToClusters',
                                                     clusters='[trs+"_cluster" for trs in mc.ls("lip_*.__control__", o=True)]',
                                                     transforms='mc.ls("lip_*.__control__", o=True)',
                                                     selected=False,
                                                     geometry="body_geo")
+        
         applyWireNode = applyDeformerNode.getChild("wire")
         applyWireNode.addChildren([freezeWireNode, lipYankNode])
 
