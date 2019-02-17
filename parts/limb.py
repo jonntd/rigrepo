@@ -333,16 +333,12 @@ class Limb(part.Part):
             updatedDistance = (newDistance - currentDistance) / 2
             # check what direction the delta is in. If we need to flip it we will use abs to match
             if flip:
-                print "something"
                 if updatedDistance < 0:
                     for attr in ["stretchTop", "stretchBottom"]:
                         mc.setAttr("{}.{}".format(paramNode, attr), mc.getAttr("{}.{}".format(paramNode, attr)) - abs(updatedDistance))
-                    print "it' working----right"
             elif updatedDistance > 0:
-                print "something"
                 for attr in ["stretchTop", "stretchBottom"]:
                     mc.setAttr("{}.{}".format(paramNode, attr), mc.getAttr("{}.{}".format(paramNode, attr)) - updatedDistance)
-                print "it' working---- left"
             #print "current distance: ", currentDistance, "\nupdated distance: ", updatedDistance, "\nnew distance: ", newDistance
 
         mc.undoInfo(closeChunk=1)
