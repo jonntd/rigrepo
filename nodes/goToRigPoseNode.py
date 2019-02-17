@@ -72,6 +72,8 @@ try:
         # Got to bind pose
         rigrepo.libs.control.toPoseAttr(controls, 0)
 
+    mc.setAttr('jaw.rx', 0)
+
 
 except:
     mc.undoInfo(closeChunk=1)

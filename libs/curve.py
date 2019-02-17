@@ -4,7 +4,7 @@ import rigrepo.libs.transform
 import rigrepo.libs.common
 from rigrepo.libs.common import getMirrorName
 
-def createCurveFromPoints(points, degree=3, name='curve'):
+def createCurveFromPoints(points, degree=3, name='curve', transformType="transform"):
         '''
         :param points: Points you wish to use to create a curve
         :type points: list
@@ -34,6 +34,12 @@ def createCurveFromPoints(points, degree=3, name='curve'):
         # rename all of the shapes that are children of the curve. In this instance, there should
         # only be one.
         for shape in mc.listRelatives(curve, c=True, type="shape"):
+            if transformType == "joint":
+                trsTypeName =mc.createNode("joint", name="{}_jtn".format(name))
+                mc.parent(shape, trsTypeName, r=True, shape=True)
+                mc.delete(curve)
+                mc.rename(trsTypeName, curve)
+                mc.setAttr("{}.drawStyle".format(curve), 2)
             mc.rename(shape, "{}Shape".format(curve))
         
         return curve

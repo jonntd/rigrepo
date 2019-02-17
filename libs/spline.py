@@ -178,7 +178,43 @@ class SplineBase(object):
         mc.connectAttr(twist_add+'.output1D', self._ikHandle+'.twist')
 
         # Connect to bind joints
+        i = 0
         for ik,bind in zip(self._ikJointList, self._jointList):
+            mc.addAttr(self._group, ln="scale_{}".format(i), at="double", min=0, max=1, dv=0)
             mc.pointConstraint(ik, bind, mo=1)
             mc.orientConstraint(ik, bind, mo=1)
             mc.connectAttr(ik+'.s', bind+'.s')
+            blendNode = mc.createNode("blendColors", n="{}_scale_blend".format(ik))
+            addNode = mc.createNode("plusMinusAverage", n="{}_scale_add".format(ik))
+            subtractNode = mc.createNode("plusMinusAverage", n="{}_scale_subtract".format(ik))
+
+            # set add and subtract attributes
+            mc.setAttr("{}.input1D[0]".format(subtractNode), 1)
+            mc.setAttr("{}.operation".format(subtractNode), 2)
+            mc.connectAttr("{}.outputR".format(blendNode), "{}.input1D[1]".format(subtractNode), f= True)
+
+            # set add and subtract attributes
+            mc.setAttr("{}.input1D[1]".format(addNode), 1)
+            mc.connectAttr("{}.output1D".format(subtractNode), "{}.input1D[0]".format(addNode), f= True)
+
+            # make connections
+            mc.connectAttr("{}.outputX".format(full_scale), "{}.color1R".format(blendNode), f=True)
+            mc.connectAttr("{}.scale_{}".format(self._group, i), "{}.blender".format(blendNode), f=True)
+            mc.setAttr("{}.color2R".format(blendNode), 1.0)
+            for attr in ['sy', 'sz']:
+                mc.connectAttr("{}.output1D".format(addNode), '{}.{}'.format(ik, attr), f= True)
+            i += 1
+
+        # set the scale for the spine
+        setScaleList = list(self._ikJointList)
+        value = 1.0
+        size = len(setScaleList)
+        valueScale = value/size
+        for i in xrange(size):
+            #minus 1 because the first element is index 0
+            middleIndex = (len(setScaleList) - 1)/2
+            mc.setAttr("{}.scale_{}".format(self._group, self._ikJointList.index(setScaleList[middleIndex])), value)
+            value-=valueScale
+            setScaleList.pop(middleIndex)
+
+

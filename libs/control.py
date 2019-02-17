@@ -10,7 +10,7 @@ import maya.cmds as mc
 CONTROLPATH = os.path.join(os.path.dirname(os.path.dirname(__file__)),'etc','controls.data')
 DEBUG = False
 def create(name="control", controlType = "square", hierarchy=['nul'], position=[0,0,0],
-        rotation=[0,0,0], hideAttrs=['v'], parent=None, color=rigrepo.libs.common.BLUE):
+        rotation=[0,0,0], hideAttrs=['v'], parent=None, color=rigrepo.libs.common.BLUE, transformType="transform"):
     '''
     '''
     curveData = rigrepo.libs.data.curve_data.CurveData()
@@ -18,12 +18,12 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
     data = curveData.getData()
     if data.has_key(controlType):
         control = rigrepo.libs.curve.createCurveFromPoints(data[controlType]['cvPositions'], 
-            degree=data[controlType]['degree'],name=name)
+            degree=data[controlType]['degree'],name=name, transformType=transformType)
     elif controlType == "circle":
         control = mc.circle(name=name, c=(0, 0, 0), nr=(0, 1, 0), sw=360, r=1, 
                                 d=3, ut=0, tol=0.01, s=8, ch=False) [0]
     else:
-        control = mc.createNode("transform", name=name)
+        control = mc.createNode(transformType, name=name)
         mc.setAttr("{0}.displayHandle".format(control), 1)
     for attr in hideAttrs:
         if mc.objExists(control+'.'+attr):

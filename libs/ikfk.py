@@ -222,8 +222,7 @@ class IKFKBase(object):
                     "{0}.rotate".format(blendJnt), f=True)
                 mc.connectAttr("{0}.output".format(trsbcn), 
                     "{0}.translate".format(blendJnt), f=True)
-
-
+                
 class IKFKLimb(IKFKBase):
     '''
     This class is meant for creating three joint ik/fk systems using a rotate plane solver.
@@ -258,7 +257,7 @@ class IKFKLimb(IKFKBase):
         super(IKFKLimb, self).setJointList(value)
 
     @staticmethod
-    def createStretchIK(ikHandle, grp):
+    def createStretchIK(ikHandle, grp=None):    
         '''
         creates a stretchy joint chain based off of influences on ikHandle
         
@@ -281,7 +280,7 @@ class IKFKLimb(IKFKBase):
         mc.addAttr(grp, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
         mc.addAttr(grp, ln='stretchTop', at='double', dv = 1, k=True)
         mc.addAttr(grp, ln='stretchBottom', at='double', dv = 1, k=True)
-        mc.addAttr(grp, ln='softStretch', at='double', min=0, max=1, dv=.2, k=True)
+        mc.addAttr(grp, ln='softStretch', at='double', min=.001, max=1, dv=.001, k=True)
         stretchAttr  = '{}.stretch'.format(grp)
         stretchTopAttr = '{}.stretchTop'.format(grp)
         stretchBottomAttr = '{}.stretchBottom'.format(grp)
@@ -289,7 +288,7 @@ class IKFKLimb(IKFKBase):
         
         #get joints influenced by the ikHandle
         jnts = mc.ikHandle(ikHandle, q = True, jl = True)
-        jnts.append(mc.listRelatives(jnts[-1], c = True)[0])
+        jnts.append(mc.listRelatives(jnts[-1], c = True, type="joint")[0])
 
         #create tgt joints for distance node
         targetJnt1 = mc.createNode('joint', n = '{}_{}'.format(jnts[0], common.TARGET))
@@ -468,8 +467,11 @@ class IKFKLimb(IKFKBase):
         return [targetJnt1, targetJnt2]
     
     @staticmethod
-    def ikMatchFk(fkJoints, ikDriver, pvDriver):
-        newPvPos = IKFKLimb.getPoleVectorPosition(fkJoints)
+    def ikMatchFk(fkJoints, ikDriver, pvDriver, matchNode):
+        if matchNode:
+            newPvPos = mc.xform(matchNode, q=True, ws=True, t=True)
+        else:
+            newPvPos = IKFKLimb.getPoleVectorPosition(fkJoints)
         endJntMatrix = mc.xform(fkJoints[2], q=True, ws=True, matrix=True)
         
         mc.xform(pvDriver, ws=True, t=newPvPos)
@@ -522,21 +524,15 @@ class IKFKLimb(IKFKBase):
 
         return (poleVector.x, poleVector.y, poleVector.z)
 
-    def getPoleVectorFromHandle(self):
+    @staticmethod
+    def getPoleVectorFromHandle(handle, jointList):
         '''
+        This will get the poleVector from the handle.
         '''
-        if not mc.objExists(self._handle):
-            raise RuntimeError("The handle doesn't exist in the current Maya session!!!!")
-        '''
-        startPoint = om.MPoint(*mc.xform(self._ikJointList[0], q=True, ws=True, t=True))
-        endPoint = om.MPoint(*mc.xform(self._ikJointList[-1], q=True, ws=True, t=True))
+        pvDistanceVector = om.MVector(*mc.xform(jointList[1], q=True, relative=True, t=True))
 
-        pvDistanceVector = (endPoint - startPoint) / 2
-        '''
-        pvDistanceVector = om.MVector(*mc.xform(self._ikJointList[1], q=True, relative=True, t=True))
-
-        poleVector = om.MVector(*mc.getAttr("{0}.poleVector".format(self._handle))[0]) * pvDistanceVector.length()
-        poleVector = poleVector + om.MVector(*mc.xform(self._jointList[0], q=True, ws=True, t=True))
+        poleVector = om.MVector(*mc.getAttr("{0}.poleVector".format(handle))[0]) * pvDistanceVector.length()
+        poleVector = poleVector + om.MVector(*mc.xform(jointList[0], q=True, ws=True, t=True))
 
         return (poleVector.x, poleVector.y, poleVector.z)
 

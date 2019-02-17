@@ -11,7 +11,7 @@ class Foot(part.Part):
     '''
     '''
     def __init__(self, name, jointList, ankleHandle, fkAnchor, ikAnchor='ankle_l_bind_ik_offset', 
-                anklePivot='ankle_l_pivot', ankleStretchTarget="ankle_l_bind_ik_tgt", ikfkGroup=None):
+                anklePivot='ankle_l_pivot', ankleStretchTarget="ankle_l_bind_ik_tgt", ikfkGroup=None, paramNodeName=None):
         '''
         This is the constructor for the foot. We will initialize all of the attributes for this
         object in the constructor.
@@ -63,6 +63,9 @@ class Foot(part.Part):
         self.addAttribute("fkAnchor", fkAnchor, attrType=str)
         self.addAttribute("ikfkGroup", ikfkGroup, attrType=str)
         self.addAttribute("ankleStretchTarget",ankleStretchTarget, attrType=str)
+        if not paramNodeName:
+            paramNodeName = ""
+        self.addAttribute("paramNode", paramNodeName, attrType=str)
         
     def build(self):
         '''
@@ -75,6 +78,7 @@ class Foot(part.Part):
         self._jointList = self.getAttributeByName("jointList").getValue()
         self._ikAnchor = self.getAttributeByName("ikAnchor").getValue()
         self._fkAnchor = self.getAttributeByName("fkAnchor").getValue()
+        paramNode = self.getAttributeByName("paramNode").getValue()
         ikfkGroup = self.getAttributeByName("ikfkGroup").getValue()
         ankleStretchTarget=self.getAttributeByName("ankleStretchTarget").getValue()
 
@@ -104,6 +108,9 @@ class Foot(part.Part):
         #parent the ankle handle to the pivot hierarchy
         if mc.objExists(self._ikAnchor):
             mc.parent(self._anklePivot, self._ikAnchor)
+            ikJointList = self.ikfkSystem.getIkJointList()
+            mc.pointConstraint(ankleStretchTarget, ikJointList[0])
+
 
         # get blend joint list
         blendJointList = self.ikfkSystem.getBlendJointList()
@@ -118,6 +125,8 @@ class Foot(part.Part):
         #-------------------------------------------------------------------------------------------
         # get the fk joint list from the ikfk system
         fkJointList = self.ikfkSystem.getFkJointList()
+
+        #mc.pointConstraint(self._fkAnchor, fkJointList)
 
         # create the ball fk control
         ballFkctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(fkJointList[1]), 
@@ -172,6 +181,7 @@ class Foot(part.Part):
                                                 hierarchy=['nul', 'ort'],
                                                 parent=self._anklePivot,
                                                 color=rigrepo.libs.common.RED)
+        ikControlList = [bankctrlHierarchy[-1]]
         # get the ball pivot position
         ballJntTrs = mc.xform(self._jointList[1], q=True, ws=True, t=True)
         mc.xform(bankctrlHierarchy[0], ws=True, t=ballJntTrs)
@@ -234,6 +244,8 @@ class Foot(part.Part):
             mc.xform(pivotctrlHierarchy[0], ws=True, matrix=pivotMatrix)
             mc.parent(pivot, pivotctrlHierarchy[-1])
 
+            ikControlList.append(pivotctrlHierarchy[-1])
+
             if parent:
                 mc.parent(pivotctrlHierarchy[0], parent)
 
@@ -249,3 +261,91 @@ class Foot(part.Part):
         # turn off the visibility of handles
         for handle in self.ikfkSystem.getHandles():
             mc.setAttr("{}.v".format(handle), 0)
+
+
+        # if the param node that is past in exists then we will add attributes to it.
+        # if not, we will make one of our own and put them on the controls
+        if not mc.objExists(paramNode):
+            paramNode = mc.createNode("locator", name=paramNodeName)
+            paramNodeTrs = mc.listRelatives(paramNode, p=True)[0]
+            mc.select(cl=True)
+            # lock and hide attributes on the Param node that we don't need.
+            rigrepo.libs.attribute.lockAndHide(paramNode, ['lpx','lpy','lpz','lsx','lsy','lsz'])
+
+            mc.setAttr("{0}.v".format(paramNode), 0)
+            mc.addAttr(paramNode, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
+            ikfkAttr = "{0}.ikfk".format(paramNode)
+
+        # create the offset joint for the matching to work
+        ballOffsetJoint = mc.joint(name="{}_offset".format(ikControlList[-1]))
+        mc.setAttr("{}.v".format(ballOffsetJoint), 0)
+        mc.parent(ballOffsetJoint, ballFkctrlHierarchy[-1])
+        mc.xform(ballOffsetJoint, ws=True, matrix=mc.xform(ikControlList[-1], q=True, ws=True, matrix=True))
+
+        #------------------------------------------------------------------------------------------
+        #Setup attributes on the param node for the ikfk switch.
+        #------------------------------------------------------------------------------------------
+        # fk match attributes needed to the switch
+        mc.addAttr(paramNode, ln="footFkMatchTransform", dt="string")
+        mc.setAttr("{}.footFkMatchTransform".format(paramNode), 
+                '"{0}"'.format(ballOffsetJoint), 
+                type="string")
+
+        mc.addAttr(paramNode, ln="footFkControl", dt="string")
+        mc.setAttr("{}.footFkControl".format(paramNode), 
+                '"{0}"'.format(ballFkctrlHierarchy[-1]), 
+                type="string")
+
+        # ik match attributes needed for the switch
+        mc.addAttr(paramNode, ln="footIkMatchTransform", dt="string")
+        mc.setAttr("{}.footIkMatchTransform".format(paramNode), 
+                '"{0}"'.format(ikJointList[1]), 
+                type="string")
+        mc.addAttr(paramNode, ln="footIkControls", dt="string")
+        mc.setAttr("{}.footIkControls".format(paramNode), 
+                '["{0}","{1}","{2}","{3}","{4}"]'.format(*ikControlList), 
+                type="string")
+
+        # command to be called when switch is being used.
+        mc.addAttr(paramNode, ln="footSwitchCommand", dt="string")
+        mc.setAttr("{}.switchCommand".format(paramNode), "rigrepo.parts.foot.Foot.switch", 
+                    type="string")
+
+    def postBuild(self):
+        '''
+        '''
+        for joint in (self.ikfkSystem.getFkJointList()[0], self.ikfkSystem.getBlendJointList()[0], self.ikfkSystem.getIkJointList()[0]):
+            mc.setAttr("{}.v".format(joint), 0)
+
+
+    @staticmethod
+    def switch(paramNode, value):
+        '''
+        This will handle the switching between the fk and ik control
+        :param paramNode: Param node that is holding the data for the switch
+        :type paramNode: str
+
+        :param value: The value of the switch bewteen ik and fk
+        :type value: int
+        '''
+        if not mc.objExists(paramNode):
+            raise RuntimeError("{} doesn't exist in the current Maya session".format(paramNode))
+        # if we're in ik modes, we will match fk to the ik position and switch it to fk
+        mc.undoInfo(openChunk=1)
+        if value == 0:
+            fkControl = eval(mc.getAttr("{}.footFkControl".format(paramNode)))
+            ikMatchTransform = eval(mc.getAttr("{}.footIkMatchTransform".format(paramNode)))
+            mc.xform(fkControl, ws=True, matrix=mc.xform(ikMatchTransform, q=True, ws=True, matrix=True))
+            mc.setAttr("{}.ikfk".format(paramNode), 1)
+        elif value == 1:
+            # get the ik controls
+            ikControls = eval(mc.getAttr("{}.footIkControls".format(paramNode)))
+            # get the fk transforms
+            fkMatchTransform = eval(mc.getAttr("{}.footFkMatchTransform".format(paramNode)))
+            for control in ikControls:
+                attrs = mc.listAttr(control, keyable=True)
+                for attr in attrs:
+                    mc.setAttr("{}.{}".format(control, attr), 0)
+            mc.xform(ikControls[-1], ws=True, matrix=mc.xform(fkMatchTransform, q=True, ws=True, matrix=True))
+            mc.setAttr("{}.ikfk".format(paramNode), 0)
+        mc.undoInfo(closeChunk=1)

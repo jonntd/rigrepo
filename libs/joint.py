@@ -27,7 +27,7 @@ def rotateToOrient(jointList):
         mc.setAttr("{0}.jo".format(jnt),*ori)
         mc.setAttr("{0}.r".format(jnt),0,0,0)
         mc.xform(jnt,p=True,roo=rotateOrder)
-        children = mc.listRelatives(jnt,c=True) or []
+        children = mc.listRelatives(jnt,c=True, type="joint") or []
         if children:
             mc.parent(children[0],w=True)
             mc.setAttr("{0}.rotateAxis".format(jnt),0,0,0)

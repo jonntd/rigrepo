@@ -86,6 +86,18 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          parentControl='clavicle_'+side,
                                                          inputControls=['shoulderSwing_'+side,
                                                                         'shoulder_fk_'+side],
+                                                         ikJointList=['shoulder_fk_'+side,
+                                                                      'elbow_fk_'+side,
+                                                                      'wrist_fk_'+side],
+                                                         autoBlendAttr='autoClav',
+                                                         side=side,
+                                                         ikBlendAttr=side+'_arm_rvr.output.outputX',
+                                                         anchor=side+'_arm_anchor_grp')
+        '''
+        l_autoClav = rigrepo.parts.autoParent.AutoParent(side+'_autoClav',
+                                                         parentControl='clavicle_'+side,
+                                                         inputControls=['shoulderSwing_'+side,
+                                                                        'shoulder_fk_'+side],
                                                          ikJointList=['shoulder_'+side+'_bind_ik',
                                                                       'elbow_'+side+'_bind_ik',
                                                                       'wrist_'+side+'_bind_ik'],
@@ -93,8 +105,10 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
                                                          anchor=side+'_arm_anchor_grp')
+                                                         '''
+
         # add hand to arm node.
-        l_arm.addChildren([l_hand, l_autoClav])
+        l_arm.addChildren([l_hand])#, l_autoClav])
 
         r_arm = rigrepo.parts.arm.Arm("r_arm",
                                     ['clavicle_r_bind', 
@@ -117,7 +131,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                             'index_001_r_bind', 
                                             'pinkyCup_r_bind', 
                                             'thumbCup_r_bind'], 
-                                        'wrist_r_bind_blend')
+                                        'wrist_r_bind')
 
         # Auto clavicle
         side = 'r'
@@ -125,15 +139,15 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          parentControl='clavicle_'+side,
                                                          inputControls=['shoulderSwing_'+side,
                                                                         'shoulder_fk_'+side],
-                                                         ikJointList=['shoulder_'+side+'_bind_ik',
-                                                                      'elbow_'+side+'_bind_ik',
-                                                                      'wrist_'+side+'_bind_ik'],
+                                                         ikJointList=['shoulder_fk_'+side,
+                                                                      'elbow_fk_'+side,
+                                                                      'wrist_fk_'+side],
                                                          autoBlendAttr='autoClav',
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
                                                          anchor=side+'_arm_anchor_grp')
         # add hand to arm node.
-        r_arm.addChildren([r_hand, r_autoClav])
+        r_arm.addChildren([r_hand])#, r_autoClav])
 
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",
@@ -147,12 +161,13 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         l_leg.getAttributeByName("clavicleCtrl").setValue("pelvis_l")
 
         l_foot = rigrepo.parts.foot.Foot("l_foot", ['ankle_l_bind', 'ball_l_bind', 'toe_l_bind'], 
-                                        'ankle_l_bind_ik_hdl', 
+                                        'ankle_fk_l_hdl', 
                                         fkAnchor='ankle_fk_l', 
-                                        ikAnchor='ankle_l_bind_ik_offset', 
+                                        ikAnchor='leg_ik_l', 
                                         anklePivot='ankle_l_pivot', 
-                                        ankleStretchTarget="ankle_l_bind_ik_tgt",
-                                        ikfkGroup='l_leg_ikfk_grp')
+                                        ankleStretchTarget="ankle_fk_l_offset",
+                                        ikfkGroup='l_leg_ikfk_grp',
+                                        paramNodeName='leg_L')
         # add foot to the leg node
         l_leg.addChild(l_foot)
 
@@ -168,12 +183,13 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         r_leg.getAttributeByName("clavicleCtrl").setValue("pelvis_r")
 
         r_foot = rigrepo.parts.foot.Foot("r_foot", ['ankle_r_bind', 'ball_r_bind', 'toe_r_bind'], 
-                                        'ankle_r_bind_ik_hdl', 
+                                        'ankle_fk_r_hdl', 
                                         fkAnchor='ankle_fk_r', 
-                                        ikAnchor='ankle_r_bind_ik_offset', 
+                                        ikAnchor='leg_ik_r', 
                                         anklePivot='ankle_r_pivot',
-                                        ankleStretchTarget="ankle_r_bind_ik_tgt",
-                                        ikfkGroup='r_leg_ikfk_grp')
+                                        ankleStretchTarget="ankle_fk_r_offset",
+                                        ikfkGroup='r_leg_ikfk_grp',
+                                        paramNodeName='leg_R')
         # add foot to the leg node
         r_leg.addChild(r_foot)
 
@@ -356,9 +372,11 @@ for side in ["l","r"]:
 
         # get the postBuild node
         postBuild = animRigNode.getChild('postBuild')
-        postBuild.addChild(controlsDefaults)
 
-        applyDeformerNode = animRigNode.getChild('apply').getChild('deformers')
+        applyNode = animRigNode.getChild('apply')
+        applyNode.addChild(controlsDefaults)
+
+        applyDeformerNode = applyNode.getChild('deformers')
         bindmeshTransferSkinWtsNode = rigrepo.nodes.transferDeformer.TransferDeformerBindmesh('bindmesh', 
                                                             source="body_geo",
                                                             target=["lid*_bindmesh", "lip*_bindmesh", "mouth*_bindmesh"],
@@ -378,7 +396,7 @@ for side in ["l","r"]:
                                                     transforms='mc.ls("lip_*.__control__", o=True)',
                                                     selected=False,
                                                     geometry="body_geo")
-        
+
         applyWireNode = applyDeformerNode.getChild("wire")
         applyWireNode.addChildren([freezeWireNode, lipYankNode])
 

@@ -9,7 +9,7 @@ import rigrepo.libs.control as control
 class Hand(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, anchor="wrist_l_bind_blend", dataObj=None):
+    def __init__(self, name, jointList, anchor="wrist_l_bind", dataObj=None):
         '''
         This is the constructor.
 
