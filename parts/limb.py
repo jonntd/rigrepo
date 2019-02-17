@@ -327,18 +327,23 @@ class Limb(part.Part):
             if currentDistance < 0:
                 flip=True
             rigrepo.libs.ikfk.IKFKLimb.ikMatchFk(fkMatchTransforms, ikControls[1], ikControls[0], matchNode)
+            mc.setAttr("{}.ikfk".format(paramNode), 0)
             # get the new distance
             newDistance = mc.getAttr("{}.tx".format(fkMatchTransforms[1])) + mc.getAttr("{}.tx".format(fkMatchTransforms[2]))
             updatedDistance = (newDistance - currentDistance) / 2
-            mc.setAttr("{}.ikfk".format(paramNode), 0)
             # check what direction the delta is in. If we need to flip it we will use abs to match
             if flip:
+                print "something"
                 if updatedDistance < 0:
                     for attr in ["stretchTop", "stretchBottom"]:
                         mc.setAttr("{}.{}".format(paramNode, attr), mc.getAttr("{}.{}".format(paramNode, attr)) - abs(updatedDistance))
+                    print "it' working----right"
             elif updatedDistance > 0:
+                print "something"
                 for attr in ["stretchTop", "stretchBottom"]:
                     mc.setAttr("{}.{}".format(paramNode, attr), mc.getAttr("{}.{}".format(paramNode, attr)) - updatedDistance)
+                print "it' working---- left"
+            #print "current distance: ", currentDistance, "\nupdated distance: ", updatedDistance, "\nnew distance: ", newDistance
 
         mc.undoInfo(closeChunk=1)
 
