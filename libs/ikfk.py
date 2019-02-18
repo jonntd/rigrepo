@@ -490,12 +490,7 @@ class IKFKLimb(IKFKBase):
         #end if
         if len(joints) != 3:
             raise RuntimeError('{} must have 3 joints in the list'.format(joints))
-        #end if
-        '''
-        for jnt in joints:
-            if mc.nodeType(jnt) != 'joint':
-                raise TypeError('{} must be a joint'.format(jnt))
-        '''
+            
         for jnt, ikJnt in zip(joints, ikJoints):
             matrix = mc.xform(ikJnt, q = True, ws = True, matrix=True)
             mc.xform(jnt, ws = True, matrix = matrix)

@@ -73,7 +73,6 @@ class Arm(limb.Limb):
         # parent the shoulderSwing control to the clavicle control.
         mc.parent((self._fkControls[0], self._stretchTargetJointList[0]), swingCtrl)
         mc.parent(swingNul, clavicleConnect)
-
         
         # Connect to passed anchor
         #
@@ -90,12 +89,6 @@ class Arm(limb.Limb):
         mc.setAttr("{}.rotateOrder".format(self._fkControls[0]), 2)
         # set the rotate order for the swing control
         mc.setAttr("{}.rotateOrder".format(swingCtrl), 2)
-
-        # make sure the target joint is good when it's in fk mode
-        stretchTargetParent = mc.listRelatives(self._stretchTargetJointList[-1], p=True)[0]
-        cst = mc.parentConstraint(stretchTargetParent, swingCtrl, self._stretchTargetJointList[-1], mo=True)[0]
-        mc.connectAttr("{}.v".format(self._ikControls[0]), "{}.{}W0".format(cst, stretchTargetParent), f=True)
-        mc.connectAttr("{}.v".format(self._fkControls[0]), "{}.{}W1".format(cst, swingCtrl), f=True)
 
         
 class ArmOld(limb.Limb):

@@ -5,44 +5,64 @@ import rigrepo.libs.common
 from rigrepo.libs.common import getMirrorName
 
 def createCurveFromPoints(points, degree=3, name='curve', transformType="transform"):
-        '''
-        :param points: Points you wish to use to create a curve
-        :type points: list
+    '''
+    :param points: Points you wish to use to create a curve
+    :type points: list
 
-        :param degree: The degree of the curve you want to create
-        :type degree: int
+    :param degree: The degree of the curve you want to create
+    :type degree: int
 
-        :param name: the name of the curve.
-        :type name: str
+    :param name: the name of the curve.
+    :type name: str
 
-        :return: The name of the curve that was created.
-        :rtype: str
-        '''
-        knotList = [0]
-        if degree == 1:
-            knotList.extend(range(len(points))[1:])
-        elif degree == 2:
-            knotList.extend(range(len(points) - 1))
-            knotList.append(knotList[-1]) 
-        elif degree == 3:
-            knotList.append(0) 
-            knotList.extend(range(len(points) - 2))
-            knotList.extend([knotList[-1],knotList[-1]]) 
-        
-        curve = mc.curve(name=name, p=points,k=knotList,degree=degree)
+    :return: The name of the curve that was created.
+    :rtype: str
+    '''
+    knotList = [0]
+    if degree == 1:
+        knotList.extend(range(len(points))[1:])
+    elif degree == 2:
+        knotList.extend(range(len(points) - 1))
+        knotList.append(knotList[-1]) 
+    elif degree == 3:
+        knotList.append(0) 
+        knotList.extend(range(len(points) - 2))
+        knotList.extend([knotList[-1],knotList[-1]]) 
+    
+    curve = mc.curve(name=name, p=points,k=knotList,degree=degree)
 
-        # rename all of the shapes that are children of the curve. In this instance, there should
-        # only be one.
-        for shape in mc.listRelatives(curve, c=True, type="shape"):
-            if transformType == "joint":
-                trsTypeName =mc.createNode("joint", name="{}_jtn".format(name))
-                mc.parent(shape, trsTypeName, r=True, shape=True)
-                mc.delete(curve)
-                mc.rename(trsTypeName, curve)
-                mc.setAttr("{}.drawStyle".format(curve), 2)
-            mc.rename(shape, "{}Shape".format(curve))
-        
-        return curve
+    # rename all of the shapes that are children of the curve. In this instance, there should
+    # only be one.
+    for shape in mc.listRelatives(curve, c=True, type="shape"):
+        if transformType == "joint":
+            trsTypeName =mc.createNode("joint", name="{}_jtn".format(name))
+            mc.parent(shape, trsTypeName, r=True, shape=True)
+            mc.delete(curve)
+            mc.rename(trsTypeName, curve)
+            mc.setAttr("{}.drawStyle".format(curve), 2)
+        mc.rename(shape, "{}Shape".format(curve))
+    
+    return curve
+
+def createCurveFromTransforms(transforms, degree=3, name='curve', transformType="transform"):
+    '''
+    This is a wrapper around createCurveFromPoints
+
+    :param transforms: Points you wish to use to create a curve
+    :type transforms: list
+
+    :param degree: The degree of the curve you want to create
+    :type degree: int
+
+    :param name: the name of the curve.
+    :type name: str
+
+    :return: The name of the curve that was created.
+    :rtype: str
+    '''
+    # This is going to get all of the world space positions for the transforms
+    points = [mc.xform(trs, q=True, ws=True, t=True) for trs in transforms]
+    return createCurveFromPoints(points, degree, name, transformType)
 
 
 #----------------------------------------------------

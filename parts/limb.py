@@ -12,6 +12,7 @@ import rigrepo.libs.control
 import rigrepo.libs.attribute
 import rigrepo.libs.common
 import rigrepo.libs.joint
+reload(rigrepo.libs.ikfk)
 
 
 
@@ -328,9 +329,9 @@ class Limb(part.Part):
                 flip=True
             rigrepo.libs.ikfk.IKFKLimb.ikMatchFk(fkMatchTransforms, ikControls[1], ikControls[0], matchNode)
             mc.setAttr("{}.ikfk".format(paramNode), 0)
-            # get the new distance
             newDistance = mc.getAttr("{}.tx".format(fkMatchTransforms[1])) + mc.getAttr("{}.tx".format(fkMatchTransforms[2]))
             updatedDistance = (newDistance - currentDistance) / 2
+            # get the new distance
             # check what direction the delta is in. If we need to flip it we will use abs to match
             if flip:
                 if updatedDistance < 0:
