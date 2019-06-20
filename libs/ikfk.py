@@ -524,10 +524,10 @@ class IKFKLimb(IKFKBase):
         '''
         This will get the poleVector from the handle.
         '''
-        pvDistanceVector = om.MVector(*mc.xform(jointList[1], q=True, relative=True, t=True))
-
-        poleVector = om.MVector(*mc.getAttr("{0}.poleVector".format(handle))[0]) * pvDistanceVector.length()
-        poleVector = poleVector + om.MVector(*mc.xform(jointList[0], q=True, ws=True, t=True))
+        pvDistanceVector = om.MVector(*mc.xform(jointList[1], q=True, relative=True, t=True)) + om.MVector(*mc.xform(jointList[2], q=True, relative=True, t=True))
+        poleVector = om.MVector(*mc.getAttr("{0}.poleVector".format(handle))[0])
+        poleVector.normalize()
+        poleVector = poleVector * pvDistanceVector.length() + om.MVector(*mc.xform(jointList[0], q=True, ws=True, t=True))
 
         return (poleVector.x, poleVector.y, poleVector.z)
 

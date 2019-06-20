@@ -10,6 +10,8 @@ import rigrepo.nodes.exportWtsDirNode
 import rigrepo.nodes.mirrorControlCurveNode
 import rigrepo.nodes.transferDeformer
 import rigrepo.nodes.mirrorWiresNode
+import rigrepo.nodes.zeroJointsNode
+import rigrepo.nodes.labelJointsForMirroringNode
 import maya.cmds as mc
 from rigrepo.libs.fileIO import joinPath 
 import os
@@ -71,7 +73,8 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         controlDataNode = rigrepo.nodes.importDataNode.ImportDataNode('controlPositions', 
                 dataFile=self.resolveDataFilePath('control_positions.data', self.variant), 
-                dataType='curve', 
+                dataType='curve',
+                attributes="['cvPositions']",
                 apply=True)
 
         controlOrientDataNode.getAttributeByName("Nodes").setValue("mc.ls('*_ort',type='transform')")
@@ -292,9 +295,17 @@ mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL"
         # --------------------------------------------------------------------------------------------------------------
         psdNode.addChildren([addPosePSDNode, psd_mirrorPSDNodes, psd_exportPSDNode])
 
+        # joints
+        jointsNode = pubs.pNode.PNode('joints')
+        zeroJointsNode = rigrepo.nodes.zeroJointsNode.ZeroJointsNode('zeroJoints')
+        jnt_mirrorJointsNode = copy.deepcopy(mirrorJointsNode)
+        jnt_mirrorJointsNode.setNiceName('mirror')
+        jnt_jointExportDataNode = copy.deepcopy(jointExportDataNode)
+        jnt_jointExportDataNode.setNiceName('export')
+        jointsNode.addChildren([zeroJointsNode, jnt_mirrorJointsNode, jnt_jointExportDataNode])
 
         # add all of the nodes in order to the workflow node.
-        workflowNode.addChildren([exporters, mirroring, skinClusterNode, psdNode, sdkNode])
+        workflowNode.addChildren([exporters, mirroring, skinClusterNode, psdNode, sdkNode, jointsNode])
 
     @classmethod
     def resolveDataFilePath(cls, filename, variant):

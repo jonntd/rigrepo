@@ -44,7 +44,7 @@ class Spine(part.Part):
         super(Spine, self).build()
 
         jointList = eval(self.jointList)
-        self.spline = spline.SplineBase(jointList=jointList, splineName=self._splineName)
+        self.spline = spline.SplineBase(jointList=jointList + [self._chestBind], splineName=self._splineName)
         self.spline.create()
 
         # Hips
@@ -76,7 +76,6 @@ class Spine(part.Part):
     
         # Parent the entire ik group to the hips
         mc.parent(self.spline.getGroup(), hipsCtrl) 
-
 
         # torso 
         ctrlHierarchy = control.create(name="torso", 
@@ -124,8 +123,8 @@ class Spine(part.Part):
         self._torsoCtrl = torsoCtrl
         self._chestCtrl = chestCtrl
         self._chestTopCtrl = chestTopCtrl
-        mc.parentConstraint(chestTopCtrl, self._chestBind, mo=1) 
-        mc.connectAttr(chestTopCtrl+'.s', self._chestBind+'.s')
+        mc.orientConstraint(chestTopCtrl, self._chestBind, mo=1) 
+        #mc.connectAttr(chestTopCtrl+'.s', self._chestBind+'.s')
 
         mc.parentConstraint(hipsCtrl, self._hipsBind, mo=1) 
         mc.connectAttr(hipsCtrl+'.s', self._hipsBind+'.s')

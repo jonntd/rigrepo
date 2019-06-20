@@ -11,11 +11,12 @@ import maya.cmds as mc
 import os
 
 class ImportDataNode(pubs.pNode.PNode):
-    def __init__(self, name, dataFile=None, dataType="node", apply=False):
+    def __init__(self, name, dataFile=None, dataType="node", attributes="[]", apply=False):
         super(ImportDataNode, self).__init__(name)
         self.addAttribute('filepath', dataFile, attrType='file')
         self.addAttribute('Apply', apply, attrType='bool')
         nodesAttr = self.addAttribute('Nodes', 'mc.ls(type="joint")', attrType='str')
+        self.addAttribute('attributes', attributes, attrType='str')
         self._dataType = dataType
         self.dataObj = rigrepo.libs.data.node_data.NodeData()
         if dataType == 'joint':
@@ -46,5 +47,9 @@ class ImportDataNode(pubs.pNode.PNode):
             return
 
         if self.getAttributeByName('Apply').getValue():
-             nodes = eval(self.getAttributeByName('Nodes').getValue())
-             self.dataObj.applyData(nodes)
+            nodes = eval(self.getAttributeByName('Nodes').getValue())
+            attributes = eval(self.getAttributeByName('attributes').getValue())
+            if attributes:
+                self.dataObj.applyData(nodes, attributes=attributes)
+            else:
+                self.dataObj.applyData(nodes)

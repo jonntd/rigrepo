@@ -12,7 +12,6 @@ import rigrepo.libs.control
 import rigrepo.libs.attribute
 import rigrepo.libs.common
 import rigrepo.libs.joint
-reload(rigrepo.libs.ikfk)
 
 
 
@@ -98,7 +97,7 @@ class Limb(part.Part):
             mc.orientConstraint(ctrl, jnt)
 
             # add the param node to the control and connect it
-            mc.parent(paramNode, ctrl, add=True, s=True, r=True)
+            #mc.parent(paramNode, ctrl, add=True, s=True, r=True)
 
             #parent the control to the parent node
             mc.parent(ctrl,parent)
@@ -108,7 +107,7 @@ class Limb(part.Part):
 
 
         rigrepo.libs.joint.rotateToOrient(self._fkControls)
-        mc.setAttr("{}.preferredAngleZ".format(self._fkControls[1]), -90)
+        mc.setAttr("{}.preferredAngle".format(self._fkControls[1]), *mc.getAttr("{}.preferredAngle".format(self.jointList[1]))[0])
 
         
         handle = mc.ikHandle(sj=self._fkControls[0],  ee=self._fkControls[-1], 
@@ -126,7 +125,7 @@ class Limb(part.Part):
 
         # get the handle and pv control
         pvCtrl = pvCtrlHierarchy[-1]
-        mc.parent(paramNode, pvCtrl, s=True, r=True)
+        #mc.parent(paramNode, pvCtrl, s=True, r=True)
         mc.poleVectorConstraint(pvCtrl, handle)
 
         # set the pvMatch node attribute on the paramNode
@@ -135,8 +134,6 @@ class Limb(part.Part):
         mc.setAttr("{}.pvMatch".format(paramNode), pvMatchNode, type="string")
 
         mc.parent(pvMatchNode, self._fkControls[0])
-
-
 
         # set the parent of the controls to be the rig group
         parent = grp
@@ -149,21 +146,29 @@ class Limb(part.Part):
                                                 color=rigrepo.libs.common.GREEN)     
 
         ikCtrl = ikCtrlHierarchy[-1]
-        mc.parent(paramNode, ikCtrl, add=True, s=True, r=True)
+        #mc.parent(paramNode, ikCtrl, add=True, s=True, r=True)
         
 
 
         # duplicate the end ik joint and make it offset joint for the 
         # ik control to drive the end joint
         mc.select(clear=True)
-        tempJnt = mc.joint(name="{}_offset_temp".format(self._fkControls[-1]))
         dupEndJnt = mc.joint(name="{}_offset".format(self._fkControls[-1]))
+        tempJnt = mc.joint(name="{}_offset_temp".format(self._fkControls[-1]))
         tempUpJnt = mc.joint(name="{}_offset_tempUp".format(self._fkControls[-1]))
-        mc.parent(tempUpJnt, tempJnt)
-        mc.xform(tempJnt, ws=True, matrix=mc.xform(self._fkControls[-1], q=True, ws=True, matrix=True))
-        mc.setAttr('{0}.tx'.format(tempUpJnt),mc.getAttr('{0}.tz'.format(dupEndJnt))+2)
-        mc.setAttr('{0}.tx'.format(dupEndJnt),mc.getAttr('{0}.tx'.format(dupEndJnt))+2)
-        mc.delete(mc.aimConstraint(dupEndJnt, ikCtrl, wut="object", wuo=tempUpJnt)[0], )
+        mc.parent(tempUpJnt, dupEndJnt)
+        # get the aim vector we will be using to set the ik control default rotation
+        distance = mc.getAttr("{}.t".format(self._fkControls[-1]))[0]
+        aimAttr, aimVector = self._getDistanceVector(distance)
+        # move the dupJnt and setup the tmp joints
+        mc.xform(dupEndJnt, ws=True, matrix=mc.xform(self._fkControls[-1], q=True, ws=True, matrix=True))
+        mc.setAttr('{}.t{}'.format(tempJnt, aimAttr),mc.getAttr('{}.t{}'.format(self._fkControls[-1], aimAttr))+2)
+        mc.setAttr('{0}.ty'.format(tempUpJnt), 2)
+        mc.parent([tempUpJnt,tempJnt], ikCtrl)
+        upDistance = mc.getAttr("{}.t".format(tempUpJnt))[0]
+        upAttr, upVector = self._getDistanceVector(upDistance)
+        mc.parent([tempUpJnt,tempJnt], w=True)
+        mc.delete(mc.aimConstraint(tempJnt, ikCtrl, wut="object", wuo=tempUpJnt,  aimVector=aimVector ,upVector=upVector)[0])
         mc.setAttr('{0}.drawStyle'.format(dupEndJnt), 2)
         mc.setAttr("{0}.v".format(handle), 0)
         mc.parent(dupEndJnt,ikCtrl)
@@ -171,7 +176,7 @@ class Limb(part.Part):
         cst = mc.orientConstraint(dupEndJnt, self.jointList[-1])[0]
         wal = mc.orientConstraint(cst, q=True, wal=True)
         mc.parent(handle, dupEndJnt)
-        mc.delete(tempJnt)
+        mc.delete([tempUpJnt,tempJnt])
 
         # connect the switch to the constraint on the wrist
         mc.connectAttr("{0}.outputX".format(reverseNode), "{}.{}".format(cst, wal[1]), f=True)
@@ -211,17 +216,22 @@ class Limb(part.Part):
         mc.addAttr(paramNode, ln='stretchTop', at='double', min=0, dv = 1, k=True)
         mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
         mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
-
-        rigrepo.libs.control.tagAsControl(paramNode)
-
+        #rigrepo.libs.control.tagAsControl(paramNode)
         for attr in ['stretch','stretchTop', 'stretchBottom', 'softStretch']:
             mc.connectAttr('{}.{}'.format(paramNode, attr), 
                         '{}.{}'.format(grp, attr), f=True)
 
+        blendNode = mc.ls(mc.listConnections(self._fkControls[-1], source=True),type="blendColors")[0]
+        multiplyNode = mc.createNode("multDoubleLinear", n="{}_stretch_mdn".format(paramNode))
+        mc.connectAttr("{}.stretch".format(paramNode), "{}.input1".format(multiplyNode),f=True)
+        mc.connectAttr("{}.outputX".format(reverseNode), "{}.input2".format(multiplyNode), f=True)
+        mc.connectAttr("{}.output".format(multiplyNode), "{}.blender".format(blendNode), f=True)
+
         mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
 
         # delete the original tranform that came with the locator paramNode
-        mc.delete(paramNodeTrs)
+        #mc.delete(paramNodeTrs)
+        mc.parent(paramNode, self.name)
 
         # Connect to passed anchor
         #
@@ -278,7 +288,7 @@ class Limb(part.Part):
         '''
         #turn of the visibility of the ikfk system
         #mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
-
+        paramNodeName = self.getAttributeByName("paramNode").getValue()
         # NO TWIST JOINT
         side = self.getAttributeByName("side").getValue()
         nameSplit = self.jointList[0].split('_{}_'.format(side))
@@ -300,6 +310,15 @@ class Limb(part.Part):
             mc.connectAttr(joint + '.decomposeTwist', twistJoint + '.rx', f=1)
         else:
             print('No twist joint found', noTwist)
+
+        for control in self._ikControls + self._fkControls:
+            mc.addAttr(control, ln="settings", at="enum", enumName="settings",keyable=True)
+            rigrepo.libs.attribute.lock(control, ['settings'])
+            mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True, proxy='{}.ikfk'.format(paramNodeName))
+            mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True, proxy='{}.stretch'.format(paramNodeName))
+            mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, k=True, proxy='{}.stretchTop'.format(paramNodeName))
+            mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, k=True, proxy='{}.stretchBottom'.format(paramNodeName))
+            mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True, proxy='{}.softStretch'.format(paramNodeName))
 
     @staticmethod
     def switch(paramNode, value):
@@ -344,7 +363,29 @@ class Limb(part.Part):
 
         mc.undoInfo(closeChunk=1)
 
+    def _getDistanceVector(self, distance):
+        '''
+        '''
+        distanceValue = max(distance, key=abs)
+        attr = ["x","y","z"][distance.index(distanceValue)]
+        if attr == "x":
+            if distanceValue < 0:
+                vector = [-1,0,0]
+            else:
+                vector = [1,0,0]
+        elif attr == "y":
+            if distanceValue < 0:
+                vector = [0,-1,0]
+            else:
+                vector = [0,1,0]
+        elif attr == "z":
+            if distanceValue < 0:
+                vector = [0,0,-1]
+            else:
+                vector = [0,0,1]
 
+        return (attr, vector)
+"""
 class LimbOld(part.Part):
     '''
     '''
@@ -459,8 +500,8 @@ class LimbOld(part.Part):
         self._ikControls.extend([str(pvCtrl), str(ikCtrl)])
 
         # create the ik stretchy system
-        self._stretchTargetJointList = self.ikfkSystem.createStretchIK(handle, self.ikfkSystem.getGroup())
-
+        grp = self.ikfkSystem.getGroup()
+        self._stretchTargetJointList = self.ikfkSystem.createStretchIK(handle, grp)
 
         #create attributes on param node and connect them to the grp node
         mc.addAttr(paramNode, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
@@ -470,14 +511,12 @@ class LimbOld(part.Part):
 
         rigrepo.libs.control.tagAsControl(paramNode)
 
-        grp = self.ikfkSystem.getGroup()
         for attr in ['stretch','stretchTop', 'stretchBottom', 'softStretch']:
             mc.connectAttr('{}.{}'.format(paramNode, attr), 
                         '{}.{}'.format(grp, attr), f=True)
 
         #mc.parent(handle, dupEndJnt)
         mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
-
 
         for ctrl in self._ikControls:
             if not mc.isConnected("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl)):
@@ -630,3 +669,4 @@ class LimbOld(part.Part):
             fkMatchTransforms = eval(mc.getAttr("{}.fkMatchTransforms".format(paramNode)))
             rigrepo.libs.ikfk.IKFKLimb.ikMatchFk(fkMatchTransforms, ikControls[1], ikControls[0])
             mc.setAttr("{}.ikfk".format(paramNode), 0)
+"""

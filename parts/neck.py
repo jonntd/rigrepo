@@ -28,7 +28,7 @@ class Neck(part.Part):
         '''
         super(Neck, self).build()
         jointList = eval(self.jointList)
-        self.spline = spline.SplineBase(jointList=jointList, splineName=self._splineName)
+        self.spline = spline.SplineBase(jointList=jointList + [self._skullBind], splineName=self._splineName)
         self.spline.create()
 
         # Neck
@@ -55,8 +55,10 @@ class Neck(part.Part):
         mc.parent(headNul, neckCtrl) 
         mc.parent(clusters[2:], headCtrl)
         mc.orientConstraint(headCtrl, self.spline._endTwistNul, mo=1)
-        mc.parentConstraint(headCtrl, self._skullBind, mo=1)
-        mc.connectAttr(headCtrl+'.s', self._skullBind+'.s')
+        skullOffset = mc.duplicate(self._skullBind, po=True, rr=True, name="{}_offset".format(self._skullBind))[0]
+        mc.parent(skullOffset, headCtrl)
+        mc.orientConstraint(skullOffset, self.spline._ikJointList[-1], mo=1)
+        #mc.connectAttr(headCtrl+'.s', self._skullBind+'.s')
 
         anchor = self.getAttributeByName('anchor').getValue()
         if mc.objExists(anchor):

@@ -89,8 +89,15 @@ class Arm(limb.Limb):
         mc.setAttr("{}.rotateOrder".format(self._fkControls[0]), 2)
         # set the rotate order for the swing control
         mc.setAttr("{}.rotateOrder".format(swingCtrl), 2)
+        #self._fkControls.extend([clavicleCtrl,swingCtrl])
 
-        
+    def postBuild(self):
+        '''
+        '''
+        clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
+        swingCtrl = self.getAttributeByName('swingCtrl').getValue()
+        self._fkControls.extend([clavicleCtrl,swingCtrl])
+        super(Arm, self).postBuild()
 class ArmOld(limb.Limb):
     '''
     '''

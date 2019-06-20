@@ -17,8 +17,10 @@ class SplineBase(object):
         '''
         This is the constructor
 
-        :param jointList: List of joints to create spline ik setup on. Assumes descending order [root, child, child...]
-        :param curve: Curve to be used by spline ik. A curve will be created automatically if None is passed.
+        :param jointList: List of joints to create spline ik setup on. Assumes descending order 
+                            [root, child, child...]
+        :param curve: Curve to be used by spline ik. A curve will be created automatically if 
+                        None is passed.
         :type jointList: list
         '''
 
@@ -110,7 +112,14 @@ class SplineBase(object):
 
         startJoint = self._ikJointList[0]
         endJoint = self._ikJointList[-1]
-        ik = mc.ikHandle(n=self._name+'_handle', pcv=0, ns=1, sol='ikSplineSolver', sj=startJoint, ee=endJoint)
+
+        curve = rigrepo.libs.curve.createCurveFromTransforms((self._ikJointList[0], 
+                                                                self._ikJointList[1], 
+                                                                self._ikJointList[-2], 
+                                                                self._ikJointList[-1]), 
+                                                            degree=2, name=self._name+'_curve')
+        ik = mc.ikHandle(n=self._name+'_handle', pcv=0, ns=1, sol='ikSplineSolver', 
+                            sj=startJoint, ee=endJoint, curve=curve, freezeJoints=True)
         self._ikHandle =  ik[0]
         self._curve = mc.rename(ik[2], self._name+'_curve')
         mc.parent(self._ikHandle, self._curve, self._group)
@@ -125,7 +134,8 @@ class SplineBase(object):
             cluster,handle = mc.cluster(cv, n='{}_cluster_{}'.format(self._name, i))
             self._clusters.append(handle)
             mc.parent(handle, self._group)
-            rigrepo.libs.cluster.localize(cluster, self._group, self._group, weightedCompensation=True)
+            rigrepo.libs.cluster.localize(cluster, self._group, self._group, 
+                                            weightedCompensation=True)
 
         # Stretch 
         curve_info = mc.arclen(self._curve, ch=1)
@@ -140,7 +150,8 @@ class SplineBase(object):
         mc.setAttr(full_scale+'.operation', 2)
 
         for i,j in enumerate(self._ikJointList[1:]):
-            bone_scale = mc.createNode('multiplyDivide', n='{}_{}_stretch_mul'.format(self._name, i))
+            bone_scale = mc.createNode('multiplyDivide', 
+                                        n='{}_{}_stretch_mul'.format(self._name, i))
             mc.connectAttr(full_scale+'.output.outputX', bone_scale+'.input2X')
             joint_tx = mc.getAttr(j+'.tx')
             mc.setAttr(bone_scale+'.input1X', joint_tx)

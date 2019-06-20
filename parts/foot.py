@@ -335,7 +335,7 @@ class Foot(part.Part):
         if value == 0:
             fkControl = eval(mc.getAttr("{}.footFkControl".format(paramNode)))
             ikMatchTransform = eval(mc.getAttr("{}.footIkMatchTransform".format(paramNode)))
-            mc.xform(fkControl, ws=True, rotation=mc.xform(ikMatchTransform, q=True, ws=True, rotation=True))
+            mc.xform(fkControl, ws=True, matrix=mc.xform(ikMatchTransform, q=True, ws=True, matrix=True))
             mc.setAttr("{}.ikfk".format(paramNode), 1)
         elif value == 1:
             # get the ik controls
@@ -346,6 +346,6 @@ class Foot(part.Part):
                 attrs = mc.listAttr(control, keyable=True)
                 for attr in attrs:
                     mc.setAttr("{}.{}".format(control, attr), 0)
-            mc.xform(ikControls[-1], ws=True, rotation=mc.xform(fkMatchTransform, q=True, ws=True, rotation=True))
+            mc.xform(ikControls[-1], ws=True, matrix=mc.xform(fkMatchTransform, q=True, ws=True, matrix=True))
             mc.setAttr("{}.ikfk".format(paramNode), 0)
         mc.undoInfo(closeChunk=1)
