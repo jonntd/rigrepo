@@ -123,7 +123,17 @@ class Spine(part.Part):
         self._torsoCtrl = torsoCtrl
         self._chestCtrl = chestCtrl
         self._chestTopCtrl = chestTopCtrl
-        mc.orientConstraint(chestTopCtrl, self._chestBind, mo=1) 
+
+        # Remove existing constraint on chestBind
+        orientConstraint = mc.orientConstraint(self._chestBind, q=1)
+        pointConstraint = mc.pointConstraint(self._chestBind, q=1)
+        if orientConstraint:
+            mc.delete(orientConstraint)
+        if pointConstraint:
+            mc.delete(pointConstraint)
+
+        mc.pointConstraint(chestTopCtrl, self._chestBind, mo=1)
+        mc.orientConstraint(chestTopCtrl, self._chestBind, mo=1)
         #mc.connectAttr(chestTopCtrl+'.s', self._chestBind+'.s')
 
         mc.parentConstraint(hipsCtrl, self._hipsBind, mo=1) 
