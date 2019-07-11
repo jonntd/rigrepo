@@ -13,8 +13,6 @@ import rigrepo.libs.attribute
 import rigrepo.libs.common
 import rigrepo.libs.joint
 
-
-
 class Limb(part.Part):
     '''
     '''
@@ -52,15 +50,21 @@ class Limb(part.Part):
         super(Limb, self).build()
 
         # create the param node and ikfk attribute for it
-        paramNode = mc.createNode("locator", name=paramNodeName)
-        paramNodeTrs = mc.listRelatives(paramNode, p=True)[0]
+        paramNode = rigrepo.libs.control.create(name=paramNodeName, 
+                                                controlType="cube",
+                                                hierarchy=[],
+                                                transformType="joint")[0]
+        #paramNode = mc.createNode("locator")
+        #paramNode = mc.rename(mc.listRelatives(paramNode, p=True)[0],paramNodeName)
+        mc.parentConstraint(self.jointList[-1], paramNode,mo=False)
+        rigrepo.libs.attribute.lockAndHide(paramNode, ("tx","ty","tz","rx","ry","rz","sx","sy","sz","v"))
         mc.select(cl=True)
         grp = mc.createNode("transform", name="{}_ikfk_grp".format(self.name))
         mc.parent(grp, self.name)
         # lock and hide attributes on the Param node that we don't need.
-        rigrepo.libs.attribute.lockAndHide(paramNode, ['lpx','lpy','lpz','lsx','lsy','lsz'])
+        #rigrepo.libs.attribute.lockAndHide(paramNode, ['lpx','lpy','lpz','lsx','lsy','lsz'])
 
-        mc.setAttr("{0}.v".format(paramNode), 0)
+        #mc.setAttr("{0}.v".format(paramNode), 0)
         mc.addAttr(paramNode, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
 
         mc.addAttr(grp, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
@@ -79,43 +83,59 @@ class Limb(part.Part):
         fkControlsNulList = list()
         parent = grp
         for jnt, fkCtrl in zip(self.jointList,fkControlNames):
+            # make sure that the control is in the same position as the joint
+            fkJntMatrix = mc.xform(jnt, q=True, ws=True, matrix=True)
+            #append the fk control to the self._fkControls list
+            self._fkControls.append(fkCtrl)
             # create the fk control hierarchy
-            fkCtrlHierarchy = rigrepo.libs.control.create(name=fkCtrl, 
+            if fkCtrl == fkControlNames[-1]:
+                rigrepo.libs.control.create(name=fkCtrl, 
                                                 controlType="cube",
                                                 hierarchy=[],
                                                 transformType="joint",
-                                                hideAttrs=["tx", "ty", "tz", "sx", "sy", "sz", "v"])
+                                                hideAttrs=["tx", "ty", "tz","v"],
+                                                parent=parent)
 
-            ctrl = fkCtrlHierarchy[0]
+                # create the gimbal control for the end control
+                fkGimbalCtrl = rigrepo.libs.control.create(name=fkCtrl.replace("_{}".format(side), "_gimbal_{}".format(side)), 
+                                                controlType="sphere",
+                                                hierarchy=[],
+                                                transformType="transform",
+                                                hideAttrs=["tx", "ty", "tz","v"],
+                                                parent=fkCtrl)[0]
 
-            # make sure that the control is in the same position as the joint
-            fkJntMatrix = mc.xform(jnt, q=True, ws=True, matrix=True)
-            mc.xform(ctrl, ws=True, matrix=fkJntMatrix)
-
-            # setup the constraints from the control to the joint
-            mc.pointConstraint(ctrl, jnt)
-            mc.orientConstraint(ctrl, jnt)
+                # move the gimbal ctrl to the correct location
+                mc.xform(fkGimbalCtrl,ws=True,matrix=mc.xform(fkCtrl,q=True,ws=True,matrix=True))
+                mc.xform(fkCtrl, ws=True, matrix=fkJntMatrix)
+                cstCtrl = fkGimbalCtrl
+            else:
+                rigrepo.libs.control.create(name=fkCtrl, 
+                                                controlType="cube",
+                                                hierarchy=[],
+                                                transformType="joint",
+                                                hideAttrs=["tx", "ty", "tz", "sx", "sy", "sz", "v"],
+                                                parent=parent)
+                mc.xform(fkCtrl, ws=True, matrix=fkJntMatrix)
+                cstCtrl = fkCtrl
+                # setup the constraints from the control to the joint
+            
+            mc.pointConstraint(cstCtrl, jnt)
+            mc.orientConstraint(cstCtrl, jnt)
 
             # add the param node to the control and connect it
             #mc.parent(paramNode, ctrl, add=True, s=True, r=True)
-
-            #parent the control to the parent node
-            mc.parent(ctrl,parent)
-            parent = ctrl
-            mc.connectAttr(ikfkAttr, "{0}.v".format(ctrl), f=True)
-            self._fkControls.append(str(ctrl))
-
+            parent = fkCtrl
+            mc.connectAttr(ikfkAttr, "{0}.v".format(fkCtrl), f=True)
 
         rigrepo.libs.joint.rotateToOrient(self._fkControls)
         mc.setAttr("{}.preferredAngle".format(self._fkControls[1]), *mc.getAttr("{}.preferredAngle".format(self.jointList[1]))[0])
-
         
         handle = mc.ikHandle(sj=self._fkControls[0],  ee=self._fkControls[-1], 
                                         sol="ikRPsolver", 
                                         name="{0}_hdl".format(self._fkControls[-1]))[0]
-
+        
+        # create the polevector control
         poleVectorPos = rigrepo.libs.ikfk.IKFKLimb.getPoleVectorFromHandle(handle, self._fkControls)
-
         pvCtrlHierarchy = rigrepo.libs.control.create(name=ikControlNames[0], 
                                                 controlType="diamond",
                                                 hierarchy=['nul','ort'],
@@ -125,7 +145,6 @@ class Limb(part.Part):
 
         # get the handle and pv control
         pvCtrl = pvCtrlHierarchy[-1]
-        #mc.parent(paramNode, pvCtrl, s=True, r=True)
         mc.poleVectorConstraint(pvCtrl, handle)
 
         # set the pvMatch node attribute on the paramNode
@@ -146,9 +165,16 @@ class Limb(part.Part):
                                                 color=rigrepo.libs.common.GREEN)     
 
         ikCtrl = ikCtrlHierarchy[-1]
-        #mc.parent(paramNode, ikCtrl, add=True, s=True, r=True)
-        
+        # add the gimbal control
 
+        ikGimbalCtrl = rigrepo.libs.control.create(name=ikControlNames[1].replace("_{}".format(side), "_gimbal_{}".format(side)), 
+                                                controlType="sphere",
+                                                hierarchy=[],
+                                                position=endJointPos,
+                                                color=rigrepo.libs.common.MIDBLUE,
+                                                parent=ikCtrl)[-1]
+
+        mc.xform(ikGimbalCtrl,ws=True,matrix=mc.xform(ikCtrl,q=True,ws=True,matrix=True))
 
         # duplicate the end ik joint and make it offset joint for the 
         # ik control to drive the end joint
@@ -171,7 +197,8 @@ class Limb(part.Part):
         mc.delete(mc.aimConstraint(tempJnt, ikCtrl, wut="object", wuo=tempUpJnt,  aimVector=aimVector ,upVector=upVector)[0])
         mc.setAttr('{0}.drawStyle'.format(dupEndJnt), 2)
         mc.setAttr("{0}.v".format(handle), 0)
-        mc.parent(dupEndJnt,ikCtrl)
+        mc.parent(dupEndJnt,ikGimbalCtrl)
+        #mc.parent(dupEndJnt,ikCtrl)
         mc.setAttr("{0}.t".format(dupEndJnt),0,0,0)
         cst = mc.orientConstraint(dupEndJnt, self.jointList[-1])[0]
         wal = mc.orientConstraint(cst, q=True, wal=True)
@@ -185,7 +212,7 @@ class Limb(part.Part):
         # parent the controls to the parent group
         mc.parent((pvCtrlHierarchy[0],ikCtrlHierarchy[0]), parent)
 
-        self._ikControls.extend([str(pvCtrl), str(ikCtrl)])
+        self._ikControls.extend([str(pvCtrl), str(ikCtrl),str(ikGimbalCtrl)])
 
         # setup the visibility and switch
         for ctrl in self._ikControls:
@@ -193,7 +220,6 @@ class Limb(part.Part):
                 mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl), f=True)
 
         mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.ikBlend".format(handle), f=True)
-        
         # create the offset joint that will be used for ikfk switching. This is the offset of the
         # ik control from the fk control
         mc.select(clear=True)
@@ -203,7 +229,7 @@ class Limb(part.Part):
         mc.setAttr('{0}.drawStyle'.format(fkOffsetJnt), 2)
 
         # parent the offset joint to the fk wrist control.
-        mc.parent(fkOffsetJnt, self._fkControls[-1])
+        mc.parent(fkOffsetJnt, fkGimbalCtrl)
 
         # make sure the rig is in fk before adding the stretch so it doesn't move the rig
         mc.setAttr(ikfkAttr, 1)
@@ -221,7 +247,7 @@ class Limb(part.Part):
             mc.connectAttr('{}.{}'.format(paramNode, attr), 
                         '{}.{}'.format(grp, attr), f=True)
 
-        blendNode = mc.ls(mc.listConnections(self._fkControls[-1], source=True),type="blendColors")[0]
+        blendNode = mc.ls(mc.listConnections(self._fkControls[1], source=True),type="blendColors")[0]
         multiplyNode = mc.createNode("multDoubleLinear", n="{}_stretch_mdn".format(paramNode))
         mc.connectAttr("{}.stretch".format(paramNode), "{}.input1".format(multiplyNode),f=True)
         mc.connectAttr("{}.outputX".format(reverseNode), "{}.input2".format(multiplyNode), f=True)
@@ -265,7 +291,7 @@ class Limb(part.Part):
                 type="string")
         mc.addAttr(paramNode, ln="ikControls", dt="string")
         mc.setAttr("{}.ikControls".format(paramNode), 
-                '["{0}","{1}"]'.format(*self._ikControls), 
+                '["{0}","{1}"]'.format(*self._ikControls[:-1]), 
                 type="string")
 
         # command to be called when switch is being used.
@@ -281,8 +307,12 @@ class Limb(part.Part):
             mc.setAttr("{}.r".format(control), 0, 0, 0)
         # set the param node to zero
         mc.setAttr("{}.softStretch".format(paramNode), .001)
-        
 
+        # lock and hide attributes for the fk controls
+        #rigrepo.libs.attribute.lockAndHide(self._fkControls, ["tx", "ty", "tz", "sx", "sy", "sz", "v"])
+        # add fk gimbal control to the fk control list
+        self._fkControls.append(fkGimbalCtrl)
+        
     def postBuild(self):
         '''
         '''
@@ -319,6 +349,8 @@ class Limb(part.Part):
             mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, k=True, proxy='{}.stretchTop'.format(paramNodeName))
             mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, k=True, proxy='{}.stretchBottom'.format(paramNodeName))
             mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True, proxy='{}.softStretch'.format(paramNodeName))
+
+        rigrepo.libs.attribute.lockAndHide(self._fkControls,["tx","ty", "tz"])
 
     @staticmethod
     def switch(paramNode, value):

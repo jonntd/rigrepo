@@ -24,13 +24,15 @@ class Leg(arm.Arm):
         '''
         super(Leg, self).build()
 
-        ikAnkleControl = self._ikControls[-1]
-        fkAnkleControl = self._fkControls[-1]
+        ikAnkleControl = self._ikControls[-2]
+        ikGimbleControl = self._ikControls[-1]
+        fkAnkleControl = self._fkControls[-2]
+        fkGimbalControl = self._fkControls[-1]
 
-        offsetJoint = mc.listRelatives(ikAnkleControl, c=True, type="joint")[0]
-        fkOffsetJoint = mc.listRelatives(fkAnkleControl, c=True, type="joint")[0]
+        offsetJoint = mc.listRelatives(ikGimbleControl, c=True, type="joint")[0]
+        fkOffsetJoint = mc.listRelatives(fkGimbalControl, c=True, type="joint")[0]
         mc.setAttr("{}.r".format(ikAnkleControl), 0,0,0)
-        fkAnkleMatrix=mc.xform(self._fkControls[-1],q=True, ws=True, matrix=True)
+        fkAnkleMatrix=mc.xform(fkAnkleControl,q=True, ws=True, matrix=True)
         mc.xform(offsetJoint, ws=True, matrix=fkAnkleMatrix)
-        ikAnkleMatrix=mc.xform(self._ikControls[-1],q=True, ws=True, matrix=True)
+        ikAnkleMatrix=mc.xform(ikAnkleControl,q=True, ws=True, matrix=True)
         mc.xform(fkOffsetJoint, ws=True, matrix=ikAnkleMatrix)

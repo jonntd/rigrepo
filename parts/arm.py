@@ -8,6 +8,7 @@ import maya.cmds as mc
 import rigrepo.parts.limb as limb
 import rigrepo.libs.ikfk as ikfk
 import rigrepo.libs.control as control
+import rigrepo.libs.attribute
 
 class Arm(limb.Limb):
     '''
@@ -98,6 +99,7 @@ class Arm(limb.Limb):
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
         self._fkControls.extend([clavicleCtrl,swingCtrl])
         super(Arm, self).postBuild()
+        rigrepo.libs.attribute.unlockAndUnhide(swingCtrl,["tx","ty", "tz"])
 class ArmOld(limb.Limb):
     '''
     '''

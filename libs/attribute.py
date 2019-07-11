@@ -90,7 +90,8 @@ def unhide(node, attr):
     #lock attributes
     for node in nodeList:
         for attr in attrList:
-            mc.setAttr("{0}.{1}".format(node,attr), k = True, cb=True)    
+            mc.setAttr("{0}.{1}".format(node,attr), k=True, cb=True)    
+            mc.setAttr("{0}.{1}".format(node,attr), k=True)
 
 
 def unlockAndUnhide(attr, node):

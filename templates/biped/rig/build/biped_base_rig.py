@@ -155,15 +155,15 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                 pSpine.getHipSwivelCtrl)
 
         l_leg.getAttributeByName("side").setValue("l")
-        l_leg.getAttributeByName("fkControls").setValue(["thigh_fk_l","knee_fk_l", "ankle_fk_l"]) 
+        l_leg.getAttributeByName("fkControls").setValue(["thigh_fk_l","knee_fk_l", "ankle_fk_l"])
         l_leg.getAttributeByName("ikControls").setValue(["leg_pv_l","leg_ik_l"])
         l_leg.getAttributeByName("paramNode").setValue("leg_L")
         l_leg.getAttributeByName("clavicleCtrl").setValue("pelvis_l")
 
         l_foot = rigrepo.parts.foot.Foot("l_foot", ['ankle_l_bind', 'ball_l_bind', 'toe_l_bind'], 
                                         'ankle_fk_l_hdl', 
-                                        fkAnchor='ankle_fk_l', 
-                                        ikAnchor='leg_ik_l', 
+                                        fkAnchor='ankle_fk_gimbal_l', 
+                                        ikAnchor='leg_ik_gimbal_l', 
                                         anklePivot='ankle_l_pivot', 
                                         ankleStretchTarget="ankle_fk_l_offset",
                                         ikfkGroup='l_leg_ikfk_grp',
@@ -184,8 +184,8 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         r_foot = rigrepo.parts.foot.Foot("r_foot", ['ankle_r_bind', 'ball_r_bind', 'toe_r_bind'], 
                                         'ankle_fk_r_hdl', 
-                                        fkAnchor='ankle_fk_r', 
-                                        ikAnchor='leg_ik_r', 
+                                        fkAnchor='ankle_fk_gimbal_r', 
+                                        ikAnchor='leg_ik_gimbal_r', 
                                         anklePivot='ankle_r_pivot',
                                         ankleStretchTarget="ankle_fk_r_offset",
                                         ikfkGroup='r_leg_ikfk_grp',

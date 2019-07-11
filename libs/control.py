@@ -10,8 +10,38 @@ import maya.cmds as mc
 CONTROLPATH = os.path.join(os.path.dirname(os.path.dirname(__file__)),'etc','controls.data')
 DEBUG = False
 def create(name="control", controlType = "square", hierarchy=['nul'], position=[0,0,0],
-        rotation=[0,0,0], hideAttrs=['v'], parent=None, color=rigrepo.libs.common.BLUE, transformType="transform"):
+        rotation=[0,0,0], hideAttrs=['v'], parent=None, color=rigrepo.libs.common.BLUE, 
+        transformType="transform"):
     '''
+    This function will create a control hierarchy based on the arguments that are passed in. 
+    It will also make sure the control is tagged properly.
+
+    :param name: Name you wish to use for the control.
+    :type name: str
+
+    :param controlType: The shape you would like to use for the control.
+    :type controlType: str
+
+    :param hierarchy: List of nodes to be created as parents of the control
+    :type hierarchy: list | tuple
+
+    :param position: Point in space where the control will be positioned in the scene
+    :type position: list | tuple
+
+    :param rotation: Rotation in space where the control will be rotated in the scene
+    :type rotation: list | tuple
+
+    :param hideAttrs: List of attributes you wish to lock and hide from the channel box.
+    :type hideAttrs: list | tuple
+
+    :param parent: Parent for the controls nul node
+    :type parent: str
+
+    :param color: Color you 
+    :type color: int
+
+    :param transformType: Type of transform for the control. (i.e "transform", "joint")
+    :type transformType: str
     '''
     curveData = rigrepo.libs.data.curve_data.CurveData()
     curveData.read(CONTROLPATH)

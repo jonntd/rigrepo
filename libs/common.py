@@ -216,6 +216,18 @@ def getMirrorName(name):
         mirror = name.replace('_l.', '_r.')
     elif '_r.' in name:
         mirror = name.replace('_r.', '_l.')
+    elif '_L_' in name:
+        mirror = name.replace('_L_', '_R_')
+    elif '_R_' in name:
+        mirror = name.replace('_R_', '_L_')
+    elif name.endswith('_L'):
+        mirror = name[:-2]+'_R'
+    elif name.endswith('_R'):
+        mirror = name[:-2]+'_L'
+    elif '_L.' in name:
+        mirror = name.replace('_L.', '_R.')
+    elif '_R.' in name:
+        mirror = name.replace('_R.', '_L.')
     return mirror
 
 def getSideToken(name):
