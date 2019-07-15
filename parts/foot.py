@@ -218,7 +218,7 @@ class Foot(part.Part):
                         mc.transformLimits(pivot, rz=(0,0), erz=(1,0))
                         mc.connectAttr("{}.output".format(bankMdl), "{}.rz".format(pivot))
                     else:
-                        mc.transformLimits(pivot, rz=(0,0), erz=(0,1))
+                        mc.transformLimits(pivot, rz=(0,0), erz=(1,0))
                         mc.connectAttr("{}.outValue".format(bankRemapNode), "{}.rz".format(pivot))
                 elif pivot == pivotList[1]:
                     # create the control hierarchy
@@ -226,7 +226,7 @@ class Foot(part.Part):
                         mc.transformLimits(pivot, rz=(0,0), erz=(0,1))
                         mc.connectAttr("{}.output".format(bankMdl), "{}.rz".format(pivot))
                     else:
-                        mc.transformLimits(pivot, rz=(0,0), erz=(1,0))
+                        mc.transformLimits(pivot, rz=(0,0), erz=(0,1))
                         mc.connectAttr("{}.outValue".format(bankRemapNode), "{}.rz".format(pivot))
                 
                 parent = pivot

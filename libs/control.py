@@ -152,6 +152,7 @@ def setPoseAttr(controls, poseAttr=0):
     '''
     # make sure the controls are set as a list.
     controls = rigrepo.libs.common.toList(controls)
+    skipAttrs = ("message")
     for ctrl in controls:
         # store the attribute names
         ctrlPoseAttr = "{}.poseAttr_{}".format(ctrl,poseAttr)
@@ -160,7 +161,8 @@ def setPoseAttr(controls, poseAttr=0):
 
         # go through each attribute and store it in the dictionary
         for attr in mc.listAttr(ctrl, keyable=True):
-            ctrlAttrDict[str(attr)] = mc.getAttr("{}.{}".format(ctrl,attr))
+            if not mc.getAttr("{}.{}".format(ctrl,attr),type=True) in skipAttrs:
+                ctrlAttrDict[str(attr)] = mc.getAttr("{}.{}".format(ctrl,attr))
 
         # if the pose doesn't exist, then we will create it.
         if not poseAttrName in mc.listAttr(ctrl):

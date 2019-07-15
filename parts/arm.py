@@ -97,9 +97,11 @@ class Arm(limb.Limb):
         '''
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
-        self._fkControls.extend([clavicleCtrl,swingCtrl])
         super(Arm, self).postBuild()
-        rigrepo.libs.attribute.unlockAndUnhide(swingCtrl,["tx","ty", "tz"])
+        rigrepo.libs.attribute.lockAndHide(swingCtrl,["sx","sy", "sz", "v"])
+        rigrepo.libs.attribute.lockAndHide(clavicleCtrl,["tx","ty", "tz", "sx","sy", "sz", "v"])
+
+
 class ArmOld(limb.Limb):
     '''
     '''
@@ -204,4 +206,3 @@ class ArmOld(limb.Limb):
         mc.setAttr("{}.rotateOrder".format(self._fkControls[0]), 2)
         # set the rotate order for the swing control
         mc.setAttr("{}.rotateOrder".format(swingCtrl), 2)
-

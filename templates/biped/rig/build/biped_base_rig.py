@@ -10,6 +10,8 @@ import rigrepo.nodes.importDataNode
 import rigrepo.nodes.exportDataNode
 import rigrepo.nodes.yankClusterNode
 import rigrepo.nodes.utilNodes 
+import rigrepo.nodes.addSpaceNode
+
 # body parts import
 import rigrepo.parts.arm
 import rigrepo.parts.leg
@@ -61,7 +63,13 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         jointList="mc.ls('neck_?_bind')", 
                                         anchor="chest_top")
         pNeck.setNiceName("neck")
+
+        neckAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="head",
+            constraintNode="neck", parentNode='neck_nul', targetList=['rig'], 
+        nameList=["world"], constraintType='orient')
         
+        pNeck.addChild(neckAddSpaceNode)
+
         # Arm
         l_arm = rigrepo.parts.arm.Arm("l_arm", 
                                     ['clavicle_l_bind', 
@@ -74,6 +82,10 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         l_arm.getAttributeByName("paramNode").setValue("arm_L")
         l_arm.getAttributeByName("clavicleCtrl").setValue("clavicle_l")
 
+        leftArmAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="shoulderSwing_l",
+            constraintNode="shoulderSwing_l_ort", parentNode='shoulderSwing_l_nul', targetList=['rig'], 
+        nameList=["world"], constraintType='orient')
+
         l_hand = rigrepo.parts.hand.Hand("l_hand",
                                         ['ring_001_l_bind', 
                                         'middle_001_l_bind', 
@@ -82,17 +94,6 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         'thumbCup_l_bind'])
         # Auto clavicle
         side = 'l'
-        l_autoClav = rigrepo.parts.autoParent.AutoParent(side+'_autoClav',
-                                                         parentControl='clavicle_'+side,
-                                                         inputControls=['shoulderSwing_'+side,
-                                                                        'shoulder_fk_'+side],
-                                                         ikJointList=['shoulder_fk_'+side,
-                                                                      'elbow_fk_'+side,
-                                                                      'wrist_fk_'+side],
-                                                         autoBlendAttr='autoClav',
-                                                         side=side,
-                                                         ikBlendAttr=side+'_arm_rvr.output.outputX',
-                                                         anchor=side+'_arm_anchor_grp')
         '''
         l_autoClav = rigrepo.parts.autoParent.AutoParent(side+'_autoClav',
                                                          parentControl='clavicle_'+side,
@@ -108,7 +109,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          '''
 
         # add hand to arm node.
-        l_arm.addChildren([l_hand])#, l_autoClav])
+        l_arm.addChildren([leftArmAddSpaceNode,l_hand])#, l_autoClav])
 
         r_arm = rigrepo.parts.arm.Arm("r_arm",
                                     ['clavicle_r_bind', 
@@ -123,7 +124,9 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         r_arm.getAttributeByName("paramNode").setValue("arm_R")
         r_arm.getAttributeByName("clavicleCtrl").setValue("clavicle_r")
         
-        
+        rightArmAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="shoulderSwing_r",
+            constraintNode="shoulderSwing_r_ort", parentNode='shoulderSwing_r_nul', targetList=['rig'], 
+        nameList=["world"], constraintType='orient')
 
         r_hand = rigrepo.parts.hand.Hand("r_hand",
                                         ['ring_001_r_bind', 
@@ -135,6 +138,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         # Auto clavicle
         side = 'r'
+        '''
         r_autoClav = rigrepo.parts.autoParent.AutoParent(side+'_autoClav',
                                                          parentControl='clavicle_'+side,
                                                          inputControls=['shoulderSwing_'+side,
@@ -146,8 +150,9 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
                                                          anchor=side+'_arm_anchor_grp')
+        '''
         # add hand to arm node.
-        r_arm.addChildren([r_hand])#, r_autoClav])
+        r_arm.addChildren([rightArmAddSpaceNode,r_hand])#, r_autoClav])
 
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",
@@ -168,8 +173,12 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         ankleStretchTarget="ankle_fk_l_offset",
                                         ikfkGroup='l_leg_ikfk_grp',
                                         paramNodeName='leg_L')
+        leftLegAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="leg_pv_l",
+            constraintNode="leg_pv_l_nul", parentNode='rig', targetList=['rig','pelvis_l','leg_ik_l'], 
+        nameList=["world","pelvis","foot"], constraintType='parent')
+
         # add foot to the leg node
-        l_leg.addChild(l_foot)
+        l_leg.addChildren([l_foot,leftLegAddSpaceNode])
 
         r_leg = rigrepo.parts.leg.Leg("r_leg",
                                 ['pelvis_r_bind', 'thigh_r_bind', 'knee_r_bind', 'ankle_r_bind'], 
@@ -190,8 +199,14 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         ankleStretchTarget="ankle_fk_r_offset",
                                         ikfkGroup='r_leg_ikfk_grp',
                                         paramNodeName='leg_R')
+
+        rightLegAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces',attrNode="leg_pv_r",
+            constraintNode="leg_pv_r_nul", parentNode='rig', targetList=['rig','pelvis_r','leg_ik_r'], 
+        nameList=["world","pelvis","foot"], constraintType='parent')
+
+
         # add foot to the leg node
-        r_leg.addChild(r_foot)
+        r_leg.addChildren([r_foot,rightLegAddSpaceNode])
 
 
         #-------------------------------------------------------------------------------------------

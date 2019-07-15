@@ -21,9 +21,6 @@ class Limb(part.Part):
         This is the constructor.
         '''
         super(Limb, self).__init__(name, dataObj) 
-        self._fkControls = list()
-        self._ikControls = list()
-        self._anchorGrp = str()
         self.addAttribute("anchor", anchor, attrType=str)
         self.addAttribute("side", side, attrType=str)
         self.addAttribute("fkControls", ["{}_shoulder".format(side),
@@ -42,6 +39,9 @@ class Limb(part.Part):
         '''
         This will build the limb part
         '''
+        self._fkControls = list()
+        self._ikControls = list()
+        self._anchorGrp = str()
         side = self.getAttributeByName("side").getValue()
         paramNodeName = self.getAttributeByName("paramNode").getValue()
         fkControlNames = self.getAttributeByName("fkControls").getValue()

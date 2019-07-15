@@ -75,6 +75,8 @@ import rigrepo.libs.bindmesh
 reload(rigrepo.libs.bindmesh)
 import rigrepo.libs.deformer
 reload(rigrepo.libs.deformer)
+import rigrepo.libs.spaces
+reload(rigrepo.libs.spaces)
 
 import rigrepo.libs.data.sdk_data
 reload(rigrepo.libs.data.sdk_data)
@@ -138,6 +140,8 @@ import rigrepo.nodes.buildBindMeshNode
 reload(rigrepo.nodes.buildBindMeshNode)
 import rigrepo.nodes.zeroJointsNode
 reload(rigrepo.nodes.zeroJointsNode)
+import rigrepo.nodes.addSpaceNode
+reload(rigrepo.nodes.addSpaceNode)
 
 # reload parts
 import rigrepo.parts.part
