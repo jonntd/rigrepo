@@ -225,7 +225,7 @@ class Foot(part.Part):
                     if  pivotPos > .01:
                         mc.transformLimits(pivot, rz=(0,0), erz=(0,1))
                         mc.connectAttr("{}.output".format(bankMdl), "{}.rz".format(pivot))
-                    else:
+                    else:                        
                         mc.transformLimits(pivot, rz=(0,0), erz=(0,1))
                         mc.connectAttr("{}.outValue".format(bankRemapNode), "{}.rz".format(pivot))
                 

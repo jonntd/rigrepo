@@ -12,6 +12,7 @@ import rigrepo.libs.control
 import rigrepo.libs.attribute
 import rigrepo.libs.common
 import rigrepo.libs.joint
+import rigrepo.libs.curve
 
 class Limb(part.Part):
     '''
@@ -270,6 +271,8 @@ class Limb(part.Part):
         else:
             mc.warning('Anchor object [ {} ] does not exist.'.format(anchor)) 
 
+        #self.__buildCurveRig(self.jointList, name='{}_bend'.format(self.getName()),parent=self.rigGroup)
+
         #------------------------------------------------------------------------------------------
         #Setup attributes on the param node for the ikfk switch.
         #------------------------------------------------------------------------------------------
@@ -351,6 +354,87 @@ class Limb(part.Part):
             mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True, proxy='{}.softStretch'.format(paramNodeName))
 
         rigrepo.libs.attribute.lockAndHide(self._fkControls,["tx","ty", "tz"])
+
+    def __buildCurveRig(self, joints, name='limb_bend', parent=None):
+        '''
+        This will build a rig setup based on the curve that is passed in.
+
+        :param curve: NurbsCurve name you want to build the rig on.
+        :type curve: str
+
+        :param name: This will be used to name the control hierachy and joints in the rig.
+        :type name: str
+
+        :return: This method will return the data needed to make adjustments to rig.
+        :rtype: tuple
+        '''
+        # Do some check
+        if not mc.objExists(curve):
+            raise RuntimeError("{} doesn't exist in the current Maya session.".format(curve))
+        # If the name passed in doesn't exist, we will create a transform as the parent group
+        # for the rig.
+        if not mc.objExists(name):
+            mc.createNode("transform", n=name)
+        # create the bindmesh 
+        #
+        # follicleList = (follicle transform, follicle shape) 
+        # bindmeshGeometry = geometry name of bindmesh
+        #
+        pointList = list()
+        for node in joints:
+            pointList.append(mc.xform(node, q=True, ws=True, t=True))
+        curve = rigrepo.libs.curve.curvescreateCurveFromPoints(pointList, degree=2, name='{}_curve'.format(name))
+        bindmeshGeometry, follicleList = bindmesh.createFromCurve(name, curve)
+        # emptry list to append controls to in the loop
+        controlHieracrchyList = list()
+        jointList = list()
+
+        # loop through and create controls on the follicles so we have controls to deform the wire.
+        for follicle in follicleList:
+            # get the follicle transform so we can use it to parent the control to it.
+            follicleIndex = follicleList.index(follicle)
+            # create the control with a large enough hierarchy to create proper SDK's
+            ctrlHierarchy = rigrepo.libs.control.create(name="{}_{}".format(name, follicleIndex), 
+                controlType="square", 
+                hierarchy=['nul','ort','rot_def_auto','def_auto'], 
+                parent=follicle)
+
+            # create the joint that will drive the curve.
+            jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))
+            # make sure the joint is in the correct space
+            mc.setAttr("{}.translate".format(jnt), 0,0,0)
+            mc.setAttr("{}.rotate".format(jnt), 0,0,0)
+            mc.setAttr("{}.drawStyle".format(jnt),2)
+            mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
+            mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
+
+            # zero out the nul for the control hierarchy so it's in the correct position.
+            mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)
+            #mc.setAttr("{}.rotate".format(ctrlHierarchy[0]), 0,0,0)
+            # set the visibility of the shape node for the follicle to be off.
+            # append the control and the follicle transform to their lists
+            controlHieracrchyList.append(ctrlHierarchy)
+            jointList.append(jnt)
+
+        # This will parent all of the data for the rig to the system group "name"
+        for data in (bindmeshGeometry, follicleList):
+            mc.parent(data, name)
+
+        # If parent the parent is passed in we will parent the system to the parent.
+        if parent:
+            if not mc.objExists(parent):
+                mc.warning('Created the system but the current parent "{}" does not exist in the \
+                    current Maya session.'.format(parent))
+            else:
+                mc.parent(name, parent)
+
+        # create the skinCluster for the lipMainCurve
+        mc.skinCluster(*jointList + [curve], tsb=True, name="{}_skinCluster".format(curve))
+
+        # set the visibility of the bindmesh.
+        mc.setAttr("{}.v".format(bindmeshGeometry), 0 )
+        mc.setAttr("{}.v".format(curve), 0 )
+        return bindmeshGeometry, follicleList, controlHieracrchyList, jointList
 
     @staticmethod
     def switch(paramNode, value):
