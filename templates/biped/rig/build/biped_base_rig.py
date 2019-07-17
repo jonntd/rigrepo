@@ -394,7 +394,7 @@ for side in ["l","r"]:
         applyDeformerNode = applyNode.getChild('deformers')
         bindmeshTransferSkinWtsNode = rigrepo.nodes.transferDeformer.TransferDeformerBindmesh('bindmesh', 
                                                             source="body_geo",
-                                                            target=["lid*_bindmesh", "lip*_bindmesh", "mouth*_bindmesh"],
+                                                            target=["lid*_bindmesh", "lip*_bindmesh", "mouth*_bindmesh", "*_arm*_bindmesh", "*leg*_bindmesh"],
                                                             deformerTypes = ["skinCluster"],
                                                             surfaceAssociation="closestPoint")
         bindmeshTransferClusterBlinksNode = rigrepo.nodes.transferDeformer.TransferClusterBlinks('transferBlinkClusters', 

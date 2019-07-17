@@ -6,6 +6,7 @@ should start with this class.
 '''
 
 import maya.cmds as mc
+import maya.api.OpenMaya as om
 import rigrepo.parts.part as part
 import rigrepo.libs.ikfk
 import rigrepo.libs.control
@@ -13,6 +14,7 @@ import rigrepo.libs.attribute
 import rigrepo.libs.common
 import rigrepo.libs.joint
 import rigrepo.libs.curve
+import rigrepo.libs.bindmesh
 
 class Limb(part.Part):
     '''
@@ -33,6 +35,8 @@ class Limb(part.Part):
                             attrType=list)
         side.capitalize()
         self.addAttribute("paramNode", "limb_{}".format(side.capitalize()), attrType=str)
+        self.addAttribute("createBendyLimb", True, attrType=bool)
+        self.addAttribute("geometry", "body_geo", attrType=str)
         self.jointList = jointList
         self._stretchTargetJointList = list()
 
@@ -47,6 +51,8 @@ class Limb(part.Part):
         paramNodeName = self.getAttributeByName("paramNode").getValue()
         fkControlNames = self.getAttributeByName("fkControls").getValue()
         ikControlNames = self.getAttributeByName("ikControls").getValue()
+        createBendyLimb = self.getAttributeByName("createBendyLimb").getValue()
+        geometry = self.getAttributeByName("geometry").getValue()
 
         super(Limb, self).build()
 
@@ -55,17 +61,13 @@ class Limb(part.Part):
                                                 controlType="cube",
                                                 hierarchy=[],
                                                 transformType="joint")[0]
-        #paramNode = mc.createNode("locator")
-        #paramNode = mc.rename(mc.listRelatives(paramNode, p=True)[0],paramNodeName)
+
         mc.parentConstraint(self.jointList[-1], paramNode,mo=False)
         rigrepo.libs.attribute.lockAndHide(paramNode, ("tx","ty","tz","rx","ry","rz","sx","sy","sz","v"))
         mc.select(cl=True)
         grp = mc.createNode("transform", name="{}_ikfk_grp".format(self.name))
         mc.parent(grp, self.name)
         # lock and hide attributes on the Param node that we don't need.
-        #rigrepo.libs.attribute.lockAndHide(paramNode, ['lpx','lpy','lpz','lsx','lsy','lsz'])
-
-        #mc.setAttr("{0}.v".format(paramNode), 0)
         mc.addAttr(paramNode, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
 
         mc.addAttr(grp, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
@@ -199,7 +201,6 @@ class Limb(part.Part):
         mc.setAttr('{0}.drawStyle'.format(dupEndJnt), 2)
         mc.setAttr("{0}.v".format(handle), 0)
         mc.parent(dupEndJnt,ikGimbalCtrl)
-        #mc.parent(dupEndJnt,ikCtrl)
         mc.setAttr("{0}.t".format(dupEndJnt),0,0,0)
         cst = mc.orientConstraint(dupEndJnt, self.jointList[-1])[0]
         wal = mc.orientConstraint(cst, q=True, wal=True)
@@ -270,8 +271,40 @@ class Limb(part.Part):
             mc.parentConstraint(anchor, anchorGrp, mo=1)
         else:
             mc.warning('Anchor object [ {} ] does not exist.'.format(anchor)) 
+        
+        # create the curve that will be used for the bendy limb
+        if createBendyLimb:
+            pointList = list()
+            for jnt in self.jointList:
+                pointList.append(mc.xform(jnt, q=True, ws=True, t=True))
+            pointList.insert(1, (om.MVector(*pointList[0])-om.MVector(*pointList[1]))/2 + om.MVector(*pointList[1]))
+            pointList.insert(3, (om.MVector(*pointList[2])-om.MVector(*pointList[3]))/2 + om.MVector(*pointList[3]))
+            curve = rigrepo.libs.curve.createCurveFromPoints(pointList, degree=2, name='{}_curve'.format(self.name))
+            bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(curve, name='{}_bend'.format(self.getName()),parent=self.rigGroup)
 
-        #self.__buildCurveRig(self.jointList, name='{}_bend'.format(self.getName()),parent=self.rigGroup)
+            if mc.objExists(geometry):
+                #deform the lid bindmesh with the lid curve using a wire deformer.
+                wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00, 
+                        w=curve, name="{}_wire".format(curve))[0]
+                baseCurveJointList=list()
+                for jnt, controlList in zip(jointList, controlHieracrchyList):
+                    # create the joint that we will use later to deform the base wire.
+                    baseCurveJoint = mc.joint(name=jnt.replace("_jnt","_baseCurve_jnt"))
+                    baseCurveJointList.append(baseCurveJoint)
+                    # hide the base curve joint. Then parent it under the null node
+                    mc.setAttr("{}.v".format(baseCurveJoint), 0)
+                    mc.parent(baseCurveJoint, controlList[1])
+                    mc.setAttr("{}.t".format(baseCurveJoint), 0, 0, 0)
+
+                baseCurve = "{}BaseWire".format(curve)
+                mc.parent([curve,baseCurve], self.name)
+                baseCurveSkin = mc.skinCluster(*baseCurveJointList+mc.ls(baseCurve), 
+                                            n="{}_skinCluster".format(baseCurve),
+                                            tsb=True)[0]
+
+                # set the default values for the wire deformer
+                #mc.setAttr("{}.rotation".format(wireDeformer), 0)
+                mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
 
         #------------------------------------------------------------------------------------------
         #Setup attributes on the param node for the ikfk switch.
@@ -355,12 +388,12 @@ class Limb(part.Part):
 
         rigrepo.libs.attribute.lockAndHide(self._fkControls,["tx","ty", "tz"])
 
-    def __buildCurveRig(self, joints, name='limb_bend', parent=None):
+    def __buildCurveRig(self, curve, name='limb_bend', parent=None):
         '''
         This will build a rig setup based on the curve that is passed in.
 
-        :param curve: NurbsCurve name you want to build the rig on.
-        :type curve: str
+        :param joints: NurbsCurve name you want to build the rig on.
+        :type joints: list |tuple
 
         :param name: This will be used to name the control hierachy and joints in the rig.
         :type name: str
@@ -368,9 +401,7 @@ class Limb(part.Part):
         :return: This method will return the data needed to make adjustments to rig.
         :rtype: tuple
         '''
-        # Do some check
-        if not mc.objExists(curve):
-            raise RuntimeError("{} doesn't exist in the current Maya session.".format(curve))
+
         # If the name passed in doesn't exist, we will create a transform as the parent group
         # for the rig.
         if not mc.objExists(name):
@@ -380,11 +411,7 @@ class Limb(part.Part):
         # follicleList = (follicle transform, follicle shape) 
         # bindmeshGeometry = geometry name of bindmesh
         #
-        pointList = list()
-        for node in joints:
-            pointList.append(mc.xform(node, q=True, ws=True, t=True))
-        curve = rigrepo.libs.curve.curvescreateCurveFromPoints(pointList, degree=2, name='{}_curve'.format(name))
-        bindmeshGeometry, follicleList = bindmesh.createFromCurve(name, curve)
+        bindmeshGeometry, follicleList = rigrepo.libs.bindmesh.createFromCurve(name, curve)
         # emptry list to append controls to in the loop
         controlHieracrchyList = list()
         jointList = list()
@@ -396,7 +423,7 @@ class Limb(part.Part):
             # create the control with a large enough hierarchy to create proper SDK's
             ctrlHierarchy = rigrepo.libs.control.create(name="{}_{}".format(name, follicleIndex), 
                 controlType="square", 
-                hierarchy=['nul','ort','rot_def_auto','def_auto'], 
+                hierarchy=['nul','ort','def_auto'], 
                 parent=follicle)
 
             # create the joint that will drive the curve.
@@ -419,6 +446,9 @@ class Limb(part.Part):
         # This will parent all of the data for the rig to the system group "name"
         for data in (bindmeshGeometry, follicleList):
             mc.parent(data, name)
+
+        mc.parentConstraint(controlHieracrchyList[0][-1],controlHieracrchyList[2][-1], controlHieracrchyList[1][2], mo=True)
+        mc.parentConstraint(controlHieracrchyList[2][-1],controlHieracrchyList[4][-1], controlHieracrchyList[3][2], mo=True)
 
         # If parent the parent is passed in we will parent the system to the parent.
         if parent:
