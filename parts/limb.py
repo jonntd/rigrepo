@@ -280,7 +280,7 @@ class Limb(part.Part):
             pointList.insert(1, (om.MVector(*pointList[0])-om.MVector(*pointList[1]))/2 + om.MVector(*pointList[1]))
             pointList.insert(3, (om.MVector(*pointList[2])-om.MVector(*pointList[3]))/2 + om.MVector(*pointList[3]))
             curve = rigrepo.libs.curve.createCurveFromPoints(pointList, degree=2, name='{}_curve'.format(self.name))
-            bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(curve, name='{}_bend'.format(self.getName()),parent=self.rigGroup)
+            bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(curve, name='{}_bend'.format(self.getName()),parent=self.name)
 
             if mc.objExists(geometry):
                 #deform the lid bindmesh with the lid curve using a wire deformer.
@@ -298,13 +298,39 @@ class Limb(part.Part):
 
                 baseCurve = "{}BaseWire".format(curve)
                 mc.parent([curve,baseCurve], self.name)
-                baseCurveSkin = mc.skinCluster(*baseCurveJointList+mc.ls(baseCurve), 
+                baseCurveSkin = mc.skinCluster(*self.jointList+mc.ls(baseCurve), 
                                             n="{}_skinCluster".format(baseCurve),
                                             tsb=True)[0]
 
                 # set the default values for the wire deformer
                 #mc.setAttr("{}.rotation".format(wireDeformer), 0)
                 mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
+
+            bindMeshSkin = mc.skinCluster(*self.jointList+mc.ls(bindmeshGeometry), 
+                                                n="{}_skinCluster".format(bindmeshGeometry),
+                                                tsb=True)[0]
+
+            mc.skinPercent(bindMeshSkin , '{}.vtx[0:3]'.format(bindmeshGeometry), transformValue=[(self.jointList[0], 1.0), (self.jointList[1], 0.0), (self.jointList[2],0.0)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[4:7]'.format(bindmeshGeometry),  transformValue=[(self.jointList[0], 0.5), (self.jointList[1], 0.5), (self.jointList[2],0.0)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[8:11]'.format(bindmeshGeometry), transformValue=[(self.jointList[0], 0.0), (self.jointList[1], 1.0), (self.jointList[2],0.0)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[12:15]'.format(bindmeshGeometry), transformValue=[(self.jointList[0], 0.0), (self.jointList[1], 0.5), (self.jointList[2],0.5)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[16:19]'.format(bindmeshGeometry), transformValue=[(self.jointList[0], 0.0), (self.jointList[1], 0.0), (self.jointList[2],1.0)])
+
+            mc.parentConstraint(self.jointList[0], baseCurveJointList[0], mo=True)
+            mc.pointConstraint(self.jointList[0],self.jointList[1], baseCurveJointList[1], mo=True)
+            mc.orientConstraint(self.jointList[0], baseCurveJointList[1], mo=True)
+            mc.parentConstraint(self.jointList[1], baseCurveJointList[2], mo=True)
+            mc.pointConstraint(self.jointList[1],self.jointList[2], baseCurveJointList[3], mo=True)
+            mc.orientConstraint(self.jointList[1], baseCurveJointList[3], mo=True)
+            mc.parentConstraint(self.jointList[2], baseCurveJointList[4], mo=True)
+
+            mc.parentConstraint(self.jointList[0], controlHieracrchyList[0][0], mo=True)
+            mc.pointConstraint(self.jointList[0],self.jointList[1], controlHieracrchyList[1][0], mo=True)
+            mc.orientConstraint(self.jointList[0], controlHieracrchyList[1][0], mo=True)
+            mc.parentConstraint(self.jointList[1], controlHieracrchyList[2][0], mo=True)
+            mc.pointConstraint(self.jointList[1],self.jointList[2], controlHieracrchyList[3][0], mo=True)
+            mc.orientConstraint(self.jointList[1], controlHieracrchyList[3][0], mo=True)
+            mc.parentConstraint(self.jointList[2], controlHieracrchyList[4][0], mo=True)
 
         #------------------------------------------------------------------------------------------
         #Setup attributes on the param node for the ikfk switch.
@@ -447,8 +473,8 @@ class Limb(part.Part):
         for data in (bindmeshGeometry, follicleList):
             mc.parent(data, name)
 
-        mc.parentConstraint(controlHieracrchyList[0][-1],controlHieracrchyList[2][-1], controlHieracrchyList[1][2], mo=True)
-        mc.parentConstraint(controlHieracrchyList[2][-1],controlHieracrchyList[4][-1], controlHieracrchyList[3][2], mo=True)
+        mc.pointConstraint(controlHieracrchyList[0][-1],controlHieracrchyList[2][-1], controlHieracrchyList[1][2], mo=True)
+        mc.pointConstraint(controlHieracrchyList[2][-1],controlHieracrchyList[4][-1], controlHieracrchyList[3][2], mo=True)
 
         # If parent the parent is passed in we will parent the system to the parent.
         if parent:
@@ -458,7 +484,7 @@ class Limb(part.Part):
             else:
                 mc.parent(name, parent)
 
-        # create the skinCluster for the lipMainCurve
+        # create the skinCluster for the curve
         mc.skinCluster(*jointList + [curve], tsb=True, name="{}_skinCluster".format(curve))
 
         # set the visibility of the bindmesh.
