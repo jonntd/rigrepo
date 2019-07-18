@@ -142,6 +142,8 @@ import rigrepo.nodes.zeroJointsNode
 reload(rigrepo.nodes.zeroJointsNode)
 import rigrepo.nodes.addSpaceNode
 reload(rigrepo.nodes.addSpaceNode)
+import rigrepo.nodes.shapeAuthoringNode
+reload(rigrepo.nodes.shapeAuthoringNode)
 
 # reload parts
 import rigrepo.parts.part

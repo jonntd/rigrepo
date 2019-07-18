@@ -158,6 +158,17 @@ for cluster in lidClusters:
         gpuSpeedKey = rigrepo.nodes.gpuSpeedKey.GpuSpeedKeyNode('addGpuKeyframes')
         workflowNode.addChildren([modelToggleNode, goToRigPoseNode, gpuSpeedKey])
 
+        # Shape Authoring
+        sculptingNode = pubs.pNode.PNode('sculpting')
+        workflowNode.addChildren([sculptingNode])
+
+        duplicateSubdivideNode = rigrepo.nodes.shapeAuthoringNode.ShapeAuthoringNode('subdivide', action='duplicate')
+        duplicateSubdivideToggleNode = rigrepo.nodes.shapeAuthoringNode.ShapeAuthoringNode('subdivideToggle', action='toggle')
+        duplicateSubdivideCommitNode = rigrepo.nodes.shapeAuthoringNode.ShapeAuthoringNode('subdivideCommit', action='commit')
+        extractFacesNode = rigrepo.nodes.shapeAuthoringNode.ShapeAuthoringNode('extractFaces', action='extract')
+        sculptingNode.addChildren([duplicateSubdivideNode, duplicateSubdivideToggleNode, duplicateSubdivideCommitNode,
+                                   extractFacesNode])
+
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes grouped by action
         # --------------------------------------------------------------------------------------------------------------
