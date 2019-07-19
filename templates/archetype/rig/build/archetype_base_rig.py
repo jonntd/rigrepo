@@ -166,8 +166,9 @@ for cluster in lidClusters:
         duplicateSubdivideToggleNode = rigrepo.nodes.shapeAuthoringNode.ShapeAuthoringNode('subdivideToggle', action='toggle')
         duplicateSubdivideCommitNode = rigrepo.nodes.shapeAuthoringNode.ShapeAuthoringNode('subdivideCommit', action='commit')
         extractFacesNode = rigrepo.nodes.shapeAuthoringNode.ShapeAuthoringNode('extractFaces', action='extract')
+        extractFacesCommitNode = rigrepo.nodes.shapeAuthoringNode.ShapeAuthoringNode('extractFacesCommit', action='extractCommit')
         sculptingNode.addChildren([duplicateSubdivideNode, duplicateSubdivideToggleNode, duplicateSubdivideCommitNode,
-                                   extractFacesNode])
+                                   extractFacesNode, extractFacesCommitNode])
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes grouped by action
