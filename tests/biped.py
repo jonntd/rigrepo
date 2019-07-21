@@ -144,6 +144,8 @@ import rigrepo.nodes.addSpaceNode
 reload(rigrepo.nodes.addSpaceNode)
 import rigrepo.nodes.shapeAuthoringNode
 reload(rigrepo.nodes.shapeAuthoringNode)
+import rigrepo.nodes.updateTopologyNode
+reload(rigrepo.nodes.updateTopologyNode)
 
 # reload parts
 import rigrepo.parts.part

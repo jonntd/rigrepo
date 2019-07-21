@@ -2,11 +2,11 @@
 This module is for dealing with skinClusters inside Maya
 '''
 import maya.cmds as mc
-
 import rigrepo.libs.common
 
+
 def localize(skinClusters, transform):
-    '''
+    """
     Localize skinCluster to the given transform
 
     :param skinCluster: skinCluster to localize
@@ -14,7 +14,7 @@ def localize(skinClusters, transform):
 
     :param transform: Transform to localize against
     :type transform: str
-    '''
+    """
     if not mc.objExists(transform):
         raise RuntimeError("{} doesn't exist in the current Maya session.".format(transform))
 
@@ -47,15 +47,44 @@ def localize(skinClusters, transform):
                     if not mc.isConnected(multMatrix+'.matrixSum', con):
                         mc.connectAttr(multMatrix+'.matrixSum', con, f=1)
 
+
+def removeLocalize(skinClusters):
+    """
+    If the skinCluster has been localized with multMatrix nodes, remove them
+    and reconnect the actual influences.
+
+    :param skinClusters:
+    :return: None
+    """
+    # Remove skinCluster localization
+    for sc in skinClusters:
+        # The real influences are still connected to the lockWeights attr
+        inf_connections = mc.ls(sc + '.lockWeights[*]')
+        for inf_con in inf_connections:
+            # Get the real influence transform
+            inf = rigrepo.libs.common.getFirstIndex(mc.listConnections(inf_con))
+            if inf:
+                index = rigrepo.libs.common.getIndex(inf_con)
+                inf_matrix = sc + '.matrix[' + index + ']'
+                localize_node = mc.listConnections(inf_matrix)
+                if localize_node:
+                    if mc.nodeType(localize_node[0]) == 'multMatrix':
+                        mc.connectAttr(inf + '.worldMatrix[0]', inf_matrix, f=1)
+                        mc.delete(localize_node)
+
+
 def getSkinCluster(geometry):
-    '''
+    """
     This will check the geometry to see if it has a skinCluster in it's histroy stack
 
     :param geometry: The mesh you want to check for a skinCluster
     :type geometry: str
-    '''
+    """
     # check the history to see if there is a skinCluster
-    hist = [node for node in mc.listHistory(geometry, pdo=True, lv=1) if mc.nodeType(node) == "skinCluster"]
+    hist = mc.listHistory(geometry, pdo=True, il=2)
+    if not hist:
+        return
+    hist = [node for node in hist if mc.nodeType(node) == "skinCluster"]
     # make an emptry str so we return a str no matter what.
     skinCluster = str()
 
@@ -65,8 +94,9 @@ def getSkinCluster(geometry):
 
     return skinCluster
 
+
 def transferSkinCluster(source, target, surfaceAssociation="closestPoint"):
-    '''
+    """
     This will transfer skinCluster from one mesh to another. If the target doesn't have a 
     skinCluster on it, it will create a new skinCluster. Then once there is a skinCluster
     We will copy weights over.
@@ -80,7 +110,7 @@ def transferSkinCluster(source, target, surfaceAssociation="closestPoint"):
     :param surfaceAssociation: How to copy the weights from source to target available values 
                                 are "closestPoint", "rayCast", or "closestComponent"
     :type surfaceAssociation: str
-    '''
+    """
     # do some error checking
     if not mc.objExists(source):
         raise RuntimeError('The source mesh "{}" does not exist in the current Maya session.'.format(source))
@@ -93,22 +123,32 @@ def transferSkinCluster(source, target, surfaceAssociation="closestPoint"):
     # make sure we have a skinCluster on the source mesh 
     sourceSkinCluster = getSkinCluster(source)
     skinClusterList = list()
+
     for mesh in meshList:
         if not mc.objExists(mesh):
             mc.warning('The target mesh "{}" does not exist in the current Maya session.'.format(target))
             continue
 
         # check to see if there is a skinCluster already  on the target mesh
-        hist = [node for node in mc.listHistory(mesh, pdo=True, lv=1) if mc.nodeType(node) == "skinCluster"]
+        hist = mc.listHistory(mesh, pdo=True, il=2) or []
+        hist = [node for node in hist if mc.nodeType(node) == "skinCluster"]
 
         # if there is no skinCluster, we will create one.
         if not hist:
-            skinClusterList.append(mc.skinCluster(*mc.skinCluster(sourceSkinCluster, 
-                                                q=True, 
-                                                inf=True) + [mesh], 
-                                            rui=False,
-                                            tsb=True,
-                                            name="{}_skinCluster".format(mesh))[0])
+            # Query the influences
+            infs = mc.skinCluster(sourceSkinCluster, q=True, inf=True)
+            # Remove localization if it exists
+            if not infs:
+                removeLocalize([sourceSkinCluster])
+                infs = mc.skinCluster(sourceSkinCluster, q=True, inf=True)
+            if not infs:
+                mc.warning('No influences found for {}. Could not transfer.'.format(sourceSkinCluster))
+                continue
+
+            sm = mc.skinCluster(sourceSkinCluster, q=True, sm=True)
+            name = "{}_skinCluster".format(mesh)
+            sc = mc.skinCluster(infs, mesh, name=name, rui=0, tsb=1, sm=sm)[0]
+            skinClusterList.append(sc)
         else:
             skinClusterList.append(hist[0])
 

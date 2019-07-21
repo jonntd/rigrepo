@@ -150,7 +150,6 @@ if action == 'extract':
     set = mc.listConnections(wrap+'.message')[0]
     mc.sets(pointsToRemove, remove=set)
 
-    mc.select(part)
     
     # Add message attribute
     if not mc.objExists(sel+'.part'):
@@ -161,8 +160,12 @@ if action == 'extract':
     
     # Base mesh
     base = mc.listConnections(wrap+'.basePoints[0]')[0]
-    #base = mc.listRelatives(base, p=1)[0]
     mc.connectAttr(base+'.message', sel+'.partBaseMesh')
+    
+    # Hide
+    mc.select(part)
+    mc.hide(sel)
+    
     
 #################
 # Extract commit #
@@ -198,7 +201,7 @@ if action == 'extractCommit':
                     mc.delete(base)
                 mc.deleteAttr(sourceMesh+'.part')
                 mc.deleteAttr(sourceMesh+'.partBaseMesh')
-            
+                
 
 #'''
         # -----------------------------------------------------------

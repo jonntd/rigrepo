@@ -170,6 +170,22 @@ for cluster in lidClusters:
         sculptingNode.addChildren([duplicateSubdivideNode, duplicateSubdivideToggleNode, duplicateSubdivideCommitNode,
                                    extractFacesNode, extractFacesCommitNode])
 
+        # Update Topology
+        updateTopologyNode = pubs.pNode.PNode('updateTopology')
+        workflowNode.addChildren([updateTopologyNode])
+
+        updateTopologyRenameNode = rigrepo.nodes.updateTopologyNode.UpdateTopologyNode('renameOld', action='rename')
+        updateTopologyImportModelNode = rigrepo.nodes.loadFileNode.LoadFileNode("importModel",
+                                                                filePath=self.resolveModelFilePath(self.variant))
+        updateTopologyDeformersNode= pubs.pNode.PNode('transferDeformers')
+        updateTopologySkinClusterNode = rigrepo.nodes.updateTopologyNode.UpdateTopologyNode('skinCluster', action='skinCluster')
+        updateTopologyDeformersNode.addChildren([updateTopologySkinClusterNode])
+        updateTopologyReplaceNode = rigrepo.nodes.updateTopologyNode.UpdateTopologyNode('replace', action='replace')
+
+        updateTopologyNode.addChildren([updateTopologyRenameNode,
+                                        updateTopologyImportModelNode,
+                                        updateTopologyDeformersNode,
+                                        updateTopologyReplaceNode])
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes grouped by action
         # --------------------------------------------------------------------------------------------------------------
