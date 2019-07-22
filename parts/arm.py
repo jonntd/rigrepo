@@ -34,10 +34,10 @@ class Arm(limb.Limb):
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
         swingCtrlHierarchy = control.create(name=swingCtrl, 
-                                                controlType="square",
+                                                controlType="circle",
                                                 hierarchy=['nul','ort'])
         clavicleCtrlHierarchy = control.create(name=clavicleCtrl, 
-                                                controlType="square",
+                                                controlType="lollipop",
                                                 hierarchy=['nul','ort'])
 
 
@@ -97,10 +97,20 @@ class Arm(limb.Limb):
         '''
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
+        side = self.getAttributeByName("side").getValue()
         super(Arm, self).postBuild()
         rigrepo.libs.attribute.lockAndHide(swingCtrl,["sx","sy", "sz", "v"])
         rigrepo.libs.attribute.lockAndHide(clavicleCtrl,["tx","ty", "tz", "sx","sy", "sz", "v"])
-
+        nameSplit = self._clavicleJoint.split('_{}_'.format(side))
+        transBind = '{}_trans_{}_{}'.format(nameSplit[0], side, nameSplit[1])
+        aimVector = (-1, 0, 0)
+        if side is 'r':
+            aimVector = (1, 0, 0)
+        if mc.objExists(transBind):
+            mc.aimConstraint(self._clavicleJoint, transBind, mo=1, weight=1, aimVector=aimVector, upVector=(0, 1, 0), worldUpType='none')
+            mc.pointConstraint(self.jointList[0], transBind, mo=1)
+        else:
+            print('clavicle translate not found', transBind)
 
 class ArmOld(limb.Limb):
     '''

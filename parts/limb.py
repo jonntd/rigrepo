@@ -36,6 +36,8 @@ class Limb(part.Part):
         side.capitalize()
         self.addAttribute("paramNode", "limb_{}".format(side.capitalize()), attrType=str)
         self.addAttribute("createBendyLimb", True, attrType=bool)
+        self.addAttribute("displayLine", False, attrType=bool)
+        self.addAttribute("createProxyAttributes", True, attrType=bool)
         self.addAttribute("geometry", "body_geo", attrType=str)
         self.jointList = jointList
         self._stretchTargetJointList = list()
@@ -52,6 +54,7 @@ class Limb(part.Part):
         fkControlNames = self.getAttributeByName("fkControls").getValue()
         ikControlNames = self.getAttributeByName("ikControls").getValue()
         createBendyLimb = self.getAttributeByName("createBendyLimb").getValue()
+        createDisplayLine = self.getAttributeByName("displayLine").getValue()
         geometry = self.getAttributeByName("geometry").getValue()
 
         super(Limb, self).build()
@@ -93,7 +96,7 @@ class Limb(part.Part):
             # create the fk control hierarchy
             if fkCtrl == fkControlNames[-1]:
                 rigrepo.libs.control.create(name=fkCtrl, 
-                                                controlType="cube",
+                                                controlType="circle",
                                                 hierarchy=[],
                                                 transformType="joint",
                                                 hideAttrs=["tx", "ty", "tz","v"],
@@ -113,7 +116,7 @@ class Limb(part.Part):
                 cstCtrl = fkGimbalCtrl
             else:
                 rigrepo.libs.control.create(name=fkCtrl, 
-                                                controlType="cube",
+                                                controlType="circle",
                                                 hierarchy=[],
                                                 transformType="joint",
                                                 hideAttrs=["tx", "ty", "tz", "sx", "sy", "sz", "v"],
@@ -140,7 +143,7 @@ class Limb(part.Part):
         # create the polevector control
         poleVectorPos = rigrepo.libs.ikfk.IKFKLimb.getPoleVectorFromHandle(handle, self._fkControls)
         pvCtrlHierarchy = rigrepo.libs.control.create(name=ikControlNames[0], 
-                                                controlType="diamond",
+                                                controlType="sphere",
                                                 hierarchy=['nul','ort'],
                                                 position=poleVectorPos,
                                                 hideAttrs=["v", "rx", "ry", "rz", "sx", "sy", "sz"],
@@ -374,6 +377,10 @@ class Limb(part.Part):
         #rigrepo.libs.attribute.lockAndHide(self._fkControls, ["tx", "ty", "tz", "sx", "sy", "sz", "v"])
         # add fk gimbal control to the fk control list
         self._fkControls.append(fkGimbalCtrl)
+        if createDisplayLine:
+            curve = rigrepo.libs.control.displayLine(self.jointList[1], pvCtrl, 
+                                        name='{}_display_line'.format(pvCtrl), parent=self.name)
+            mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(curve), f=True)
         
     def postBuild(self):
         '''
@@ -381,6 +388,7 @@ class Limb(part.Part):
         #turn of the visibility of the ikfk system
         #mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
         paramNodeName = self.getAttributeByName("paramNode").getValue()
+        createProxyAttributes = self.getAttributeByName("createProxyAttributes").getValue()
         # NO TWIST JOINT
         side = self.getAttributeByName("side").getValue()
         nameSplit = self.jointList[0].split('_{}_'.format(side))
@@ -402,15 +410,15 @@ class Limb(part.Part):
             mc.connectAttr(joint + '.decomposeTwist', twistJoint + '.rx', f=1)
         else:
             print('No twist joint found', noTwist)
-
-        for control in self._ikControls + self._fkControls:
-            mc.addAttr(control, ln="settings", at="enum", enumName="settings",keyable=True)
-            rigrepo.libs.attribute.lock(control, ['settings'])
-            mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True, proxy='{}.ikfk'.format(paramNodeName))
-            mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True, proxy='{}.stretch'.format(paramNodeName))
-            mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, k=True, proxy='{}.stretchTop'.format(paramNodeName))
-            mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, k=True, proxy='{}.stretchBottom'.format(paramNodeName))
-            mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True, proxy='{}.softStretch'.format(paramNodeName))
+        if createProxyAttributes:
+            for control in self._ikControls + self._fkControls:
+                mc.addAttr(control, ln="settings", at="enum", enumName="settings",keyable=True)
+                rigrepo.libs.attribute.lock(control, ['settings'])
+                mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True, proxy='{}.ikfk'.format(paramNodeName))
+                mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True, proxy='{}.stretch'.format(paramNodeName))
+                mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, k=True, proxy='{}.stretchTop'.format(paramNodeName))
+                mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, k=True, proxy='{}.stretchBottom'.format(paramNodeName))
+                mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True, proxy='{}.softStretch'.format(paramNodeName))
 
         rigrepo.libs.attribute.lockAndHide(self._fkControls,["tx","ty", "tz"])
 
@@ -448,7 +456,7 @@ class Limb(part.Part):
             follicleIndex = follicleList.index(follicle)
             # create the control with a large enough hierarchy to create proper SDK's
             ctrlHierarchy = rigrepo.libs.control.create(name="{}_{}".format(name, follicleIndex), 
-                controlType="square", 
+                controlType="cube", 
                 hierarchy=['nul','ort','def_auto'], 
                 parent=follicle)
 

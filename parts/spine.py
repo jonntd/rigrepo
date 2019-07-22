@@ -24,6 +24,7 @@ class Spine(part.Part):
         self._torsoCtrl = str()
         self._chestCtrl = str()
         self._chestTopCtrl = str()
+        self._chestIkCtrl = str()
         self._chestBind = chestBind
         self._hipsBind = hipsBind
         self.jointList = jointList
@@ -57,6 +58,15 @@ class Spine(part.Part):
         matrix = mc.xform(self._hipsBind, q=True, ws=True, matrix=True)
         mc.xform(hipsNul, ws=True, matrix=matrix)
 
+        hipsGimbalCtrlHierarchy = control.create(name="hips_gimbal", 
+                                                controlType="cube",
+                                                hierarchy=['nul'],
+                                                parent=hipsCtrl)
+        hipsGimbalCtrl = hipsGimbalCtrlHierarchy[-1]
+        hipsGimbalNul = hipsGimbalCtrlHierarchy[0]
+
+        mc.xform(hipsGimbalNul, ws=True, matrix=matrix)
+
         # hip swivel
         ctrlHierarchy = control.create(name="hip_swivel", 
                                                 controlType="cube",
@@ -65,17 +75,16 @@ class Spine(part.Part):
         hipSwivelCtrl = ctrlHierarchy[-1]
         hipSwivelNul = ctrlHierarchy[0]
 
-        matrix = mc.xform(hipsCtrl, q=True, ws=True, matrix=True)
         mc.xform(hipSwivelNul, ws=True, matrix=matrix)
         averagePos = rigrepo.libs.transform.getAveragePosition(jointList[0:3])
         mc.xform(hipSwivelNul, ws=True, t=averagePos)
-        mc.parent(hipSwivelNul, hipsCtrl)
+        mc.parent(hipSwivelNul, hipsGimbalCtrl)
         clusters = self.spline._clusters
         mc.parent(clusters[0:2], hipSwivelCtrl)
         mc.orientConstraint(hipSwivelCtrl, self.spline._startTwistNul, mo=1)
     
         # Parent the entire ik group to the hips
-        mc.parent(self.spline.getGroup(), hipsCtrl) 
+        mc.parent(self.spline.getGroup(), hipsGimbalCtrl) 
 
         # torso 
         ctrlHierarchy = control.create(name="torso", 
@@ -88,7 +97,7 @@ class Spine(part.Part):
         averagePos = rigrepo.libs.transform.getAveragePosition(jointList[:2])
         mc.xform(torsoNul, ws=True, rotation=rotation)
         mc.xform(torsoNul, ws=True, t=averagePos)
-        mc.parent(torsoNul, hipsCtrl) 
+        mc.parent(torsoNul, hipsGimbalCtrl) 
 
         # chest 
         ctrlHierarchy = control.create(name="chest", 
@@ -104,6 +113,19 @@ class Spine(part.Part):
         mc.xform(chestNul, ws=True, t=averagePos)
         mc.parent(chestNul, torsoCtrl)
 
+
+        # chest IK
+        ctrlHierarchy = control.create(name="chest_ik", 
+                                            controlType="cube",
+                                            color=common.GREEN,
+                                            hierarchy=['nul'])
+        chestIkCtrl = ctrlHierarchy[-1]
+        chestIkNul = ctrlHierarchy[0]
+
+        mc.xform(chestIkNul, ws=True, matrix=matrix)
+        mc.xform(chestIkNul, ws=True, t=averagePos)
+        mc.parent(chestIkNul, chestCtrl)
+
         # chest top 
         ctrlHierarchy = control.create(name="chest_top", 
                                              controlType="cube",
@@ -113,9 +135,9 @@ class Spine(part.Part):
 
         matrix = mc.xform(self._chestBind, q=True, ws=True, matrix=True)
         mc.xform(chestTopNul, ws=True, matrix=matrix)
-        mc.parent(chestTopNul, chestCtrl)
+        mc.parent(chestTopNul, chestIkCtrl)
 
-        mc.parent(clusters[2:], chestCtrl)
+        mc.parent(clusters[2:], chestIkCtrl)
         mc.orientConstraint(chestTopCtrl, self.spline._endTwistNul, mo=1)
 
         self._hipsCtrl = hipsCtrl
@@ -123,6 +145,7 @@ class Spine(part.Part):
         self._torsoCtrl = torsoCtrl
         self._chestCtrl = chestCtrl
         self._chestTopCtrl = chestTopCtrl
+        self._chestIkCtrl = chestIkCtrl
 
         # Remove existing constraint on chestBind
         orientConstraint = mc.orientConstraint(self._chestBind, q=1)
@@ -136,8 +159,8 @@ class Spine(part.Part):
         mc.orientConstraint(chestTopCtrl, self._chestBind, mo=1)
         #mc.connectAttr(chestTopCtrl+'.s', self._chestBind+'.s')
 
-        mc.parentConstraint(hipsCtrl, self._hipsBind, mo=1) 
-        mc.connectAttr(hipsCtrl+'.s', self._hipsBind+'.s')
+        mc.parentConstraint(hipsGimbalCtrl, self._hipsBind, mo=1) 
+        mc.connectAttr(hipsGimbalCtrl+'.s', self._hipsBind+'.s')
 
         mc.parent(hipsNul, self.name)
         mc.hide(self.spline._group, clusters)

@@ -2,7 +2,8 @@
 This is the base module for all of your parts.
 '''
 import maya.cmds as mc
-import rigrepo.libs.attribute as attribute
+import rigrepo.libs.attribute
+import rigrepo.libs.control
 import pubs.pNode
 
 class Part(pubs.pNode.PNode):
@@ -33,6 +34,7 @@ class Part(pubs.pNode.PNode):
 
         groupList = [self.trsMaster, self.trsShot, self.trsAux, 
                     self.modelGroup, self.rigGroup, self.bindGroup]
+
         # iterate through the groups and create them if they don't exist yet.
         for group in groupList:
             if not mc.objExists(group):
@@ -53,6 +55,8 @@ class Part(pubs.pNode.PNode):
         # check to see if object exists in the scene
         if not mc.objExists(self.name):
             mc.createNode("transform", n=self.name)
+
+        rigrepo.libs.control.tagAsControl([self.trsMaster, self.trsShot, self.trsAux])
         
         mc.parent(self.name, self.rigGroup)
 
@@ -72,7 +76,7 @@ class Part(pubs.pNode.PNode):
 
         attribueTuple = ('t','r','s')
 
-        attribute.lock(groupTuple, attribueTuple)
+        rigrepo.libs.attribute.lock(groupTuple, attribueTuple)
 
         # set the model group to have an override on the display
         if not mc.objExists("{}.overrideModel".format(self.modelGroup)):

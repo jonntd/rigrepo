@@ -126,7 +126,7 @@ class Foot(part.Part):
         # get the fk joint list from the ikfk system
         fkJointList = self.ikfkSystem.getFkJointList()
 
-        #mc.pointConstraint(self._fkAnchor, fkJointList)
+        mc.parentConstraint(self._fkAnchor, fkJointList[0])
 
         # create the ball fk control
         ballFkctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(fkJointList[1]), 

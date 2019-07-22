@@ -4,7 +4,7 @@ import rigrepo.libs.transform
 import rigrepo.libs.common
 from rigrepo.libs.common import getMirrorName
 
-def createCurveFromPoints(points, degree=3, name='curve', transformType="transform"):
+def createCurveFromPoints(points, degree=3, name='curve', transformType="transform", form="Open"):
     '''
     :param points: Points you wish to use to create a curve
     :type points: list
@@ -14,6 +14,10 @@ def createCurveFromPoints(points, degree=3, name='curve', transformType="transfo
 
     :param name: the name of the curve.
     :type name: str
+
+    :param form: The form of the curve. i.e (Open, Closed, Periodic). If the form is Closed or 
+                    Periodic we will use a nurbs circle.
+    :type form: str
 
     :return: The name of the curve that was created.
     :rtype: str
@@ -28,8 +32,15 @@ def createCurveFromPoints(points, degree=3, name='curve', transformType="transfo
         knotList.append(0) 
         knotList.extend(range(len(points) - 2))
         knotList.extend([knotList[-1],knotList[-1]]) 
-    
-    curve = mc.curve(name=name, p=points,k=knotList,degree=degree)
+
+    # if the form is closed, we will use a circle to create the control
+    if form not in ['Closed', 'Periodic']:
+        curve = mc.curve(name=name, p=points,k=knotList,degree=degree)
+    else:
+        curve = mc.circle(name=name, c=(0, 0, 0), nr=(0, 1, 0), sw=360, r=1, 
+                                d=degree, ut=0, tol=0.01, s=len(points), ch=False) [0] 
+        for i,position in enumerate(points):
+            mc.setAttr("{}.controlPoints[{}]".format(curve,i), *position)
 
     # rename all of the shapes that are children of the curve. In this instance, there should
     # only be one.
@@ -180,23 +191,30 @@ def mirror (curve, axis = "x"):
         posVector = (1,1,-1)
 
     # loop through the curve list and mirror across worldspace
-    for curve in curveList:
-        cvList=getCVs(curve)
-        mirrorCurve = getMirrorName(curve)
-        if not mc.objExists(mirrorCurve):
-            continue
-        for cv in cvList:
-            toCV = cv.replace( curve, mirrorCurve )
+    for curveNode in curveList:
+        if mc.nodeType(curveNode) == "transform" or mc.nodeType(curveNode) == "joint":
+            shapeList = mc.listRelatives(curveNode, c=True, shapes=True, type="nurbsCurve") 
+        else:
+            shapeList = [curveNode]
+        for curve in shapeList:
+            cvList=getCVs(curve)
+            mirrorCurve = getMirrorName(curve)
+            if not mc.objExists(mirrorCurve):
+                continue
+            for cv in cvList:
+                toCV = cv.replace( curve, mirrorCurve )
 
-            # check to make sure that both objects exist in the scnene
-            if mc.objExists(cv) and mc.objExists(toCV) and cv != toCV:
-                # get position and rotation
-                pos = mc.xform( cv, q=True, t=True, ws=True )
+                # check to make sure that both objects exist in the scnene
+                if mc.objExists(cv) and mc.objExists(toCV) and cv != toCV:
+                    # get position and rotation
+                    pos = mc.xform( cv, q=True, t=True, ws=True )
 
-                # set rotation orientation
-                mc.xform( toCV, ws = True, t = ( pos[0]*posVector[0], pos[1]*posVector[1], pos[2]*posVector[2] ))
-            else:
-                raise RuntimeError, 'Node not found: {}'.format(toCV)
+                    # set rotation orientation
+                    mc.xform( toCV, ws = True, t = ( pos[0]*posVector[0], pos[1]*posVector[1], pos[2]*posVector[2] ))
+                else:
+                    continue
+                    print 'Node not found: {}'.format(toCV)
+                    #raise RuntimeError, 'Node not found: {}'.format(toCV)
 
     # --------------------------------------------------------------------------
     # re-select objects

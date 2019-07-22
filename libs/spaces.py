@@ -9,7 +9,7 @@ from rigrepo.libs import attribute
 from rigrepo.libs import transform
 from rigrepo.libs import common
 
-def create( node, attrNode = None , parent=None):
+def create( node, attrNode = None , parent=None, spaceAttrName="space"):
     '''
     Create space switcher
 
@@ -46,7 +46,7 @@ def create( node, attrNode = None , parent=None):
     # --------------------------------------------------------------------------
     # CREATE LOCAL SPACE
     #
-    mc.addAttr(attrNode, ln='space', at='enum', enumName='local', keyable=True)
+    mc.addAttr(attrNode, ln='space', nn=spaceAttrName, at='enum', enumName='local', keyable=True)
     localSpace = mc.createNode('transform', name='{}_{}'.format(grp,'local'), parent=grp)
     mc.xform(localSpace, ws=True, matrix=mc.xform(node, q=True, ws=True, matrix=True))
     attribute.lockAndHide(localSpace, ['t','r','s','v'])

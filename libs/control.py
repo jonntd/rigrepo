@@ -47,11 +47,24 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
     curveData.read(CONTROLPATH)
     data = curveData.getData()
     if data.has_key(controlType):
-        control = rigrepo.libs.curve.createCurveFromPoints(data[controlType]['cvPositions'], 
-            degree=data[controlType]['degree'],name=name, transformType=transformType)
+        shapeList = data[controlType]["shapes"].keys()
+        for shape in shapeList:
+            if shape == shapeList[0]:
+                control = rigrepo.libs.curve.createCurveFromPoints(data[controlType]["shapes"][shape]['cvPositions'], 
+                    degree=data[controlType]['shapes'][shape]['degree'],name=name, transformType=transformType)
+                continue
+            curve = rigrepo.libs.curve.createCurveFromPoints(data[controlType]["shapes"][shape]['cvPositions'], 
+                    degree=data[controlType]['shapes'][shape]['degree'],name=name, transformType=transformType)
+            curveShape = mc.listRelatives(curve, c=True, shapes=True)[0]
+            mc.parent(curveShape, control, r=True, s=True)
+            mc.rename(curveShape, "{}Shape".format(control))
+            mc.delete(curve)
     elif controlType == "circle":
-        control = mc.circle(name=name, c=(0, 0, 0), nr=(0, 1, 0), sw=360, r=1, 
+        control = mc.createNode(transformType, name=name)
+        curve = mc.circle(name=name, c=(0, 0, 0), nr=(0, 1, 0), sw=360, r=1, 
                                 d=3, ut=0, tol=0.01, s=8, ch=False) [0]
+        mc.parent(mc.listRelatives(curve, c=True, shapes=True, type="nurbsCurve")[0], control, r=True, s=True)
+        mc.delete(curve)
     else:
         control = mc.createNode(transformType, name=name)
         mc.setAttr("{0}.displayHandle".format(control), 1)
@@ -98,7 +111,7 @@ def tagAsControl(ctrl):
     :param control: node to tag as a control
     :type control: str or list
     '''
-    if not isinstance(ctrl, list):
+    if not isinstance(ctrl, (tuple,list)):
         if not isinstance(ctrl, basestring):
             raise TypeError('{0} must be of type str, unicode, or list'.format(ctrl))
         ctrls = rigrepo.libs.common.toList(ctrl)
@@ -107,7 +120,8 @@ def tagAsControl(ctrl):
 
     for ctrl in ctrls:
         tagAttr = '{}.__control__'.format(ctrl)
-        mc.addAttr(ctrl, ln='__control__', at = 'message')
+        if not mc.objExists(tagAttr):
+            mc.addAttr(ctrl, ln='__control__', at = 'message')
 
     return tagAttr
 
@@ -310,3 +324,57 @@ def getShape(ctrl, index = 0):
         return shapes[index]
 
     return None
+
+
+def displayLine(point1, point2, name = 'ctrlLine#', parent = str()):
+    '''
+    Create a display line between two points
+
+    Example:
+    ..python
+        displayLine('l_uparm_sc_jnt', 'l_uparm_pv_ctrl')
+        #Return: 'ctrlLine1'
+
+        displayLine('l_uparm_sc_jnt', 'l_uparm_pv_ctrl', name = 'l_uparm_pv_displayLine')
+        #Return: 'l_uparm_pv_displayLine'
+
+    :param point1: First node to connect display line to
+    :type point1: str
+
+    :param point2: Second node to connect display line to
+    :type point2: str
+
+    :return: Display line
+    :rtype: str
+
+    '''
+    #get posiitons of first and second points
+    pnt1 = mc.xform(point1, q =True, ws = True, t = True)
+    pnt2 = mc.xform(point2, q =True, ws = True, t = True)
+
+    #create a pointList from point1 and point2 positions
+    pointList = (pnt1,pnt2)
+
+    #create display line from pointList
+    displayLine = rigrepo.libs.curve.createCurveFromPoints(pointList, degree = 1, name = name)
+
+    #cluster the two ends of the dispay line to point1 and point2
+    mc.cluster( '{}.cv[0]'.format(displayLine),
+            wn = [point1,point1],
+            bs = True,
+            name = '{}_1_{}'.format(displayLine, rigrepo.libs.common.CLUSTER))
+
+    mc.cluster('{}.cv[1]'.format(displayLine),
+            wn = [point2,point2],
+            bs = True,
+            name = '{}_2_{}'.format(displayLine, rigrepo.libs.common.CLUSTER))
+
+    #override display type of displayLine to be templated
+    mc.setAttr('{}.overrideEnabled'.format(displayLine), 1)
+    mc.setAttr('{}.overrideDisplayType'.format(displayLine), 2)
+    mc.setAttr('{}.inheritsTransform'.format(displayLine), 0)
+
+    if parent:
+        mc.parent(displayLine, parent)
+
+    return displayLine

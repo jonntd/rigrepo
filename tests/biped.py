@@ -146,6 +146,8 @@ import rigrepo.nodes.shapeAuthoringNode
 reload(rigrepo.nodes.shapeAuthoringNode)
 import rigrepo.nodes.updateTopologyNode
 reload(rigrepo.nodes.updateTopologyNode)
+import rigrepo.nodes.renameMappingNode
+reload(rigrepo.nodes.renameMappingNode)
 
 # reload parts
 import rigrepo.parts.part
