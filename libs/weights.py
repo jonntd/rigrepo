@@ -305,6 +305,8 @@ def applyWtsDir(directory):
         for filename in os.listdir(directory):
             filepath = os.path.join(directory, filename)
             fileSplit = filename.split("__")
+            if ".xml" != os.path.splitext(filepath)[-1]:
+                continue
             # get the geometry, deformer, and deformerType from the file name.
             geometry = fileSplit[0]
             deformer = fileSplit[1].split(".")[0]
