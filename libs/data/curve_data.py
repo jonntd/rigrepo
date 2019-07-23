@@ -69,6 +69,8 @@ class CurveData(node_data.NodeData):
             for attribute in attributes:
                 if attribute == 'cvPositions':
                     form = "Open"
+                    if 'shapes' not in self._data[node]:
+                        continue
                     for shape in self._data[node]['shapes'].keys():
                         if not mc.objExists(shape):
                             if self._data[node]['shapes'][shape].has_key("form"):
