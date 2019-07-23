@@ -34,10 +34,10 @@ class Arm(limb.Limb):
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
         swingCtrlHierarchy = control.create(name=swingCtrl, 
-                                                controlType="circle",
+                                                controlType="square",
                                                 hierarchy=['nul','ort'])
         clavicleCtrlHierarchy = control.create(name=clavicleCtrl, 
-                                                controlType="lollipop",
+                                                controlType="square",
                                                 hierarchy=['nul','ort'])
 
 

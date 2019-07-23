@@ -96,7 +96,7 @@ class Limb(part.Part):
             # create the fk control hierarchy
             if fkCtrl == fkControlNames[-1]:
                 rigrepo.libs.control.create(name=fkCtrl, 
-                                                controlType="circle",
+                                                controlType="cube",
                                                 hierarchy=[],
                                                 transformType="joint",
                                                 hideAttrs=["tx", "ty", "tz","v"],
@@ -116,7 +116,7 @@ class Limb(part.Part):
                 cstCtrl = fkGimbalCtrl
             else:
                 rigrepo.libs.control.create(name=fkCtrl, 
-                                                controlType="circle",
+                                                controlType="cube",
                                                 hierarchy=[],
                                                 transformType="joint",
                                                 hideAttrs=["tx", "ty", "tz", "sx", "sy", "sz", "v"],
@@ -143,7 +143,7 @@ class Limb(part.Part):
         # create the polevector control
         poleVectorPos = rigrepo.libs.ikfk.IKFKLimb.getPoleVectorFromHandle(handle, self._fkControls)
         pvCtrlHierarchy = rigrepo.libs.control.create(name=ikControlNames[0], 
-                                                controlType="sphere",
+                                                controlType="diamond",
                                                 hierarchy=['nul','ort'],
                                                 position=poleVectorPos,
                                                 hideAttrs=["v", "rx", "ry", "rz", "sx", "sy", "sz"],
