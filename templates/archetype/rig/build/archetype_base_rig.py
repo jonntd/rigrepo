@@ -112,8 +112,11 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         skinWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("skinCluster", 
             dirPath=self.resolveDirPath('skin_wts', self.variant))
+
+        deltaMushWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("deltaMush", 
+            dirPath=self.resolveDirPath('deltaMush_wts', self.variant))
         applyNode.addChildren([deformersNode, importDeformerDataNode, importSdkDataNode])
-        deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, clusterWtsFileNode, importPSDSystemNode])
+        deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, clusterWtsFileNode, importPSDSystemNode, deltaMushWtsFileNode])
 
         importNodeEditorBookmarsNode = rigrepo.nodes.importNodeEditorBookmarksNode.ImportNodeEditorBookmarksNode("bookmarks",
             dirPath=self.resolveDirPath('bookmarks', self.variant))

@@ -332,7 +332,10 @@ def applyWtsDir(directory):
                     skin = mc.skinCluster(jointListExists, geometry, name=deformer, tsb=True)[0]
                     # Set to dual quaternion mode
                     mc.setAttr('{}.skinningMethod'.format(skin), 1)
-
+                if deformerType == "deltaMush":
+                    mc.deltaMush(geometry,name=deformer,
+                                    smoothingIterations=10,smoothingStep=0.5,
+                                    pinBorderVertices=True,envelope=True)
             # apply the weights
             if not mc.objExists(deformer):
                 print('deformer does not exist [ {} ]'.format(deformer))

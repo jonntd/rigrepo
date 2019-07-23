@@ -32,10 +32,10 @@ class Neck(part.Part):
         self.spline.create()
 
         # Neck
-        neckNul,neckCtrl = control.create(name="neck", 
+        neckNul,neckOrt,neckCtrl = control.create(name="neck", 
                                           controlType="cube",
                                           color=common.BLUE,
-                                          hierarchy=['nul'])
+                                          hierarchy=['nul',"ort"])
 
         matrix = mc.xform(jointList[0], q=True, ws=True, matrix=True)
         mc.xform(neckNul, ws=True, matrix=matrix)

@@ -100,6 +100,9 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
         mc.setAttr("{0}.overrideEnabled".format(control), 1)
         mc.setAttr("{0}.overrideColor".format(control), color)
 
+    if mc.nodeType(control) == "joint":
+        mc.setAttr("{}.drawStyle".format(control), 2)
+
     tagAsControl(control)
 
     return hierarchyList + [control]
