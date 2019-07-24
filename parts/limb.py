@@ -106,7 +106,7 @@ class Limb(part.Part):
                 fkGimbalCtrl = rigrepo.libs.control.create(name=fkCtrl.replace("_{}".format(side), "_gimbal_{}".format(side)), 
                                                 controlType="sphere",
                                                 hierarchy=[],
-                                                transformType="transform",
+                                                transformType="joint",
                                                 hideAttrs=["tx", "ty", "tz","v"],
                                                 parent=fkCtrl)[0]
 
@@ -139,7 +139,7 @@ class Limb(part.Part):
         handle = mc.ikHandle(sj=self._fkControls[0],  ee=self._fkControls[-1], 
                                         sol="ikRPsolver", 
                                         name="{0}_hdl".format(self._fkControls[-1]))[0]
-        
+
         # create the polevector control
         poleVectorPos = rigrepo.libs.ikfk.IKFKLimb.getPoleVectorFromHandle(handle, self._fkControls)
         pvCtrlHierarchy = rigrepo.libs.control.create(name=ikControlNames[0], 
@@ -171,6 +171,8 @@ class Limb(part.Part):
                                                 color=rigrepo.libs.common.GREEN)     
 
         ikCtrl = ikCtrlHierarchy[-1]
+        rigrepo.libs.attribute.lockAndHide(ikCtrl, ["sx","sy","sz"])
+
         # add the gimbal control
 
         ikGimbalCtrl = rigrepo.libs.control.create(name=ikControlNames[1].replace("_{}".format(side), "_gimbal_{}".format(side)), 
@@ -248,6 +250,9 @@ class Limb(part.Part):
         mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
         mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
         #rigrepo.libs.control.tagAsControl(paramNode)
+        # add twist attribute to the param node
+        mc.addAttr(paramNode, ln="twist", at="double", dv=0, keyable=True)
+        mc.connectAttr("{}.twist".format(paramNode), "{}.twist".format(handle), f=True)
         for attr in ['stretch','stretchTop', 'stretchBottom', 'softStretch']:
             mc.connectAttr('{}.{}'.format(paramNode, attr), 
                         '{}.{}'.format(grp, attr), f=True)
@@ -378,7 +383,10 @@ class Limb(part.Part):
         # add fk gimbal control to the fk control list
         self._fkControls.append(fkGimbalCtrl)
         if createDisplayLine:
-            curve = rigrepo.libs.control.displayLine(self.jointList[1], pvCtrl, 
+            elbow = self.jointList[1]
+            if createBendyLimb:
+                elbow = controlHieracrchyList[2][-1]
+            curve = rigrepo.libs.control.displayLine(elbow, pvCtrl, 
                                         name='{}_display_line'.format(pvCtrl), parent=self.name)
             mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(curve), f=True)
         
