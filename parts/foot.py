@@ -131,17 +131,23 @@ class Foot(part.Part):
         # create the ball fk control
         ballFkctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(fkJointList[1]), 
                                                             controlType = "cube", 
-                                                            hierarchy=['nul'])
+                                                            hierarchy=['nul','ort'],
+                                                            transformType="joint")
 
         rigrepo.libs.attribute.lockAndHide(ballFkctrlHierarchy[-1],
                                             ['v', 'sx','sy','sz'])
 
         # position the ball control
         ballJointMatrix = mc.xform(fkJointList[1], q=True, ws=True, matrix=True)
-        mc.xform(ballFkctrlHierarchy[0], ws=True, matrix=ballJointMatrix)
+        mc.pointConstraint(self._fkAnchor,ballFkctrlHierarchy[0], mo=False)
+        mc.xform(ballFkctrlHierarchy[1], ws=True, matrix=ballJointMatrix)
         mc.pointConstraint(ballFkctrlHierarchy[-1], fkJointList[1])
         mc.orientConstraint(ballFkctrlHierarchy[-1], fkJointList[1])
+        mc.parent(ballFkctrlHierarchy[0], self.name)
 
+
+        #if mc.objExists(self._fkAnchor):
+        #    mc.parent(ballFkctrlHierarchy[0], self._fkAnchor)
         # create the toe fk control
         # TAKING OUT THE TOE FK CONTROL FOR NOW.
         '''
@@ -158,10 +164,7 @@ class Foot(part.Part):
         mc.pointConstraint(toeFkctrlHierarchy[-1], fkJointList[2])
         mc.orientConstraint(toeFkctrlHierarchy[-1], fkJointList[2])
         '''
-
-
-        if mc.objExists(self._fkAnchor):
-            mc.parent(ballFkctrlHierarchy[0], self._fkAnchor)
+        
         parent = None
 
         #-------------------------------------------------------------------------------------------
@@ -232,11 +235,14 @@ class Foot(part.Part):
                 parent = pivot
                 continue
 
-            # create the control hierarchy
             pivotctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(pivot), 
                                                             controlType = "cube", 
                                                             hierarchy=['nul'])
 
+            # create the control hierarchy
+            if pivot == pivotList[-1]:
+                mc.deleteAttr("{}.__control__".format(pivotctrlHierarchy[-1]))
+                mc.delete(mc.listRelatives(pivotctrlHierarchy[-1],c=True,shapes=True))
             rigrepo.libs.attribute.lockAndHide(pivotctrlHierarchy[-1],
                                             ['tx', 'ty','tz','v','sx','sy','sz'])
 
@@ -265,6 +271,7 @@ class Foot(part.Part):
 
         # if the param node that is past in exists then we will add attributes to it.
         # if not, we will make one of our own and put them on the controls
+        ikfkAttr ="{}.ikfk".format(paramNode)
         if not mc.objExists(paramNode):
             paramNode = mc.createNode("locator", name=paramNodeName)
             paramNodeTrs = mc.listRelatives(paramNode, p=True)[0]
@@ -274,7 +281,16 @@ class Foot(part.Part):
 
             mc.setAttr("{0}.v".format(paramNode), 0)
             mc.addAttr(paramNode, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
-            ikfkAttr = "{0}.ikfk".format(paramNode)
+
+        # create ikfk reverse node to connect the ikfk attribute
+        reverseNode = mc.createNode("reverse", name="{0}_rvr".format(self.name))
+        mc.connectAttr(ikfkAttr, "{0}.inputX".format(reverseNode), f=True)
+
+        cst=mc.parentConstraint(pivotList[-3], self._fkAnchor, ballFkctrlHierarchy[1], mo=True)[0]
+        weightAlias = mc.parentConstraint(cst,q=True,wal=True)
+        mc.connectAttr(ikfkAttr, "{}.{}".format(cst,weightAlias[1]), f=True)
+        mc.connectAttr("{}.outputX".format(reverseNode), "{}.{}".format(cst,weightAlias[0]), f=True)
+        mc.parentConstraint(ballFkctrlHierarchy[-1], pivotList[-1], mo=True)
 
         # create the offset joint for the matching to work
         ballOffsetJoint = mc.joint(name="{}_offset".format(ikControlList[-1]))
