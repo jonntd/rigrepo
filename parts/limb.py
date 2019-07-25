@@ -66,6 +66,7 @@ class Limb(part.Part):
                                                 transformType="joint")[0]
 
         mc.parentConstraint(self.jointList[-1], paramNode,mo=False)
+        mc.setAttr("{}.v".format(mc.listRelatives(paramNode, c=True, shapes=True)[0]), 0)
         rigrepo.libs.attribute.lockAndHide(paramNode, ("tx","ty","tz","rx","ry","rz","sx","sy","sz","v"))
         mc.select(cl=True)
         grp = mc.createNode("transform", name="{}_ikfk_grp".format(self.name))
@@ -151,8 +152,8 @@ class Limb(part.Part):
 
         # get the handle and pv control
         pvCtrl = pvCtrlHierarchy[-1]
-        mc.poleVectorConstraint(pvCtrl, handle)
-
+        pvCst = mc.poleVectorConstraint(pvCtrl, handle)[0]
+        
         # set the pvMatch node attribute on the paramNode
         mc.addAttr(paramNode, ln="pvMatch", dt="string")
         pvMatchNode = mc.duplicate(pvCtrl, po=True, rr=True, name="{}_match".format(pvCtrl))[0]
@@ -389,7 +390,7 @@ class Limb(part.Part):
             curve = rigrepo.libs.control.displayLine(elbow, pvCtrl, 
                                         name='{}_display_line'.format(pvCtrl), parent=self.name)
             mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(curve), f=True)
-        
+
     def postBuild(self):
         '''
         '''

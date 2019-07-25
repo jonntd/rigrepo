@@ -107,22 +107,20 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         'thumbCup_l_bind'])
         # Auto clavicle
         side = 'l'
-        '''
         l_autoClav = rigrepo.parts.autoParent.AutoParent(side+'_autoClav',
                                                          parentControl='clavicle_'+side,
                                                          inputControls=['shoulderSwing_'+side,
                                                                         'shoulder_fk_'+side],
-                                                         ikJointList=['shoulder_'+side+'_bind_ik',
-                                                                      'elbow_'+side+'_bind_ik',
-                                                                      'wrist_'+side+'_bind_ik'],
+                                                         ikJointList=['shoulder_fk_'+side,
+                                                                      'elbow_fk_'+side,
+                                                                      'wrist_fk_'+side],
                                                          autoBlendAttr='autoClav',
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
                                                          anchor=side+'_arm_anchor_grp')
-                                                         '''
 
         # add hand to arm node.
-        l_arm.addChildren([leftArmAddSpaceNode,leftArmPvAddSpaceNode,leftArmIkAddSpaceNode,l_hand])#, l_autoClav])
+        l_arm.addChildren([l_autoClav, leftArmAddSpaceNode,leftArmPvAddSpaceNode,leftArmIkAddSpaceNode,l_hand])
 
         r_arm = rigrepo.parts.arm.Arm("r_arm",
                                     ['clavicle_r_bind', 
@@ -159,7 +157,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         # Auto clavicle
         side = 'r'
-        '''
+
         r_autoClav = rigrepo.parts.autoParent.AutoParent(side+'_autoClav',
                                                          parentControl='clavicle_'+side,
                                                          inputControls=['shoulderSwing_'+side,
@@ -171,9 +169,9 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
                                                          anchor=side+'_arm_anchor_grp')
-        '''
+
         # add hand to arm node.
-        r_arm.addChildren([rightArmAddSpaceNode,rightArmPvAddSpaceNode,rightArmIkAddSpaceNode,r_hand])#, r_autoClav])
+        r_arm.addChildren([r_autoClav, rightArmAddSpaceNode,rightArmPvAddSpaceNode,rightArmIkAddSpaceNode,r_hand])
 
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",

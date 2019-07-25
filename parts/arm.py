@@ -108,7 +108,7 @@ class Arm(limb.Limb):
             aimVector = (1, 0, 0)
         if mc.objExists(transBind):
             mc.aimConstraint(self._clavicleJoint, transBind, mo=1, weight=1, aimVector=aimVector, upVector=(0, 1, 0), worldUpType='none')
-            mc.pointConstraint(self.jointList[0], transBind, mo=1)
+            mc.pointConstraint(self.jointList[0], transBind, mo=0)
         else:
             print('clavicle translate not found', transBind)
 
