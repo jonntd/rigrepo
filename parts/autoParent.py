@@ -47,6 +47,8 @@ class AutoParent(part.Part):
         if not ikJointList:
             return
         self.jointList = rigrepo.libs.joint.duplicateChain(ikJointList, names=names, parent=group)
+        for j in self.jointList:
+            mc.setAttr(j+'.rotateOrder', 0)
         autoIkHandle = mc.ikHandle(sj=self.jointList[0],  ee=self.jointList[-1],
                                   sol="ikRPsolver", name=parentControl+'_auto_ikHandle')[0]
         mc.hide(autoIkHandle)
