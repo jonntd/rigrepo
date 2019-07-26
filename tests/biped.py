@@ -203,31 +203,39 @@ def nodes(variant='base', buildNow=False, debug=True):
 
     if buildNow:
         nodeList = biped_graph.getNodes()
+        node = nodeList[0]
 
-        total_time_0 = time.time()
-        nodeTimeLog = list()
+        node.execute()
+        nodeList = list(node.descendants())
+
         for node in nodeList:
-            classType = type(node)
-            nodeType = classType.__name__
-            nodeClassPath = str(node.__module__ + "." + nodeType)
-
             if not node.isActive():
                 nodeIndex = nodeList.index(node)
                 childList = node.descendants()
                 for child in childList:
                     nodeList.pop(nodeIndex+1)
                 nodeList.pop(nodeIndex)
-            if node.isActive() and nodeType != 'PNode':
+
+        total_time_0 = time.time()
+        nodeTimeLog = list()
+        for node in nodeList:
+
+            classType = type(node)
+            nodeType = classType.__name__
+            nodeClassPath = str(node.__module__ + "." + nodeType)
+
+            if node.isActive():
                 name = node.getName()
+                fullPath = node.getFullPath()
                 t0 = time.time()
                 if debug:
                     print('-'*100)
-                    print(name + ' - executing')
+                    print(name + ' - executing  ' + fullPath)
                     mc.refresh()
                 node.execute()
                 t1 = time.time()
                 nodeTime = round(t1-t0, 5)
-                nodeTimeLog.append((nodeTime, name, nodeClassPath))
+                nodeTimeLog.append((nodeTime, name, fullPath, nodeClassPath))
                 if debug:
                     print('{} - time: {} sec'.format(name, nodeTime))
 
@@ -238,8 +246,8 @@ def nodes(variant='base', buildNow=False, debug=True):
             output = '-'*100
             output += '\n{:<8}| {:<90}\n'.format('Time', 'Node')
             output += '-'*100
-            for a, b, path in nodesByTime:
-                output += '\n{:<8}| {:<29} |{:<68}'.format(a, b, path)
+            for a, b, fullPath, path in nodesByTime:
+                output += '\n{:<8}| {:<29} {:<68} |{:<68}'.format(a, b, fullPath, path)
             output += '\n'+'-'*100
             output += '\n{:<8}| {:<90}'.format(total_time, len(nodesByTime))
             #output += '\n{:<8}| {:<90}'.format('Time', 'Node')
