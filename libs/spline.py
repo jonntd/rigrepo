@@ -149,13 +149,18 @@ class SplineBase(object):
         mc.setAttr(full_scale+'.input2X', arc_length)
         mc.setAttr(full_scale+'.operation', 2)
 
+        # get the rotateOrder and twistAxis for the 
+        transValue = mc.getAttr("{}.t".format(self._ikJointList[-1]))[0]
+        twistAxis = ['x','y','z'][transValue.index(max(transValue))]
+        rotateOrder = mc.getAttr("{}.ro".format(self._ikJointList[-1]))
+
         for i,j in enumerate(self._ikJointList[1:]):
             bone_scale = mc.createNode('multiplyDivide', 
                                         n='{}_{}_stretch_mul'.format(self._name, i))
             mc.connectAttr(full_scale+'.output.outputX', bone_scale+'.input2X')
-            joint_tx = mc.getAttr(j+'.tx')
+            joint_tx = mc.getAttr(j+'.t{}'.format(twistAxis))
             mc.setAttr(bone_scale+'.input1X', joint_tx)
-            mc.connectAttr(bone_scale+'.output.outputX', j+'.tx')
+            mc.connectAttr(bone_scale+'.output.outputX', j+'.t{}'.format(twistAxis))
 
         # Start 
         startGrp = mc.createNode('transform', n=self._name+'_start_grp', p=self._group)
@@ -173,7 +178,7 @@ class SplineBase(object):
         mc.parent(end, endGrp)
         con = mc.parentConstraint(self._ikJointList[-1], endGrp)
         mc.delete(con)
-        rigrepo.libs.transform.decomposeRotation(end)
+        rigrepo.libs.transform.decomposeRotation(end, twistAxis=twistAxis, rotateOrder=rotateOrder)
 
         twist_add = mc.createNode('plusMinusAverage', n=self._name+'_addtwist')
 
@@ -212,8 +217,10 @@ class SplineBase(object):
             mc.connectAttr("{}.outputX".format(full_scale), "{}.color1R".format(blendNode), f=True)
             mc.connectAttr("{}.scale_{}".format(self._group, i), "{}.blender".format(blendNode), f=True)
             mc.setAttr("{}.color2R".format(blendNode), 1.0)
-            for attr in ['sy', 'sz']:
-                mc.connectAttr("{}.output1D".format(addNode), '{}.{}'.format(ik, attr), f= True)
+            scaleAttrs = ['x','y', 'z']
+            scaleAttrs.pop(scaleAttrs.index(twistAxis))
+            for attr in scaleAttrs:
+                mc.connectAttr("{}.output1D".format(addNode), '{}.s{}'.format(ik, attr), f= True)
             i += 1
 
         # set the scale for the spine

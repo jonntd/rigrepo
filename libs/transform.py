@@ -27,7 +27,7 @@ def getDagPath(node):
 
 
 
-def decomposeRotation(object, swingOnly=False):
+def decomposeRotation(object, swingOnly=False, twistAxis='x', rotateOrder=5):
     '''
     Decompose the rotation of the given object. Adds a decomposeTwist attribute to the 
     given object with the resulting decomposed twist. A transform that is only the swing is
@@ -36,6 +36,16 @@ def decomposeRotation(object, swingOnly=False):
     
     :param object: Object to decmpose twist for
     :type object: str
+
+    :param swingOnly: Whether to use swing only or not.
+    :type swingOnly: bool
+
+    :param twistAxis: This should be the twist axis for the object
+    :type twistAxis: str
+
+    :param rotateOrder: Rotate order to use
+    :type rotateOrder: int
+
     :return: Swing transform 
     :rtype: list
     '''
@@ -46,9 +56,24 @@ def decomposeRotation(object, swingOnly=False):
 
     # Variables specific to which twist axis is being decomposed
     # If adding support for other axis these will need to be handled
-    twistAxis = 'x'
-    vector = (1, 0, 0)
-    rotateOrder = 5
+    if twistAxis in ['x', 'X']:
+        twistAxis = 'x'
+        vector = (1, 0, 0)
+    elif twistAxis in ['y', 'Y']:
+        twistAxis = 'y'
+        vector = (0, 1, 0)
+    elif twistAxis in ['z', 'Z']:
+        twistAxis = 'z'
+        vector = (0, 0, 1)
+    elif twistAxis in ['-x', '-X']:
+        twistAxis = '-x'
+        vector = (-1, 0, 0)
+    elif twistAxis in ['-y', '-Y']:
+        twistAxis = '-y'
+        vector = (0, -1, 0)
+    elif twistAxis in ['-z', '-Z']:
+        twistAxis = '-z'
+        vector = (0, 0, -1)
 
     aimTarget = mc.createNode('transform', n=object+'_twist', p=object)
     mc.setAttr(aimTarget+'.t'+twistAxis, 1)
