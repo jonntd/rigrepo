@@ -193,11 +193,12 @@ class Limb(part.Part):
         tempUpJnt = mc.joint(name="{}_offset_tempUp".format(self._fkControls[-1]))
         mc.parent(tempUpJnt, dupEndJnt)
         # get the aim vector we will be using to set the ik control default rotation
+
         distance = mc.getAttr("{}.t".format(self._fkControls[-1]))[0]
         aimAttr, aimVector = self._getDistanceVector(distance)
         # move the dupJnt and setup the tmp joints
         mc.xform(dupEndJnt, ws=True, matrix=mc.xform(self._fkControls[-1], q=True, ws=True, matrix=True))
-        mc.setAttr('{}.t{}'.format(tempJnt, aimAttr),mc.getAttr('{}.t{}'.format(self._fkControls[-1], aimAttr))+2)
+        mc.setAttr('{}.t{}'.format(tempJnt, aimAttr.strip("-")),mc.getAttr('{}.t{}'.format(self._fkControls[-1], aimAttr.strip("-")))+2)
         mc.setAttr('{0}.ty'.format(tempUpJnt), 2)
         mc.parent([tempUpJnt,tempJnt], ikCtrl)
         upDistance = mc.getAttr("{}.t".format(tempUpJnt))[0]
@@ -250,6 +251,7 @@ class Limb(part.Part):
         mc.addAttr(paramNode, ln='stretchTop', at='double', min=0, dv = 1, k=True)
         mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
         mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
+        mc.addAttr(paramNode, ln='pvPin', at='double', min=0, max=1, dv=0, k=True)
         #rigrepo.libs.control.tagAsControl(paramNode)
         # add twist attribute to the param node
         mc.addAttr(paramNode, ln="twist", at="double", dv=0, keyable=True)
@@ -263,6 +265,55 @@ class Limb(part.Part):
         mc.connectAttr("{}.stretch".format(paramNode), "{}.input1".format(multiplyNode),f=True)
         mc.connectAttr("{}.outputX".format(reverseNode), "{}.input2".format(multiplyNode), f=True)
         mc.connectAttr("{}.output".format(multiplyNode), "{}.blender".format(blendNode), f=True)
+
+        # create pvPinning node network ---------------------------------------------------------
+        # create the upper and lower distance between nodes.
+        upperLimbDecomp = mc.createNode('decomposeMatrix', n="{}_upperPvPin_dcm".format(self.name))
+        pvDecomp = mc.createNode('decomposeMatrix', n="{}_PvPin_dcm".format(self.name))
+        upperDistanceBetweenNode = mc.createNode('distanceBetween', n="{}_upperPvPin_dst".format(self.name))
+        mc.connectAttr("{}.worldMatrix[0]".format(self._fkControls[0]), "{}.inputMatrix".format(upperLimbDecomp), f=True)
+        mc.connectAttr("{}.worldMatrix[0]".format(pvCtrl), "{}.inputMatrix".format(pvDecomp), f=True)
+        mc.connectAttr("{}.outputTranslate".format(upperLimbDecomp), "{}.point1".format(upperDistanceBetweenNode), f=True)
+        mc.connectAttr("{}.outputTranslate".format(pvDecomp), "{}.point2".format(upperDistanceBetweenNode), f=True)
+
+        lowerLimbDecomp = mc.createNode('decomposeMatrix', n="{}_lowerPvPin_dcm".format(self.name))
+        lowerDistanceBetweenNode = mc.createNode('distanceBetween', n="{}_lowerPvPin_dst".format(self.name))
+        mc.connectAttr("{}.worldMatrix[0]".format(ikCtrl), "{}.inputMatrix".format(lowerLimbDecomp), f=True)
+        mc.connectAttr("{}.outputTranslate".format(lowerLimbDecomp), "{}.point1".format(lowerDistanceBetweenNode), f=True)
+        mc.connectAttr("{}.outputTranslate".format(pvDecomp), "{}.point2".format(lowerDistanceBetweenNode), f=True)
+
+
+        # create the blendColor node for the pvPinning to override the stretch in the limb.
+        pvPinBlendNode = mc.createNode("blendColors", n="{}_PvPin_bcn".format(self.name))
+        mc.connectAttr("{}.outputR".format(blendNode), "{}.color2R".format(pvPinBlendNode), f=True)
+        mc.connectAttr("{}.outputG".format(blendNode), "{}.color2G".format(pvPinBlendNode), f=True)
+
+        # get the aimVector and aim Attr
+        aimDistance = mc.getAttr("{}.t".format(self.jointList[1]))[0]
+        aimAttr, aimVector = self._getDistanceVector(aimDistance)
+
+        # make sure if it is a negative direction that we account for that and invert the values
+        # coming into the pinning blend node.
+        if "-" in aimAttr:
+            pvPinUpperRvrMultDouble = mc.createNode("multDoubleLinear", n="{}_PvPinUpperRvr_mdl".format(self.name))
+            pvPinLowerRvrMultDouble = mc.createNode("multDoubleLinear", n="{}_PvPinLowerRvr_mdl".format(self.name))
+            mc.connectAttr("{}.distance".format(upperDistanceBetweenNode), "{}.input1".format(pvPinUpperRvrMultDouble), f=True)
+            mc.connectAttr("{}.distance".format(lowerDistanceBetweenNode), "{}.input1".format(pvPinLowerRvrMultDouble), f=True)
+            for node in (pvPinLowerRvrMultDouble, pvPinUpperRvrMultDouble):
+                mc.setAttr("{}.input2".format(node), -1)
+            mc.connectAttr("{}.output".format(pvPinUpperRvrMultDouble), "{}.color1R".format(pvPinBlendNode), f=True)
+            mc.connectAttr("{}.output".format(pvPinLowerRvrMultDouble), "{}.color1G".format(pvPinBlendNode), f=True)
+        else:
+            mc.connectAttr("{}.distance".format(upperDistanceBetweenNode), "{}.color1R".format(pvPinBlendNode), f=True)
+            mc.connectAttr("{}.distance".format(lowerDistanceBetweenNode), "{}.color1G".format(pvPinBlendNode), f=True)
+
+        # create the multiplier to have pvPinning on during IK only and pinning on
+        pvPinMultDouble = mc.createNode("multDoubleLinear", n="{}_PvPin_mdl".format(self.name))
+        mc.connectAttr("{}.pvPin".format(paramNode), "{}.input1".format(pvPinMultDouble), f=True)
+        mc.connectAttr("{}.outputX".format(reverseNode), "{}.input2".format(pvPinMultDouble), f=True)
+        mc.connectAttr("{}.output".format(pvPinMultDouble), "{}.blender".format(pvPinBlendNode), f=True)
+        mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.t{}".format(self._fkControls[1], aimAttr.strip("-")), f=True)
+        mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.t{}".format(self._fkControls[2], aimAttr.strip("-")), f=True)
 
         mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
 
@@ -403,9 +454,8 @@ class Limb(part.Part):
         nameSplit = self.jointList[0].split('_{}_'.format(side))
         noTwist = '{}NoTwist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
         target = self.jointList[1]
-        aimVector = (1, 0, 0)
-        if side is 'r':
-            aimVector = (-1, 0, 0)
+        aimDistance = mc.getAttr("{}.t".format(self.jointList[1]))[0]
+        aimAttr, aimVector = self._getDistanceVector(aimDistance)
         if mc.objExists(noTwist):
             mc.aimConstraint(target, noTwist, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
         else:
@@ -556,19 +606,24 @@ class Limb(part.Part):
         '''
         '''
         distanceValue = max(distance, key=abs)
-        attr = ["x","y","z"][distance.index(distanceValue)]
+        index = distance.index(distanceValue)
+        attr = ["x","y","z"][index]
+        value = round(distance[index], 4)
         if attr == "x":
-            if distanceValue < 0:
+            if value < 0:
+                attr = "-x"
                 vector = [-1,0,0]
             else:
                 vector = [1,0,0]
         elif attr == "y":
-            if distanceValue < 0:
+            if value < 0:
+                attr = "-y"
                 vector = [0,-1,0]
             else:
                 vector = [0,1,0]
         elif attr == "z":
-            if distanceValue < 0:
+            if value < 0:
+                attr = "-z"
                 vector = [0,0,-1]
             else:
                 vector = [0,0,1]
