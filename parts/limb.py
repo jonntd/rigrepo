@@ -478,6 +478,7 @@ class Limb(part.Part):
                 mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, k=True, proxy='{}.stretchTop'.format(paramNodeName))
                 mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, k=True, proxy='{}.stretchBottom'.format(paramNodeName))
                 mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True, proxy='{}.softStretch'.format(paramNodeName))
+                mc.addAttr(control, ln='pvPin', at='double', min=0, max=1, dv=1, k=True, proxy='{}.pvPin'.format(paramNodeName))
 
         rigrepo.libs.attribute.lockAndHide(self._fkControls,["tx","ty", "tz"])
 
