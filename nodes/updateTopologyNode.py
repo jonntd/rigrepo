@@ -27,6 +27,12 @@ import rigrepo.libs.skinCluster as skinCluster
 prefix = 'OLD_TOPO__'
 model = 'model'
 
+# Get geometry under the model
+if mc.objExists(prefix+model):
+    geos = mc.listRelatives(prefix+model, ad=1, type='mesh', path=1, ni=1)
+    # Get transforms of geometry
+    geos = list(set(mc.listRelatives(geos, p=1, path=1, type='transform')))
+
 ################
 # Rename Model #
 ################
@@ -40,15 +46,11 @@ if action == 'rename':
             for child in allDescendents+[node]:
                 mc.rename(child, prefix + child.split('|')[-1])
                 
-##############################
-# Transfer SkinCluster Model #
-##############################
+########################
+# Transfer SkinCluster #
+########################
 
 if action == 'skinCluster':
-    # Get geometry under the model
-    geos = mc.listRelatives(prefix+model, ad=1, type='mesh', path=1, ni=1)
-    geos = list(set(mc.listRelatives(geos, p=1, path=1, type='transform')))
-    
     for geo in geos:
         sc = skinCluster.getSkinCluster(geo)
         if sc:
@@ -60,6 +62,45 @@ if action == 'skinCluster':
                                                         ['skinCluster'], 
                                                         'closestPoint')
                 
+####################
+# Transfer Cluster #
+####################
+
+if action == 'cluster':
+    for geo in geos:
+        clusters = rigrepo.libs.cluster.getClusters(geo)
+        if clusters:
+            for cluster in clusters:
+                target = geo.replace(prefix, '')
+                if mc.objExists(target):
+                    newCluster = rigrepo.libs.cluster.transferCluster(geo, 
+                                                                      target, 
+                                                                      cluster, 
+                                                                      handle=True, 
+                                                                      surfaceAssociation="closestPoint", 
+                                                                      createNew=True)
+                    mc.rename(cluster, prefix+cluster)
+                    mc.rename(newCluster[0], cluster)
+                    
+#######################
+# Transfer BlendShape #
+#######################
+
+if action == 'blendShape':
+    for geo in geos:
+        blendShapes = rigrepo.libs.blendShape.getBlendShapes(geo)
+        if blendShapes:
+            for blendShape in blendShapes:
+                target = geo.replace(prefix, '')
+                if mc.objExists(target):
+                    newBlendShape = rigrepo.libs.blendShape.transferBlendShape(geo, 
+                                                                      target, 
+                                                                      blendShape,
+                                                                      differentTopology=1)
+                    #mc.delete(blendShape)
+                    mc.rename(blendShape, prefix+blendShape)
+                    mc.rename(newBlendShape[0], blendShape)
+        
 #####################
 # Replace The Model #
 #####################
