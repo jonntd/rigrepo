@@ -62,8 +62,8 @@ try:
         for pose in psd.getPoses(mirNode):
             index = psd.getPoseShapeIndex(mirNode, pose)
             print('index', index)
-            if index:
-                mc.blendShape(bs, e=1, ft=(0, index), ss=1, sa='x')
+            #if index:
+            #    mc.blendShape(bs, e=1, ft=(0, index), ss=1, sa='x')
 
         poseControls = psd.getPoseControls(node)
         
