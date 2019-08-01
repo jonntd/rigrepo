@@ -1,5 +1,5 @@
 '''
-This is a module for libraries used for transforms.
+This is a module for libraries used for psd.
 '''
 import maya.api.OpenMaya as om
 import maya.cmds as mc
