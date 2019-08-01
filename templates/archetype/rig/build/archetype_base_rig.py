@@ -60,7 +60,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         importPSDDeltaNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psdDeltas",
                                   dirPath=self.resolveDirPath('psd', self.variant),
                                   loadDeltas=True,
-                                  psdNames='["blinks", "skin"]')
+                                  psdNames='["blinks", "skin_psd"]')
         loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode, curveFileNode, curveDataNode, bindMeshes, importPSDDeltaNode])
 
         # postBuild
@@ -100,7 +100,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
             dirPath=self.resolveDirPath('cluster_wts', self.variant))
         importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psd",
             dirPath=self.resolveDirPath('psd', self.variant),
-            psdNames='["blinks", "skin"]')
+            psdNames='["blinks", "skin_psd"]')
         importSdkDataNode = rigrepo.nodes.importDataNode.ImportDataNode('sdk', 
                 dataFile=self.resolveDataFilePath('sdk.data', self.variant), 
                 dataType='sdk', 
@@ -182,7 +182,11 @@ for cluster in lidClusters:
                                                                 filePath=self.resolveModelFilePath(self.variant))
         updateTopologyDeformersNode= pubs.pNode.PNode('transferDeformers')
         updateTopologySkinClusterNode = rigrepo.nodes.updateTopologyNode.UpdateTopologyNode('skinCluster', action='skinCluster')
-        updateTopologyDeformersNode.addChildren([updateTopologySkinClusterNode])
+        updateTopologyClusterNode = rigrepo.nodes.updateTopologyNode.UpdateTopologyNode('cluster', action='cluster')
+        updateTopologyBlendShapeNode = rigrepo.nodes.updateTopologyNode.UpdateTopologyNode('blendShape', action='blendShape')
+        updateTopologyDeformersNode.addChildren([updateTopologyBlendShapeNode,
+                                                 updateTopologySkinClusterNode,
+                                                 updateTopologyClusterNode, ])
         updateTopologyReplaceNode = rigrepo.nodes.updateTopologyNode.UpdateTopologyNode('replace', action='replace')
 
         updateTopologyNode.addChildren([updateTopologyRenameNode,
