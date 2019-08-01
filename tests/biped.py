@@ -77,6 +77,10 @@ import rigrepo.libs.deformer
 reload(rigrepo.libs.deformer)
 import rigrepo.libs.spaces
 reload(rigrepo.libs.spaces)
+import rigrepo.libs.blendShape
+reload(rigrepo.libs.blendShape)
+import rigrepo.libs.wrap
+reload(rigrepo.libs.wrap)
 
 import rigrepo.libs.data.sdk_data
 reload(rigrepo.libs.data.sdk_data)
