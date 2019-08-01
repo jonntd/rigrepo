@@ -1,242 +1,470 @@
 {
     "type": "NodeEditorBookmarkData", 
     "user": "Matt", 
-    "time": "2018-12-17 01:19:03", 
+    "time": "2019-07-25 14:14:27", 
     "data": {
-        "autoClav_nodeview": {
-            "dagPath": "autoClav_nodeview", 
-            "name": "autoClav", 
+        "_nodeview": {
+            "dagPath": "_nodeview", 
+            "name": "", 
             "nodeInfo": [
                 {
-                    "positionX": -90.0, 
-                    "positionY": -30.0, 
+                    "positionX": -1452.857177734375, 
+                    "positionY": -715.7142944335938, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_start"
+                    "dependNode": "clavicle_l_addRotation_multMatrix"
                 }, 
                 {
-                    "positionX": 767.1428833007812, 
-                    "positionY": 227.14285278320312, 
+                    "positionX": -852.8571166992188, 
+                    "positionY": -715.7142944335938, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_1_"
+                    "dependNode": "unitConversion12"
                 }, 
                 {
-                    "positionX": 767.1428833007812, 
-                    "positionY": -201.42857360839844, 
+                    "positionX": -852.8571166992188, 
+                    "positionY": -801.4285888671875, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_6_"
+                    "dependNode": "unitConversion13"
                 }, 
                 {
-                    "positionX": 1924.2857666015625, 
-                    "positionY": -330.0, 
+                    "positionX": -1752.857177734375, 
+                    "positionY": -758.5714111328125, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_connect"
+                    "dependNode": "shoulder_fk_l"
                 }, 
                 {
-                    "positionX": 81.42857360839844, 
-                    "positionY": -201.42857360839844, 
+                    "positionX": -1752.857177734375, 
+                    "positionY": -672.8571166992188, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_end"
+                    "dependNode": "shoulderSwing_l"
                 }, 
                 {
-                    "positionX": 2010.0, 
-                    "positionY": -201.42857360839844, 
+                    "positionX": -210.0, 
+                    "positionY": -715.7142944335938, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_connect_trans"
+                    "dependNode": "clavicle_l_auto_start"
                 }, 
                 {
-                    "positionX": 1967.142822265625, 
-                    "positionY": -415.71429443359375, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "shoulderSwing_r_nul"
-                }, 
-                {
-                    "positionX": -1332.857177734375, 
-                    "positionY": -30.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_addRotation_multMatrix"
-                }, 
-                {
-                    "positionX": -4.285714149475098, 
-                    "positionY": -115.71428680419922, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_mid"
-                }, 
-                {
-                    "positionX": -475.71429443359375, 
-                    "positionY": -30.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_start_rotateY"
-                }, 
-                {
-                    "positionX": 767.1428833007812, 
-                    "positionY": -30.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_4_"
-                }, 
-                {
-                    "positionX": -1632.857177734375, 
-                    "positionY": -30.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "shoulder_fk_r"
-                }, 
-                {
-                    "positionX": -90.0, 
-                    "positionY": 98.57142639160156, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_ikHandle"
-                }, 
-                {
-                    "positionX": 399.10980224609375, 
-                    "positionY": -32.37379837036133, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_poseInterpolatorShape"
-                }, 
-                {
-                    "positionX": 767.1428833007812, 
-                    "positionY": 55.71428680419922, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_3_"
-                }, 
-                {
-                    "positionX": 2310.0, 
-                    "positionY": -201.42857360839844, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_connect_pointConstraint1"
-                }, 
-                {
-                    "positionX": -1761.4285888671875, 
-                    "positionY": 55.71428680419922, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "shoulderSwing_r"
-                }, 
-                {
-                    "positionX": -732.8571166992188, 
-                    "positionY": -115.71428680419922, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "unitConversion36"
-                }, 
-                {
-                    "positionX": -732.8571166992188, 
-                    "positionY": 55.71428680419922, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "unitConversion34"
-                }, 
-                {
-                    "positionX": 210.0, 
-                    "positionY": -330.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_start_swing_aimConstraint1"
-                }, 
-                {
-                    "positionX": -1075.7142333984375, 
-                    "positionY": -30.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_addRotation_dcmpMatrix"
-                }, 
-                {
-                    "positionX": 767.1428833007812, 
-                    "positionY": -287.1428527832031, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_7_"
-                }, 
-                {
-                    "positionX": 1367.142822265625, 
-                    "positionY": -115.71428680419922, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_blend_mul_input1X"
-                }, 
-                {
-                    "positionX": 1667.142822265625, 
-                    "positionY": -30.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "pairBlend2"
-                }, 
-                {
-                    "positionX": 767.1428833007812, 
+                    "positionX": -1698.5714111328125, 
                     "positionY": -372.8571472167969, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_8_"
+                    "dependNode": "clavicle_l_connect"
                 }, 
                 {
-                    "positionX": 1367.142822265625, 
-                    "positionY": -30.0, 
+                    "positionX": -595.7142944335938, 
+                    "positionY": -801.4285888671875, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_blend_mul"
+                    "dependNode": "clavicle_l_auto_start_rotateY"
                 }, 
                 {
-                    "positionX": 1924.2857666015625, 
-                    "positionY": -30.0, 
+                    "positionX": -852.8571166992188, 
+                    "positionY": -630.0, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_ort"
+                    "dependNode": "unitConversion14"
                 }, 
                 {
-                    "positionX": -475.71429443359375, 
-                    "positionY": -115.71428680419922, 
+                    "positionX": -38.57143020629883, 
+                    "positionY": -887.1428833007812, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_start_rotateZ"
+                    "dependNode": "clavicle_l_auto_end"
                 }, 
                 {
-                    "positionX": -475.71429443359375, 
-                    "positionY": 55.71428680419922, 
+                    "positionX": 175.7142791748047, 
+                    "positionY": -715.7142944335938, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_start_rotateX"
+                    "dependNode": "clavicle_l_auto_ikHandle"
                 }, 
                 {
-                    "positionX": -90.0, 
-                    "positionY": 184.2857208251953, 
+                    "positionX": -124.28571319580078, 
+                    "positionY": -801.4285888671875, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "wrist_r_bind_ik_hdl"
+                    "dependNode": "clavicle_l_auto_mid"
                 }, 
                 {
-                    "positionX": 767.1428833007812, 
-                    "positionY": 141.42857360839844, 
+                    "positionX": -595.7142944335938, 
+                    "positionY": -630.0, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_2_"
+                    "dependNode": "clavicle_l_auto_start_rotateZ"
                 }, 
                 {
-                    "positionX": 1967.142822265625, 
-                    "positionY": -115.71428680419922, 
+                    "positionX": -1152.857177734375, 
+                    "positionY": -715.7142944335938, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r"
+                    "dependNode": "clavicle_l_addRotation_dcmpMatrix"
                 }, 
                 {
-                    "positionX": 767.1428833007812, 
-                    "positionY": 312.8571472167969, 
+                    "positionX": -595.7142944335938, 
+                    "positionY": -715.7142944335938, 
                     "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_0_"
-                }, 
-                {
-                    "positionX": -90.0, 
-                    "positionY": -330.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_auto_start_swing"
-                }, 
-                {
-                    "positionX": 767.1428833007812, 
-                    "positionY": -115.71428680419922, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add_input1D_5_"
-                }, 
-                {
-                    "positionX": 1110.0, 
-                    "positionY": -30.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "clavicle_r_poseInterp_add"
-                }, 
-                {
-                    "positionX": -732.8571166992188, 
-                    "positionY": -30.0, 
-                    "nodeVisualState": 18304, 
-                    "dependNode": "unitConversion35"
+                    "dependNode": "clavicle_l_auto_start_rotateX"
                 }
             ], 
             "viewRectHigh": [
-                2665.060430232491, 
-                853.180848117882
+                237.88887487009563, 
+                -182.23798909479294
             ], 
             "viewRectLow": [
-                -2047.511464001999, 
-                -1017.8732318005895
+                -2047.8451749728345, 
+                -1353.5412788543513
+            ]
+        }, 
+        "_nodeview1": {
+            "dagPath": "_nodeview1", 
+            "name": "", 
+            "nodeInfo": [
+                {
+                    "positionX": -1452.857177734375, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_addRotation_multMatrix"
+                }, 
+                {
+                    "positionX": -852.8571166992188, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion12"
+                }, 
+                {
+                    "positionX": -852.8571166992188, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion13"
+                }, 
+                {
+                    "positionX": -1752.857177734375, 
+                    "positionY": -758.5714111328125, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "shoulder_fk_l"
+                }, 
+                {
+                    "positionX": -1752.857177734375, 
+                    "positionY": -672.8571166992188, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "shoulderSwing_l"
+                }, 
+                {
+                    "positionX": -210.0, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start"
+                }, 
+                {
+                    "positionX": -1698.5714111328125, 
+                    "positionY": -372.8571472167969, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_connect"
+                }, 
+                {
+                    "positionX": -595.7142944335938, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateY"
+                }, 
+                {
+                    "positionX": -852.8571166992188, 
+                    "positionY": -630.0, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion14"
+                }, 
+                {
+                    "positionX": -38.57143020629883, 
+                    "positionY": -887.1428833007812, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_end"
+                }, 
+                {
+                    "positionX": 175.7142791748047, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_ikHandle"
+                }, 
+                {
+                    "positionX": -124.28571319580078, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_mid"
+                }, 
+                {
+                    "positionX": -595.7142944335938, 
+                    "positionY": -630.0, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateZ"
+                }, 
+                {
+                    "positionX": -1152.857177734375, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_addRotation_dcmpMatrix"
+                }, 
+                {
+                    "positionX": -595.7142944335938, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateX"
+                }
+            ], 
+            "viewRectHigh": [
+                237.88887487009563, 
+                -182.23798909479294
+            ], 
+            "viewRectLow": [
+                -2047.8451749728345, 
+                -1353.5412788543513
+            ]
+        }, 
+        "_nodeview2": {
+            "dagPath": "_nodeview2", 
+            "name": "", 
+            "nodeInfo": [
+                {
+                    "positionX": -1992.857177734375, 
+                    "positionY": -501.4285583496094, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l"
+                }, 
+                {
+                    "positionX": -38.57143020629883, 
+                    "positionY": -887.1428833007812, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_end"
+                }, 
+                {
+                    "positionX": -1752.857177734375, 
+                    "positionY": -758.5714111328125, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "shoulder_fk_l"
+                }, 
+                {
+                    "positionX": -852.8571166992188, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion12"
+                }, 
+                {
+                    "positionX": -1752.857177734375, 
+                    "positionY": -672.8571166992188, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "shoulderSwing_l"
+                }, 
+                {
+                    "positionX": -595.7142944335938, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateY"
+                }, 
+                {
+                    "positionX": 175.7142791748047, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_ikHandle"
+                }, 
+                {
+                    "positionX": -1152.857177734375, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_addRotation_dcmpMatrix"
+                }, 
+                {
+                    "positionX": -852.8571166992188, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion13"
+                }, 
+                {
+                    "positionX": -595.7142944335938, 
+                    "positionY": -630.0, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateZ"
+                }, 
+                {
+                    "positionX": -1735.7142333984375, 
+                    "positionY": -372.8571472167969, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_connect"
+                }, 
+                {
+                    "positionX": -124.28571319580078, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_mid"
+                }, 
+                {
+                    "positionX": -595.7142944335938, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateX"
+                }, 
+                {
+                    "positionX": -852.8571166992188, 
+                    "positionY": -630.0, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion14"
+                }, 
+                {
+                    "positionX": -210.0, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start"
+                }, 
+                {
+                    "positionX": -1452.857177734375, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_addRotation_multMatrix"
+                }
+            ], 
+            "viewRectHigh": [
+                -450.290671978726, 
+                -209.2374983701835
+            ], 
+            "viewRectLow": [
+                -2392.122697032497, 
+                -1204.3113737679987
+            ]
+        }, 
+        "nodeView10_nodeview": {
+            "dagPath": "nodeView10_nodeview", 
+            "name": "nodeView10", 
+            "nodeInfo": [
+                {
+                    "positionX": -792.8571166992188, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion13"
+                }, 
+                {
+                    "positionX": -1710.0, 
+                    "positionY": -244.2857208251953, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_connect"
+                }, 
+                {
+                    "positionX": -2052.857177734375, 
+                    "positionY": -544.2857055664062, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_ort"
+                }, 
+                {
+                    "positionX": -1092.857177734375, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_addRotation_dcmpMatrix"
+                }, 
+                {
+                    "positionX": 235.7142791748047, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_ikHandle"
+                }, 
+                {
+                    "positionX": -2052.857177734375, 
+                    "positionY": -244.2857208251953, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_connect_pointConstraint1"
+                }, 
+                {
+                    "positionX": -1967.142822265625, 
+                    "positionY": -630.0, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l"
+                }, 
+                {
+                    "positionX": -535.7142944335938, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateX"
+                }, 
+                {
+                    "positionX": -2310.0, 
+                    "positionY": -244.2857208251953, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_connect_trans"
+                }, 
+                {
+                    "positionX": 21.428571701049805, 
+                    "positionY": -887.1428833007812, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_end"
+                }, 
+                {
+                    "positionX": -150.0, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start"
+                }, 
+                {
+                    "positionX": -1795.7142333984375, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "shoulder_fk_l"
+                }, 
+                {
+                    "positionX": -1881.4285888671875, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "shoulderSwing_l"
+                }, 
+                {
+                    "positionX": 132.85714721679688, 
+                    "positionY": -287.1428527832031, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_swing"
+                }, 
+                {
+                    "positionX": -1392.857177734375, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_addRotation_multMatrix"
+                }, 
+                {
+                    "positionX": 132.85714721679688, 
+                    "positionY": -501.4285583496094, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_swing_aimConstraint1"
+                }, 
+                {
+                    "positionX": -792.8571166992188, 
+                    "positionY": -715.7142944335938, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion12"
+                }, 
+                {
+                    "positionX": -252.85714721679688, 
+                    "positionY": -330.0, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "pairBlend1"
+                }, 
+                {
+                    "positionX": -535.7142944335938, 
+                    "positionY": -630.0, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateZ"
+                }, 
+                {
+                    "positionX": -792.8571166992188, 
+                    "positionY": -630.0, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "unitConversion14"
+                }, 
+                {
+                    "positionX": -64.28571319580078, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_mid"
+                }, 
+                {
+                    "positionX": -535.7142944335938, 
+                    "positionY": -801.4285888671875, 
+                    "nodeVisualState": 18304, 
+                    "dependNode": "clavicle_l_auto_start_rotateY"
+                }
+            ], 
+            "viewRectHigh": [
+                1099.9585365825885, 
+                286.63982976523585
+            ], 
+            "viewRectLow": [
+                -2612.9672806145445, 
+                -1616.0146914880365
             ]
         }
     }

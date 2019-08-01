@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/female/skin_wts/earing_geo__earing_geo_skinCluster.xml"/>
-  <shape name="earing_geoShape" group="2886" stride="3" size="800" max="800" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="earing_geoShape" group="6252" stride="3" size="800" max="800" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.096349 0.363573 0.156143 1.000000 ">
     <point index="0" value=" 7.401794 145.035339 -0.227037"/>
     <point index="1" value=" 7.389274 145.212479 -0.264345"/>
     <point index="2" value=" 7.354194 145.368881 -0.349409"/>
