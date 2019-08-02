@@ -97,6 +97,8 @@ def getPoseShapeIndex(poseInterp, pose):
     if not bs:
         return
     poseIndex = getPoseIndex(poseInterp, pose)
+    if not poseIndex:
+        return
     connectedTarget = mc.listConnections(poseInterp+'.output[{}]'.format(poseIndex), p=1)
     if connectedTarget:
         targetName = connectedTarget[0].split('.')[1]

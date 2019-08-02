@@ -22,6 +22,8 @@ class PSDData(abstract_data.AbstractData):
             data['drivers'][driver] = dict()
             data['drivers'][driver]['controllers'] = []
             controllers = mc.listAttr(driver + '.driverController', m=1)
+            if not controllers:
+                continue
             for ctrl in controllers:
                 plug = mc.listConnections(node + '.%s' % ctrl, p=1)
                 plug = plug[0]
