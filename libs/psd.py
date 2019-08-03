@@ -118,15 +118,6 @@ def getBlendshapeTargetIndex(target, bs):
             n += 1
         i += 1
 
-def updatePose(poseInterp, poseName):
-    '''
-
-    :param poseInterp: Pose interpolator transform
-    :param poseName: Name of pose
-    :return: None
-    '''
-    mm.eval('poseInterpolator -edit -updatePose {poseName} {poseInterp}'.format(poseInterp=poseInterp,
-                                                                                poseName=poseName))
 def getPoseName(poseInterp, poseIndex):
     '''
 
@@ -166,6 +157,28 @@ def getPoseControlData(poseInterp, pose):
         poseControlValues.append([name, type, value])
     return(poseControlValues)
 
+def setPoseControlData(poseInterp, pose, name, type, value):
+    """
+    :param poseInterp: PoseInterpolator name
+    :param pose: Pose name
+    :param name: Name of the control attribute. e.g. controlName.rotate
+    :param type: Control attribute type. e.g rotate = 8
+    :param value: Value for attribute. e.g. rotates should be in radians (1.2, 2.0, 3.0]
+    :return: None
+
+    """
+    index = getPoseIndex(poseInterp, pose)
+    if not index:
+        return
+    poseControlData = mc.ls('{}.pose[{}].poseControllerData[*]'.format(poseInterp, index))
+    for data in poseControlData:
+        cur_name = mc.getAttr(data + '.poseControllerDataItemName')
+        if cur_name == name:
+            mc.setAttr(data + '.poseControllerDataItemName', name, type='string')
+            mc.setAttr(data + '.poseControllerDataItemType', type)
+            if type == 8:
+                mc.setAttr(data + '.poseControllerDataItemValue', *value, type='double3')
+
 def getDeformer(poseInterp):
     # Mel call
     # poseInterpolatorConnectedShapeDeformers
@@ -203,9 +216,17 @@ def goToNeutralPose(poseInterp):
         if pose == 'neutral':
             goToPose(poseInterp, pose)
 
-def updatePose(poseInterp, pose):
-    mm.eval('poseInterpolatorUpdatePose "{}" "{}"'.format(poseInterp, pose))
+def updatePose(poseInterp, poseName):
+    '''
 
+
+    :param poseInterp: Pose interpolator transform
+    :param poseName: Name of pose
+    :return: None
+    '''
+
+    mm.eval('poseInterpolator -edit -updatePose {poseName} {poseInterp}'.format(poseInterp=poseInterp,
+                                                                                poseName=poseName))
 def syncPose(poseInterp, pose):
     goToPose(poseInterp, pose)
     updatePose(poseInterp, pose)

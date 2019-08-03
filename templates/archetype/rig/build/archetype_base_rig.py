@@ -319,17 +319,24 @@ mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL"
         # --------------------------------------------------------------------------------------------------------------
         sdkNode.addChildren([sdk_selectNode, sdk_mirrorNode, sdk_exportNode])
 
-        # PSD #
+        # --------------------------------------------------------------------------------------------------------------
+        # PSD
+        # --------------------------------------------------------------------------------------------------------------
         psdNode = pubs.pNode.PNode('psd')
 
         # --------------------------------------------------------------------------------------------------------------
         addPosePSDNode = rigrepo.nodes.addPosePSDNode.AddPosePSDNode('addPose')
+        addUpdatePSDNode = rigrepo.nodes.addPosePSDNode.AddPosePSDNode('updatePose', action='updatePose')
         psd_mirrorPSDNodes = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('mirrorSystem', action='system')
         psd_mirrorPSDDeltaNode = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('mirrorDeltas', action='deltas', mirrorType='flip')
         psd_exportPSDNode = copy.deepcopy(exportPSDNode)
         psd_exportPSDNode.setNiceName('export')
         # --------------------------------------------------------------------------------------------------------------
-        psdNode.addChildren([addPosePSDNode, psd_mirrorPSDNodes, psd_mirrorPSDDeltaNode, psd_exportPSDNode])
+        psdNode.addChildren([addPosePSDNode,
+                             addUpdatePSDNode,
+                             psd_mirrorPSDNodes,
+                             psd_mirrorPSDDeltaNode,
+                             psd_exportPSDNode])
 
         # joints
         jointsNode = pubs.pNode.PNode('joints')
