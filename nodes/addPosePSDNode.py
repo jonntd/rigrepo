@@ -17,9 +17,7 @@ class AddPosePSDNode(commandNode.CommandNode):
 import maya.cmds as mc
 import maya.mel as mm
 import traceback
-import rigrepo.libs.psd as psd
-reload(psd)
-import rigrepo.libs.common as common
+from rigrepo.libs import psd, blendShape, common
 import math
 
 mc.undoInfo(openChunk=1)
@@ -91,8 +89,15 @@ try:
                     # Convert degrees to radians
                     value = [math.radians(value[0][0]), math.radians(value[0][1]), math.radians(value[0][2])]
                     psd.setPoseControlData(interp, pose, name, type, value)
-                
-            
+                    
+    # ------------------------------------------------------------------------
+    # Update pose 
+    # ------------------------------------------------------------------------
+                    
+    if '{action}' == 'deleteDeltas':
+        for pose in poses:
+            interp, pose, bs = pose
+            blendShape.clearTargetDeltas(bs, pose)
 
 except:
     traceback.print_exc()

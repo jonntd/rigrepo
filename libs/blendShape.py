@@ -269,11 +269,7 @@ def clearTargetDeltas(bs, target):
     :param target: String name of target or the target's index
     :return: None
     """
-
-    targetIndex = getTargetIndex(bs, target)
-    indexedAttr = bs+'.it[0].itg[{}].iti[6000]'.format(targetIndex)
-    mc.setAttr(indexedAttr+'.ipt', 0, type='pointArray')
-    mc.setAttr(indexedAttr+'.ict', 0, type='componentList')
+    setTargetDeltas(bs, [(0.1, 0.0, 0.0, 1.0)], ['vtx[0]'], target)
 
 def getAllTargetDeltas(bs):
     """
