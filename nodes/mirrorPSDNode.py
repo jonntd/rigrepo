@@ -9,11 +9,10 @@ class MirrorPSDNode(commandNode.CommandNode):
     '''
     Define cmd to be executed
     '''
-    def __init__(self, name, parent=None, action='system', mirrorType='flip'):
+    def __init__(self, name, parent=None, action='system'):
         super(MirrorPSDNode, self).__init__(name, parent)
         commandAttribute = self.getAttributeByName('command')
         self.addAttribute('action', action, attrType='str', index=0)
-        self.addAttribute('mirrorType', mirrorType, attrType='str', index=0)
         cmd = '''
 import maya.cmds as mc
 import maya.mel as mm
@@ -29,6 +28,9 @@ start = time.time()
 
 mc.undoInfo(openChunk=1)
 try:
+    # Store Global symmetry setting, something is changing this during the mirror
+    globalMirrorState = mc.symmetricModelling(symmetry=1, q=1)
+    
     # ------------------------------------
     # Get Selection
     # ------------------------------------
@@ -124,8 +126,7 @@ try:
             dataObj.gatherDataIterate(nodes)
             dataObj.applyData(nodes, mirror=True)
             
-            print('-'*100)
-            print('PSD Mirror: mirrored ' + node)
+            print('Mirrored Interpolator: ' + node)
        
             
         # -------------------------------
@@ -157,25 +158,40 @@ try:
                     if node == mirNode and index == mir_index:
                         blendShape.setTargetDeltas(mir_bs, deltas, indices, mir_index) 
                         mc.blendShape(bs, e=1, mt=(0, mir_index), ss=1, sa='x')
+                        print('Mirrored deltas: ' + pose)
                     # Side Flip    
                     else:
                         blendShape.clearTargetDeltas(mir_bs, mir_index)
                         blendShape.setTargetDeltas(mir_bs, deltas, indices, mir_index) 
                         mc.blendShape(mir_bs, e=1, ft=(0, mir_index), ss=1, sa='x')
-                        print('flipped ' + pose)
-            break
+                        print('flipped deltas: ' + pose)
                     
     # restore pose
     if '{action}' == 'system':
         if controls:
             rigrepo.libs.control.toPoseAttr(controls, 6)
-                
+            
     finish = time.time()
-    print(str(start-finish)+' mirror total time ')
+    total_time = str(finish-start)[0:5]
+    print(total_time+' mirror total time ')
 
 except:
     traceback.print_exc()
 mc.undoInfo(closeChunk=1)
+
+# GLOBAL MIRROR SETTINGS
+#   Setting the global mirror state is going into the undo stack
+#   so undoing the mirror action is turning it back on if it was changed.
+#   This shuts off undo so the mirror setting doesn't get added to 
+#   the undo stack.
+try:
+    mc.undoInfo(stateWithoutFlush=0)
+    # Restore global mirror state
+    mc.symmetricModelling(symmetry=globalMirrorState)
+    mc.undoInfo(stateWithoutFlush=1)
+except:
+    mc.undoInfo(stateWithoutFlush=1)
+                
 '''
         # command 
         commandAttribute.setValue(cmd)
@@ -185,5 +201,4 @@ mc.undoInfo(closeChunk=1)
         Execute node code
         '''
         action = self.getAttributeByName("action").getValue()
-        mirrorType = self.getAttributeByName("mirrorType").getValue()
-        exec(self.getAttributeByName('command').getValue().format(action=action, mirrorType=mirrorType))
+        exec(self.getAttributeByName('command').getValue().format(action=action))
