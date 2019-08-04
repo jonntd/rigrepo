@@ -15,7 +15,6 @@ def rotateToOrient(jointList):
 
     for jnt in jointList:
         if not mc.objExists(jnt):
-            mc.warning("{0} doesn't exist in the current Maya session.".format(jnt))
             continue
         try:
             rotateOrder = mc.xform(jnt,q=True,roo=True)

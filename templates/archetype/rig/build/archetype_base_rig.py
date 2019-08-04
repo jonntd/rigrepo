@@ -147,7 +147,7 @@ for cluster in lidClusters:
         workflowNode = pubs.pNode.PNode('workflow')
         workflowNode.disable()
         self.addNode(workflowNode)
-
+        
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes Un-categorized
         # --------------------------------------------------------------------------------------------------------------
@@ -299,9 +299,20 @@ currentData.applyData(data.keys())
         sc_skinClusterExportSelectedWtsNode = copy.deepcopy(skinClusterExportWtsSelectedNode)
         sc_skinClusterExportSelectedWtsNode.setNiceName('exportSel')
 
+        sc_removeLocalizeNode = rigrepo.nodes.commandNode.CommandNode('removeLocalize')
+        sc_removeLocalizeCmd = '''
+import rigrepo.libs.skinCluster
+import rigrepo.libs.cluster
+import maya.cmds as mc
+
+rigrepo.libs.skinCluster.removeLocalize(mc.ls(type="skinCluster"))
+'''
+
+        sc_removeLocalizeNode.getAttributeByName('command').setValue(sc_removeLocalizeCmd)
+
         # --------------------------------------------------------------------------------------------------------------
         skinClusterNode.addChildren([yankSkinClusterNode, sc_mirrorSkinClusterNode, sc_skinClusterExportWtsNode,
-                                     sc_skinClusterExportSelectedWtsNode, sc_transferSkinClusterNode])
+                                     sc_skinClusterExportSelectedWtsNode, sc_transferSkinClusterNode, sc_removeLocalizeNode])
 
         # SDK #
         sdkNode = pubs.pNode.PNode('SDK')

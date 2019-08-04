@@ -1,7 +1,7 @@
 {
     "type": "JointData", 
     "user": "Walter Yoder", 
-    "time": "2019-07-22 10:00:58", 
+    "time": "2019-08-03 22:50:31", 
     "data": {
         "ring_005_l_bind": {
             "dagPath": "|bind|hips_bind|spine_0_bind|spine_1_bind|spine_2_bind|spine_3_bind|spine_4_bind|spine_5_bind|chest_bind|clavicle_l_bind|shoulder_l_bind|elbow_l_bind|wrist_l_bind|ring_001_l_bind|ring_002_l_bind|ring_003_l_bind|ring_004_l_bind|ring_005_l_bind", 
@@ -842,6 +842,36 @@
                 0.0
             ], 
             "drawStyle": 1
+        }, 
+        "elbowTwist_l_bind": {
+            "dagPath": "|bind|hips_bind|spine_0_bind|spine_1_bind|spine_2_bind|spine_3_bind|spine_4_bind|spine_5_bind|chest_bind|clavicle_l_bind|shoulder_l_bind|elbow_l_bind|elbowTwist_l_bind", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0, 
+            "jointOrient": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "preferredAngle": [
+                0.0, 
+                0.0, 
+                -90.0
+            ], 
+            "drawStyle": 0
         }, 
         "elbow_l_bind": {
             "dagPath": "|bind|hips_bind|spine_0_bind|spine_1_bind|spine_2_bind|spine_3_bind|spine_4_bind|spine_5_bind|chest_bind|clavicle_l_bind|shoulder_l_bind|elbow_l_bind", 
@@ -2792,6 +2822,36 @@
                 0.0
             ], 
             "drawStyle": 1
+        }, 
+        "elbowTwist_r_bind": {
+            "dagPath": "|bind|hips_bind|spine_0_bind|spine_1_bind|spine_2_bind|spine_3_bind|spine_4_bind|spine_5_bind|chest_bind|clavicle_r_bind|shoulder_r_bind|elbow_r_bind|elbowTwist_r_bind", 
+            "translate": [
+                -0.0, 
+                -0.0, 
+                -0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0, 
+            "jointOrient": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "preferredAngle": [
+                0.0, 
+                0.0, 
+                -90.0
+            ], 
+            "drawStyle": 0
         }, 
         "elbow_r_bind": {
             "dagPath": "|bind|hips_bind|spine_0_bind|spine_1_bind|spine_2_bind|spine_3_bind|spine_4_bind|spine_5_bind|chest_bind|clavicle_r_bind|shoulder_r_bind|elbow_r_bind", 

@@ -76,7 +76,7 @@ def decomposeRotation(object, swingOnly=False, twistAxis='x', rotateOrder=5):
         vector = (0, 0, -1)
 
     aimTarget = mc.createNode('transform', n=object+'_twist', p=object)
-    mc.setAttr(aimTarget+'.t'+twistAxis, 1)
+    mc.setAttr(aimTarget+'.t'+twistAxis.strip("-"), 1)
     aimSourceGrp = mc.createNode('transform', n=object+'_swing_grp', p=object)
     aimSource = mc.createNode('transform', n=object+'_swing', p=aimSourceGrp)
     
@@ -107,7 +107,7 @@ def decomposeRotation(object, swingOnly=False, twistAxis='x', rotateOrder=5):
         mc.setAttr(object+'.decomposeTwist', cb=1, k=0)
         reverseEndTwist = mc.createNode('multiplyDivide', n=object+'_reverse_mul')
         mc.setAttr(reverseEndTwist+'.input2X', -1)
-        mc.connectAttr(aimTarget+'.r'+twistAxis, reverseEndTwist+'.input1X')
+        mc.connectAttr(aimTarget+'.r'+twistAxis.strip("-"), reverseEndTwist+'.input1X')
         mc.connectAttr(reverseEndTwist+'.outputX', object+'.decomposeTwist')
 
     return(aimSource) 

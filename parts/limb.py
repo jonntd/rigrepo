@@ -460,15 +460,32 @@ class Limb(part.Part):
             mc.aimConstraint(target, noTwist, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
         else:
             print('noTwist not found', noTwist)
-        # TWIST JOINT
+
+        # TWIST JOINTS ------------------------------------------------------------
+        # FIRSY JOINT twist setup
+        joint = self.jointList[1]
+        target = self.jointList[0]
+        nameSplit = joint.split('_{}_'.format(side))
+        aimAttr, aimVector = self._getDistanceVector(aimDistance)
+        aimVector = [value * -1 for value in aimVector]
+        twistJoint = '{}Twist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
+        if mc.objExists(noTwist):
+            mc.aimConstraint(target, twistJoint, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
+        else:
+            print('noTwist not found', twistJoint)
+
+        # LAST JOINT twist setup
         joint = self.jointList[-1]
         nameSplit = joint.split('_{}_'.format(side))
         twistJoint = '{}Twist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
         if mc.objExists(twistJoint):
-            deompose = rigrepo.libs.transform.decomposeRotation(joint)
-            mc.connectAttr(joint + '.decomposeTwist', twistJoint + '.rx', f=1)
+            deompose = rigrepo.libs.transform.decomposeRotation(joint, 
+                                                    twistAxis=aimAttr, 
+                                                    rotateOrder=mc.getAttr("{}.ro".format(joint)))
+            mc.connectAttr(joint + '.decomposeTwist', twistJoint + '.r{}'.format(aimAttr.strip("-")), f=1)
         else:
-            print('No twist joint found', noTwist)
+            print('No twist joint found', twistJoint)
+
         if createProxyAttributes:
             for control in self._ikControls + self._fkControls:
                 mc.addAttr(control, ln="settings", at="enum", enumName="settings",keyable=True)
