@@ -150,14 +150,15 @@ try:
                 if index != None and mir_index != None:
                     targetName = blendShape.getTargetName(mir_bs, mir_index)
                     deltas, indices = blendShape.getTargetDeltas(bs, index)
-                    endTime = time.time()
                     if not deltas:
                         continue
                     
-                    if '{mirrorType}' == 'mirror':
+                    # Center Mirror
+                    if node == mirNode and index == mir_index:
                         blendShape.setTargetDeltas(mir_bs, deltas, indices, mir_index) 
                         mc.blendShape(bs, e=1, mt=(0, mir_index), ss=1, sa='x')
-                    if '{mirrorType}' == 'flip':
+                    # Side Flip    
+                    else:
                         blendShape.clearTargetDeltas(mir_bs, mir_index)
                         blendShape.setTargetDeltas(mir_bs, deltas, indices, mir_index) 
                         mc.blendShape(mir_bs, e=1, ft=(0, mir_index), ss=1, sa='x')
