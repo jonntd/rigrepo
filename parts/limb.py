@@ -479,9 +479,7 @@ class Limb(part.Part):
         nameSplit = joint.split('_{}_'.format(side))
         twistJoint = '{}Twist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
         if mc.objExists(twistJoint):
-            deompose = rigrepo.libs.transform.decomposeRotation(joint, 
-                                                    twistAxis=aimAttr, 
-                                                    rotateOrder=mc.getAttr("{}.ro".format(joint)))
+            deompose = rigrepo.libs.transform.decomposeRotation(joint)
             mc.connectAttr(joint + '.decomposeTwist', twistJoint + '.r{}'.format(aimAttr.strip("-")), f=1)
         else:
             print('No twist joint found', twistJoint)
