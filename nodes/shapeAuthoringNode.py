@@ -139,7 +139,13 @@ if action == 'extract':
     part = mc.duplicate(sel, n=sel+'_part')[0]
 
     # Delete faces on dup
-    facesToDelete = [part+'.'+x.split('.')[1] for x in selFaces] 
+    facesToDelete = list()
+    selTransform = mc.listRelatives(sel, p=1)[0]
+    for x in selFaces:
+        geo, index = x.split('.')
+        if geo == selTransform:
+            facesToDelete.append(part+'.'+index)
+            
     mc.delete(facesToDelete)
 
     # Build Wrap
