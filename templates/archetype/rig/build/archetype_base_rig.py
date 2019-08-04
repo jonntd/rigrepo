@@ -60,7 +60,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         importPSDDeltaNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psdDeltas",
                                   dirPath=self.resolveDirPath('psd', self.variant),
                                   loadDeltas=True,
-                                  psdNames='["blinks", "skin_psd"]')
+                                  psdNames='["blinks", "skin"]')
         loadNode.addChildren([modelFileNode, skeletonFileNode, jointDataNode, curveFileNode, curveDataNode, bindMeshes, importPSDDeltaNode])
 
         # postBuild
@@ -100,7 +100,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
             dirPath=self.resolveDirPath('cluster_wts', self.variant))
         importPSDSystemNode = rigrepo.nodes.importPSDNode.ImportPSDDirNode("psd",
             dirPath=self.resolveDirPath('psd', self.variant),
-            psdNames='["blinks", "skin_psd"]')
+            psdNames='["blinks", "skin"]')
         importSdkDataNode = rigrepo.nodes.importDataNode.ImportDataNode('sdk', 
                 dataFile=self.resolveDataFilePath('sdk.data', self.variant), 
                 dataType='sdk', 
@@ -230,11 +230,11 @@ for cluster in lidClusters:
             excludeNodes='mc.ls("lip*",type="cluster")')
         skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode(
             'skinClusterSelected', dirPath=self.buildExportPath('skin_wts', self.variant))
-        exportPSDNode = rigrepo.nodes.exportPSDNode.ExportPSDNode('psd',
-                                                                  dirPath=self.buildExportPath('psd', self.variant),
-                                                                  nodesExclude="['clavicle_l_auto_poseInterpolatorShape','clavicle_r_auto_poseInterpolatorShape']",
-                                                                  fileName='skin_psd')
-        exportPSDByGroupsNode = rigrepo.nodes.exportPSDNode.ExportPSDByGroupNode('psdByGroups',
+        #exportPSDNode = rigrepo.nodes.exportPSDNode.ExportPSDNode('psd',
+        #                                                          dirPath=self.buildExportPath('psd', self.variant),
+        #                                                          nodesExclude="['clavicle_l_auto_poseInterpolatorShape','clavicle_r_auto_poseInterpolatorShape']",
+        #                                                          fileName='skin_psd')
+        exportPSDByGroupsNode = rigrepo.nodes.exportPSDNode.ExportPSDByGroupNode('psd',
                                                                   dirPath=self.buildExportPath('psd', self.variant),
                                                                   groups='rigrepo.libs.psd.getAllGroups()')
         nodeEditorBookmarks = rigrepo.nodes.exportNodeEditorBookmarksNode.ExportNodeEditorBookmarsNode('NodeEditorBookmarks',
@@ -244,7 +244,7 @@ for cluster in lidClusters:
         exporters.addChildren([controlOrientsExportDataNode, jointExportDataNode, 
                                 curveExportDataNode, controlCurveExportDataNode, sdkExportDataNode,
                                 skinClusterExportWtsNode, skinClusterExportWtsSelectedNode, 
-                                wireExportWtsNode, clusterExportWtsNode, exportPSDNode, exportPSDByGroupsNode,
+                                wireExportWtsNode, clusterExportWtsNode, exportPSDByGroupsNode,
                                 deformerOrderExportDataNode, nodeEditorBookmarks])
                                 
 
@@ -255,7 +255,7 @@ for cluster in lidClusters:
         mirrorWireCurveNode = rigrepo.nodes.mirrorWiresNode.MirrorWiresNode('wireCurves')
         mirrorJointsNode = rigrepo.nodes.mirrorJointsNode.MirrorJointsNode('joints')
         mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('skinClusterSelected')
-        mirrorPSDNode = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psd', action='system')
+        mirrorPSDNode = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psdSystems', action='system')
         mirrorOrients = rigrepo.nodes.commandNode.CommandNode('orients')
         mirrorOrientsCmd = '''
 import maya.cmds as mc
@@ -340,7 +340,7 @@ mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL"
         addUpdatePSDNode = rigrepo.nodes.addPosePSDNode.AddPosePSDNode('updatePose', action='updatePose')
         psd_mirrorPSDNodes = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('mirrorSystem', action='system')
         psd_mirrorPSDDeltaNode = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('mirrorDeltas', action='deltas')
-        psd_exportPSDNode = copy.deepcopy(exportPSDNode)
+        psd_exportPSDNode = copy.deepcopy(exportPSDByGroupsNode)
         psd_exportPSDNode.setNiceName('export')
         # --------------------------------------------------------------------------------------------------------------
         psdNode.addChildren([addPosePSDNode,
