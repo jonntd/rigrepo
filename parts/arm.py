@@ -67,8 +67,8 @@ class Arm(limb.Limb):
         mc.parent(clavicleConnectTranslate, clavicleCtrl)
         mc.pointConstraint(clavicleConnectTranslate, clavicleConnect)
 
-
-        mc.pointConstraint(clavicleCtrl, self._clavicleJoint)
+        # getting rid of the point constraint for now. Not sure we need it.
+        #mc.pointConstraint(clavicleCtrl, self._clavicleJoint)
         mc.orientConstraint(clavicleCtrl, self._clavicleJoint)
 
         # parent the shoulderSwing control to the clavicle control.
@@ -100,14 +100,14 @@ class Arm(limb.Limb):
         side = self.getAttributeByName("side").getValue()
         super(Arm, self).postBuild()
         rigrepo.libs.attribute.lockAndHide(swingCtrl,["sx","sy", "sz", "v"])
-        rigrepo.libs.attribute.lockAndHide(clavicleCtrl,["tx","ty", "tz", "sx","sy", "sz", "v"])
+        rigrepo.libs.attribute.lockAndHide(clavicleCtrl,["sx","sy", "sz", "v"])
         nameSplit = self._clavicleJoint.split('_{}_'.format(side))
         transBind = '{}_trans_{}_{}'.format(nameSplit[0], side, nameSplit[1])
         aimVector = (-1, 0, 0)
         if side is 'r':
             aimVector = (1, 0, 0)
         if mc.objExists(transBind):
-            mc.aimConstraint(self._clavicleJoint, transBind, mo=1, weight=1, aimVector=aimVector, upVector=(0, 1, 0), worldUpType='none')
+            mc.aimConstraint(self._clavicleJoint, transBind, mo=0, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
             mc.pointConstraint(self.jointList[0], transBind, mo=0)
         else:
             print('clavicle translate not found', transBind)

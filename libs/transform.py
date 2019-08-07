@@ -25,8 +25,6 @@ def getDagPath(node):
     
     return selList.getDagPath(0)
 
-
-
 def decomposeRotation(object, swingOnly=False, twistAxis='x', rotateOrder=5):
     '''
     Decompose the rotation of the given object. Adds a decomposeTwist attribute to the 
@@ -214,7 +212,6 @@ def getAxis( transform, vector=(0,1,0) ):
         axis = '-z'
 
     return axis      
-
 
 def getAimAxis ( transform, allowNegative = True):
     '''
