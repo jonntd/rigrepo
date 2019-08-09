@@ -122,6 +122,8 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # add hand to arm node.
         l_arm.addChildren([l_autoClav, leftArmAddSpaceNode,leftArmPvAddSpaceNode,leftArmIkAddSpaceNode,l_hand])
 
+        # Turning off until cycle is fixed
+        l_autoClav.disable()
         r_arm = rigrepo.parts.arm.Arm("r_arm",
                                     ['clavicle_r_bind', 
                                      'shoulder_r_bind',
@@ -173,6 +175,8 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # add hand to arm node.
         r_arm.addChildren([r_autoClav, rightArmAddSpaceNode,rightArmPvAddSpaceNode,rightArmIkAddSpaceNode,r_hand])
 
+        # Turning off until cycle is fixed
+        r_autoClav.disable()
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",
                                 ['pelvis_l_bind', 'thigh_l_bind', 'knee_l_bind', 'ankle_l_bind'], 
