@@ -93,11 +93,11 @@ class Spine(part.Part):
         # torso 
         ctrlHierarchy = control.create(name="torso", 
                                             controlType="cube",
-                                            hideAttrs=["sx", "sy", "sz","tx","ty","tz","v"],
+                                            hideAttrs=["sx", "sy", "sz", "v"],
                                             hierarchy=['nul'])
         torsoCtrl = ctrlHierarchy[-1]
         torsoNul = ctrlHierarchy[0]
-        rigrepo.libs.attribute.lockAndHide(torsoCtrl, ["sx", "sy", "sz","tx","ty","tz","v"])
+        rigrepo.libs.attribute.lockAndHide(torsoCtrl, ["sx", "sy", "sz", "v"])
         rotation = mc.xform(hipsCtrl, q=True, ws=True, rotation=True)
         averagePos = rigrepo.libs.transform.getAveragePosition(jointList[:2])
         mc.xform(torsoNul, ws=True, rotation=rotation)
@@ -108,11 +108,11 @@ class Spine(part.Part):
         ctrlHierarchy = control.create(name="chest", 
                                             controlType="cube",
                                             color=common.GREEN,
-                                            hideAttrs=["sx", "sy", "sz","tx","ty","tz","v"],
+                                            hideAttrs=["sx", "sy", "sz", "v"],
                                             hierarchy=['nul'])
         chestCtrl = ctrlHierarchy[-1]
         chestNul = ctrlHierarchy[0]
-        rigrepo.libs.attribute.lockAndHide(chestCtrl, ["sx", "sy", "sz","tx","ty","tz","v"])
+        rigrepo.libs.attribute.lockAndHide(chestCtrl, ["sx", "sy", "sz", "v"])
         matrix = mc.xform(jointList[-3], q=True, ws=True, matrix=True)
         averagePos = rigrepo.libs.transform.getAveragePosition(jointList[-3:-1])
         mc.xform(chestNul, ws=True, matrix=matrix)
@@ -138,11 +138,11 @@ class Spine(part.Part):
         # chest top 
         ctrlHierarchy = control.create(name="chest_top", 
                                              controlType="cube",
-                                             hideAttrs=["sx", "sy", "sz","tx","ty","tz","v"],
+                                             hideAttrs=["sx", "sy", "sz", "v"],
                                              hierarchy=['nul'])
         chestTopCtrl = ctrlHierarchy[-1]
         chestTopNul = ctrlHierarchy[0]
-        rigrepo.libs.attribute.lockAndHide(chestTopCtrl, ["sx", "sy", "sz","tx","ty","tz","v"])
+        rigrepo.libs.attribute.lockAndHide(chestTopCtrl, ["sx", "sy", "sz", "v"])
 
         matrix = mc.xform(self._chestBind, q=True, ws=True, matrix=True)
         mc.xform(chestTopNul, ws=True, matrix=matrix)
