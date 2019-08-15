@@ -246,6 +246,7 @@ class Limb(part.Part):
         # create the ik stretchy system
         self._stretchTargetJointList = rigrepo.libs.ikfk.IKFKLimb.createStretchIK(handle, grp)
 
+
         #create attributes on param node and connect them to the grp node
         mc.addAttr(paramNode, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
         mc.addAttr(paramNode, ln='stretchTop', at='double', min=0, dv = 1, k=True)
@@ -271,7 +272,11 @@ class Limb(part.Part):
         upperLimbDecomp = mc.createNode('decomposeMatrix', n="{}_upperPvPin_dcm".format(self.name))
         pvDecomp = mc.createNode('decomposeMatrix', n="{}_PvPin_dcm".format(self.name))
         upperDistanceBetweenNode = mc.createNode('distanceBetween', n="{}_upperPvPin_dst".format(self.name))
-        mc.connectAttr("{}.worldMatrix[0]".format(self._fkControls[0]), "{}.inputMatrix".format(upperLimbDecomp), f=True)
+        # make a jnt to use as distance location for upper limb and put it in the same location as upper limb
+        upperDistJnt = mc.joint(n="{}_upper_dist_jnt".format(self.name))
+        mc.xform(upperDistJnt, ws=True, matrix=mc.xform(self._fkControls[0], q=True, ws=True, matrix=True))
+        mc.parent(upperDistJnt, mc.listRelatives(self._fkControls[0],p=True)[0])
+        mc.connectAttr("{}.worldMatrix[0]".format(upperDistJnt), "{}.inputMatrix".format(upperLimbDecomp), f=True)
         mc.connectAttr("{}.worldMatrix[0]".format(pvCtrl), "{}.inputMatrix".format(pvDecomp), f=True)
         mc.connectAttr("{}.outputTranslate".format(upperLimbDecomp), "{}.point1".format(upperDistanceBetweenNode), f=True)
         mc.connectAttr("{}.outputTranslate".format(pvDecomp), "{}.point2".format(upperDistanceBetweenNode), f=True)
@@ -284,16 +289,34 @@ class Limb(part.Part):
 
 
         # create the blendColor node for the pvPinning to override the stretch in the limb.
-        pvPinBlendNode = mc.createNode("blendColors", n="{}_PvPin_bcn".format(self.name))
-        mc.connectAttr("{}.outputR".format(blendNode), "{}.color2R".format(pvPinBlendNode), f=True)
-        mc.connectAttr("{}.outputG".format(blendNode), "{}.color2G".format(pvPinBlendNode), f=True)
+        pvPinBlendNode = mc.createNode("blendColors", n="{}_pvPin_bcn".format(self.name))
+        # normalize the outputs so we can put it into the stretch attribute on the joint.
+        multDivideNormalize = mc.createNode("multiplyDivide", n="{}_pvPin_mdn".format(self.name))
+        mc.connectAttr("{}.outputR".format(blendNode), "{}.input1X".format(multDivideNormalize), f=True)
+        mc.connectAttr("{}.outputG".format(blendNode), "{}.input1Y".format(multDivideNormalize), f=True)
+
+        # set the attributes to normalize the value before it goes into the blend colors node.
+        mc.setAttr("{}.input2X".format(multDivideNormalize), mc.getAttr("{}.input1X".format(multDivideNormalize)))
+        mc.setAttr("{}.input2Y".format(multDivideNormalize), mc.getAttr("{}.input1Y".format(multDivideNormalize)))
+
+        # set the operation to divide.
+        mc.setAttr("{}.operation".format(multDivideNormalize), 2)
+
+        # connect the attributes to the blend colors node.
+        mc.connectAttr("{}.outputX".format(multDivideNormalize), "{}.color2R".format(pvPinBlendNode), f=True)
+        mc.connectAttr("{}.outputY".format(multDivideNormalize), "{}.color2G".format(pvPinBlendNode), f=True)
 
         # get the aimVector and aim Attr
         aimDistance = mc.getAttr("{}.t".format(self.jointList[1]))[0]
         aimAttr, aimVector = self._getDistanceVector(aimDistance)
+        # disconnect the translates. We will have to fix this in the stretch later.
+        mc.disconnectAttr("{}.outputR".format(blendNode), "{}.t{}".format(self._fkControls[1], aimAttr.strip("-")))
+        mc.disconnectAttr("{}.outputG".format(blendNode), "{}.t{}".format(self._fkControls[2], aimAttr.strip("-")))
 
         # make sure if it is a negative direction that we account for that and invert the values
         # coming into the pinning blend node.
+        multDivideDistanceNormalize = mc.createNode("multiplyDivide", n="{}_pvDistance_mdn".format(self.name))
+        mc.setAttr("{}.operation".format(multDivideDistanceNormalize), 2)
         if "-" in aimAttr:
             pvPinUpperRvrMultDouble = mc.createNode("multDoubleLinear", n="{}_PvPinUpperRvr_mdl".format(self.name))
             pvPinLowerRvrMultDouble = mc.createNode("multDoubleLinear", n="{}_PvPinLowerRvr_mdl".format(self.name))
@@ -301,19 +324,28 @@ class Limb(part.Part):
             mc.connectAttr("{}.distance".format(lowerDistanceBetweenNode), "{}.input1".format(pvPinLowerRvrMultDouble), f=True)
             for node in (pvPinLowerRvrMultDouble, pvPinUpperRvrMultDouble):
                 mc.setAttr("{}.input2".format(node), -1)
-            mc.connectAttr("{}.output".format(pvPinUpperRvrMultDouble), "{}.color1R".format(pvPinBlendNode), f=True)
-            mc.connectAttr("{}.output".format(pvPinLowerRvrMultDouble), "{}.color1G".format(pvPinBlendNode), f=True)
+            mc.connectAttr("{}.output".format(pvPinUpperRvrMultDouble), "{}.input1X".format(multDivideDistanceNormalize), f=True)
+            mc.connectAttr("{}.output".format(pvPinLowerRvrMultDouble), "{}.input1Y".format(multDivideDistanceNormalize), f=True)
         else:
-            mc.connectAttr("{}.distance".format(upperDistanceBetweenNode), "{}.color1R".format(pvPinBlendNode), f=True)
-            mc.connectAttr("{}.distance".format(lowerDistanceBetweenNode), "{}.color1G".format(pvPinBlendNode), f=True)
+            mc.connectAttr("{}.distance".format(upperDistanceBetweenNode), "{}.input1X".format(multDivideDistanceNormalize), f=True)
+            mc.connectAttr("{}.distance".format(lowerDistanceBetweenNode), "{}.input1Y".format(multDivideDistanceNormalize), f=True)
+
+        mc.connectAttr("{}.outputX".format(multDivideDistanceNormalize), "{}.color1R".format(pvPinBlendNode), f=True)
+        mc.connectAttr("{}.outputY".format(multDivideDistanceNormalize), "{}.color1G".format(pvPinBlendNode), f=True)
+        # set the attributes to normalize the value before it goes into the blend colors node.
+        mc.setAttr("{}.input2X".format(multDivideDistanceNormalize), mc.getAttr("{}.input1X".format(multDivideNormalize)))
+        mc.setAttr("{}.input2Y".format(multDivideDistanceNormalize), mc.getAttr("{}.input1Y".format(multDivideNormalize)))
+
+        # set the operation to divide.
+        mc.setAttr("{}.operation".format(multDivideNormalize), 2)
 
         # create the multiplier to have pvPinning on during IK only and pinning on
         pvPinMultDouble = mc.createNode("multDoubleLinear", n="{}_PvPin_mdl".format(self.name))
         mc.connectAttr("{}.pvPin".format(paramNode), "{}.input1".format(pvPinMultDouble), f=True)
         mc.connectAttr("{}.outputX".format(reverseNode), "{}.input2".format(pvPinMultDouble), f=True)
         mc.connectAttr("{}.output".format(pvPinMultDouble), "{}.blender".format(pvPinBlendNode), f=True)
-        mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.t{}".format(self._fkControls[1], aimAttr.strip("-")), f=True)
-        mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.t{}".format(self._fkControls[2], aimAttr.strip("-")), f=True)
+        mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.s{}".format(self._fkControls[0], aimAttr.strip("-")), f=True)
+        mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.s{}".format(self._fkControls[1], aimAttr.strip("-")), f=True)
 
         mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
 
