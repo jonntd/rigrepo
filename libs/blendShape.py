@@ -333,7 +333,7 @@ def invertShape(bs, target, geo):
     else:
         base = mc.listRelatives(base, path=1, p=1)[0]
 
-    if not getTargetIndex(bs, target):
+    if getTargetIndex(bs, target) is None:
         raise Exception(
             '[ ' + bs + ' ] missing target [ ' + target + ' ] The duplicate shape must be named the same as the blendShape target.')
 
