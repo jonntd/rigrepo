@@ -52,11 +52,16 @@ class MyWindow(QtWidgets.QMainWindow):
             item.connect(partial(self.tempPrint, pos, item))
         itemWidgets[0].setCheckable(True)
         itemWidgets[1].setCheckable(True)
+
         # Build menu
         item = RadialMenuItem(position='W')
         item.setText('WESTSIDE!')
         self.pieQMenu.addItem(item)
-        self.pieQMenu.rightClickConnect(ui.targetList)
+
+        # Right or left click trigger
+        #self.pieQMenu.rightClickConnect(ui.targetList)
+        self.pieQMenu.leftClickConnect(ui.targetList)
+
         # Test column menu
         item = RadialMenuItem(position=None)
         item.setText('I am in a column')

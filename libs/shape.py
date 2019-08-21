@@ -21,8 +21,7 @@ def getDeltas(base, target):
         raise RuntimeError("Either {} or {} doesn't exist in the current Maya session".format(base, target))
      
     bs = mc.blendShape(target, base, w=[0, 1])[0] 
-    #mc.pointPosition(base+'.vtx[0]') # Enforce refresh
-    mc.pointPosition(target+'.vtx[0]') # Enforce refresh 
+    mc.pointPosition(base+'.vtx[0]') # Enforce refresh
     delta_list = mc.getAttr(bs+'.it[0].itg[0].iti[6000].ipt')
     index_list = mc.getAttr(bs+'.it[0].itg[0].iti[6000].ict')                                
     mc.delete(bs)
@@ -52,3 +51,40 @@ def getDeltas(base, target):
         weight_list[index_only_list[n]] = round(delta_list[n][0], 4)
 
     return weight_list
+
+def getDeltaIndices(base, target, objName=False):
+    '''
+    Get indices of the points with different positions between the two goes
+    between the two points.
+
+    :param base: Base object
+    :type base: str
+
+    :param target: Target object
+    :type target: str
+
+    :param objName: Include the target name in the return
+    :type objName: bool
+
+    :returns: List of indices
+    :rtype: list
+    '''
+    if not mc.objExists(base) or not mc.objExists(target):
+        raise RuntimeError("Either {} or {} doesn't exist in the current Maya session".format(base, target))
+
+    bs = mc.blendShape(target, base, w=[0, 1])[0]
+    mc.pointPosition(base+'.vtx[0]')  # Enforce refresh
+    index_list = mc.getAttr(bs+'.it[0].itg[0].iti[6000].ict')
+    mc.delete(bs)
+
+    # ===============================================
+    # Flatten and return only indices
+    # ===============================================
+
+    index_flat_list = [target+'.'+x for x in index_list]
+    index_flat_list = mc.ls(index_flat_list, fl=1)
+    if objName:
+        return index_flat_list
+    index_only_list = [int(x.split('[')[1][:-1]) for x in index_flat_list]
+
+    return index_only_list

@@ -16,8 +16,16 @@ class LoadFileNode(commandNode.CommandNode):
         cmd='''
 import maya.cmds as mc
 import os
-if os.path.isfile("{filepath}"):
-    mc.file("{filepath}", i=True, f=True)
+import traceback
+
+mc.undoInfo(openChunk=1)
+try:
+    if os.path.isfile("{filepath}"):
+        mc.file("{filepath}", i=True, f=True)
+except:
+    traceback.print_exc()
+mc.undoInfo(closeChunk=1)
+
  '''
         commandAttribute.setValue(cmd)
 

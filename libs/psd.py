@@ -293,4 +293,3 @@ def getGroup(poseInterp):
         childIndices = mc.getAttr(group + '.childIndices')
         if index in childIndices:
             return(name)
-

@@ -1,0 +1,733 @@
+global proc string[] returnIndicieScope ( string $selected[])
+{
+	/*
+		string $selected[] = `ls -sl`;
+		returnIndicieScope $selected;
+	*/
+
+	string $vertexIndexBuffer[];
+	string $vertexIndices[] = {"n", "n"};
+	string $singlePntMatch;
+	string $singlePnt;
+
+	int $firstPnt;
+	int $secndPnt;
+
+	for ($i=0; $i < size($selected); $i++ )
+	{
+		tokenize $selected[$i] "[:]" $vertexIndexBuffer;
+
+		$singlePntMatch = $vertexIndexBuffer[size($vertexIndexBuffer)-2];
+		$singlePnt = $vertexIndexBuffer[size($vertexIndexBuffer)-1];
+
+		if ($singlePntMatch == $vertexIndexBuffer[0])
+		{
+			$vertexIndices[size($vertexIndices)] = $singlePnt;
+			$vertexIndices[size($vertexIndices)] = "0";
+		}
+
+		else
+		{
+			$firstPnt = $vertexIndexBuffer[size($vertexIndexBuffer)-2];
+			$secndPnt = $vertexIndexBuffer[size($vertexIndexBuffer)-1];
+
+			$vertexIndices[size($vertexIndices)] = $firstPnt;
+			$vertexIndices[size($vertexIndices)] =  $secndPnt - $firstPnt;
+		}
+	}
+
+	return $vertexIndices;
+}
+
+
+global proc string[] objNameSwitch  ( string $selShort[], string $base, string $target )
+{
+	/*
+	string $selShort[] = {"|left_arm_elbow_115_absRel|left_arm_elbow_115_model.vtx[4552]"};
+	string $base = left_arm_elbow_115
+	string $target = left_arm_elbow_115_temp;
+	*/
+	string $replace = stringArrayToString($selShort, " ");
+	print("\nshort\n");
+	print($selShort);
+	print("\nbase\n");
+	print($base);
+	print("\ntarget\n");
+	print($target);
+	print("----------------------------------");
+
+	//for ($i=0; $i < size($selShort); $i++)
+	$replace = `substitute ($base + ".") $replace ($target + ".")`;
+
+	string $switchedSelShort[] = stringToStringArray($replace, " ");
+
+	return $switchedSelShort;
+}
+
+global proc zeroTweak (string $obj, string $tweak)
+{
+	$startTime = `timerX`;
+
+	int $totalVerts[] = `polyEvaluate -v $obj`;
+	int $divideFactor[] = { 50, 10, 1};
+	int $vertsDivided;
+	int $itterations;
+	int $i;
+
+	for ($factor in $divideFactor){
+		$vertsDivided = ($totalVerts[0]/$factor);
+		for ($t=0; $t < $vertsDivided; $t++)
+		{
+			if ($factor == 1){
+				setAttr -type float3 ($tweak + ".vlist[0].vertex[" + $i + "]")	0 0 0;
+			}
+			if ($factor == 10){
+				setAttr -type float3 ($tweak + ".vlist[0].vertex[" + $i + ":" + ($i + $factor) + "]") 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+			}
+			if ($factor == 50) {
+				setAttr -type float3 ($tweak + ".vlist[0].vertex[" + $i + ":" + ($i + $factor) + "]") 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+			}
+			$i = $i + $factor;
+		}
+		$totalVerts[0] = $totalVerts[0] % $factor;
+	}
+
+	$totalTime = `timerX -startTime $startTime`;
+   	print ("Total Time: "+$totalTime+  "  Verts: " + $totalVerts[0] + "  Itterations: 0" + "\n");
+}
+
+global proc int zeroTweakSel (string $vertices[], string $obj, string $tweak, string $skinCluster)
+{
+    /*
+        string $buf[] = `ls -ni -dag -s -sl`;
+        string $obj = $buf[0];
+
+        string $buf[] = `objInfo $obj tweak`;
+        string $tweak = $buf[0];
+
+        string $buf[] = `objInfo $obj skinCluster`;
+        string $skinCluster = $buf[0];
+
+        string $vertices[] = `ls -sl`;
+
+      	zeroTweak $obj $tweak;
+		zeroTweakSingle $obj $tweak;
+		zeroTweakSel $vertices $obj $tweak $skinCluster;
+		zeroTweak_orig $obj;
+
+    */
+
+    $startTime = `timerX`;
+
+    string $vertIndicies[] = `returnIndicieScope $vertices`;
+    int $divideFactor[] = { 50, 10, 1 };
+    int $vertsDivided;
+    int $itterations;
+    int $startPnt;
+    int $numOfPnts;
+
+    int $totalVerts = size(`ls -fl $vertices`);
+    int $vertLoops = size($vertIndicies)/2+1;
+
+    string $meshPoint[] = {".vlist[0].vertex[", "Vertex"};
+    string $histPoint[] = {".pnts[", "].pnt"};
+
+    for ($i=2; $i < $vertLoops; $i++)
+    {
+
+        $numOfPnts = $vertIndicies[($i*2)-1];
+        $startPnt = $vertIndicies[($i*2)-2];
+
+        for ($factor in $divideFactor)
+        {
+            $vertsDivided = ($numOfPnts/$factor);
+            if ($factor == 1)
+                $vertsDivided = $vertsDivided + 1;
+            for ($t=0; $t < $vertsDivided; $t++)
+            {
+
+                if ($factor == 1)
+                {
+                        setAttr -type float3 ($tweak + $meshPoint[0] + $startPnt + "]") 0 0 0;
+				}
+                if ($factor == 10)
+                {
+                        setAttr -type float3 ($tweak + $meshPoint[0] + $startPnt + ":" + ($startPnt + $factor) + "]")  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+                }
+                if ($factor == 50)
+                {
+                        setAttr -type float3 ($tweak + $meshPoint[0] + $startPnt + ":" + ($startPnt + $factor) + "]") 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+				}
+                $startPnt = $startPnt + $factor;
+                $itterations++;
+            }
+            $numOfPnts = $numOfPnts % $factor;
+        }
+    }
+
+    	$totalTime = `timerX -startTime $startTime`;
+       print ("Total Time: "+$totalTime+  "  Verts: " + $totalVerts + "  Itterations:" + $itterations + "\n");
+
+       return $itterations;
+}
+
+global proc string  geoConnectedToBlendNode (string $blendNode)
+{
+	string $skin[];
+	string $set[];
+
+	if (`objExists $blendNode` )
+	{
+		$set = `listConnections -type "objectSet" $blendNode`;
+		if (`objExists $set[0]`)
+		{
+			$skin = `listConnections ($set[0] + ".dagSetMembers[0]")`;
+			if (`objExists $skin[0]`)
+				return $skin[0];
+		}
+	}
+	return "";
+}
+
+global proc string[] returnIndicies ( string $selected[]) {
+
+	//string $vertices[] = `polyListComponentConversion -tv $selected`;
+	//$vertices = `ls -flatten $vertices`;
+
+	string $vertexIndexBuffer[];
+	string $vertexIndices[];
+
+	for ($vertex in $selected)
+	{
+		tokenize $vertex "[]" $vertexIndexBuffer;
+		$vertexIndices[size($vertexIndices)] = $vertexIndexBuffer[1];
+	}
+
+	return $vertexIndices;
+}
+
+global proc float[] inverseMatrix33( float $m[] )
+{
+	float $d = $m[0]*( ($m[4]*$m[8])-($m[5]*$m[7]) ) - $m[1]*( ($m[3]*$m[8])-($m[6]*$m[5]) ) + $m[2]*( ($m[3]*$m[7])-($m[6]*$m[4]) );
+	if ($d == 0)
+		return {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+
+	float $t[9] = { $m[0], $m[3], $m[6],
+					$m[1], $m[4], $m[7],
+					$m[2], $m[5], $m[8]};
+	/*
+	$m[0], $m[1], $m[2],
+	$m[3], $m[4], $m[5],
+	$m[6], $m[7], $m[8]};
+	*/
+	float $a[9] = {($t[4]*$t[8])-($t[5]*$t[7]), ( -(($t[3]*$t[8])-($t[6]*$t[5])) ), ($t[3]*$t[7])-($t[6]*$t[4]),
+					 ( -(($t[1]*$t[8])-($t[7]*$t[2])) ), ($t[0]*$t[8])-($t[6]*$t[2]), ( -(($t[0]*$t[7])-($t[6]*$t[1])) ),
+					 ($t[1]*$t[5])-($t[4]*$t[2]), ( -(($t[0]*$t[5])-($t[3]*$t[2])) ), ($t[0]*$t[4])-($t[3]*$t[1])};
+
+	float $mInv[9] = { ($a[0]/$d), ($a[1]/$d), ($a[2]/$d),
+						($a[3]/$d), ($a[4]/$d), ($a[5]/$d),
+						($a[6]/$d), ($a[7]/$d), ($a[8]/$d)};
+	return $mInv;
+}
+
+global proc vector pointMatrixMult33( float $p[], float $m[] )
+{
+	/*
+	<<$p[0], $p[1], $p[2]>>;
+
+	$m[0], $m[1], $m[2],
+	$m[3], $m[4], $m[5],
+	$m[6], $m[7], $m[8];
+	*/
+	vector $res = <<   $p[0]*$m[0] + $p[1]*$m[3] + $p[2]*$m[6],
+						  $p[0]*$m[1] + $p[1]*$m[4] + $p[2]*$m[7],
+						  $p[0]*$m[2] + $p[1]*$m[5] + $p[2]*$m[8]
+					 >>;
+	return $res;
+}
+
+
+
+global proc string[] objInfo (string $obj, string $info)
+{
+	/*
+	objInfo  RSskin2:shirt8 tweak;
+	*/
+
+	string 	$shapeNode[];
+
+	if (size(`ls -s $obj `))
+	{
+		$shapeNode[0] = $obj;
+	}
+
+	else
+	{
+		if (`objExists $obj`)
+			$shapeNode 	= `listRelatives -f -s $obj`;
+	}
+
+	string 	$infoReturn[];
+
+	for ($s in $shapeNode)
+	{
+		if (`objExists $s`)
+		{
+			string 	$idNames[] 	= `listConnections -type "groupId" $s`;
+
+			for ($connection in $idNames)
+			{
+				$buf = `listConnections -type $info $connection`;
+				if (`size($buf)`)
+					$infoReturn[size($infoReturn)] = $buf[0];
+			}
+		}
+	}
+
+	return $infoReturn;
+}
+
+
+global proc string[] absRelMovePolySel (string $sel[], string $sourcePoly, string $destPoly, float $threshold) {
+	/*
+	$sel[]: List of points to calculate, must be destination mesh points
+	$sourcePoly: deformed mesh
+	$destPoly: edited mesh
+	$threshold: minimum delta of point for it to be calculated
+
+	string $polygon[] = `ls -dag -ni -s -sl`;
+	string $sourcePoly = $polygon[0];
+	string $destPoly = $polygon[1];
+	float $threshold = .001;
+
+	absRelMovePolySel $sourcePoly $destPoly $threshold
+
+	source "rigging/bodyBlend/bodyBlend(v.97).mel";
+	bodyBlend;
+
+	source "rigging/bodyBlend/bodyBlend(v.98).mel";
+	bodyBlend;
+
+	*/
+
+	$startTime = `timerX`;
+	// arrays and stuff
+	int $numV[];
+	string $vert[];
+	int $totalNumVerts;
+	int $type = 0;
+
+	//if components are selected then only calculate them
+	string $transF[] = `listRelatives -p -f $destPoly`;
+	string $selComponent[];
+	tokenize $sel[0] "." $selComponent;
+
+	if (size(`match $transF[0] $selComponent[0]`))
+	{
+		$vert = `returnIndicies $sel`;
+		$totalNumVerts = size($vert);
+	}
+
+	else
+	{
+		if (`nodeType $sourcePoly` == "mesh")
+			$numV = `polyEvaluate -v $sourcePoly`;
+
+		if (`nodeType $sourcePoly` == "lattice")
+		{
+			$numV = `lattice -q -dv $sourcePoly`;
+			$numV[0] = $numV[0] * $numV[1] * $numV[2];
+			$type = 4;
+		}
+		$totalNumVerts = $numV[0];
+	}
+
+	int $numVerts = 0;
+	int $indexArray[] = {};		// Array to hold which vertices need to be moved
+	vector $relWorldOffset[];	// Relative offset is world space from source vertex to destination vertex
+	vector $xAxis[];			// Array containing the local x-Axis for each vertex which fails the distance check
+	vector $yAxis[];			// 				"			  y-Axis						"
+	vector $zAxis[];			// 				"			  z-Axis						"
+	vector $sourceOrigin[];		// Array for the world space locations of each vertex used for calculating the local axes
+	vector $xTemp;			// Helper arrays for calculating local axes	(xTemp - sourceOrigin == x-Axis vector)
+	vector $yTemp;			// ...
+	vector $zTemp;			// ...
+	vector $dTemp;			// Helper arrays for calculating local axes
+	vector $sTemp;			// ...
+	vector $os[];			// Array holding original local space position of each vertex
+
+	int $k;
+
+	// Get tweak node
+	string $buffer[] = `objInfo $sourcePoly tweak`;
+	string $skinCluster[] = `objInfo $sourcePoly skinCluster`;
+	string $tweakNode = $buffer[0];
+
+	// Get original positions and relative offset from final position
+	$numVerts = 0;
+
+	string $pointType[] = {".vlist[0]", ".vertex[", "Vertex", ".vtx[", ".plist[0]", ".controlPoints[", "Value", ".controlPoints["};
+	string $pntType[] = {".vlist[0].vertex["};
+
+	//#-------------------------------------------------------------------------------
+	//# for component selection
+	//#-------------------------------------------------------------------------------
+	if (size($sel[0]))
+	{
+		for ($k = 0; $k < $totalNumVerts; $k++)
+		{
+
+			$sTemp = `pointPosition -w ($sourcePoly + $pointType[3+$type] + $vert[$k] + "]")`;
+			$dTemp = `pointPosition -w ($destPoly + $pointType[3+$type] + $vert[$k] + "]")`;
+
+			vector $distance = `mag ($dTemp - $sTemp)`;
+
+			//if ($distance > $threshold)
+			//{
+				$indexArray[$numVerts] = $vert[$k];
+				//source original world postion
+				$sourceOrigin[$numVerts] = $sTemp;
+
+				//source original local position
+				$os[$numVerts] = `getAttr ($tweakNode + $pntType[0] + $vert[$k] + "]")`;
+
+				//real world offset
+				$relWorldOffset[$numVerts] = $dTemp - $sTemp;
+
+				$numVerts++;
+			//}
+		}
+	}
+
+	$totalTime = `timerX -startTime $startTime`;
+	print ("\n1: " + $totalTime + "   >> new");
+
+	/* x-Axis *///-----------------------------------------------------------------------------------------------------------------------
+	// Move every vertex 1 relative local unit in the x direction
+	for ($k = 0; $k < $numVerts; $k++)
+	{
+		vector $osC = $os[$k];
+		setAttr ($tweakNode + $pointType[0+$type] + $pointType[1+$type] + $indexArray[$k] + "].x" + $pointType[2+$type]) (1 + ($osC.x));
+	}
+
+	// Get world space location for every vertex and calculate local x-Axis
+	for ($k = 0; $k < $numVerts; $k++)
+	{
+		$xTemp = `pointPosition -w ($sourcePoly + $pointType[3+$type] + $indexArray[$k] + "]")`;
+		$xAxis[$k] = $xTemp - $sourceOrigin[$k];
+	}
+
+	/* y-Axis *///------------------------------------------------------------------------------------------------------------------------
+	for ($k = 0; $k < $numVerts; $k++)
+	{
+		vector $osC = $os[$k];
+		setAttr ($tweakNode + $pointType[0+$type] + $pointType[1+$type] + $indexArray[$k] + "].x" + $pointType[2+$type]) ($osC.x);
+		setAttr ($tweakNode + $pointType[0+$type] + $pointType[1+$type] + $indexArray[$k] + "].y" + $pointType[2+$type]) (1 + ($osC.y));
+	}
+
+	for ($k = 0; $k < $numVerts; $k++)
+	{
+		$yTemp = `pointPosition -w ($sourcePoly + $pointType[3+$type] + $indexArray[$k] + "]")`;
+		$yAxis[$k] = $yTemp - $sourceOrigin[$k];
+	}
+
+	/* z-Axis *///-------------------------------------------------------------------------------------------------------------------------
+	for ($k = 0; $k < $numVerts; $k++)
+	{
+		vector $osC = $os[$k];
+		setAttr ($tweakNode + $pointType[0+$type] + $pointType[1+$type] + $indexArray[$k] + "].y" + $pointType[2+$type]) ($osC.y);
+		setAttr ($tweakNode + $pointType[0+$type] + $pointType[1+$type] + $indexArray[$k] + "].z" + $pointType[2+$type]) (1 + ($osC.z)); //get position
+	}
+
+	for ($k = 0; $k < $numVerts; $k++)
+	{
+		$zTemp = `pointPosition -w ($sourcePoly + $pointType[3+$type] + $indexArray[$k] + "]")`;
+		$zAxis[$k] = $zTemp - $sourceOrigin[$k];
+	}
+
+	$totalTime = `timerX -startTime $startTime`;
+	print ("\n2: " + $totalTime + "   >> new");
+
+	vector $deltas[];
+	string $stringDeltas[];
+
+	for ($k = 0; $k < $numVerts; $k++)
+	{
+		// find inverse rotation matrix to align vertex coordinate axis with world axis
+		float $xf[3] = $xAxis[$k];
+		float $yf[3] = $yAxis[$k];
+		float $zf[3] = $zAxis[$k];
+
+		float $matrix[] = {
+		 $xf[0], $xf[1], $xf[2],
+		 $yf[0], $yf[1], $yf[2],
+		 $zf[0], $zf[1], $zf[2]
+		 };
+
+		$matrix = `inverseMatrix33 $matrix`;
+
+		float $relDest[3] = $relWorldOffset[$k];
+
+		vector $f = `pointMatrixMult33 $relDest $matrix`;
+
+		//move vertex (in local space) relative to original postion
+		//vector $newLocPos = $f + $os[$k];
+		//setAttr -type float3 ($tweakNode + $pntType[0] + $indexArray[$k] + "]") ($newLocPos.x) ($newLocPos.y) ($newLocPos.z);
+
+		$deltas[$k] = $f + $os[$k];
+		vector $temp = $deltas[$k];
+		$stringDeltas[$k] = ($temp.x)+" "+($temp.y)+" "+($temp.z);
+
+	}
+
+    // Zero tweaks
+    zeroTweakSel $sel $sourcePoly $tweakNode $skinCluster[0];
+
+	$totalTime = `timerX -startTime $startTime`;
+	print ("\n3: " + $totalTime + "   >> new");
+
+	return $stringDeltas;
+}
+
+global proc int edit (string $blendNode, string $target, string $modeled)
+{
+    /*
+    // BlendShape target that is being updated
+    $target =
+    // Edited shape's transform
+    $modeled =
+    */
+	$startTime = `timerX`;
+
+	float $range = .001;
+	int $verts = -1;
+
+	//string $skinShape[];
+	//string $skin = `geoConnectedToBlendNode $blendNode`;
+	string $skinShape[] = `deformer -q -g $blendNode`;
+	string $sel[] = `ls -l -fl -lf -sl`;
+	string $selShort[] = `ls -l -sl`;
+	//string $selShort[] = `ls -sl`;
+	$modeledShape = `listRelatives -s $modeled`;
+
+//------------------------------------------------------------------------------
+//find which shape is connected to the tweak
+//------------------------------------------------------------------------------
+
+	string $skinTransform[] = `listRelatives -f -parent $skinShape[0]`;
+	$skin = $skinTransform[0];
+
+	print "skin\n";
+	print $skin;
+	print $skinShape[0];
+	print "\nskin\n";
+
+	//string $buffer[] = `listRelatives -f -s $skin`;
+
+	//for ($b in $buffer)
+	//{
+	//	string $temp[] = `objInfo $b tweak`;
+	//	if (size($temp[0]))
+	//		$skinShape[0] = $b;
+	//}
+
+//------------------------------------------------------------------------------
+//find skinCluster or cMuscleSystem
+//------------------------------------------------------------------------------
+
+	string $skinCluster[] = `objInfo $skin skinCluster`;
+	string $cMuscleSystem[] = `objInfo $skin cMuscleSystem`;
+	string $tweak[] = `objInfo $skin "tweak"`;
+
+//------------------------------------------------------------------------------
+//get the current value of the target being calculated
+//------------------------------------------------------------------------------
+
+	float $currentTargetValue = `getAttr ($blendNode + "." + $target)`;
+    string $con[] = `listConnections -p 1 ($blendNode+"."+$target)`;
+    if (size($con)){
+        disconnectAttr $con[0] ($blendNode+"."+$target);
+    }
+
+//------------------------------------------------------------------------------
+//calculate
+//------------------------------------------------------------------------------
+
+	if (`objExists $skin`)
+	{
+		if (`nodeType $skinShape[0]` == "mesh")
+		{
+			setAttr ($blendNode + "." + $target) 0;
+			//absRelMovePolySel $sel $skinShape[0] $modeled $range;
+		}
+
+		if (`nodeType  $skinShape[0]` == "lattice")
+		{
+			bakeToTweak $modeledShape[0] $skinShape[0]  $range;
+			setAttr ($blendNode + "." + $target) 0;
+
+
+			if (`objExists $tweak[0]` && `objExists $skinCluster[0]` && `objExists $blendNode`)
+			{
+				scriptEditorInfo -e -suppressWarnings true;
+				reorderDeformers $skinCluster[0] $tweak[0] $blendNode $skin;
+				scriptEditorInfo -e -suppressWarnings false;
+			}
+
+			int $numV[];
+			int $totalNumVerts;
+			int $type = 0;
+
+			if (`nodeType $skinShape[0]` == "mesh")
+				$numV = `polyEvaluate -v $skinShape[0]`;
+
+			if (`nodeType $skinShape[0]` == "lattice")
+			{
+				$numV = `lattice -q -dv $skinShape[0]`;
+				$numV[0] = $numV[0] * $numV[1] * $numV[2];
+				$type = 4;
+			}
+
+			$totalNumVerts = $numV[0];
+
+			string $pointType[] = {".vlist[0]", ".vertex[", "Vertex", ".vtx[", ".plist[0]", ".controlPoints[", "Value", ".controlPoints["};
+
+			//zero the tweak
+			int $i;
+			for ($i = 0; $i < $totalNumVerts; $i++)
+			{
+				setAttr ($tweak[0] + $pointType[0+$type] + $pointType[1+$type] + $i + "].x" + $pointType[2+$type]) 0;
+				setAttr ($tweak[0] + $pointType[0+$type] + $pointType[1+$type] + $i + "].y" + $pointType[2+$type]) 0;
+				setAttr ($tweak[0] + $pointType[0+$type] + $pointType[1+$type] + $i + "].z" + $pointType[2+$type]) 0;
+			}
+			//absRelMovePolySel $sel $skinShape[0] $modeled  $range;
+		}
+	}
+
+//#-----------------------------------------------------------------------------------------------------------
+//#create relative mesh in bind pose to blend to
+//#-----------------------------------------------------------------------------------------------------------
+
+	if (`objExists $skinCluster[0]`)
+		setAttr ($skinCluster[0] + ".envelope") 0;
+
+	//setAttr ($blendNode + ".envelope") 0;
+
+	string $tweakNames[] = `objInfo $skin tweak`;
+	setAttr ($tweakNames[0] + ".envelope") 1;
+
+	string $relTarget[] = `duplicate -rr -rc -n ($target + "_temp") $skin`;
+	string $attrs[] = `listAttr -k $relTarget[0]`;
+	for ($attr in $attrs){
+		setAttr -l false ($relTarget[0] + "." + $attr);
+	}
+
+	//--------------------------------------------
+	// junk Group
+	//--------------------------------------------
+
+	//string $junkGroup = ($target + "_absRel");
+	//if (!`objExists $junkGroup`)
+	//{
+	//	$junkGroup = `group -empty -n ($target + "_absRel")`;
+	//	parent $target ($target + "_model") $relTarget[0]  $junkGroup;
+	//}
+
+	//else
+	//	parent  $relTarget[0] $junkGroup;
+
+	//------------------------------------------------------------------------------------------------------------------------------
+	string $pointType[] = {".vlist[0]", ".vertex[", "Vertex", ".vtx[", ".plist[0]", ".controlPoints[", "Value", ".controlPoints["};
+	int $numV[];
+	int $totalNumVerts;
+	int $type = 0;
+
+	if (`nodeType $skinShape[0]` == "mesh")
+		$numV = `polyEvaluate -v $skinShape[0]`;
+
+	if (`nodeType $skinShape[0]` == "lattice")
+	{
+		$numV = `lattice -q -dv $skinShape[0]`;
+		$numV[0] = $numV[0] * $numV[1] * $numV[2];
+		$type = 4;
+	}
+
+	//if components are selected then only calculate them
+	string $transF[] = `listRelatives -p -f $modeledShape[0]`;
+	string $selComponent[];
+	tokenize $sel[0] "." $selComponent;
+
+	if (size(`match $transF[0] $selComponent[0]`))
+	{
+		zeroTweakSel $sel $skinShape[0] $tweakNames[0] $skinCluster[0];
+	}
+
+	else
+	{
+
+		$totalNumVerts = $numV[0];
+		int $i;
+		for ($i = 0; $i < $totalNumVerts; $i++)
+		{
+			setAttr ($tweakNames[0] + $pointType[0+$type] + $pointType[1+$type] + $i + "].x" + $pointType[2+$type]) 0;
+			setAttr ($tweakNames[0] + $pointType[0+$type] + $pointType[1+$type] + $i + "].y" + $pointType[2+$type]) 0;
+			setAttr ($tweakNames[0] + $pointType[0+$type] + $pointType[1+$type] + $i + "].z" + $pointType[2+$type]) 0;
+		}
+	}
+
+
+//-----------------------------------------------------------------------------------------------------------
+//set up blendshape
+//-----------------------------------------------------------------------------------------------------------
+	if (!$type)
+	{
+		//if components are selected then only calculate them
+		string $transF[] = `listRelatives -p -f $modeledShape[0]`;
+		tokenize $sel[0] "." $sel;
+
+		if (size(`match $transF[0] $sel[0]`))
+		{
+			string $relTargetVerts[] = `objNameSwitch $selShort $modeled $relTarget[0]`;
+			string $targetVerts[] = `objNameSwitch $selShort $modeled $target`;
+			blendShape -w 0 1 -n tempBBtransfer $relTargetVerts $targetVerts;
+		}
+
+		else
+		{
+			polyTransfer -vc 0 -uv 0 -v 1 -ao $relTarget[0] ($target);
+			delete -ch $target;
+		}
+	}
+
+	else
+		blendShape -w 0 1 -n tempBBtransfer $relTarget[0] ($target);
+
+
+	//delete -ch $target;
+	delete  $relTarget[0];
+
+//-----------------------------------------------------------------------------------------------------------
+//update UI
+//-----------------------------------------------------------------------------------------------------------
+
+
+	if (`objExists $skinCluster[0]` && !`objExists $cMuscleSystem[0]`)
+		setAttr ($skinCluster[0] + ".envelope") 1;
+
+	//setAttr ($blendNode + ".envelope") 1;
+	setAttr ($blendNode + "." + $target) $currentTargetValue;
+    if (size($con)){
+        connectAttr $con[0] ($blendNode+"."+$target);
+    }
+
+
+	selectMode -o;
+	select -cl;
+
+	$totalTime = `timerX -startTime $startTime`;
+   	print ("Total Time: "+$totalTime  +"\n");
+
+	return $verts;
+}
+
+

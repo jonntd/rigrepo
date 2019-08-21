@@ -5,7 +5,8 @@ import maya.cmds as mc
 import maya.mel as mm
 import rigrepo.libs.common
 import rigrepo.libs.wrap
-from itertools import chain
+import rigrepo.libs.shape as shape
+import os
 
 def transferBlendShape(source, target, deformer, differentTopology=0, connections=1):
     """
@@ -242,7 +243,7 @@ def getTargetDeltas(bs, target):
     return delta_list, index_list
 
 
-def setTargetDeltas(bs, deltas, indices, target):
+def setTargetDeltas(bs, deltas=None, indices=None, target=None):
     """
     Set deltas for a blendShape target
     :param bs: BlendShape node
@@ -258,8 +259,8 @@ def setTargetDeltas(bs, deltas, indices, target):
     indexedAttr = bs+'.it[0].itg[{}].iti[6000]'.format(targetIndex)
     deltas.insert(0, len(deltas))
     indices.insert(0, len(indices))
-    mc.setAttr(indexedAttr+'.ipt', *deltas, type='pointArray')
     mc.setAttr(indexedAttr+'.ict', *indices, type='componentList')
+    mc.setAttr(indexedAttr+'.ipt', *deltas, type='pointArray')
 
 
 def clearTargetDeltas(bs, target):
@@ -318,3 +319,42 @@ def getTargetWeight(bs, target):
 
     targetIndex = getTargetIndex(bs, target)
     return mc.getAttr(bs+'.w[{}]'.format(targetIndex))
+
+def invertShape(bs, target, geo):
+
+    melInvert = os.path.dirname(shape.__file__).replace('\\', '/') + '/invertShape.mel'
+    mm.eval('source "' + melInvert + '"')
+
+    # Indices of points with different positions of two meshes
+    base = mc.deformer(bs, q=1, geometry=1)
+    if not base:
+        raise Exception("No geo associated with blendShape [ " + bs + " ] ")
+        return
+    else:
+        base = mc.listRelatives(base, path=1, p=1)[0]
+
+    if not getTargetIndex(bs, target):
+        raise Exception(
+            '[ ' + bs + ' ] missing target [ ' + target + ' ] The duplicate shape must be named the same as the blendShape target.')
+
+    sel = mc.ls(sl=1)
+    clearTargetDeltas(bs, target)
+
+    indices = shape.getDeltaIndices(base, target)
+    indicesStr = ['vtx[' + str(x) + ']' for x in indices]
+    vertices = [geo + '.vtx[' + str(x) + ']' for x in indices]
+
+    mc.select(vertices)
+    cmd = 'absRelMovePolySel `ls -l -fl -sl` ' + base + ' ' + geo + ' .001'
+    melDeltas = mm.eval(cmd)
+
+    deltas = list()
+    for d in melDeltas:
+        x, y, z = d.split()
+        deltas.append((float(x), float(y), float(z), 1.0))
+
+    setTargetDeltas(bs, deltas, indicesStr, target)
+
+    if sel:
+        mc.select(sel)
+

@@ -81,6 +81,8 @@ import rigrepo.libs.blendShape
 reload(rigrepo.libs.blendShape)
 import rigrepo.libs.wrap
 reload(rigrepo.libs.wrap)
+import rigrepo.ui.posePanel
+reload(rigrepo.ui.posePanel)
 
 import rigrepo.libs.data.sdk_data
 reload(rigrepo.libs.data.sdk_data)
