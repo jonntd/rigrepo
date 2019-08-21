@@ -340,7 +340,7 @@ def invertShape(bs, target, geo):
     sel = mc.ls(sl=1)
     clearTargetDeltas(bs, target)
 
-    indices = shape.getDeltaIndices(base, target)
+    indices = shape.getDeltaIndices(base, geo)
     indicesStr = ['vtx[' + str(x) + ']' for x in indices]
     vertices = [geo + '.vtx[' + str(x) + ']' for x in indices]
 
