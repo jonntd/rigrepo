@@ -116,3 +116,105 @@ mc.scriptNode(st=1, sourceType="python", bs="""{}""", n='poseFreeze')
         '''
         # get the attributes that were set by the user so we can pass it to the command.
         exec(self.getAttributeByName('command').getValue())
+
+
+class SwitchExpressionNode(commandNode.CommandNode):
+    '''
+    This node will just create a new scene. I am making it available as a command node, in-case user wants to change it.
+    '''
+    def __init__(self, name, parent=None):
+        '''
+        This node is used to set the defaults. Currently it's set to use biped controls. 
+        the user has the ability to make changes to it. 
+
+        '''
+        super(SwitchExpressionNode, self).__init__(name, parent)
+        # add the attributes on the node.
+
+        commandAttribute = self.getAttributeByName('command')
+
+        # create the command that the user can change later.
+        cmd="""
+# this is the switch command that should be made into a script node
+import maya.cmds as mc
+def switch(paramNode, value):
+    
+    mc.undoInfo(openChunk=1)
+    
+    if value == 1:
+        fkControls = eval(mc.getAttr(paramNode + '.fkControls'))
+        ikMatchTransforms = eval(mc.getAttr(paramNode + '.ikMatchTransforms'))
+        print ikMatchTransforms
+        scaleValues = [mc.getAttr(ctrl+'.sx') for ctrl in (fkControls[1],fkControls[2])]
+        print fkControls
+        shoulderGimbal = fkControls.pop(1)
+        wristGimbal = fkControls.pop(-1)
+        rotationList = list()
+        for ctrl in ikMatchTransforms:
+            rotationList.append(mc.xform(ctrl, q=True, ws=True, rotation=True))
+        mc.setAttr("{}.pvPin".format(paramNode), 0)
+        mc.setAttr("{}.twist".format(paramNode), 0)
+        mc.setAttr("{}.ikfk".format(paramNode), 1)
+        mc.getAttr("{}.ikfk".format(paramNode))
+        mc.setAttr("{}.ikfk".format(paramNode), 1)
+        mc.setAttr(wristGimbal + '.r',0, 0, 0)
+        mc.setAttr(shoulderGimbal + '.r',0, 0, 0)
+        
+        for rotation, ctrl in zip(rotationList,fkControls):
+            mc.xform(ctrl, ws=True, rotation=rotation)
+    
+        attrList = ('stretchTop', 'stretchBottom')
+        for scaleValue, attr in zip(scaleValues, attrList):
+            mc.setAttr(paramNode + '.' + attr, scaleValue)
+    elif value == 0:
+        # get the ik controls
+        ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
+        # get the fk transforms
+        fkMatchTransforms = eval(mc.getAttr(paramNode + '.fkMatchTransforms'))
+        # get the match node for the pole vector node
+        matchNode = mc.getAttr(paramNode + '.pvMatch')
+        # get the current distance between the joints
+        currentDistance = mc.getAttr(fkMatchTransforms[1] + ".tx") + mc.getAttr(fkMatchTransforms[2] + '.tx')
+        #check to see if the distance in negative, which means we have to treat the matching differently
+        flip = False
+        if currentDistance < 0:
+            flip=True
+            
+        newPvPos = mc.xform(matchNode, q=True, ws=True, t=True)
+        endJntMatrix = mc.xform(fkMatchTransforms[2], q=True, ws=True, matrix=True)
+        mc.setAttr("{}.ikfk".format(paramNode), 0)
+        mc.getAttr("{}.ikfk".format(paramNode))
+        mc.setAttr("{}.ikfk".format(paramNode), 0)
+        
+        mc.xform(ikControls[1], ws=True, matrix=endJntMatrix)
+        mc.xform(ikControls[0], ws=True, t=newPvPos)
+        '''
+        newDistance = mc.getAttr(fkMatchTransforms[1] + ".tx") + mc.getAttr(fkMatchTransforms[2] + ".tx")
+        updatedDistance = (newDistance - currentDistance) / 2
+        # get the new distance
+        #check what direction the delta is in. If we need to flip it we will use abs to match
+        
+        if flip:
+            if updatedDistance < 0:
+                for attr in ["stretchTop", "stretchBottom"]:
+                    mc.setAttr("{}.{}".format(paramNode, attr), mc.getAttr("{}.{}".format(paramNode, attr)) - abs(updatedDistance))
+        elif updatedDistance > 0:
+            for attr in ["stretchTop", "stretchBottom"]:
+                mc.setAttr("{}.{}".format(paramNode, attr), mc.getAttr("{}.{}".format(paramNode, attr)) - updatedDistance)
+        '''
+    mc.undoInfo(closeChunk=1)
+"""
+        cmd='''
+import maya.cmds as mc
+mc.scriptNode(st=1, sourceType="python", bs="""{}""", n='ikfkSwitch')
+        '''.format(cmd)
+        
+        # set the command to the attributes value
+        commandAttribute.setValue(cmd)
+
+    def execute(self, *args, **kwargs):
+        '''
+        Here is where the code will run for this node.
+        '''
+        # get the attributes that were set by the user so we can pass it to the command.
+        exec(self.getAttributeByName('command').getValue())

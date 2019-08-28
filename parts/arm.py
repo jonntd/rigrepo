@@ -103,12 +103,15 @@ class Arm(limb.Limb):
         rigrepo.libs.attribute.lockAndHide(clavicleCtrl,["sx","sy", "sz", "v"])
         nameSplit = self._clavicleJoint.split('_{}_'.format(side))
         transBind = '{}_trans_{}_{}'.format(nameSplit[0], side, nameSplit[1])
+        distanceUpperJnt = "{}_upper_dist_jnt".format(self.name)
         aimVector = (-1, 0, 0)
         if side is 'r':
             aimVector = (1, 0, 0)
         if mc.objExists(transBind):
             mc.aimConstraint(self._clavicleJoint, transBind, mo=0, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
             mc.pointConstraint(self.jointList[0], transBind, mo=0)
+            if mc.objExists(distanceUpperJnt):
+                mc.pointConstraint(distanceUpperJnt, transBind, mo=0)
         else:
             print('clavicle translate not found', transBind)
 
