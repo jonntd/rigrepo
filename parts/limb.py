@@ -183,6 +183,8 @@ class Limb(part.Part):
                                                 color=rigrepo.libs.common.MIDBLUE,
                                                 parent=ikCtrl)[-1]
 
+        rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["tx", "ty", "tz", "sx", "sy", "sz", "v"])
+
         mc.xform(ikGimbalCtrl,ws=True,matrix=mc.xform(ikCtrl,q=True,ws=True,matrix=True))
 
         # duplicate the end ik joint and make it offset joint for the 
