@@ -411,6 +411,9 @@ for side in ["l","r"]:
         # get the postBuild node
         postBuild = animRigNode.getChild('postBuild')
 
+        switchExpression = rigrepo.nodes.utilNodes.SwitchExpressionNode("SwitchExpression")
+        postBuild.addChild(switchExpression)
+
         applyNode = animRigNode.getChild('apply')
         applyNode.addChild(controlsDefaults)
 

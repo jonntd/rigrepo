@@ -489,10 +489,11 @@ class Limb(part.Part):
         aimDistance = mc.getAttr("{}.t".format(self.jointList[1]))[0]
         aimAttr, aimVector = self._getDistanceVector(aimDistance)
         if mc.objExists(noTwist):
-            mc.aimConstraint(target, noTwist, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
+            mc.aimConstraint(target, noTwist, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')            
             distanceUpperJnt = "{}_upper_dist_jnt".format(self.name)
             if mc.objExists(distanceUpperJnt):
-                mc.pointConstraint(distanceUpperJnt, noTwist, mo=0)
+                mc.pointConstraint(noTwist, distanceUpperJnt, mo=0)
+                mc.setAttr("{}.v".format(distanceUpperJnt), 0 )
         else:
             print('noTwist not found', noTwist)
 
