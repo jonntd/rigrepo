@@ -137,6 +137,35 @@ class SwitchExpressionNode(commandNode.CommandNode):
         cmd="""
 # this is the switch command that should be made into a script node
 import maya.cmds as mc
+
+def getDistanceVector(distance):
+        '''
+        '''
+        distanceValue = max(distance, key=abs)
+        index = distance.index(distanceValue)
+        attr = ["x","y","z"][index]
+        value = round(distance[index], 4)
+        if attr == "x":
+            if value < 0:
+                attr = "-x"
+                vector = [-1,0,0]
+            else:
+                vector = [1,0,0]
+        elif attr == "y":
+            if value < 0:
+                attr = "-y"
+                vector = [0,-1,0]
+            else:
+                vector = [0,1,0]
+        elif attr == "z":
+            if value < 0:
+                attr = "-z"
+                vector = [0,0,-1]
+            else:
+                vector = [0,0,1]
+
+        return (attr, vector)
+
 def switch(paramNode, value):
     
     mc.undoInfo(openChunk=1)
@@ -144,9 +173,9 @@ def switch(paramNode, value):
     if value == 1:
         fkControls = eval(mc.getAttr(paramNode + '.fkControls'))
         ikMatchTransforms = eval(mc.getAttr(paramNode + '.ikMatchTransforms'))
-        print ikMatchTransforms
-        scaleValues = [mc.getAttr(ctrl+'.sx') for ctrl in (fkControls[1],fkControls[2])]
-        print fkControls
+        
+        aimAttr, vector= getDistanceVector(mc.getAttr("{}.t".format(fkControls[2]))[0])
+        scaleValues = [mc.getAttr(ctrl+'.s{}'.format(aimAttr.strip("-"))) for ctrl in (fkControls[1],fkControls[2])]
         shoulderGimbal = fkControls.pop(1)
         wristGimbal = fkControls.pop(-1)
         rotationList = list()
@@ -188,7 +217,7 @@ def switch(paramNode, value):
         
         mc.xform(ikControls[1], ws=True, matrix=endJntMatrix)
         mc.xform(ikControls[0], ws=True, t=newPvPos)
-        mc.setAttr("{}.r".format(ikConstrols[-1]), 0,0,0)
+        mc.setAttr("{}.r".format(ikControls[-1]), 0,0,0)
         '''
         newDistance = mc.getAttr(fkMatchTransforms[1] + ".tx") + mc.getAttr(fkMatchTransforms[2] + ".tx")
         updatedDistance = (newDistance - currentDistance) / 2
