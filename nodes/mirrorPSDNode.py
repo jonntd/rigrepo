@@ -59,12 +59,12 @@ try:
     # Store pose
     # ------------------------------------
     
-    if '{action}' == 'system':
-        controls = rigrepo.libs.control.getControls()
-        if controls:
-            rigrepo.libs.control.setPoseAttr(controls, 6)
-            # Got to bind pose
-            rigrepo.libs.control.toPoseAttr(controls, 0)
+    #if '{action}' == 'system':
+    #    controls = rigrepo.libs.control.getControls()
+    #    if controls:
+    #        rigrepo.libs.control.setPoseAttr(controls, 6)
+    #        # Got to bind pose
+    #        rigrepo.libs.control.toPoseAttr(controls, 0)
     
     # ------------------------------------
     # Main Loop
@@ -167,9 +167,9 @@ try:
                         print('flipped deltas: ' + pose)
                     
     # restore pose
-    if '{action}' == 'system':
-        if controls:
-            rigrepo.libs.control.toPoseAttr(controls, 6)
+    #if '{action}' == 'system':
+    #    if controls:
+    #        rigrepo.libs.control.toPoseAttr(controls, 6)
             
     finish = time.time()
     total_time = str(finish-start)[0:5]
