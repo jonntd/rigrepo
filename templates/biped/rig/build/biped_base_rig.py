@@ -413,6 +413,7 @@ for side in ["l","r"]:
 
         switchExpression = rigrepo.nodes.utilNodes.SwitchExpressionNode("SwitchExpression")
         postBuild.addChild(switchExpression)
+        switchExpression.disable()
 
         applyNode = animRigNode.getChild('apply')
         applyNode.addChild(controlsDefaults)
