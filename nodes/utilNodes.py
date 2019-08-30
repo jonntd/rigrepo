@@ -188,6 +188,7 @@ def switch(paramNode, value):
         
         mc.xform(ikControls[1], ws=True, matrix=endJntMatrix)
         mc.xform(ikControls[0], ws=True, t=newPvPos)
+        mc.setAttr("{}.r".format(ikConstrols[-1]), 0,0,0)
         '''
         newDistance = mc.getAttr(fkMatchTransforms[1] + ".tx") + mc.getAttr(fkMatchTransforms[2] + ".tx")
         updatedDistance = (newDistance - currentDistance) / 2
