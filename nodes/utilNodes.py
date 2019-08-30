@@ -230,7 +230,7 @@ def switch(paramNode, value):
         
         mc.xform("%s%s" % (namespace, ikControls[1]), ws=True, matrix=endJntMatrix)
         mc.xform("%s%s" % (namespace, ikControls[0]), ws=True, t=newPvPos)
-        mc.setAttr("%s%s.r" % (namesapce, ikControls[-1]), 0,0,0)
+        mc.setAttr("%s%s.r" % (namespace, ikControls[-1]), 0,0,0)
     mc.undoInfo(closeChunk=1)
 
 def armSwitch(paramNode=None):
