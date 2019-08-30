@@ -212,10 +212,11 @@ def switch(paramNode, value):
         ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
         # get the fk transforms
         fkMatchTransforms = eval(mc.getAttr(paramNode + '.fkMatchTransforms'))
+        aimAttr, vector= getDistanceVector(mc.getAttr("%s%s.t" % (namespace,fkMatchTransforms[1]))[0])
         # get the match node for the pole vector node
         matchNode = mc.getAttr(paramNode + '.pvMatch')
         # get the current distance between the joints
-        currentDistance = mc.getAttr("%s%s.tx" % (namespace, fkMatchTransforms[1])) + mc.getAttr("%s%s.tx" % (namespace, fkMatchTransforms[2]))
+        currentDistance = mc.getAttr("%s%s.t%s" % (namespace, fkMatchTransforms[1], aimAttr.strip("-"))) + mc.getAttr("%s%s.t%s" % (namespace, fkMatchTransforms[2], aimAttr.strip("-")))
         #check to see if the distance in negative, which means we have to treat the matching differently
         flip = False
         if currentDistance < 0:
