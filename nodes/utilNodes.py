@@ -257,7 +257,7 @@ def legSwitch(paramNode=None):
     value = mc.getAttr("%s.ikfk_switch" % (paramNode))
 
     if value == 1:
-        fkControl = eval(mc.getAttr("%s%s.footFkControl" % (namespace, paramNode)))
+        fkControl = eval(mc.getAttr("%s.footFkControl" % (paramNode)))
         fkControlPos = mc.xform("%s%s" % (namespace, fkControl), q=True, ws=True, matrix=True)
         switch(paramNode, value)
         mc.xform("%s%s" % (namespace, fkControl), ws=True, matrix=fkControlPos)
