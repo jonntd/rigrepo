@@ -183,8 +183,6 @@ class Limb(part.Part):
                                                 color=rigrepo.libs.common.MIDBLUE,
                                                 parent=ikCtrl)[-1]
 
-        rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["tx", "ty", "tz", "sx", "sy", "sz", "v"])
-
         mc.xform(ikGimbalCtrl,ws=True,matrix=mc.xform(ikCtrl,q=True,ws=True,matrix=True))
 
         # duplicate the end ik joint and make it offset joint for the 
@@ -230,6 +228,8 @@ class Limb(part.Part):
             if not mc.isConnected("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl)):
                 mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl), f=True)
 
+        rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["tx", "ty", "tz", "sx", "sy", "sz"])
+        
         mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.ikBlend".format(handle), f=True)
         # create the offset joint that will be used for ikfk switching. This is the offset of the
         # ik control from the fk control
