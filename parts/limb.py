@@ -228,7 +228,7 @@ class Limb(part.Part):
             if not mc.isConnected("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl)):
                 mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl), f=True)
 
-        rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["tx", "ty", "tz", "sx", "sy", "sz", "v"])
+        rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["tx", "ty", "tz", "sx", "sy", "sz"])
         
         mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.ikBlend".format(handle), f=True)
         # create the offset joint that will be used for ikfk switching. This is the offset of the
