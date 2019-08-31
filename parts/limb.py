@@ -622,7 +622,7 @@ class Limb(part.Part):
             follicleIndex = follicleList.index(follicle)
             # create the control with a large enough hierarchy to create proper SDK's
             ctrlHierarchy = rigrepo.libs.control.create(name="{}_{}".format(name, follicleIndex), 
-                controlType="cube", 
+                controlType="circle", 
                 hierarchy=['nul','ort','def_auto'], 
                 parent=follicle)
 
@@ -633,7 +633,7 @@ class Limb(part.Part):
             mc.setAttr("{}.rotate".format(jnt), 0,0,0)
             mc.setAttr("{}.drawStyle".format(jnt),2)
             mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
-            mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
+            #mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
 
             # zero out the nul for the control hierarchy so it's in the correct position.
             mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)

@@ -79,21 +79,72 @@ class FreezeWireExpressionNode(commandNode.CommandNode):
         cmd="""
 import maya.cmds as mc
 cmd = '''import maya.cmds as mc
-import rigrepo.libs.control
-controlList = rigrepo.libs.control.getControls('*') or rigrepo.libs.control.getControls()
+from collection import OrderedDict
+def getControls():
+    controls = mc.ls('*.__control__'.format() ,o=True, fl=True)
+    if not controls:
+        controls = mc.ls('*:*.__control__', fl=True,o=True)
+
+    return controls
+
+def setPoseAttr(controls, poseAttr=0):
+    skipAttrs = ("message")
+    for ctrl in controls:
+        # store the attribute names
+        ctrlPoseAttr = "{}.poseAttr_{}".format(ctrl,poseAttr)
+        poseAttrName = ctrlPoseAttr.split(".")[-1]
+        ctrlAttrDict = OrderedDict()
+
+        # go through each attribute and store it in the dictionary
+        for attr in mc.listAttr(ctrl, keyable=True):
+            if not mc.getAttr("{}.{}".format(ctrl,attr),type=True) in skipAttrs:
+                ctrlAttrDict[str(attr)] = mc.getAttr("{}.{}".format(ctrl,attr))
+
+        # if the pose doesn't exist, then we will create it.
+        if not poseAttrName in mc.listAttr(ctrl):
+            mc.addAttr(ctrl, ln=poseAttrName, dt= "string")
+
+        # set the attribute
+        mc.setAttr(ctrlPoseAttr, str(ctrlAttrDict), type="string")
+
+def toPoseAttr(controls, poseAttr=0):
+    # loop throught the controls and try and set the attributes back to the way they were stored.
+    for ctrl in controls:
+        ctrlPoseAttr = "{}.poseAttr_{}".format(ctrl,poseAttr)
+        poseAttrName = ctrlPoseAttr.split(".")[-1]
+
+        # check to see if the attribute exists.
+        if not poseAttrName in mc.listAttr(ctrl):
+            continue
+
+        # if the attribute exists then we can eval it into an OrderedDict        
+        ctrlAttrDict = eval(mc.getAttr(ctrlPoseAttr))
+
+        # loop through the attributes and set them if we can.
+        for attr in ctrlAttrDict:
+            try:
+                # set the attributes if we can.
+                mc.setAttr("{}.{}".format(ctrl,attr), ctrlAttrDict[attr])
+            except:
+                # raise a warning for now if we can't set it. 
+                #Usually this is because it's connected or locked.
+                pass
+
+
+controlList = getControls()
 wireList = mc.ls(type="wire")
 autoKeyframeState = mc.autoKeyframe(q=True, state=True)
 mc.autoKeyframe(state=False)
-rigrepo.libs.control.setPoseAttr(controlList, poseAttr=10) 
+setPoseAttr(controlList, poseAttr=10) 
 for wire in wireList:
     mc.setAttr("{}.freezeGeometry".format(wire), 0)
 
-rigrepo.libs.control.toPoseAttr(controlList, 9)
+toPoseAttr(controlList, 9)
 for wire in wireList:
     mc.setAttr("{}.freezeGeometry".format(wire), 1)
     mc.refresh()
     
-rigrepo.libs.control.toPoseAttr(controlList,10)
+toPoseAttr(controlList,10)
 
 for ctrl in controlList:
     mc.deleteAttr("{}.poseAttr_10".format(ctrl))
