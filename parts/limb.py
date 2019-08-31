@@ -508,7 +508,6 @@ class Limb(part.Part):
         joint = self.jointList[1]
         target = self.jointList[0]
         nameSplit = joint.split('_{}_'.format(side))
-        aimAttr, aimVector = self._getDistanceVector(aimDistance)
         aimVector = [value * -1 for value in aimVector]
         elbowTwistJoint = '{}Twist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
         if mc.objExists(noTwist):
@@ -706,7 +705,6 @@ class Limb(part.Part):
             elif updatedDistance > 0:
                 for attr in ["stretchTop", "stretchBottom"]:
                     mc.setAttr("{}.{}".format(paramNode, attr), mc.getAttr("{}.{}".format(paramNode, attr)) - updatedDistance)
-            #print "current distance: ", currentDistance, "\nupdated distance: ", updatedDistance, "\nnew distance: ", newDistance
 
         mc.undoInfo(closeChunk=1)
 

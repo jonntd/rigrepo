@@ -74,7 +74,9 @@ def decomposeRotation(object, swingOnly=False, twistAxis='x', rotateOrder=5):
         vector = (0, 0, -1)
 
     aimTarget = mc.createNode('transform', n=object+'_twist', p=object)
-    mc.setAttr(aimTarget+'.t'+twistAxis.strip("-"), 1)
+
+    # have to make sure we move the aimTarget in the correct direction
+    mc.setAttr(aimTarget+'.t', *vector)
     aimSourceGrp = mc.createNode('transform', n=object+'_swing_grp', p=object)
     aimSource = mc.createNode('transform', n=object+'_swing', p=aimSourceGrp)
     
