@@ -15,6 +15,7 @@ import rigrepo.libs.common
 import rigrepo.libs.joint
 import rigrepo.libs.curve
 import rigrepo.libs.bindmesh
+import rigrepo.libs.skinCluster
 
 class Limb(part.Part):
     '''
@@ -392,7 +393,7 @@ class Limb(part.Part):
 
                 baseCurve = "{}BaseWire".format(curve)
                 mc.parent([curve,baseCurve], self.name)
-                baseCurveSkin = mc.skinCluster(*self.jointList+mc.ls(baseCurve), 
+                baseCurveSkin = mc.skinCluster(*[baseCurveJointList]+mc.ls(baseCurve), 
                                             n="{}_skinCluster".format(baseCurve),
                                             tsb=True)[0]
 
@@ -410,21 +411,21 @@ class Limb(part.Part):
             mc.skinPercent(bindMeshSkin , '{}.vtx[12:15]'.format(bindmeshGeometry), transformValue=[(self.jointList[0], 0.0), (self.jointList[1], 0.5), (self.jointList[2],0.5)])
             mc.skinPercent(bindMeshSkin , '{}.vtx[16:19]'.format(bindmeshGeometry), transformValue=[(self.jointList[0], 0.0), (self.jointList[1], 0.0), (self.jointList[2],1.0)])
 
-            mc.parentConstraint(self.jointList[0], baseCurveJointList[0], mo=True)
+            #mc.parentConstraint(self.jointList[0], baseCurveJointList[0], mo=True)
             mc.pointConstraint(self.jointList[0],self.jointList[1], baseCurveJointList[1], mo=True)
             mc.orientConstraint(self.jointList[0], baseCurveJointList[1], mo=True)
-            mc.parentConstraint(self.jointList[1], baseCurveJointList[2], mo=True)
+            #mc.parentConstraint(self.jointList[1], baseCurveJointList[2], mo=True)
             mc.pointConstraint(self.jointList[1],self.jointList[2], baseCurveJointList[3], mo=True)
             mc.orientConstraint(self.jointList[1], baseCurveJointList[3], mo=True)
-            mc.parentConstraint(self.jointList[2], baseCurveJointList[4], mo=True)
+            #mc.parentConstraint(self.jointList[2], baseCurveJointList[4], mo=True)
 
-            mc.parentConstraint(self.jointList[0], controlHieracrchyList[0][0], mo=True)
+            #mc.parentConstraint(self.jointList[0], controlHieracrchyList[0][0], mo=True)
             mc.pointConstraint(self.jointList[0],self.jointList[1], controlHieracrchyList[1][0], mo=True)
             mc.orientConstraint(self.jointList[0], controlHieracrchyList[1][0], mo=True)
-            mc.parentConstraint(self.jointList[1], controlHieracrchyList[2][0], mo=True)
+            #mc.parentConstraint(self.jointList[1], controlHieracrchyList[2][0], mo=True)
             mc.pointConstraint(self.jointList[1],self.jointList[2], controlHieracrchyList[3][0], mo=True)
             mc.orientConstraint(self.jointList[1], controlHieracrchyList[3][0], mo=True)
-            mc.parentConstraint(self.jointList[2], controlHieracrchyList[4][0], mo=True)
+            #mc.parentConstraint(self.jointList[2], controlHieracrchyList[4][0], mo=True)
 
         #------------------------------------------------------------------------------------------
         #Setup attributes on the param node for the ikfk switch.
@@ -483,6 +484,8 @@ class Limb(part.Part):
         #mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
         paramNodeName = self.getAttributeByName("paramNode").getValue()
         createProxyAttributes = self.getAttributeByName("createProxyAttributes").getValue()
+
+        
         # NO TWIST JOINT
         side = self.getAttributeByName("side").getValue()
         nameSplit = self.jointList[0].split('_{}_'.format(side))
@@ -493,6 +496,7 @@ class Limb(part.Part):
         if mc.objExists(noTwist):
             mc.aimConstraint(target, noTwist, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')            
             distanceUpperJnt = "{}_upper_dist_jnt".format(self.name)
+            
             if mc.objExists(distanceUpperJnt):
                 mc.pointConstraint(noTwist, distanceUpperJnt, mo=0)
                 mc.setAttr("{}.v".format(distanceUpperJnt), 0 )
@@ -506,18 +510,22 @@ class Limb(part.Part):
         nameSplit = joint.split('_{}_'.format(side))
         aimAttr, aimVector = self._getDistanceVector(aimDistance)
         aimVector = [value * -1 for value in aimVector]
-        twistJoint = '{}Twist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
+        elbowTwistJoint = '{}Twist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
         if mc.objExists(noTwist):
-            mc.aimConstraint(target, twistJoint, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
+            mc.aimConstraint(target, elbowTwistJoint, mo=1, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
         else:
-            print('noTwist not found', twistJoint)
+            print('noTwist not found', elbowTwistJoint)
 
         # LAST JOINT twist setup
         joint = self.jointList[-1]
         nameSplit = joint.split('_{}_'.format(side))
         twistJoint = '{}Twist_{}_{}'.format(nameSplit[0], side, nameSplit[1])
         if mc.objExists(twistJoint):
-            deompose = rigrepo.libs.transform.decomposeRotation(joint)
+            if "-" in aimAttr:
+                decompAimAttr = aimAttr.strip("-")
+            else:
+                decompAimAttr = "-{}".format(aimAttr)
+            decompose = rigrepo.libs.transform.decomposeRotation(joint, twistAxis=decompAimAttr)
             mc.connectAttr(joint + '.decomposeTwist', twistJoint + '.r{}'.format(aimAttr.strip("-")), f=1)
         else:
             print('No twist joint found', twistJoint)
@@ -532,6 +540,52 @@ class Limb(part.Part):
                 mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, k=True, proxy='{}.stretchBottom'.format(paramNodeName))
                 mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True, proxy='{}.softStretch'.format(paramNodeName))
                 mc.addAttr(control, ln='pvPin', at='double', min=0, max=1, dv=1, k=True, proxy='{}.pvPin'.format(paramNodeName))
+
+        # get the bindmesh skinCluster if it exists.
+        bindmesh = "{}_bend_bindmesh".format(self.name)
+        bindMeshSkinCluster = None
+        if mc.objExists(bindmesh):
+            bindMeshSkinCluster = rigrepo.libs.skinCluster.getSkinCluster(bindmesh)
+
+        if bindMeshSkinCluster:
+            for jnt in (noTwist ,twistJoint, elbowTwistJoint):
+                mc.skinCluster(bindMeshSkinCluster, e=True, ai=jnt)
+            bindmeshGeometry = mc.skinCluster(bindMeshSkinCluster, q=True, geometry=True)[0]
+            mc.skinPercent(bindMeshSkinCluster , '{}.vtx[0:3]'.format(bindmeshGeometry), 
+                            transformValue=[(noTwist, 1.0), 
+                                            (elbowTwistJoint, 0.0), 
+                                            (self.jointList[0], 0.0), 
+                                            (self.jointList[1], 0.0), 
+                                            (self.jointList[2],0.0), 
+                                            (twistJoint, 0.0)])
+            mc.skinPercent(bindMeshSkinCluster , '{}.vtx[4:7]'.format(bindmeshGeometry), 
+                            transformValue=[(noTwist, 0.5), 
+                                            (elbowTwistJoint, 0.5), 
+                                            (self.jointList[0], 0.0), 
+                                            (self.jointList[1], 0.0), 
+                                            (self.jointList[2],0.0), 
+                                            (twistJoint, 0.0)])
+            mc.skinPercent(bindMeshSkinCluster , '{}.vtx[8:11]'.format(bindmeshGeometry), 
+                            transformValue=[(noTwist, 0.0), 
+                                            (elbowTwistJoint, 0.5), 
+                                            (self.jointList[0], 0.0), 
+                                            (self.jointList[1], 0.5), 
+                                            (self.jointList[2],0.0), 
+                                            (twistJoint, 0.0)])
+            mc.skinPercent(bindMeshSkinCluster , '{}.vtx[12:15]'.format(bindmeshGeometry), 
+                            transformValue=[(noTwist, 0.0), 
+                                            (elbowTwistJoint, 0.0), 
+                                            (self.jointList[0], 0.0), 
+                                            (self.jointList[1], 0.5), 
+                                            (self.jointList[2],0.0), 
+                                            (twistJoint, 0.5)])
+            mc.skinPercent(bindMeshSkinCluster , '{}.vtx[16:19]'.format(bindmeshGeometry), 
+                            transformValue=[(noTwist, 0.0), 
+                                            (elbowTwistJoint, 0.0), 
+                                            (self.jointList[0], 0.0), 
+                                            (self.jointList[1], 0.0), 
+                                            (self.jointList[2],0.0), 
+                                            (twistJoint, 1.0)])
 
         rigrepo.libs.attribute.lockAndHide(self._fkControls,["tx","ty", "tz"])
 

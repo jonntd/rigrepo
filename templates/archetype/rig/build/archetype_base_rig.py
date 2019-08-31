@@ -121,6 +121,15 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         importNodeEditorBookmarsNode = rigrepo.nodes.importNodeEditorBookmarksNode.ImportNodeEditorBookmarksNode("bookmarks",
             dirPath=self.resolveDirPath('bookmarks', self.variant))
 
+        # this will make sure that if the skinCluster is DQ it will support nonRigidScale
+        setDqScaleNode = rigrepo.nodes.commandNode.CommandNode('NonRigidScale')
+        setDqScaleNodeCmd = '''
+import maya.cmds as mc        
+for skinCluster in mc.ls(type="skinCluster"):
+    mc.setAttr("%s.dqsSupportNonRigid" % skinCluster, 1)
+'''
+        setDqScaleNode.getAttributeByName("command").setValue(setDqScaleNodeCmd)
+        skinWtsFileNode.addChild(setDqScaleNode)
 
         localizeNode = rigrepo.nodes.commandNode.CommandNode('localize')
         localizeNodeCmd = '''

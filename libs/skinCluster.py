@@ -134,22 +134,31 @@ def transferSkinCluster(source, target, surfaceAssociation="closestPoint"):
         hist = [node for node in hist if mc.nodeType(node) == "skinCluster"]
 
         # if there is no skinCluster, we will create one.
-        if not hist:
-            # Query the influences
-            infs = mc.skinCluster(sourceSkinCluster, q=True, inf=True)
-            # Remove localization if it exists
-            if not infs:
-                removeLocalize([sourceSkinCluster])
-                infs = mc.skinCluster(sourceSkinCluster, q=True, inf=True)
-            if not infs:
-                mc.warning('No influences found for {}. Could not transfer.'.format(sourceSkinCluster))
-                continue
+        # Query the influences
+        sourceInfs = mc.skinCluster(sourceSkinCluster, q=True, inf=True)
+        # Remove localization if it exists
+        if not sourceInfs:
+            removeLocalize([sourceSkinCluster])
+            sourceInfs = mc.skinCluster(sourceSkinCluster, q=True, inf=True)
+        if not sourceInfs:
+            mc.warning('No influences found for {}. Could not transfer.'.format(sourceSkinCluster))
 
+        if not hist:
             sm = mc.skinCluster(sourceSkinCluster, q=True, sm=True)
             name = "{}_skinCluster".format(mesh)
-            sc = mc.skinCluster(infs, mesh, name=name, rui=0, tsb=1, sm=sm)[0]
+            sc = mc.skinCluster(sourceInfs, mesh, name=name, rui=0, tsb=1, sm=sm)[0]
             skinClusterList.append(sc)
         else:
+            meshInfs = mc.skinCluster(hist[0], q=True, inf=True)
+            if not meshInfs:
+                removeLocalize([hist[0]])
+                meshInfs = mc.skinCluster(hist[0], q=True, inf=True)
+
+            # make sure that both skinClusters have the same influences
+            if not meshInfs == sourceInfs:
+                for inf in set(sourceInfs).difference(set(meshInfs)):
+                    mc.skinCluster(hist[0], e=True, ai=inf)
+            # add the influences that are missing from the skinCluster
             skinClusterList.append(hist[0])
 
 
