@@ -16,7 +16,10 @@ class ExportWtsSelectedNode(commandNode.CommandNode):
         cmd = '''
 import rigrepo.libs.weights
 import maya.cmds as mc
+import rigrepo.libs.skinCluster
+import rigrepo.libs.cluster
 
+rigrepo.libs.skinCluster.removeLocalize(mc.ls(type="skinCluster"))
 sc_nodes = list()
 sel = mc.ls(sl=1)
 if sel:

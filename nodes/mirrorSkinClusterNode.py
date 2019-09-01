@@ -17,9 +17,13 @@ import maya.cmds as mc
 import traceback
 import rigrepo.libs.control
 from rigrepo.libs.common import getSideToken
+import rigrepo.libs.skinCluster
+import rigrepo.libs.cluster
+
 
 mc.undoInfo(openChunk=1)
 try:
+    rigrepo.libs.skinCluster.removeLocalize(mc.ls(type="skinCluster"))
     controls = rigrepo.libs.control.getControls()
     if controls:
         # Store current pose
@@ -35,7 +39,7 @@ try:
         if sc:
             sc = sc[0]
             mc.copySkinWeights(ss=sc, ds=sc, mirrorMode='YZ', 
-                               surfaceAssociation='closestComponent', 
+                               surfaceAssociation='closestPoint', 
                                influenceAssociation=('label', 'closestJoint'))
             print("mirrored " + sc),
     if controls:

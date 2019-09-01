@@ -16,6 +16,10 @@ class ExportSkinWtsDirNode(commandNode.CommandNode):
         cmd = '''
 import rigrepo.libs.weights
 import maya.cmds as mc
+import rigrepo.libs.skinCluster
+import rigrepo.libs.cluster
+
+rigrepo.libs.skinCluster.removeLocalize(mc.ls(type="skinCluster"))
 
 model_grp = 'model'
 sc_nodes = list()
