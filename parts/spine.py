@@ -170,8 +170,8 @@ class Spine(part.Part):
         mc.orientConstraint(chestTopCtrl, self._chestBind, mo=1)
         #mc.connectAttr(chestTopCtrl+'.s', self._chestBind+'.s')
 
-        mc.parentConstraint(hipsGimbalCtrl, self._hipsBind, mo=1) 
-        mc.connectAttr(hipsGimbalCtrl+'.s', self._hipsBind+'.s')
+        mc.parentConstraint(hipSwivelCtrl, self._hipsBind, mo=1)
+        mc.connectAttr(hipSwivelCtrl+'.s', self._hipsBind+'.s')
 
         mc.parent(hipsNul, self.name)
         mc.hide(self.spline._group, clusters)
