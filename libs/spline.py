@@ -169,7 +169,7 @@ class SplineBase(object):
         mc.parent(start, startGrp)
         con = mc.parentConstraint(self._ikJointList[0], startGrp)
         mc.delete(con)
-        rigrepo.libs.transform.decomposeRotation(start)
+        rigrepo.libs.transform.decomposeRotation(start, twistAxis=twistAxis, rotateOrder=rotateOrder)
 
         # End 
         endGrp = mc.createNode('transform', n=self._name+'_end_grp', p=self._group)
