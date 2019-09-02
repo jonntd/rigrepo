@@ -382,6 +382,9 @@ import rigrepo.tests as tests
 import os 
 import maya.mel as mm
 
+if not mc.pluginInfo('atomImportExport', q=1, l=1):  
+    mc.loadPlugin('atomImportExport')
+
 testPath = os.path.dirname(tests.__file__).replace("\\\\", "/")
 fileName = testPath + "/animation/dance_flip_2.atom"
 
