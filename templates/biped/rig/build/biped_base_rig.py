@@ -56,13 +56,11 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # BODY
         #-------------------------------------------------------------------------------------------
         # center
-        pSpine = rigrepo.parts.spine.Spine(name='pSpine', jointList="mc.ls('spine_*_bind')")
-        pSpine.setNiceName("spine")
+        spine = rigrepo.parts.spine.Spine(name='spine', jointList="mc.ls('spine_*_bind')")
 
-        pNeck = rigrepo.parts.neck.Neck(name='pNeck', 
+        neck = rigrepo.parts.neck.Neck(name='neck', 
                                         jointList="mc.ls('neck_?_bind')", 
                                         anchor="chest_top")
-        pNeck.setNiceName("neck")
 
         neckAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="neck",
             constraintNode="neck_ort", parentNode='chest_top', targetList=['rig'], 
@@ -72,7 +70,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
             constraintNode="head_nul", parentNode='neck', targetList=['rig'], 
         nameList=["world"], constraintType='orient')
         
-        pNeck.addChildren([neckAddSpaceNode,headAddSpaceNode])
+        neck.addChildren([neckAddSpaceNode,headAddSpaceNode])
 
         # Arm
         l_arm = rigrepo.parts.arm.Arm("l_arm", 
@@ -180,7 +178,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",
                                 ['pelvis_l_bind', 'thigh_l_bind', 'knee_l_bind', 'ankle_l_bind'], 
-                                pSpine.getHipSwivelCtrl)
+                                spine.getHipSwivelCtrl)
 
         l_leg.getAttributeByName("side").setValue("l")
         l_leg.getAttributeByName("fkControls").setValue(["thigh_fk_l","knee_fk_l", "ankle_fk_l"])
@@ -205,7 +203,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         r_leg = rigrepo.parts.leg.Leg("r_leg",
                                 ['pelvis_r_bind', 'thigh_r_bind', 'knee_r_bind', 'ankle_r_bind'], 
-                                pSpine.getHipSwivelCtrl,
+                                spine.getHipSwivelCtrl,
                                 side="r")
 
         r_leg.getAttributeByName("side").setValue("r")
@@ -391,7 +389,7 @@ for side in ["l","r"]:
 
         
         # add nodes ass children of body
-        bodyBuildNode.addChildren([pSpine, pNeck, l_arm, r_arm, l_leg, r_leg])
+        bodyBuildNode.addChildren([spine, neck, l_arm, r_arm, l_leg, r_leg])
         faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth, cheekClusterNode])
 
         bindMeshCurvePairs ="""[

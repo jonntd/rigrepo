@@ -31,7 +31,7 @@ class Spine(part.Part):
         self.jointList = jointList
         self._splineName = splineName
         self.addAttribute("geometry", "body_geo", attrType=str)
-        self.addAttribute("bendyCurve", "spine_bend_curve", attrType=str)
+        self.addAttribute("bendyCurve", "spine_curve", attrType=str)
         self.addAttribute("createBendySpline", True, attrType=bool)
 
     def getChestCtrl(self):
@@ -184,14 +184,15 @@ class Spine(part.Part):
         mc.hide(self.spline._group, clusters)
         
         if createBendySpline and mc.objExists(bendyCurve):
-            bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(bendyCurve, name='{}_bend'.format(self.getName()),parent=self.name)
+            bindmeshGeometry, follicleList, controlHieracrchyList, bendJointList = self.__buildCurveRig(bendyCurve, name='{}_bend'.format(self.getName()),parent=self.name)
 
             if mc.objExists(geometry):
                 #deform the lid bindmesh with the lid curve using a wire deformer.
                 wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00, 
                         w=bendyCurve, name="{}_wire".format(bendyCurve))[0]
                 baseCurveJointList=list()
-                for jnt, controlList in zip(jointList, controlHieracrchyList):
+                i = 0
+                for jnt, controlList in zip(bendJointList, controlHieracrchyList):
                     # create the joint that we will use later to deform the base wire.
                     baseCurveJoint = mc.joint(name=jnt.replace("_jnt","_baseCurve_jnt"))
                     baseCurveJointList.append(baseCurveJoint)
@@ -207,18 +208,18 @@ class Spine(part.Part):
                                             tsb=True)[0]
 
                 # set the default values for the wire deformer
-                #mc.setAttr("{}.rotation".format(wireDeformer), 0)
+                mc.setAttr("{}.rotation".format(wireDeformer), 0)
                 mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
 
-            bindMeshSkin = mc.skinCluster(*jointList+mc.ls(bindmeshGeometry), 
+            bindMeshSkin = mc.skinCluster(*jointList+[self._hipsBind,self._chestBind]+mc.ls(bindmeshGeometry), 
                                                 n="{}_skinCluster".format(bindmeshGeometry),
                                                 tsb=True)[0]
 
-            mc.skinPercent(bindMeshSkin , '{}.vtx[0:3]'.format(bindmeshGeometry), transformValue=[(jointList[0], 1.0), (jointList[1], 0.0), (jointList[2],0.0),(jointList[3],0.0), (jointList[4],0.0)])
-            mc.skinPercent(bindMeshSkin , '{}.vtx[4:7]'.format(bindmeshGeometry),  transformValue=[(jointList[0], 0.5), (jointList[1], 0.5), (jointList[2],0.0)])
-            mc.skinPercent(bindMeshSkin , '{}.vtx[8:11]'.format(bindmeshGeometry), transformValue=[(jointList[0], 0.0), (jointList[1], 1.0), (jointList[2],0.0)])
-            mc.skinPercent(bindMeshSkin , '{}.vtx[12:15]'.format(bindmeshGeometry), transformValue=[(jointList[0], 0.0), (jointList[1], 0.5), (jointList[2],0.5)])
-            mc.skinPercent(bindMeshSkin , '{}.vtx[16:19]'.format(bindmeshGeometry), transformValue=[(jointList[0], 0.0), (jointList[1], 0.0), (jointList[2],1.0)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[0:3]'.format(bindmeshGeometry), transformValue=[(self._hipsBind, 1.0), (jointList[0], 0.0)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[4:7]'.format(bindmeshGeometry),  transformValue=[(jointList[0], 0.0), (jointList[1], 0.5), (jointList[2],0.0)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[8:11]'.format(bindmeshGeometry), transformValue=[(jointList[3], 1.0), (jointList[1], 0.0)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[12:15]'.format(bindmeshGeometry), transformValue=[(jointList[2], 0.0), (jointList[4], 0.5), (self._chestBind, .5)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[16:19]'.format(bindmeshGeometry), transformValue=[(self._chestBind, 1.0), (jointList[1], 0.0), (jointList[2],0.0)])
         
     def postBuild(self):
         '''
@@ -260,8 +261,11 @@ class Spine(part.Part):
             # create the control with a large enough hierarchy to create proper SDK's
             ctrlHierarchy = rigrepo.libs.control.create(name="{}_{}".format(name, follicleIndex), 
                 controlType="circle", 
-                hierarchy=['nul','ort','def_auto'], 
+                hierarchy=['nul','ort','def_auto'],
+                color= rigrepo.libs.common.YELLOW, 
                 parent=follicle)
+
+            rigrepo.libs.attribute.lockAndHide(ctrlHierarchy[-1], ["rx", "ry", "rz","sx", "sy", "sz"])
 
             # create the joint that will drive the curve.
             jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))
@@ -280,12 +284,18 @@ class Spine(part.Part):
             controlHieracrchyList.append(ctrlHierarchy)
             jointList.append(jnt)
 
+            # since it's the spine. We're not using the first and last controls. 
+            # so we will untag them and hide them for now.
+            if follicle == follicleList[0] or follicle == follicleList[-1]:
+                if mc.objExists("{}.__control__".format(ctrlHierarchy[-1])):
+                    mc.setAttr("{}.v".format(ctrlHierarchy[-1]),0)
+
         # This will parent all of the data for the rig to the system group "name"
         for data in (bindmeshGeometry, follicleList):
             mc.parent(data, name)
 
-        mc.pointConstraint(controlHieracrchyList[0][-1],controlHieracrchyList[2][-1], controlHieracrchyList[1][2], mo=True)
-        mc.pointConstraint(controlHieracrchyList[2][-1],controlHieracrchyList[4][-1], controlHieracrchyList[3][2], mo=True)
+        #mc.pointConstraint(controlHieracrchyList[0][-1],controlHieracrchyList[2][-1], controlHieracrchyList[1][2], mo=True)
+        #mc.pointConstraint(controlHieracrchyList[2][-1],controlHieracrchyList[4][-1], controlHieracrchyList[3][2], mo=True)
 
         # If parent the parent is passed in we will parent the system to the parent.
         if parent:

@@ -30,6 +30,7 @@ class Neck(part.Part):
         jointList = eval(self.jointList)
         self.spline = spline.SplineBase(jointList=jointList + [self._skullBind], splineName=self._splineName)
         self.spline.create()
+        grp=mc.rename(self.name, "{}_grp".format(self.name))
 
         # Neck
         neckNul,neckOrt,neckCtrl = control.create(name="neck", 
@@ -74,7 +75,7 @@ class Neck(part.Part):
         else:
             mc.warning('Anchor object [ {} ] does not exist.'.format(anchor)) 
 
-        mc.parent(neckNul, self.name)
+        mc.parent(neckNul, grp)
         mc.hide(self.spline._group, clusters)
 
     def postBuild(self):

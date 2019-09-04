@@ -1,7 +1,7 @@
 {
     "type": "CurveData", 
-    "user": "Walter Yoder", 
-    "time": "2019-07-23 15:45:45", 
+    "user": "wyoder", 
+    "time": "2019-09-04 18:39:24", 
     "data": {
         "blinkLower_l_curve": {
             "dagPath": "|lidLower_curves|blinkLower_l_curve", 
@@ -1061,6 +1061,59 @@
                     ], 
                     "degree": 3, 
                     "form": "Periodic"
+                }
+            }, 
+            "color": 0
+        }, 
+        "spine_curve": {
+            "dagPath": "|spine_curve", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0, 
+            "shapes": {
+                "spine_curveShape": {
+                    "cvPositions": [
+                        [
+                            0.0, 
+                            33.8601, 
+                            -0.186
+                        ], 
+                        [
+                            0.0, 
+                            37.8762, 
+                            0.2942
+                        ], 
+                        [
+                            0.0, 
+                            41.5868, 
+                            0.603
+                        ], 
+                        [
+                            0.0, 
+                            46.317, 
+                            0.2506
+                        ], 
+                        [
+                            0.0, 
+                            50.2197, 
+                            0.1197
+                        ]
+                    ], 
+                    "degree": 2, 
+                    "form": "Open"
                 }
             }, 
             "color": 0

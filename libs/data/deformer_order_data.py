@@ -28,9 +28,12 @@ class DeformerOrderData(abstract_data.AbstractData):
         super(DeformerOrderData, self).gatherData(node)
 
         data = OrderedDict()
-        data["deformerOrder"] = mc.listHistory(node, pdo=True, interestLevel=1) or list()
-
-        self._data[node].update(data)
+        data["deformerOrder"] = mc.ls(mc.listHistory(node, il=2, pdo=1), type='geometryFilter') or []
+        if data["deformerOrder"]:
+            self._data[node].update(data)
+        else:
+            if self._data.has_key(node):
+                self._data.pop(node)
 
     def applyData(self, nodes):
         '''
@@ -44,7 +47,7 @@ class DeformerOrderData(abstract_data.AbstractData):
         for node in nodes:
             if self._data.has_key(node):
                 if len(self._data[node]["deformerOrder"]) > 1:
-                    orderCurrent = mc.listHistory(node, pdo=True, interestLevel=1)
+                    orderCurrent = mc.ls(mc.listHistory(node, il=2, pdo=1), type='geometryFilter') or []
                     if not orderCurrent:
                         continue
                     orderStored = self._data[node]["deformerOrder"]
@@ -62,6 +65,6 @@ class DeformerOrderData(abstract_data.AbstractData):
                         if indexNextDeformerCurrent != indexCurrent+1:
                             mc.reorderDeformers(deformer, nextDeformer, [node])
                             # Update order current so it can be tested
-                            orderCurrent = mc.listHistory(node, pdo=True, interestLevel=1)
+                            orderCurrent = mc.ls(mc.listHistory(node, il=2, pdo=1), type='geometryFilter') or []
 
 
