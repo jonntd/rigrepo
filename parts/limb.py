@@ -229,7 +229,8 @@ class Limb(part.Part):
             if not mc.isConnected("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl)):
                 mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl), f=True)
 
-        rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["tx", "ty", "tz", "sx", "sy", "sz"])
+        # lock the scale attribute on the ikGimbal control
+        rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["sx", "sy", "sz"])
         
         mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.ikBlend".format(handle), f=True)
         # create the offset joint that will be used for ikfk switching. This is the offset of the
@@ -249,13 +250,13 @@ class Limb(part.Part):
         # create the ik stretchy system
         self._stretchTargetJointList = rigrepo.libs.ikfk.IKFKLimb.createStretchIK(handle, grp)
 
-
         #create attributes on param node and connect them to the grp node
         mc.addAttr(paramNode, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
         mc.addAttr(paramNode, ln='stretchTop', at='double', min=0, dv = 1, k=True)
         mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
         mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
         mc.addAttr(paramNode, ln='pvPin', at='double', min=0, max=1, dv=0, k=True)
+        mc.addAttr(paramNode, ln='pvVis', at='long', min=0, max=1, dv=1, k=True)
         #rigrepo.libs.control.tagAsControl(paramNode)
         # add twist attribute to the param node
         mc.addAttr(paramNode, ln="twist", at="double", dv=0, keyable=True)
@@ -263,6 +264,9 @@ class Limb(part.Part):
         for attr in ['stretch','stretchTop', 'stretchBottom', 'softStretch']:
             mc.connectAttr('{}.{}'.format(paramNode, attr), 
                         '{}.{}'.format(grp, attr), f=True)
+
+        # connect pvVis to the visibility of the hierarchy of poleVector
+        mc.connectAttr("{}.pvVis".format(paramNode), "{}.lodv".format(pvCtrlHierarchy[0]),f=True)        
 
         blendNode = mc.ls(mc.listConnections(self._fkControls[1], source=True),type="blendColors")[0]
         multiplyNode = mc.createNode("multDoubleLinear", n="{}_stretch_mdn".format(paramNode))
@@ -476,6 +480,8 @@ class Limb(part.Part):
             curve = rigrepo.libs.control.displayLine(elbow, pvCtrl, 
                                         name='{}_display_line'.format(pvCtrl), parent=self.name)
             mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(curve), f=True)
+            # connect the display line lodVis to the pvVis attribute
+            mc.connectAttr("{}.pvVis".format(paramNode), "{}.lodv".format(curve), f=True)
 
     def postBuild(self):
         '''

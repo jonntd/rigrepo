@@ -131,6 +131,11 @@ for skinCluster in mc.ls(type="skinCluster"):
         setDqScaleNode.getAttributeByName("command").setValue(setDqScaleNodeCmd)
         skinWtsFileNode.addChild(setDqScaleNode)
 
+        # --------------------------------------------------------------------------------------------------------------
+        # Delivery
+        # --------------------------------------------------------------------------------------------------------------
+        deliveryNode = pubs.pNode.PNode("delivery")
+        deliveryNode.disable()
         localizeNode = rigrepo.nodes.commandNode.CommandNode('localize')
         localizeNodeCmd = '''
 import rigrepo.libs.skinCluster
@@ -148,7 +153,38 @@ for cluster in lidClusters:
 '''
         localizeNode.getAttributeByName('command').setValue(localizeNodeCmd)
 
-        animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, localizeNode, importNodeEditorBookmarsNode, frameNode])
+        lockNode = rigrepo.nodes.commandNode.CommandNode('lockNodes')
+        lockNodeCmd = '''
+import rigrepo.libs.control
+import rigrepo.libs.attribute
+import maya.cmds as mc
+
+# we shouldn't be locking translates of joints effected by ikHandles
+ikJointList = list()
+for hdl in mc.ls(type="ikHandle"):
+    ikJointList.extend(mc.ikHandle(hdl, q=True, jl=True))
+lockNodes = set(mc.ls(type="transform")).difference(rigrepo.libs.control.getControls() + [mc.listRelatives(shape, p=True)[0] for shape in mc.ls(type="camera")] + ikJointList)
+for node in lockNodes:
+    rigrepo.libs.attribute.lock(node, ['tx', 'ty', 'tz', 'rx', 'ry', 'rz', 'sx', 'sy', 'sz','t','r','s'])
+'''
+        lockNode.getAttributeByName('command').setValue(lockNodeCmd)        
+
+        hideHistoryNode = rigrepo.nodes.commandNode.CommandNode('hideHistory')
+        hideHistoryNodeCmd = '''
+import maya.cmds as mc    
+excludeType = ("skinCluster","wire", "blendShape", "deltaMush", "cluster")
+exclude = []
+for node in mc.ls("*"):
+    if node not in exclude:
+        mc.setAttr(node + '.isHistoricallyInteresting', 0)
+        if mc.objectType(node) in excludeType:
+            mc.setAttr(node + '.isHistoricallyInteresting', 1)
+'''
+        hideHistoryNode.getAttributeByName('command').setValue(hideHistoryNodeCmd)        
+        deliveryNode.addChildren([localizeNode, lockNode, hideHistoryNode])
+
+        animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, deliveryNode, importNodeEditorBookmarsNode, frameNode])
+
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow

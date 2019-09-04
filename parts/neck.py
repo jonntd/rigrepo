@@ -49,14 +49,22 @@ class Neck(part.Part):
                                           color=common.BLUE,
                                           hierarchy=['nul'])
 
+        # head gimabl control
+        # head 
+        headGimbalNul,headGimbalCtrl = control.create(name="head_gimbal", 
+                                          controlType="cube",
+                                          color=common.BLUE,
+                                          hierarchy=['nul'],
+                                          parent=headCtrl)
+
         clusters = self.spline._clusters
         con = mc.pointConstraint(jointList[0], self._skullBind, headNul)
         mc.delete(con)
         mc.parent(headNul, neckCtrl) 
-        mc.parent(clusters[2:], headCtrl)
-        mc.orientConstraint(headCtrl, self.spline._endTwistNul, mo=1)
+        mc.parent(clusters[2:], headGimbalCtrl)
+        mc.orientConstraint(headGimbalCtrl, self.spline._endTwistNul, mo=1)
         skullOffset = mc.duplicate(self._skullBind, po=True, rr=True, name="{}_offset".format(self._skullBind))[0]
-        mc.parent(skullOffset, headCtrl)
+        mc.parent(skullOffset, headGimbalCtrl)
         mc.orientConstraint(skullOffset, self.spline._ikJointList[-1], mo=1)
         #mc.connectAttr(headCtrl+'.s', self._skullBind+'.s')
 
