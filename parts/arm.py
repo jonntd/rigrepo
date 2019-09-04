@@ -22,6 +22,7 @@ class Arm(limb.Limb):
                 that exists in Maya.""".format(jointList))
 
         self._clavicleJoint = jointList.pop(0)
+        self._side = side
         
         super(Arm, self).__init__(name, jointList, anchor, dataObj, side) 
         self.addAttribute("clavicleCtrl", "clavicle_{}".format(side), attrType=str)
@@ -58,9 +59,6 @@ class Arm(limb.Limb):
         mc.parent(clavicleConnect, clavicleNul)
         mc.connectAttr(clavicleCtrl+'.r', clavicleConnect+'.r')
         mc.connectAttr(clavicleCtrl+'.s', clavicleConnect+'.s')
-        # PSD driver - transform that picks up the auto clav and anim control rotation
-        clavicleDriver = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver')[0]
-        mc.orientConstraint(clavicleCtrl, clavicleDriver)
 
         # This allows the translates to come through with auto clav
         clavicleConnectTranslate = mc.duplicate(swingNul, po=1, n=clavicleCtrl+'_connect_trans')[0]
@@ -92,6 +90,10 @@ class Arm(limb.Limb):
         mc.setAttr("{}.rotateOrder".format(swingCtrl), 2)
         #self._fkControls.extend([clavicleCtrl,swingCtrl])
 
+        # PSD driver - transform that picks up the auto clav and anim control rotation
+        clavicleDriverPar = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver_par')[0]
+        clavicleDriver = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver')[0]
+
     def postBuild(self):
         '''
         '''
@@ -114,6 +116,11 @@ class Arm(limb.Limb):
                 mc.pointConstraint(distanceUpperJnt, transBind, mo=0)
         else:
             print('clavicle translate not found', transBind)
+
+        # Connect psd driver
+        mc.parent(clavicleCtrl+'_driver', clavicleCtrl+'_driver_par')
+        mc.delete(mc.orientConstraint('clavicle_trans_'+self._side+'_bind', clavicleCtrl+'_driver_par'))
+        mc.orientConstraint('clavicle_trans_'+self._side+'_bind', clavicleCtrl+'_driver')
 
 class ArmOld(limb.Limb):
     '''
