@@ -31,7 +31,7 @@ class Spine(part.Part):
         self.jointList = jointList
         self._splineName = splineName
         self.addAttribute("geometry", "body_geo", attrType=str)
-        self.addAttribute("bendyCurve", "body_geo", attrType=str)
+        self.addAttribute("bendyCurve", "spine_bend_curve", attrType=str)
         self.addAttribute("createBendySpline", True, attrType=bool)
 
     def getChestCtrl(self):
@@ -177,19 +177,19 @@ class Spine(part.Part):
         mc.orientConstraint(chestTopCtrl, self._chestBind, mo=1)
         #mc.connectAttr(chestTopCtrl+'.s', self._chestBind+'.s')
 
-        mc.parentConstraint(hipsGimbalCtrl, self._hipsBind, mo=1) 
-        mc.connectAttr(hipsGimbalCtrl+'.s', self._hipsBind+'.s')
+        mc.parentConstraint(hipSwivelCtrl, self._hipsBind, mo=1) 
+        mc.connectAttr(hipSwivelCtrl+'.s', self._hipsBind+'.s')
 
         mc.parent(hipsNul, self.name)
         mc.hide(self.spline._group, clusters)
-        '''
-        if createBendySpline:
-            bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(curve, name='{}_bend'.format(self.getName()),parent=self.name)
+        
+        if createBendySpline and mc.objExists(bendyCurve):
+            bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(bendyCurve, name='{}_bend'.format(self.getName()),parent=self.name)
 
             if mc.objExists(geometry):
                 #deform the lid bindmesh with the lid curve using a wire deformer.
                 wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00, 
-                        w=curve, name="{}_wire".format(curve))[0]
+                        w=bendyCurve, name="{}_wire".format(bendyCurve))[0]
                 baseCurveJointList=list()
                 for jnt, controlList in zip(jointList, controlHieracrchyList):
                     # create the joint that we will use later to deform the base wire.
@@ -200,8 +200,8 @@ class Spine(part.Part):
                     mc.parent(baseCurveJoint, controlList[1])
                     mc.setAttr("{}.t".format(baseCurveJoint), 0, 0, 0)
 
-                baseCurve = "{}BaseWire".format(curve)
-                mc.parent([curve,baseCurve], self.name)
+                baseCurve = "{}BaseWire".format(bendyCurve)
+                mc.parent([bendyCurve,baseCurve], self.name)
                 baseCurveSkin = mc.skinCluster(*[baseCurveJointList]+mc.ls(baseCurve), 
                                             n="{}_skinCluster".format(baseCurve),
                                             tsb=True)[0]
@@ -219,7 +219,7 @@ class Spine(part.Part):
             mc.skinPercent(bindMeshSkin , '{}.vtx[8:11]'.format(bindmeshGeometry), transformValue=[(jointList[0], 0.0), (jointList[1], 1.0), (jointList[2],0.0)])
             mc.skinPercent(bindMeshSkin , '{}.vtx[12:15]'.format(bindmeshGeometry), transformValue=[(jointList[0], 0.0), (jointList[1], 0.5), (jointList[2],0.5)])
             mc.skinPercent(bindMeshSkin , '{}.vtx[16:19]'.format(bindmeshGeometry), transformValue=[(jointList[0], 0.0), (jointList[1], 0.0), (jointList[2],1.0)])
-        '''
+        
     def postBuild(self):
         '''
         '''
