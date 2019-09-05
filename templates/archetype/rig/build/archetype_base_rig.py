@@ -163,9 +163,16 @@ import maya.cmds as mc
 ikJointList = list()
 for hdl in mc.ls(type="ikHandle"):
     ikJointList.extend(mc.ikHandle(hdl, q=True, jl=True))
-lockNodes = set(mc.ls(type="transform")).difference(rigrepo.libs.control.getControls() + [mc.listRelatives(shape, p=True)[0] for shape in mc.ls(type="camera")] + ikJointList)
+    
+controls = rigrepo.libs.control.getControls()
+lockNodes = set(mc.ls(type="transform")).difference(controls + [mc.listRelatives(shape, p=True)[0] for shape in mc.ls(type="camera")] + ikJointList)
 for node in lockNodes:
     rigrepo.libs.attribute.lock(node, ['tx', 'ty', 'tz', 'rx', 'ry', 'rz', 'sx', 'sy', 'sz','t','r','s'])
+    
+for ctrl in controls:
+    if mc.objExists(ctrl+'.jointOrient'):
+        rigrepo.libs.attribute.lock(ctrl, ['jointOrient', 'rotateAxis'])
+    
 '''
         lockNode.getAttributeByName('command').setValue(lockNodeCmd)        
 
