@@ -632,6 +632,10 @@ class Limb(part.Part):
                 hierarchy=['nul','ort','def_auto'], 
                 parent=follicle)
 
+            # this is meant to translate only. So we will lock and hide all other attributes.
+            rigrepo.libs.attribute.lockAndHide(ctrlHierarchy[-1], ['rx', 'ry', 'rz', 'r', 
+                                                                   'sx', 'sy', 'sz', 's'])
+
             # create the joint that will drive the curve.
             jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))
             # make sure the joint is in the correct space
@@ -669,7 +673,7 @@ class Limb(part.Part):
 
         # set the visibility of the bindmesh.
         mc.setAttr("{}.v".format(bindmeshGeometry), 0 )
-        mc.setAttr("{}.v".format(curve), 0 )
+        mc.setAttr("{}.v".format(curve), 0 )        
         return bindmeshGeometry, follicleList, controlHieracrchyList, jointList
 
     @staticmethod

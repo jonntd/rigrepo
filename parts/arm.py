@@ -27,27 +27,41 @@ class Arm(limb.Limb):
         super(Arm, self).__init__(name, jointList, anchor, dataObj, side) 
         self.addAttribute("clavicleCtrl", "clavicle_{}".format(side), attrType=str)
         self.addAttribute("swingCtrl", "shoulderSwing_{}".format(side), attrType=str)
+        self.addAttribute("MirrorSwing", False, attrType=bool)
 
     def build(self):
         '''
         '''
         super(Arm, self).build()
+        # get the values from the user. Node attributes in the graph.
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
-        swingCtrlHierarchy = control.create(name=swingCtrl, 
+        MirrorSwing = self.getAttributeByName('MirrorSwing').getValue()
+        swingNul, swingMirrorOrt, swingOrt, swingCtrl = control.create(name=swingCtrl, 
                                                 controlType="square",
-                                                hierarchy=['nul','ort'])
-        clavicleCtrlHierarchy = control.create(name=clavicleCtrl, 
-                                                controlType="square",
-                                                hierarchy=['nul','ort'])
+                                                hierarchy=['nul','mirror_ort','ort'])
+        clavicleNul, clavicleOrt, clavicleCtrl = control.create(name=clavicleCtrl, 
+                                                                controlType="square",
+                                                                hierarchy=['nul','ort'])
 
-
-        clavicleCtrl = clavicleCtrlHierarchy[-1]
-        clavicleNul = clavicleCtrlHierarchy[0]
-        swingCtrl = swingCtrlHierarchy[-1]
-        swingNul = swingCtrlHierarchy[0]
+        # position the clavicle in the correct location
         clavicleJointMatrix = mc.xform(self._clavicleJoint, q=True, ws=True, matrix=True)
         mc.xform(clavicleNul, ws=True, matrix=clavicleJointMatrix)
+        
+        # get the aim direction
+        aimDistance = mc.getAttr("{}.t".format(self.jointList[1]))[0]
+        aimAttr, aimVector = self._getDistanceVector(aimDistance)
+        sidePos = mc.xform(self.jointList[1], q=True, ws=True, t=True)
+
+        # set the Ort node to be mirrored from the other side
+        if sidePos[0] < 0:            
+            mc.setAttr("{}.r{}".format(clavicleOrt, aimAttr.strip("-")), 180)
+            mc.setAttr("{}.s{}".format(clavicleOrt, aimAttr.strip("-")), -1)
+
+            # mirror the swing also if it is required by the build
+            if MirrorSwing:
+                mc.setAttr("{}.r{}".format(swingMirrorOrt, aimAttr.strip("-")), 180)
+                mc.setAttr("{}.s{}".format(swingMirrorOrt, aimAttr.strip("-")), -1)
 
         # move the shoulderSwing control to the correct location.
         shoulderCtrlMatrix = mc.xform(self._fkControls[0], q=True, ws=True, matrix=True)
