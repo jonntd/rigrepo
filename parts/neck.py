@@ -65,6 +65,7 @@ class Neck(part.Part):
         mc.parent(clusters[2:], headGimbalCtrl)
         mc.orientConstraint(headGimbalCtrl, self.spline._endTwistNul, mo=1)
         skullOffset = mc.duplicate(self._skullBind, po=True, rr=True, name="{}_offset".format(self._skullBind))[0]
+        mc.setAttr(skullOffset+'.v', 0)
         mc.parent(skullOffset, headGimbalCtrl)
         mc.orientConstraint(skullOffset, self.spline._ikJointList[-1], mo=1)
         #mc.connectAttr(headCtrl+'.s', self._skullBind+'.s')
