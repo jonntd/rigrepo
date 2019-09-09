@@ -478,7 +478,9 @@ class Limb(part.Part):
             if createBendyLimb:
                 elbow = controlHieracrchyList[2][-1]
             curve = rigrepo.libs.control.displayLine(elbow, pvCtrl, 
-                                        name='{}_display_line'.format(pvCtrl), parent=self.name)
+                                        name='{}_display_line'.format(pvCtrl), 
+                                        parent=self.name, 
+                                        displayType=1)
             mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(curve), f=True)
             # connect the display line lodVis to the pvVis attribute
             mc.connectAttr("{}.pvVis".format(paramNode), "{}.lodv".format(curve), f=True)

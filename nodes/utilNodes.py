@@ -79,7 +79,7 @@ class FreezeWireExpressionNode(commandNode.CommandNode):
         cmd="""
 import maya.cmds as mc
 cmd = '''import maya.cmds as mc
-from collection import OrderedDict
+from collections import OrderedDict
 def getControls():
     controls = mc.ls('*.__control__'.format() ,o=True, fl=True)
     if not controls:

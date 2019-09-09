@@ -329,7 +329,7 @@ def getShape(ctrl, index = 0):
     return None
 
 
-def displayLine(point1, point2, name = 'ctrlLine#', parent = str()):
+def displayLine(point1, point2, name = 'ctrlLine#', parent = str(), displayType=2):
     '''
     Create a display line between two points
 
@@ -347,10 +347,18 @@ def displayLine(point1, point2, name = 'ctrlLine#', parent = str()):
     :param point2: Second node to connect display line to
     :type point2: str
 
+    :param displayType: Whether to display it as a reference or template
+    :type displayType: int
+
     :return: Display line
     :rtype: str
 
     '''
+    # make sure displayType is correct. If not, than instead of throwing an error. We will just
+    # make sure it's set properly and let the code execute.
+    if displayType not in [0,1,2]:
+        mc.warning("The displayType argument must be (0,1,2). Currently it is {}. We're setting it to 2 for you since you passed in the incorrect value".format(displayType))
+        displayType = 2
     #get posiitons of first and second points
     pnt1 = mc.xform(point1, q =True, ws = True, t = True)
     pnt2 = mc.xform(point2, q =True, ws = True, t = True)
@@ -374,7 +382,7 @@ def displayLine(point1, point2, name = 'ctrlLine#', parent = str()):
 
     #override display type of displayLine to be templated
     mc.setAttr('{}.overrideEnabled'.format(displayLine), 1)
-    mc.setAttr('{}.overrideDisplayType'.format(displayLine), 2)
+    mc.setAttr('{}.overrideDisplayType'.format(displayLine), displayType)
     mc.setAttr('{}.inheritsTransform'.format(displayLine), 0)
 
     if parent:
