@@ -4,10 +4,82 @@ mayaSceneFile C:/Users/Matt/Documents/maya/projects/default/scenes/colab_mocap_e
 timeUnit film;
 linearUnit cm;
 angularUnit deg;
-startTime 0.8;
-endTime 194.4;
+startTime 1;
+endTime 500;
 startUnitless 3.4028235e+38;
 endUnitless -3.4028235e+38;
+dagNode {
+  ac_cn_baseParent 2 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+  static v visibility 9;
+  { 1 }
+}
+dagNode {
+  ac_cn_base 3 9;
+  static ANIM_CTRL_VIS ANIM_CTRL_VIS 0;
+  { 0 }
+  static ANIM_POLISH_EXTRA ANIM_POLISH_EXTRA 1;
+  { 0 }
+  static body_polish body_polish 2;
+  { 0 }
+  static fk_spine_ctrl_vis fk_spine_ctrl_vis 3;
+  { 1 }
+  static GEOMETRY_VIS GEOMETRY_VIS 4;
+  { 0 }
+  static geo_display_type geo_display_type 5;
+  { 2 }
+  static gimbal gimbal 6;
+  { 0 }
+  static globalScale globalScale 7;
+  { 1 }
+  static head_ctrl_vis head_ctrl_vis 8;
+  { 1 }
+  static ik_spine_ctrl_vis ik_spine_ctrl_vis 9;
+  { 1 }
+  static lf_arm_ctrl_vis lf_arm_ctrl_vis 10;
+  { 1 }
+  static lf_fingers_ctrl_vis lf_fingers_ctrl_vis 11;
+  { 1 }
+  static lf_leg_ctrl_vis lf_leg_ctrl_vis 12;
+  { 1 }
+  static rotate.rx rotateX 13;
+  { 0 }
+  static rotate.ry rotateY 14;
+  { 0 }
+  static rotate.rz rotateZ 15;
+  { 0 }
+  static rt_arm_ctrl_vis rt_arm_ctrl_vis 16;
+  { 1 }
+  static rt_fingers_ctrl_vis rt_fingers_ctrl_vis 17;
+  { 1 }
+  static rt_leg_ctrl_vis rt_leg_ctrl_vis 18;
+  { 1 }
+  static torso_ctrl_vis torso_ctrl_vis 19;
+  { 1 }
+  static translate.tx translateX 20;
+  { 0 }
+  static translate.ty translateY 21;
+  { 0 }
+  static translate.tz translateZ 22;
+  { 0 }
+}
 dagNode {
   ac_cn_root 8 2;
   anim rotate.rotateX rotateX 0;
@@ -1530,6 +1602,36 @@ dagNode {
   }
 }
 dagNode {
+  ac_cn_root_gimbal 10 4;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static translate.tx translateX 3;
+  { 0 }
+  static translate.ty translateY 4;
+  { 0 }
+  static translate.tz translateZ 5;
+  { 0 }
+}
+dagNode {
+  ac_cn_hips 12 5;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static translate.tx translateX 3;
+  { 0 }
+  static translate.ty translateY 4;
+  { 0 }
+  static translate.tz translateZ 5;
+  { 0 }
+}
+dagNode {
   ac_lf_hipFK 18 3;
   anim rotate.rotateX rotateX 0;
   animData {
@@ -2288,2289 +2390,6 @@ dagNode {
       192.8 11.40349 auto auto 1 0 0;
       193.6 12.22291 auto auto 1 0 0;
       194.4 13.17842 auto auto 1 0 0;
-    }
-  }
-}
-dagNode {
-  ac_lf_kneeFK 19 3;
-  anim rotate.rotateX rotateX 0;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 221.47779 auto auto 1 0 0;
-      1.6 222.07351 auto auto 1 0 0;
-      2.4 222.02452 auto auto 1 0 0;
-      3.2 222.19476 auto auto 1 0 0;
-      4 222.09744 auto auto 1 0 0;
-      4.8 221.9526 auto auto 1 0 0;
-      5.6 222.32871 auto auto 1 0 0;
-      6.4 223.08994 auto auto 1 0 0;
-      7.2 223.94214 auto auto 1 0 0;
-      8 224.4821 auto auto 1 0 0;
-      8.8 224.08947 auto auto 1 0 0;
-      9.6 223.31521 auto auto 1 0 0;
-      10.4 223.07182 auto auto 1 0 0;
-      11.2 222.89496 auto auto 1 0 0;
-      12 222.81665 auto auto 1 0 0;
-      12.8 222.65064 auto auto 1 0 0;
-      13.6 222.41426 auto auto 1 0 0;
-      14.4 222.34565 auto auto 1 0 0;
-      15.2 222.04981 auto auto 1 0 0;
-      16 221.86339 auto auto 1 0 0;
-      16.8 221.70913 auto auto 1 0 0;
-      17.6 221.41019 auto auto 1 0 0;
-      18.4 221.19815 auto auto 1 0 0;
-      19.2 221.11162 auto auto 1 0 0;
-      20 221.08117 auto auto 1 0 0;
-      20.8 221.09595 auto auto 1 0 0;
-      21.6 221.10173 auto auto 1 0 0;
-      22.4 221.21948 auto auto 1 0 0;
-      23.2 221.24396 auto auto 1 0 0;
-      24 221.24572 auto auto 1 0 0;
-      24.8 221.31465 auto auto 1 0 0;
-      25.6 221.4579 auto auto 1 0 0;
-      26.4 221.48019 auto auto 1 0 0;
-      27.2 221.38957 auto auto 1 0 0;
-      28 221.25358 auto auto 1 0 0;
-      28.8 221.22784 auto auto 1 0 0;
-      29.6 221.23312 auto auto 1 0 0;
-      30.4 221.26245 auto auto 1 0 0;
-      31.2 221.28791 auto auto 1 0 0;
-      32 221.27355 auto auto 1 0 0;
-      32.8 221.18962 auto auto 1 0 0;
-      33.6 221.15163 auto auto 1 0 0;
-      34.4 221.10609 auto auto 1 0 0;
-      35.2 221.11954 auto auto 1 0 0;
-      36 221.15228 auto auto 1 0 0;
-      36.8 221.14092 auto auto 1 0 0;
-      37.6 221.12628 auto auto 1 0 0;
-      38.4 221.08556 auto auto 1 0 0;
-      39.2 221.00095 auto auto 1 0 0;
-      40 220.96012 auto auto 1 0 0;
-      40.8 220.95074 auto auto 1 0 0;
-      41.6 220.96466 auto auto 1 0 0;
-      42.4 220.98742 auto auto 1 0 0;
-      43.2 221.00918 auto auto 1 0 0;
-      44 221.06934 auto auto 1 0 0;
-      44.8 221.41581 auto auto 1 0 0;
-      45.6 222.22214 auto auto 1 0 0;
-      46.4 223.73782 auto auto 1 0 0;
-      47.2 225.85828 auto auto 1 0 0;
-      48 227.9354 auto auto 1 0 0;
-      48.8 229.72614 auto auto 1 0 0;
-      49.6 231.45499 auto auto 1 0 0;
-      50.4 233.44292 auto auto 1 0 0;
-      51.2 235.84389 auto auto 1 0 0;
-      52 238.4032 auto auto 1 0 0;
-      52.8 240.69496 auto auto 1 0 0;
-      53.6 242.85996 auto auto 1 0 0;
-      54.4 244.33685 auto auto 1 0 0;
-      55.2 243.68544 auto auto 1 0 0;
-      56 240.22799 auto auto 1 0 0;
-      56.8 234.4945 auto auto 1 0 0;
-      57.6 228.07078 auto auto 1 0 0;
-      58.4 223.82461 auto auto 1 0 0;
-      59.2 223.42954 auto auto 1 0 0;
-      60 224.75794 auto auto 1 0 0;
-      60.8 226.51041 auto auto 1 0 0;
-      61.6 227.55352 auto auto 1 0 0;
-      62.4 227.2098 auto auto 1 0 0;
-      63.2 226.40407 auto auto 1 0 0;
-      64 226.30436 auto auto 1 0 0;
-      64.8 225.21256 auto auto 1 0 0;
-      65.6 225.08555 auto auto 1 0 0;
-      66.4 225.82773 auto auto 1 0 0;
-      67.2 226.59203 auto auto 1 0 0;
-      68 225.89246 auto auto 1 0 0;
-      68.8 223.43003 auto auto 1 0 0;
-      69.6 220.83574 auto auto 1 0 0;
-      70.4 219.62241 auto auto 1 0 0;
-      71.2 219.35969 auto auto 1 0 0;
-      72 221.07346 auto auto 1 0 0;
-      72.8 225.16016 auto auto 1 0 0;
-      73.6 230.38793 auto auto 1 0 0;
-      74.4 236.43743 auto auto 1 0 0;
-      75.2 240.76982 auto auto 1 0 0;
-      76 241.56815 auto auto 1 0 0;
-      76.8 240.13648 auto auto 1 0 0;
-      77.6 236.89053 auto auto 1 0 0;
-      78.4 233.81809 auto auto 1 0 0;
-      79.2 232.24534 auto auto 1 0 0;
-      80 232.0612 auto auto 1 0 0;
-      80.8 232.28109 auto auto 1 0 0;
-      81.6 231.19107 auto auto 1 0 0;
-      82.4 229.67162 auto auto 1 0 0;
-      83.2 229.99062 auto auto 1 0 0;
-      84 230.95095 auto auto 1 0 0;
-      84.8 229.52726 auto auto 1 0 0;
-      85.6 227.01987 auto auto 1 0 0;
-      86.4 223.75437 auto auto 1 0 0;
-      87.2 220.73323 auto auto 1 0 0;
-      88 220.96073 auto auto 1 0 0;
-      88.8 224.76896 auto auto 1 0 0;
-      89.6 229.0681 auto auto 1 0 0;
-      90.4 232.13109 auto auto 1 0 0;
-      91.2 235.01432 auto auto 1 0 0;
-      92 237.23296 auto auto 1 0 0;
-      92.8 238.45919 auto auto 1 0 0;
-      93.6 239.53162 auto auto 1 0 0;
-      94.4 241.06027 auto auto 1 0 0;
-      95.2 242.4623 auto auto 1 0 0;
-      96 244.51291 auto auto 1 0 0;
-      96.8 246.70547 auto auto 1 0 0;
-      97.6 247.08714 auto auto 1 0 0;
-      98.4 244.06699 auto auto 1 0 0;
-      99.2 238.03221 auto auto 1 0 0;
-      100 233.79291 auto auto 1 0 0;
-      100.8 236.10325 auto auto 1 0 0;
-      101.6 244.51191 auto auto 1 0 0;
-      102.4 253.82494 auto auto 1 0 0;
-      103.2 259.10405 auto auto 1 0 0;
-      104 261.71671 auto auto 1 0 0;
-      104.8 261.73881 auto auto 1 0 0;
-      105.6 261.47905 auto auto 1 0 0;
-      106.4 260.10512 auto auto 1 0 0;
-      107.2 256.34738 auto auto 1 0 0;
-      108 248.2762 auto auto 1 0 0;
-      108.8 232.94631 auto auto 1 0 0;
-      109.6 208.55133 auto auto 1 0 0;
-      110.4 191.4174 auto auto 1 0 0;
-      111.2 215.2573 auto auto 1 0 0;
-      112 248.69419 auto auto 1 0 0;
-      112.8 279.49638 auto auto 1 0 0;
-      113.6 296.73983 auto auto 1 0 0;
-      114.4 290.87738 auto auto 1 0 0;
-      115.2 272.20263 auto auto 1 0 0;
-      116 250.53755 auto auto 1 0 0;
-      116.8 229.35053 auto auto 1 0 0;
-      117.6 216.252 auto auto 1 0 0;
-      118.4 210.98314 auto auto 1 0 0;
-      119.2 206.35489 auto auto 1 0 0;
-      120 192.81793 auto auto 1 0 0;
-      120.8 188.71852 auto auto 1 0 0;
-      121.6 190.57902 auto auto 1 0 0;
-      122.4 189.64977 auto auto 1 0 0;
-      123.2 188.83527 auto auto 1 0 0;
-      124 189.63693 auto auto 1 0 0;
-      124.8 200.70985 auto auto 1 0 0;
-      125.6 212.50079 auto auto 1 0 0;
-      126.4 217.37312 auto auto 1 0 0;
-      127.2 223.5128 auto auto 1 0 0;
-      128 233.26246 auto auto 1 0 0;
-      128.8 246.95206 auto auto 1 0 0;
-      129.6 261.43722 auto auto 1 0 0;
-      130.4 271.53153 auto auto 1 0 0;
-      131.2 271.4172 auto auto 1 0 0;
-      132 266.85539 auto auto 1 0 0;
-      132.8 264.78674 auto auto 1 0 0;
-      133.6 260.09823 auto auto 1 0 0;
-      134.4 255.65738 auto auto 1 0 0;
-      135.2 254.00086 auto auto 1 0 0;
-      136 250.56316 auto auto 1 0 0;
-      136.8 246.31286 auto auto 1 0 0;
-      137.6 241.82669 auto auto 1 0 0;
-      138.4 237.87289 auto auto 1 0 0;
-      139.2 237.53948 auto auto 1 0 0;
-      140 244.23294 auto auto 1 0 0;
-      140.8 255.49733 auto auto 1 0 0;
-      141.6 263.27406 auto auto 1 0 0;
-      142.4 260.71974 auto auto 1 0 0;
-      143.2 246.68734 auto auto 1 0 0;
-      144 235.90544 auto auto 1 0 0;
-      144.8 241.40672 auto auto 1 0 0;
-      145.6 246.71708 auto auto 1 0 0;
-      146.4 249.39453 auto auto 1 0 0;
-      147.2 249.17775 auto auto 1 0 0;
-      148 246.79575 auto auto 1 0 0;
-      148.8 241.79851 auto auto 1 0 0;
-      149.6 236.89298 auto auto 1 0 0;
-      150.4 234.20815 auto auto 1 0 0;
-      151.2 238.7949 auto auto 1 0 0;
-      152 249.49476 auto auto 1 0 0;
-      152.8 259.39858 auto auto 1 0 0;
-      153.6 262.36888 auto auto 1 0 0;
-      154.4 255.64904 auto auto 1 0 0;
-      155.2 245.58223 auto auto 1 0 0;
-      156 241.59069 auto auto 1 0 0;
-      156.8 239.92316 auto auto 1 0 0;
-      157.6 239.16239 auto auto 1 0 0;
-      158.4 237.86727 auto auto 1 0 0;
-      159.2 236.10011 auto auto 1 0 0;
-      160 233.9139 auto auto 1 0 0;
-      160.8 230.94973 auto auto 1 0 0;
-      161.6 227.93854 auto auto 1 0 0;
-      162.4 224.9528 auto auto 1 0 0;
-      163.2 221.9572 auto auto 1 0 0;
-      164 219.21329 auto auto 1 0 0;
-      164.8 216.46058 auto auto 1 0 0;
-      165.6 213.84472 auto auto 1 0 0;
-      166.4 212.4692 auto auto 1 0 0;
-      167.2 217.14355 auto auto 1 0 0;
-      168 224.74119 auto auto 1 0 0;
-      168.8 233.1335 auto auto 1 0 0;
-      169.6 240.68849 auto auto 1 0 0;
-      170.4 245.87625 auto auto 1 0 0;
-      171.2 248.40505 auto auto 1 0 0;
-      172 248.87965 auto auto 1 0 0;
-      172.8 247.53373 auto auto 1 0 0;
-      173.6 244.62552 auto auto 1 0 0;
-      174.4 240.44408 auto auto 1 0 0;
-      175.2 235.49446 auto auto 1 0 0;
-      176 229.749 auto auto 1 0 0;
-      176.8 223.56909 auto auto 1 0 0;
-      177.6 218.30004 auto auto 1 0 0;
-      178.4 215.1203 auto auto 1 0 0;
-      179.2 213.91596 auto auto 1 0 0;
-      180 214.66825 auto auto 1 0 0;
-      180.8 217.08678 auto auto 1 0 0;
-      181.6 219.53471 auto auto 1 0 0;
-      182.4 221.00502 auto auto 1 0 0;
-      183.2 221.60999 auto auto 1 0 0;
-      184 222.07665 auto auto 1 0 0;
-      184.8 221.74222 auto auto 1 0 0;
-      185.6 221.21339 auto auto 1 0 0;
-      186.4 220.67499 auto auto 1 0 0;
-      187.2 219.97784 auto auto 1 0 0;
-      188 219.42495 auto auto 1 0 0;
-      188.8 219.05793 auto auto 1 0 0;
-      189.6 219.2638 auto auto 1 0 0;
-      190.4 219.48367 auto auto 1 0 0;
-      191.2 219.70833 auto auto 1 0 0;
-      192 220.50333 auto auto 1 0 0;
-      192.8 221.47823 auto auto 1 0 0;
-      193.6 221.43626 auto auto 1 0 0;
-      194.4 221.13589 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateY rotateY 1;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 180.01013 auto auto 1 0 0;
-      1.6 180.0368 auto auto 1 0 0;
-      2.4 180.03457 auto auto 1 0 0;
-      3.2 180.04234 auto auto 1 0 0;
-      4 180.03789 auto auto 1 0 0;
-      4.8 180.0313 auto auto 1 0 0;
-      5.6 180.04852 auto auto 1 0 0;
-      6.4 180.08455 auto auto 1 0 0;
-      7.2 180.12677 auto auto 1 0 0;
-      8 180.15454 auto auto 1 0 0;
-      8.8 180.13427 auto auto 1 0 0;
-      9.6 180.09552 auto auto 1 0 0;
-      10.4 180.08368 auto auto 1 0 0;
-      11.2 180.07517 auto auto 1 0 0;
-      12 180.07143 auto auto 1 0 0;
-      12.8 180.06356 auto auto 1 0 0;
-      13.6 180.05249 auto auto 1 0 0;
-      14.4 180.0493 auto auto 1 0 0;
-      15.2 180.03572 auto auto 1 0 0;
-      16 180.02728 auto auto 1 0 0;
-      16.8 180.02037 auto auto 1 0 0;
-      17.6 180.00716 auto auto 1 0 0;
-      18.4 179.99794 auto auto 1 0 0;
-      19.2 179.99422 auto auto 1 0 0;
-      20 179.99291 auto auto 1 0 0;
-      20.8 179.99354 auto auto 1 0 0;
-      21.6 179.99379 auto auto 1 0 0;
-      22.4 179.99886 auto auto 1 0 0;
-      23.2 179.99992 auto auto 1 0 0;
-      24 180 auto auto 1 0 0;
-      24.8 180.00299 auto auto 1 0 0;
-      25.6 180.00925 auto auto 1 0 0;
-      26.4 180.01023 auto auto 1 0 0;
-      27.2 180.00626 auto auto 1 0 0;
-      28 180.00034 auto auto 1 0 0;
-      28.8 179.99923 auto auto 1 0 0;
-      29.6 179.99945 auto auto 1 0 0;
-      30.4 180.00073 auto auto 1 0 0;
-      31.2 180.00183 auto auto 1 0 0;
-      32 180.00121 auto auto 1 0 0;
-      32.8 179.99757 auto auto 1 0 0;
-      33.6 179.99594 auto auto 1 0 0;
-      34.4 179.99398 auto auto 1 0 0;
-      35.2 179.99456 auto auto 1 0 0;
-      36 179.99597 auto auto 1 0 0;
-      36.8 179.99548 auto auto 1 0 0;
-      37.6 179.99485 auto auto 1 0 0;
-      38.4 179.9931 auto auto 1 0 0;
-      39.2 179.98948 auto auto 1 0 0;
-      40 179.98774 auto auto 1 0 0;
-      40.8 179.98734 auto auto 1 0 0;
-      41.6 179.98794 auto auto 1 0 0;
-      42.4 179.98891 auto auto 1 0 0;
-      43.2 179.98983 auto auto 1 0 0;
-      44 179.9924 auto auto 1 0 0;
-      44.8 180.00741 auto auto 1 0 0;
-      45.6 180.0436 auto auto 1 0 0;
-      46.4 180.11647 auto auto 1 0 0;
-      47.2 180.2289 auto auto 1 0 0;
-      48 180.35078 auto auto 1 0 0;
-      48.8 180.46507 auto auto 1 0 0;
-      49.6 180.58339 auto auto 1 0 0;
-      50.4 180.72902 auto auto 1 0 0;
-      51.2 180.91832 auto auto 1 0 0;
-      52 181.13592 auto auto 1 0 0;
-      52.8 181.3443 auto auto 1 0 0;
-      53.6 181.55259 auto auto 1 0 0;
-      54.4 181.7009 auto auto 1 0 0;
-      55.2 181.63487 auto auto 1 0 0;
-      56 181.30082 auto auto 1 0 0;
-      56.8 180.81014 auto auto 1 0 0;
-      57.6 180.35912 auto auto 1 0 0;
-      58.4 180.12083 auto auto 1 0 0;
-      59.2 180.10114 auto auto 1 0 0;
-      60 180.16904 auto auto 1 0 0;
-      60.8 180.26592 auto auto 1 0 0;
-      61.6 180.32751 auto auto 1 0 0;
-      62.4 180.30689 auto auto 1 0 0;
-      63.2 180.25981 auto auto 1 0 0;
-      64 180.2541 auto auto 1 0 0;
-      64.8 180.19337 auto auto 1 0 0;
-      65.6 180.18652 auto auto 1 0 0;
-      66.4 180.2272 auto auto 1 0 0;
-      67.2 180.27064 auto auto 1 0 0;
-      68 180.23081 auto auto 1 0 0;
-      68.8 180.10116 auto auto 1 0 0;
-      69.6 179.98248 auto auto 1 0 0;
-      70.4 179.93334 auto auto 1 0 0;
-      71.2 179.92324 auto auto 1 0 0;
-      72 179.99258 auto auto 1 0 0;
-      72.8 180.19054 auto auto 1 0 0;
-      73.6 180.50944 auto auto 1 0 0;
-      74.4 180.96734 auto auto 1 0 0;
-      75.2 181.35132 auto auto 1 0 0;
-      76 181.42699 auto auto 1 0 0;
-      76.8 181.29236 auto auto 1 0 0;
-      77.6 181.00536 auto auto 1 0 0;
-      78.4 180.75764 auto auto 1 0 0;
-      79.2 180.64007 auto auto 1 0 0;
-      80 180.62672 auto auto 1 0 0;
-      80.8 180.64267 auto auto 1 0 0;
-      81.6 180.56483 auto auto 1 0 0;
-      82.4 180.46146 auto auto 1 0 0;
-      83.2 180.48266 auto auto 1 0 0;
-      84 180.54809 auto auto 1 0 0;
-      84.8 180.45196 auto auto 1 0 0;
-      85.6 180.29564 auto auto 1 0 0;
-      86.4 180.1173 auto auto 1 0 0;
-      87.2 179.97817 auto auto 1 0 0;
-      88 179.98777 auto auto 1 0 0;
-      88.8 180.16962 auto auto 1 0 0;
-      89.6 180.42209 auto auto 1 0 0;
-      90.4 180.63178 auto auto 1 0 0;
-      91.2 180.85127 auto auto 1 0 0;
-      92 181.03442 auto auto 1 0 0;
-      92.8 181.14087 auto auto 1 0 0;
-      93.6 181.23695 auto auto 1 0 0;
-      94.4 181.37868 auto auto 1 0 0;
-      95.2 181.51351 auto auto 1 0 0;
-      96 181.71891 auto auto 1 0 0;
-      96.8 181.94902 auto auto 1 0 0;
-      97.6 181.99016 auto auto 1 0 0;
-      98.4 181.67343 auto auto 1 0 0;
-      99.2 181.10339 auto auto 1 0 0;
-      100 180.75571 auto auto 1 0 0;
-      100.8 180.93964 auto auto 1 0 0;
-      101.6 181.71881 auto auto 1 0 0;
-      102.4 182.76691 auto auto 1 0 0;
-      103.2 183.43752 auto auto 1 0 0;
-      104 183.78763 auto auto 1 0 0;
-      104.8 183.79064 auto auto 1 0 0;
-      105.6 183.75531 auto auto 1 0 0;
-      106.4 183.57031 auto auto 1 0 0;
-      107.2 183.08094 auto auto 1 0 0;
-      108 182.12035 auto auto 1 0 0;
-      108.8 180.69169 auto auto 1 0 0;
-      109.6 179.67579 auto auto 1 0 0;
-      110.4 179.9632 auto auto 1 0 0;
-      111.2 179.7905 auto auto 1 0 0;
-      112 182.16684 auto auto 1 0 0;
-      112.8 186.42286 auto auto 1 0 0;
-      113.6 189.21522 auto auto 1 0 0;
-      114.4 188.25633 auto auto 1 0 0;
-      115.2 185.29622 auto auto 1 0 0;
-      116 182.37624 auto auto 1 0 0;
-      116.8 180.44039 auto auto 1 0 0;
-      117.6 179.81835 auto auto 1 0 0;
-      118.4 179.70264 auto auto 1 0 0;
-      119.2 179.66603 auto auto 1 0 0;
-      120 179.90865 auto auto 1 0 0;
-      120.8 180.08361 auto auto 1 0 0;
-      121.6 179.99846 auto auto 1 0 0;
-      122.4 180.0398 auto auto 1 0 0;
-      123.2 180.07799 auto auto 1 0 0;
-      124 180.04039 auto auto 1 0 0;
-      124.8 179.70404 auto auto 1 0 0;
-      125.6 179.72791 auto auto 1 0 0;
-      126.4 179.85308 auto auto 1 0 0;
-      127.2 180.10526 auto auto 1 0 0;
-      128 180.71539 auto auto 1 0 0;
-      128.8 181.97557 auto auto 1 0 0;
-      129.6 183.74964 auto auto 1 0 0;
-      130.4 185.19534 auto auto 1 0 0;
-      131.2 185.1782 auto auto 1 0 0;
-      132 184.50782 auto auto 1 0 0;
-      132.8 184.21313 auto auto 1 0 0;
-      133.6 183.56939 auto auto 1 0 0;
-      134.4 182.99385 auto auto 1 0 0;
-      135.2 182.78841 auto auto 1 0 0;
-      136 182.3792 auto auto 1 0 0;
-      136.8 181.90703 auto auto 1 0 0;
-      137.6 181.45182 auto auto 1 0 0;
-      138.4 181.08951 auto auto 1 0 0;
-      139.2 181.06068 auto auto 1 0 0;
-      140 181.6903 auto auto 1 0 0;
-      140.8 182.97377 auto auto 1 0 0;
-      141.6 184.00163 auto auto 1 0 0;
-      142.4 183.65268 auto auto 1 0 0;
-      143.2 181.94707 auto auto 1 0 0;
-      144 180.92336 auto auto 1 0 0;
-      144.8 181.41156 auto auto 1 0 0;
-      145.6 181.95026 auto auto 1 0 0;
-      146.4 182.24556 auto auto 1 0 0;
-      147.2 182.22108 auto auto 1 0 0;
-      148 181.95872 auto auto 1 0 0;
-      148.8 181.4491 auto auto 1 0 0;
-      149.6 181.00556 auto auto 1 0 0;
-      150.4 180.78777 auto auto 1 0 0;
-      151.2 181.17064 auto auto 1 0 0;
-      152 182.25691 auto auto 1 0 0;
-      152.8 183.47641 auto auto 1 0 0;
-      153.6 183.87677 auto auto 1 0 0;
-      154.4 182.99279 auto auto 1 0 0;
-      155.2 181.82979 auto auto 1 0 0;
-      156 181.42914 auto auto 1 0 0;
-      156.8 181.27271 auto auto 1 0 0;
-      157.6 181.20355 auto auto 1 0 0;
-      158.4 181.08902 auto auto 1 0 0;
-      159.2 180.93937 auto auto 1 0 0;
-      160 180.765 auto auto 1 0 0;
-      160.8 180.548 auto auto 1 0 0;
-      161.6 180.35097 auto auto 1 0 0;
-      162.4 180.1794 auto auto 1 0 0;
-      163.2 180.03151 auto auto 1 0 0;
-      164 179.91769 auto auto 1 0 0;
-      164.8 179.82454 auto auto 1 0 0;
-      165.6 179.75574 auto auto 1 0 0;
-      166.4 179.72732 auto auto 1 0 0;
-      167.2 179.84568 auto auto 1 0 0;
-      168 180.16815 auto auto 1 0 0;
-      168.8 180.70569 auto auto 1 0 0;
-      169.6 181.3437 auto auto 1 0 0;
-      170.4 181.86074 auto auto 1 0 0;
-      171.2 182.13464 auto auto 1 0 0;
-      172 182.18759 auto auto 1 0 0;
-      172.8 182.0387 auto auto 1 0 0;
-      173.6 181.73047 auto auto 1 0 0;
-      174.4 181.32088 auto auto 1 0 0;
-      175.2 180.88987 auto auto 1 0 0;
-      176 180.46658 auto auto 1 0 0;
-      176.8 180.10804 auto auto 1 0 0;
-      177.6 179.88444 auto auto 1 0 0;
-      178.4 179.78688 auto auto 1 0 0;
-      179.2 179.75736 auto auto 1 0 0;
-      180 179.77532 auto auto 1 0 0;
-      180.8 179.84387 auto auto 1 0 0;
-      181.6 179.92994 auto auto 1 0 0;
-      182.4 179.98966 auto auto 1 0 0;
-      183.2 180.01596 auto auto 1 0 0;
-      184 180.03694 auto auto 1 0 0;
-      184.8 180.02184 auto auto 1 0 0;
-      185.6 179.9986 auto auto 1 0 0;
-      186.4 179.97573 auto auto 1 0 0;
-      187.2 179.94731 auto auto 1 0 0;
-      188 179.92573 auto auto 1 0 0;
-      188.8 179.91187 auto auto 1 0 0;
-      189.6 179.9196 auto auto 1 0 0;
-      190.4 179.92798 auto auto 1 0 0;
-      191.2 179.93668 auto auto 1 0 0;
-      192 179.96861 auto auto 1 0 0;
-      192.8 180.01014 auto auto 1 0 0;
-      193.6 180.0083 auto auto 1 0 0;
-      194.4 179.99526 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateZ rotateZ 2;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 -179.96341 auto auto 1 0 0;
-      1.6 -179.86966 auto auto 1 0 0;
-      2.4 -179.87736 auto auto 1 0 0;
-      3.2 -179.85062 auto auto 1 0 0;
-      4 -179.8659 auto auto 1 0 0;
-      4.8 -179.88867 auto auto 1 0 0;
-      5.6 -179.82959 auto auto 1 0 0;
-      6.4 -179.71036 auto auto 1 0 0;
-      7.2 -179.57744 auto auto 1 0 0;
-      8 -179.49355 auto auto 1 0 0;
-      8.8 -179.55453 auto auto 1 0 0;
-      9.6 -179.67516 auto auto 1 0 0;
-      10.4 -179.71319 auto auto 1 0 0;
-      11.2 -179.74085 auto auto 1 0 0;
-      12 -179.75311 auto auto 1 0 0;
-      12.8 -179.77911 auto auto 1 0 0;
-      13.6 -179.81617 auto auto 1 0 0;
-      14.4 -179.82693 auto auto 1 0 0;
-      15.2 -179.87339 auto auto 1 0 0;
-      16 -179.9027 auto auto 1 0 0;
-      16.8 -179.92697 auto auto 1 0 0;
-      17.6 -179.97406 auto auto 1 0 0;
-      18.4 -180.00751 auto auto 1 0 0;
-      19.2 -180.02116 auto auto 1 0 0;
-      20 -180.02597 auto auto 1 0 0;
-      20.8 -180.02364 auto auto 1 0 0;
-      21.6 -180.02272 auto auto 1 0 0;
-      22.4 -180.00414 auto auto 1 0 0;
-      23.2 -180.00028 auto auto 1 0 0;
-      24 -180 auto auto 1 0 0;
-      24.8 -179.98913 auto auto 1 0 0;
-      25.6 -179.96654 auto auto 1 0 0;
-      26.4 -179.96303 auto auto 1 0 0;
-      27.2 -179.97731 auto auto 1 0 0;
-      28 -179.99876 auto auto 1 0 0;
-      28.8 -180.00282 auto auto 1 0 0;
-      29.6 -180.00199 auto auto 1 0 0;
-      30.4 -179.99736 auto auto 1 0 0;
-      31.2 -179.99334 auto auto 1 0 0;
-      32 -179.99561 auto auto 1 0 0;
-      32.8 -180.00885 auto auto 1 0 0;
-      33.6 -180.01485 auto auto 1 0 0;
-      34.4 -180.02204 auto auto 1 0 0;
-      35.2 -180.01991 auto auto 1 0 0;
-      36 -180.01474 auto auto 1 0 0;
-      36.8 -180.01654 auto auto 1 0 0;
-      37.6 -180.01885 auto auto 1 0 0;
-      38.4 -180.02528 auto auto 1 0 0;
-      39.2 -180.03864 auto auto 1 0 0;
-      40 -180.04509 auto auto 1 0 0;
-      40.8 -180.04657 auto auto 1 0 0;
-      41.6 -180.04437 auto auto 1 0 0;
-      42.4 -180.04077 auto auto 1 0 0;
-      43.2 -180.03734 auto auto 1 0 0;
-      44 -180.02784 auto auto 1 0 0;
-      44.8 -179.97318 auto auto 1 0 0;
-      45.6 -179.84632 auto auto 1 0 0;
-      46.4 -179.60925 auto auto 1 0 0;
-      47.2 -179.28093 auto auto 1 0 0;
-      48 -178.96346 auto auto 1 0 0;
-      48.8 -178.69337 auto auto 1 0 0;
-      49.6 -178.43605 auto auto 1 0 0;
-      50.4 -178.14465 auto auto 1 0 0;
-      51.2 -177.79955 auto auto 1 0 0;
-      52 -177.4406 auto auto 1 0 0;
-      52.8 -177.12754 auto auto 1 0 0;
-      53.6 -176.83953 auto auto 1 0 0;
-      54.4 -176.64759 auto auto 1 0 0;
-      55.2 -176.73178 auto auto 1 0 0;
-      56 -177.19066 auto auto 1 0 0;
-      56.8 -177.99255 auto auto 1 0 0;
-      57.6 -178.94292 auto auto 1 0 0;
-      58.4 -179.59574 auto auto 1 0 0;
-      59.2 -179.65732 auto auto 1 0 0;
-      60 -179.45079 auto auto 1 0 0;
-      60.8 -179.18079 auto auto 1 0 0;
-      61.6 -179.0215 auto auto 1 0 0;
-      62.4 -179.07387 auto auto 1 0 0;
-      63.2 -179.19709 auto auto 1 0 0;
-      64 -179.21239 auto auto 1 0 0;
-      64.8 -179.38048 auto auto 1 0 0;
-      65.6 -179.4001 auto auto 1 0 0;
-      66.4 -179.28563 auto auto 1 0 0;
-      67.2 -179.16829 auto auto 1 0 0;
-      68 -179.27567 auto auto 1 0 0;
-      68.8 -179.65724 auto auto 1 0 0;
-      69.6 -180.06474 auto auto 1 0 0;
-      70.4 -180.25703 auto auto 1 0 0;
-      71.2 -180.2988 auto auto 1 0 0;
-      72 -180.02718 auto auto 1 0 0;
-      72.8 -179.38857 auto auto 1 0 0;
-      73.6 -178.59446 auto auto 1 0 0;
-      74.4 -177.71546 auto auto 1 0 0;
-      75.2 -177.11745 auto auto 1 0 0;
-      76 -177.01045 auto auto 1 0 0;
-      76.8 -177.20307 auto auto 1 0 0;
-      77.6 -177.65161 auto auto 1 0 0;
-      78.4 -178.09022 auto auto 1 0 0;
-      79.2 -178.31961 auto auto 1 0 0;
-      80 -178.34667 auto auto 1 0 0;
-      80.8 -178.31436 auto auto 1 0 0;
-      81.6 -178.47511 auto auto 1 0 0;
-      82.4 -178.70154 auto auto 1 0 0;
-      83.2 -178.65378 auto auto 1 0 0;
-      84 -178.51071 auto auto 1 0 0;
-      84.8 -178.72319 auto auto 1 0 0;
-      85.6 -179.10285 auto auto 1 0 0;
-      86.4 -179.60667 auto auto 1 0 0;
-      87.2 -180.08094 auto auto 1 0 0;
-      88 -180.04499 auto auto 1 0 0;
-      88.8 -179.44908 auto auto 1 0 0;
-      89.6 -178.79221 auto auto 1 0 0;
-      90.4 -178.33639 auto auto 1 0 0;
-      91.2 -177.9179 auto auto 1 0 0;
-      92 -177.60354 auto auto 1 0 0;
-      92.8 -177.43285 auto auto 1 0 0;
-      93.6 -177.28543 auto auto 1 0 0;
-      94.4 -177.0784 auto auto 1 0 0;
-      95.2 -176.89184 auto auto 1 0 0;
-      96 -176.62496 auto auto 1 0 0;
-      96.8 -176.3478 auto auto 1 0 0;
-      97.6 -176.30044 auto auto 1 0 0;
-      98.4 -176.68238 auto auto 1 0 0;
-      99.2 -177.49203 auto auto 1 0 0;
-      100 -178.09386 auto auto 1 0 0;
-      100.8 -177.76274 auto auto 1 0 0;
-      101.6 -176.62509 auto auto 1 0 0;
-      102.4 -175.51105 auto auto 1 0 0;
-      103.2 -174.95881 auto auto 1 0 0;
-      104 -174.70873 auto auto 1 0 0;
-      104.8 -174.70669 auto auto 1 0 0;
-      105.6 -174.73082 auto auto 1 0 0;
-      106.4 -174.86112 auto auto 1 0 0;
-      107.2 -175.23955 auto auto 1 0 0;
-      108 -176.15467 auto auto 1 0 0;
-      108.8 -178.21698 auto auto 1 0 0;
-      109.6 -182.04585 auto auto 1 0 0;
-      110.4 -184.8217 auto auto 1 0 0;
-      111.2 -180.95626 auto auto 1 0 0;
-      112 -176.10407 auto auto 1 0 0;
-      112.8 -173.45894 auto auto 1 0 0;
-      113.6 -173.07407 auto auto 1 0 0;
-      114.4 -173.1094 auto auto 1 0 0;
-      115.2 -173.87216 auto auto 1 0 0;
-      116 -175.88493 auto auto 1 0 0;
-      116.8 -178.74973 auto auto 1 0 0;
-      117.6 -180.79602 auto auto 1 0 0;
-      118.4 -181.64929 auto auto 1 0 0;
-      119.2 -182.40469 auto auto 1 0 0;
-      120 -184.59921 auto auto 1 0 0;
-      120.8 -185.24648 auto auto 1 0 0;
-      121.6 -184.95424 auto auto 1 0 0;
-      122.4 -185.10054 auto auto 1 0 0;
-      123.2 -185.22822 auto auto 1 0 0;
-      124 -185.10255 auto auto 1 0 0;
-      124.8 -183.32621 auto auto 1 0 0;
-      125.6 -181.4025 auto auto 1 0 0;
-      126.4 -180.61601 auto auto 1 0 0;
-      127.2 -179.64432 auto auto 1 0 0;
-      128 -178.17089 auto auto 1 0 0;
-      128.8 -176.31716 auto auto 1 0 0;
-      129.6 -174.73472 auto auto 1 0 0;
-      130.4 -173.91732 auto auto 1 0 0;
-      131.2 -173.92513 auto auto 1 0 0;
-      132 -174.26436 auto auto 1 0 0;
-      132.8 -174.4355 auto auto 1 0 0;
-      133.6 -174.86178 auto auto 1 0 0;
-      134.4 -175.31245 auto auto 1 0 0;
-      135.2 -175.49167 auto auto 1 0 0;
-      136 -175.88192 auto auto 1 0 0;
-      136.8 -176.39678 auto auto 1 0 0;
-      137.6 -176.97601 auto auto 1 0 0;
-      138.4 -177.51418 auto auto 1 0 0;
-      139.2 -177.56067 auto auto 1 0 0;
-      140 -176.66097 auto auto 1 0 0;
-      140.8 -175.32952 auto auto 1 0 0;
-      141.6 -174.5673 auto auto 1 0 0;
-      142.4 -174.80229 auto auto 1 0 0;
-      143.2 -176.35005 auto auto 1 0 0;
-      144 -177.79081 auto auto 1 0 0;
-      144.8 -177.032 auto auto 1 0 0;
-      145.6 -176.34635 auto auto 1 0 0;
-      146.4 -176.02002 auto auto 1 0 0;
-      147.2 -176.04593 auto auto 1 0 0;
-      148 -176.33657 auto auto 1 0 0;
-      148.8 -176.97976 auto auto 1 0 0;
-      149.6 -177.65126 auto auto 1 0 0;
-      150.4 -178.03382 auto auto 1 0 0;
-      151.2 -177.38651 auto auto 1 0 0;
-      152 -176.00808 auto auto 1 0 0;
-      152.8 -174.92983 auto auto 1 0 0;
-      153.6 -174.6488 auto auto 1 0 0;
-      154.4 -175.31335 auto auto 1 0 0;
-      155.2 -176.4887 auto auto 1 0 0;
-      156 -177.00744 auto auto 1 0 0;
-      156.8 -177.23205 auto auto 1 0 0;
-      157.6 -177.33599 auto auto 1 0 0;
-      158.4 -177.51497 auto auto 1 0 0;
-      159.2 -177.76319 auto auto 1 0 0;
-      160 -178.07635 auto auto 1 0 0;
-      160.8 -178.5109 auto auto 1 0 0;
-      161.6 -178.96298 auto auto 1 0 0;
-      162.4 -179.42063 auto auto 1 0 0;
-      163.2 -179.88795 auto auto 1 0 0;
-      164 -180.3221 auto auto 1 0 0;
-      164.8 -180.76249 auto auto 1 0 0;
-      165.6 -181.18457 auto auto 1 0 0;
-      166.4 -181.40763 auto auto 1 0 0;
-      167.2 -180.65282 auto auto 1 0 0;
-      168 -179.45339 auto auto 1 0 0;
-      168.8 -178.18968 auto auto 1 0 0;
-      169.6 -177.12841 auto auto 1 0 0;
-      170.4 -176.45159 auto auto 1 0 0;
-      171.2 -176.13903 auto auto 1 0 0;
-      172 -176.08171 auto auto 1 0 0;
-      172.8 -176.24538 auto auto 1 0 0;
-      173.6 -176.61051 auto auto 1 0 0;
-      174.4 -177.1614 auto auto 1 0 0;
-      175.2 -177.84929 auto auto 1 0 0;
-      176 -178.68995 auto auto 1 0 0;
-      176.8 -179.63555 auto auto 1 0 0;
-      177.6 -180.46771 auto auto 1 0 0;
-      178.4 -180.97837 auto auto 1 0 0;
-      179.2 -181.17304 auto auto 1 0 0;
-      180 -181.05137 auto auto 1 0 0;
-      180.8 -180.66193 auto auto 1 0 0;
-      181.6 -180.27097 auto auto 1 0 0;
-      182.4 -180.03799 auto auto 1 0 0;
-      183.2 -179.94258 auto auto 1 0 0;
-      184 -179.86917 auto auto 1 0 0;
-      184.8 -179.92176 auto auto 1 0 0;
-      185.6 -180.0051 auto auto 1 0 0;
-      186.4 -180.09016 auto auto 1 0 0;
-      187.2 -180.2006 auto auto 1 0 0;
-      188 -180.28842 auto auto 1 0 0;
-      188.8 -180.34683 auto auto 1 0 0;
-      189.6 -180.31406 auto auto 1 0 0;
-      190.4 -180.27908 auto auto 1 0 0;
-      191.2 -180.24338 auto auto 1 0 0;
-      192 -180.11732 auto auto 1 0 0;
-      192.8 -179.96334 auto auto 1 0 0;
-      193.6 -179.96995 auto auto 1 0 0;
-      194.4 -180.01733 auto auto 1 0 0;
-    }
-  }
-}
-dagNode {
-  ac_lf_footFK 20 2;
-  anim scale.scaleX scaleX 0;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 1 auto auto 1 0 0;
-      1.6 1 auto auto 1 0 0;
-      2.4 1 auto auto 1 0 0;
-      3.2 1 auto auto 1 0 0;
-      4 1 auto auto 1 0 0;
-      4.8 1 auto auto 1 0 0;
-      5.6 1 auto auto 1 0 0;
-      6.4 1 auto auto 1 0 0;
-      7.2 1 auto auto 1 0 0;
-      8 1 auto auto 1 0 0;
-      8.8 1 auto auto 1 0 0;
-      9.6 1 auto auto 1 0 0;
-      10.4 1 auto auto 1 0 0;
-      11.2 1 auto auto 1 0 0;
-      12 1 auto auto 1 0 0;
-      12.8 1 auto auto 1 0 0;
-      13.6 1 auto auto 1 0 0;
-      14.4 1 auto auto 1 0 0;
-      15.2 1 auto auto 1 0 0;
-      16 1 auto auto 1 0 0;
-      16.8 1 auto auto 1 0 0;
-      17.6 1 auto auto 1 0 0;
-      18.4 1 auto auto 1 0 0;
-      19.2 1 auto auto 1 0 0;
-      20 1 auto auto 1 0 0;
-      20.8 1 auto auto 1 0 0;
-      21.6 1 auto auto 1 0 0;
-      22.4 1 auto auto 1 0 0;
-      23.2 1 auto auto 1 0 0;
-      24 1 auto auto 1 0 0;
-      24.8 1 auto auto 1 0 0;
-      25.6 1 auto auto 1 0 0;
-      26.4 1 auto auto 1 0 0;
-      27.2 1 auto auto 1 0 0;
-      28 1 auto auto 1 0 0;
-      28.8 1 auto auto 1 0 0;
-      29.6 1 auto auto 1 0 0;
-      30.4 1 auto auto 1 0 0;
-      31.2 1 auto auto 1 0 0;
-      32 1 auto auto 1 0 0;
-      32.8 1 auto auto 1 0 0;
-      33.6 1 auto auto 1 0 0;
-      34.4 1 auto auto 1 0 0;
-      35.2 1 auto auto 1 0 0;
-      36 1 auto auto 1 0 0;
-      36.8 1 auto auto 1 0 0;
-      37.6 1 auto auto 1 0 0;
-      38.4 1 auto auto 1 0 0;
-      39.2 1 auto auto 1 0 0;
-      40 1 auto auto 1 0 0;
-      40.8 1 auto auto 1 0 0;
-      41.6 1 auto auto 1 0 0;
-      42.4 1 auto auto 1 0 0;
-      43.2 1 auto auto 1 0 0;
-      44 1 auto auto 1 0 0;
-      44.8 1 auto auto 1 0 0;
-      45.6 1 auto auto 1 0 0;
-      46.4 1 auto auto 1 0 0;
-      47.2 1 auto auto 1 0 0;
-      48 1 auto auto 1 0 0;
-      48.8 1 auto auto 1 0 0;
-      49.6 1 auto auto 1 0 0;
-      50.4 1 auto auto 1 0 0;
-      51.2 1 auto auto 1 0 0;
-      52 1 auto auto 1 0 0;
-      52.8 1 auto auto 1 0 0;
-      53.6 1 auto auto 1 0 0;
-      54.4 1 auto auto 1 0 0;
-      55.2 1 auto auto 1 0 0;
-      56 1 auto auto 1 0 0;
-      56.8 1 auto auto 1 0 0;
-      57.6 1 auto auto 1 0 0;
-      58.4 1 auto auto 1 0 0;
-      59.2 1 auto auto 1 0 0;
-      60 1 auto auto 1 0 0;
-      60.8 1 auto auto 1 0 0;
-      61.6 1 auto auto 1 0 0;
-      62.4 1 auto auto 1 0 0;
-      63.2 1 auto auto 1 0 0;
-      64 1 auto auto 1 0 0;
-      64.8 1 auto auto 1 0 0;
-      65.6 1 auto auto 1 0 0;
-      66.4 1 auto auto 1 0 0;
-      67.2 1 auto auto 1 0 0;
-      68 1 auto auto 1 0 0;
-      68.8 1 auto auto 1 0 0;
-      69.6 1 auto auto 1 0 0;
-      70.4 1 auto auto 1 0 0;
-      71.2 1 auto auto 1 0 0;
-      72 1 auto auto 1 0 0;
-      72.8 1 auto auto 1 0 0;
-      73.6 1 auto auto 1 0 0;
-      74.4 1 auto auto 1 0 0;
-      75.2 1 auto auto 1 0 0;
-      76 1 auto auto 1 0 0;
-      76.8 1 auto auto 1 0 0;
-      77.6 1 auto auto 1 0 0;
-      78.4 1 auto auto 1 0 0;
-      79.2 1 auto auto 1 0 0;
-      80 1 auto auto 1 0 0;
-      80.8 1 auto auto 1 0 0;
-      81.6 1 auto auto 1 0 0;
-      82.4 1 auto auto 1 0 0;
-      83.2 1 auto auto 1 0 0;
-      84 1 auto auto 1 0 0;
-      84.8 1 auto auto 1 0 0;
-      85.6 1 auto auto 1 0 0;
-      86.4 1 auto auto 1 0 0;
-      87.2 1 auto auto 1 0 0;
-      88 1 auto auto 1 0 0;
-      88.8 1 auto auto 1 0 0;
-      89.6 1 auto auto 1 0 0;
-      90.4 1 auto auto 1 0 0;
-      91.2 1 auto auto 1 0 0;
-      92 1 auto auto 1 0 0;
-      92.8 1 auto auto 1 0 0;
-      93.6 1 auto auto 1 0 0;
-      94.4 1 auto auto 1 0 0;
-      95.2 1 auto auto 1 0 0;
-      96 1 auto auto 1 0 0;
-      96.8 1 auto auto 1 0 0;
-      97.6 1 auto auto 1 0 0;
-      98.4 1 auto auto 1 0 0;
-      99.2 1 auto auto 1 0 0;
-      100 1 auto auto 1 0 0;
-      100.8 1 auto auto 1 0 0;
-      101.6 1 auto auto 1 0 0;
-      102.4 1 auto auto 1 0 0;
-      103.2 1 auto auto 1 0 0;
-      104 1 auto auto 1 0 0;
-      104.8 1 auto auto 1 0 0;
-      105.6 1 auto auto 1 0 0;
-      106.4 1 auto auto 1 0 0;
-      107.2 1 auto auto 1 0 0;
-      108 1 auto auto 1 0 0;
-      108.8 1 auto auto 1 0 0;
-      109.6 1 auto auto 1 0 0;
-      110.4 1 auto auto 1 0 0;
-      111.2 1 auto auto 1 0 0;
-      112 1 auto auto 1 0 0;
-      112.8 1 auto auto 1 0 0;
-      113.6 1 auto auto 1 0 0;
-      114.4 1 auto auto 1 0 0;
-      115.2 1 auto auto 1 0 0;
-      116 1 auto auto 1 0 0;
-      116.8 1 auto auto 1 0 0;
-      117.6 1 auto auto 1 0 0;
-      118.4 1 auto auto 1 0 0;
-      119.2 1 auto auto 1 0 0;
-      120 1 auto auto 1 0 0;
-      120.8 1 auto auto 1 0 0;
-      121.6 1 auto auto 1 0 0;
-      122.4 1 auto auto 1 0 0;
-      123.2 1 auto auto 1 0 0;
-      124 1 auto auto 1 0 0;
-      124.8 1 auto auto 1 0 0;
-      125.6 1 auto auto 1 0 0;
-      126.4 1 auto auto 1 0 0;
-      127.2 1 auto auto 1 0 0;
-      128 1 auto auto 1 0 0;
-      128.8 1 auto auto 1 0 0;
-      129.6 1 auto auto 1 0 0;
-      130.4 1 auto auto 1 0 0;
-      131.2 1 auto auto 1 0 0;
-      132 1 auto auto 1 0 0;
-      132.8 1 auto auto 1 0 0;
-      133.6 1 auto auto 1 0 0;
-      134.4 1 auto auto 1 0 0;
-      135.2 1 auto auto 1 0 0;
-      136 1 auto auto 1 0 0;
-      136.8 1 auto auto 1 0 0;
-      137.6 1 auto auto 1 0 0;
-      138.4 1 auto auto 1 0 0;
-      139.2 1 auto auto 1 0 0;
-      140 1 auto auto 1 0 0;
-      140.8 1 auto auto 1 0 0;
-      141.6 1 auto auto 1 0 0;
-      142.4 1 auto auto 1 0 0;
-      143.2 1 auto auto 1 0 0;
-      144 1 auto auto 1 0 0;
-      144.8 1 auto auto 1 0 0;
-      145.6 1 auto auto 1 0 0;
-      146.4 1 auto auto 1 0 0;
-      147.2 1 auto auto 1 0 0;
-      148 1 auto auto 1 0 0;
-      148.8 1 auto auto 1 0 0;
-      149.6 1 auto auto 1 0 0;
-      150.4 1 auto auto 1 0 0;
-      151.2 1 auto auto 1 0 0;
-      152 1 auto auto 1 0 0;
-      152.8 1 auto auto 1 0 0;
-      153.6 1 auto auto 1 0 0;
-      154.4 1 auto auto 1 0 0;
-      155.2 1 auto auto 1 0 0;
-      156 1 auto auto 1 0 0;
-      156.8 1 auto auto 1 0 0;
-      157.6 1 auto auto 1 0 0;
-      158.4 1 auto auto 1 0 0;
-      159.2 1 auto auto 1 0 0;
-      160 1 auto auto 1 0 0;
-      160.8 1 auto auto 1 0 0;
-      161.6 1 auto auto 1 0 0;
-      162.4 1 auto auto 1 0 0;
-      163.2 1 auto auto 1 0 0;
-      164 1 auto auto 1 0 0;
-      164.8 1 auto auto 1 0 0;
-      165.6 1 auto auto 1 0 0;
-      166.4 1 auto auto 1 0 0;
-      167.2 1 auto auto 1 0 0;
-      168 1 auto auto 1 0 0;
-      168.8 1 auto auto 1 0 0;
-      169.6 1 auto auto 1 0 0;
-      170.4 1 auto auto 1 0 0;
-      171.2 1 auto auto 1 0 0;
-      172 1 auto auto 1 0 0;
-      172.8 1 auto auto 1 0 0;
-      173.6 1 auto auto 1 0 0;
-      174.4 1 auto auto 1 0 0;
-      175.2 1 auto auto 1 0 0;
-      176 1 auto auto 1 0 0;
-      176.8 1 auto auto 1 0 0;
-      177.6 1 auto auto 1 0 0;
-      178.4 1 auto auto 1 0 0;
-      179.2 1 auto auto 1 0 0;
-      180 1 auto auto 1 0 0;
-      180.8 1 auto auto 1 0 0;
-      181.6 1 auto auto 1 0 0;
-      182.4 1 auto auto 1 0 0;
-      183.2 1 auto auto 1 0 0;
-      184 1 auto auto 1 0 0;
-      184.8 1 auto auto 1 0 0;
-      185.6 1 auto auto 1 0 0;
-      186.4 1 auto auto 1 0 0;
-      187.2 1 auto auto 1 0 0;
-      188 1 auto auto 1 0 0;
-      188.8 1 auto auto 1 0 0;
-      189.6 1 auto auto 1 0 0;
-      190.4 1 auto auto 1 0 0;
-      191.2 1 auto auto 1 0 0;
-      192 1 auto auto 1 0 0;
-      192.8 1 auto auto 1 0 0;
-      193.6 1 auto auto 1 0 0;
-      194.4 1 auto auto 1 0 0;
-    }
-  }
-  anim scale.scaleY scaleY 1;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 1 auto auto 1 0 0;
-      1.6 1 auto auto 1 0 0;
-      2.4 1 auto auto 1 0 0;
-      3.2 1 auto auto 1 0 0;
-      4 1 auto auto 1 0 0;
-      4.8 1 auto auto 1 0 0;
-      5.6 1 auto auto 1 0 0;
-      6.4 1 auto auto 1 0 0;
-      7.2 1 auto auto 1 0 0;
-      8 1 auto auto 1 0 0;
-      8.8 1 auto auto 1 0 0;
-      9.6 1 auto auto 1 0 0;
-      10.4 1 auto auto 1 0 0;
-      11.2 1 auto auto 1 0 0;
-      12 1 auto auto 1 0 0;
-      12.8 1 auto auto 1 0 0;
-      13.6 1 auto auto 1 0 0;
-      14.4 1 auto auto 1 0 0;
-      15.2 1 auto auto 1 0 0;
-      16 1 auto auto 1 0 0;
-      16.8 1 auto auto 1 0 0;
-      17.6 1 auto auto 1 0 0;
-      18.4 1 auto auto 1 0 0;
-      19.2 1 auto auto 1 0 0;
-      20 1 auto auto 1 0 0;
-      20.8 1 auto auto 1 0 0;
-      21.6 1 auto auto 1 0 0;
-      22.4 1 auto auto 1 0 0;
-      23.2 1 auto auto 1 0 0;
-      24 1 auto auto 1 0 0;
-      24.8 1 auto auto 1 0 0;
-      25.6 1 auto auto 1 0 0;
-      26.4 1 auto auto 1 0 0;
-      27.2 1 auto auto 1 0 0;
-      28 1 auto auto 1 0 0;
-      28.8 1 auto auto 1 0 0;
-      29.6 1 auto auto 1 0 0;
-      30.4 1 auto auto 1 0 0;
-      31.2 1 auto auto 1 0 0;
-      32 1 auto auto 1 0 0;
-      32.8 1 auto auto 1 0 0;
-      33.6 1 auto auto 1 0 0;
-      34.4 1 auto auto 1 0 0;
-      35.2 1 auto auto 1 0 0;
-      36 1 auto auto 1 0 0;
-      36.8 1 auto auto 1 0 0;
-      37.6 1 auto auto 1 0 0;
-      38.4 1 auto auto 1 0 0;
-      39.2 1 auto auto 1 0 0;
-      40 1 auto auto 1 0 0;
-      40.8 1 auto auto 1 0 0;
-      41.6 1 auto auto 1 0 0;
-      42.4 1 auto auto 1 0 0;
-      43.2 1 auto auto 1 0 0;
-      44 1 auto auto 1 0 0;
-      44.8 1 auto auto 1 0 0;
-      45.6 1 auto auto 1 0 0;
-      46.4 1 auto auto 1 0 0;
-      47.2 1 auto auto 1 0 0;
-      48 1 auto auto 1 0 0;
-      48.8 1 auto auto 1 0 0;
-      49.6 1 auto auto 1 0 0;
-      50.4 1 auto auto 1 0 0;
-      51.2 1 auto auto 1 0 0;
-      52 1 auto auto 1 0 0;
-      52.8 1 auto auto 1 0 0;
-      53.6 1 auto auto 1 0 0;
-      54.4 1 auto auto 1 0 0;
-      55.2 1 auto auto 1 0 0;
-      56 1 auto auto 1 0 0;
-      56.8 1 auto auto 1 0 0;
-      57.6 1 auto auto 1 0 0;
-      58.4 1 auto auto 1 0 0;
-      59.2 1 auto auto 1 0 0;
-      60 1 auto auto 1 0 0;
-      60.8 1 auto auto 1 0 0;
-      61.6 1 auto auto 1 0 0;
-      62.4 1 auto auto 1 0 0;
-      63.2 1 auto auto 1 0 0;
-      64 1 auto auto 1 0 0;
-      64.8 1 auto auto 1 0 0;
-      65.6 1 auto auto 1 0 0;
-      66.4 1 auto auto 1 0 0;
-      67.2 1 auto auto 1 0 0;
-      68 1 auto auto 1 0 0;
-      68.8 1 auto auto 1 0 0;
-      69.6 1 auto auto 1 0 0;
-      70.4 1 auto auto 1 0 0;
-      71.2 1 auto auto 1 0 0;
-      72 1 auto auto 1 0 0;
-      72.8 1 auto auto 1 0 0;
-      73.6 1 auto auto 1 0 0;
-      74.4 1 auto auto 1 0 0;
-      75.2 1 auto auto 1 0 0;
-      76 1 auto auto 1 0 0;
-      76.8 1 auto auto 1 0 0;
-      77.6 1 auto auto 1 0 0;
-      78.4 1 auto auto 1 0 0;
-      79.2 1 auto auto 1 0 0;
-      80 1 auto auto 1 0 0;
-      80.8 1 auto auto 1 0 0;
-      81.6 1 auto auto 1 0 0;
-      82.4 1 auto auto 1 0 0;
-      83.2 1 auto auto 1 0 0;
-      84 1 auto auto 1 0 0;
-      84.8 1 auto auto 1 0 0;
-      85.6 1 auto auto 1 0 0;
-      86.4 1 auto auto 1 0 0;
-      87.2 1 auto auto 1 0 0;
-      88 1 auto auto 1 0 0;
-      88.8 1 auto auto 1 0 0;
-      89.6 1 auto auto 1 0 0;
-      90.4 1 auto auto 1 0 0;
-      91.2 1 auto auto 1 0 0;
-      92 1 auto auto 1 0 0;
-      92.8 1 auto auto 1 0 0;
-      93.6 1 auto auto 1 0 0;
-      94.4 1 auto auto 1 0 0;
-      95.2 1 auto auto 1 0 0;
-      96 1 auto auto 1 0 0;
-      96.8 1 auto auto 1 0 0;
-      97.6 1 auto auto 1 0 0;
-      98.4 1 auto auto 1 0 0;
-      99.2 1 auto auto 1 0 0;
-      100 1 auto auto 1 0 0;
-      100.8 1 auto auto 1 0 0;
-      101.6 1 auto auto 1 0 0;
-      102.4 1 auto auto 1 0 0;
-      103.2 1 auto auto 1 0 0;
-      104 1 auto auto 1 0 0;
-      104.8 1 auto auto 1 0 0;
-      105.6 1 auto auto 1 0 0;
-      106.4 1 auto auto 1 0 0;
-      107.2 1 auto auto 1 0 0;
-      108 1 auto auto 1 0 0;
-      108.8 1 auto auto 1 0 0;
-      109.6 1 auto auto 1 0 0;
-      110.4 1 auto auto 1 0 0;
-      111.2 1 auto auto 1 0 0;
-      112 1 auto auto 1 0 0;
-      112.8 1 auto auto 1 0 0;
-      113.6 1 auto auto 1 0 0;
-      114.4 1 auto auto 1 0 0;
-      115.2 1 auto auto 1 0 0;
-      116 1 auto auto 1 0 0;
-      116.8 1 auto auto 1 0 0;
-      117.6 1 auto auto 1 0 0;
-      118.4 1 auto auto 1 0 0;
-      119.2 1 auto auto 1 0 0;
-      120 1 auto auto 1 0 0;
-      120.8 1 auto auto 1 0 0;
-      121.6 1 auto auto 1 0 0;
-      122.4 1 auto auto 1 0 0;
-      123.2 1 auto auto 1 0 0;
-      124 1 auto auto 1 0 0;
-      124.8 1 auto auto 1 0 0;
-      125.6 1 auto auto 1 0 0;
-      126.4 1 auto auto 1 0 0;
-      127.2 1 auto auto 1 0 0;
-      128 1 auto auto 1 0 0;
-      128.8 1 auto auto 1 0 0;
-      129.6 1 auto auto 1 0 0;
-      130.4 1 auto auto 1 0 0;
-      131.2 1 auto auto 1 0 0;
-      132 1 auto auto 1 0 0;
-      132.8 1 auto auto 1 0 0;
-      133.6 1 auto auto 1 0 0;
-      134.4 1 auto auto 1 0 0;
-      135.2 1 auto auto 1 0 0;
-      136 1 auto auto 1 0 0;
-      136.8 1 auto auto 1 0 0;
-      137.6 1 auto auto 1 0 0;
-      138.4 1 auto auto 1 0 0;
-      139.2 1 auto auto 1 0 0;
-      140 1 auto auto 1 0 0;
-      140.8 1 auto auto 1 0 0;
-      141.6 1 auto auto 1 0 0;
-      142.4 1 auto auto 1 0 0;
-      143.2 1 auto auto 1 0 0;
-      144 1 auto auto 1 0 0;
-      144.8 1 auto auto 1 0 0;
-      145.6 1 auto auto 1 0 0;
-      146.4 1 auto auto 1 0 0;
-      147.2 1 auto auto 1 0 0;
-      148 1 auto auto 1 0 0;
-      148.8 1 auto auto 1 0 0;
-      149.6 1 auto auto 1 0 0;
-      150.4 1 auto auto 1 0 0;
-      151.2 1 auto auto 1 0 0;
-      152 1 auto auto 1 0 0;
-      152.8 1 auto auto 1 0 0;
-      153.6 1 auto auto 1 0 0;
-      154.4 1 auto auto 1 0 0;
-      155.2 1 auto auto 1 0 0;
-      156 1 auto auto 1 0 0;
-      156.8 1 auto auto 1 0 0;
-      157.6 1 auto auto 1 0 0;
-      158.4 1 auto auto 1 0 0;
-      159.2 1 auto auto 1 0 0;
-      160 1 auto auto 1 0 0;
-      160.8 1 auto auto 1 0 0;
-      161.6 1 auto auto 1 0 0;
-      162.4 1 auto auto 1 0 0;
-      163.2 1 auto auto 1 0 0;
-      164 1 auto auto 1 0 0;
-      164.8 1 auto auto 1 0 0;
-      165.6 1 auto auto 1 0 0;
-      166.4 1 auto auto 1 0 0;
-      167.2 1 auto auto 1 0 0;
-      168 1 auto auto 1 0 0;
-      168.8 1 auto auto 1 0 0;
-      169.6 1 auto auto 1 0 0;
-      170.4 1 auto auto 1 0 0;
-      171.2 1 auto auto 1 0 0;
-      172 1 auto auto 1 0 0;
-      172.8 1 auto auto 1 0 0;
-      173.6 1 auto auto 1 0 0;
-      174.4 1 auto auto 1 0 0;
-      175.2 1 auto auto 1 0 0;
-      176 1 auto auto 1 0 0;
-      176.8 1 auto auto 1 0 0;
-      177.6 1 auto auto 1 0 0;
-      178.4 1 auto auto 1 0 0;
-      179.2 1 auto auto 1 0 0;
-      180 1 auto auto 1 0 0;
-      180.8 1 auto auto 1 0 0;
-      181.6 1 auto auto 1 0 0;
-      182.4 1 auto auto 1 0 0;
-      183.2 1 auto auto 1 0 0;
-      184 1 auto auto 1 0 0;
-      184.8 1 auto auto 1 0 0;
-      185.6 1 auto auto 1 0 0;
-      186.4 1 auto auto 1 0 0;
-      187.2 1 auto auto 1 0 0;
-      188 1 auto auto 1 0 0;
-      188.8 1 auto auto 1 0 0;
-      189.6 1 auto auto 1 0 0;
-      190.4 1 auto auto 1 0 0;
-      191.2 1 auto auto 1 0 0;
-      192 1 auto auto 1 0 0;
-      192.8 1 auto auto 1 0 0;
-      193.6 1 auto auto 1 0 0;
-      194.4 1 auto auto 1 0 0;
-    }
-  }
-  anim scale.scaleZ scaleZ 2;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 1 auto auto 1 0 0;
-      1.6 1 auto auto 1 0 0;
-      2.4 1 auto auto 1 0 0;
-      3.2 1 auto auto 1 0 0;
-      4 1 auto auto 1 0 0;
-      4.8 1 auto auto 1 0 0;
-      5.6 1 auto auto 1 0 0;
-      6.4 1 auto auto 1 0 0;
-      7.2 1 auto auto 1 0 0;
-      8 1 auto auto 1 0 0;
-      8.8 1 auto auto 1 0 0;
-      9.6 1 auto auto 1 0 0;
-      10.4 1 auto auto 1 0 0;
-      11.2 1 auto auto 1 0 0;
-      12 1 auto auto 1 0 0;
-      12.8 1 auto auto 1 0 0;
-      13.6 1 auto auto 1 0 0;
-      14.4 1 auto auto 1 0 0;
-      15.2 1 auto auto 1 0 0;
-      16 1 auto auto 1 0 0;
-      16.8 1 auto auto 1 0 0;
-      17.6 1 auto auto 1 0 0;
-      18.4 1 auto auto 1 0 0;
-      19.2 1 auto auto 1 0 0;
-      20 1 auto auto 1 0 0;
-      20.8 1 auto auto 1 0 0;
-      21.6 1 auto auto 1 0 0;
-      22.4 1 auto auto 1 0 0;
-      23.2 1 auto auto 1 0 0;
-      24 1 auto auto 1 0 0;
-      24.8 1 auto auto 1 0 0;
-      25.6 1 auto auto 1 0 0;
-      26.4 1 auto auto 1 0 0;
-      27.2 1 auto auto 1 0 0;
-      28 1 auto auto 1 0 0;
-      28.8 1 auto auto 1 0 0;
-      29.6 1 auto auto 1 0 0;
-      30.4 1 auto auto 1 0 0;
-      31.2 1 auto auto 1 0 0;
-      32 1 auto auto 1 0 0;
-      32.8 1 auto auto 1 0 0;
-      33.6 1 auto auto 1 0 0;
-      34.4 1 auto auto 1 0 0;
-      35.2 1 auto auto 1 0 0;
-      36 1 auto auto 1 0 0;
-      36.8 1 auto auto 1 0 0;
-      37.6 1 auto auto 1 0 0;
-      38.4 1 auto auto 1 0 0;
-      39.2 1 auto auto 1 0 0;
-      40 1 auto auto 1 0 0;
-      40.8 1 auto auto 1 0 0;
-      41.6 1 auto auto 1 0 0;
-      42.4 1 auto auto 1 0 0;
-      43.2 1 auto auto 1 0 0;
-      44 1 auto auto 1 0 0;
-      44.8 1 auto auto 1 0 0;
-      45.6 1 auto auto 1 0 0;
-      46.4 1 auto auto 1 0 0;
-      47.2 1 auto auto 1 0 0;
-      48 1 auto auto 1 0 0;
-      48.8 1 auto auto 1 0 0;
-      49.6 1 auto auto 1 0 0;
-      50.4 1 auto auto 1 0 0;
-      51.2 1 auto auto 1 0 0;
-      52 1 auto auto 1 0 0;
-      52.8 1 auto auto 1 0 0;
-      53.6 1 auto auto 1 0 0;
-      54.4 1 auto auto 1 0 0;
-      55.2 1 auto auto 1 0 0;
-      56 1 auto auto 1 0 0;
-      56.8 1 auto auto 1 0 0;
-      57.6 1 auto auto 1 0 0;
-      58.4 1 auto auto 1 0 0;
-      59.2 1 auto auto 1 0 0;
-      60 1 auto auto 1 0 0;
-      60.8 1 auto auto 1 0 0;
-      61.6 1 auto auto 1 0 0;
-      62.4 1 auto auto 1 0 0;
-      63.2 1 auto auto 1 0 0;
-      64 1 auto auto 1 0 0;
-      64.8 1 auto auto 1 0 0;
-      65.6 1 auto auto 1 0 0;
-      66.4 1 auto auto 1 0 0;
-      67.2 1 auto auto 1 0 0;
-      68 1 auto auto 1 0 0;
-      68.8 1 auto auto 1 0 0;
-      69.6 1 auto auto 1 0 0;
-      70.4 1 auto auto 1 0 0;
-      71.2 1 auto auto 1 0 0;
-      72 1 auto auto 1 0 0;
-      72.8 1 auto auto 1 0 0;
-      73.6 1 auto auto 1 0 0;
-      74.4 1 auto auto 1 0 0;
-      75.2 1 auto auto 1 0 0;
-      76 1 auto auto 1 0 0;
-      76.8 1 auto auto 1 0 0;
-      77.6 1 auto auto 1 0 0;
-      78.4 1 auto auto 1 0 0;
-      79.2 1 auto auto 1 0 0;
-      80 1 auto auto 1 0 0;
-      80.8 1 auto auto 1 0 0;
-      81.6 1 auto auto 1 0 0;
-      82.4 1 auto auto 1 0 0;
-      83.2 1 auto auto 1 0 0;
-      84 1 auto auto 1 0 0;
-      84.8 1 auto auto 1 0 0;
-      85.6 1 auto auto 1 0 0;
-      86.4 1 auto auto 1 0 0;
-      87.2 1 auto auto 1 0 0;
-      88 1 auto auto 1 0 0;
-      88.8 1 auto auto 1 0 0;
-      89.6 1 auto auto 1 0 0;
-      90.4 1 auto auto 1 0 0;
-      91.2 1 auto auto 1 0 0;
-      92 1 auto auto 1 0 0;
-      92.8 1 auto auto 1 0 0;
-      93.6 1 auto auto 1 0 0;
-      94.4 1 auto auto 1 0 0;
-      95.2 1 auto auto 1 0 0;
-      96 1 auto auto 1 0 0;
-      96.8 1 auto auto 1 0 0;
-      97.6 1 auto auto 1 0 0;
-      98.4 1 auto auto 1 0 0;
-      99.2 1 auto auto 1 0 0;
-      100 1 auto auto 1 0 0;
-      100.8 1 auto auto 1 0 0;
-      101.6 1 auto auto 1 0 0;
-      102.4 1 auto auto 1 0 0;
-      103.2 1 auto auto 1 0 0;
-      104 1 auto auto 1 0 0;
-      104.8 1 auto auto 1 0 0;
-      105.6 1 auto auto 1 0 0;
-      106.4 1 auto auto 1 0 0;
-      107.2 1 auto auto 1 0 0;
-      108 1 auto auto 1 0 0;
-      108.8 1 auto auto 1 0 0;
-      109.6 1 auto auto 1 0 0;
-      110.4 1 auto auto 1 0 0;
-      111.2 1 auto auto 1 0 0;
-      112 1 auto auto 1 0 0;
-      112.8 1 auto auto 1 0 0;
-      113.6 1 auto auto 1 0 0;
-      114.4 1 auto auto 1 0 0;
-      115.2 1 auto auto 1 0 0;
-      116 1 auto auto 1 0 0;
-      116.8 1 auto auto 1 0 0;
-      117.6 1 auto auto 1 0 0;
-      118.4 1 auto auto 1 0 0;
-      119.2 1 auto auto 1 0 0;
-      120 1 auto auto 1 0 0;
-      120.8 1 auto auto 1 0 0;
-      121.6 1 auto auto 1 0 0;
-      122.4 1 auto auto 1 0 0;
-      123.2 1 auto auto 1 0 0;
-      124 1 auto auto 1 0 0;
-      124.8 1 auto auto 1 0 0;
-      125.6 1 auto auto 1 0 0;
-      126.4 1 auto auto 1 0 0;
-      127.2 1 auto auto 1 0 0;
-      128 1 auto auto 1 0 0;
-      128.8 1 auto auto 1 0 0;
-      129.6 1 auto auto 1 0 0;
-      130.4 1 auto auto 1 0 0;
-      131.2 1 auto auto 1 0 0;
-      132 1 auto auto 1 0 0;
-      132.8 1 auto auto 1 0 0;
-      133.6 1 auto auto 1 0 0;
-      134.4 1 auto auto 1 0 0;
-      135.2 1 auto auto 1 0 0;
-      136 1 auto auto 1 0 0;
-      136.8 1 auto auto 1 0 0;
-      137.6 1 auto auto 1 0 0;
-      138.4 1 auto auto 1 0 0;
-      139.2 1 auto auto 1 0 0;
-      140 1 auto auto 1 0 0;
-      140.8 1 auto auto 1 0 0;
-      141.6 1 auto auto 1 0 0;
-      142.4 1 auto auto 1 0 0;
-      143.2 1 auto auto 1 0 0;
-      144 1 auto auto 1 0 0;
-      144.8 1 auto auto 1 0 0;
-      145.6 1 auto auto 1 0 0;
-      146.4 1 auto auto 1 0 0;
-      147.2 1 auto auto 1 0 0;
-      148 1 auto auto 1 0 0;
-      148.8 1 auto auto 1 0 0;
-      149.6 1 auto auto 1 0 0;
-      150.4 1 auto auto 1 0 0;
-      151.2 1 auto auto 1 0 0;
-      152 1 auto auto 1 0 0;
-      152.8 1 auto auto 1 0 0;
-      153.6 1 auto auto 1 0 0;
-      154.4 1 auto auto 1 0 0;
-      155.2 1 auto auto 1 0 0;
-      156 1 auto auto 1 0 0;
-      156.8 1 auto auto 1 0 0;
-      157.6 1 auto auto 1 0 0;
-      158.4 1 auto auto 1 0 0;
-      159.2 1 auto auto 1 0 0;
-      160 1 auto auto 1 0 0;
-      160.8 1 auto auto 1 0 0;
-      161.6 1 auto auto 1 0 0;
-      162.4 1 auto auto 1 0 0;
-      163.2 1 auto auto 1 0 0;
-      164 1 auto auto 1 0 0;
-      164.8 1 auto auto 1 0 0;
-      165.6 1 auto auto 1 0 0;
-      166.4 1 auto auto 1 0 0;
-      167.2 1 auto auto 1 0 0;
-      168 1 auto auto 1 0 0;
-      168.8 1 auto auto 1 0 0;
-      169.6 1 auto auto 1 0 0;
-      170.4 1 auto auto 1 0 0;
-      171.2 1 auto auto 1 0 0;
-      172 1 auto auto 1 0 0;
-      172.8 1 auto auto 1 0 0;
-      173.6 1 auto auto 1 0 0;
-      174.4 1 auto auto 1 0 0;
-      175.2 1 auto auto 1 0 0;
-      176 1 auto auto 1 0 0;
-      176.8 1 auto auto 1 0 0;
-      177.6 1 auto auto 1 0 0;
-      178.4 1 auto auto 1 0 0;
-      179.2 1 auto auto 1 0 0;
-      180 1 auto auto 1 0 0;
-      180.8 1 auto auto 1 0 0;
-      181.6 1 auto auto 1 0 0;
-      182.4 1 auto auto 1 0 0;
-      183.2 1 auto auto 1 0 0;
-      184 1 auto auto 1 0 0;
-      184.8 1 auto auto 1 0 0;
-      185.6 1 auto auto 1 0 0;
-      186.4 1 auto auto 1 0 0;
-      187.2 1 auto auto 1 0 0;
-      188 1 auto auto 1 0 0;
-      188.8 1 auto auto 1 0 0;
-      189.6 1 auto auto 1 0 0;
-      190.4 1 auto auto 1 0 0;
-      191.2 1 auto auto 1 0 0;
-      192 1 auto auto 1 0 0;
-      192.8 1 auto auto 1 0 0;
-      193.6 1 auto auto 1 0 0;
-      194.4 1 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateX rotateX 3;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 4.4445478 auto auto 1 0 0;
-      1.6 4.2384221 auto auto 1 0 0;
-      2.4 4.6277688 auto auto 1 0 0;
-      3.2 4.9827375 auto auto 1 0 0;
-      4 5.3235304 auto auto 1 0 0;
-      4.8 5.4977388 auto auto 1 0 0;
-      5.6 4.9270806 auto auto 1 0 0;
-      6.4 4.1449505 auto auto 1 0 0;
-      7.2 3.8998614 auto auto 1 0 0;
-      8 5.5196157 auto auto 1 0 0;
-      8.8 7.3537598 auto auto 1 0 0;
-      9.6 6.8059834 auto auto 1 0 0;
-      10.4 6.2604084 auto auto 1 0 0;
-      11.2 6.054564 auto auto 1 0 0;
-      12 5.3553248 auto auto 1 0 0;
-      12.8 4.6468189 auto auto 1 0 0;
-      13.6 3.9833034 auto auto 1 0 0;
-      14.4 3.3063019 auto auto 1 0 0;
-      15.2 2.9505203 auto auto 1 0 0;
-      16 2.8695937 auto auto 1 0 0;
-      16.8 2.678999 auto auto 1 0 0;
-      17.6 2.2630274 auto auto 1 0 0;
-      18.4 1.7145221 auto auto 1 0 0;
-      19.2 1.158041 auto auto 1 0 0;
-      20 0.60662351 auto auto 1 0 0;
-      20.8 0.36267148 auto auto 1 0 0;
-      21.6 0.11975041 auto auto 1 0 0;
-      22.4 -0.037347511 auto auto 1 0 0;
-      23.2 -0.1406279 auto auto 1 0 0;
-      24 0 auto auto 1 0 0;
-      24.8 0.1600592 auto auto 1 0 0;
-      25.6 0.18768408 auto auto 1 0 0;
-      26.4 0.15508761 auto auto 1 0 0;
-      27.2 0.0049359029 auto auto 1 0 0;
-      28 -0.07417338 auto auto 1 0 0;
-      28.8 -0.11543917 auto auto 1 0 0;
-      29.6 -0.1381393 auto auto 1 0 0;
-      30.4 -0.17659138 auto auto 1 0 0;
-      31.2 -0.13116524 auto auto 1 0 0;
-      32 -0.2498408 auto auto 1 0 0;
-      32.8 -0.20315226 auto auto 1 0 0;
-      33.6 -0.164037 auto auto 1 0 0;
-      34.4 -0.23853461 auto auto 1 0 0;
-      35.2 -0.16371675 auto auto 1 0 0;
-      36 -0.11037819 auto auto 1 0 0;
-      36.8 -0.10817328 auto auto 1 0 0;
-      37.6 -0.046766797 auto auto 1 0 0;
-      38.4 -0.051283768 auto auto 1 0 0;
-      39.2 -0.17736212 auto auto 1 0 0;
-      40 -0.2115088 auto auto 1 0 0;
-      40.8 -0.17134978 auto auto 1 0 0;
-      41.6 -0.20546493 auto auto 1 0 0;
-      42.4 -0.079679026 auto auto 1 0 0;
-      43.2 0.11609918 auto auto 1 0 0;
-      44 0.73797615 auto auto 1 0 0;
-      44.8 2.0365554 auto auto 1 0 0;
-      45.6 3.4634704 auto auto 1 0 0;
-      46.4 4.8909343 auto auto 1 0 0;
-      47.2 6.0579942 auto auto 1 0 0;
-      48 7.6140348 auto auto 1 0 0;
-      48.8 9.3251482 auto auto 1 0 0;
-      49.6 10.395752 auto auto 1 0 0;
-      50.4 11.0252 auto auto 1 0 0;
-      51.2 11.435505 auto auto 1 0 0;
-      52 11.827602 auto auto 1 0 0;
-      52.8 12.251642 auto auto 1 0 0;
-      53.6 11.908213 auto auto 1 0 0;
-      54.4 10.476391 auto auto 1 0 0;
-      55.2 8.9778618 auto auto 1 0 0;
-      56 9.5851943 auto auto 1 0 0;
-      56.8 14.105918 auto auto 1 0 0;
-      57.6 21.580903 auto auto 1 0 0;
-      58.4 24.346922 auto auto 1 0 0;
-      59.2 18.666262 auto auto 1 0 0;
-      60 12.069224 auto auto 1 0 0;
-      60.8 11.634886 auto auto 1 0 0;
-      61.6 12.147786 auto auto 1 0 0;
-      62.4 13.721285 auto auto 1 0 0;
-      63.2 16.893505 auto auto 1 0 0;
-      64 22.27919 auto auto 1 0 0;
-      64.8 29.249536 auto auto 1 0 0;
-      65.6 33.883116 auto auto 1 0 0;
-      66.4 35.664628 auto auto 1 0 0;
-      67.2 38.190517 auto auto 1 0 0;
-      68 41.633009 auto auto 1 0 0;
-      68.8 44.161833 auto auto 1 0 0;
-      69.6 42.233238 auto auto 1 0 0;
-      70.4 37.929537 auto auto 1 0 0;
-      71.2 36.27734 auto auto 1 0 0;
-      72 29.32883 auto auto 1 0 0;
-      72.8 13.97075 auto auto 1 0 0;
-      73.6 1.38556 auto auto 1 0 0;
-      74.4 -5.54327 auto auto 1 0 0;
-      75.2 -9.45001 auto auto 1 0 0;
-      76 -10.44136 auto auto 1 0 0;
-      76.8 -8.40565 auto auto 1 0 0;
-      77.6 -4.29136 auto auto 1 0 0;
-      78.4 0.83951387 auto auto 1 0 0;
-      79.2 4.1757703 auto auto 1 0 0;
-      80 4.7855444 auto auto 1 0 0;
-      80.8 7.1969616 auto auto 1 0 0;
-      81.6 6.0558307 auto auto 1 0 0;
-      82.4 4.6965828 auto auto 1 0 0;
-      83.2 2.8302495 auto auto 1 0 0;
-      84 -2.08087 auto auto 1 0 0;
-      84.8 -7.57994 auto auto 1 0 0;
-      85.6 -10.22702 auto auto 1 0 0;
-      86.4 -7.01472 auto auto 1 0 0;
-      87.2 0.27112979 auto auto 1 0 0;
-      88 10.588314 auto auto 1 0 0;
-      88.8 18.634203 auto auto 1 0 0;
-      89.6 21.575494 auto auto 1 0 0;
-      90.4 21.51104 auto auto 1 0 0;
-      91.2 24.422065 auto auto 1 0 0;
-      92 29.375 auto auto 1 0 0;
-      92.8 32.442708 auto auto 1 0 0;
-      93.6 34.163756 auto auto 1 0 0;
-      94.4 35.68226 auto auto 1 0 0;
-      95.2 33.376156 auto auto 1 0 0;
-      96 31.679946 auto auto 1 0 0;
-      96.8 30.796121 auto auto 1 0 0;
-      97.6 32.008853 auto auto 1 0 0;
-      98.4 37.275906 auto auto 1 0 0;
-      99.2 43.449314 auto auto 1 0 0;
-      100 48.455346 auto auto 1 0 0;
-      100.8 49.693092 auto auto 1 0 0;
-      101.6 32.984357 auto auto 1 0 0;
-      102.4 21.910979 auto auto 1 0 0;
-      103.2 15.463829 auto auto 1 0 0;
-      104 10.517977 auto auto 1 0 0;
-      104.8 7.8674824 auto auto 1 0 0;
-      105.6 6.7702675 auto auto 1 0 0;
-      106.4 6.4650856 auto auto 1 0 0;
-      107.2 7.1282452 auto auto 1 0 0;
-      108 10.975208 auto auto 1 0 0;
-      108.8 22.042784 auto auto 1 0 0;
-      109.6 48.059644 auto auto 1 0 0;
-      110.4 75.05212 auto auto 1 0 0;
-      111.2 72.404333 auto auto 1 0 0;
-      112 73.58332 auto auto 1 0 0;
-      112.8 66.997046 auto auto 1 0 0;
-      113.6 51.275796 auto auto 1 0 0;
-      114.4 38.517359 auto auto 1 0 0;
-      115.2 33.949843 auto auto 1 0 0;
-      116 32.887535 auto auto 1 0 0;
-      116.8 35.71547 auto auto 1 0 0;
-      117.6 38.972743 auto auto 1 0 0;
-      118.4 42.405325 auto auto 1 0 0;
-      119.2 45.665866 auto auto 1 0 0;
-      120 54.923169 auto auto 1 0 0;
-      120.8 58.378811 auto auto 1 0 0;
-      121.6 58.182526 auto auto 1 0 0;
-      122.4 65.962845 auto auto 1 0 0;
-      123.2 71.839489 auto auto 1 0 0;
-      124 66.323959 auto auto 1 0 0;
-      124.8 52.492489 auto auto 1 0 0;
-      125.6 41.39879 auto auto 1 0 0;
-      126.4 34.545055 auto auto 1 0 0;
-      127.2 28.864592 auto auto 1 0 0;
-      128 22.743248 auto auto 1 0 0;
-      128.8 7.1852815 auto auto 1 0 0;
-      129.6 3.5519385 auto auto 1 0 0;
-      130.4 6.4596665 auto auto 1 0 0;
-      131.2 3.5214 auto auto 1 0 0;
-      132 -2.98366 auto auto 1 0 0;
-      132.8 0.56798 auto auto 1 0 0;
-      133.6 6.53786 auto auto 1 0 0;
-      134.4 9.6165385 auto auto 1 0 0;
-      135.2 10.561175 auto auto 1 0 0;
-      136 12.003448 auto auto 1 0 0;
-      136.8 11.799926 auto auto 1 0 0;
-      137.6 7.2607507 auto auto 1 0 0;
-      138.4 -2.35438 auto auto 1 0 0;
-      139.2 -9.96381 auto auto 1 0 0;
-      140 -10.86221 auto auto 1 0 0;
-      140.8 -8.64684 auto auto 1 0 0;
-      141.6 -5.024225 auto auto 1 0 0;
-      142.4 4.9330436 auto auto 1 0 0;
-      143.2 16.828818 auto auto 1 0 0;
-      144 30.120468 auto auto 1 0 0;
-      144.8 34.877883 auto auto 1 0 0;
-      145.6 34.759437 auto auto 1 0 0;
-      146.4 33.84118 auto auto 1 0 0;
-      147.2 32.604925 auto auto 1 0 0;
-      148 32.219233 auto auto 1 0 0;
-      148.8 30.34593 auto auto 1 0 0;
-      149.6 20.374095 auto auto 1 0 0;
-      150.4 9.8529494 auto auto 1 0 0;
-      151.2 7.2419558 auto auto 1 0 0;
-      152 6.6350662 auto auto 1 0 0;
-      152.8 5.4861248 auto auto 1 0 0;
-      153.6 4.9233353 auto auto 1 0 0;
-      154.4 2.5953796 auto auto 1 0 0;
-      155.2 -8.17553 auto auto 1 0 0;
-      156 -9.19622 auto auto 1 0 0;
-      156.8 -5.0513 auto auto 1 0 0;
-      157.6 -3.16744 auto auto 1 0 0;
-      158.4 -3.24432 auto auto 1 0 0;
-      159.2 -3.73068 auto auto 1 0 0;
-      160 -4.94723 auto auto 1 0 0;
-      160.8 -5.60296 auto auto 1 0 0;
-      161.6 -5.1144772 auto auto 1 0 0;
-      162.4 -4.2848233 auto auto 1 0 0;
-      163.2 -3.4671728 auto auto 1 0 0;
-      164 -2.1476294 auto auto 1 0 0;
-      164.8 -0.12207036 auto auto 1 0 0;
-      165.6 2.6512576 auto auto 1 0 0;
-      166.4 6.7798674 auto auto 1 0 0;
-      167.2 10.709199 auto auto 1 0 0;
-      168 14.885516 auto auto 1 0 0;
-      168.8 17.977916 auto auto 1 0 0;
-      169.6 18.486386 auto auto 1 0 0;
-      170.4 19.921925 auto auto 1 0 0;
-      171.2 21.260491 auto auto 1 0 0;
-      172 20.176002 auto auto 1 0 0;
-      172.8 18.960736 auto auto 1 0 0;
-      173.6 17.353746 auto auto 1 0 0;
-      174.4 15.393009 auto auto 1 0 0;
-      175.2 14.120115 auto auto 1 0 0;
-      176 14.827583 auto auto 1 0 0;
-      176.8 17.843078 auto auto 1 0 0;
-      177.6 20.841142 auto auto 1 0 0;
-      178.4 20.813963 auto auto 1 0 0;
-      179.2 19.871083 auto auto 1 0 0;
-      180 18.204767 auto auto 1 0 0;
-      180.8 18.349249 auto auto 1 0 0;
-      181.6 16.775571 auto auto 1 0 0;
-      182.4 15.595887 auto auto 1 0 0;
-      183.2 14.293128 auto auto 1 0 0;
-      184 12.627 auto auto 1 0 0;
-      184.8 11.252512 auto auto 1 0 0;
-      185.6 10.148168 auto auto 1 0 0;
-      186.4 9.1258234 auto auto 1 0 0;
-      187.2 7.7277246 auto auto 1 0 0;
-      188 5.4008817 auto auto 1 0 0;
-      188.8 1.5648199 auto auto 1 0 0;
-      189.6 -2.9959815 auto auto 1 0 0;
-      190.4 -4.957339 auto auto 1 0 0;
-      191.2 -3.5072189 auto auto 1 0 0;
-      192 -2.5081509 auto auto 1 0 0;
-      192.8 -2.0281319 auto auto 1 0 0;
-      193.6 -1.0347887 auto auto 1 0 0;
-      194.4 -0.690836 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateY rotateY 4;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 -7.1741405 auto auto 1 0 0;
-      1.6 -7.0768707 auto auto 1 0 0;
-      2.4 -6.8403897 auto auto 1 0 0;
-      3.2 -6.6693189 auto auto 1 0 0;
-      4 -6.5123533 auto auto 1 0 0;
-      4.8 -7.0153223 auto auto 1 0 0;
-      5.6 -8.5111852 auto auto 1 0 0;
-      6.4 -10.829941 auto auto 1 0 0;
-      7.2 -12.398757 auto auto 1 0 0;
-      8 -12.548367 auto auto 1 0 0;
-      8.8 -11.788277 auto auto 1 0 0;
-      9.6 -9.502174 auto auto 1 0 0;
-      10.4 -8.6423624 auto auto 1 0 0;
-      11.2 -8.3182859 auto auto 1 0 0;
-      12 -7.4602656 auto auto 1 0 0;
-      12.8 -6.4889313 auto auto 1 0 0;
-      13.6 -5.5296061 auto auto 1 0 0;
-      14.4 -4.5625726 auto auto 1 0 0;
-      15.2 -3.7083389 auto auto 1 0 0;
-      16 -3.1548514 auto auto 1 0 0;
-      16.8 -2.8661034 auto auto 1 0 0;
-      17.6 -2.3663585 auto auto 1 0 0;
-      18.4 -1.6243105 auto auto 1 0 0;
-      19.2 -1.2256571 auto auto 1 0 0;
-      20 -0.98292528 auto auto 1 0 0;
-      20.8 -0.59175665 auto auto 1 0 0;
-      21.6 -0.37405106 auto auto 1 0 0;
-      22.4 -0.32373841 auto auto 1 0 0;
-      23.2 -0.1236008 auto auto 1 0 0;
-      24 0 auto auto 1 0 0;
-      24.8 -0.12323056 auto auto 1 0 0;
-      25.6 -0.16778265 auto auto 1 0 0;
-      26.4 -0.2055927 auto auto 1 0 0;
-      27.2 -0.038506075 auto auto 1 0 0;
-      28 0.086116708 auto auto 1 0 0;
-      28.8 -0.023994878 auto auto 1 0 0;
-      29.6 -0.082640105 auto auto 1 0 0;
-      30.4 -0.090627214 auto auto 1 0 0;
-      31.2 -0.25290316 auto auto 1 0 0;
-      32 -0.22588529 auto auto 1 0 0;
-      32.8 -0.18613572 auto auto 1 0 0;
-      33.6 -0.30420681 auto auto 1 0 0;
-      34.4 -0.27833176 auto auto 1 0 0;
-      35.2 -0.24821643 auto auto 1 0 0;
-      36 -0.26433898 auto auto 1 0 0;
-      36.8 -0.21324475 auto auto 1 0 0;
-      37.6 -0.23291871 auto auto 1 0 0;
-      38.4 -0.19757401 auto auto 1 0 0;
-      39.2 -0.19465555 auto auto 1 0 0;
-      40 -0.087693014 auto auto 1 0 0;
-      40.8 -0.033417052 auto auto 1 0 0;
-      41.6 -0.18282256 auto auto 1 0 0;
-      42.4 -0.29441157 auto auto 1 0 0;
-      43.2 -0.46580792 auto auto 1 0 0;
-      44 -1.4586001 auto auto 1 0 0;
-      44.8 -3.4422334 auto auto 1 0 0;
-      45.6 -6.3672478 auto auto 1 0 0;
-      46.4 -9.8438798 auto auto 1 0 0;
-      47.2 -12.447857 auto auto 1 0 0;
-      48 -13.940782 auto auto 1 0 0;
-      48.8 -15.32976 auto auto 1 0 0;
-      49.6 -16.214217 auto auto 1 0 0;
-      50.4 -16.592791 auto auto 1 0 0;
-      51.2 -16.745648 auto auto 1 0 0;
-      52 -17.765097 auto auto 1 0 0;
-      52.8 -19.567863 auto auto 1 0 0;
-      53.6 -21.608119 auto auto 1 0 0;
-      54.4 -22.77781 auto auto 1 0 0;
-      55.2 -21.973407 auto auto 1 0 0;
-      56 -20.817901 auto auto 1 0 0;
-      56.8 -20.521882 auto auto 1 0 0;
-      57.6 -22.790913 auto auto 1 0 0;
-      58.4 -23.738712 auto auto 1 0 0;
-      59.2 -26.111099 auto auto 1 0 0;
-      60 -20.758394 auto auto 1 0 0;
-      60.8 -18.669013 auto auto 1 0 0;
-      61.6 -15.165613 auto auto 1 0 0;
-      62.4 -11.606061 auto auto 1 0 0;
-      63.2 -9.4312412 auto auto 1 0 0;
-      64 -9.6922924 auto auto 1 0 0;
-      64.8 -10.628214 auto auto 1 0 0;
-      65.6 -11.092988 auto auto 1 0 0;
-      66.4 -12.646345 auto auto 1 0 0;
-      67.2 -16.964037 auto auto 1 0 0;
-      68 -20.942302 auto auto 1 0 0;
-      68.8 -23.610233 auto auto 1 0 0;
-      69.6 -26.643569 auto auto 1 0 0;
-      70.4 -27.715342 auto auto 1 0 0;
-      71.2 -26.67394 auto auto 1 0 0;
-      72 -26.807897 auto auto 1 0 0;
-      72.8 -28.14691 auto auto 1 0 0;
-      73.6 -27.22517 auto auto 1 0 0;
-      74.4 -27.528184 auto auto 1 0 0;
-      75.2 -31.883718 auto auto 1 0 0;
-      76 -33.120536 auto auto 1 0 0;
-      76.8 -31.449967 auto auto 1 0 0;
-      77.6 -25.97365 auto auto 1 0 0;
-      78.4 -17.199125 auto auto 1 0 0;
-      79.2 -7.7398861 auto auto 1 0 0;
-      80 -0.516685 auto auto 1 0 0;
-      80.8 -7.749379 auto auto 1 0 0;
-      81.6 -22.153055 auto auto 1 0 0;
-      82.4 -26.316547 auto auto 1 0 0;
-      83.2 -22.442794 auto auto 1 0 0;
-      84 -19.96907 auto auto 1 0 0;
-      84.8 -21.06753 auto auto 1 0 0;
-      85.6 -20.165912 auto auto 1 0 0;
-      86.4 -18.00426 auto auto 1 0 0;
-      87.2 -17.145777 auto auto 1 0 0;
-      88 -17.856584 auto auto 1 0 0;
-      88.8 -20.288652 auto auto 1 0 0;
-      89.6 -21.700002 auto auto 1 0 0;
-      90.4 -19.340191 auto auto 1 0 0;
-      91.2 -17.097396 auto auto 1 0 0;
-      92 -17.009831 auto auto 1 0 0;
-      92.8 -18.176273 auto auto 1 0 0;
-      93.6 -14.975882 auto auto 1 0 0;
-      94.4 -11.215423 auto auto 1 0 0;
-      95.2 -10.662535 auto auto 1 0 0;
-      96 -11.089835 auto auto 1 0 0;
-      96.8 -12.299265 auto auto 1 0 0;
-      97.6 -14.418277 auto auto 1 0 0;
-      98.4 -15.736227 auto auto 1 0 0;
-      99.2 -13.410599 auto auto 1 0 0;
-      100 -9.3347136 auto auto 1 0 0;
-      100.8 -12.843387 auto auto 1 0 0;
-      101.6 -20.560588 auto auto 1 0 0;
-      102.4 -13.407949 auto auto 1 0 0;
-      103.2 -11.782848 auto auto 1 0 0;
-      104 -11.648354 auto auto 1 0 0;
-      104.8 -12.595377 auto auto 1 0 0;
-      105.6 -14.195042 auto auto 1 0 0;
-      106.4 -16.662958 auto auto 1 0 0;
-      107.2 -19.194312 auto auto 1 0 0;
-      108 -20.864476 auto auto 1 0 0;
-      108.8 -22.638957 auto auto 1 0 0;
-      109.6 -19.758266 auto auto 1 0 0;
-      110.4 -8.8159909 auto auto 1 0 0;
-      111.2 -12.274946 auto auto 1 0 0;
-      112 -21.448141 auto auto 1 0 0;
-      112.8 -30.596626 auto auto 1 0 0;
-      113.6 -31.993824 auto auto 1 0 0;
-      114.4 -23.908223 auto auto 1 0 0;
-      115.2 -18.942485 auto auto 1 0 0;
-      116 -15.139984 auto auto 1 0 0;
-      116.8 -17.977026 auto auto 1 0 0;
-      117.6 -19.089795 auto auto 1 0 0;
-      118.4 -17.275742 auto auto 1 0 0;
-      119.2 -12.632317 auto auto 1 0 0;
-      120 -11.290665 auto auto 1 0 0;
-      120.8 -11.458916 auto auto 1 0 0;
-      121.6 -11.161161 auto auto 1 0 0;
-      122.4 -9.0570554 auto auto 1 0 0;
-      123.2 -12.892353 auto auto 1 0 0;
-      124 -16.163586 auto auto 1 0 0;
-      124.8 -17.17846 auto auto 1 0 0;
-      125.6 -20.293813 auto auto 1 0 0;
-      126.4 -22.244954 auto auto 1 0 0;
-      127.2 -21.821976 auto auto 1 0 0;
-      128 -20.376772 auto auto 1 0 0;
-      128.8 -1.6085126 auto auto 1 0 0;
-      129.6 -2.2592031 auto auto 1 0 0;
-      130.4 -21.23886 auto auto 1 0 0;
-      131.2 -23.46684 auto auto 1 0 0;
-      132 -20.43464 auto auto 1 0 0;
-      132.8 -24.17408 auto auto 1 0 0;
-      133.6 -19.849708 auto auto 1 0 0;
-      134.4 -18.433951 auto auto 1 0 0;
-      135.2 -20.208513 auto auto 1 0 0;
-      136 -20.627656 auto auto 1 0 0;
-      136.8 -19.307992 auto auto 1 0 0;
-      137.6 -18.351153 auto auto 1 0 0;
-      138.4 -17.45461 auto auto 1 0 0;
-      139.2 -13.57626 auto auto 1 0 0;
-      140 -9.43595 auto auto 1 0 0;
-      140.8 -9.03797 auto auto 1 0 0;
-      141.6 -7.5801186 auto auto 1 0 0;
-      142.4 -6.4085634 auto auto 1 0 0;
-      143.2 -5.3047515 auto auto 1 0 0;
-      144 -11.993549 auto auto 1 0 0;
-      144.8 -20.189186 auto auto 1 0 0;
-      145.6 -23.178459 auto auto 1 0 0;
-      146.4 -23.648706 auto auto 1 0 0;
-      147.2 -23.827801 auto auto 1 0 0;
-      148 -23.991816 auto auto 1 0 0;
-      148.8 -23.51641 auto auto 1 0 0;
-      149.6 -21.858211 auto auto 1 0 0;
-      150.4 -18.733528 auto auto 1 0 0;
-      151.2 -11.527118 auto auto 1 0 0;
-      152 -9.2548452 auto auto 1 0 0;
-      152.8 -9.2991779 auto auto 1 0 0;
-      153.6 -8.3402991 auto auto 1 0 0;
-      154.4 -8.7100626 auto auto 1 0 0;
-      155.2 -9.67402 auto auto 1 0 0;
-      156 -10.42301 auto auto 1 0 0;
-      156.8 -13.44932 auto auto 1 0 0;
-      157.6 -17.28056 auto auto 1 0 0;
-      158.4 -18.62162 auto auto 1 0 0;
-      159.2 -16.06896 auto auto 1 0 0;
-      160 -12.95608 auto auto 1 0 0;
-      160.8 -11.1928 auto auto 1 0 0;
-      161.6 -10.865258 auto auto 1 0 0;
-      162.4 -10.637811 auto auto 1 0 0;
-      163.2 -9.8316103 auto auto 1 0 0;
-      164 -9.8065036 auto auto 1 0 0;
-      164.8 -11.127036 auto auto 1 0 0;
-      165.6 -14.421542 auto auto 1 0 0;
-      166.4 -18.361225 auto auto 1 0 0;
-      167.2 -20.730963 auto auto 1 0 0;
-      168 -21.859811 auto auto 1 0 0;
-      168.8 -20.752772 auto auto 1 0 0;
-      169.6 -20.406355 auto auto 1 0 0;
-      170.4 -20.712621 auto auto 1 0 0;
-      171.2 -20.502376 auto auto 1 0 0;
-      172 -20.26016 auto auto 1 0 0;
-      172.8 -19.670469 auto auto 1 0 0;
-      173.6 -17.571174 auto auto 1 0 0;
-      174.4 -15.191721 auto auto 1 0 0;
-      175.2 -12.270722 auto auto 1 0 0;
-      176 -9.7818509 auto auto 1 0 0;
-      176.8 -7.6547053 auto auto 1 0 0;
-      177.6 -4.567667 auto auto 1 0 0;
-      178.4 -2.1602238 auto auto 1 0 0;
-      179.2 -1.3745617 auto auto 1 0 0;
-      180 -3.2772043 auto auto 1 0 0;
-      180.8 -8.409108 auto auto 1 0 0;
-      181.6 -13.038518 auto auto 1 0 0;
-      182.4 -14.666974 auto auto 1 0 0;
-      183.2 -14.49991 auto auto 1 0 0;
-      184 -13.127546 auto auto 1 0 0;
-      184.8 -10.830312 auto auto 1 0 0;
-      185.6 -8.0048744 auto auto 1 0 0;
-      186.4 -6.0277023 auto auto 1 0 0;
-      187.2 -4.7831823 auto auto 1 0 0;
-      188 -2.8175785 auto auto 1 0 0;
-      188.8 -0.025032667 auto auto 1 0 0;
-      189.6 1.9868346 auto auto 1 0 0;
-      190.4 2.4104175 auto auto 1 0 0;
-      191.2 2.2113257 auto auto 1 0 0;
-      192 2.3620409 auto auto 1 0 0;
-      192.8 1.9684165 auto auto 1 0 0;
-      193.6 0.97242301 auto auto 1 0 0;
-      194.4 0.99085558 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateZ rotateZ 5;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 -1.0865495 auto auto 1 0 0;
-      1.6 -1.0889252 auto auto 1 0 0;
-      2.4 -1.2102005 auto auto 1 0 0;
-      3.2 -1.3377081 auto auto 1 0 0;
-      4 -1.4386617 auto auto 1 0 0;
-      4.8 -1.4824763 auto auto 1 0 0;
-      5.6 -1.3346459 auto auto 1 0 0;
-      6.4 -1.1301145 auto auto 1 0 0;
-      7.2 -1.0924129 auto auto 1 0 0;
-      8 -1.5845073 auto auto 1 0 0;
-      8.8 -2.1005968 auto auto 1 0 0;
-      9.6 -1.9768775 auto auto 1 0 0;
-      10.4 -1.8416979 auto auto 1 0 0;
-      11.2 -1.7715961 auto auto 1 0 0;
-      12 -1.5903329 auto auto 1 0 0;
-      12.8 -1.4026419 auto auto 1 0 0;
-      13.6 -1.2227207 auto auto 1 0 0;
-      14.4 -1.0490231 auto auto 1 0 0;
-      15.2 -0.93458405 auto auto 1 0 0;
-      16 -0.90807743 auto auto 1 0 0;
-      16.8 -0.84748027 auto auto 1 0 0;
-      17.6 -0.68960886 auto auto 1 0 0;
-      18.4 -0.50993491 auto auto 1 0 0;
-      19.2 -0.34195903 auto auto 1 0 0;
-      20 -0.17713711 auto auto 1 0 0;
-      20.8 -0.10629523 auto auto 1 0 0;
-      21.6 -0.026710965 auto auto 1 0 0;
-      22.4 0.01408094 auto auto 1 0 0;
-      23.2 0.038518835 auto auto 1 0 0;
-      24 0 auto auto 1 0 0;
-      24.8 -0.053204472 auto auto 1 0 0;
-      25.6 -0.084074093 auto auto 1 0 0;
-      26.4 -0.077173916 auto auto 1 0 0;
-      27.2 -0.025674961 auto auto 1 0 0;
-      28 0.0099478961 auto auto 1 0 0;
-      28.8 0.021337297 auto auto 1 0 0;
-      29.6 0.027277898 auto auto 1 0 0;
-      30.4 0.026022864 auto auto 1 0 0;
-      31.2 0.0242259 auto auto 1 0 0;
-      32 0.052222642 auto auto 1 0 0;
-      32.8 0.051956738 auto auto 1 0 0;
-      33.6 0.046434458 auto auto 1 0 0;
-      34.4 0.071477328 auto auto 1 0 0;
-      35.2 0.049603392 auto auto 1 0 0;
-      36 0.030283373 auto auto 1 0 0;
-      36.8 0.024875679 auto auto 1 0 0;
-      37.6 0.0055028961 auto auto 1 0 0;
-      38.4 0.0084091862 auto auto 1 0 0;
-      39.2 0.052396034 auto auto 1 0 0;
-      40 0.059315524 auto auto 1 0 0;
-      40.8 0.044858688 auto auto 1 0 0;
-      41.6 0.054714641 auto auto 1 0 0;
-      42.4 0.015302657 auto auto 1 0 0;
-      43.2 -0.04545328 auto auto 1 0 0;
-      44 -0.22406452 auto auto 1 0 0;
-      44.8 -0.60726811 auto auto 1 0 0;
-      45.6 -1.0269772 auto auto 1 0 0;
-      46.4 -1.4527637 auto auto 1 0 0;
-      47.2 -1.8291655 auto auto 1 0 0;
-      48 -2.3212764 auto auto 1 0 0;
-      48.8 -2.8348609 auto auto 1 0 0;
-      49.6 -3.1830263 auto auto 1 0 0;
-      50.4 -3.4409128 auto auto 1 0 0;
-      51.2 -3.6764483 auto auto 1 0 0;
-      52 -3.9235501 auto auto 1 0 0;
-      52.8 -4.1863049 auto auto 1 0 0;
-      53.6 -4.2501664 auto auto 1 0 0;
-      54.4 -3.9492707 auto auto 1 0 0;
-      55.2 -3.4902336 auto auto 1 0 0;
-      56 -3.4002237 auto auto 1 0 0;
-      56.8 -4.2236662 auto auto 1 0 0;
-      57.6 -5.8197405 auto auto 1 0 0;
-      58.4 -6.3207124 auto auto 1 0 0;
-      59.2 -4.8529851 auto auto 1 0 0;
-      60 -3.0529976 auto auto 1 0 0;
-      60.8 -3.0199297 auto auto 1 0 0;
-      61.6 -3.228992 auto auto 1 0 0;
-      62.4 -3.6584964 auto auto 1 0 0;
-      63.2 -4.5163611 auto auto 1 0 0;
-      64 -6.0073936 auto auto 1 0 0;
-      64.8 -7.6247993 auto auto 1 0 0;
-      65.6 -8.6612193 auto auto 1 0 0;
-      66.4 -9.0950476 auto auto 1 0 0;
-      67.2 -9.7251639 auto auto 1 0 0;
-      68 -10.558608 auto auto 1 0 0;
-      68.8 -11.148512 auto auto 1 0 0;
-      69.6 -10.890534 auto auto 1 0 0;
-      70.4 -9.9606926 auto auto 1 0 0;
-      71.2 -9.433791 auto auto 1 0 0;
-      72 -7.795652 auto auto 1 0 0;
-      72.8 -3.908643 auto auto 1 0 0;
-      73.6 -0.42536 auto auto 1 0 0;
-      74.4 1.47496 auto auto 1 0 0;
-      75.2 2.60448 auto auto 1 0 0;
-      76 2.94585 auto auto 1 0 0;
-      76.8 2.38409 auto auto 1 0 0;
-      77.6 1.22561 auto auto 1 0 0;
-      78.4 -0.25476457 auto auto 1 0 0;
-      79.2 -1.3953532 auto auto 1 0 0;
-      80 -1.8818959 auto auto 1 0 0;
-      80.8 -2.3723975 auto auto 1 0 0;
-      81.6 -1.758427 auto auto 1 0 0;
-      82.4 -1.3461018 auto auto 1 0 0;
-      83.2 -0.83998519 auto auto 1 0 0;
-      84 0.47822 auto auto 1 0 0;
-      84.8 2.06314 auto auto 1 0 0;
-      85.6 2.86261 auto auto 1 0 0;
-      86.4 2.00116 auto auto 1 0 0;
-      87.2 -0.038300792 auto auto 1 0 0;
-      88 -3.0307321 auto auto 1 0 0;
-      88.8 -5.4403562 auto auto 1 0 0;
-      89.6 -6.4696364 auto auto 1 0 0;
-      90.4 -6.6138024 auto auto 1 0 0;
-      91.2 -7.4719142 auto auto 1 0 0;
-      92 -8.7279065 auto auto 1 0 0;
-      92.8 -9.4547653 auto auto 1 0 0;
-      93.6 -9.8329905 auto auto 1 0 0;
-      94.4 -10.180779 auto auto 1 0 0;
-      95.2 -9.7078335 auto auto 1 0 0;
-      96 -9.3755489 auto auto 1 0 0;
-      96.8 -9.1753689 auto auto 1 0 0;
-      97.6 -9.2681853 auto auto 1 0 0;
-      98.4 -10.065385 auto auto 1 0 0;
-      99.2 -10.954365 auto auto 1 0 0;
-      100 -11.44063 auto auto 1 0 0;
-      100.8 -11.22874 auto auto 1 0 0;
-      101.6 -8.1572599 auto auto 1 0 0;
-      102.4 -6.0331501 auto auto 1 0 0;
-      103.2 -4.9509197 auto auto 1 0 0;
-      104 -4.0732696 auto auto 1 0 0;
-      104.8 -3.5896615 auto auto 1 0 0;
-      105.6 -3.5229307 auto auto 1 0 0;
-      106.4 -3.676843 auto auto 1 0 0;
-      107.2 -3.9357377 auto auto 1 0 0;
-      108 -4.747303 auto auto 1 0 0;
-      108.8 -6.8788822 auto auto 1 0 0;
-      109.6 -11.223683 auto auto 1 0 0;
-      110.4 -13.29688 auto auto 1 0 0;
-      111.2 -14.034592 auto auto 1 0 0;
-      112 -15.803927 auto auto 1 0 0;
-      112.8 -16.042445 auto auto 1 0 0;
-      113.6 -12.593889 auto auto 1 0 0;
-      114.4 -10.501635 auto auto 1 0 0;
-      115.2 -9.4712002 auto auto 1 0 0;
-      116 -8.6049646 auto auto 1 0 0;
-      116.8 -8.440242 auto auto 1 0 0;
-      117.6 -8.9357998 auto auto 1 0 0;
-      118.4 -9.584733 auto auto 1 0 0;
-      119.2 -10.062702 auto auto 1 0 0;
-      120 -11.338845 auto auto 1 0 0;
-      120.8 -11.823495 auto auto 1 0 0;
-      121.6 -12.069177 auto auto 1 0 0;
-      122.4 -13.037446 auto auto 1 0 0;
-      123.2 -13.351897 auto auto 1 0 0;
-      124 -12.762106 auto auto 1 0 0;
-      124.8 -10.962044 auto auto 1 0 0;
-      125.6 -9.5078212 auto auto 1 0 0;
-      126.4 -8.4661245 auto auto 1 0 0;
-      127.2 -7.5959856 auto auto 1 0 0;
-      128 -6.8541205 auto auto 1 0 0;
-      128.8 -4.4026106 auto auto 1 0 0;
-      129.6 -4.5590197 auto auto 1 0 0;
-      130.4 -4.8560401 auto auto 1 0 0;
-      131.2 -4.10366 auto auto 1 0 0;
-      132 -2.42547 auto auto 1 0 0;
-      132.8 -3.15264 auto auto 1 0 0;
-      133.6 -4.4593687 auto auto 1 0 0;
-      134.4 -4.7124827 auto auto 1 0 0;
-      135.2 -4.4743304 auto auto 1 0 0;
-      136 -4.352399 auto auto 1 0 0;
-      136.8 -3.9611061 auto auto 1 0 0;
-      137.6 -2.4886686 auto auto 1 0 0;
-      138.4 0.39764 auto auto 1 0 0;
-      139.2 2.38471 auto auto 1 0 0;
-      140 1.78951 auto auto 1 0 0;
-      140.8 0.15294 auto auto 1 0 0;
-      141.6 -1.7573743 auto auto 1 0 0;
-      142.4 -4.4874095 auto auto 1 0 0;
-      143.2 -6.6703076 auto auto 1 0 0;
-      144 -8.8026792 auto auto 1 0 0;
-      144.8 -9.8211047 auto auto 1 0 0;
-      145.6 -10.030145 auto auto 1 0 0;
-      146.4 -10.014748 auto auto 1 0 0;
-      147.2 -9.7426638 auto auto 1 0 0;
-      148 -9.5730949 auto auto 1 0 0;
-      148.8 -8.9106221 auto auto 1 0 0;
-      149.6 -6.0039636 auto auto 1 0 0;
-      150.4 -2.6908142 auto auto 1 0 0;
-      151.2 -2.2984329 auto auto 1 0 0;
-      152 -3.0548007 auto auto 1 0 0;
-      152.8 -3.7155728 auto auto 1 0 0;
-      153.6 -4.1828276 auto auto 1 0 0;
-      154.4 -3.3164176 auto auto 1 0 0;
-      155.2 0.35536 auto auto 1 0 0;
-      156 1.11582 auto auto 1 0 0;
-      156.8 0.33811 auto auto 1 0 0;
-      157.6 0.05257 auto auto 1 0 0;
-      158.4 0.2433 auto auto 1 0 0;
-      159.2 0.46456 auto auto 1 0 0;
-      160 0.82478 auto auto 1 0 0;
-      160.8 1.1018 auto auto 1 0 0;
-      161.6 1.092599 auto auto 1 0 0;
-      162.4 0.96624039 auto auto 1 0 0;
-      163.2 0.82229763 auto auto 1 0 0;
-      164 0.52379452 auto auto 1 0 0;
-      164.8 0.078185299 auto auto 1 0 0;
-      165.6 -0.54735069 auto auto 1 0 0;
-      166.4 -1.624776 auto auto 1 0 0;
-      167.2 -2.9095359 auto auto 1 0 0;
-      168 -4.3684757 auto auto 1 0 0;
-      168.8 -5.5739619 auto auto 1 0 0;
-      169.6 -6.0903081 auto auto 1 0 0;
-      170.4 -6.697632 auto auto 1 0 0;
-      171.2 -7.1233313 auto auto 1 0 0;
-      172 -6.8226849 auto auto 1 0 0;
-      172.8 -6.3864791 auto auto 1 0 0;
-      173.6 -5.8048395 auto auto 1 0 0;
-      174.4 -5.085958 auto auto 1 0 0;
-      175.2 -4.5411481 auto auto 1 0 0;
-      176 -4.48204 auto auto 1 0 0;
-      176.8 -5.0216003 auto auto 1 0 0;
-      177.6 -5.6695382 auto auto 1 0 0;
-      178.4 -5.6679354 auto auto 1 0 0;
-      179.2 -5.450232 auto auto 1 0 0;
-      180 -4.9389991 auto auto 1 0 0;
-      180.8 -4.8426041 auto auto 1 0 0;
-      181.6 -4.4186484 auto auto 1 0 0;
-      182.4 -4.1085152 auto auto 1 0 0;
-      183.2 -3.7237668 auto auto 1 0 0;
-      184 -3.3344684 auto auto 1 0 0;
-      184.8 -3.0026217 auto auto 1 0 0;
-      185.6 -2.7419422 auto auto 1 0 0;
-      186.4 -2.5068541 auto auto 1 0 0;
-      187.2 -2.1285617 auto auto 1 0 0;
-      188 -1.4805854 auto auto 1 0 0;
-      188.8 -0.34056389 auto auto 1 0 0;
-      189.6 1.0561487 auto auto 1 0 0;
-      190.4 1.6655327 auto auto 1 0 0;
-      191.2 1.1665512 auto auto 1 0 0;
-      192 0.74945332 auto auto 1 0 0;
-      192.8 0.49793869 auto auto 1 0 0;
-      193.6 0.18587468 auto auto 1 0 0;
-      194.4 0.060002404 auto auto 1 0 0;
     }
   }
 }
@@ -5337,2287 +3156,19 @@ dagNode {
   }
 }
 dagNode {
-  ac_rt_kneeFK 19 3;
-  anim rotate.rotateX rotateX 0;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 399.46574 auto auto 1 0 0;
-      1.6 398.87891 auto auto 1 0 0;
-      2.4 399.02756 auto auto 1 0 0;
-      3.2 398.90658 auto auto 1 0 0;
-      4 398.99004 auto auto 1 0 0;
-      4.8 399.29035 auto auto 1 0 0;
-      5.6 399.431 auto auto 1 0 0;
-      6.4 399.50144 auto auto 1 0 0;
-      7.2 399.69592 auto auto 1 0 0;
-      8 399.97207 auto auto 1 0 0;
-      8.8 400.3871 auto auto 1 0 0;
-      9.6 400.59385 auto auto 1 0 0;
-      10.4 400.51378 auto auto 1 0 0;
-      11.2 400.651 auto auto 1 0 0;
-      12 400.48115 auto auto 1 0 0;
-      12.8 400.32079 auto auto 1 0 0;
-      13.6 400.27934 auto auto 1 0 0;
-      14.4 400.05903 auto auto 1 0 0;
-      15.2 400.11878 auto auto 1 0 0;
-      16 400.20623 auto auto 1 0 0;
-      16.8 400.22798 auto auto 1 0 0;
-      17.6 400.22947 auto auto 1 0 0;
-      18.4 400.17595 auto auto 1 0 0;
-      19.2 400.07896 auto auto 1 0 0;
-      20 399.96331 auto auto 1 0 0;
-      20.8 399.84407 auto auto 1 0 0;
-      21.6 399.78362 auto auto 1 0 0;
-      22.4 399.64366 auto auto 1 0 0;
-      23.2 399.60987 auto auto 1 0 0;
-      24 399.61153 auto auto 1 0 0;
-      24.8 399.56177 auto auto 1 0 0;
-      25.6 399.45896 auto auto 1 0 0;
-      26.4 399.44473 auto auto 1 0 0;
-      27.2 399.5078 auto auto 1 0 0;
-      28 399.6036 auto auto 1 0 0;
-      28.8 399.63137 auto auto 1 0 0;
-      29.6 399.63888 auto auto 1 0 0;
-      30.4 399.60781 auto auto 1 0 0;
-      31.2 399.57994 auto auto 1 0 0;
-      32 399.61035 auto auto 1 0 0;
-      32.8 399.68937 auto auto 1 0 0;
-      33.6 399.71381 auto auto 1 0 0;
-      34.4 399.74888 auto auto 1 0 0;
-      35.2 399.7408 auto auto 1 0 0;
-      36 399.7264 auto auto 1 0 0;
-      36.8 399.77299 auto auto 1 0 0;
-      37.6 399.81493 auto auto 1 0 0;
-      38.4 399.84826 auto auto 1 0 0;
-      39.2 399.92926 auto auto 1 0 0;
-      40 399.97536 auto auto 1 0 0;
-      40.8 399.97045 auto auto 1 0 0;
-      41.6 399.95579 auto auto 1 0 0;
-      42.4 399.9556 auto auto 1 0 0;
-      43.2 399.99385 auto auto 1 0 0;
-      44 400.08311 auto auto 1 0 0;
-      44.8 400.14652 auto auto 1 0 0;
-      45.6 400.24843 auto auto 1 0 0;
-      46.4 400.29019 auto auto 1 0 0;
-      47.2 400.16632 auto auto 1 0 0;
-      48 400.28652 auto auto 1 0 0;
-      48.8 400.90585 auto auto 1 0 0;
-      49.6 402.06034 auto auto 1 0 0;
-      50.4 404.07106 auto auto 1 0 0;
-      51.2 407.37497 auto auto 1 0 0;
-      52 411.22064 auto auto 1 0 0;
-      52.8 413.80924 auto auto 1 0 0;
-      53.6 413.66564 auto auto 1 0 0;
-      54.4 411.25229 auto auto 1 0 0;
-      55.2 409.14911 auto auto 1 0 0;
-      56 408.54045 auto auto 1 0 0;
-      56.8 408.73533 auto auto 1 0 0;
-      57.6 409.26058 auto auto 1 0 0;
-      58.4 410.36556 auto auto 1 0 0;
-      59.2 410.48152 auto auto 1 0 0;
-      60 410.08485 auto auto 1 0 0;
-      60.8 410.30236 auto auto 1 0 0;
-      61.6 410.97404 auto auto 1 0 0;
-      62.4 413.53593 auto auto 1 0 0;
-      63.2 417.09727 auto auto 1 0 0;
-      64 419.86314 auto auto 1 0 0;
-      64.8 420.61453 auto auto 1 0 0;
-      65.6 418.23111 auto auto 1 0 0;
-      66.4 412.9038 auto auto 1 0 0;
-      67.2 405.68727 auto auto 1 0 0;
-      68 400.64672 auto auto 1 0 0;
-      68.8 400.59762 auto auto 1 0 0;
-      69.6 403.20514 auto auto 1 0 0;
-      70.4 407.7768 auto auto 1 0 0;
-      71.2 414.79812 auto auto 1 0 0;
-      72 423.27462 auto auto 1 0 0;
-      72.8 431.54541 auto auto 1 0 0;
-      73.6 438.28337 auto auto 1 0 0;
-      74.4 442.07607 auto auto 1 0 0;
-      75.2 441.35584 auto auto 1 0 0;
-      76 438.32416 auto auto 1 0 0;
-      76.8 433.20797 auto auto 1 0 0;
-      77.6 427.40031 auto auto 1 0 0;
-      78.4 422.07292 auto auto 1 0 0;
-      79.2 418.09442 auto auto 1 0 0;
-      80 415.37568 auto auto 1 0 0;
-      80.8 413.13456 auto auto 1 0 0;
-      81.6 411.80817 auto auto 1 0 0;
-      82.4 411.45969 auto auto 1 0 0;
-      83.2 411.43897 auto auto 1 0 0;
-      84 411.4439 auto auto 1 0 0;
-      84.8 412.32498 auto auto 1 0 0;
-      85.6 413.44185 auto auto 1 0 0;
-      86.4 413.77755 auto auto 1 0 0;
-      87.2 413.70153 auto auto 1 0 0;
-      88 414.10214 auto auto 1 0 0;
-      88.8 415.20105 auto auto 1 0 0;
-      89.6 417.05891 auto auto 1 0 0;
-      90.4 418.32358 auto auto 1 0 0;
-      91.2 417.57768 auto auto 1 0 0;
-      92 418.17633 auto auto 1 0 0;
-      92.8 419.97235 auto auto 1 0 0;
-      93.6 422.28327 auto auto 1 0 0;
-      94.4 425.0284 auto auto 1 0 0;
-      95.2 425.23869 auto auto 1 0 0;
-      96 423.9451 auto auto 1 0 0;
-      96.8 422.45255 auto auto 1 0 0;
-      97.6 422.12969 auto auto 1 0 0;
-      98.4 422.96015 auto auto 1 0 0;
-      99.2 423.98139 auto auto 1 0 0;
-      100 422.54409 auto auto 1 0 0;
-      100.8 417.88969 auto auto 1 0 0;
-      101.6 415.04367 auto auto 1 0 0;
-      102.4 424.57989 auto auto 1 0 0;
-      103.2 441.1506 auto auto 1 0 0;
-      104 451.67853 auto auto 1 0 0;
-      104.8 451.10766 auto auto 1 0 0;
-      105.6 440.8588 auto auto 1 0 0;
-      106.4 423.34357 auto auto 1 0 0;
-      107.2 406.9714 auto auto 1 0 0;
-      108 400.04738 auto auto 1 0 0;
-      108.8 404.18242 auto auto 1 0 0;
-      109.6 416.03737 auto auto 1 0 0;
-      110.4 426.6526 auto auto 1 0 0;
-      111.2 431.19338 auto auto 1 0 0;
-      112 434.94179 auto auto 1 0 0;
-      112.8 443.05328 auto auto 1 0 0;
-      113.6 455.03287 auto auto 1 0 0;
-      114.4 466.67886 auto auto 1 0 0;
-      115.2 471.66825 auto auto 1 0 0;
-      116 470.02966 auto auto 1 0 0;
-      116.8 463.461 auto auto 1 0 0;
-      117.6 456.06702 auto auto 1 0 0;
-      118.4 450.62333 auto auto 1 0 0;
-      119.2 444.69538 auto auto 1 0 0;
-      120 435.01769 auto auto 1 0 0;
-      120.8 421.61791 auto auto 1 0 0;
-      121.6 406.12763 auto auto 1 0 0;
-      122.4 393.96437 auto auto 1 0 0;
-      123.2 390.27296 auto auto 1 0 0;
-      124 395.29377 auto auto 1 0 0;
-      124.8 408.77989 auto auto 1 0 0;
-      125.6 420.86215 auto auto 1 0 0;
-      126.4 427.76667 auto auto 1 0 0;
-      127.2 432.33547 auto auto 1 0 0;
-      128 434.8635 auto auto 1 0 0;
-      128.8 435.94969 auto auto 1 0 0;
-      129.6 437.20589 auto auto 1 0 0;
-      130.4 438.13004 auto auto 1 0 0;
-      131.2 438.24841 auto auto 1 0 0;
-      132 438.60779 auto auto 1 0 0;
-      132.8 438.19116 auto auto 1 0 0;
-      133.6 436.43838 auto auto 1 0 0;
-      134.4 435.17892 auto auto 1 0 0;
-      135.2 435.76091 auto auto 1 0 0;
-      136 436.86758 auto auto 1 0 0;
-      136.8 435.81085 auto auto 1 0 0;
-      137.6 429.96618 auto auto 1 0 0;
-      138.4 419.73566 auto auto 1 0 0;
-      139.2 407.9433 auto auto 1 0 0;
-      140 398.07117 auto auto 1 0 0;
-      140.8 390.33441 auto auto 1 0 0;
-      141.6 381.51251 auto auto 1 0 0;
-      142.4 372.58925 auto auto 1 0 0;
-      143.2 367.03767 auto auto 1 0 0;
-      144 360.401 auto auto 1 0 0;
-      144.8 361.76015 auto auto 1 0 0;
-      145.6 375.62178 auto auto 1 0 0;
-      146.4 386.26104 auto auto 1 0 0;
-      147.2 394.22565 auto auto 1 0 0;
-      148 400.17439 auto auto 1 0 0;
-      148.8 399.74065 auto auto 1 0 0;
-      149.6 395.24238 auto auto 1 0 0;
-      150.4 391.31304 auto auto 1 0 0;
-      151.2 387.3973 auto auto 1 0 0;
-      152 386.32539 auto auto 1 0 0;
-      152.8 387.28023 auto auto 1 0 0;
-      153.6 386.77239 auto auto 1 0 0;
-      154.4 387.25885 auto auto 1 0 0;
-      155.2 389.33171 auto auto 1 0 0;
-      156 392.04554 auto auto 1 0 0;
-      156.8 391.47553 auto auto 1 0 0;
-      157.6 389.24419 auto auto 1 0 0;
-      158.4 390.72486 auto auto 1 0 0;
-      159.2 396.24452 auto auto 1 0 0;
-      160 403.24246 auto auto 1 0 0;
-      160.8 411.71623 auto auto 1 0 0;
-      161.6 419.7842 auto auto 1 0 0;
-      162.4 424.3193 auto auto 1 0 0;
-      163.2 424.36732 auto auto 1 0 0;
-      164 420.26132 auto auto 1 0 0;
-      164.8 413.61565 auto auto 1 0 0;
-      165.6 408.18249 auto auto 1 0 0;
-      166.4 410.29199 auto auto 1 0 0;
-      167.2 415.92838 auto auto 1 0 0;
-      168 418.38189 auto auto 1 0 0;
-      168.8 418.77641 auto auto 1 0 0;
-      169.6 418.46474 auto auto 1 0 0;
-      170.4 417.34566 auto auto 1 0 0;
-      171.2 415.8567 auto auto 1 0 0;
-      172 413.98659 auto auto 1 0 0;
-      172.8 412.12541 auto auto 1 0 0;
-      173.6 410.12853 auto auto 1 0 0;
-      174.4 407.76544 auto auto 1 0 0;
-      175.2 405.31727 auto auto 1 0 0;
-      176 403.02496 auto auto 1 0 0;
-      176.8 401.12637 auto auto 1 0 0;
-      177.6 399.64726 auto auto 1 0 0;
-      178.4 398.45403 auto auto 1 0 0;
-      179.2 397.71206 auto auto 1 0 0;
-      180 397.21151 auto auto 1 0 0;
-      180.8 396.76572 auto auto 1 0 0;
-      181.6 396.46276 auto auto 1 0 0;
-      182.4 396.81941 auto auto 1 0 0;
-      183.2 398.63405 auto auto 1 0 0;
-      184 400.56222 auto auto 1 0 0;
-      184.8 402.55856 auto auto 1 0 0;
-      185.6 403.94114 auto auto 1 0 0;
-      186.4 404.58964 auto auto 1 0 0;
-      187.2 405.06304 auto auto 1 0 0;
-      188 405.06172 auto auto 1 0 0;
-      188.8 404.24162 auto auto 1 0 0;
-      189.6 402.66686 auto auto 1 0 0;
-      190.4 401.17533 auto auto 1 0 0;
-      191.2 400.08094 auto auto 1 0 0;
-      192 399.41854 auto auto 1 0 0;
-      192.8 398.73004 auto auto 1 0 0;
-      193.6 398.75639 auto auto 1 0 0;
-      194.4 399.05756 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateY rotateY 1;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 0.0041475324 auto auto 1 0 0;
-      1.6 0.020096578 auto auto 1 0 0;
-      2.4 0.016169835 auto auto 1 0 0;
-      3.2 0.019371396 auto auto 1 0 0;
-      4 0.017167934 auto auto 1 0 0;
-      4.8 0.0090395154 auto auto 1 0 0;
-      5.6 0.0051248742 auto auto 1 0 0;
-      6.4 0.0031385859 auto auto 1 0 0;
-      7.2 -0.0024353825 auto auto 1 0 0;
-      8 -0.010575287 auto auto 1 0 0;
-      8.8 -0.023306522 auto auto 1 0 0;
-      9.6 -0.029871621 auto auto 1 0 0;
-      10.4 -0.027311293 auto auto 1 0 0;
-      11.2 -0.031712363 auto auto 1 0 0;
-      12 -0.026274546 auto auto 1 0 0;
-      12.8 -0.021232354 auto auto 1 0 0;
-      13.6 -0.019943436 auto auto 1 0 0;
-      14.4 -0.013192929 auto auto 1 0 0;
-      15.2 -0.015007135 auto auto 1 0 0;
-      16 -0.017684423 auto auto 1 0 0;
-      16.8 -0.018354548 auto auto 1 0 0;
-      17.6 -0.018400351 auto auto 1 0 0;
-      18.4 -0.016754416 auto auto 1 0 0;
-      19.2 -0.013796633 auto auto 1 0 0;
-      20 -0.010312728 auto auto 1 0 0;
-      20.8 -0.0067688788 auto auto 1 0 0;
-      21.6 -0.0049911666 auto auto 1 0 0;
-      22.4 -0.00092428148 auto auto 1 0 0;
-      23.2 4.7573736e-05 auto auto 1 0 0;
-      24 0 auto auto 1 0 0;
-      24.8 0.001423835 auto auto 1 0 0;
-      25.6 0.0043389442 auto auto 1 0 0;
-      26.4 0.0047394367 auto auto 1 0 0;
-      27.2 0.0029587235 auto auto 1 0 0;
-      28 0.00022727916 auto auto 1 0 0;
-      28.8 -0.00057039508 auto auto 1 0 0;
-      29.6 -0.00078647945 auto auto 1 0 0;
-      30.4 0.00010670002 auto auto 1 0 0;
-      31.2 0.00090488842 auto auto 1 0 0;
-      32 3.3862387e-05 auto auto 1 0 0;
-      32.8 -0.0022449667 auto auto 1 0 0;
-      33.6 -0.0029542887 auto auto 1 0 0;
-      34.4 -0.0039752847 auto auto 1 0 0;
-      35.2 -0.0037396404 auto auto 1 0 0;
-      36 -0.0033203274 auto auto 1 0 0;
-      36.8 -0.0046798521 auto auto 1 0 0;
-      37.6 -0.0059102656 auto auto 1 0 0;
-      38.4 -0.0068926603 auto auto 1 0 0;
-      39.2 -0.009295395 auto auto 1 0 0;
-      40 -0.010673235 auto auto 1 0 0;
-      40.8 -0.010526342 auto auto 1 0 0;
-      41.6 -0.010087413 auto auto 1 0 0;
-      42.4 -0.010081939 auto auto 1 0 0;
-      43.2 -0.011227932 auto auto 1 0 0;
-      44 -0.013922365 auto auto 1 0 0;
-      44.8 -0.015853497 auto auto 1 0 0;
-      45.6 -0.018986004 auto auto 1 0 0;
-      46.4 -0.0202802 auto auto 1 0 0;
-      47.2 -0.016459496 auto auto 1 0 0;
-      48 -0.0201664 auto auto 1 0 0;
-      48.8 -0.040059464 auto auto 1 0 0;
-      49.6 -0.080684148 auto auto 1 0 0;
-      50.4 -0.16240977 auto auto 1 0 0;
-      51.2 -0.32674922 auto auto 1 0 0;
-      52 -0.56450679 auto auto 1 0 0;
-      52.8 -0.75224257 auto auto 1 0 0;
-      53.6 -0.74125076 auto auto 1 0 0;
-      54.4 -0.5666679 auto auto 1 0 0;
-      55.2 -0.43027097 auto auto 1 0 0;
-      56 -0.3935604 auto auto 1 0 0;
-      56.8 -0.40517906 auto auto 1 0 0;
-      57.6 -0.43712959 auto auto 1 0 0;
-      58.4 -0.50736236 auto auto 1 0 0;
-      59.2 -0.51496991 auto auto 1 0 0;
-      60 -0.48913512 auto auto 1 0 0;
-      60.8 -0.50323702 auto auto 1 0 0;
-      61.6 -0.54777851 auto auto 1 0 0;
-      62.4 -0.73138229 auto auto 1 0 0;
-      63.2 -1.022209 auto auto 1 0 0;
-      64 -1.276048 auto auto 1 0 0;
-      64.8 -1.3491523 auto auto 1 0 0;
-      65.6 -1.1233458 auto auto 1 0 0;
-      66.4 -0.68406857 auto auto 1 0 0;
-      67.2 -0.23815323 auto auto 1 0 0;
-      68 -0.031572825 auto auto 1 0 0;
-      68.8 -0.029991461 auto auto 1 0 0;
-      69.6 -0.12550855 auto auto 1 0 0;
-      70.4 -0.34926654 auto auto 1 0 0;
-      71.2 -0.82975812 auto auto 1 0 0;
-      72 -1.6219318 auto auto 1 0 0;
-      72.8 -2.6037669 auto auto 1 0 0;
-      73.6 -3.5425 auto auto 1 0 0;
-      74.4 -4.1205753 auto auto 1 0 0;
-      75.2 -4.008212 auto auto 1 0 0;
-      76 -3.54853 auto auto 1 0 0;
-      76.8 -2.8243537 auto auto 1 0 0;
-      77.6 -2.0870492 auto auto 1 0 0;
-      78.4 -1.4960244 auto auto 1 0 0;
-      79.2 -1.1109383 auto auto 1 0 0;
-      80 -0.87650233 auto auto 1 0 0;
-      80.8 -0.70119006 auto auto 1 0 0;
-      81.6 -0.60517996 auto auto 1 0 0;
-      82.4 -0.58091866 auto auto 1 0 0;
-      83.2 -0.57948812 auto auto 1 0 0;
-      84 -0.5798282 auto auto 1 0 0;
-      84.8 -0.6418982 auto auto 1 0 0;
-      85.6 -0.72425707 auto auto 1 0 0;
-      86.4 -0.74981089 auto auto 1 0 0;
-      87.2 -0.74399099 auto auto 1 0 0;
-      88 -0.77486865 auto auto 1 0 0;
-      88.8 -0.86225191 auto auto 1 0 0;
-      89.6 -1.0188569 auto auto 1 0 0;
-      90.4 -1.1317714 auto auto 1 0 0;
-      91.2 -1.0645589 auto auto 1 0 0;
-      92 -1.1183632 auto auto 1 0 0;
-      92.8 -1.2865617 auto auto 1 0 0;
-      93.6 -1.5177437 auto auto 1 0 0;
-      94.4 -1.8134945 auto auto 1 0 0;
-      95.2 -1.8370798 auto auto 1 0 0;
-      96 -1.6940783 auto auto 1 0 0;
-      96.8 -1.5353233 auto auto 1 0 0;
-      97.6 -1.5018714 auto auto 1 0 0;
-      98.4 -1.5885601 auto auto 1 0 0;
-      99.2 -1.6980247 auto auto 1 0 0;
-      100 -1.5448676 auto auto 1 0 0;
-      100.8 -1.0924643 auto auto 1 0 0;
-      101.6 -0.84950126 auto auto 1 0 0;
-      102.4 -1.7636325 auto auto 1 0 0;
-      103.2 -3.9764105 auto auto 1 0 0;
-      104 -5.7235026 auto auto 1 0 0;
-      104.8 -5.6231994 auto auto 1 0 0;
-      105.6 -3.9313636 auto auto 1 0 0;
-      106.4 -1.6292906 auto auto 1 0 0;
-      107.2 -0.30468468 auto auto 1 0 0;
-      108 -0.012840693 auto auto 1 0 0;
-      108.8 -0.16734077 auto auto 1 0 0;
-      109.6 -0.93137478 auto auto 1 0 0;
-      110.4 -1.999039 auto auto 1 0 0;
-      111.2 -2.5580204 auto auto 1 0 0;
-      112 -3.0622357 auto auto 1 0 0;
-      112.8 -4.2749101 auto auto 1 0 0;
-      113.6 -6.324078 auto auto 1 0 0;
-      114.4 -8.5307811 auto auto 1 0 0;
-      115.2 -9.5165822 auto auto 1 0 0;
-      116 -9.1910469 auto auto 1 0 0;
-      116.8 -7.9054736 auto auto 1 0 0;
-      117.6 -6.5128814 auto auto 1 0 0;
-      118.4 -5.5385543 auto auto 1 0 0;
-      119.2 -4.5389919 auto auto 1 0 0;
-      120 -3.0728265 auto auto 1 0 0;
-      120.8 -1.4494955 auto auto 1 0 0;
-      121.6 -0.26033463 auto auto 1 0 0;
-      122.4 0.10653619 auto auto 1 0 0;
-      123.2 0.11588781 auto auto 1 0 0;
-      124 0.091482431 auto auto 1 0 0;
-      124.8 -0.40784867 auto auto 1 0 0;
-      125.6 -1.3736211 auto auto 1 0 0;
-      126.4 -2.1307545 auto auto 1 0 0;
-      127.2 -2.7076575 auto auto 1 0 0;
-      128 -3.0513223 auto auto 1 0 0;
-      128.8 -3.20412 auto auto 1 0 0;
-      129.6 -3.38457 auto auto 1 0 0;
-      130.4 -3.51985 auto auto 1 0 0;
-      131.2 -3.53733 auto auto 1 0 0;
-      132 -3.59061 auto auto 1 0 0;
-      132.8 -3.52887 auto auto 1 0 0;
-      133.6 -3.27385 auto auto 1 0 0;
-      134.4 -3.0953821 auto auto 1 0 0;
-      135.2 -3.17734 auto auto 1 0 0;
-      136 -3.33558 auto auto 1 0 0;
-      136.8 -3.18442 auto auto 1 0 0;
-      137.6 -2.4012242 auto auto 1 0 0;
-      138.4 -1.2638213 auto auto 1 0 0;
-      139.2 -0.35875929 auto auto 1 0 0;
-      140 0.040087471 auto auto 1 0 0;
-      140.8 0.11611772 auto auto 1 0 0;
-      141.6 -0.05268 auto auto 1 0 0;
-      142.4 -0.49672 auto auto 1 0 0;
-      143.2 -0.90768 auto auto 1 0 0;
-      144 -1.52886 auto auto 1 0 0;
-      144.8 -1.39045 auto auto 1 0 0;
-      145.6 -0.31545 auto auto 1 0 0;
-      146.4 0.07192 auto auto 1 0 0;
-      147.2 0.10406055 auto auto 1 0 0;
-      148 -0.016709356 auto auto 1 0 0;
-      148.8 -0.0037383497 auto auto 1 0 0;
-      149.6 0.092171875 auto auto 1 0 0;
-      150.4 0.11807833 auto auto 1 0 0;
-      151.2 0.09009 auto auto 1 0 0;
-      152 0.07307 auto auto 1 0 0;
-      152.8 0.08842 auto auto 1 0 0;
-      153.6 0.08066 auto auto 1 0 0;
-      154.4 0.08812 auto auto 1 0 0;
-      155.2 0.11062568 auto auto 1 0 0;
-      156 0.11734881 auto auto 1 0 0;
-      156.8 0.11807772 auto auto 1 0 0;
-      157.6 0.10997958 auto auto 1 0 0;
-      158.4 0.11730111 auto auto 1 0 0;
-      159.2 0.076915626 auto auto 1 0 0;
-      160 -0.1270496 auto auto 1 0 0;
-      160.8 -0.59874123 auto auto 1 0 0;
-      161.6 -1.268472 auto auto 1 0 0;
-      162.4 -1.7349371 auto auto 1 0 0;
-      163.2 -1.7402114 auto auto 1 0 0;
-      164 -1.3145729 auto auto 1 0 0;
-      164.8 -0.73744581 auto auto 1 0 0;
-      165.6 -0.37255852 auto auto 1 0 0;
-      166.4 -0.50256291 auto auto 1 0 0;
-      167.2 -0.92224192 auto auto 1 0 0;
-      168 -1.1371025 auto auto 1 0 0;
-      168.8 -1.1734359 auto auto 1 0 0;
-      169.6 -1.1446906 auto auto 1 0 0;
-      170.4 -1.0440148 auto auto 1 0 0;
-      171.2 -0.91625167 auto auto 1 0 0;
-      172 -0.76590962 auto auto 1 0 0;
-      172.8 -0.62761278 auto auto 1 0 0;
-      173.6 -0.49195265 auto auto 1 0 0;
-      174.4 -0.34862144 auto auto 1 0 0;
-      175.2 -0.22002516 auto auto 1 0 0;
-      176 -0.11815417 auto auto 1 0 0;
-      176.8 -0.047461579 auto auto 1 0 0;
-      177.6 -0.0010272637 auto auto 1 0 0;
-      178.4 0.030897518 auto auto 1 0 0;
-      179.2 0.048250589 auto auto 1 0 0;
-      180 0.058873708 auto auto 1 0 0;
-      180.8 0.067598667 auto auto 1 0 0;
-      181.6 0.073132254 auto auto 1 0 0;
-      182.4 0.066584359 auto auto 1 0 0;
-      183.2 0.026398064 auto auto 1 0 0;
-      184 -0.028856506 auto auto 1 0 0;
-      184.8 -0.099636246 auto auto 1 0 0;
-      185.6 -0.15670815 auto auto 1 0 0;
-      186.4 -0.18573908 auto auto 1 0 0;
-      187.2 -0.20784061 auto auto 1 0 0;
-      188 -0.20777808 auto auto 1 0 0;
-      188.8 -0.16998119 auto auto 1 0 0;
-      189.6 -0.10387056 auto auto 1 0 0;
-      190.4 -0.049129592 auto auto 1 0 0;
-      191.2 -0.013857046 auto auto 1 0 0;
-      192 0.0054745747 auto auto 1 0 0;
-      192.8 0.023951918 auto auto 1 0 0;
-      193.6 0.023274871 auto auto 1 0 0;
-      194.4 0.015367504 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateZ rotateZ 2;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 -0.028988017 auto auto 1 0 0;
-      1.6 -0.14577186 auto auto 1 0 0;
-      2.4 -0.11617556 auto auto 1 0 0;
-      3.2 -0.14026258 auto auto 1 0 0;
-      4 -0.12364414 auto auto 1 0 0;
-      4.8 -0.063875188 auto auto 1 0 0;
-      5.6 -0.035897413 auto auto 1 0 0;
-      6.4 -0.021889505 auto auto 1 0 0;
-      7.2 0.016776621 auto auto 1 0 0;
-      8 0.07164593 auto auto 1 0 0;
-      8.8 0.15403799 auto auto 1 0 0;
-      9.6 0.19504938 auto auto 1 0 0;
-      10.4 0.17916814 auto auto 1 0 0;
-      11.2 0.20638131 auto auto 1 0 0;
-      12 0.17269696 auto auto 1 0 0;
-      12.8 0.14088098 auto auto 1 0 0;
-      13.6 0.13265468 auto auto 1 0 0;
-      14.4 0.088915637 auto auto 1 0 0;
-      15.2 0.10078102 auto auto 1 0 0;
-      16 0.11814203 auto auto 1 0 0;
-      16.8 0.12246028 auto auto 1 0 0;
-      17.6 0.12275487 auto auto 1 0 0;
-      18.4 0.11213135 auto auto 1 0 0;
-      19.2 0.092873875 auto auto 1 0 0;
-      20 0.069906886 auto auto 1 0 0;
-      20.8 0.046217307 auto auto 1 0 0;
-      21.6 0.034205162 auto auto 1 0 0;
-      22.4 0.0063888247 auto auto 1 0 0;
-      23.2 -0.00032937911 auto auto 1 0 0;
-      24 0 auto auto 1 0 0;
-      24.8 -0.0098917734 auto auto 1 0 0;
-      25.6 -0.0303365 auto auto 1 0 0;
-      26.4 -0.033166001 auto auto 1 0 0;
-      27.2 -0.020623659 auto auto 1 0 0;
-      28 -0.0015747996 auto auto 1 0 0;
-      28.8 0.003945833 auto auto 1 0 0;
-      29.6 0.0054379659 auto auto 1 0 0;
-      30.4 -0.00073905173 auto auto 1 0 0;
-      31.2 -0.006279329 auto auto 1 0 0;
-      32 -0.00023416821 auto auto 1 0 0;
-      32.8 0.015474253 auto auto 1 0 0;
-      33.6 0.020332799 auto auto 1 0 0;
-      34.4 0.027301232 auto auto 1 0 0;
-      35.2 0.025695762 auto auto 1 0 0;
-      36 0.022834804 auto auto 1 0 0;
-      36.8 0.032092926 auto auto 1 0 0;
-      37.6 0.040426959 auto auto 1 0 0;
-      38.4 0.04705104 auto auto 1 0 0;
-      39.2 0.063141441 auto auto 1 0 0;
-      40 0.072298883 auto auto 1 0 0;
-      40.8 0.071325026 auto auto 1 0 0;
-      41.6 0.068411547 auto auto 1 0 0;
-      42.4 0.068375145 auto auto 1 0 0;
-      43.2 0.07597136 auto auto 1 0 0;
-      44 0.093697578 auto auto 1 0 0;
-      44.8 0.10628913 auto auto 1 0 0;
-      45.6 0.12651927 auto auto 1 0 0;
-      46.4 0.13480788 auto auto 1 0 0;
-      47.2 0.11021884 auto auto 1 0 0;
-      48 0.13407803 auto auto 1 0 0;
-      48.8 0.25689372 auto auto 1 0 0;
-      49.6 0.48524897 auto auto 1 0 0;
-      50.4 0.88092873 auto auto 1 0 0;
-      51.2 1.5243745 auto auto 1 0 0;
-      52 2.260405 auto auto 1 0 0;
-      52.8 2.7464767 auto auto 1 0 0;
-      53.6 2.7197299 auto auto 1 0 0;
-      54.4 2.2663969 auto auto 1 0 0;
-      55.2 1.8658357 auto auto 1 0 0;
-      56 1.7490402 auto auto 1 0 0;
-      56.8 1.7864774 auto auto 1 0 0;
-      57.6 1.8871869 auto auto 1 0 0;
-      58.4 2.098107 auto auto 1 0 0;
-      59.2 2.1201663 auto auto 1 0 0;
-      60 2.0446514 auto auto 1 0 0;
-      60.8 2.0860817 auto auto 1 0 0;
-      61.6 2.2136873 auto auto 1 0 0;
-      62.4 2.695552 auto auto 1 0 0;
-      63.2 3.3512626 auto auto 1 0 0;
-      64 3.8477344 auto auto 1 0 0;
-      64.8 3.9805083 auto auto 1 0 0;
-      65.6 3.5562168 auto auto 1 0 0;
-      66.4 2.577397 auto auto 1 0 0;
-      67.2 1.1968317 auto auto 1 0 0;
-      68 0.20553262 auto auto 1 0 0;
-      68.8 0.19579797 auto auto 1 0 0;
-      69.6 0.71087007 auto auto 1 0 0;
-      70.4 1.6019848 auto auto 1 0 0;
-      71.2 2.9299293 auto auto 1 0 0;
-      72 4.4428459 auto auto 1 0 0;
-      72.8 5.7943546 auto auto 1 0 0;
-      73.6 6.78431 auto auto 1 0 0;
-      74.4 7.29179 auto auto 1 0 0;
-      75.2 7.19834 auto auto 1 0 0;
-      76 6.78997 auto auto 1 0 0;
-      76.8 6.0485657 auto auto 1 0 0;
-      77.6 5.1342761 auto auto 1 0 0;
-      78.4 4.2355089 auto auto 1 0 0;
-      79.2 3.5316123 auto auto 1 0 0;
-      80 3.0364685 auto auto 1 0 0;
-      80.8 2.6205879 auto auto 1 0 0;
-      81.6 2.3714415 auto auto 1 0 0;
-      82.4 2.3056336 auto auto 1 0 0;
-      83.2 2.301715 auto auto 1 0 0;
-      84 2.302648 auto auto 1 0 0;
-      84.8 2.4687713 auto auto 1 0 0;
-      85.6 2.6779984 auto auto 1 0 0;
-      86.4 2.7405785 auto auto 1 0 0;
-      87.2 2.7264187 auto auto 1 0 0;
-      88 2.8009485 auto auto 1 0 0;
-      88.8 3.0043017 auto auto 1 0 0;
-      89.6 3.3442942 auto auto 1 0 0;
-      90.4 3.572844 auto auto 1 0 0;
-      91.2 3.4383351 auto auto 1 0 0;
-      92 3.5463571 auto auto 1 0 0;
-      92.8 3.867087 auto auto 1 0 0;
-      93.6 4.2719834 auto auto 1 0 0;
-      94.4 4.740731 auto auto 1 0 0;
-      95.2 4.776063 auto auto 1 0 0;
-      96 4.5573983 auto auto 1 0 0;
-      96.8 4.3012816 auto auto 1 0 0;
-      97.6 4.2453561 auto auto 1 0 0;
-      98.4 4.3888336 auto auto 1 0 0;
-      99.2 4.5635748 auto auto 1 0 0;
-      100 4.3171026 auto auto 1 0 0;
-      100.8 3.4947011 auto auto 1 0 0;
-      101.6 2.9752766 auto auto 1 0 0;
-      102.4 4.665095 auto auto 1 0 0;
-      103.2 7.1714538 auto auto 1 0 0;
-      104 8.3982203 auto auto 1 0 0;
-      104.8 8.3400191 auto auto 1 0 0;
-      105.6 7.1330359 auto auto 1 0 0;
-      106.4 4.4546644 auto auto 1 0 0;
-      107.2 1.4462831 auto auto 1 0 0;
-      108 0.086603292 auto auto 1 0 0;
-      108.8 0.90276109 auto auto 1 0 0;
-      109.6 3.1579567 auto auto 1 0 0;
-      110.4 5.0114071 auto auto 1 0 0;
-      111.2 5.7397283 auto auto 1 0 0;
-      112 6.3068808 auto auto 1 0 0;
-      112.8 7.4163522 auto auto 1 0 0;
-      113.6 8.7198644 auto auto 1 0 0;
-      114.4 9.5535935 auto auto 1 0 0;
-      115.2 9.769801 auto auto 1 0 0;
-      116 9.7083747 auto auto 1 0 0;
-      116.8 9.3685339 auto auto 1 0 0;
-      117.6 8.8118943 auto auto 1 0 0;
-      118.4 8.2898589 auto auto 1 0 0;
-      119.2 7.6197452 auto auto 1 0 0;
-      120 6.3180268 auto auto 1 0 0;
-      120.8 4.1563369 auto auto 1 0 0;
-      121.6 1.2825333 auto auto 1 0 0;
-      122.4 -1.1285995 auto auto 1 0 0;
-      123.2 -1.8695923 auto auto 1 0 0;
-      124 -0.86209203 auto auto 1 0 0;
-      124.8 1.7950329 auto auto 1 0 0;
-      125.6 4.0240572 auto auto 1 0 0;
-      126.4 5.1940647 auto auto 1 0 0;
-      127.2 5.915937 auto auto 1 0 0;
-      128 6.295372 auto auto 1 0 0;
-      128.8 6.45377 auto auto 1 0 0;
-      129.6 6.63338 auto auto 1 0 0;
-      130.4 6.76301 auto auto 1 0 0;
-      131.2 6.77946 auto auto 1 0 0;
-      132 6.82918 auto auto 1 0 0;
-      132.8 6.77151 auto auto 1 0 0;
-      133.6 6.5241 auto auto 1 0 0;
-      134.4 6.3416591 auto auto 1 0 0;
-      135.2 6.42644 auto auto 1 0 0;
-      136 6.58539 auto auto 1 0 0;
-      136.8 6.43368 auto auto 1 0 0;
-      137.6 5.5471857 auto auto 1 0 0;
-      138.4 3.8251145 auto auto 1 0 0;
-      139.2 1.6340956 auto auto 1 0 0;
-      140 -0.30676261 auto auto 1 0 0;
-      140.8 -1.8572544 auto auto 1 0 0;
-      141.6 -3.61912 auto auto 1 0 0;
-      142.4 -5.35536 auto auto 1 0 0;
-      143.2 -6.39431 auto auto 1 0 0;
-      144 -7.57889 auto auto 1 0 0;
-      144.8 -7.3421 auto auto 1 0 0;
-      145.6 -4.77302 auto auto 1 0 0;
-      146.4 -2.67381 auto auto 1 0 0;
-      147.2 -1.0761915 auto auto 1 0 0;
-      148 0.11182381 auto auto 1 0 0;
-      148.8 0.025668784 auto auto 1 0 0;
-      149.6 -0.87238322 auto auto 1 0 0;
-      150.4 -1.6607723 auto auto 1 0 0;
-      151.2 -2.44636 auto auto 1 0 0;
-      152 -2.66094 auto auto 1 0 0;
-      152.8 -2.46981 auto auto 1 0 0;
-      153.6 -2.57149 auto auto 1 0 0;
-      154.4 -2.47409 auto auto 1 0 0;
-      155.2 -2.0585027 auto auto 1 0 0;
-      156 -1.5137011 auto auto 1 0 0;
-      156.8 -1.6281476 auto auto 1 0 0;
-      157.6 -2.0760659 auto auto 1 0 0;
-      158.4 -1.7788656 auto auto 1 0 0;
-      159.2 -0.67172879 auto auto 1 0 0;
-      160 0.71821183 auto auto 1 0 0;
-      160.8 2.3540925 auto auto 1 0 0;
-      161.6 3.8337302 auto auto 1 0 0;
-      162.4 4.6209759 auto auto 1 0 0;
-      163.2 4.629117 auto auto 1 0 0;
-      164 3.9182091 auto auto 1 0 0;
-      164.8 2.7104155 auto auto 1 0 0;
-      165.6 1.6801813 auto auto 1 0 0;
-      166.4 2.0841056 auto auto 1 0 0;
-      167.2 3.137989 auto auto 1 0 0;
-      168 3.5833237 auto auto 1 0 0;
-      168.8 3.6540859 auto auto 1 0 0;
-      169.6 3.5982023 auto auto 1 0 0;
-      170.4 3.3963259 auto auto 1 0 0;
-      171.2 3.1248442 auto auto 1 0 0;
-      172 2.7794732 auto auto 1 0 0;
-      172.8 2.4312222 auto auto 1 0 0;
-      173.6 2.0529724 auto auto 1 0 0;
-      174.4 1.5997897 auto auto 1 0 0;
-      175.2 1.1246938 auto auto 1 0 0;
-      176 0.67541624 auto auto 1 0 0;
-      176.8 0.30056987 auto auto 1 0 0;
-      177.6 0.0071022123 auto auto 1 0 0;
-      178.4 -0.23042374 auto auto 1 0 0;
-      179.2 -0.3784247 auto auto 1 0 0;
-      180 -0.4783872 auto auto 1 0 0;
-      180.8 -0.56748534 auto auto 1 0 0;
-      181.6 -0.62807306 auto auto 1 0 0;
-      182.4 -0.5567509 auto auto 1 0 0;
-      183.2 -0.19454953 auto auto 1 0 0;
-      184 0.18877314 auto auto 1 0 0;
-      184.8 0.58354413 auto auto 1 0 0;
-      185.6 0.85544725 auto auto 1 0 0;
-      186.4 0.98251145 auto auto 1 0 0;
-      187.2 1.0750637 auto auto 1 0 0;
-      188 1.0748055 auto auto 1 0 0;
-      188.8 0.9143616 auto auto 1 0 0;
-      189.6 0.60489086 auto auto 1 0 0;
-      190.4 0.31026541 auto auto 1 0 0;
-      191.2 0.093267554 auto auto 1 0 0;
-      192 -0.038375245 auto auto 1 0 0;
-      192.8 -0.17542333 auto auto 1 0 0;
-      193.6 -0.17017439 auto auto 1 0 0;
-      194.4 -0.11020375 auto auto 1 0 0;
-    }
-  }
-}
-dagNode {
-  ac_rt_footFK 20 2;
-  anim scale.scaleX scaleX 0;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 1 auto auto 1 0 0;
-      1.6 1 auto auto 1 0 0;
-      2.4 1 auto auto 1 0 0;
-      3.2 1 auto auto 1 0 0;
-      4 1 auto auto 1 0 0;
-      4.8 1 auto auto 1 0 0;
-      5.6 1 auto auto 1 0 0;
-      6.4 1 auto auto 1 0 0;
-      7.2 1 auto auto 1 0 0;
-      8 1 auto auto 1 0 0;
-      8.8 1 auto auto 1 0 0;
-      9.6 1 auto auto 1 0 0;
-      10.4 1 auto auto 1 0 0;
-      11.2 1 auto auto 1 0 0;
-      12 1 auto auto 1 0 0;
-      12.8 1 auto auto 1 0 0;
-      13.6 1 auto auto 1 0 0;
-      14.4 1 auto auto 1 0 0;
-      15.2 1 auto auto 1 0 0;
-      16 1 auto auto 1 0 0;
-      16.8 1 auto auto 1 0 0;
-      17.6 1 auto auto 1 0 0;
-      18.4 1 auto auto 1 0 0;
-      19.2 1 auto auto 1 0 0;
-      20 1 auto auto 1 0 0;
-      20.8 1 auto auto 1 0 0;
-      21.6 1 auto auto 1 0 0;
-      22.4 1 auto auto 1 0 0;
-      23.2 1 auto auto 1 0 0;
-      24 1 auto auto 1 0 0;
-      24.8 1 auto auto 1 0 0;
-      25.6 1 auto auto 1 0 0;
-      26.4 1 auto auto 1 0 0;
-      27.2 1 auto auto 1 0 0;
-      28 1 auto auto 1 0 0;
-      28.8 1 auto auto 1 0 0;
-      29.6 1 auto auto 1 0 0;
-      30.4 1 auto auto 1 0 0;
-      31.2 1 auto auto 1 0 0;
-      32 1 auto auto 1 0 0;
-      32.8 1 auto auto 1 0 0;
-      33.6 1 auto auto 1 0 0;
-      34.4 1 auto auto 1 0 0;
-      35.2 1 auto auto 1 0 0;
-      36 1 auto auto 1 0 0;
-      36.8 1 auto auto 1 0 0;
-      37.6 1 auto auto 1 0 0;
-      38.4 1 auto auto 1 0 0;
-      39.2 1 auto auto 1 0 0;
-      40 1 auto auto 1 0 0;
-      40.8 1 auto auto 1 0 0;
-      41.6 1 auto auto 1 0 0;
-      42.4 1 auto auto 1 0 0;
-      43.2 1 auto auto 1 0 0;
-      44 1 auto auto 1 0 0;
-      44.8 1 auto auto 1 0 0;
-      45.6 1 auto auto 1 0 0;
-      46.4 1 auto auto 1 0 0;
-      47.2 1 auto auto 1 0 0;
-      48 1 auto auto 1 0 0;
-      48.8 1 auto auto 1 0 0;
-      49.6 1 auto auto 1 0 0;
-      50.4 1 auto auto 1 0 0;
-      51.2 1 auto auto 1 0 0;
-      52 1 auto auto 1 0 0;
-      52.8 1 auto auto 1 0 0;
-      53.6 1 auto auto 1 0 0;
-      54.4 1 auto auto 1 0 0;
-      55.2 1 auto auto 1 0 0;
-      56 1 auto auto 1 0 0;
-      56.8 1 auto auto 1 0 0;
-      57.6 1 auto auto 1 0 0;
-      58.4 1 auto auto 1 0 0;
-      59.2 1 auto auto 1 0 0;
-      60 1 auto auto 1 0 0;
-      60.8 1 auto auto 1 0 0;
-      61.6 1 auto auto 1 0 0;
-      62.4 1 auto auto 1 0 0;
-      63.2 1 auto auto 1 0 0;
-      64 1 auto auto 1 0 0;
-      64.8 1 auto auto 1 0 0;
-      65.6 1 auto auto 1 0 0;
-      66.4 1 auto auto 1 0 0;
-      67.2 1 auto auto 1 0 0;
-      68 1 auto auto 1 0 0;
-      68.8 1 auto auto 1 0 0;
-      69.6 1 auto auto 1 0 0;
-      70.4 1 auto auto 1 0 0;
-      71.2 1 auto auto 1 0 0;
-      72 1 auto auto 1 0 0;
-      72.8 1 auto auto 1 0 0;
-      73.6 1 auto auto 1 0 0;
-      74.4 1 auto auto 1 0 0;
-      75.2 1 auto auto 1 0 0;
-      76 1 auto auto 1 0 0;
-      76.8 1 auto auto 1 0 0;
-      77.6 1 auto auto 1 0 0;
-      78.4 1 auto auto 1 0 0;
-      79.2 1 auto auto 1 0 0;
-      80 1 auto auto 1 0 0;
-      80.8 1 auto auto 1 0 0;
-      81.6 1 auto auto 1 0 0;
-      82.4 1 auto auto 1 0 0;
-      83.2 1 auto auto 1 0 0;
-      84 1 auto auto 1 0 0;
-      84.8 1 auto auto 1 0 0;
-      85.6 1 auto auto 1 0 0;
-      86.4 1 auto auto 1 0 0;
-      87.2 1 auto auto 1 0 0;
-      88 1 auto auto 1 0 0;
-      88.8 1 auto auto 1 0 0;
-      89.6 1 auto auto 1 0 0;
-      90.4 1 auto auto 1 0 0;
-      91.2 1 auto auto 1 0 0;
-      92 1 auto auto 1 0 0;
-      92.8 1 auto auto 1 0 0;
-      93.6 1 auto auto 1 0 0;
-      94.4 1 auto auto 1 0 0;
-      95.2 1 auto auto 1 0 0;
-      96 1 auto auto 1 0 0;
-      96.8 1 auto auto 1 0 0;
-      97.6 1 auto auto 1 0 0;
-      98.4 1 auto auto 1 0 0;
-      99.2 1 auto auto 1 0 0;
-      100 1 auto auto 1 0 0;
-      100.8 1 auto auto 1 0 0;
-      101.6 1 auto auto 1 0 0;
-      102.4 1 auto auto 1 0 0;
-      103.2 1 auto auto 1 0 0;
-      104 1 auto auto 1 0 0;
-      104.8 1 auto auto 1 0 0;
-      105.6 1 auto auto 1 0 0;
-      106.4 1 auto auto 1 0 0;
-      107.2 1 auto auto 1 0 0;
-      108 1 auto auto 1 0 0;
-      108.8 1 auto auto 1 0 0;
-      109.6 1 auto auto 1 0 0;
-      110.4 1 auto auto 1 0 0;
-      111.2 1 auto auto 1 0 0;
-      112 1 auto auto 1 0 0;
-      112.8 1 auto auto 1 0 0;
-      113.6 1 auto auto 1 0 0;
-      114.4 1 auto auto 1 0 0;
-      115.2 1 auto auto 1 0 0;
-      116 1 auto auto 1 0 0;
-      116.8 1 auto auto 1 0 0;
-      117.6 1 auto auto 1 0 0;
-      118.4 1 auto auto 1 0 0;
-      119.2 1 auto auto 1 0 0;
-      120 1 auto auto 1 0 0;
-      120.8 1 auto auto 1 0 0;
-      121.6 1 auto auto 1 0 0;
-      122.4 1 auto auto 1 0 0;
-      123.2 1 auto auto 1 0 0;
-      124 1 auto auto 1 0 0;
-      124.8 1 auto auto 1 0 0;
-      125.6 1 auto auto 1 0 0;
-      126.4 1 auto auto 1 0 0;
-      127.2 1 auto auto 1 0 0;
-      128 1 auto auto 1 0 0;
-      128.8 1 auto auto 1 0 0;
-      129.6 1 auto auto 1 0 0;
-      130.4 1 auto auto 1 0 0;
-      131.2 1 auto auto 1 0 0;
-      132 1 auto auto 1 0 0;
-      132.8 1 auto auto 1 0 0;
-      133.6 1 auto auto 1 0 0;
-      134.4 1 auto auto 1 0 0;
-      135.2 1 auto auto 1 0 0;
-      136 1 auto auto 1 0 0;
-      136.8 1 auto auto 1 0 0;
-      137.6 1 auto auto 1 0 0;
-      138.4 1 auto auto 1 0 0;
-      139.2 1 auto auto 1 0 0;
-      140 1 auto auto 1 0 0;
-      140.8 1 auto auto 1 0 0;
-      141.6 1 auto auto 1 0 0;
-      142.4 1 auto auto 1 0 0;
-      143.2 1 auto auto 1 0 0;
-      144 1 auto auto 1 0 0;
-      144.8 1 auto auto 1 0 0;
-      145.6 1 auto auto 1 0 0;
-      146.4 1 auto auto 1 0 0;
-      147.2 1 auto auto 1 0 0;
-      148 1 auto auto 1 0 0;
-      148.8 1 auto auto 1 0 0;
-      149.6 1 auto auto 1 0 0;
-      150.4 1 auto auto 1 0 0;
-      151.2 1 auto auto 1 0 0;
-      152 1 auto auto 1 0 0;
-      152.8 1 auto auto 1 0 0;
-      153.6 1 auto auto 1 0 0;
-      154.4 1 auto auto 1 0 0;
-      155.2 1 auto auto 1 0 0;
-      156 1 auto auto 1 0 0;
-      156.8 1 auto auto 1 0 0;
-      157.6 1 auto auto 1 0 0;
-      158.4 1 auto auto 1 0 0;
-      159.2 1 auto auto 1 0 0;
-      160 1 auto auto 1 0 0;
-      160.8 1 auto auto 1 0 0;
-      161.6 1 auto auto 1 0 0;
-      162.4 1 auto auto 1 0 0;
-      163.2 1 auto auto 1 0 0;
-      164 1 auto auto 1 0 0;
-      164.8 1 auto auto 1 0 0;
-      165.6 1 auto auto 1 0 0;
-      166.4 1 auto auto 1 0 0;
-      167.2 1 auto auto 1 0 0;
-      168 1 auto auto 1 0 0;
-      168.8 1 auto auto 1 0 0;
-      169.6 1 auto auto 1 0 0;
-      170.4 1 auto auto 1 0 0;
-      171.2 1 auto auto 1 0 0;
-      172 1 auto auto 1 0 0;
-      172.8 1 auto auto 1 0 0;
-      173.6 1 auto auto 1 0 0;
-      174.4 1 auto auto 1 0 0;
-      175.2 1 auto auto 1 0 0;
-      176 1 auto auto 1 0 0;
-      176.8 1 auto auto 1 0 0;
-      177.6 1 auto auto 1 0 0;
-      178.4 1 auto auto 1 0 0;
-      179.2 1 auto auto 1 0 0;
-      180 1 auto auto 1 0 0;
-      180.8 1 auto auto 1 0 0;
-      181.6 1 auto auto 1 0 0;
-      182.4 1 auto auto 1 0 0;
-      183.2 1 auto auto 1 0 0;
-      184 1 auto auto 1 0 0;
-      184.8 1 auto auto 1 0 0;
-      185.6 1 auto auto 1 0 0;
-      186.4 1 auto auto 1 0 0;
-      187.2 1 auto auto 1 0 0;
-      188 1 auto auto 1 0 0;
-      188.8 1 auto auto 1 0 0;
-      189.6 1 auto auto 1 0 0;
-      190.4 1 auto auto 1 0 0;
-      191.2 1 auto auto 1 0 0;
-      192 1 auto auto 1 0 0;
-      192.8 1 auto auto 1 0 0;
-      193.6 1 auto auto 1 0 0;
-      194.4 1 auto auto 1 0 0;
-    }
-  }
-  anim scale.scaleY scaleY 1;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 1 auto auto 1 0 0;
-      1.6 1 auto auto 1 0 0;
-      2.4 1 auto auto 1 0 0;
-      3.2 1 auto auto 1 0 0;
-      4 1 auto auto 1 0 0;
-      4.8 1 auto auto 1 0 0;
-      5.6 1 auto auto 1 0 0;
-      6.4 1 auto auto 1 0 0;
-      7.2 1 auto auto 1 0 0;
-      8 1 auto auto 1 0 0;
-      8.8 1 auto auto 1 0 0;
-      9.6 1 auto auto 1 0 0;
-      10.4 1 auto auto 1 0 0;
-      11.2 1 auto auto 1 0 0;
-      12 1 auto auto 1 0 0;
-      12.8 1 auto auto 1 0 0;
-      13.6 1 auto auto 1 0 0;
-      14.4 1 auto auto 1 0 0;
-      15.2 1 auto auto 1 0 0;
-      16 1 auto auto 1 0 0;
-      16.8 1 auto auto 1 0 0;
-      17.6 1 auto auto 1 0 0;
-      18.4 1 auto auto 1 0 0;
-      19.2 1 auto auto 1 0 0;
-      20 1 auto auto 1 0 0;
-      20.8 1 auto auto 1 0 0;
-      21.6 1 auto auto 1 0 0;
-      22.4 1 auto auto 1 0 0;
-      23.2 1 auto auto 1 0 0;
-      24 1 auto auto 1 0 0;
-      24.8 1 auto auto 1 0 0;
-      25.6 1 auto auto 1 0 0;
-      26.4 1 auto auto 1 0 0;
-      27.2 1 auto auto 1 0 0;
-      28 1 auto auto 1 0 0;
-      28.8 1 auto auto 1 0 0;
-      29.6 1 auto auto 1 0 0;
-      30.4 1 auto auto 1 0 0;
-      31.2 1 auto auto 1 0 0;
-      32 1 auto auto 1 0 0;
-      32.8 1 auto auto 1 0 0;
-      33.6 1 auto auto 1 0 0;
-      34.4 1 auto auto 1 0 0;
-      35.2 1 auto auto 1 0 0;
-      36 1 auto auto 1 0 0;
-      36.8 1 auto auto 1 0 0;
-      37.6 1 auto auto 1 0 0;
-      38.4 1 auto auto 1 0 0;
-      39.2 1 auto auto 1 0 0;
-      40 1 auto auto 1 0 0;
-      40.8 1 auto auto 1 0 0;
-      41.6 1 auto auto 1 0 0;
-      42.4 1 auto auto 1 0 0;
-      43.2 1 auto auto 1 0 0;
-      44 1 auto auto 1 0 0;
-      44.8 1 auto auto 1 0 0;
-      45.6 1 auto auto 1 0 0;
-      46.4 1 auto auto 1 0 0;
-      47.2 1 auto auto 1 0 0;
-      48 1 auto auto 1 0 0;
-      48.8 1 auto auto 1 0 0;
-      49.6 1 auto auto 1 0 0;
-      50.4 1 auto auto 1 0 0;
-      51.2 1 auto auto 1 0 0;
-      52 1 auto auto 1 0 0;
-      52.8 1 auto auto 1 0 0;
-      53.6 1 auto auto 1 0 0;
-      54.4 1 auto auto 1 0 0;
-      55.2 1 auto auto 1 0 0;
-      56 1 auto auto 1 0 0;
-      56.8 1 auto auto 1 0 0;
-      57.6 1 auto auto 1 0 0;
-      58.4 1 auto auto 1 0 0;
-      59.2 1 auto auto 1 0 0;
-      60 1 auto auto 1 0 0;
-      60.8 1 auto auto 1 0 0;
-      61.6 1 auto auto 1 0 0;
-      62.4 1 auto auto 1 0 0;
-      63.2 1 auto auto 1 0 0;
-      64 1 auto auto 1 0 0;
-      64.8 1 auto auto 1 0 0;
-      65.6 1 auto auto 1 0 0;
-      66.4 1 auto auto 1 0 0;
-      67.2 1 auto auto 1 0 0;
-      68 1 auto auto 1 0 0;
-      68.8 1 auto auto 1 0 0;
-      69.6 1 auto auto 1 0 0;
-      70.4 1 auto auto 1 0 0;
-      71.2 1 auto auto 1 0 0;
-      72 1 auto auto 1 0 0;
-      72.8 1 auto auto 1 0 0;
-      73.6 1 auto auto 1 0 0;
-      74.4 1 auto auto 1 0 0;
-      75.2 1 auto auto 1 0 0;
-      76 1 auto auto 1 0 0;
-      76.8 1 auto auto 1 0 0;
-      77.6 1 auto auto 1 0 0;
-      78.4 1 auto auto 1 0 0;
-      79.2 1 auto auto 1 0 0;
-      80 1 auto auto 1 0 0;
-      80.8 1 auto auto 1 0 0;
-      81.6 1 auto auto 1 0 0;
-      82.4 1 auto auto 1 0 0;
-      83.2 1 auto auto 1 0 0;
-      84 1 auto auto 1 0 0;
-      84.8 1 auto auto 1 0 0;
-      85.6 1 auto auto 1 0 0;
-      86.4 1 auto auto 1 0 0;
-      87.2 1 auto auto 1 0 0;
-      88 1 auto auto 1 0 0;
-      88.8 1 auto auto 1 0 0;
-      89.6 1 auto auto 1 0 0;
-      90.4 1 auto auto 1 0 0;
-      91.2 1 auto auto 1 0 0;
-      92 1 auto auto 1 0 0;
-      92.8 1 auto auto 1 0 0;
-      93.6 1 auto auto 1 0 0;
-      94.4 1 auto auto 1 0 0;
-      95.2 1 auto auto 1 0 0;
-      96 1 auto auto 1 0 0;
-      96.8 1 auto auto 1 0 0;
-      97.6 1 auto auto 1 0 0;
-      98.4 1 auto auto 1 0 0;
-      99.2 1 auto auto 1 0 0;
-      100 1 auto auto 1 0 0;
-      100.8 1 auto auto 1 0 0;
-      101.6 1 auto auto 1 0 0;
-      102.4 1 auto auto 1 0 0;
-      103.2 1 auto auto 1 0 0;
-      104 1 auto auto 1 0 0;
-      104.8 1 auto auto 1 0 0;
-      105.6 1 auto auto 1 0 0;
-      106.4 1 auto auto 1 0 0;
-      107.2 1 auto auto 1 0 0;
-      108 1 auto auto 1 0 0;
-      108.8 1 auto auto 1 0 0;
-      109.6 1 auto auto 1 0 0;
-      110.4 1 auto auto 1 0 0;
-      111.2 1 auto auto 1 0 0;
-      112 1 auto auto 1 0 0;
-      112.8 1 auto auto 1 0 0;
-      113.6 1 auto auto 1 0 0;
-      114.4 1 auto auto 1 0 0;
-      115.2 1 auto auto 1 0 0;
-      116 1 auto auto 1 0 0;
-      116.8 1 auto auto 1 0 0;
-      117.6 1 auto auto 1 0 0;
-      118.4 1 auto auto 1 0 0;
-      119.2 1 auto auto 1 0 0;
-      120 1 auto auto 1 0 0;
-      120.8 1 auto auto 1 0 0;
-      121.6 1 auto auto 1 0 0;
-      122.4 1 auto auto 1 0 0;
-      123.2 1 auto auto 1 0 0;
-      124 1 auto auto 1 0 0;
-      124.8 1 auto auto 1 0 0;
-      125.6 1 auto auto 1 0 0;
-      126.4 1 auto auto 1 0 0;
-      127.2 1 auto auto 1 0 0;
-      128 1 auto auto 1 0 0;
-      128.8 1 auto auto 1 0 0;
-      129.6 1 auto auto 1 0 0;
-      130.4 1 auto auto 1 0 0;
-      131.2 1 auto auto 1 0 0;
-      132 1 auto auto 1 0 0;
-      132.8 1 auto auto 1 0 0;
-      133.6 1 auto auto 1 0 0;
-      134.4 1 auto auto 1 0 0;
-      135.2 1 auto auto 1 0 0;
-      136 1 auto auto 1 0 0;
-      136.8 1 auto auto 1 0 0;
-      137.6 1 auto auto 1 0 0;
-      138.4 1 auto auto 1 0 0;
-      139.2 1 auto auto 1 0 0;
-      140 1 auto auto 1 0 0;
-      140.8 1 auto auto 1 0 0;
-      141.6 1 auto auto 1 0 0;
-      142.4 1 auto auto 1 0 0;
-      143.2 1 auto auto 1 0 0;
-      144 1 auto auto 1 0 0;
-      144.8 1 auto auto 1 0 0;
-      145.6 1 auto auto 1 0 0;
-      146.4 1 auto auto 1 0 0;
-      147.2 1 auto auto 1 0 0;
-      148 1 auto auto 1 0 0;
-      148.8 1 auto auto 1 0 0;
-      149.6 1 auto auto 1 0 0;
-      150.4 1 auto auto 1 0 0;
-      151.2 1 auto auto 1 0 0;
-      152 1 auto auto 1 0 0;
-      152.8 1 auto auto 1 0 0;
-      153.6 1 auto auto 1 0 0;
-      154.4 1 auto auto 1 0 0;
-      155.2 1 auto auto 1 0 0;
-      156 1 auto auto 1 0 0;
-      156.8 1 auto auto 1 0 0;
-      157.6 1 auto auto 1 0 0;
-      158.4 1 auto auto 1 0 0;
-      159.2 1 auto auto 1 0 0;
-      160 1 auto auto 1 0 0;
-      160.8 1 auto auto 1 0 0;
-      161.6 1 auto auto 1 0 0;
-      162.4 1 auto auto 1 0 0;
-      163.2 1 auto auto 1 0 0;
-      164 1 auto auto 1 0 0;
-      164.8 1 auto auto 1 0 0;
-      165.6 1 auto auto 1 0 0;
-      166.4 1 auto auto 1 0 0;
-      167.2 1 auto auto 1 0 0;
-      168 1 auto auto 1 0 0;
-      168.8 1 auto auto 1 0 0;
-      169.6 1 auto auto 1 0 0;
-      170.4 1 auto auto 1 0 0;
-      171.2 1 auto auto 1 0 0;
-      172 1 auto auto 1 0 0;
-      172.8 1 auto auto 1 0 0;
-      173.6 1 auto auto 1 0 0;
-      174.4 1 auto auto 1 0 0;
-      175.2 1 auto auto 1 0 0;
-      176 1 auto auto 1 0 0;
-      176.8 1 auto auto 1 0 0;
-      177.6 1 auto auto 1 0 0;
-      178.4 1 auto auto 1 0 0;
-      179.2 1 auto auto 1 0 0;
-      180 1 auto auto 1 0 0;
-      180.8 1 auto auto 1 0 0;
-      181.6 1 auto auto 1 0 0;
-      182.4 1 auto auto 1 0 0;
-      183.2 1 auto auto 1 0 0;
-      184 1 auto auto 1 0 0;
-      184.8 1 auto auto 1 0 0;
-      185.6 1 auto auto 1 0 0;
-      186.4 1 auto auto 1 0 0;
-      187.2 1 auto auto 1 0 0;
-      188 1 auto auto 1 0 0;
-      188.8 1 auto auto 1 0 0;
-      189.6 1 auto auto 1 0 0;
-      190.4 1 auto auto 1 0 0;
-      191.2 1 auto auto 1 0 0;
-      192 1 auto auto 1 0 0;
-      192.8 1 auto auto 1 0 0;
-      193.6 1 auto auto 1 0 0;
-      194.4 1 auto auto 1 0 0;
-    }
-  }
-  anim scale.scaleZ scaleZ 2;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 1 auto auto 1 0 0;
-      1.6 1 auto auto 1 0 0;
-      2.4 1 auto auto 1 0 0;
-      3.2 1 auto auto 1 0 0;
-      4 1 auto auto 1 0 0;
-      4.8 1 auto auto 1 0 0;
-      5.6 1 auto auto 1 0 0;
-      6.4 1 auto auto 1 0 0;
-      7.2 1 auto auto 1 0 0;
-      8 1 auto auto 1 0 0;
-      8.8 1 auto auto 1 0 0;
-      9.6 1 auto auto 1 0 0;
-      10.4 1 auto auto 1 0 0;
-      11.2 1 auto auto 1 0 0;
-      12 1 auto auto 1 0 0;
-      12.8 1 auto auto 1 0 0;
-      13.6 1 auto auto 1 0 0;
-      14.4 1 auto auto 1 0 0;
-      15.2 1 auto auto 1 0 0;
-      16 1 auto auto 1 0 0;
-      16.8 1 auto auto 1 0 0;
-      17.6 1 auto auto 1 0 0;
-      18.4 1 auto auto 1 0 0;
-      19.2 1 auto auto 1 0 0;
-      20 1 auto auto 1 0 0;
-      20.8 1 auto auto 1 0 0;
-      21.6 1 auto auto 1 0 0;
-      22.4 1 auto auto 1 0 0;
-      23.2 1 auto auto 1 0 0;
-      24 1 auto auto 1 0 0;
-      24.8 1 auto auto 1 0 0;
-      25.6 1 auto auto 1 0 0;
-      26.4 1 auto auto 1 0 0;
-      27.2 1 auto auto 1 0 0;
-      28 1 auto auto 1 0 0;
-      28.8 1 auto auto 1 0 0;
-      29.6 1 auto auto 1 0 0;
-      30.4 1 auto auto 1 0 0;
-      31.2 1 auto auto 1 0 0;
-      32 1 auto auto 1 0 0;
-      32.8 1 auto auto 1 0 0;
-      33.6 1 auto auto 1 0 0;
-      34.4 1 auto auto 1 0 0;
-      35.2 1 auto auto 1 0 0;
-      36 1 auto auto 1 0 0;
-      36.8 1 auto auto 1 0 0;
-      37.6 1 auto auto 1 0 0;
-      38.4 1 auto auto 1 0 0;
-      39.2 1 auto auto 1 0 0;
-      40 1 auto auto 1 0 0;
-      40.8 1 auto auto 1 0 0;
-      41.6 1 auto auto 1 0 0;
-      42.4 1 auto auto 1 0 0;
-      43.2 1 auto auto 1 0 0;
-      44 1 auto auto 1 0 0;
-      44.8 1 auto auto 1 0 0;
-      45.6 1 auto auto 1 0 0;
-      46.4 1 auto auto 1 0 0;
-      47.2 1 auto auto 1 0 0;
-      48 1 auto auto 1 0 0;
-      48.8 1 auto auto 1 0 0;
-      49.6 1 auto auto 1 0 0;
-      50.4 1 auto auto 1 0 0;
-      51.2 1 auto auto 1 0 0;
-      52 1 auto auto 1 0 0;
-      52.8 1 auto auto 1 0 0;
-      53.6 1 auto auto 1 0 0;
-      54.4 1 auto auto 1 0 0;
-      55.2 1 auto auto 1 0 0;
-      56 1 auto auto 1 0 0;
-      56.8 1 auto auto 1 0 0;
-      57.6 1 auto auto 1 0 0;
-      58.4 1 auto auto 1 0 0;
-      59.2 1 auto auto 1 0 0;
-      60 1 auto auto 1 0 0;
-      60.8 1 auto auto 1 0 0;
-      61.6 1 auto auto 1 0 0;
-      62.4 1 auto auto 1 0 0;
-      63.2 1 auto auto 1 0 0;
-      64 1 auto auto 1 0 0;
-      64.8 1 auto auto 1 0 0;
-      65.6 1 auto auto 1 0 0;
-      66.4 1 auto auto 1 0 0;
-      67.2 1 auto auto 1 0 0;
-      68 1 auto auto 1 0 0;
-      68.8 1 auto auto 1 0 0;
-      69.6 1 auto auto 1 0 0;
-      70.4 1 auto auto 1 0 0;
-      71.2 1 auto auto 1 0 0;
-      72 1 auto auto 1 0 0;
-      72.8 1 auto auto 1 0 0;
-      73.6 1 auto auto 1 0 0;
-      74.4 1 auto auto 1 0 0;
-      75.2 1 auto auto 1 0 0;
-      76 1 auto auto 1 0 0;
-      76.8 1 auto auto 1 0 0;
-      77.6 1 auto auto 1 0 0;
-      78.4 1 auto auto 1 0 0;
-      79.2 1 auto auto 1 0 0;
-      80 1 auto auto 1 0 0;
-      80.8 1 auto auto 1 0 0;
-      81.6 1 auto auto 1 0 0;
-      82.4 1 auto auto 1 0 0;
-      83.2 1 auto auto 1 0 0;
-      84 1 auto auto 1 0 0;
-      84.8 1 auto auto 1 0 0;
-      85.6 1 auto auto 1 0 0;
-      86.4 1 auto auto 1 0 0;
-      87.2 1 auto auto 1 0 0;
-      88 1 auto auto 1 0 0;
-      88.8 1 auto auto 1 0 0;
-      89.6 1 auto auto 1 0 0;
-      90.4 1 auto auto 1 0 0;
-      91.2 1 auto auto 1 0 0;
-      92 1 auto auto 1 0 0;
-      92.8 1 auto auto 1 0 0;
-      93.6 1 auto auto 1 0 0;
-      94.4 1 auto auto 1 0 0;
-      95.2 1 auto auto 1 0 0;
-      96 1 auto auto 1 0 0;
-      96.8 1 auto auto 1 0 0;
-      97.6 1 auto auto 1 0 0;
-      98.4 1 auto auto 1 0 0;
-      99.2 1 auto auto 1 0 0;
-      100 1 auto auto 1 0 0;
-      100.8 1 auto auto 1 0 0;
-      101.6 1 auto auto 1 0 0;
-      102.4 1 auto auto 1 0 0;
-      103.2 1 auto auto 1 0 0;
-      104 1 auto auto 1 0 0;
-      104.8 1 auto auto 1 0 0;
-      105.6 1 auto auto 1 0 0;
-      106.4 1 auto auto 1 0 0;
-      107.2 1 auto auto 1 0 0;
-      108 1 auto auto 1 0 0;
-      108.8 1 auto auto 1 0 0;
-      109.6 1 auto auto 1 0 0;
-      110.4 1 auto auto 1 0 0;
-      111.2 1 auto auto 1 0 0;
-      112 1 auto auto 1 0 0;
-      112.8 1 auto auto 1 0 0;
-      113.6 1 auto auto 1 0 0;
-      114.4 1 auto auto 1 0 0;
-      115.2 1 auto auto 1 0 0;
-      116 1 auto auto 1 0 0;
-      116.8 1 auto auto 1 0 0;
-      117.6 1 auto auto 1 0 0;
-      118.4 1 auto auto 1 0 0;
-      119.2 1 auto auto 1 0 0;
-      120 1 auto auto 1 0 0;
-      120.8 1 auto auto 1 0 0;
-      121.6 1 auto auto 1 0 0;
-      122.4 1 auto auto 1 0 0;
-      123.2 1 auto auto 1 0 0;
-      124 1 auto auto 1 0 0;
-      124.8 1 auto auto 1 0 0;
-      125.6 1 auto auto 1 0 0;
-      126.4 1 auto auto 1 0 0;
-      127.2 1 auto auto 1 0 0;
-      128 1 auto auto 1 0 0;
-      128.8 1 auto auto 1 0 0;
-      129.6 1 auto auto 1 0 0;
-      130.4 1 auto auto 1 0 0;
-      131.2 1 auto auto 1 0 0;
-      132 1 auto auto 1 0 0;
-      132.8 1 auto auto 1 0 0;
-      133.6 1 auto auto 1 0 0;
-      134.4 1 auto auto 1 0 0;
-      135.2 1 auto auto 1 0 0;
-      136 1 auto auto 1 0 0;
-      136.8 1 auto auto 1 0 0;
-      137.6 1 auto auto 1 0 0;
-      138.4 1 auto auto 1 0 0;
-      139.2 1 auto auto 1 0 0;
-      140 1 auto auto 1 0 0;
-      140.8 1 auto auto 1 0 0;
-      141.6 1 auto auto 1 0 0;
-      142.4 1 auto auto 1 0 0;
-      143.2 1 auto auto 1 0 0;
-      144 1 auto auto 1 0 0;
-      144.8 1 auto auto 1 0 0;
-      145.6 1 auto auto 1 0 0;
-      146.4 1 auto auto 1 0 0;
-      147.2 1 auto auto 1 0 0;
-      148 1 auto auto 1 0 0;
-      148.8 1 auto auto 1 0 0;
-      149.6 1 auto auto 1 0 0;
-      150.4 1 auto auto 1 0 0;
-      151.2 1 auto auto 1 0 0;
-      152 1 auto auto 1 0 0;
-      152.8 1 auto auto 1 0 0;
-      153.6 1 auto auto 1 0 0;
-      154.4 1 auto auto 1 0 0;
-      155.2 1 auto auto 1 0 0;
-      156 1 auto auto 1 0 0;
-      156.8 1 auto auto 1 0 0;
-      157.6 1 auto auto 1 0 0;
-      158.4 1 auto auto 1 0 0;
-      159.2 1 auto auto 1 0 0;
-      160 1 auto auto 1 0 0;
-      160.8 1 auto auto 1 0 0;
-      161.6 1 auto auto 1 0 0;
-      162.4 1 auto auto 1 0 0;
-      163.2 1 auto auto 1 0 0;
-      164 1 auto auto 1 0 0;
-      164.8 1 auto auto 1 0 0;
-      165.6 1 auto auto 1 0 0;
-      166.4 1 auto auto 1 0 0;
-      167.2 1 auto auto 1 0 0;
-      168 1 auto auto 1 0 0;
-      168.8 1 auto auto 1 0 0;
-      169.6 1 auto auto 1 0 0;
-      170.4 1 auto auto 1 0 0;
-      171.2 1 auto auto 1 0 0;
-      172 1 auto auto 1 0 0;
-      172.8 1 auto auto 1 0 0;
-      173.6 1 auto auto 1 0 0;
-      174.4 1 auto auto 1 0 0;
-      175.2 1 auto auto 1 0 0;
-      176 1 auto auto 1 0 0;
-      176.8 1 auto auto 1 0 0;
-      177.6 1 auto auto 1 0 0;
-      178.4 1 auto auto 1 0 0;
-      179.2 1 auto auto 1 0 0;
-      180 1 auto auto 1 0 0;
-      180.8 1 auto auto 1 0 0;
-      181.6 1 auto auto 1 0 0;
-      182.4 1 auto auto 1 0 0;
-      183.2 1 auto auto 1 0 0;
-      184 1 auto auto 1 0 0;
-      184.8 1 auto auto 1 0 0;
-      185.6 1 auto auto 1 0 0;
-      186.4 1 auto auto 1 0 0;
-      187.2 1 auto auto 1 0 0;
-      188 1 auto auto 1 0 0;
-      188.8 1 auto auto 1 0 0;
-      189.6 1 auto auto 1 0 0;
-      190.4 1 auto auto 1 0 0;
-      191.2 1 auto auto 1 0 0;
-      192 1 auto auto 1 0 0;
-      192.8 1 auto auto 1 0 0;
-      193.6 1 auto auto 1 0 0;
-      194.4 1 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateX rotateX 3;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 4.1307168 auto auto 1 0 0;
-      1.6 3.1132631 auto auto 1 0 0;
-      2.4 3.2844432 auto auto 1 0 0;
-      3.2 3.3343543 auto auto 1 0 0;
-      4 2.8765501 auto auto 1 0 0;
-      4.8 2.3438254 auto auto 1 0 0;
-      5.6 1.990809 auto auto 1 0 0;
-      6.4 1.902335 auto auto 1 0 0;
-      7.2 1.9681217 auto auto 1 0 0;
-      8 2.0052798 auto auto 1 0 0;
-      8.8 1.9597218 auto auto 1 0 0;
-      9.6 2.0143698 auto auto 1 0 0;
-      10.4 2.0726471 auto auto 1 0 0;
-      11.2 2.0026892 auto auto 1 0 0;
-      12 2.1632089 auto auto 1 0 0;
-      12.8 2.3061313 auto auto 1 0 0;
-      13.6 2.2352255 auto auto 1 0 0;
-      14.4 2.2940472 auto auto 1 0 0;
-      15.2 2.2913259 auto auto 1 0 0;
-      16 2.0656121 auto auto 1 0 0;
-      16.8 1.9934779 auto auto 1 0 0;
-      17.6 1.9851708 auto auto 1 0 0;
-      18.4 1.869201 auto auto 1 0 0;
-      19.2 1.5590718 auto auto 1 0 0;
-      20 1.1095758 auto auto 1 0 0;
-      20.8 0.79608844 auto auto 1 0 0;
-      21.6 0.51385075 auto auto 1 0 0;
-      22.4 0.37058305 auto auto 1 0 0;
-      23.2 0.027773752 auto auto 1 0 0;
-      24 0 auto auto 1 0 0;
-      24.8 0.017055163 auto auto 1 0 0;
-      25.6 -0.10484022 auto auto 1 0 0;
-      26.4 -0.078677942 auto auto 1 0 0;
-      27.2 0.013227646 auto auto 1 0 0;
-      28 0.14911179 auto auto 1 0 0;
-      28.8 0.19855528 auto auto 1 0 0;
-      29.6 0.50528937 auto auto 1 0 0;
-      30.4 0.43289899 auto auto 1 0 0;
-      31.2 0.45163893 auto auto 1 0 0;
-      32 0.35857392 auto auto 1 0 0;
-      32.8 0.56948909 auto auto 1 0 0;
-      33.6 0.8351874 auto auto 1 0 0;
-      34.4 0.91277107 auto auto 1 0 0;
-      35.2 0.74277018 auto auto 1 0 0;
-      36 0.74567842 auto auto 1 0 0;
-      36.8 0.76028925 auto auto 1 0 0;
-      37.6 0.8245321 auto auto 1 0 0;
-      38.4 0.83521981 auto auto 1 0 0;
-      39.2 0.87228174 auto auto 1 0 0;
-      40 0.8590467 auto auto 1 0 0;
-      40.8 0.82302235 auto auto 1 0 0;
-      41.6 0.86221287 auto auto 1 0 0;
-      42.4 0.91350097 auto auto 1 0 0;
-      43.2 0.91154294 auto auto 1 0 0;
-      44 0.78909051 auto auto 1 0 0;
-      44.8 1.029498 auto auto 1 0 0;
-      45.6 1.4790676 auto auto 1 0 0;
-      46.4 1.8774207 auto auto 1 0 0;
-      47.2 2.6503555 auto auto 1 0 0;
-      48 4.2273102 auto auto 1 0 0;
-      48.8 6.4357197 auto auto 1 0 0;
-      49.6 9.4789858 auto auto 1 0 0;
-      50.4 14.078344 auto auto 1 0 0;
-      51.2 20.053903 auto auto 1 0 0;
-      52 26.194473 auto auto 1 0 0;
-      52.8 29.130692 auto auto 1 0 0;
-      53.6 28.708706 auto auto 1 0 0;
-      54.4 25.932555 auto auto 1 0 0;
-      55.2 21.23098 auto auto 1 0 0;
-      56 16.096668 auto auto 1 0 0;
-      56.8 13.136428 auto auto 1 0 0;
-      57.6 12.50567 auto auto 1 0 0;
-      58.4 15.77015 auto auto 1 0 0;
-      59.2 20.15494 auto auto 1 0 0;
-      60 20.80735 auto auto 1 0 0;
-      60.8 23.24797 auto auto 1 0 0;
-      61.6 24.90742 auto auto 1 0 0;
-      62.4 13.73263 auto auto 1 0 0;
-      63.2 8.36263 auto auto 1 0 0;
-      64 7.28731 auto auto 1 0 0;
-      64.8 6.47414 auto auto 1 0 0;
-      65.6 7.82681 auto auto 1 0 0;
-      66.4 12.29282 auto auto 1 0 0;
-      67.2 18.65552 auto auto 1 0 0;
-      68 23.88216 auto auto 1 0 0;
-      68.8 20.39528 auto auto 1 0 0;
-      69.6 15.76809 auto auto 1 0 0;
-      70.4 14.2034 auto auto 1 0 0;
-      71.2 12.41276 auto auto 1 0 0;
-      72 10.80127 auto auto 1 0 0;
-      72.8 9.93605 auto auto 1 0 0;
-      73.6 10.43987 auto auto 1 0 0;
-      74.4 12.07703 auto auto 1 0 0;
-      75.2 12.85667 auto auto 1 0 0;
-      76 13.76635 auto auto 1 0 0;
-      76.8 15.02305 auto auto 1 0 0;
-      77.6 15.7203 auto auto 1 0 0;
-      78.4 15.13437 auto auto 1 0 0;
-      79.2 14.99946 auto auto 1 0 0;
-      80 13.6169 auto auto 1 0 0;
-      80.8 11.4113 auto auto 1 0 0;
-      81.6 8.53521 auto auto 1 0 0;
-      82.4 6.76921 auto auto 1 0 0;
-      83.2 6.23981 auto auto 1 0 0;
-      84 6.43173 auto auto 1 0 0;
-      84.8 7.57322 auto auto 1 0 0;
-      85.6 9.65878 auto auto 1 0 0;
-      86.4 11.84246 auto auto 1 0 0;
-      87.2 14.13425 auto auto 1 0 0;
-      88 15.19091 auto auto 1 0 0;
-      88.8 15.18022 auto auto 1 0 0;
-      89.6 17.67742 auto auto 1 0 0;
-      90.4 22.95502 auto auto 1 0 0;
-      91.2 22.38042 auto auto 1 0 0;
-      92 15.6196 auto auto 1 0 0;
-      92.8 6.86526 auto auto 1 0 0;
-      93.6 1.5531 auto auto 1 0 0;
-      94.4 -0.02791 auto auto 1 0 0;
-      95.2 -1.46236 auto auto 1 0 0;
-      96 -2.5823 auto auto 1 0 0;
-      96.8 -2.65884 auto auto 1 0 0;
-      97.6 -0.40849 auto auto 1 0 0;
-      98.4 7.79106 auto auto 1 0 0;
-      99.2 23.59662 auto auto 1 0 0;
-      100 29.96225 auto auto 1 0 0;
-      100.8 27.26531 auto auto 1 0 0;
-      101.6 22.50184 auto auto 1 0 0;
-      102.4 16.1327 auto auto 1 0 0;
-      103.2 10.49774 auto auto 1 0 0;
-      104 7.12643 auto auto 1 0 0;
-      104.8 6.22043 auto auto 1 0 0;
-      105.6 8.27775 auto auto 1 0 0;
-      106.4 11.87484 auto auto 1 0 0;
-      107.2 15.47626 auto auto 1 0 0;
-      108 19.57869 auto auto 1 0 0;
-      108.8 21.06165 auto auto 1 0 0;
-      109.6 22.23331 auto auto 1 0 0;
-      110.4 26.36657 auto auto 1 0 0;
-      111.2 28.40321 auto auto 1 0 0;
-      112 29.14477 auto auto 1 0 0;
-      112.8 30.97381 auto auto 1 0 0;
-      113.6 30.20522 auto auto 1 0 0;
-      114.4 26.00575 auto auto 1 0 0;
-      115.2 21.69562 auto auto 1 0 0;
-      116 17.2236 auto auto 1 0 0;
-      116.8 14.742 auto auto 1 0 0;
-      117.6 11.41511 auto auto 1 0 0;
-      118.4 7.33385 auto auto 1 0 0;
-      119.2 6.90877 auto auto 1 0 0;
-      120 7.35177 auto auto 1 0 0;
-      120.8 5.51804 auto auto 1 0 0;
-      121.6 3.76063 auto auto 1 0 0;
-      122.4 0.8607 auto auto 1 0 0;
-      123.2 -2.28192 auto auto 1 0 0;
-      124 -6.26759 auto auto 1 0 0;
-      124.8 -9.82168 auto auto 1 0 0;
-      125.6 -11.58162 auto auto 1 0 0;
-      126.4 -10.94117 auto auto 1 0 0;
-      127.2 -9.5317 auto auto 1 0 0;
-      128 -8.28601 auto auto 1 0 0;
-      128.8 -6.78474 auto auto 1 0 0;
-      129.6 -3.92795 auto auto 1 0 0;
-      130.4 0.94497 auto auto 1 0 0;
-      131.2 5.65075 auto auto 1 0 0;
-      132 9.71627 auto auto 1 0 0;
-      132.8 13.83891 auto auto 1 0 0;
-      133.6 18.60862 auto auto 1 0 0;
-      134.4 20.80852 auto auto 1 0 0;
-      135.2 19.18889 auto auto 1 0 0;
-      136 18.97297 auto auto 1 0 0;
-      136.8 18.6031 auto auto 1 0 0;
-      137.6 18.07723 auto auto 1 0 0;
-      138.4 17.31314 auto auto 1 0 0;
-      139.2 14.51301 auto auto 1 0 0;
-      140 7.73412 auto auto 1 0 0;
-      140.8 3.43056 auto auto 1 0 0;
-      141.6 9.29123 auto auto 1 0 0;
-      142.4 11.08408 auto auto 1 0 0;
-      143.2 9.32718 auto auto 1 0 0;
-      144 14.92758 auto auto 1 0 0;
-      144.8 18.07298 auto auto 1 0 0;
-      145.6 13.42832 auto auto 1 0 0;
-      146.4 10.3567 auto auto 1 0 0;
-      147.2 7.71633 auto auto 1 0 0;
-      148 8.03805 auto auto 1 0 0;
-      148.8 6.42758 auto auto 1 0 0;
-      149.6 4.44792 auto auto 1 0 0;
-      150.4 3.11919 auto auto 1 0 0;
-      151.2 1.10508 auto auto 1 0 0;
-      152 1.75719 auto auto 1 0 0;
-      152.8 3.47359 auto auto 1 0 0;
-      153.6 5.48559 auto auto 1 0 0;
-      154.4 4.93298 auto auto 1 0 0;
-      155.2 4.33691 auto auto 1 0 0;
-      156 4.50013 auto auto 1 0 0;
-      156.8 4.07092 auto auto 1 0 0;
-      157.6 5.08856 auto auto 1 0 0;
-      158.4 7.69839 auto auto 1 0 0;
-      159.2 14.02728 auto auto 1 0 0;
-      160 21.92293 auto auto 1 0 0;
-      160.8 23.68092 auto auto 1 0 0;
-      161.6 20.72348 auto auto 1 0 0;
-      162.4 17.55413 auto auto 1 0 0;
-      163.2 15.98779 auto auto 1 0 0;
-      164 16.1885 auto auto 1 0 0;
-      164.8 18.75162 auto auto 1 0 0;
-      165.6 24.39179 auto auto 1 0 0;
-      166.4 21.12534 auto auto 1 0 0;
-      167.2 15.80703 auto auto 1 0 0;
-      168 12.36841 auto auto 1 0 0;
-      168.8 10.06745 auto auto 1 0 0;
-      169.6 8.58466 auto auto 1 0 0;
-      170.4 7.60558 auto auto 1 0 0;
-      171.2 6.76323 auto auto 1 0 0;
-      172 5.75398 auto auto 1 0 0;
-      172.8 4.33723 auto auto 1 0 0;
-      173.6 2.91416 auto auto 1 0 0;
-      174.4 1.84246 auto auto 1 0 0;
-      175.2 1.12096 auto auto 1 0 0;
-      176 0.51982 auto auto 1 0 0;
-      176.8 -0.16724 auto auto 1 0 0;
-      177.6 -0.96904 auto auto 1 0 0;
-      178.4 -1.90092 auto auto 1 0 0;
-      179.2 -3.18012 auto auto 1 0 0;
-      180 -4.20297 auto auto 1 0 0;
-      180.8 -4.70238 auto auto 1 0 0;
-      181.6 -4.02835 auto auto 1 0 0;
-      182.4 -1.39821 auto auto 1 0 0;
-      183.2 3.37562 auto auto 1 0 0;
-      184 9.2084 auto auto 1 0 0;
-      184.8 14.01958 auto auto 1 0 0;
-      185.6 16.88089 auto auto 1 0 0;
-      186.4 18.48011 auto auto 1 0 0;
-      187.2 18.68018 auto auto 1 0 0;
-      188 17.25754 auto auto 1 0 0;
-      188.8 14.14573 auto auto 1 0 0;
-      189.6 9.91524 auto auto 1 0 0;
-      190.4 5.3597 auto auto 1 0 0;
-      191.2 1.44396 auto auto 1 0 0;
-      192 0.61407 auto auto 1 0 0;
-      192.8 2.49549 auto auto 1 0 0;
-      193.6 3.16963 auto auto 1 0 0;
-      194.4 3.05341 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateY rotateY 4;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 -4.5062086 auto auto 1 0 0;
-      1.6 -1.0091652 auto auto 1 0 0;
-      2.4 -1.4211278 auto auto 1 0 0;
-      3.2 -2.6739816 auto auto 1 0 0;
-      4 -3.1764267 auto auto 1 0 0;
-      4.8 -2.7479174 auto auto 1 0 0;
-      5.6 -2.5336276 auto auto 1 0 0;
-      6.4 -2.5755813 auto auto 1 0 0;
-      7.2 -2.8605829 auto auto 1 0 0;
-      8 -3.1660459 auto auto 1 0 0;
-      8.8 -3.5435145 auto auto 1 0 0;
-      9.6 -4.3273417 auto auto 1 0 0;
-      10.4 -4.6645288 auto auto 1 0 0;
-      11.2 -4.4066344 auto auto 1 0 0;
-      12 -4.5831449 auto auto 1 0 0;
-      12.8 -4.3859837 auto auto 1 0 0;
-      13.6 -3.4588149 auto auto 1 0 0;
-      14.4 -2.9813804 auto auto 1 0 0;
-      15.2 -3.0397361 auto auto 1 0 0;
-      16 -2.6085199 auto auto 1 0 0;
-      16.8 -2.3374166 auto auto 1 0 0;
-      17.6 -2.8877134 auto auto 1 0 0;
-      18.4 -3.1136767 auto auto 1 0 0;
-      19.2 -2.252191 auto auto 1 0 0;
-      20 -1.6664337 auto auto 1 0 0;
-      20.8 -1.2126933 auto auto 1 0 0;
-      21.6 -0.71667082 auto auto 1 0 0;
-      22.4 -0.39080449 auto auto 1 0 0;
-      23.2 0.015924149 auto auto 1 0 0;
-      24 0 auto auto 1 0 0;
-      24.8 0.026189506 auto auto 1 0 0;
-      25.6 0.49455562 auto auto 1 0 0;
-      26.4 0.54831883 auto auto 1 0 0;
-      27.2 0.26462198 auto auto 1 0 0;
-      28 -0.1515334 auto auto 1 0 0;
-      28.8 -0.021479186 auto auto 1 0 0;
-      29.6 -0.27530564 auto auto 1 0 0;
-      30.4 -0.11602258 auto auto 1 0 0;
-      31.2 -0.16073452 auto auto 1 0 0;
-      32 0.12175808 auto auto 1 0 0;
-      32.8 -0.401993 auto auto 1 0 0;
-      33.6 -0.81547419 auto auto 1 0 0;
-      34.4 -1.0346456 auto auto 1 0 0;
-      35.2 -0.72771459 auto auto 1 0 0;
-      36 -0.6170122 auto auto 1 0 0;
-      36.8 -0.66734278 auto auto 1 0 0;
-      37.6 -0.82686376 auto auto 1 0 0;
-      38.4 -0.82363536 auto auto 1 0 0;
-      39.2 -0.82296302 auto auto 1 0 0;
-      40 -0.83070376 auto auto 1 0 0;
-      40.8 -0.85079192 auto auto 1 0 0;
-      41.6 -0.8814763 auto auto 1 0 0;
-      42.4 -0.88149022 auto auto 1 0 0;
-      43.2 -0.92796416 auto auto 1 0 0;
-      44 -1.0027071 auto auto 1 0 0;
-      44.8 -1.1119913 auto auto 1 0 0;
-      45.6 -1.574026 auto auto 1 0 0;
-      46.4 -2.5269467 auto auto 1 0 0;
-      47.2 -3.9505922 auto auto 1 0 0;
-      48 -4.9147193 auto auto 1 0 0;
-      48.8 -6.027728 auto auto 1 0 0;
-      49.6 -9.0129388 auto auto 1 0 0;
-      50.4 -13.349744 auto auto 1 0 0;
-      51.2 -18.430838 auto auto 1 0 0;
-      52 -22.648097 auto auto 1 0 0;
-      52.8 -26.492669 auto auto 1 0 0;
-      53.6 -28.991901 auto auto 1 0 0;
-      54.4 -28.840843 auto auto 1 0 0;
-      55.2 -26.022479 auto auto 1 0 0;
-      56 -23.217509 auto auto 1 0 0;
-      56.8 -24.376386 auto auto 1 0 0;
-      57.6 -27.84028 auto auto 1 0 0;
-      58.4 -31.25253 auto auto 1 0 0;
-      59.2 -31.88568 auto auto 1 0 0;
-      60 -30.99281 auto auto 1 0 0;
-      60.8 -32.32798 auto auto 1 0 0;
-      61.6 -32.63072 auto auto 1 0 0;
-      62.4 -24.536264 auto auto 1 0 0;
-      63.2 -21.478124 auto auto 1 0 0;
-      64 -20.711792 auto auto 1 0 0;
-      64.8 -19.961745 auto auto 1 0 0;
-      65.6 -18.804595 auto auto 1 0 0;
-      66.4 -18.661168 auto auto 1 0 0;
-      67.2 -18.126906 auto auto 1 0 0;
-      68 -15.558298 auto auto 1 0 0;
-      68.8 -13.998582 auto auto 1 0 0;
-      69.6 -17.493636 auto auto 1 0 0;
-      70.4 -21.428429 auto auto 1 0 0;
-      71.2 -22.243359 auto auto 1 0 0;
-      72 -21.537689 auto auto 1 0 0;
-      72.8 -21.170252 auto auto 1 0 0;
-      73.6 -22.877218 auto auto 1 0 0;
-      74.4 -24.635936 auto auto 1 0 0;
-      75.2 -24.052284 auto auto 1 0 0;
-      76 -24.354324 auto auto 1 0 0;
-      76.8 -22.291093 auto auto 1 0 0;
-      77.6 -21.799948 auto auto 1 0 0;
-      78.4 -22.822848 auto auto 1 0 0;
-      79.2 -24.235791 auto auto 1 0 0;
-      80 -23.825413 auto auto 1 0 0;
-      80.8 -22.33412 auto auto 1 0 0;
-      81.6 -19.007224 auto auto 1 0 0;
-      82.4 -17.052046 auto auto 1 0 0;
-      83.2 -17.439028 auto auto 1 0 0;
-      84 -18.565779 auto auto 1 0 0;
-      84.8 -19.986622 auto auto 1 0 0;
-      85.6 -21.421945 auto auto 1 0 0;
-      86.4 -22.239694 auto auto 1 0 0;
-      87.2 -22.653813 auto auto 1 0 0;
-      88 -20.708177 auto auto 1 0 0;
-      88.8 -19.665229 auto auto 1 0 0;
-      89.6 -21.667176 auto auto 1 0 0;
-      90.4 -23.721288 auto auto 1 0 0;
-      91.2 -26.679178 auto auto 1 0 0;
-      92 -32.10646 auto auto 1 0 0;
-      92.8 -32.34756 auto auto 1 0 0;
-      93.6 -31.29284 auto auto 1 0 0;
-      94.4 -31.76802 auto auto 1 0 0;
-      95.2 -31.94428 auto auto 1 0 0;
-      96 -31.24848 auto auto 1 0 0;
-      96.8 -28.90246 auto auto 1 0 0;
-      97.6 -28.04439 auto auto 1 0 0;
-      98.4 -32.83739 auto auto 1 0 0;
-      99.2 -34.75588 auto auto 1 0 0;
-      100 -29.914753 auto auto 1 0 0;
-      100.8 -22.956855 auto auto 1 0 0;
-      101.6 -12.394764 auto auto 1 0 0;
-      102.4 -7.0386001 auto auto 1 0 0;
-      103.2 -10.628551 auto auto 1 0 0;
-      104 -11.306085 auto auto 1 0 0;
-      104.8 -10.311661 auto auto 1 0 0;
-      105.6 -8.2036938 auto auto 1 0 0;
-      106.4 -7.7108431 auto auto 1 0 0;
-      107.2 -6.3948002 auto auto 1 0 0;
-      108 -6.8503716 auto auto 1 0 0;
-      108.8 -8.1441761 auto auto 1 0 0;
-      109.6 -10.882014 auto auto 1 0 0;
-      110.4 -13.00664 auto auto 1 0 0;
-      111.2 -14.649972 auto auto 1 0 0;
-      112 -14.910427 auto auto 1 0 0;
-      112.8 -16.573506 auto auto 1 0 0;
-      113.6 -19.266349 auto auto 1 0 0;
-      114.4 -26.925151 auto auto 1 0 0;
-      115.2 -36.73584 auto auto 1 0 0;
-      116 -38.21896 auto auto 1 0 0;
-      116.8 -34.20372 auto auto 1 0 0;
-      117.6 -27.58118 auto auto 1 0 0;
-      118.4 -21.582603 auto auto 1 0 0;
-      119.2 -21.185642 auto auto 1 0 0;
-      120 -20.264003 auto auto 1 0 0;
-      120.8 -16.557824 auto auto 1 0 0;
-      121.6 -8.8791052 auto auto 1 0 0;
-      122.4 7.0031841 auto auto 1 0 0;
-      123.2 15.280099 auto auto 1 0 0;
-      124 13.119653 auto auto 1 0 0;
-      124.8 -6.5106103 auto auto 1 0 0;
-      125.6 -8.500028 auto auto 1 0 0;
-      126.4 -4.1568407 auto auto 1 0 0;
-      127.2 -0.50528391 auto auto 1 0 0;
-      128 1.6453639 auto auto 1 0 0;
-      128.8 1.8583026 auto auto 1 0 0;
-      129.6 1.082079 auto auto 1 0 0;
-      130.4 2.5741417 auto auto 1 0 0;
-      131.2 4.2696229 auto auto 1 0 0;
-      132 2.4827593 auto auto 1 0 0;
-      132.8 1.5442199 auto auto 1 0 0;
-      133.6 -0.74115201 auto auto 1 0 0;
-      134.4 -9.1328372 auto auto 1 0 0;
-      135.2 -17.125384 auto auto 1 0 0;
-      136 -19.875472 auto auto 1 0 0;
-      136.8 -24.242288 auto auto 1 0 0;
-      137.6 -27.655474 auto auto 1 0 0;
-      138.4 -25.945472 auto auto 1 0 0;
-      139.2 -22.439356 auto auto 1 0 0;
-      140 -11.130739 auto auto 1 0 0;
-      140.8 -2.1438504 auto auto 1 0 0;
-      141.6 -5.4131931 auto auto 1 0 0;
-      142.4 -5.785799 auto auto 1 0 0;
-      143.2 0.093508463 auto auto 1 0 0;
-      144 0.89261999 auto auto 1 0 0;
-      144.8 -5.0407268 auto auto 1 0 0;
-      145.6 -15.289788 auto auto 1 0 0;
-      146.4 -25.736168 auto auto 1 0 0;
-      147.2 -21.724387 auto auto 1 0 0;
-      148 -9.4680422 auto auto 1 0 0;
-      148.8 -10.29187 auto auto 1 0 0;
-      149.6 -14.731766 auto auto 1 0 0;
-      150.4 -15.513231 auto auto 1 0 0;
-      151.2 -8.708019 auto auto 1 0 0;
-      152 -7.2802576 auto auto 1 0 0;
-      152.8 -11.228747 auto auto 1 0 0;
-      153.6 -14.133894 auto auto 1 0 0;
-      154.4 -14.167536 auto auto 1 0 0;
-      155.2 -13.423672 auto auto 1 0 0;
-      156 -9.6039891 auto auto 1 0 0;
-      156.8 -2.5894988 auto auto 1 0 0;
-      157.6 2.1543952 auto auto 1 0 0;
-      158.4 5.2615681 auto auto 1 0 0;
-      159.2 6.9748278 auto auto 1 0 0;
-      160 2.9653601 auto auto 1 0 0;
-      160.8 -8.8374836 auto auto 1 0 0;
-      161.6 -16.332961 auto auto 1 0 0;
-      162.4 -19.047247 auto auto 1 0 0;
-      163.2 -22.090635 auto auto 1 0 0;
-      164 -26.867176 auto auto 1 0 0;
-      164.8 -31.83518 auto auto 1 0 0;
-      165.6 -31.08321 auto auto 1 0 0;
-      166.4 -20.183282 auto auto 1 0 0;
-      167.2 -16.168391 auto auto 1 0 0;
-      168 -16.397878 auto auto 1 0 0;
-      168.8 -17.496783 auto auto 1 0 0;
-      169.6 -18.473744 auto auto 1 0 0;
-      170.4 -19.565159 auto auto 1 0 0;
-      171.2 -20.199844 auto auto 1 0 0;
-      172 -20.641448 auto auto 1 0 0;
-      172.8 -20.600323 auto auto 1 0 0;
-      173.6 -20.214649 auto auto 1 0 0;
-      174.4 -20.145476 auto auto 1 0 0;
-      175.2 -19.892971 auto auto 1 0 0;
-      176 -19.960033 auto auto 1 0 0;
-      176.8 -20.470901 auto auto 1 0 0;
-      177.6 -21.297441 auto auto 1 0 0;
-      178.4 -22.031145 auto auto 1 0 0;
-      179.2 -22.115547 auto auto 1 0 0;
-      180 -22.334737 auto auto 1 0 0;
-      180.8 -22.433365 auto auto 1 0 0;
-      181.6 -22.412431 auto auto 1 0 0;
-      182.4 -22.889286 auto auto 1 0 0;
-      183.2 -23.809122 auto auto 1 0 0;
-      184 -23.086234 auto auto 1 0 0;
-      184.8 -21.842336 auto auto 1 0 0;
-      185.6 -19.529101 auto auto 1 0 0;
-      186.4 -17.226476 auto auto 1 0 0;
-      187.2 -14.99201 auto auto 1 0 0;
-      188 -13.832664 auto auto 1 0 0;
-      188.8 -16.462038 auto auto 1 0 0;
-      189.6 -18.35934 auto auto 1 0 0;
-      190.4 -10.876479 auto auto 1 0 0;
-      191.2 -0.094789509 auto auto 1 0 0;
-      192 1.4305326 auto auto 1 0 0;
-      192.8 -1.9978354 auto auto 1 0 0;
-      193.6 -4.5804277 auto auto 1 0 0;
-      194.4 -4.7809117 auto auto 1 0 0;
-    }
-  }
-  anim rotate.rotateZ rotateZ 5;
-  animData {
-    input time;
-    output angular;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      0.8 -1.2284047 auto auto 1 0 0;
-      1.6 -0.86944447 auto auto 1 0 0;
-      2.4 -0.91179168 auto auto 1 0 0;
-      3.2 -0.91629394 auto auto 1 0 0;
-      4 -0.8088474 auto auto 1 0 0;
-      4.8 -0.682427 auto auto 1 0 0;
-      5.6 -0.59181833 auto auto 1 0 0;
-      6.4 -0.57478334 auto auto 1 0 0;
-      7.2 -0.60150296 auto auto 1 0 0;
-      8 -0.61058055 auto auto 1 0 0;
-      8.8 -0.59945739 auto auto 1 0 0;
-      9.6 -0.60825983 auto auto 1 0 0;
-      10.4 -0.61360635 auto auto 1 0 0;
-      11.2 -0.60751101 auto auto 1 0 0;
-      12 -0.63704573 auto auto 1 0 0;
-      12.8 -0.65575125 auto auto 1 0 0;
-      13.6 -0.61277576 auto auto 1 0 0;
-      14.4 -0.60073692 auto auto 1 0 0;
-      15.2 -0.61736188 auto auto 1 0 0;
-      16 -0.56357636 auto auto 1 0 0;
-      16.8 -0.53789738 auto auto 1 0 0;
-      17.6 -0.57184092 auto auto 1 0 0;
-      18.4 -0.56025181 auto auto 1 0 0;
-      19.2 -0.4619012 auto auto 1 0 0;
-      20 -0.32737061 auto auto 1 0 0;
-      20.8 -0.23344621 auto auto 1 0 0;
-      21.6 -0.15854617 auto auto 1 0 0;
-      22.4 -0.10729673 auto auto 1 0 0;
-      23.2 -0.0046696185 auto auto 1 0 0;
-      24 0 auto auto 1 0 0;
-      24.8 0.004238879 auto auto 1 0 0;
-      25.6 0.058588457 auto auto 1 0 0;
-      26.4 0.049408757 auto auto 1 0 0;
-      27.2 0.015113555 auto auto 1 0 0;
-      28 -0.038318498 auto auto 1 0 0;
-      28.8 -0.047498832 auto auto 1 0 0;
-      29.6 -0.13464219 auto auto 1 0 0;
-      30.4 -0.10553868 auto auto 1 0 0;
-      31.2 -0.10513277 auto auto 1 0 0;
-      32 -0.073899752 auto auto 1 0 0;
-      32.8 -0.15016402 auto auto 1 0 0;
-      33.6 -0.230077 auto auto 1 0 0;
-      34.4 -0.24918964 auto auto 1 0 0;
-      35.2 -0.21086578 auto auto 1 0 0;
-      36 -0.20254203 auto auto 1 0 0;
-      36.8 -0.2115713 auto auto 1 0 0;
-      37.6 -0.23346342 auto auto 1 0 0;
-      38.4 -0.23813163 auto auto 1 0 0;
-      39.2 -0.24470861 auto auto 1 0 0;
-      40 -0.24159236 auto auto 1 0 0;
-      40.8 -0.23312317 auto auto 1 0 0;
-      41.6 -0.24385562 auto auto 1 0 0;
-      42.4 -0.25436985 auto auto 1 0 0;
-      43.2 -0.25567691 auto auto 1 0 0;
-      44 -0.22791905 auto auto 1 0 0;
-      44.8 -0.29146443 auto auto 1 0 0;
-      45.6 -0.41376716 auto auto 1 0 0;
-      46.4 -0.52374601 auto auto 1 0 0;
-      47.2 -0.73933946 auto auto 1 0 0;
-      48 -1.1655066 auto auto 1 0 0;
-      48.8 -1.7716918 auto auto 1 0 0;
-      49.6 -2.6122851 auto auto 1 0 0;
-      50.4 -3.8601803 auto auto 1 0 0;
-      51.2 -5.4716807 auto auto 1 0 0;
-      52 -7.094507 auto auto 1 0 0;
-      52.8 -8.0310065 auto auto 1 0 0;
-      53.6 -8.1438946 auto auto 1 0 0;
-      54.4 -7.4523187 auto auto 1 0 0;
-      55.2 -6.1231191 auto auto 1 0 0;
-      56 -4.7972844 auto auto 1 0 0;
-      56.8 -4.2909146 auto auto 1 0 0;
-      57.6 -4.51887 auto auto 1 0 0;
-      58.4 -5.69456 auto auto 1 0 0;
-      59.2 -6.75154 auto auto 1 0 0;
-      60 -6.65581 auto auto 1 0 0;
-      60.8 -7.24793 auto auto 1 0 0;
-      61.6 -7.58484 auto auto 1 0 0;
-      62.4 -4.3731675 auto auto 1 0 0;
-      63.2 -3.0651981 auto auto 1 0 0;
-      64 -2.82203 auto auto 1 0 0;
-      64.8 -2.5897046 auto auto 1 0 0;
-      65.6 -2.7452598 auto auto 1 0 0;
-      66.4 -3.5671177 auto auto 1 0 0;
-      67.2 -4.7594441 auto auto 1 0 0;
-      68 -5.6693372 auto auto 1 0 0;
-      68.8 -4.936152 auto auto 1 0 0;
-      69.6 -4.0842524 auto auto 1 0 0;
-      70.4 -4.0042583 auto auto 1 0 0;
-      71.2 -3.9009623 auto auto 1 0 0;
-      72 -3.8860336 auto auto 1 0 0;
-      72.8 -4.1038092 auto auto 1 0 0;
-      73.6 -4.6601484 auto auto 1 0 0;
-      74.4 -5.319772 auto auto 1 0 0;
-      75.2 -5.5385988 auto auto 1 0 0;
-      76 -5.6612767 auto auto 1 0 0;
-      76.8 -5.7394555 auto auto 1 0 0;
-      77.6 -5.6998629 auto auto 1 0 0;
-      78.4 -5.3979613 auto auto 1 0 0;
-      79.2 -5.2411134 auto auto 1 0 0;
-      80 -4.7330187 auto auto 1 0 0;
-      80.8 -3.9741655 auto auto 1 0 0;
-      81.6 -3.0174107 auto auto 1 0 0;
-      82.4 -2.439683 auto auto 1 0 0;
-      83.2 -2.2252221 auto auto 1 0 0;
-      84 -2.2237314 auto auto 1 0 0;
-      84.8 -2.5582652 auto auto 1 0 0;
-      85.6 -3.1516422 auto auto 1 0 0;
-      86.4 -3.6989527 auto auto 1 0 0;
-      87.2 -4.233843 auto auto 1 0 0;
-      88 -4.3745332 auto auto 1 0 0;
-      88.8 -4.3613803 auto auto 1 0 0;
-      89.6 -5.1136939 auto auto 1 0 0;
-      90.4 -6.4893879 auto auto 1 0 0;
-      91.2 -6.5850155 auto auto 1 0 0;
-      92 -5.4609 auto auto 1 0 0;
-      92.8 -3.25746 auto auto 1 0 0;
-      93.6 -1.8682 auto auto 1 0 0;
-      94.4 -1.59897 auto auto 1 0 0;
-      95.2 -1.2455 auto auto 1 0 0;
-      96 -0.94199 auto auto 1 0 0;
-      96.8 -0.97142 auto auto 1 0 0;
-      97.6 -1.86788 auto auto 1 0 0;
-      98.4 -4.64811 auto auto 1 0 0;
-      99.2 -9.11858 auto auto 1 0 0;
-      100 -10.219715 auto auto 1 0 0;
-      100.8 -8.7504532 auto auto 1 0 0;
-      101.6 -6.9046416 auto auto 1 0 0;
-      102.4 -6.0230089 auto auto 1 0 0;
-      103.2 -5.980484 auto auto 1 0 0;
-      104 -5.9491278 auto auto 1 0 0;
-      104.8 -5.4980203 auto auto 1 0 0;
-      105.6 -4.7551392 auto auto 1 0 0;
-      106.4 -3.8966269 auto auto 1 0 0;
-      107.2 -3.667436 auto auto 1 0 0;
-      108 -4.3678804 auto auto 1 0 0;
-      108.8 -4.8306292 auto auto 1 0 0;
-      109.6 -5.5253186 auto auto 1 0 0;
-      110.4 -7.0208004 auto auto 1 0 0;
-      111.2 -7.7164662 auto auto 1 0 0;
-      112 -7.5826347 auto auto 1 0 0;
-      112.8 -7.7627355 auto auto 1 0 0;
-      113.6 -8.8906628 auto auto 1 0 0;
-      114.4 -9.4479326 auto auto 1 0 0;
-      115.2 -8.69863 auto auto 1 0 0;
-      116 -7.86489 auto auto 1 0 0;
-      116.8 -7.56296 auto auto 1 0 0;
-      117.6 -6.77939 auto auto 1 0 0;
-      118.4 -5.47721 auto auto 1 0 0;
-      119.2 -4.64148 auto auto 1 0 0;
-      120 -3.81679 auto auto 1 0 0;
-      120.8 -2.46477 auto auto 1 0 0;
-      121.6 -1.373 auto auto 1 0 0;
-      122.4 -0.58354 auto auto 1 0 0;
-      123.2 0.08251 auto auto 1 0 0;
-      124 1.02884 auto auto 1 0 0;
-      124.8 2.20207 auto auto 1 0 0;
-      125.6 2.59435 auto auto 1 0 0;
-      126.4 2.12107 auto auto 1 0 0;
-      127.2 1.36382 auto auto 1 0 0;
-      128 0.82572 auto auto 1 0 0;
-      128.8 0.46764 auto auto 1 0 0;
-      129.6 -0.25352 auto auto 1 0 0;
-      130.4 -1.72943 auto auto 1 0 0;
-      131.2 -3.19639 auto auto 1 0 0;
-      132 -4.33807 auto auto 1 0 0;
-      132.8 -5.79976 auto auto 1 0 0;
-      133.6 -7.21037 auto auto 1 0 0;
-      134.4 -7.36136 auto auto 1 0 0;
-      135.2 -6.9943 auto auto 1 0 0;
-      136 -7.15708 auto auto 1 0 0;
-      136.8 -7.05291 auto auto 1 0 0;
-      137.6 -6.64586 auto auto 1 0 0;
-      138.4 -5.89039 auto auto 1 0 0;
-      139.2 -4.54679 auto auto 1 0 0;
-      140 -1.84143 auto auto 1 0 0;
-      140.8 0.36086 auto auto 1 0 0;
-      141.6 -0.45957 auto auto 1 0 0;
-      142.4 -0.45436 auto auto 1 0 0;
-      143.2 0.03103 auto auto 1 0 0;
-      144 -1.79338 auto auto 1 0 0;
-      144.8 -2.86295 auto auto 1 0 0;
-      145.6 -2.39952 auto auto 1 0 0;
-      146.4 -2.7529 auto auto 1 0 0;
-      147.2 -2.31853 auto auto 1 0 0;
-      148 -2.32539 auto auto 1 0 0;
-      148.8 -1.99686 auto auto 1 0 0;
-      149.6 -1.45969 auto auto 1 0 0;
-      150.4 -1.05503 auto auto 1 0 0;
-      151.2 -0.01827 auto auto 1 0 0;
-      152 0.01665 auto auto 1 0 0;
-      152.8 -0.54518 auto auto 1 0 0;
-      153.6 -1.0911 auto auto 1 0 0;
-      154.4 -0.93934 auto auto 1 0 0;
-      155.2 -0.88541 auto auto 1 0 0;
-      156 -1.02308 auto auto 1 0 0;
-      156.8 -0.80408 auto auto 1 0 0;
-      157.6 -0.90541 auto auto 1 0 0;
-      158.4 -1.67432 auto auto 1 0 0;
-      159.2 -3.51025 auto auto 1 0 0;
-      160 -5.39344 auto auto 1 0 0;
-      160.8 -6.10463 auto auto 1 0 0;
-      161.6 -6.02901 auto auto 1 0 0;
-      162.4 -5.55086 auto auto 1 0 0;
-      163.2 -5.1947 auto auto 1 0 0;
-      164 -5.2152 auto auto 1 0 0;
-      164.8 -5.87599 auto auto 1 0 0;
-      165.6 -6.87314 auto auto 1 0 0;
-      166.4 -5.42677 auto auto 1 0 0;
-      167.2 -4.30837 auto auto 1 0 0;
-      168 -3.63314 auto auto 1 0 0;
-      168.8 -3.1588 auto auto 1 0 0;
-      169.6 -2.8363 auto auto 1 0 0;
-      170.4 -2.62522 auto auto 1 0 0;
-      171.2 -2.43615 auto auto 1 0 0;
-      172 -2.18606 auto auto 1 0 0;
-      172.8 -1.82862 auto auto 1 0 0;
-      173.6 -1.45412 auto auto 1 0 0;
-      174.4 -1.15629 auto auto 1 0 0;
-      175.2 -0.92852 auto auto 1 0 0;
-      176 -0.74169 auto auto 1 0 0;
-      176.8 -0.56361 auto auto 1 0 0;
-      177.6 -0.38486 auto auto 1 0 0;
-      178.4 -0.17217 auto auto 1 0 0;
-      179.2 0.16457 auto auto 1 0 0;
-      180 0.43044 auto auto 1 0 0;
-      180.8 0.56199 auto auto 1 0 0;
-      181.6 0.38881 auto auto 1 0 0;
-      182.4 -0.35552 auto auto 1 0 0;
-      183.2 -1.70504 auto auto 1 0 0;
-      184 -3.14949 auto auto 1 0 0;
-      184.8 -4.26032 auto auto 1 0 0;
-      185.6 -4.80563 auto auto 1 0 0;
-      186.4 -5.05047 auto auto 1 0 0;
-      187.2 -5.02855 auto auto 1 0 0;
-      188 -4.69787 auto auto 1 0 0;
-      188.8 -4.04414 auto auto 1 0 0;
-      189.6 -3.03794 auto auto 1 0 0;
-      190.4 -1.69267 auto auto 1 0 0;
-      191.2 -0.53068 auto auto 1 0 0;
-      192 -0.20866 auto auto 1 0 0;
-      192.8 -0.65424 auto auto 1 0 0;
-      193.6 -0.85885 auto auto 1 0 0;
-      194.4 -0.82337 auto auto 1 0 0;
-    }
-  }
+  ac_cn_torso 12 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static translate.tx translateX 3;
+  { 0 }
+  static translate.ty translateY 4;
+  { 0 }
+  static translate.tz translateZ 5;
+  { 0 }
 }
 dagNode {
   ac_cn_chest 14 3;
@@ -9139,6 +4690,21 @@ dagNode {
       194.4 0 auto auto 1 0 0;
     }
   }
+}
+dagNode {
+  ac_cn_topChest 16 5;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static translate.tx translateX 3;
+  { 0 }
+  static translate.ty translateY 4;
+  { 0 }
+  static translate.tz translateZ 5;
+  { 0 }
 }
 dagNode {
   ac_lf_shoulder 19 5;
@@ -11677,6 +7243,15 @@ dagNode {
   }
 }
 dagNode {
+  ac_lf_armFK_gimbal 22 3;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+}
+dagNode {
   ac_lf_elbowFK 23 3;
   anim rotate.rotateX rotateX 0;
   animData {
@@ -13958,6 +9533,21 @@ dagNode {
       194.4 19.969942 auto auto 1 0 0;
     }
   }
+}
+dagNode {
+  ac_lf_handFK_gimbal 25 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
 }
 dagNode {
   ac_rt_shoulder 19 5;
@@ -16496,6 +12086,15 @@ dagNode {
   }
 }
 dagNode {
+  ac_rt_armFK_gimbal 22 3;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+}
+dagNode {
   ac_rt_elbowFK 23 3;
   anim rotate.rotateX rotateX 0;
   animData {
@@ -18777,6 +14376,21 @@ dagNode {
       194.4 -341.67665 auto auto 1 0 0;
     }
   }
+}
+dagNode {
+  ac_rt_handFK_gimbal 25 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
 }
 dagNode {
   ac_cn_neck 9 4;
@@ -21557,7 +17171,7 @@ dagNode {
       187.2 -373.19 auto auto 1 0 0;
       188 -373.35235 auto auto 1 0 0;
       188.8 -372.85741 auto auto 1 0 0;
-      189.6 -372.04586 auto auto 1 0 0;
+      189.6 -372.04587 auto auto 1 0 0;
       190.4 -371.64382 auto auto 1 0 0;
       191.2 -370.50147 auto auto 1 0 0;
       192 -367.52648 auto auto 1 0 0;
@@ -23845,6 +19459,977 @@ dagNode {
   }
 }
 dagNode {
+  ac_lf_arm_settings 7 2;
+  static arch arch 0;
+  { 0 }
+  static baseRX baseRX 1;
+  { 0 }
+  static baseRY baseRY 2;
+  { 0 }
+  static cup cup 3;
+  { 0 }
+  static curl curl 4;
+  { 0 }
+  static handScale.handScaleX handScaleX 5;
+  { 1 }
+  static handScale.handScaleY handScaleY 6;
+  { 1 }
+  static handScale.handScaleZ handScaleZ 7;
+  { 1 }
+  static ikfk ikfk 8;
+  { 1 }
+  static stretchBottom stretchBottom 9;
+  { 1 }
+  static palmRX palmRX 10;
+  { 0 }
+  static palmRY palmRY 11;
+  { 0 }
+  static scrunch scrunch 12;
+  { 0 }
+  static slide slide 13;
+  { 0 }
+  static splay splay 14;
+  { 0 }
+  static thumbCurl thumbCurl 15;
+  { 0 }
+  static twist twist 16;
+  { 0 }
+  static stretchTop stretchTop 17;
+  { 1 }
+  static space space 18;
+  { 0 }
+}
+dagNode {
+  ac_lf_ring0 17 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { -3.5527137e-15 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_ring1 26 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_ring2 32 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_ring3 38 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_middle0 17 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -2.220446e-16 }
+}
+dagNode {
+  ac_lf_middle1 26 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 1.110223e-16 }
+}
+dagNode {
+  ac_lf_middle2 32 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 1.4210855e-14 }
+  static translate.tz translateZ 8;
+  { 2.220446e-16 }
+}
+dagNode {
+  ac_lf_middle3 38 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -2.220446e-16 }
+}
+dagNode {
+  ac_lf_index0 17 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_index1 26 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { -3.5527137e-15 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -8.8817842e-16 }
+}
+dagNode {
+  ac_lf_index2 32 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_index3 38 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { -3.5527137e-15 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_pinky0 23 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_pinky1 32 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_pinky2 38 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 2.220446e-16 }
+}
+dagNode {
+  ac_lf_pinky3 44 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { -3.5527137e-15 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -2.220446e-16 }
+}
+dagNode {
+  ac_lf_thumbCup 11 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 7.1054274e-15 }
+  static translate.ty translateY 7;
+  { -2.220446e-16 }
+  static translate.tz translateZ 8;
+  { -3.5527137e-15 }
+}
+dagNode {
+  ac_lf_thumb1 15 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 7.7715612e-16 }
+  static translate.ty translateY 7;
+  { -9.9920072e-16 }
+  static translate.tz translateZ 8;
+  { 7.1054274e-15 }
+}
+dagNode {
+  ac_lf_thumb2 19 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { -3.5527137e-15 }
+  static translate.ty translateY 7;
+  { 8.8817842e-16 }
+  static translate.tz translateZ 8;
+  { -7.1054274e-15 }
+}
+dagNode {
+  ac_lf_thumb3 23 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 1.7763568e-15 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -7.1054274e-15 }
+}
+dagNode {
+  ac_rt_arm_settings 7 2;
+  static arch arch 0;
+  { 0 }
+  static baseRX baseRX 1;
+  { 0 }
+  static baseRY baseRY 2;
+  { 0 }
+  static cup cup 3;
+  { 0 }
+  static curl curl 4;
+  { 0 }
+  static handScale.handScaleX handScaleX 5;
+  { 1 }
+  static handScale.handScaleY handScaleY 6;
+  { 1 }
+  static handScale.handScaleZ handScaleZ 7;
+  { 1 }
+  static ikfk ikfk 8;
+  { 1 }
+  static stretchBottom stretchBottom 9;
+  { 1 }
+  static palmRX palmRX 10;
+  { 0 }
+  static palmRY palmRY 11;
+  { 0 }
+  static scrunch scrunch 12;
+  { 0 }
+  static slide slide 13;
+  { 0 }
+  static splay splay 14;
+  { 0 }
+  static thumbCurl thumbCurl 15;
+  { 0 }
+  static twist twist 16;
+  { 0 }
+  static stretchTop stretchTop 17;
+  { 1 }
+  static space space 18;
+  { 0 }
+}
+dagNode {
+  ac_rt_ring0 17 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_ring1 26 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -4.4408921e-16 }
+}
+dagNode {
+  ac_rt_ring2 32 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_ring3 38 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -4.4408921e-16 }
+}
+dagNode {
+  ac_rt_middle0 17 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_middle1 26 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 3.5527137e-15 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 2.220446e-16 }
+}
+dagNode {
+  ac_rt_middle2 32 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 3.5527137e-15 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -1.110223e-16 }
+}
+dagNode {
+  ac_rt_middle3 38 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 2.220446e-16 }
+}
+dagNode {
+  ac_rt_index0 17 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_index1 26 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_index2 32 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { -3.5527137e-15 }
+  static translate.ty translateY 7;
+  { -7.1054274e-15 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_index3 38 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { -8.8817842e-16 }
+}
+dagNode {
+  ac_rt_pinky0 23 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_pinky1 32 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 2.220446e-16 }
+}
+dagNode {
+  ac_rt_pinky2 38 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_pinky3 44 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 0 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_thumbCup 11 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 7.1054274e-15 }
+  static translate.ty translateY 7;
+  { 0 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_thumb1 15 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 2.9976022e-15 }
+  static translate.ty translateY 7;
+  { -8.8817842e-16 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_rt_thumb2 19 2;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 5.3290705e-15 }
+  static translate.ty translateY 7;
+  { -8.8817842e-16 }
+  static translate.tz translateZ 8;
+  { -7.1054274e-15 }
+}
+dagNode {
+  ac_rt_thumb3 23 1;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+  static scale.sx scaleX 3;
+  { 1 }
+  static scale.sy scaleY 4;
+  { 1 }
+  static scale.sz scaleZ 5;
+  { 1 }
+  static translate.tx translateX 6;
+  { 1.7763568e-15 }
+  static translate.ty translateY 7;
+  { 8.8817842e-16 }
+  static translate.tz translateZ 8;
+  { 0 }
+}
+dagNode {
+  ac_lf_legPole 10 4;
+  static translate.tx translateX 1;
+  { 0 }
+  static translate.ty translateY 2;
+  { 0 }
+  static translate.tz translateZ 3;
+  { 0 }
+  static space space 4;
+  { 2 }
+  cached pinKnee pinKnee 0;
+  { 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0  }
+}
+dagNode {
+  ac_lf_footIK 10 2;
+  static footBank footBank 0;
+  { 0 }
+  static footRoll footRoll 1;
+  { 0 }
+  static heelPivot heelPivot 2;
+  { 0 }
+  static heelSpin heelSpin 3;
+  { 0 }
+  static rotate.rx rotateX 4;
+  { 0 }
+  static rotate.ry rotateY 5;
+  { 0 }
+  static rotate.rz rotateZ 6;
+  { 0 }
+  static toePivot toePivot 7;
+  { 0 }
+  static toeSpin toeSpin 8;
+  { 0 }
+  static translate.tx translateX 9;
+  { 0 }
+  static translate.ty translateY 10;
+  { 0 }
+  static translate.tz translateZ 11;
+  { 0 }
+}
+dagNode {
+  ac_lf_footIK_gimbal 11 4;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+}
+dagNode {
   ac_lf_leg_settings 7 2;
   anim ikfk ikfk 0;
   animData {
@@ -23857,7 +20442,29 @@ dagNode {
       1 1 auto auto 1 0 0;
     }
   }
-  anim twist twist 1;
+  anim stretchTop stretchTop 1;
+  animData {
+    input time;
+    output unitless;
+    weighted 0;
+    preInfinity constant;
+    postInfinity constant;
+    keys {
+      1 1 auto auto 1 0 0;
+    }
+  }
+  anim stretchBottom stretchBottom 2;
+  animData {
+    input time;
+    output unitless;
+    weighted 0;
+    preInfinity constant;
+    postInfinity constant;
+    keys {
+      1 1 auto auto 1 0 0;
+    }
+  }
+  anim twist twist 3;
   animData {
     input time;
     output unitless;
@@ -23866,28 +20473,6 @@ dagNode {
     postInfinity constant;
     keys {
       1 0 auto auto 1 0 0;
-    }
-  }
-  anim stretchTop stretchTop 2;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      1 1 auto auto 1 0 0;
-    }
-  }
-  anim stretchBottom stretchBottom 3;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      1 1 auto auto 1 0 0;
     }
   }
 }
@@ -25413,6 +21998,55 @@ dagNode {
   }
 }
 dagNode {
+  ac_rt_legPole 10 4;
+  static translate.tx translateX 1;
+  { 0 }
+  static translate.ty translateY 2;
+  { 0 }
+  static translate.tz translateZ 3;
+  { 0 }
+  static space space 4;
+  { 2 }
+  cached pinKnee pinKnee 0;
+  { 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0  }
+}
+dagNode {
+  ac_rt_footIK 10 2;
+  static footBank footBank 0;
+  { 0 }
+  static footRoll footRoll 1;
+  { 0 }
+  static heelPivot heelPivot 2;
+  { 0 }
+  static heelSpin heelSpin 3;
+  { 0 }
+  static rotate.rx rotateX 4;
+  { 0 }
+  static rotate.ry rotateY 5;
+  { 0 }
+  static rotate.rz rotateZ 6;
+  { 0 }
+  static toePivot toePivot 7;
+  { 0 }
+  static toeSpin toeSpin 8;
+  { 0 }
+  static translate.tx translateX 9;
+  { 0 }
+  static translate.ty translateY 10;
+  { 0 }
+  static translate.tz translateZ 11;
+  { 0 }
+}
+dagNode {
+  ac_rt_footIK_gimbal 11 4;
+  static rotate.rx rotateX 0;
+  { 0 }
+  static rotate.ry rotateY 1;
+  { 0 }
+  static rotate.rz rotateZ 2;
+  { 0 }
+}
+dagNode {
   ac_rt_leg_settings 7 2;
   anim ikfk ikfk 0;
   animData {
@@ -25425,7 +22059,29 @@ dagNode {
       1 1 auto auto 1 0 0;
     }
   }
-  anim twist twist 1;
+  anim stretchTop stretchTop 1;
+  animData {
+    input time;
+    output unitless;
+    weighted 0;
+    preInfinity constant;
+    postInfinity constant;
+    keys {
+      1 1 auto auto 1 0 0;
+    }
+  }
+  anim stretchBottom stretchBottom 2;
+  animData {
+    input time;
+    output unitless;
+    weighted 0;
+    preInfinity constant;
+    postInfinity constant;
+    keys {
+      1 1 auto auto 1 0 0;
+    }
+  }
+  anim twist twist 3;
   animData {
     input time;
     output unitless;
@@ -25434,28 +22090,6 @@ dagNode {
     postInfinity constant;
     keys {
       1 0 auto auto 1 0 0;
-    }
-  }
-  anim stretchTop stretchTop 2;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      1 1 auto auto 1 0 0;
-    }
-  }
-  anim stretchBottom stretchBottom 3;
-  animData {
-    input time;
-    output unitless;
-    weighted 0;
-    preInfinity constant;
-    postInfinity constant;
-    keys {
-      1 1 auto auto 1 0 0;
     }
   }
 }

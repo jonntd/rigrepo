@@ -17,6 +17,7 @@ from rigrepo.libs.fileIO import joinPath
 import os
 import inspect
 import copy
+import rigrepo.tests as tests
 
 class ArchetypeBaseRig(pubs.pGraph.PGraph):
     def __init__(self,name, variant='base'):
@@ -413,28 +414,23 @@ mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL"
         jointsNode.addChildren([zeroJointsNode, jnt_mirrorJointsNode, jnt_jointExportDataNode])
 
         # anim
+        testPath = os.path.dirname(tests.__file__).replace("\\", "/")
         animNode = pubs.pNode.PNode('anim')
         animTestsNode = pubs.pNode.PNode('tests')
-        animTestDanceFlip2Node = rigrepo.nodes.commandNode.CommandNode('danceFlip2')
         animNode.addChildren([animTestsNode])
+
+        # Dance Flip
+        animTestDanceFlip2Node = rigrepo.nodes.importAnimationNode.ImportAnimationNode('danceFlip2')
         animTestsNode.addChildren([animTestDanceFlip2Node])
+        animFile = testPath + "/animation/dance_flip_2.atom"
+        animTestDanceFlip2Node.getAttributeByName('filePath').setValue(animFile)
 
-        animTestDanceFlip2NodeCMD = '''
-import maya.cmds as mc
-import rigrepo.tests as tests
-import os 
-import maya.mel as mm
+        # Body Cali
+        animFile = testPath + "/animation/body_calisthenics_1.atom"
+        animTestBodyCaliNode = rigrepo.nodes.importAnimationNode.ImportAnimationNode('bodyCali')
+        animTestBodyCaliNode.getAttributeByName('filePath').setValue(animFile)
 
-if not mc.pluginInfo('atomImportExport', q=1, l=1):  
-    mc.loadPlugin('atomImportExport')
-
-testPath = os.path.dirname(tests.__file__).replace("\\\\", "/")
-fileName = testPath + "/animation/dance_flip_2.atom"
-
-mm.eval("select -r ac_lf_toe ac_lf_footFK ac_rt_toe ac_rt_footFK ac_rt_kneeFK ac_lf_kneeFK ac_lf_hipFK ac_rt_hipFK ac_lf_handFK ac_lf_elbowFK ac_lf_armFK ac_rt_handFK ac_rt_elbowFK ac_rt_armFK ac_rt_shoulder ac_lf_shoulder ac_cn_neck ac_cn_head ac_cn_root ac_cn_chest ac_rt_leg_settings ac_lf_leg_settings")
-mm.eval("file -import -type \\"atomImport\\" -ra true -namespace \\"dance_flip_2\\" -options \\";;targetTime=1;srcTime=0.8:194.4;dstTime=0.8:194.4;option=scaleInsert;match=hierarchy;;selected=selectedOnly;search=;replace=;prefix=;suffix=;mapFile=;\\" \\""+fileName+"\\";")
-'''
-        animTestDanceFlip2Node.getAttributeByName('command').setValue(animTestDanceFlip2NodeCMD)
+        animTestsNode.addChildren([animTestBodyCaliNode])
 
         # add all of the nodes in order to the workflow node.
         workflowNode.addChildren([exporters, mirroring, skinClusterNode, psdNode, sdkNode, jointsNode, animNode])

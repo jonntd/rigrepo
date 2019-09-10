@@ -154,6 +154,8 @@ import rigrepo.nodes.updateTopologyNode
 reload(rigrepo.nodes.updateTopologyNode)
 import rigrepo.nodes.renameMappingNode
 reload(rigrepo.nodes.renameMappingNode)
+import rigrepo.nodes.importAnimationNode
+reload(rigrepo.nodes.importAnimationNode)
 
 # reload parts
 import rigrepo.parts.part
