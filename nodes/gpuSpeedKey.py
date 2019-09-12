@@ -43,7 +43,6 @@ try:
     mc.currentTime(curTime)
 
 except:
-    mc.undoInfo(closeChunk=1)
     traceback.print_exc()
 mc.undoInfo(closeChunk=1)
 '''

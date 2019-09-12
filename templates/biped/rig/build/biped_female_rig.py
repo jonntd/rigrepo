@@ -23,4 +23,6 @@ class BipedFemaleRig(biped_base_rig.BipedBaseRig):
         cluster.disable()
         cluster = self.getNodeByPath('|animRig|apply|deformers|transferLidsClusters')
         cluster.disable()
+        worldOrient = self.getNodeByPath('|animRig|postBuild|worldOrient')
+        worldOrient.enable()
 

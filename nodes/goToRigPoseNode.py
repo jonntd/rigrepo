@@ -27,7 +27,6 @@ try:
         rigrepo.libs.control.toPoseAttr(controls, 0)
 
 except:
-    mc.undoInfo(closeChunk=1)
     traceback.print_exc()
 mc.undoInfo(closeChunk=1)
 '''
@@ -76,7 +75,6 @@ try:
 
 
 except:
-    mc.undoInfo(closeChunk=1)
     traceback.print_exc()
 mc.undoInfo(closeChunk=1)
 '''

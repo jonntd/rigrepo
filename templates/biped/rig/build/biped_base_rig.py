@@ -377,6 +377,27 @@ for side in ["l","r"]:
         mouthCornerDistanceNode.getAttributeByName('command').setValue(mouthCornerDistanceNodeCmd)
         cheekClusterNode.addChildren([leftCheekLiftClusterNode, rightCheekLiftClusterNode, mouthCornerDistanceNode])
 
+        orientToWorldNode = rigrepo.nodes.commandNode.CommandNode('worldOrient')
+        world_ctrls  = [l_arm.getAttributeByName('swingCtrl').getValue()]
+        world_ctrls += l_arm.getAttributeByName('fkControls').getValue()
+        world_ctrls += [r_arm.getAttributeByName('swingCtrl').getValue()]
+        world_ctrls += r_arm.getAttributeByName('fkControls').getValue()
+        orientToWorldNodeCmd = 'ctrls = ' + str(world_ctrls)
+        orientToWorldNodeCmd += '''
+import maya.cmds as mc
+
+tempLoc = mc.spaceLocator()[0]
+for ctrl in ctrls:
+    mc.delete(mc.parentConstraint(ctrl, tempLoc))
+    nul = ctrl+'_nul'
+    if mc.objExists(nul):
+        mc.setAttr(nul+'.r', 0, 0, 0)
+        mc.delete(mc.orientConstraint(tempLoc, ctrl))
+mc.delete(tempLoc)
+        '''
+        orientToWorldNode.getAttributeByName('command').setValue(orientToWorldNodeCmd)
+        orientToWorldNode.disable()
+
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
         faceBuildNode = pubs.pNode.PNode("face")
@@ -410,7 +431,7 @@ for side in ["l","r"]:
         postBuild = animRigNode.getChild('postBuild')
 
         switchExpression = rigrepo.nodes.utilNodes.SwitchExpressionNode("SwitchExpression")
-        postBuild.addChild(switchExpression)
+        postBuild.addChildren([switchExpression, orientToWorldNode])
         switchExpression.disable()
 
         applyNode = animRigNode.getChild('apply')
