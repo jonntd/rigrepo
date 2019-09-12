@@ -426,9 +426,12 @@ mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL"
         animTestDanceFlip2Node.getAttributeByName('filePath').setValue(animFile)
 
         # Body Cali
-        animFile = testPath + "/animation/body_calisthenics_1.atom"
-        animTestBodyCaliNode = rigrepo.nodes.importAnimationNode.ImportAnimationNode('bodyCali')
-        animTestBodyCaliNode.getAttributeByName('filePath').setValue(animFile)
+        #animFile = testPath + "/animation/body_calisthenics_2.atom"
+        #self.resolveDirPath('psd', self.variant)
+        animTestBodyCaliNode = rigrepo.nodes.importAnimationNode.ImportAnimationNode('bodyCali',
+                    filePath = self.resolveDataFilePath('anim/body_calisthenics_2.atom', self.variant),
+                    remapFile = self.resolveDataFilePath('control.map', self.variant))
+        #animTestBodyCaliNode.getAttributeByName('filePath').setValue(animFile)
 
         animTestsNode.addChildren([animTestBodyCaliNode])
 
