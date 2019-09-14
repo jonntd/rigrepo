@@ -420,19 +420,15 @@ mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL"
         animNode.addChildren([animTestsNode])
 
         # Dance Flip
-        animTestDanceFlip2Node = rigrepo.nodes.importAnimationNode.ImportAnimationNode('danceFlip2')
+        animTestDanceFlip2Node = rigrepo.nodes.importAnimationNode.ImportAnimationNode('danceFlip',
+                    filePath=self.resolveDataFilePath('anim/dance_flip_2.atom', self.variant),
+                    remapFile=self.resolveDataFilePath('control.map', self.variant))
         animTestsNode.addChildren([animTestDanceFlip2Node])
-        animFile = testPath + "/animation/dance_flip_2.atom"
-        animTestDanceFlip2Node.getAttributeByName('filePath').setValue(animFile)
 
         # Body Cali
-        #animFile = testPath + "/animation/body_calisthenics_2.atom"
-        #self.resolveDirPath('psd', self.variant)
         animTestBodyCaliNode = rigrepo.nodes.importAnimationNode.ImportAnimationNode('bodyCali',
-                    filePath = self.resolveDataFilePath('anim/body_calisthenics_2.atom', self.variant),
-                    remapFile = self.resolveDataFilePath('control.map', self.variant))
-        #animTestBodyCaliNode.getAttributeByName('filePath').setValue(animFile)
-
+                    filePath=self.resolveDataFilePath('anim/body_calisthenics_2.atom', self.variant),
+                    remapFile=self.resolveDataFilePath('control.map', self.variant))
         animTestsNode.addChildren([animTestBodyCaliNode])
 
         # add all of the nodes in order to the workflow node.
