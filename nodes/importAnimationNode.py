@@ -22,18 +22,29 @@ import rigrepo.libs.control
 
 mc.undoInfo(openChunk=1)
 try:
-    #if os.path.isfile("{filePath}"):
-    #    mc.file("{filePath}", i=True, f=True)
-
     if not mc.pluginInfo('atomImportExport', q=1, l=1):  
         mc.loadPlugin('atomImportExport')
 
-    # This stupid atom plugin on works on selection
-    controls = rigrepo.libs.control.getControls()
-    if controls:
-        mc.select(controls)
-    
-    mm.eval("file -import -type \\"atomImport\\" -ra true -namespace \\"body_calisthenics_1\\" -options \\";;targetTime=1;srcTime=1:400;dstTime=1:400;option=scaleInsert;match=mapFile;;selected=;search=;replace=;prefix=;suffix=;mapFile={remapFile};\\" \\"{filePath}\\";")
+    if os.path.isfile("{filePath}"):
+
+        # Get start and end frame
+        startTime = None
+        endTime = None
+        with open("{filePath}") as f:
+            for line in f:
+                if line.startswith('startTime'):
+                    startTime = line.split()[1]
+                if line.startswith('endTime'):
+                    endTime = line.split()[1]
+                    break
+        f.close()
+                
+        # This stupid atom plugin only works on selection
+        controls = rigrepo.libs.control.getControls()
+        if controls:
+            mc.select(controls)
+        
+        mm.eval("file -import -type \\"atomImport\\" -ra true -namespace \\"body_calisthenics_1\\" -options \\";;targetTime=1;srcTime=1:"+endTime+";dstTime=1:"+endTime+"option=scaleInsert;match=mapFile;;selected=;search=;replace=;prefix=;suffix=;mapFile={remapFile};\\" \\"{filePath}\\";")
         
 except:
     traceback.print_exc()
