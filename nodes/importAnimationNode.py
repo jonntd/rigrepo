@@ -43,6 +43,9 @@ try:
         controls = rigrepo.libs.control.getControls()
         if controls:
             mc.select(controls)
+            
+        # Clear existing anim 
+        mc.cutKey(controls, s=True)
         
         mm.eval("file -import -type \\"atomImport\\" -ra true -namespace \\"body_calisthenics_1\\" -options \\";;targetTime=1;srcTime=1:"+endTime+";dstTime=1:"+endTime+"option=scaleInsert;match=mapFile;;selected=;search=;replace=;prefix=;suffix=;mapFile={remapFile};\\" \\"{filePath}\\";")
         
