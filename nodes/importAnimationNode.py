@@ -33,9 +33,9 @@ try:
         with open("{filePath}") as f:
             for line in f:
                 if line.startswith('startTime'):
-                    startTime = line.split()[1]
+                    startTime = line.split()[1][:-1]
                 if line.startswith('endTime'):
-                    endTime = line.split()[1]
+                    endTime = line.split()[1][:-1]
                     break
         f.close()
                 
@@ -47,7 +47,10 @@ try:
         # Clear existing anim 
         mc.cutKey(controls, s=True)
         
-        mm.eval("file -import -type \\"atomImport\\" -ra true -namespace \\"body_calisthenics_1\\" -options \\";;targetTime=1;srcTime=1:"+endTime+";dstTime=1:"+endTime+"option=scaleInsert;match=mapFile;;selected=;search=;replace=;prefix=;suffix=;mapFile={remapFile};\\" \\"{filePath}\\";")
+        # Set timeline to fit animation
+        mc.playbackOptions(min=float(startTime), max=float(endTime))
+            
+        mm.eval("file -import -type \\"atomImport\\" -ra true -namespace \\"body_calisthenics_1\\" -options \\";;targetTime=1;srcTime=1:"+endTime+";dstTime=1:"+endTime+";option=scaleInsert;match=mapFile;;selected=;search=;replace=;prefix=;suffix=;mapFile={remapFile};\\" \\"{filePath}\\";")
         
 except:
     traceback.print_exc()
