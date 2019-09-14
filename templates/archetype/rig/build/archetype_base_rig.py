@@ -416,6 +416,20 @@ mc.select(mc.ls("*_def_auto*", type=["animCurveUU", "animCurveUA", "animCurveUL"
         # anim
         testPath = os.path.dirname(tests.__file__).replace("\\", "/")
         animNode = pubs.pNode.PNode('anim')
+
+        # Clear anim
+        clearAnimNode = rigrepo.nodes.commandNode.CommandNode('clearAnimation')
+        clearAnimNodeCMd = '''
+import maya.cmds as mc
+import rigrepo.libs.control
+
+controls = rigrepo.libs.control.getControls()
+mc.cutKey(controls)
+        '''
+        clearAnimNode.getAttributeByName('command').setValue(clearAnimNodeCMd)
+        animNode.addChildren([clearAnimNode])
+
+        # Anim Tests
         animTestsNode = pubs.pNode.PNode('tests')
         animNode.addChildren([animTestsNode])
 
