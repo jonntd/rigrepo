@@ -485,6 +485,12 @@ class Limb(part.Part):
             # connect the display line lodVis to the pvVis attribute
             mc.connectAttr("{}.pvVis".format(paramNode), "{}.lodv".format(curve), f=True)
 
+        # Locking translates because of anim issue
+        mc.setAttr(handle+'.tx', l=1)
+        mc.setAttr(handle+'.ty', l=1)
+        mc.setAttr(handle+'.tz', l=1)
+
+
     def postBuild(self):
         '''
         '''
