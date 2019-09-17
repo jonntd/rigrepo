@@ -81,6 +81,8 @@ import rigrepo.libs.blendShape
 reload(rigrepo.libs.blendShape)
 import rigrepo.libs.wrap
 reload(rigrepo.libs.wrap)
+import rigrepo.libs.wire
+reload(rigrepo.libs.wire)
 import rigrepo.ui.posePanel
 reload(rigrepo.ui.posePanel)
 
@@ -156,6 +158,9 @@ import rigrepo.nodes.renameMappingNode
 reload(rigrepo.nodes.renameMappingNode)
 import rigrepo.nodes.importAnimationNode
 reload(rigrepo.nodes.importAnimationNode)
+import rigrepo.nodes.wiresToSkinClusterNode
+reload(rigrepo.nodes.wiresToSkinClusterNode)
+
 
 # reload parts
 import rigrepo.parts.part

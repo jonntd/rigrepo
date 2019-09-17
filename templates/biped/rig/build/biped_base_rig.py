@@ -11,6 +11,7 @@ import rigrepo.nodes.exportDataNode
 import rigrepo.nodes.yankClusterNode
 import rigrepo.nodes.utilNodes 
 import rigrepo.nodes.addSpaceNode
+import rigrepo.nodes.wiresToSkinClusterNode
 
 # body parts import
 import rigrepo.parts.arm
@@ -464,6 +465,16 @@ mc.delete(tempLoc)
 
         applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode], 1)
         applyDeformerNode.addChildren([bindmeshTransferClusterBlinksNode, bindmeshTransferClusterLidsNode], 4)
+
+        wiresToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("wireToSkinCluster", 
+                                                                        wireList='mc.ls(["*leg*", "*arm*", "*spine*"], type="wire")', 
+                                                                        targetGeometry='body_geo',
+                                                                        deformerName='body_wire', 
+                                                                        keepWires=False,
+                                                                        jointDepth=4)
+        wiresToSkinClusterNode.disable()
+        deliveryNode = self.getNodeByPath("|animRig|delivery")
+        deliveryNode.addChild(wiresToSkinClusterNode, index=0)
         
     
         # create a build node to put builds under.

@@ -189,6 +189,7 @@ for node in mc.ls("*"):
             mc.setAttr(node + '.isHistoricallyInteresting', 1)
 '''
         hideHistoryNode.getAttributeByName('command').setValue(hideHistoryNodeCmd)        
+
         deliveryNode.addChildren([localizeNode, lockNode, hideHistoryNode])
 
         animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, deliveryNode, importNodeEditorBookmarsNode, frameNode])

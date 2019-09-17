@@ -48,7 +48,8 @@ def setWeights(deformer, weights, mapList=None, geometry=None):
     elif isinstance(weights, numpy.ndarray):
         weightList = [weights]
     elif isinstance(weights, rigrepo.libs.weightObject.WeightObject):
-        weightList = weights.getWeights()
+        mapList = weights.getMaps()
+        weightList = weights.getWeights()        
 
     if mc.nodeType(deformer) == 'skinCluster': 
         # iterate through the mesh and set the values on each point
