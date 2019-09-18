@@ -665,8 +665,30 @@ class Limb(part.Part):
         for data in (bindmeshGeometry, follicleList):
             mc.parent(data, name)
 
+        # This is dumb but the most consitent way for me to get the right behavior
+        # parenting the last joint to the first on to grab the axis I want to use for aiming
+        mc.parent(jointList[-1], jointList[0])
+        # get the axis we want to use to aim. 
+        aimDistance = mc.getAttr("{}.t".format(jointList[-1]))[0]
+        aimAttr, aimVector = self._getDistanceVector(aimDistance)
+        # parent the joint back to the control
+        mc.parent(jointList[-1], controlHieracrchyList[-1][-1])
         mc.pointConstraint(controlHieracrchyList[0][-1],controlHieracrchyList[2][-1], controlHieracrchyList[1][2], mo=True)
+        mc.aimConstraint(jointList[2], controlHieracrchyList[1][2], mo=True, w=1, upVector=(0,0,0), aimVector=aimVector, wut="none")
+        mc.aimConstraint(jointList[1], jointList[0], upVector=(0,0,0), mo=True, w=1, aimVector=aimVector, wut="none")
+
+
+        # This is dumb but the most consitent way for me to get the right behavior
+        # parenting the last joint to the first on to grab the axis I want to use for aiming
+        mc.parent(jointList[0], jointList[-1])
+        aimDistance = mc.getAttr("{}.t".format(jointList[0]))[0]
+        aimAttr, aimVector = self._getDistanceVector(aimDistance)
+        # parent the joint back to the control
+        mc.parent(jointList[0], controlHieracrchyList[0][-1])
         mc.pointConstraint(controlHieracrchyList[2][-1],controlHieracrchyList[4][-1], controlHieracrchyList[3][2], mo=True)
+        mc.aimConstraint(jointList[2], controlHieracrchyList[3][2], mo=True, w=1, upVector=(0,0,0), aimVector=aimVector, wut="none")
+        mc.aimConstraint(jointList[-2], jointList[-1], upVector=(0,0,0), mo=True, w=1, aimVector=aimVector, wut="none")
+
 
         # If parent the parent is passed in we will parent the system to the parent.
         if parent:
