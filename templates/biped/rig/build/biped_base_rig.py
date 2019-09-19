@@ -91,7 +91,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
 
         leftArmPvAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="arm_pv_l",
-            constraintNode="arm_pv_l_nul", parentNode='l_arm', targetList=['chest_bind', 'wrist_fk_l_tgt'], 
+            constraintNode="arm_pv_l_nul", parentNode='l_arm', targetList=['chest_bind', 'wrist_fk_l_offset_pv'], 
         nameList=["chest","hand"], constraintType='parent')
 
         leftArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_L",
@@ -141,7 +141,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         nameList=["world"], constraintType='orient')
 
         rightArmPvAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="arm_pv_r",
-            constraintNode="arm_pv_r_nul", parentNode='r_arm', targetList=['chest_bind', 'wrist_fk_r_tgt'], 
+            constraintNode="arm_pv_r_nul", parentNode='r_arm', targetList=['chest_bind', 'wrist_fk_r_offset_pv'], 
         nameList=["chest","hand"], constraintType='parent')
 
         rightArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_R",
@@ -196,7 +196,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         ikfkGroup='l_leg_ikfk_grp',
                                         paramNodeName='leg_L')
         leftLegAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="leg_pv_l",
-            constraintNode="leg_pv_l_nul", parentNode='rig', targetList=['pelvis_l','leg_ik_l'], 
+            constraintNode="leg_pv_l_nul", parentNode='rig', targetList=['pelvis_l','ankle_fk_l_offset_pv'], 
         nameList=["pelvis","foot"], constraintType='parent')
 
         # add foot to the leg node
@@ -223,7 +223,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         paramNodeName='leg_R')
 
         rightLegAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces',attrNode="leg_pv_r",
-            constraintNode="leg_pv_r_nul", parentNode='rig', targetList=['pelvis_r','leg_ik_r'], 
+            constraintNode="leg_pv_r_nul", parentNode='rig', targetList=['pelvis_r','ankle_fk_r_offset_pv'], 
         nameList=["pelvis","foot"], constraintType='parent')
 
 

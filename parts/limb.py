@@ -538,8 +538,27 @@ class Limb(part.Part):
                 decompAimAttr = aimAttr.strip("-")
             else:
                 decompAimAttr = "-{}".format(aimAttr)
-            decompose = rigrepo.libs.transform.decomposeRotation(joint, twistAxis=decompAimAttr)
-            mc.connectAttr(joint + '.decomposeTwist', twistJoint + '.r{}'.format(aimAttr.strip("-")), f=1)
+            rigrepo.libs.transform.decomposeRotation(joint, twistAxis=decompAimAttr)
+            # make sure we create a node for the pv foot space. We need to make a twist joint 
+            # that follows the ik control
+            offsetJoint = "{}_offset".format(self._fkControls[-2])
+            
+            if mc.objExists(offsetJoint):
+                # create the pvSpaceNode and make sure it's in the correct space
+                pvSpaceNode = mc.createNode("joint", name="{}_pv".format(offsetJoint))
+                #cstJoint = mc.createNode("joint", name="{}_cst_jnt".format(offsetJoint))
+                #mc.parent((cstJoint,pvSpaceNode), mc.listRelatives(self._ikControls[1], p=True)[0])
+                mc.parent(pvSpaceNode, offsetJoint)
+                mc.setAttr("{}.t".format(pvSpaceNode),0,0,0)
+                mc.setAttr("{}.r".format(pvSpaceNode),0,0,0)
+                mc.aimConstraint(self._fkControls[0], pvSpaceNode, mo=0, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
+                #mc.connectAttr("{}.t".format(self._ikControls[1]), "{}.t".format(pvSpaceNode), f=True)
+                #mc.pointConstraint(offsetJoint, mc.listRelatives(self._fkControls[0],p=True)[0] , cstJoint,mo=False)
+                #mc.orientConstraint(offsetJoint,cstJoint,mo=False)
+                # decompose the rotation
+                #rigrepo.libs.transform.decomposeRotation(cstJoint, twistAxis=decompAimAttr)
+                #mc.connectAttr('{}.decomposeTwist'.format(cstJoint), '{}.r{}'.format(pvSpaceNode, aimAttr.strip("-")), f=1)
+            mc.connectAttr('{}.decomposeTwist'.format(joint), '{}.r{}'.format(twistJoint, aimAttr.strip("-")), f=1)
         else:
             print('No twist joint found', twistJoint)
 
