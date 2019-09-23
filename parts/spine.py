@@ -15,7 +15,8 @@ import rigrepo.libs.attribute
 class Spine(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, chestBind='chest_bind', hipsBind='hips_bind', splineName='spineIk', dataObj=None, createBendySpline=False):
+    def __init__(self, name, jointList, chestBind='chest_bind', hipsBind='hips_bind', splineName='spineIk', dataObj=None, createBendySpline=False,
+        hipSwivelPivot=(0,0,0)):
         '''
         This is the constructor.
         '''
@@ -33,6 +34,7 @@ class Spine(part.Part):
         self.addAttribute("geometry", "body_geo", attrType=str)
         self.addAttribute("bendyCurve", "spine_curve", attrType=str)
         self.addAttribute("createBendySpline", True, attrType=bool)
+        self.addAttribute("hipSwivelPivot", "{}".format(hipSwivelPivot), attrType=str)
 
     def getChestCtrl(self):
         return(self._chestCtrl)
@@ -55,6 +57,7 @@ class Spine(part.Part):
         geometry = self.getAttributeByName("geometry").getValue()
         bendyCurve = self.getAttributeByName("bendyCurve").getValue()
         createBendySpline = self.getAttributeByName("createBendySpline").getValue()
+        hipSwivelPivot = eval(self.getAttributeByName("hipSwivelPivot").getValue())
 
         # Hips
         hipsCtrlHierarchy = control.create(name="hips", 
@@ -89,13 +92,25 @@ class Spine(part.Part):
         mc.xform(hipSwivelNul, ws=True, matrix=matrix)
         averagePos = rigrepo.libs.transform.getAveragePosition(jointList[0:3])
         mc.xform(hipSwivelNul, ws=True, t=averagePos)
+        if hipSwivelPivot != (0,0,0):
+            mc.xform(hipSwivelCtrl, relative=True, rp=hipSwivelPivot)
+
         mc.parent(hipSwivelNul, hipsGimbalCtrl)
         clusters = self.spline._clusters
-        mc.parent(clusters[0:2], hipSwivelCtrl)
-        mc.orientConstraint(hipSwivelCtrl, self.spline._startTwistNul, mo=1)
+                # create a group that is driven by the ctrl
+        hipSwivelGrp = mc.createNode("transform", n="hips_gimbal_grp")
+        # move the group into the same matrix as the control
+        mc.xform(hipSwivelGrp, ws=True, matrix=mc.xform(hipSwivelCtrl, q=True, ws=True, matrix=True))
+        # parent the group into the same space as the control
+        mc.parent(hipSwivelGrp, mc.listRelatives(hipSwivelCtrl, p=True)[0])
+        mc.connectAttr("{}.t".format(hipSwivelCtrl), "{}.t".format(hipSwivelGrp), f=True)
+        mc.connectAttr("{}.r".format(hipSwivelCtrl), "{}.r".format(hipSwivelGrp), f=True)
+        mc.connectAttr("{}.s".format(hipSwivelCtrl), "{}.s".format(hipSwivelGrp), f=True)
+        mc.parent(clusters[0:2], hipSwivelGrp)
+        mc.orientConstraint(hipSwivelGrp, self.spline._startTwistNul, mo=1)
     
         # Parent the entire ik group to the hips
-        mc.parent(self.spline.getGroup(), hipsGimbalCtrl) 
+        mc.parent(self.spline.getGroup(), hipsGimbalCtrl)
 
         # torso 
         ctrlHierarchy = control.create(name="torso", 
@@ -177,8 +192,8 @@ class Spine(part.Part):
         mc.orientConstraint(chestTopCtrl, self._chestBind, mo=1)
         #mc.connectAttr(chestTopCtrl+'.s', self._chestBind+'.s')
 
-        mc.parentConstraint(hipSwivelCtrl, self._hipsBind, mo=1) 
-        mc.connectAttr(hipSwivelCtrl+'.s', self._hipsBind+'.s')
+        mc.parentConstraint(hipSwivelGrp, self._hipsBind, mo=1) 
+        mc.connectAttr(hipSwivelGrp+'.s', self._hipsBind+'.s')
 
         mc.parent(hipsNul, self.name)
         mc.hide(self.spline._group, clusters)
