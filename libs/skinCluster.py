@@ -80,12 +80,10 @@ def removeLocalize(skinClusters):
                         mc.connectAttr(inf + '.worldMatrix[0]', inf_matrix, f=1)
                         mc.delete(localize_node)
 
-        # Handle bind pre matrix
-        pre_connections = mc.ls(sc + '.bindPreMatrix[*]')
-        for pre_con in pre_connections:
-            in_con = mc.listConnections(pre_con)
-            if in_con:
-                pass
+        # Handle geom matrix
+        if mc.listConnections(sc+'.geomMatrix'):
+            con = mc.listConnections(sc+'.geomMatrix', p=1)[0]
+            mc.disconnectAttr(con, sc+'.geomMatrix')
 
 
 def getSkinCluster(geometry):
