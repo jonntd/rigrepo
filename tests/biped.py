@@ -206,10 +206,13 @@ reload(rigrepo.templates.biped.rig.build.biped_female_rig)
 import os
 import maya.cmds as mc
 
-def nodes(variant='base', buildNow=False, debug=True):
+def nodes(variant='base', buildNow=False, debug=True, graph=None):
     # the right arm is all messed up and we have to fix it. Also, you can't run nodes more than once
     # in the same scene at th moment. We will have to fix this.
-    if variant == 'base':
+    if graph:
+        print('graph')
+        biped_graph = graph
+    elif variant == 'base':
         biped_graph = rigrepo.templates.biped.rig.build.biped_base_rig.BipedBaseRig(name='Biped_base')
     elif variant == 'female':
         biped_graph = rigrepo.templates.biped.rig.build.biped_female_rig.BipedFemaleRig(name='Biped_female')

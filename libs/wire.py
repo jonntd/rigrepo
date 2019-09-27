@@ -4,6 +4,7 @@ import maya.cmds as mc
 import numpy
 import rigrepo.libs.weights
 import rigrepo.libs.shape
+import rigrepo.libs.skinCluster
 
 def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, keepWires=False, 
     rootParentNode="rig", rootPreMatrixNode="trs_aux", jointDepth=2):
@@ -20,13 +21,22 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
     base = mc.duplicate(target)[0]
     convertWireList = mc.ls(wireDeformerList, type="wire")
 
-    # create a target skinCluster that will replace the wire defomer
-    targetSkinCluster = mc.deformer(target, type="skinCluster", name=newSkinName)[0]
+    # Delete current skinCluster connections
+    sc = mc.ls(mc.listHistory(target), type='skinCluster')[0]
+    if sc:
+        sc_out = mc.listConnections(sc+'.outputGeometry[0]', p=1)[0]
+        sc_gp = mc.listConnections(sc+'.input[0].inputGeometry')[0]
+        sc_pre_dfmr = mc.listConnections(sc_gp+'.inputGeometry', p=1)[0]
+        mc.connectAttr(sc_pre_dfmr, sc_out, f=1)
+
     # create a base joint that we can put weights on.
     baseJnt = "root_preMatrix_jnt"
     if not mc.objExists(baseJnt):
         mc.createNode("joint",name="root_preMatrix_jnt")
         mc.parent(baseJnt,rootParentNode)
+
+    # create a target skinCluster that will replace the wire defomer
+    targetSkinCluster = mc.skinCluster(target, baseJnt, tsb=1, name=newSkinName)[0]
 
     # get the influences to be used for the target skinCluster
     preMatrixNodeList = list()
@@ -81,14 +91,19 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
     # add in
     i=0
     for jnt, preMatrixNode in zip(influenceList,preMatrixNodeList):
-        mc.connectAttr("{}.worldMatrix[0]".format(jnt), "{}.matrix[{}]".format(targetSkinCluster, i), f=True)
-        mc.connectAttr("{}.worldInverseMatrix[0]".format(preMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, i), f=True)
+        mc.skinCluster(targetSkinCluster, e=1, ai=jnt)
+        index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, jnt)
+        mc.connectAttr("{}.worldInverseMatrix[0]".format(preMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, index), f=True)
         i += 1
         
     # connect the base joint so we have somewhere to put the weights not being used.
-    mc.connectAttr("{}.worldMatrix[0]".format(baseJnt), "{}.matrix[{}]".format(targetSkinCluster, i), f=True)
-    mc.connectAttr("{}.worldInverseMatrix[0]".format(rootPreMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, i), f=True)
-    
+    index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, baseJnt)
+    mc.connectAttr("{}.worldInverseMatrix[0]".format(rootPreMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, index), f=True)
+
+    # Rewire skinClusters
+    targ_sc_gp = mc.listConnections(targetSkinCluster+'.input[0].inputGeometry')[0]
+    mc.connectAttr(sc+'.outputGeometry[0]', targ_sc_gp+'.inputGeometry', f=1)
+
     # make sure we have the correct weights for the baseJnt
     baseJntArray = numpy.array([1.0 for id in mc.ls("{}.cp[*]".format(target), fl=True)])
     for weights in weightList:

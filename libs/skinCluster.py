@@ -33,9 +33,18 @@ def localize(skinClusters, transform):
             for con in connection:
                 if skinCluster == con.split('.')[0]:
                     index = con.split('[')[1].split(']')[0]
-                    # Nothing needs to be done if the bindPreMatrix is hooked up
-                    if mc.listConnections('{0}.bindPreMatrix[{1}]'.format(skinCluster, index)):
+
+                    # Handle bind pre matrix
+                    preMatrixAttr = '{0}.bindPreMatrix[{1}]'.format(skinCluster, index)
+                    preMatrixCon = mc.listConnections(preMatrixAttr, p=1)
+
+                    # If a bind preMatrix connections is found just make
+                    # sure the geom matrix is connected to the main transform and continue
+                    if preMatrixCon:
+                        if not mc.isConnected(transform+'.worldMatrix[0]', skinCluster+'.geomMatrix'):
+                            mc.connectAttr(transform+'.worldMatrix[0]', skinCluster+'.geomMatrix', f=1)
                         continue
+
                     multMatrix = '{}__{}_localizeMatrix'.format(inf, skinCluster)
                     if not mc.objExists(multMatrix):
                         multMatrix = mc.createNode('multMatrix', n=multMatrix)
@@ -46,7 +55,6 @@ def localize(skinClusters, transform):
                         mc.connectAttr(transform+'.worldInverseMatrix[0]', multMatrix+'.matrixIn[2]', f=1)
                     if not mc.isConnected(multMatrix+'.matrixSum', con):
                         mc.connectAttr(multMatrix+'.matrixSum', con, f=1)
-
 
 def removeLocalize(skinClusters):
     """
@@ -71,6 +79,13 @@ def removeLocalize(skinClusters):
                     if mc.nodeType(localize_node[0]) == 'multMatrix':
                         mc.connectAttr(inf + '.worldMatrix[0]', inf_matrix, f=1)
                         mc.delete(localize_node)
+
+        # Handle bind pre matrix
+        pre_connections = mc.ls(sc + '.bindPreMatrix[*]')
+        for pre_con in pre_connections:
+            in_con = mc.listConnections(pre_con)
+            if in_con:
+                pass
 
 
 def getSkinCluster(geometry):
@@ -170,3 +185,13 @@ def transferSkinCluster(source, target, surfaceAssociation="closestPoint"):
       
 
     return skinClusterList
+
+def getInfIndex(sc, inf):
+    con = mc.listConnections(inf+'.worldMatrix[0]')
+    con_attr = mc.listConnections(inf+'.worldMatrix[0]', type='skinCluster', p=1)
+    if not con:
+        return
+    for c, attr in zip(con, con_attr):
+        if c == sc:
+            index = rigrepo.libs.common.getIndex(attr)
+            return index
