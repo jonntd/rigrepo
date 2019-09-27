@@ -180,7 +180,7 @@ for ctrl in controls:
         hideHistoryNode = rigrepo.nodes.commandNode.CommandNode('hideHistory')
         hideHistoryNodeCmd = '''
 import maya.cmds as mc    
-excludeType = ("skinCluster","wire", "blendShape", "deltaMush", "cluster")
+excludeType = ("skinCluster","wire", "blendShape", "deltaMush", "cluster", "mesh", "nurbsCurve", "nurbsSurface")
 exclude = []
 for node in mc.ls("*"):
     if node not in exclude:

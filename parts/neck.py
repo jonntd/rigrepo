@@ -15,14 +15,14 @@ class Neck(part.Part):
     '''
     '''
     def __init__(self, name, jointList, skullBind='skull_bind', splineName='neckIk', anchor="chest_top",
-        headPivot=(0,0,0)):
+        headPivot=2.0):
         '''
         This is the constructor.
         '''
         super(Neck, self).__init__(name) 
         self._skullBind=skullBind
         self.addAttribute("anchor", anchor, attrType='str')
-        self.addAttribute("headPivot", "{}".format(headPivot), attrType='str')
+        self.addAttribute("headPivot", headPivot, attrType='float')
         self._splineName = splineName
         self.jointList = jointList
 
@@ -31,7 +31,7 @@ class Neck(part.Part):
         '''
         super(Neck, self).build()
         jointList = eval(self.jointList)
-        headPivot = eval(self.getAttributeByName("headPivot").getValue())
+        headPivotValue = self.getAttributeByName("headPivot").getValue()
         self.spline = spline.SplineBase(jointList=jointList + [self._skullBind], splineName=self._splineName)
         self.spline.create()
         grp=mc.rename(self.name, "{}_grp".format(self.name))
@@ -67,38 +67,59 @@ class Neck(part.Part):
         # move the group into the same matrix as the control
         mc.xform(headGimbalGrp, ws=True, matrix=mc.xform(headGimbalCtrl, q=True, ws=True, matrix=True))
         # parent the group into the same space as the control
-        mc.parent(headGimbalGrp, mc.listRelatives(headGimbalCtrl, p=True)[0])
-        mc.connectAttr("{}.t".format(headGimbalCtrl), "{}.t".format(headGimbalGrp), f=True)
-        mc.connectAttr("{}.r".format(headGimbalCtrl), "{}.r".format(headGimbalGrp), f=True)
-        mc.connectAttr("{}.rp".format(headGimbalCtrl), "{}.rp".format(headGimbalGrp), f=True)
-        mc.connectAttr("{}.s".format(headGimbalCtrl), "{}.s".format(headGimbalGrp), f=True)
+        mc.parent(headGimbalGrp, headGimbalCtrl)
+        # constrain the gimbal group to the gimbal control
+        mc.connectAttr("{}.rp".format(headCtrl), "{}.rp".format(headGimbalCtrl), f=True)
+        #mc.connectAttr("{}.rp".format(headGimbalCtrl), "{}.rp".format(headGimbalGrp), f=True)
+        #mc.pointConstraint(headGimbalCtrl, headGimbalGrp)
+        #mc.orientConstraint(headGimbalCtrl, headGimbalGrp)
         #mc.scaleConstraint(headGimbalCtrl, headGimbalGrp)
+
+        # make sure the nul is where the joint is
         mc.xform(headNul, ws=True, t=mc.xform(self._skullBind, q=True, ws=True, t=True))
-        if headPivot == (0,0,0):
-            headPivot = rigrepo.libs.transform.getAveragePosition((jointList[-2], self._skullBind))
-            mc.xform(headCtrl, ws=True, rp=headPivot)
-            mc.xform(headGimbalCtrl, ws=True, rp=headPivot)
+
+        # create pivot attributes to use for moving the pivot and tangent heights.
+        mc.addAttr(headCtrl, ln="pivotHeight", at="double", dv=0, min=0, max=4, keyable=False)
+        mc.setAttr("{}.pivotHeight".format(headCtrl), headPivotValue)
+        # tangent will be figured out later.
+        #mc.addAttr(hipSwivelCtrl, ln="tangentHeight", at="double", dv=0, min=0, max=4, keyable=False)
+        # get the aim axis
+        tempNode = mc.createNode("transform", name="temp")
+        mc.parent(tempNode, headGimbalGrp)
+        mc.xform(tempNode, ws=True, matrix=matrix)
+        aimAxis=rigrepo.libs.transform.getAimAxis(headGimbalGrp)
+        mc.delete(tempNode)
+        if '-' in aimAxis:
+            headCtrlPivotPma = mc.createNode('plusMinusAverage', n='head_pivot_pma')
+            mc.connectAttr('{}.pivotHeight'.format(headCtrl), '{}.input1D[1]'.format(headCtrlPivotPma), f=True)
+            mc.setAttr('{}.input1D[0]'.format(headCtrlPivotPma), -1)
+            mc.setAttr('{}.operation'.format(headCtrlPivotPma), 2)
+            mc.connectAttr('{}.output1D'.format(headCtrlPivotPma), '{}.rotatePivot{}'.format(headCtrl, aimAxis.strip('-').capitalize()), f=True)
+            # this should be setting the tangent, but we're using clusters. Still need time to 
+            # figure this part out
+            '''
+            hipSwivelTangentPivotPma = mc.createNode('plusMinusAverage', n='hipSwivel_tangent_pivot_pma')
+            mc.connectAttr('{}.tangentHeight'.format(hipSwivelCtrl), '{}.input1D[1]'.format(hipSwivelTangentPivotPma), f=True)
+            mc.setAttr('{}.input1D[0]'.format(hipSwivelTangentPivotPma), -1)
+            mc.setAttr('{}.operation'.format(hipSwivelTangentPivotPma), 2)
+            mc.connectAttr('{}.input1D'.format(hipSwivelTangentPivotPma), '{}.rotatePivot{}'.format(clusters[1], aimAxis.strip('-').capitalize()), f=True)
+            '''
         else:
-            mc.xform(headCtrl, relative=True, rp=headPivot)
-            mc.xform(headGimbalCtrl, relative=True, rp=headPivot)
+            mc.connectAttr('{}.pivotHeight'.format(headCtrl), '{}.rotatePivot{}'.format(headCtrl, aimAxis.capitalize()), f=True)
+            #mc.connectAttr('{}.tangentHeight'.format(hipSwivelCtrl), '{}.rotatePivot{}'.format(clusters[1], aimAxis.capitalize()), f=True)
+
         mc.parent(headNul, neckCtrl) 
         mc.parent(clusters[2:], headGimbalGrp)
         mc.orientConstraint(headGimbalGrp, self.spline._endTwistNul, mo=1)
-
-        # connect the scale to the skullBind
-        '''
-        jnt = mc.ls(mc.listConnections("{}.s".format(self._skullBind), plugs=False), type="joint")[0]
-        skullScalePma = mc.createNode("plusMinusAverage", name="{}_scale_pma".format(self._skullBind))
-        mc.connectAttr("{}.s".format(jnt), "{}.input3D[0]".format(skullScalePma), f=True)
-        mc.connectAttr("{}.s".format(headGimbalGrp), "{}.input3D[1]".format(skullScalePma), f=True)
-        mc.connectAttr("{}.output3D".format(skullScalePma), "{}.s".format(self._skullBind), f=True)
-        '''
+        # make the offset joint for the skull
         skullOffset = mc.duplicate(self._skullBind, po=True, rr=True, name="{}_offset".format(self._skullBind))[0]
         mc.setAttr(skullOffset+'.v', 0)
         mc.parent(skullOffset, headGimbalGrp)
         mc.orientConstraint(skullOffset, self.spline._ikJointList[-1], mo=1)
+        # connect the scale of the gimbal group to the scale of skull bind
         #mc.connectAttr(headGimbalGrp+'.s', self._skullBind+'.s', f=True)
         mc.scaleConstraint(headGimbalGrp, self._skullBind)
+        mc.setAttr("{}.segmentScaleCompensate".format(self._skullBind), False)
 
         anchor = self.getAttributeByName('anchor').getValue()
         if mc.objExists(anchor):

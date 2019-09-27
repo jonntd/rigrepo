@@ -551,6 +551,8 @@ class Limb(part.Part):
                 mc.parent(pvSpaceNode, offsetJoint)
                 mc.setAttr("{}.t".format(pvSpaceNode),0,0,0)
                 mc.setAttr("{}.r".format(pvSpaceNode),0,0,0)
+                # turn off the visibility of the joint
+                mc.setAttr("{}.v".format(pvSpaceNode), 0)
                 mc.aimConstraint(self._fkControls[0], pvSpaceNode, mo=0, weight=1, aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
                 #mc.connectAttr("{}.t".format(self._ikControls[1]), "{}.t".format(pvSpaceNode), f=True)
                 #mc.pointConstraint(offsetJoint, mc.listRelatives(self._fkControls[0],p=True)[0] , cstJoint,mo=False)

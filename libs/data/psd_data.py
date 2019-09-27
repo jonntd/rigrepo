@@ -26,6 +26,8 @@ class PSDData(abstract_data.AbstractData):
                 continue
             for ctrl in controllers:
                 plug = mc.listConnections(node + '.%s' % ctrl, p=1)
+                if not plug:
+                    continue
                 plug = plug[0]
                 plug = str(plug)
                 data['drivers'][driver]['controllers'].append(plug)
