@@ -233,7 +233,6 @@ def getAimAxis ( transform, allowNegative = True):
     pos  = mc.xform( transform, q=True, ws=True, rp=True )
     rel  = getAveragePosition( mc.listRelatives(transform, type="transform"))
     axis = getAxis( transform, (rel[0]-pos[0], rel[1]-pos[1], rel[2]-pos[2] ) )
-
     if not allowNegative:
         return axis[-1]
 

@@ -15,7 +15,7 @@ class Neck(part.Part):
     '''
     '''
     def __init__(self, name, jointList, skullBind='skull_bind', splineName='neckIk', anchor="chest_top",
-        headPivot=2.0):
+        headPivot=3.5):
         '''
         This is the constructor.
         '''
@@ -34,6 +34,13 @@ class Neck(part.Part):
         headPivotValue = self.getAttributeByName("headPivot").getValue()
         self.spline = spline.SplineBase(jointList=jointList + [self._skullBind], splineName=self._splineName)
         self.spline.create()
+
+        # get the name of the curveInfo node. This is hard coded to be this way in the
+        # spline  code. If that changes, this will not work. We can change the code below
+        # to use the API to get the length of the curve instead of this node, but for now, this 
+        # is quicker because it's available already.
+        spineCurveInfo = self._splineName+"_curveInfo"
+
         grp=mc.rename(self.name, "{}_grp".format(self.name))
 
         # Neck
@@ -77,36 +84,70 @@ class Neck(part.Part):
 
         # make sure the nul is where the joint is
         mc.xform(headNul, ws=True, t=mc.xform(self._skullBind, q=True, ws=True, t=True))
-
-        # create pivot attributes to use for moving the pivot and tangent heights.
-        mc.addAttr(headCtrl, ln="pivotHeight", at="double", dv=0, min=0, max=4, keyable=False)
-        mc.setAttr("{}.pivotHeight".format(headCtrl), headPivotValue)
         # tangent will be figured out later.
         #mc.addAttr(hipSwivelCtrl, ln="tangentHeight", at="double", dv=0, min=0, max=4, keyable=False)
+         # make sure the nul is where the joint is
+        mc.xform(headNul, ws=True, t=mc.xform(self._skullBind, q=True, ws=True, t=True))
+
+        # create pivot attributes to use for moving the pivot and tangent heights.
+        mc.addAttr(headCtrl, ln="pivotHeight", at="double", dv=0, min=0, max=10, keyable=False)
+        mc.setAttr("{}.pivotHeight".format(headCtrl), headPivotValue)
+
+        # create the remap node to use to remap the pivot height to the lenght of the curve
+        headRemapNode = mc.createNode("remapValue", n="head_pivot_remap")
+
+        # map the 0-10 to the length of the curve on the spine
+        curveLength = mc.getAttr("{}.arcLength".format(spineCurveInfo))
+
+        # set the max output value for the remap to be the length of the curve
+        mc.setAttr("{}.outputMax".format(headRemapNode), curveLength)
+
+        # set the input max
+        mc.setAttr("{}.inputMax".format(headRemapNode), 10)
+
+        # connect the slider for pivot to the input max
+        mc.connectAttr("{}.pivotHeight".format(headCtrl), 
+                        "{}.inputValue".format(headRemapNode), f=True)
+
         # get the aim axis
-        tempNode = mc.createNode("transform", name="temp")
-        mc.parent(tempNode, headGimbalGrp)
-        mc.xform(tempNode, ws=True, matrix=matrix)
+        headPivotNulGrp = mc.createNode("transform", name="headPivot_aim_nul")
+        headPivotAimGrp = mc.createNode("transform", name="headPivot_aim_grp")
+        headPivotDriver = mc.createNode("transform", name="headPivot_aim_drv")
+        mc.parent(headPivotAimGrp, headPivotNulGrp)
+        mc.parent(headPivotNulGrp, headGimbalGrp)
+        mc.parent(headPivotDriver, headPivotAimGrp)
+        mc.xform(headPivotNulGrp, ws=True, matrix=matrix)
+        # get the aim axis
         aimAxis=rigrepo.libs.transform.getAimAxis(headGimbalGrp)
-        mc.delete(tempNode)
+        mc.parent(headPivotNulGrp, headNul)
+        vector = om.MVector(*mc.getAttr("{}.t".format(headPivotNulGrp)))
+        vector.normalize()
+        distanceValue = max(vector, key=abs)
+        index = (vector.x, vector.y, vector.z).index(distanceValue)
+        aimVector = list()
+        for i in range(len(vector)):
+            if i == index:
+                aimVector.append(1)
+            else:
+                aimVector.append(0)
+
+        # move the transform back to the skull
+        mc.xform(headPivotNulGrp, ws=True, t=mc.xform(headNul, q=True, ws=True, t=True))
+        mc.orientConstraint(neckOrt, headPivotNulGrp)
+        mc.parent(headPivotDriver, headNul)
+        mc.pointConstraint(headPivotAimGrp, headPivotDriver)
+        mc.orientConstraint(headPivotAimGrp, headPivotDriver)
+
+        mc.aimConstraint(neckCtrl,headPivotAimGrp, w=1, upVector=(0,0,0), aimVector=aimVector, wut="none")
         if '-' in aimAxis:
-            headCtrlPivotPma = mc.createNode('plusMinusAverage', n='head_pivot_pma')
-            mc.connectAttr('{}.pivotHeight'.format(headCtrl), '{}.input1D[1]'.format(headCtrlPivotPma), f=True)
-            mc.setAttr('{}.input1D[0]'.format(headCtrlPivotPma), -1)
-            mc.setAttr('{}.operation'.format(headCtrlPivotPma), 2)
-            mc.connectAttr('{}.output1D'.format(headCtrlPivotPma), '{}.rotatePivot{}'.format(headCtrl, aimAxis.strip('-').capitalize()), f=True)
-            # this should be setting the tangent, but we're using clusters. Still need time to 
-            # figure this part out
-            '''
-            hipSwivelTangentPivotPma = mc.createNode('plusMinusAverage', n='hipSwivel_tangent_pivot_pma')
-            mc.connectAttr('{}.tangentHeight'.format(hipSwivelCtrl), '{}.input1D[1]'.format(hipSwivelTangentPivotPma), f=True)
-            mc.setAttr('{}.input1D[0]'.format(hipSwivelTangentPivotPma), -1)
-            mc.setAttr('{}.operation'.format(hipSwivelTangentPivotPma), 2)
-            mc.connectAttr('{}.input1D'.format(hipSwivelTangentPivotPma), '{}.rotatePivot{}'.format(clusters[1], aimAxis.strip('-').capitalize()), f=True)
-            '''
+            headCtrlPivotMdl = mc.createNode('multDoubleLinear', n='head_pivot_mdl')
+            mc.connectAttr('{}.outValue'.format(headRemapNode), '{}.input1'.format(headCtrlPivotMdl), f=True)
+            mc.setAttr('{}.input2'.format(headCtrlPivotMdl), -1)
+            mc.connectAttr('{}.output'.format(headCtrlPivotMdl), '{}.t{}'.format(headPivotAimGrp, aimAxis.strip('-')), f=True)
+            mc.connectAttr('{}.t'.format(headPivotDriver), '{}.rotatePivot'.format(headCtrl), f=True)
         else:
-            mc.connectAttr('{}.pivotHeight'.format(headCtrl), '{}.rotatePivot{}'.format(headCtrl, aimAxis.capitalize()), f=True)
-            #mc.connectAttr('{}.tangentHeight'.format(hipSwivelCtrl), '{}.rotatePivot{}'.format(clusters[1], aimAxis.capitalize()), f=True)
+            mc.connectAttr('{}.outValue'.format(headRemapNode), '{}.t{}'.format(headPivotAimGrp, aimAxis), f=True)
+            mc.connectAttr('{}.t'.format(headPivotDriver), '{}.rotatePivot'.format(headCtrl), f=True)
 
         mc.parent(headNul, neckCtrl) 
         mc.parent(clusters[2:], headGimbalGrp)

@@ -23,7 +23,6 @@ class SplineBase(object):
                         None is passed.
         :type jointList: list
         '''
-
         self.setJointList(jointList)
         self._name = splineName 
         self._group = self._name+'_grp' 
@@ -56,6 +55,12 @@ class SplineBase(object):
         Returns the group
         '''
         return self._clusters
+
+    def getCurve(self):
+        '''
+        Returns the curve for the spline
+        '''
+        return self._curve
 
     #SET
     def setJointList(self, value):
