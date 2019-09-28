@@ -5,6 +5,7 @@ Anything that uses a spline ik solver
 should start with this class.
 '''
 import maya.cmds as mc
+import maya.api.OpenMaya as om
 import rigrepo.parts.part as part
 import rigrepo.libs.control as control
 import rigrepo.libs.spline as spline
