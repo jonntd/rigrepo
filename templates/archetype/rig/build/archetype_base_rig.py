@@ -12,6 +12,7 @@ import rigrepo.nodes.transferDeformer
 import rigrepo.nodes.mirrorWiresNode
 import rigrepo.nodes.zeroJointsNode
 import rigrepo.nodes.labelJointsForMirroringNode
+import rigrepo.nodes.loadFileNode
 import maya.cmds as mc
 from rigrepo.libs.fileIO import joinPath 
 import os

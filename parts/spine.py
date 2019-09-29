@@ -265,7 +265,7 @@ class Spine(part.Part):
         tempNode = mc.createNode("transform", name="temp")
         mc.parent(tempNode, hipSwivelGrp)
         mc.xform(tempNode, ws=True, matrix=matrix)
-        aimAxis=rigrepo.libs.transform.getAimAxis(hipSwivelGrp)
+        aimAxis, aimVector = self._getDistanceVector(mc.getAttr('{}.t'.format(tempNode))[0])
         mc.delete(tempNode)
         if '-' in aimAxis:
             hipSwivelPivotMdl = mc.createNode('multDoubleLinear', n='hipSwivel_pivot_pma')
