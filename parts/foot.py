@@ -135,7 +135,7 @@ class Foot(part.Part):
                                                             transformType="joint")
 
         rigrepo.libs.attribute.lockAndHide(ballFkctrlHierarchy[-1],
-                                            ['v', 'sx','sy','sz'])
+                                            ['v', 'tx','ty','tz','sx','sy','sz'])
 
         # position the ball control
         ballJointMatrix = mc.xform(fkJointList[1], q=True, ws=True, matrix=True)

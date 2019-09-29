@@ -159,9 +159,10 @@ class Neck(part.Part):
         mc.parent(skullOffset, headGimbalGrp)
         mc.orientConstraint(skullOffset, self.spline._ikJointList[-1], mo=1)
         # connect the scale of the gimbal group to the scale of skull bind
-        #mc.connectAttr(headGimbalGrp+'.s', self._skullBind+'.s', f=True)
-        mc.scaleConstraint(headGimbalGrp, self._skullBind)
-        mc.setAttr("{}.segmentScaleCompensate".format(self._skullBind), False)
+        headScaleMdn = mc.createNode("multiplyDivide", n="head_scale_mdn")
+        mc.connectAttr("{}.s".format(headCtrl), "{}.input1".format(headScaleMdn), f=True)
+        mc.connectAttr("{}.s".format(headGimbalCtrl), "{}.input2".format(headScaleMdn), f=True)
+        mc.connectAttr("{}.output".format(headScaleMdn), "{}.s".format(self._skullBind), f=True)
 
         anchor = self.getAttributeByName('anchor').getValue()
         if mc.objExists(anchor):
