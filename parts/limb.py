@@ -74,9 +74,12 @@ class Limb(part.Part):
         mc.parent(grp, self.name)
         # lock and hide attributes on the Param node that we don't need.
         mc.addAttr(paramNode, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
+        mc.addAttr(paramNode, ln="ikfk_switch", nn="Snap IK FK", at="enum", keyable=False, enumName="IK:FK")
+        mc.setAttr("{}.ikfk_switch".format(paramNode), cb=True)  
 
         mc.addAttr(grp, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True)
         ikfkAttr = "{0}.ikfk".format(paramNode)
+        
 
         mc.connectAttr(ikfkAttr, "{0}.ikfk".format(grp), f=True)
 
@@ -437,22 +440,22 @@ class Limb(part.Part):
         # fk match attributes needed to the switch
         mc.addAttr(paramNode, ln="fkMatchTransforms", dt="string")
         mc.setAttr("{}.fkMatchTransforms".format(paramNode), 
-                '["{0}","{1}","{2}"]'.format(self._fkControls[0], self._fkControls[1], fkOffsetJnt), 
+                '["{}","{}","{}"]'.format(self._fkControls[0], self._fkControls[1], fkOffsetJnt), 
                 type="string")
 
         mc.addAttr(paramNode, ln="fkControls", dt="string")
         mc.setAttr("{}.fkControls".format(paramNode), 
-                '["{0}","{1}","{2}"]'.format(*self._fkControls), 
+                '["{}","{}","{}","{}"]'.format(*self._fkControls+[fkGimbalCtrl]), 
                 type="string")
 
         # ik match attributes needed for the switch
         mc.addAttr(paramNode, ln="ikMatchTransforms", dt="string")
         mc.setAttr("{}.ikMatchTransforms".format(paramNode), 
-                '["{0}","{1}","{2}"]'.format(*self.jointList), 
+                '["{}","{}","{}"]'.format(self._fkControls[0], self._fkControls[1], dupEndJnt), 
                 type="string")
         mc.addAttr(paramNode, ln="ikControls", dt="string")
         mc.setAttr("{}.ikControls".format(paramNode), 
-                '["{0}","{1}"]'.format(*self._ikControls[:-1]), 
+                '["{}","{}", "{}"]'.format(*self._ikControls), 
                 type="string")
 
         # command to be called when switch is being used.
@@ -568,7 +571,8 @@ class Limb(part.Part):
             for control in self._ikControls + self._fkControls:
                 mc.addAttr(control, ln="settings", at="enum", enumName="settings",keyable=True)
                 rigrepo.libs.attribute.lock(control, ['settings'])
-                mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True, proxy='{}.ikfk'.format(paramNodeName))
+                mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, keyable=True, enumName="Ik:FK", proxy='{}.ikfk'.format(paramNodeName))
+                mc.addAttr(control, ln='ikfk_switch', nn= "Snap IK FK", at='enum', k=True, proxy='{}.ikfk_switch'.format(paramNodeName))
                 mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True, proxy='{}.stretch'.format(paramNodeName))
                 mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, k=True, proxy='{}.stretchTop'.format(paramNodeName))
                 mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, k=True, proxy='{}.stretchBottom'.format(paramNodeName))

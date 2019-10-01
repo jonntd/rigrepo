@@ -433,7 +433,7 @@ mc.delete(tempLoc)
 
         switchExpression = rigrepo.nodes.utilNodes.SwitchExpressionNode("SwitchExpression")
         postBuild.addChildren([switchExpression, orientToWorldNode])
-        switchExpression.disable()
+        #switchExpression.disable()
 
         applyNode = animRigNode.getChild('apply')
         applyNode.addChild(controlsDefaults)

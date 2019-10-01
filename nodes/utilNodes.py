@@ -224,8 +224,6 @@ def getDistanceVector(distance):
 
 def switch(paramNode, value):
     
-    mc.undoInfo(openChunk=1)
-    
     namespace=""
     namespaceSplit = paramNode.split(":")
 
@@ -237,12 +235,12 @@ def switch(paramNode, value):
         fkControls = eval(mc.getAttr(paramNode + '.fkControls'))
         ikMatchTransforms = eval(mc.getAttr(paramNode + '.ikMatchTransforms'))
         
-        aimAttr, vector= getDistanceVector(mc.getAttr("%s%s.t" % (namespace,fkControls[2]))[0])
-        scaleValues = [mc.getAttr('%s%s.s%s' % (namespace,ctrl,aimAttr.strip("-"))) for ctrl in (fkControls[1],fkControls[2])]
-        shoulderGimbal = "%s%s" % (namespace, fkControls.pop(1))
+        aimAttr, vector= getDistanceVector(mc.getAttr("%s%s.t" % (namespace,fkControls[1]))[0])
+        scaleValues = [mc.getAttr('%s%s.s%s' % (namespace,ctrl,aimAttr.strip("-"))) for ctrl in (fkControls[0],fkControls[1])]
         wristGimbal = "%s%s" % (namespace,fkControls.pop(-1))
         rotationList = list()
         for ctrl in ikMatchTransforms:
+            print ctrl
             rotationList.append(mc.xform("%s%s" % (namespace, ctrl), q=True, ws=True, rotation=True))
         mc.setAttr("%s.pvPin" % (paramNode), 0)
         mc.setAttr("%s.twist" % (paramNode), 0)
@@ -250,14 +248,15 @@ def switch(paramNode, value):
         mc.getAttr("%s.ikfk" % (paramNode))
         mc.setAttr("%s.ikfk" % (paramNode), 1)
         mc.setAttr(wristGimbal + '.r',0, 0, 0)
-        mc.setAttr(shoulderGimbal + '.r',0, 0, 0)
         
         for rotation, ctrl in zip(rotationList,fkControls):
+            print ctrl
             mc.xform("%s%s" % (namespace, ctrl), ws=True, rotation=rotation)
     
         attrList = ('stretchTop', 'stretchBottom')
         for scaleValue, attr in zip(scaleValues, attrList):
             mc.setAttr(paramNode + '.' + attr, scaleValue)
+
     elif value == 0:
         # get the ik controls
         ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
@@ -268,10 +267,6 @@ def switch(paramNode, value):
         matchNode = mc.getAttr(paramNode + '.pvMatch')
         # get the current distance between the joints
         currentDistance = mc.getAttr("%s%s.t%s" % (namespace, fkMatchTransforms[1], aimAttr.strip("-"))) + mc.getAttr("%s%s.t%s" % (namespace, fkMatchTransforms[2], aimAttr.strip("-")))
-        #check to see if the distance in negative, which means we have to treat the matching differently
-        flip = False
-        if currentDistance < 0:
-            flip=True
             
         newPvPos = mc.xform("%s%s" % (namespace, matchNode), q=True, ws=True, t=True)
         endJntMatrix = mc.xform("%s%s" % (namespace,fkMatchTransforms[2]), q=True, ws=True, matrix=True)
@@ -282,41 +277,63 @@ def switch(paramNode, value):
         mc.xform("%s%s" % (namespace, ikControls[1]), ws=True, matrix=endJntMatrix)
         mc.xform("%s%s" % (namespace, ikControls[0]), ws=True, t=newPvPos)
         mc.setAttr("%s%s.r" % (namespace, ikControls[-1]), 0,0,0)
+    
+
+def armSwitch():
+    '''
+    '''
+    mc.undoInfo(openChunk=1)
+    try:
+        paramNode = mc.ls(sl=True)[0]
+        connections = mc.listConnections("%s.ikfk" % paramNode, d=True)
+        if len(connections) == 1:
+            paramNode = connections[0]
+
+        value = mc.getAttr("%s.ikfk_switch" % (paramNode))
+        switch(paramNode, value)
+    except:
+        print "can't run the switch"
+    mc.undoInfo(closeChunk=1)
+    
+def legSwitch():
+    '''
+    '''
+    mc.undoInfo(openChunk=1)
+    try:
+        paramNode = mc.ls(sl=1)[0]
+
+        connections = mc.listConnections("%s.ikfk" % paramNode, d=True)
+        if len(connections) == 1:
+            paramNode = connections[0]
+
+        namespace=""
+        namespaceSplit = paramNode.split(":")
+
+        if len(namespaceSplit) > 1:
+            namespace = ":".join(namespaceSplit[:-1]) 
+            namespace = "%s:" % (namespace)
+
+        value = mc.getAttr("%s.ikfk_switch" % (paramNode))
+
+        if value == 1:
+            fkControl = eval(mc.getAttr("%s.footFkControl" % (paramNode)))
+            fkControlPos = mc.xform("%s%s" % (namespace, fkControl), q=True, ws=True, matrix=True)
+            switch(paramNode, value)
+            mc.xform("%s%s" % (namespace, fkControl), ws=True, matrix=fkControlPos)
+        elif value == 0:
+            ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
+            #attrs = mc.listAttr("%s%s" % (namespace, ikControls[1]), ud=True, keyable=True)
+            #for attr in attrs:
+            #    try:
+            #        mc.setAttr("%s%s.%s" % (namespace, ikControls[1], attr), 0)
+            #    except:
+            #        pass
+
+            switch(paramNode, value)
+    except:
+        print "can't run the switch"
     mc.undoInfo(closeChunk=1)
 
-def armSwitch(paramNode=None):
-    '''
-    '''
-    if not paramNode:
-        paramNode = mc.ls(sl=True)[0]
-    
-    value = mc.getAttr("%s.ikfk_switch" % (paramNode))
-    print paramNode, value
-    switch(paramNode, value)
-
-def legSwitch(paramNode=None):
-    '''
-    '''
-    paramNode = mc.ls(sl=True)[0]
-
-    namespace=""
-    namespaceSplit = paramNode.split(":")
-
-    if len(namespaceSplit) > 1:
-        namespace = ":".join(namespaceSplit[:-1]) 
-        namespace = "%s:" % (namespace)
-
-    value = mc.getAttr("%s.ikfk_switch" % (paramNode))
-
-    if value == 1:
-        fkControl = eval(mc.getAttr("%s.footFkControl" % (paramNode)))
-        fkControlPos = mc.xform("%s%s" % (namespace, fkControl), q=True, ws=True, matrix=True)
-        switch(paramNode, value)
-        mc.xform("%s%s" % (namespace, fkControl), ws=True, matrix=fkControlPos)
-    elif value == 0:
-        ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
-
-        switch(paramNode, value)
     
 topNodeList = mc.ls(["*{elementName}", "*:{elementName}"])  
 # kill the jobs first
@@ -335,7 +352,6 @@ for job in mc.scriptJob(lj=True):
             for jobName in jobNameList:
                 for job in jobSplit:
                     if jobName in job:
-                        print "deleting job---->", jobName
                         mc.scriptJob(k=int(jobSplit[0].split(":")[0]))    
                         break
 
@@ -345,13 +361,11 @@ for node in topNodeList:
     for paramNode in paramNodeList:
         if lenSplit > 1:
             name = nameSplit[0]
-            print "making job---->", "%s:%s.ikfk_switch" % (name, paramNode)
             if paramNode in legParamNodeList:
                 mc.scriptJob(attributeChange=["%s:%s.ikfk_switch" % (name, paramNode), legSwitch])            
             elif paramNode in armParamNodeList:
                 mc.scriptJob(attributeChange=["%s:%s.ikfk_switch" % (name, paramNode), armSwitch])                            
         else:
-            print "making job---->", "%s.ikfk_switch" % (paramNode)
             if paramNode in legParamNodeList:
                 mc.scriptJob(attributeChange=["%s.ikfk_switch" % (paramNode), legSwitch])            
             elif paramNode in armParamNodeList:
@@ -360,7 +374,7 @@ for node in topNodeList:
         cmd='''
 import maya.cmds as mc
 scriptNode = mc.scriptNode(st=1, sourceType="python", bs="""{}""", n='ikfkSwitch')
-mc.scriptNode(scriptNode, eb=True)
+mc.evalDeferred("mc.scriptNode('%s', eb=True)" % scriptNode)
         '''.format(cmd)
         
         # set the command to the attributes value

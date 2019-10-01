@@ -37,6 +37,8 @@ class Arm(limb.Limb):
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
         MirrorSwing = self.getAttributeByName('MirrorSwing').getValue()
+        paramNodeName = self.getAttributeByName("paramNode").getValue()
+
         swingNul, swingMirrorOrt, swingOrt, swingCtrl = control.create(name=swingCtrl, 
                                                 controlType="square",
                                                 hierarchy=['nul','mirror_ort','ort'])
@@ -108,12 +110,21 @@ class Arm(limb.Limb):
         clavicleDriverPar = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver_par')[0]
         clavicleDriver = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver')[0]
 
+
+        # add the swing control to the string attribute for switching fk controls
+        '''
+        if mc.objExists("{}.fkControls".format(paramNodeName)):
+            mc.setAttr("{}.fkControls".format(paramNodeName), 
+                '["{}",{}","{}","{}"]'.format(swingCtrl,*self._fkControls), type="string")
+        '''
+
     def postBuild(self):
         '''
         '''
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
         side = self.getAttributeByName("side").getValue()
+        
         super(Arm, self).postBuild()
         rigrepo.libs.attribute.lockAndHide(swingCtrl,["sx","sy", "sz", "v"])
         rigrepo.libs.attribute.lockAndHide(clavicleCtrl,["sx","sy", "sz", "v"])
@@ -135,6 +146,7 @@ class Arm(limb.Limb):
         mc.parent(clavicleCtrl+'_driver', clavicleCtrl+'_driver_par')
         mc.delete(mc.orientConstraint('clavicle_trans_'+self._side+'_bind', clavicleCtrl+'_driver_par'))
         mc.orientConstraint('clavicle_trans_'+self._side+'_bind', clavicleCtrl+'_driver')
+        
 
 class ArmOld(limb.Limb):
     '''

@@ -133,11 +133,10 @@ class Neck(part.Part):
                 aimVector.append(0)
 
         # move the transform back to the skull
-        mc.xform(headPivotNulGrp, ws=True, t=mc.xform(headNul, q=True, ws=True, t=True))
-        mc.orientConstraint(neckOrt, headPivotNulGrp)
+        mc.xform(headPivotNulGrp, ws=True, matrix=mc.xform(headCtrl, q=True, ws=True, matrix=True))
         mc.parent(headPivotDriver, headNul)
-        mc.pointConstraint(headPivotAimGrp, headPivotDriver)
-        mc.orientConstraint(headPivotAimGrp, headPivotDriver)
+        mc.pointConstraint(headPivotAimGrp, headPivotDriver, mo=False)
+        mc.orientConstraint(headPivotAimGrp, headPivotDriver, mo=False)
 
         mc.aimConstraint(neckCtrl,headPivotAimGrp, w=1, upVector=(0,0,0), aimVector=aimVector, wut="none")
         if '-' in aimAxis:

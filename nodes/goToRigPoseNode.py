@@ -60,7 +60,8 @@ try:
     if controls:
         # Got to bind pose
         rigrepo.libs.control.toPoseAttr(controls, 0)
-    mc.setAttr('jaw.rx', -15)
+    if mc.objExists('jaw'):
+        mc.setAttr('jaw.rx', -15)
 
     for deformer in mc.ls(mc.listHistory("body_geo"), type="wire"):
         mc.setAttr(deformer+".freezeGeometry", 1)
@@ -70,8 +71,8 @@ try:
     if controls:
         # Got to bind pose
         rigrepo.libs.control.toPoseAttr(controls, 0)
-
-    mc.setAttr('jaw.rx', 0)
+    if mc.objExists('jaw'):
+        mc.setAttr('jaw.rx', 0)
 
 
 except:
