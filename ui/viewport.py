@@ -2,10 +2,16 @@
 Functions for working with Maya's viewport
 '''
 
-from PySide2 import QtGui, QtWidgets
+try:
+    from Qt import QtWidgets, QtGui, QtCore
+except:
+    from PySide2 import QtWidgets, QtGui, QtCore
 import maya.cmds as mc
 import maya.api.OpenMaya as om
 import maya.api.OpenMayaUI as omui2
+
+hoverFilterInstalled = False
+hoverFilter = None
 
 def getCursorPos():
     pos = QtGui.QCursor.pos()
@@ -21,11 +27,9 @@ def getCursorPos():
 
 def getObjUnderCursor():
     panel = mc.getPanel(underPointer=True) or ""
-    print('panel', panel)
     relpos = getCursorPos()
 
     obj = mc.hitTest(panel, relpos[0], relpos[1])
-    print(obj)
     return obj
 
 def viewToWorld(screenX, screenY):
@@ -54,13 +58,72 @@ def rayIntersect(pos, dir, mesh):
                                               9999,
                                               False)
     hitpoint = intersection[0]
+    faceId = intersection[2]
     if intersection:
         x = hitpoint.x
         y = hitpoint.y
         z = hitpoint.z
-        return x, y, z
+        return x, y, z, faceId
     else:
         return None
+
+class viewportEventFilter(QtCore.QObject):
+    '''
+    Used for intercepting top level events in the viewport/maya
+    '''
+    def __init__(self):
+        QtCore.QObject.__init__(self)
+        print('viewport event filter initialized')
+        self.menu = None
+        self.mouse_button = QtCore.Qt.RightButton
+        self.installed = False
+        self.active = False
+
+    def setMouseButton(self, button):
+        '''
+        Specifies which mouse button the event filter should look for.
+        :param button: [QtCore.Qt.LeftButton, QtCore.Qt.MiddleButton, QtCore.Qt.RightButton]
+                       defaults to right button.
+        '''
+        self.mouse_button = button
+
+    def eventFilter(self, obj, event):
+        '''
+        Standard event filter installed on the qApp.
+        :param obj:
+        :param event:
+        :return:
+        '''
+        if self.active:
+            pressEvents = [QtCore.QEvent.MouseMove]
+            if event.type() in pressEvents:
+                testIt()
+        # standard event processing
+        return QtCore.QObject.eventFilter(self, obj, event)
+
+def startHoverFilter():
+    global hoverFilterInstalled
+    global hoverFilter
+    if not hoverFilterInstalled:
+        # Build the filter object
+        hoverFilter = viewportEventFilter()
+
+        # Get the main maya app instance
+        q_app = QtWidgets.QApplication.instance()
+        q_app.installEventFilter(hoverFilter)
+
+        # Track that it is installed
+        hoverFilterInstalled = True
+        print('-'*100)
+        print('Hover Filter installed')
+        print('-'*100)
+    hoverFilter.active = True
+
+def stopHoverFilter():
+    hoverFilter.active = False
+
+def deleteHoverFilter():
+    hoverFilter.active = False
 
 def testIt():
     '''
@@ -68,27 +131,13 @@ def testIt():
     Test, find point on mesh from clicking on mesh
     :return:
     '''
-    mesh = 'pSphereShape1'
     cursorPos = getCursorPos()
     if cursorPos:
         pos, dir = viewToWorld(*cursorPos)
         obj = getObjUnderCursor()
         if obj:
             intersectPos = rayIntersect(pos, dir, obj[0])
-            print('obj', obj)
+            faceId = intersectPos[3]
             if intersectPos:
-                print(intersectPos)
                 if obj:
-                    print("HIT")
-                    mc.spaceLocator(p=intersectPos)
-
-'''
-mesh = 'pSphereShape1'
-cursorPos = getCursorPos()
-if cursorPos:
-    pos, dir = viewToWorld(*cursorPos)
-    print(pos, dir)
-    rayIntersect(pos, dir, mesh)
-    #print(w[0].x, w[0].y, w[0].z)
-    #mc.spaceLocator(p=[w[0].x, w[0].y, w[0].z])
-'''
+                    mc.select(obj[0]+'.f[{}]'.format(faceId))
