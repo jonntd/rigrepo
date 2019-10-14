@@ -41,6 +41,30 @@ def viewToWorld(screenX, screenY):
 
     return worldPos, worldDir
 
+def worldToView(worldPos):
+    '''
+    This function will take in a world space point [0,10,0] and return a screen space
+    pixel position.
+    '''
+    activeView = omui2.M3dView().active3dView()
+    worldPos = om.MPoint(*worldPos)
+    screenX, screenY, clipped = activeView.worldToView(worldPos)
+
+    return (screenX, screenY)
+
+
+def worldToQtView(worldPos):
+    '''
+    This function will take in a world space point [0,10,0] and return a screen space
+    pixel position.
+    '''
+    activeView = omui2.M3dView().active3dView()
+    worldPos = om.MPoint(*worldPos)
+    screenX, screenY, clipped = activeView.worldToView(worldPos)
+
+    return (screenX, activeView.portHeight() - screenY)
+
+
 def rayIntersect(pos, dir, mesh):
 
     pos2 = om.MFloatPoint(pos.x, pos.y, pos.z)

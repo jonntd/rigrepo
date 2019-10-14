@@ -24,29 +24,23 @@ class AbstractData(object):
         self._data = OrderedDict()
         self._filepath = None
 
-    def gatherData(self,node):
+    def gatherData(self,item):
         '''
-        This method will gather data for the node that is passed in as an argument. It will
+        This method will gather data for the item that is passed in as an argument. It will
         store this data on the self._data member/attribute on the class.
-
-        :param node: Node you wish to gather the data for.
-        :type node: str
         '''
-        if not mc.objExists(node):
-            mc.warning("{0} does not exists in the current Maya session.".format(node))
-        
-        self._data[node] = OrderedDict(dagPath=mc.ls(node,l=True)[0])
+        pass
 
-    def gatherDataIterate(self, nodes):
+    def gatherDataIterate(self, items):
         '''
-        This method will iterate through the list of nodes passed in and use ther gatherData
+        This method will iterate through the list of items passed in and use ther gatherData
         method to store the data onto the self._data member/attribute.
 
-        :param nodes: Array of nodes you wish to gather the data from.
-        :type nodes: list | tuple
+        :param items: Array of items you wish to gather the data from.
+        :type items: list | tuple
         '''
-        for node in nodes:
-            self.gatherData(node)
+        for item in items:
+            self.gatherData(item)
 
     def getData(self):
         '''
@@ -70,7 +64,7 @@ class AbstractData(object):
 
         self._data = value
 
-    def applyData(node, attributes=None):
+    def applyData(item, attributes=None):
         '''
         Holder method for inherited classes to define how it will be used.
         '''

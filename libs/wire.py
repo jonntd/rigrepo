@@ -32,7 +32,8 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
     # create a base joint that we can put weights on.
     baseJnt = "root_preMatrix_jnt"
     if not mc.objExists(baseJnt):
-        mc.createNode("joint",name="root_preMatrix_jnt")
+        jnt = mc.createNode("joint",name="root_preMatrix_jnt")
+        mc.setAttr("{}.v".format(jnt), 0)
         mc.parent(baseJnt,rootParentNode)
 
     # create a target skinCluster that will replace the wire defomer

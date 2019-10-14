@@ -1,11 +1,11 @@
 '''
 '''
-import rigrepo.libs.data.abstract_data as abstract_data
+import rigrepo.libs.data.maya_data as maya_data
 import rigrepo.libs.common as common
 from collections import OrderedDict
 import maya.cmds as mc
 
-class PSDData(abstract_data.AbstractData):
+class PSDData(maya_data.MayaData):
     def __init__(self):
         '''
         '''

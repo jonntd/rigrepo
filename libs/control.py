@@ -142,14 +142,11 @@ def getControls(namespace = None):
     '''
     controls = None
     if not namespace:
-        controls = mc.ls('*.__control__'.format(), fl=True)
+        controls = mc.ls('*.__control__'.format(), fl=True, o=True)
     elif namespace:
-        controls = mc.ls('{}:*.__control__'.format(namespace), fl=True)
+        controls = mc.ls('{}:*.__control__'.format(namespace), fl=True, o=True)
 
-    if controls:
-        return [ctrl.split(".")[0] for ctrl in controls]
-
-    return None
+    return controls
 
 def setPoseAttr(controls, poseAttr=0):
     '''

@@ -5,10 +5,10 @@ from collections import OrderedDict
 
 import maya.cmds as mc
 
-import rigrepo.libs.data.abstract_data as abstract_data
+import rigrepo.libs.data.maya_data as maya_data
 import rigrepo.libs.sdk
 
-class SdkData(abstract_data.AbstractData):
+class SdkData(maya_data.MayaData):
     '''
     This class is created to store and apply data for setDrivenKeyframes.
     '''

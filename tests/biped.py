@@ -24,10 +24,17 @@ import pubs.ui.centralWidget
 reload(pubs.ui.centralWidget)
 import pubs.ui.mainWindow
 reload(pubs.ui.mainWindow)
+import rigrepo.ui.graphicsWidgets
+reload(rigrepo.ui.graphicsWidgets)
+import rigrepo.ui.picker
+reload(rigrepo.ui.picker)
+
 
 #reload libs
 import rigrepo.libs.data.abstract_data
 reload(rigrepo.libs.data.abstract_data)
+import rigrepo.libs.data.maya_data
+reload(rigrepo.libs.data.maya_data)
 import rigrepo.libs.data.node_data
 reload(rigrepo.libs.data.node_data)
 import rigrepo.libs.data.joint_data
@@ -38,6 +45,8 @@ import rigrepo.libs.data.deformer_order_data
 reload(rigrepo.libs.data.deformer_order_data)
 import rigrepo.libs.data.node_editor_bookmark_data
 reload(rigrepo.libs.data.node_editor_bookmark_data)
+import rigrepo.libs.data.picker_data
+reload(rigrepo.libs.data.picker_data)
 
 import rigrepo.libs.data.psd_data
 reload(rigrepo.libs.data.psd_data)
@@ -273,3 +282,6 @@ def nodes(variant='base', buildNow=False, debug=True, graph=None):
 
     else:
         pubs.ui.mainWindow.launch(graph=biped_graph)
+def picker(filepath=os.path.join(os.path.dirname(os.path.dirname(__file__)),'etc','biped_picker.json')):
+    pickerWidget = rigrepo.ui.picker.GraphicsWidget(filepath)
+    return pickerWidget

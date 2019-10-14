@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Walter Yoder/Desktop/shows/COLAB/collections/rigrepo/templates/biped/rig/build/base/wire_wts/body_geo__l_arm_curve_wire.xml"/>
-  <shape name="body_geoShape" group="8460" stride="3" size="25074" max="25074" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="body_geoShape" group="239" stride="3" size="25074" max="25074" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" -0.384781 62.073715 3.815948"/>
     <point index="1" value=" -0.600705 61.777069 3.724057"/>
     <point index="2" value=" -0.661506 61.678642 3.915531"/>
