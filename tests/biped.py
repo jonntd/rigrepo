@@ -26,6 +26,8 @@ import pubs.ui.mainWindow
 reload(pubs.ui.mainWindow)
 import rigrepo.ui.graphicsWidgets
 reload(rigrepo.ui.graphicsWidgets)
+import rigrepo.ui.mayaGraphicsWidgets
+reload(rigrepo.ui.mayaGraphicsWidgets)
 import rigrepo.ui.picker
 reload(rigrepo.ui.picker)
 

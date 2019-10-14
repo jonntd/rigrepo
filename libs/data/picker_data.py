@@ -5,7 +5,7 @@ import rigrepo.libs.data.abstract_data as abstract_data
 from collections import OrderedDict
 from PySide2 import QtWidgets, QtGui, QtCore
 import rigrepo.ui.graphicsWidgets as graphicsWidgets
-import rigrepo.ui.picker as picker
+import rigrepo.ui.mayaGraphicsWidgets as mayaGraphicsWidgets
 import maya.cmds as mc
 
 class PickerData(abstract_data.AbstractData):
@@ -113,12 +113,12 @@ class PickerData(abstract_data.AbstractData):
                                             color=QtGui.QColor(*self._data[item]["color"]), 
                                             polygon=QtGui.QPolygonF(pointArray))
                 elif buttonType == "select":
-                    buttonItem = picker.SelectButtonItem(item, 
+                    buttonItem = mayaGraphicsWidgets.SelectButtonItem(item, 
                                             color=QtGui.QColor(*self._data[item]["color"]), 
                                             polygon=QtGui.QPolygonF(pointArray), 
                                             selectableItems=self._data[item]["selectableItems"])
                 elif buttonType == "command":
-                    buttonItem = picker.SelectButtonItem(item, 
+                    buttonItem = mayaGraphicsWidgets.SelectButtonItem(item, 
                                             color=QtGui.QColor(*self._data[item]["color"]), 
                                             polygon=QtGui.QPolygonF(pointArray), 
                                             command=self._data[item]["command"])
