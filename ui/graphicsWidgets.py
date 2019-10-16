@@ -20,7 +20,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         super(GraphicsView, self).__init__()
 
         # set the defualt panning and scale
-        self._panSpeed = 4
+        self._panSpeed = 1
         self._scale = 1
 
         # turn off the scroll bars
@@ -40,11 +40,11 @@ class GraphicsView(QtWidgets.QGraphicsView):
             if QtCore.Qt.AltModifier == QtWidgets.QApplication.keyboardModifiers():
                 mouseDelta = QtCore.QPointF(self.mapToScene(event.pos()) - self.mapToScene(self._lastMousePos))
                 if mouseDelta.x() > 0:
-                    self.scale(1.1, 1.1)
-                    self._scale *= 1.1
+                    self.scale(1.01, 1.01)
+                    self._scale *= 1.01
                 else:
-                    self.scale(0.9, 0.9)
-                    self._scale *= 0.9
+                    self.scale(0.99, 0.99)
+                    self._scale *= 0.99
                 self._lastMousePos = event.pos()
 
         super(GraphicsView, self).mouseMoveEvent(event)
@@ -78,7 +78,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
     def pan(self, delta):
         # Scale the pan amount by the current zoom.
-        delta *= self._scale
+        #delta *= self._scale
         delta *= self._panSpeed
 
         # Have panning be anchored from the mouse.

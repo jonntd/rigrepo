@@ -49,18 +49,18 @@ class PickerData(abstract_data.AbstractData):
             # get the color
             color = QtGui.QColor()
             color.setRgbF(*mc.polyColorPerVertex(mc.ls("{}.vtx[0]".format(item)), q=True, rgb=True))
-            vtxList = mc.ls("{}.vtx[*]".format(item), fl=True)
+            vertex_list = mc.ls("{}.vtx[*]".format(item), fl=True)
             # set the dictionary of data for the object.
             self._data[item] = OrderedDict(color=color.getRgb(), 
-                points=[list(viewport.worldToQtView(mc.xform(vtx, q=True, ws=True, t=True))) for vtx in vtxList],
-                zValue=mc.xform(vtxList[0], q=True, ws=True, t=True)[-1], 
+                points=[list(viewport.worldToQtView(mc.xform(vtx, q=True, ws=True, t=True))) for vtx in vertex_list],
+                zValue=mc.xform(vertex_list[0], q=True, ws=True, t=True)[-1], 
                 selectableItems=list(), buttonType="null")
             # make sure the attribute exists before trying to set the data.
             # this will store any selectable items that were stored on the button in Maya.
             if mc.objExists(".selectableItems".format(item)):
-                selectableItems = eval(mc.getAttr("{}.selectableItems".format(item)))
-                if isinstance(selectableItems, list):
-                    self._data[item]["selectableItems"] = selectableItems
+                selectable_items = eval(mc.getAttr("{}.selectableItems".format(item)))
+                if isinstance(selectable_items, list):
+                    self._data[item]["selectableItems"] = selectable_items
             # make sure the attribute exists before trying to set the data.
             # this will check what button type is being used.
             if mc.objExists(".buttonType".format(item)):
@@ -97,36 +97,37 @@ class PickerData(abstract_data.AbstractData):
         # read in the file with the read function which will return the 
         # data into a dictionary we can unpack
         # if there is data, then we will iterate through the dictionary and make the data
-        centerPoint = QtCore.QPointF()
+        # set the center point as zero and check if the scene is passed. If scene is passed
+        center_point = QtCore.QPointF()
         if self.scene:
-            centerPoint = self.scene.sceneRect().center()
+            center_point = self.scene.sceneRect().center()
         for item in items:
 
             if self._data.has_key(item):
                 # store the point array for the button so we can create a polygon.
-                pointArray = [centerPoint + QtCore.QPoint(*point) for point in self._data[item]["points"]]
+                point_array = [center_point + QtCore.QPoint(*point) for point in self._data[item]["points"]]
                 # default button type is going to be null.
-                buttonType = "null"
+                button_type = "null"
                 if self._data[item].has_key("buttonType"):
-                    buttonType = self._data[item]["buttonType"]
+                    button_type = self._data[item]["buttonType"]
                 # check the different button types and make sure we create the correct one.
                 # if the button is null, we will just create a PolygonItem 
-                if buttonType == "null":
-                    buttonItem = graphicsWidgets.PolygonItem(item, 
+                if button_type == "null":
+                    button_item = graphicsWidgets.PolygonItem(item, 
                                             color=QtGui.QColor(*self._data[item]["color"]), 
-                                            polygon=QtGui.QPolygonF(pointArray))
-                elif buttonType == "select":
-                    buttonItem = mayaGraphicsWidgets.SelectButtonItem(item, 
+                                            polygon=QtGui.QPolygonF(point_array))
+                elif button_type == "select":
+                    button_item = mayaGraphicsWidgets.SelectButtonItem(item, 
                                             color=QtGui.QColor(*self._data[item]["color"]), 
-                                            polygon=QtGui.QPolygonF(pointArray), 
+                                            polygon=QtGui.QPolygonF(point_array), 
                                             selectableItems=self._data[item]["selectableItems"])
-                elif buttonType == "command":
-                    buttonItem = mayaGraphicsWidgets.SelectButtonItem(item, 
+                elif button_type == "command":
+                    button_item = mayaGraphicsWidgets.SelectButtonItem(item, 
                                             color=QtGui.QColor(*self._data[item]["color"]), 
-                                            polygon=QtGui.QPolygonF(pointArray), 
+                                            polygon=QtGui.QPolygonF(point_array), 
                                             command=self._data[item]["command"])
                 # set the Z depth for the button.
                 if self._data[item].has_key("zValue"):
-                    buttonItem.setZValue(self._data[item]["zValue"])
+                    button_item.setZValue(self._data[item]["zValue"])
                 if self.scene:
-                    self.scene.addItem(buttonItem)
+                    self.scene.addItem(button_item)
