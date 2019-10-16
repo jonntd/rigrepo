@@ -27,7 +27,7 @@ class GraphicsWidget(QtWidgets.QWidget):
         self.scene = graphicsWidgets.GraphicsScene()
         self.view = graphicsWidgets.GraphicsView()
         self.view.setScene(self.scene)
-        self.scene.setSceneRect(0,0,800,800)
+        self.scene.setSceneRect(0,0,10000,10000)
         self.view.setViewport(QtOpenGL.QGLWidget())
         mainLayout.addWidget(self.view)
         self.setLayout(mainLayout)

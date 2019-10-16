@@ -28,8 +28,7 @@ class PickerData(abstract_data.AbstractData):
         '''
         super(PickerData, self).__init__()
         # this is all super rough. 
-        if scene:
-            self.scene = scene
+        self.scene = scene
 
     def gatherData(self,item, maya=True):
         '''
@@ -98,10 +97,14 @@ class PickerData(abstract_data.AbstractData):
         # read in the file with the read function which will return the 
         # data into a dictionary we can unpack
         # if there is data, then we will iterate through the dictionary and make the data
+        centerPoint = QtCore.QPointF()
+        if self.scene:
+            centerPoint = self.scene.sceneRect().center()
         for item in items:
+
             if self._data.has_key(item):
                 # store the point array for the button so we can create a polygon.
-                pointArray = [QtCore.QPoint(*point) for point in self._data[item]["points"]]
+                pointArray = [centerPoint + QtCore.QPoint(*point) for point in self._data[item]["points"]]
                 # default button type is going to be null.
                 buttonType = "null"
                 if self._data[item].has_key("buttonType"):
@@ -125,4 +128,5 @@ class PickerData(abstract_data.AbstractData):
                 # set the Z depth for the button.
                 if self._data[item].has_key("zValue"):
                     buttonItem.setZValue(self._data[item]["zValue"])
-                self.scene.addItem(buttonItem)
+                if self.scene:
+                    self.scene.addItem(buttonItem)

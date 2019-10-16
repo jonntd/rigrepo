@@ -32,26 +32,35 @@ class GraphicsView(QtWidgets.QGraphicsView):
         This will track the movement of the cursor when moving the mouse after press
         '''
         if event.buttons() == QtCore.Qt.MiddleButton:
-            mouseDelta = QtCore.QPointF(self.mapToScene(event.pos()) - self.mapToScene(self._lastMousePos))
-            self.pan(mouseDelta)
-            self._lastMousePos = event.pos()
+            if QtCore.Qt.AltModifier == QtWidgets.QApplication.keyboardModifiers():
+                mouseDelta = QtCore.QPointF(self.mapToScene(event.pos()) - self.mapToScene(self._lastMousePos))
+                self.pan(mouseDelta)
+                self._lastMousePos = event.pos()
+        if event.buttons() == QtCore.Qt.RightButton:
+            if QtCore.Qt.AltModifier == QtWidgets.QApplication.keyboardModifiers():
+                mouseDelta = QtCore.QPointF(self.mapToScene(event.pos()) - self.mapToScene(self._lastMousePos))
+                if mouseDelta.x() > 0:
+                    self.scale(1.1, 1.1)
+                    self._scale *= 1.1
+                else:
+                    self.scale(0.9, 0.9)
+                    self._scale *= 0.9
+                self._lastMousePos = event.pos()
 
         super(GraphicsView, self).mouseMoveEvent(event)
 
     def mousePressEvent(self, event):
         '''
         '''
-        if event.buttons() == QtCore.Qt.MiddleButton:
-            self._lastMousePos = event.pos()
-        if event.buttons() == QtCore.Qt.LeftButton:
-            self._lastMousePos = event.pos()
+        self._lastMousePos = event.pos()
+                
 
         super(GraphicsView, self).mousePressEvent(event)
 
-    def MouseReleaseEvent(self, event):
+    def mouseReleaseEvent(self, event):
         '''
         '''
-        super(GraphicsView, self).MouseReleaseEvent(event)
+        super(GraphicsView, self).mouseReleaseEvent(event)
 
 
     def wheelEvent(self, event):
@@ -61,11 +70,11 @@ class GraphicsView(QtWidgets.QGraphicsView):
         # check to make sure the delta is less than zero and we can scale up.
         # otherwise we scale down
         if event.delta() > 0:
-            self.scale(1.25, 1.25)
-            self._scale *= 1.25
+            self.scale(1.1, 1.1)
+            self._scale *= 1.1
         else:
-            self.scale(0.8, 0.8)
-            self._scale *= 0.8
+            self.scale(0.9, 0.9)
+            self._scale *= 0.9
 
     def pan(self, delta):
         # Scale the pan amount by the current zoom.
