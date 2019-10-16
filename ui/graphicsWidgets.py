@@ -78,7 +78,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
     def pan(self, delta):
         # Scale the pan amount by the current zoom.
-        #delta *= self._scale
+        delta *= self._scale
         delta *= self._panSpeed
 
         # Have panning be anchored from the mouse.
@@ -140,8 +140,8 @@ class PolygonItem(QtWidgets.QGraphicsItem):
         '''
         Event handling method for when the mouse is pressed on the item.
         '''
-        #print "pressing the {}".format(self.name)
-        self.setOpacity(.6)
+        if event.buttons() == QtCore.Qt.LeftButton:
+            self.setOpacity(.6)
         super(PolygonItem, self).mousePressEvent(event)
 
 
@@ -150,8 +150,8 @@ class PolygonItem(QtWidgets.QGraphicsItem):
         Event handling method for when the mouse is released from the item.
         '''
         super(PolygonItem, self).mouseReleaseEvent(event)
-        self.execute()
-        #print "releasing the {}".format(self.name)
+        if event.buttons() == QtCore.Qt.LeftButton:
+            self.execute()
         self.setOpacity(1.0)
 
     def boundingRect(self):
