@@ -20,7 +20,6 @@ class GraphicsView(QtWidgets.QGraphicsView):
         super(GraphicsView, self).__init__()
 
         # set the defualt panning and scale
-        self._panSpeed = 1
         self._scale = 1
 
         # turn off the scroll bars
@@ -33,7 +32,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         '''
         if event.buttons() == QtCore.Qt.MiddleButton:
             if QtCore.Qt.AltModifier == QtWidgets.QApplication.keyboardModifiers():
-                mouseDelta = QtCore.QPointF(self.mapToScene(event.pos()) - self.mapToScene(self._lastMousePos))
+                mouseDelta = QtCore.QPointF(event.pos() - self._lastMousePos)
                 self.pan(mouseDelta)
                 self._lastMousePos = event.pos()
         if event.buttons() == QtCore.Qt.RightButton:
@@ -78,16 +77,8 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
     def pan(self, delta):
         # Scale the pan amount by the current zoom.
-        delta *= self._scale
-        delta *= self._panSpeed
-
-        # Have panning be anchored from the mouse.
-        self.setTransformationAnchor(self.AnchorUnderMouse)
-        newCenter = QtCore.QPoint(self.width() / 2 - delta.x(),  self.height() / 2 - delta.y())
-        self.centerOn(self.mapToScene(newCenter))
-
-        # For zooming to anchor from the view center.
-        self.setTransformationAnchor(self.AnchorViewCenter)
+        self.horizontalScrollBar().setValue(self.horizontalScrollBar().value() - delta.x())
+        self.verticalScrollBar().setValue(self.verticalScrollBar().value() - delta.y())
 
 class GraphicsScene(QtWidgets.QGraphicsScene):
     '''
