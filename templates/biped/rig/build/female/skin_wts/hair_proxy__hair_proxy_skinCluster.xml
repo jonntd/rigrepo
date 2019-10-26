@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/female/skin_wts/hair_proxy__hair_proxy_skinCluster.xml"/>
-  <shape name="hair_proxyShape" group="6240" stride="3" size="1231" max="1231" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="hair_proxyShape" group="2004" stride="3" size="1231" max="1231" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" 2.021248 157.144470 7.037864"/>
     <point index="1" value=" 4.429442 154.306610 6.839931"/>
     <point index="2" value=" 5.592984 152.919250 5.792332"/>

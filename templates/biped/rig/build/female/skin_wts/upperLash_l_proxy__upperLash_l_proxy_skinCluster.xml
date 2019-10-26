@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/female/skin_wts/upperLash_l_proxy__upperLash_l_proxy_skinCluster.xml"/>
-  <shape name="upperLash_l_proxyShape" group="6238" stride="3" size="190" max="190" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+  <shape name="upperLash_l_proxyShape" group="2006" stride="3" size="190" max="190" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
     <point index="0" value=" 5.501999 150.957855 7.435756"/>
     <point index="1" value=" 4.823571 151.155090 7.917675"/>
     <point index="2" value=" 4.031693 151.150375 8.280866"/>

@@ -1,14 +1,14 @@
 {
     "type": "CurveData", 
     "user": "Matt", 
-    "time": "2019-09-15 19:12:27", 
+    "time": "2019-10-05 20:34:00", 
     "data": {
         "wrist_fk_r": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r|wrist_fk_r", 
             "translate": [
-                -22.1356, 
+                -22.2783, 
                 -0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -114,9 +114,9 @@
         "wrist_fk_l": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l|wrist_fk_l", 
             "translate": [
-                22.1356, 
+                22.2783, 
                 -0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -222,9 +222,9 @@
         "wrist_fk_gimbal_r": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r|wrist_fk_r|wrist_fk_gimbal_r", 
             "translate": [
-                -0.0, 
                 0.0, 
-                0.0
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -382,9 +382,9 @@
         "wrist_fk_gimbal_l": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l|wrist_fk_l|wrist_fk_gimbal_l", 
             "translate": [
+                0.0, 
                 -0.0, 
-                -0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -920,7 +920,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort|thumb_001_l_bind_ctrl|thumb_002_l_bind_ctrl_nul|thumb_002_l_bind_ctrl_ort|thumb_002_l_bind_ctrl|thumb_003_l_bind_ctrl_nul|thumb_003_l_bind_ctrl_ort|thumb_003_l_bind_ctrl", 
             "translate": [
                 0.0, 
-                0.0, 
+                -0.0, 
                 0.0
             ], 
             "rotate": [
@@ -973,8 +973,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl|thumb_002_r_bind_ctrl_nul|thumb_002_r_bind_ctrl_ort|thumb_002_r_bind_ctrl", 
             "translate": [
                 0.0, 
-                0.0, 
-                0.0
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1078,9 +1078,9 @@
         "thumb_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl", 
             "translate": [
-                0.0, 
                 -0.0, 
-                -0.0
+                -0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1184,7 +1184,7 @@
         "thumbCup_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl", 
             "translate": [
-                -0.0, 
+                0.0, 
                 0.0, 
                 0.0
             ], 
@@ -1399,12 +1399,12 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_mirror_ort|thighSwing_l_ort|thighSwing_l|thigh_fk_l", 
             "translate": [
                 0.0, 
-                0.0, 
+                -0.0, 
                 0.0
             ], 
             "rotate": [
-                -0.0, 
                 0.0, 
+                -0.0, 
                 2.0747
             ], 
             "scale": [
@@ -1953,8 +1953,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r", 
             "translate": [
                 -0.0, 
-                -0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -2061,7 +2061,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l", 
             "translate": [
                 0.0, 
-                0.0, 
+                -0.0, 
                 -0.0
             ], 
             "rotate": [
@@ -2173,9 +2173,9 @@
                 0.0
             ], 
             "rotate": [
-                -0.8479, 
-                44.9937, 
-                0.848
+                -0.8461, 
+                44.868, 
+                0.8499
             ], 
             "scale": [
                 1.0, 
@@ -2226,9 +2226,9 @@
                 0.0
             ], 
             "rotate": [
-                -0.8479, 
-                44.9937, 
-                0.848
+                -0.8461, 
+                44.868, 
+                0.8499
             ], 
             "scale": [
                 1.0, 
@@ -2274,9 +2274,9 @@
         "ring_004_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl|ring_003_r_bind_ctrl_nul|ring_003_r_bind_ctrl_ort|ring_003_r_bind_ctrl|ring_004_r_bind_ctrl_nul|ring_004_r_bind_ctrl_ort|ring_004_r_bind_ctrl", 
             "translate": [
-                0.0, 
-                0.0, 
-                0.0
+                -0.0, 
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -2327,8 +2327,8 @@
         "ring_004_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl|ring_003_l_bind_ctrl_nul|ring_003_l_bind_ctrl_ort|ring_003_l_bind_ctrl|ring_004_l_bind_ctrl_nul|ring_004_l_bind_ctrl_ort|ring_004_l_bind_ctrl", 
             "translate": [
-                0.0, 
-                0.0, 
+                -0.0, 
+                -0.0, 
                 0.0
             ], 
             "rotate": [
@@ -2380,8 +2380,8 @@
         "ring_003_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl|ring_003_r_bind_ctrl_nul|ring_003_r_bind_ctrl_ort|ring_003_r_bind_ctrl", 
             "translate": [
-                -0.0, 
-                -0.0, 
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -2433,8 +2433,8 @@
         "ring_003_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl|ring_003_l_bind_ctrl_nul|ring_003_l_bind_ctrl_ort|ring_003_l_bind_ctrl", 
             "translate": [
-                -0.0, 
-                -0.0, 
+                0.0, 
+                0.0, 
                 -0.0
             ], 
             "rotate": [
@@ -2488,7 +2488,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -2539,8 +2539,8 @@
         "ring_002_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl", 
             "translate": [
-                0.0, 
                 -0.0, 
+                0.0, 
                 -0.0
             ], 
             "rotate": [
@@ -2592,7 +2592,7 @@
         "ring_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl", 
             "translate": [
-                -0.0, 
+                0.0, 
                 0.0, 
                 0.0
             ], 
@@ -3379,7 +3379,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort|pinky_003_r_bind_ctrl|pinky_004_r_bind_ctrl_nul|pinky_004_r_bind_ctrl_ort|pinky_004_r_bind_ctrl", 
             "translate": [
                 0.0, 
-                -0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -3432,8 +3432,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl|pinky_003_l_bind_ctrl_nul|pinky_003_l_bind_ctrl_ort|pinky_003_l_bind_ctrl|pinky_004_l_bind_ctrl_nul|pinky_004_l_bind_ctrl_ort|pinky_004_l_bind_ctrl", 
             "translate": [
                 -0.0, 
-                -0.0, 
-                0.0
+                0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3485,8 +3485,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort|pinky_003_r_bind_ctrl", 
             "translate": [
                 0.0, 
-                -0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3538,8 +3538,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl|pinky_003_l_bind_ctrl_nul|pinky_003_l_bind_ctrl_ort|pinky_003_l_bind_ctrl", 
             "translate": [
                 0.0, 
-                0.0, 
-                0.0
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3590,9 +3590,9 @@
         "pinky_002_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl", 
             "translate": [
-                -0.0, 
-                -0.0, 
-                -0.0
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3643,8 +3643,8 @@
         "pinky_002_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl", 
             "translate": [
-                0.0, 
-                0.0, 
+                -0.0, 
+                -0.0, 
                 0.0
             ], 
             "rotate": [
@@ -3696,9 +3696,9 @@
         "pinky_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                0.0
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3749,9 +3749,9 @@
         "pinky_001_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl", 
             "translate": [
+                -0.0, 
                 0.0, 
-                0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3802,7 +3802,7 @@
         "pinkyCup_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl", 
             "translate": [
-                -0.0, 
+                0.0, 
                 0.0, 
                 0.0
             ], 
@@ -4122,9 +4122,9 @@
         "middle_004_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl|middle_003_r_bind_ctrl_nul|middle_003_r_bind_ctrl_ort|middle_003_r_bind_ctrl|middle_004_r_bind_ctrl_nul|middle_004_r_bind_ctrl_ort|middle_004_r_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                0.0
+                0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4229,8 +4229,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl|middle_003_r_bind_ctrl_nul|middle_003_r_bind_ctrl_ort|middle_003_r_bind_ctrl", 
             "translate": [
                 0.0, 
-                -0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4282,7 +4282,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort|middle_002_l_bind_ctrl|middle_003_l_bind_ctrl_nul|middle_003_l_bind_ctrl_ort|middle_003_l_bind_ctrl", 
             "translate": [
                 0.0, 
-                -0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -4389,7 +4389,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4440,7 +4440,7 @@
         "middle_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl", 
             "translate": [
-                -0.0, 
+                0.0, 
                 0.0, 
                 0.0
             ], 
@@ -4546,7 +4546,7 @@
         "leg_pv_r": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|r_leg_ikfk_grp|leg_pv_r_nul|leg_pv_r_ort|leg_pv_r", 
             "translate": [
-                0.0, 
+                -0.0, 
                 -0.02, 
                 -0.02
             ], 
@@ -6445,7 +6445,7 @@
             "translate": [
                 0.0, 
                 -0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -6496,7 +6496,7 @@
         "index_003_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl|index_003_r_bind_ctrl_nul|index_003_r_bind_ctrl_ort|index_003_r_bind_ctrl", 
             "translate": [
-                -0.0, 
+                0.0, 
                 0.0, 
                 0.0
             ], 
@@ -6549,8 +6549,8 @@
         "index_003_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl|index_003_l_bind_ctrl_nul|index_003_l_bind_ctrl_ort|index_003_l_bind_ctrl", 
             "translate": [
-                0.0, 
                 -0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -6602,9 +6602,9 @@
         "index_002_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -6655,7 +6655,7 @@
         "index_002_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl", 
             "translate": [
-                -0.0, 
+                0.0, 
                 0.0, 
                 0.0
             ], 
@@ -6708,7 +6708,7 @@
         "index_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl", 
             "translate": [
-                -0.0, 
+                0.0, 
                 0.0, 
                 0.0
             ], 
@@ -7570,8 +7570,8 @@
         "elbow_fk_r": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r", 
             "translate": [
-                -30.502, 
-                0.0, 
+                -28.1519, 
+                -0.0, 
                 -0.0
             ], 
             "rotate": [
@@ -7678,8 +7678,8 @@
         "elbow_fk_l": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l", 
             "translate": [
-                30.502, 
-                0.0, 
+                28.1519, 
+                -0.0, 
                 -0.0
             ], 
             "rotate": [
@@ -7911,84 +7911,84 @@
                 "chest_topShape": {
                     "cvPositions": [
                         [
-                            -1.5997, 
-                            13.1224, 
-                            12.5428
+                            8.9266, 
+                            12.2477, 
+                            11.9682
                         ], 
                         [
-                            0.3736, 
-                            13.1224, 
-                            12.5428
+                            10.6054, 
+                            12.2477, 
+                            11.9682
                         ], 
                         [
-                            0.3736, 
-                            -13.5036, 
-                            12.5428
+                            10.6054, 
+                            -10.4042, 
+                            11.9682
                         ], 
                         [
-                            -1.5997, 
-                            -13.5036, 
-                            12.5428
+                            8.9266, 
+                            -10.4042, 
+                            11.9682
                         ], 
                         [
-                            -1.5997, 
-                            13.1224, 
-                            12.5428
+                            8.9266, 
+                            12.2477, 
+                            11.9682
                         ], 
                         [
-                            -1.5997, 
-                            13.1224, 
-                            -12.5428
+                            8.9266, 
+                            12.2477, 
+                            -11.9682
                         ], 
                         [
-                            0.3736, 
-                            13.1224, 
-                            -12.5428
+                            10.6054, 
+                            12.2477, 
+                            -11.9682
                         ], 
                         [
-                            0.3736, 
-                            13.1224, 
-                            12.5428
+                            10.6054, 
+                            12.2477, 
+                            11.9682
                         ], 
                         [
-                            0.3736, 
-                            -13.5036, 
-                            12.5428
+                            10.6054, 
+                            -10.4042, 
+                            11.9682
                         ], 
                         [
-                            0.3736, 
-                            -13.5036, 
-                            -12.5428
+                            10.6054, 
+                            -10.4042, 
+                            -11.9682
                         ], 
                         [
-                            0.3736, 
-                            13.1224, 
-                            -12.5428
+                            10.6054, 
+                            12.2477, 
+                            -11.9682
                         ], 
                         [
-                            -1.5997, 
-                            13.1224, 
-                            -12.5428
+                            8.9266, 
+                            12.2477, 
+                            -11.9682
                         ], 
                         [
-                            -1.5997, 
-                            -13.5036, 
-                            -12.5428
+                            8.9266, 
+                            -10.4042, 
+                            -11.9682
                         ], 
                         [
-                            0.3736, 
-                            -13.5036, 
-                            -12.5428
+                            10.6054, 
+                            -10.4042, 
+                            -11.9682
                         ], 
                         [
-                            -1.5997, 
-                            -13.5036, 
-                            -12.5428
+                            8.9266, 
+                            -10.4042, 
+                            -11.9682
                         ], 
                         [
-                            -1.5997, 
-                            -13.5036, 
-                            12.5428
+                            8.9266, 
+                            -10.4042, 
+                            11.9682
                         ]
                     ], 
                     "degree": 1, 
@@ -8019,84 +8019,84 @@
                 "chest_ikShape": {
                     "cvPositions": [
                         [
-                            -1.0, 
+                            9.4368, 
+                            1.9346, 
+                            0.9542
+                        ], 
+                        [
+                            -1.7394, 
                             1.0, 
                             1.0
                         ], 
                         [
-                            1.0, 
-                            1.0, 
-                            1.0
-                        ], 
-                        [
-                            1.0, 
+                            -1.7394, 
                             -1.0, 
                             1.0
                         ], 
                         [
-                            -1.0, 
+                            9.4368, 
+                            0.2332, 
+                            0.9542
+                        ], 
+                        [
+                            9.4368, 
+                            1.9346, 
+                            0.9542
+                        ], 
+                        [
+                            9.4368, 
+                            1.9346, 
+                            -0.9542
+                        ], 
+                        [
+                            -1.7394, 
+                            1.0, 
+                            -1.0
+                        ], 
+                        [
+                            -1.7394, 
+                            1.0, 
+                            1.0
+                        ], 
+                        [
+                            -1.7394, 
                             -1.0, 
                             1.0
                         ], 
                         [
-                            -1.0, 
-                            1.0, 
-                            1.0
-                        ], 
-                        [
-                            -1.0, 
-                            1.0, 
-                            -1.0
-                        ], 
-                        [
-                            1.0, 
-                            1.0, 
-                            -1.0
-                        ], 
-                        [
-                            1.0, 
-                            1.0, 
-                            1.0
-                        ], 
-                        [
-                            1.0, 
-                            -1.0, 
-                            1.0
-                        ], 
-                        [
-                            1.0, 
+                            -1.7394, 
                             -1.0, 
                             -1.0
                         ], 
                         [
-                            1.0, 
-                            1.0, 
-                            -1.0
-                        ], 
-                        [
-                            -1.0, 
+                            -1.7394, 
                             1.0, 
                             -1.0
                         ], 
                         [
-                            -1.0, 
+                            9.4368, 
+                            1.9346, 
+                            -0.9542
+                        ], 
+                        [
+                            9.4368, 
+                            0.2332, 
+                            -0.9542
+                        ], 
+                        [
+                            -1.7394, 
                             -1.0, 
                             -1.0
                         ], 
                         [
-                            1.0, 
-                            -1.0, 
-                            -1.0
+                            9.4368, 
+                            0.2332, 
+                            -0.9542
                         ], 
                         [
-                            -1.0, 
-                            -1.0, 
-                            -1.0
-                        ], 
-                        [
-                            -1.0, 
-                            -1.0, 
-                            1.0
+                            9.4368, 
+                            0.2332, 
+                            0.9542
                         ]
                     ], 
                     "degree": 1, 
@@ -8127,82 +8127,82 @@
                 "chestShape": {
                     "cvPositions": [
                         [
-                            1.6405, 
+                            -1.0989, 
                             10.1874, 
                             11.9374
                         ], 
                         [
-                            3.3095, 
+                            0.5701, 
                             10.5572, 
                             11.9374
                         ], 
                         [
-                            3.9991, 
+                            1.2597, 
                             -13.3394, 
                             11.9374
                         ], 
                         [
-                            2.3301, 
+                            -0.4093, 
                             -13.7091, 
                             11.9374
                         ], 
                         [
-                            1.6405, 
+                            -1.0989, 
                             10.1874, 
                             11.9374
                         ], 
                         [
-                            1.6405, 
+                            -1.0989, 
                             10.1874, 
                             -11.9374
                         ], 
                         [
-                            3.3095, 
+                            0.5701, 
                             10.5572, 
                             -11.9374
                         ], 
                         [
-                            3.3095, 
+                            0.5701, 
                             10.5572, 
                             11.9374
                         ], 
                         [
-                            3.9991, 
+                            1.2597, 
                             -13.3394, 
                             11.9374
                         ], 
                         [
-                            3.9991, 
+                            1.2597, 
                             -13.3394, 
                             -11.9374
                         ], 
                         [
-                            3.3095, 
+                            0.5701, 
                             10.5572, 
                             -11.9374
                         ], 
                         [
-                            1.6405, 
+                            -1.0989, 
                             10.1874, 
                             -11.9374
                         ], 
                         [
-                            2.3301, 
+                            -0.4093, 
                             -13.7091, 
                             -11.9374
                         ], 
                         [
-                            3.9991, 
+                            1.2597, 
                             -13.3394, 
                             -11.9374
                         ], 
                         [
-                            2.3301, 
+                            -0.4093, 
                             -13.7091, 
                             -11.9374
                         ], 
                         [
-                            2.3301, 
+                            -0.4093, 
                             -13.7091, 
                             11.9374
                         ]
@@ -9065,9 +9065,9 @@
                 0.0
             ], 
             "rotate": [
-                -0.8479, 
-                0.3525, 
-                44.9885
+                -0.846, 
+                0.3506, 
+                44.8628
             ], 
             "scale": [
                 1.0, 
@@ -9173,9 +9173,9 @@
                 0.0
             ], 
             "rotate": [
-                -0.8479, 
-                -0.3525, 
-                -44.9885
+                -0.846, 
+                -0.3506, 
+                -44.8628
             ], 
             "scale": [
                 1.0, 
@@ -9596,14 +9596,14 @@
         "arm_R": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_arm|arm_R", 
             "translate": [
-                -47.7988, 
-                93.0207, 
-                -3.4525
+                -47.8673, 
+                93.0463, 
+                -3.4164
             ], 
             "rotate": [
-                89.1521, 
-                0.3511, 
-                44.9885
+                89.154, 
+                0.3492, 
+                44.8629
             ], 
             "scale": [
                 1.0, 
@@ -9704,14 +9704,14 @@
         "arm_L": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_arm|arm_L", 
             "translate": [
-                47.7988, 
-                93.0207, 
-                -3.4525
+                47.8673, 
+                93.0463, 
+                -3.4164
             ], 
             "rotate": [
-                -90.8479, 
-                -0.3511, 
-                -44.9885
+                -90.846, 
+                -0.3492, 
+                -44.8629
             ], 
             "scale": [
                 1.0, 
