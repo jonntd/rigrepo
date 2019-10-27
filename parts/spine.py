@@ -347,121 +347,13 @@ class Spine(part.Part):
         # ------------------------------------------------------------------------------------
         # Length Preservation
         # ------------------------------------------------------------------------------------
-
-        name = 'spineIk'
-        curve = 'spineIk_curve'
-        primaryControl = 'chest'
-        rotateControls = ['chest', 'chest_ik', 'torso']
-        no_rotate_cvs = [2, 3]
-        no_rotate_parent = 'torso_nul'
-        parent = mc.listRelatives(curve, p=1)[0]
-        position_output_child = 'chest_top_nul'
-
-        curve_full = name + '_length_full'
-        curve_no_rotate = name + '_length_no_rotate'
-
-        # Create length curves
-        curve_no_rotate = mc.duplicate(curve, n=curve_no_rotate)[0]
-        curve_full = mc.duplicate(curve, n=curve_full)[0]
-
-        # Remove orig shapes
-        mc.delete(mc.ls(mc.listRelatives(curve_no_rotate, curve_full, s=1), io=1))
-
-        # Get clusters
-        clusters = mc.ls(mc.listHistory(curve, pdo=1, il=2), type='cluster')
-        clusters.reverse()
-        cv_count = len(clusters)
-
-        # Add cvs to existing clusters
-        for i in xrange(cv_count):
-            # Get cluster deformer set
-            con = mc.ls(mc.listConnections(clusters[i]), type='objectSet')
-            con.reverse()
-            deformerSet = con[0]
-            # Add cv to deformer set
-            mc.sets(curve_full + '.cv[{}]'.format(i), e=1, add=deformerSet)
-
-            # Add cv to cluster for no rotate curve if it can rotate (the lower cvs)
-            if i not in no_rotate_cvs:
-                mc.sets(curve_no_rotate + '.cv[{}]'.format(i), e=1, add=deformerSet)
-
-        # Make the no rotate clusters
-        no_rotate_cluster_grp = mc.createNode('transform', n=name + '_no_rotate_cluster_nul', p=no_rotate_parent)
-        for i in no_rotate_cvs:
-            cluster, handle = mc.cluster(curve_no_rotate + '.cv[{}]'.format(i),
-                                         name=name + '_no_rotate_cluster_{}'.format(i))
-            mc.parent(handle, no_rotate_cluster_grp)
-
-        # Connect translates of rotate controls to no rotate clusters
-        no_rotate_add = mc.createNode('plusMinusAverage', n=name + '_translate_input')
-        for i in xrange(len(rotateControls)):
-            mc.connectAttr(rotateControls[i] + '.t', no_rotate_add + '.input3D[{}]'.format(i))
-
-        # Connect add outputs into clusters
-        mc.connectAttr(no_rotate_add + '.output3D', no_rotate_cluster_grp + '.t')
-
-        # Create scale pivot
-        pos = mc.pointPosition(curve + '.cv[0]')
-        scale_pivot = mc.createNode('transform', n=name + '_scale_pivot', p=parent)
-        mc.xform(scale_pivot, ws=1, t=pos)
-
-        # Create position output nul, this will be the parent of everything that is a child of the spine
-        # that needs to move with the length change
-        pos_output_parent = mc.listRelatives(position_output_child, p=1)[0]
-        pos_output_nul = mc.createNode('transform', n=position_output_child + '_length_input', p=pos_output_parent)
-
-        # Create position constraint target, that is child of the scale pivot
-        position_constraint_target = mc.duplicate(pos_output_nul, n=name + '_translate_constraint_target')[0]
-        mc.parent(position_constraint_target, scale_pivot)
-
-        # Put the output child under the newly created node so everything moves with it
-        mc.parent(position_output_child, pos_output_nul)
-
-        # Create output nuls for the translate
-        position_constraint_base_nul = mc.duplicate(position_constraint_target, n=name + '_translate_output_nul')[0]
-        mc.parent(position_constraint_base_nul, parent)
-        position_constraint_base = mc.createNode('transform', n=name + '_translate_output',
-                                                 p=position_constraint_base_nul)
-
-        # Translate output constraint
-        mc.pointConstraint(position_constraint_target, position_constraint_base)
-
-        # connect the constrained nul to the position output nul
-        mc.connectAttr(position_constraint_base + '.t', pos_output_nul + '.t')
-
-        # Create scale cluster
-        scale_cluster, scale_cluster_handle = mc.cluster(curve, n=name + '_scale_cluster')
-        mc.parent(scale_cluster_handle, scale_pivot)
-
-        # Move scale cluster to front of deformation order
-        tweak = mc.ls(mc.listHistory(curve, pdo=1, il=2), type='tweak')[0]
-        mc.reorderDeformers(tweak, scale_cluster, curve)
-
-        # Curve infos for measuring length
-        info_full = mc.createNode('curveInfo', n=name + '_full_curveInfo')
-        info_no_rotate = mc.createNode('curveInfo', n=name + '_no_rotate_curveInfo')
-        mc.connectAttr(curve_full + '.local', info_full + '.inputCurve')
-        mc.connectAttr(curve_no_rotate + '.local', info_no_rotate + '.inputCurve')
-
-        # Divide distances
-        length_mul = mc.createNode('multiplyDivide', n=name + '_length_divide')
-        mc.setAttr(length_mul + '.operation', 2)
-        mc.connectAttr(info_no_rotate + '.arcLength', length_mul + '.input1X')
-        mc.connectAttr(info_full + '.arcLength', length_mul + '.input2X')
-
-        # Add length presevation dial attribuate
-        mc.addAttr(primaryControl, ln='preserveLength', min=0, max=1, dv=1, at='double', k=1)
-
-        # Create blend node for dial attribute
-        blend = mc.createNode('blendTwoAttr', n=name + '_attr_blend')
-        mc.connectAttr(primaryControl + '.preserveLength', blend + '.attributesBlender')
-        mc.setAttr(blend + '.input[0]', 1)
-        mc.connectAttr(length_mul + '.outputX', blend + '.input[1]')
-
-        # Connect the blend output to the scale pivot
-        mc.connectAttr(blend + '.output', scale_pivot + '.sx')
-        mc.connectAttr(blend + '.output', scale_pivot + '.sy')
-        mc.connectAttr(blend + '.output', scale_pivot + '.sz')
+        spline.preserveLength(name='spineIk',
+                              curve='spineIk_curve',
+                              primary_control='chest',
+                              rotate_controls=['chest', 'chest_ik', 'torso'],
+                              no_rotate_cvs=[2, 3],
+                              no_rotate_parent='torso_nul',
+                              position_output_child='chest_top_nul')
 
     def postBuild(self):
         '''
