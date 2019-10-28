@@ -267,23 +267,26 @@ def preserveLength(name='spineIk',
 
     # Add cvs to existing clusters
     for i in xrange(cv_count):
-        # Get cluster deformer set
-        con = mc.ls(mc.listConnections(clusters[i]), type='objectSet')
-        con.reverse()
-        deformerSet = con[0]
-        # Add cv to deformer set
-        mc.sets(curve_full + '.cv[{}]'.format(i), e=1, add=deformerSet)
+        if i in no_rotate_cvs:
+            # Get cluster deformer set
+            con = mc.ls(mc.listConnections(clusters[i]), type='objectSet')
+            con.reverse()
+            deformerSet = con[0]
+            # Add cv to deformer set
+            mc.sets(curve_full + '.cv[{}]'.format(i), e=1, add=deformerSet)
 
-        # Add cv to cluster for no rotate curve if it can rotate (the lower cvs)
-        if i not in no_rotate_cvs:
-            mc.sets(curve_no_rotate + '.cv[{}]'.format(i), e=1, add=deformerSet)
+            # Add cv to cluster for no rotate curve if it can rotate (the lower cvs)
+            #if i not in no_rotate_cvs:
+            #    mc.sets(curve_no_rotate + '.cv[{}]'.format(i), e=1, add=deformerSet)
 
     # Make the no rotate clusters
     no_rotate_cluster_grp = mc.createNode('transform', n=name + '_no_rotate_cluster_nul', p=no_rotate_parent)
     for i in no_rotate_cvs:
         cluster, handle = mc.cluster(curve_no_rotate + '.cv[{}]'.format(i),
+                                     curve_full + '.cv[{}]'.format(i),
                                      name=name + '_no_rotate_cluster_{}'.format(i))
         mc.parent(handle, no_rotate_cluster_grp)
+        mc.hide(handle)
 
     # Connect translates of rotate controls to no rotate clusters
     no_rotate_add = mc.createNode('plusMinusAverage', n=name + '_translate_input')
@@ -324,7 +327,8 @@ def preserveLength(name='spineIk',
 
     # Create scale cluster
     scale_cluster, scale_cluster_handle = mc.cluster(curve, n=name + '_scale_cluster')
-    mc.parent(scale_cluster_handle, scale_pivot)
+    mc.hide(scale_cluster)
+    mc.parent(scale_cluster_handle, 'spine')
 
     # Move scale cluster to front of deformation order
     tweak = mc.ls(mc.listHistory(curve, pdo=1, il=2), type='tweak')[0]
@@ -345,6 +349,22 @@ def preserveLength(name='spineIk',
     # Add length preservation dial attribute
     mc.addAttr(primary_control, ln='preserveLength', min=0, max=1, dv=1, at='double', k=1)
 
+    # Add diagnostic attributes
+    #   Current Length
+    mc.addAttr(primary_control, ln='currentLength', min=0, max=1, dv=1, at='double')
+    mc.setAttr(primary_control + '.currentLength', cb=1)
+    comp_mul = mc.createNode('multiplyDivide', n=name + '_current_length_mul')
+    mc.setAttr(comp_mul + '.operation', 2)
+    arc_length = mc.getAttr(info_full+'.arcLength')
+    mc.setAttr(comp_mul+'.input2X', arc_length)
+    info_main = mc.ls(mc.listConnections(mc.listRelatives(curve, s=1, ni=1)[0]), type='curveInfo')[0]
+    mc.connectAttr(info_main+'.arcLength', comp_mul+'.input1X')
+    mc.connectAttr(comp_mul + '.outputX', primary_control + '.currentLength')
+    #   Compensated Length
+    mc.addAttr(primary_control, ln='compensatedLength', min=0, max=1, dv=1, at='double')
+    mc.setAttr(primary_control + '.compensatedLength', cb=1)
+    mc.connectAttr(length_mul + '.outputX', primary_control+'.compensatedLength')
+
     # Create blend node for dial attribute
     blend = mc.createNode('blendTwoAttr', n=name + '_attr_blend')
     mc.connectAttr(primary_control + '.preserveLength', blend + '.attributesBlender')
@@ -352,8 +372,8 @@ def preserveLength(name='spineIk',
     mc.connectAttr(length_mul + '.outputX', blend + '.input[1]')
 
     # Connect the blend output to the scale pivot
-    mc.connectAttr(blend + '.output', scale_pivot + '.sx')
+    #mc.connectAttr(blend + '.output', scale_pivot + '.sx')
     mc.connectAttr(blend + '.output', scale_pivot + '.sy')
-    mc.connectAttr(blend + '.output', scale_pivot + '.sz')
+    #mc.connectAttr(blend + '.output', scale_pivot + '.sz')
 
 
