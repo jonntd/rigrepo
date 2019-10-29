@@ -277,6 +277,8 @@ def preserveLength(name='spineIk',
     for i in no_rotate_cvs:
         cluster, handle = mc.cluster(curve_full + '.cv[{}]'.format(i),
                                      name=name + '_no_rotate_cluster_{}'.format(i))
+        rigrepo.libs.cluster.localize(cluster, parent, parent,
+                                      weightedCompensation=True)
         mc.parent(handle, nul)
         mc.hide(handle)
 
@@ -313,6 +315,8 @@ def preserveLength(name='spineIk',
     scale_cluster, scale_cluster_handle = mc.cluster(curve, n=name + '_scale_cluster')
     mc.hide(scale_cluster)
     mc.parent(scale_cluster_handle, scale_pivot)
+    rigrepo.libs.cluster.localize(scale_cluster, parent, parent,
+                                  weightedCompensation=True)
 
     # Move scale cluster to front of deformation order
     tweak = mc.ls(mc.listHistory(curve, pdo=1, il=2), type='tweak')[0]
