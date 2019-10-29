@@ -347,13 +347,13 @@ class Spine(part.Part):
         # ------------------------------------------------------------------------------------
         # Length Preservation
         # ------------------------------------------------------------------------------------
-        #spline.preserveLength(name='spineIk',
-        #                      curve='spineIk_curve',
-        #                      primary_control='chest',
-        #                      rotate_controls=['chest', 'chest_ik', 'torso'],
-        #                      no_rotate_cvs=[2, 3],
-        #                      no_rotate_parent='torso_nul',
-        #                      position_output_child='chest_top_nul')
+        spline.preserveLength(name='spineIk_length',
+                              curve='spineIk_curve',
+                              primary_control='chest',
+                              rotate_controls=['torso', 'chest', 'chest_ik'],
+                              no_rotate_cvs=[2, 3],
+                              parent='spine',
+                              position_output_child='chest_top_nul')
 
     def postBuild(self):
         '''
