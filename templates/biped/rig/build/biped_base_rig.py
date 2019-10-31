@@ -188,7 +188,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         l_leg.getAttributeByName("clavicleCtrl").setValue("pelvis_l")
 
         l_foot = rigrepo.parts.foot.Foot("l_foot", ['ankle_l_bind', 'ball_l_bind', 'toe_l_bind'], 
-                                        'ankle_fk_l_hdl', 
+                                        'ankle_l_bind_ik_hdl',
                                         fkAnchor='ankle_fk_gimbal_l', 
                                         ikAnchor='leg_ik_gimbal_l', 
                                         anklePivot='ankle_l_pivot', 
@@ -214,7 +214,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         r_leg.getAttributeByName("clavicleCtrl").setValue("pelvis_r")
 
         r_foot = rigrepo.parts.foot.Foot("r_foot", ['ankle_r_bind', 'ball_r_bind', 'toe_r_bind'], 
-                                        'ankle_fk_r_hdl', 
+                                        'ankle_r_bind_ik_hdl',
                                         fkAnchor='ankle_fk_gimbal_r', 
                                         ikAnchor='leg_ik_gimbal_r', 
                                         anklePivot='ankle_r_pivot',

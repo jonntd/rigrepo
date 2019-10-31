@@ -621,6 +621,10 @@ class IkFkFoot(IKFKBase):
 
         # parent the handles to the pivot
         mc.parent(self._handles[1], self.pivotList[-1])
+        # Make sure ik handle is unlcoked
+        mc.setAttr(self.ankleHandle+'.tx', l=0)
+        mc.setAttr(self.ankleHandle+'.ty', l=0)
+        mc.setAttr(self.ankleHandle+'.tz', l=0)
         if mc.objExists(self.ankleHandle):
             mc.parent(self.ankleHandle, self.pivotList[-2])
 
