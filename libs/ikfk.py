@@ -203,10 +203,12 @@ class IKFKBase(object):
                 # create the blend colors nodes and connect everything
                 rotbcn = mc.createNode("blendColors", n="{0}_rot_bcn".format(joint))
                 trsbcn = mc.createNode("blendColors", n="{0}_trs_bcn".format(joint))
+                scalebcn = mc.createNode("blendColors", n="{0}_scale_bcn".format(joint))
 
                 # make the connections
                 mc.connectAttr(ikfkAttr,"{0}.blender".format(rotbcn),f=True)
                 mc.connectAttr(ikfkAttr,"{0}.blender".format(trsbcn),f=True)
+                mc.connectAttr(ikfkAttr,"{0}.blender".format(scalebcn),f=True)
 
                 mc.connectAttr("{0}.rotate".format(fkJnt),
                     "{0}.color1".format(rotbcn),f=True)
@@ -218,10 +220,17 @@ class IKFKBase(object):
                 mc.connectAttr("{0}.translate".format(ikJnt),
                     "{0}.color2".format(trsbcn),f=True)
 
+                mc.connectAttr("{0}.scale".format(fkJnt),
+                    "{0}.color1".format(scalebcn),f=True)
+                mc.connectAttr("{0}.scale".format(ikJnt),
+                    "{0}.color2".format(scalebcn),f=True)
+
                 mc.connectAttr("{0}.output".format(rotbcn), 
                     "{0}.rotate".format(blendJnt), f=True)
                 mc.connectAttr("{0}.output".format(trsbcn), 
                     "{0}.translate".format(blendJnt), f=True)
+                mc.connectAttr("{0}.output".format(scalebcn), 
+                    "{0}.scale".format(blendJnt), f=True)
                 
 class IKFKLimb(IKFKBase):
     '''
