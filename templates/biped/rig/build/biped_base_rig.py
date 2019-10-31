@@ -197,7 +197,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                         paramNodeName='leg_L')
         leftLegAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="leg_pv_l",
             constraintNode="leg_pv_l_nul", parentNode='rig', targetList=['pelvis_l','ankle_fk_l_offset_pv'], 
-        nameList=["pelvis","foot"], constraintType='parent')
+            nameList=["pelvis","foot"], constraintType='parent', defaultTargetIndex=2)
 
         # add foot to the leg node
         l_leg.addChildren([l_foot,leftLegAddSpaceNode])
@@ -224,7 +224,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         rightLegAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces',attrNode="leg_pv_r",
             constraintNode="leg_pv_r_nul", parentNode='rig', targetList=['pelvis_r','ankle_fk_r_offset_pv'], 
-        nameList=["pelvis","foot"], constraintType='parent')
+            nameList=["pelvis","foot"], constraintType='parent', defaultTargetIndex=2)
 
 
         # add foot to the leg node

@@ -212,8 +212,6 @@ import rigrepo.templates.biped.rig.build.biped_base_rig
 reload(rigrepo.templates.biped.rig.build.biped_base_rig)
 import rigrepo.templates.biped.rig.build.biped_female_rig
 reload(rigrepo.templates.biped.rig.build.biped_female_rig)
-import rigrepo.templates.biped.rig.build.biped_david_rig
-reload(rigrepo.templates.biped.rig.build.biped_david_rig)
 
 #regular imports
 import os
@@ -229,8 +227,6 @@ def nodes(variant='base', buildNow=False, debug=True, graph=None):
         biped_graph = rigrepo.templates.biped.rig.build.biped_base_rig.BipedBaseRig(name='Biped_base')
     elif variant == 'female':
         biped_graph = rigrepo.templates.biped.rig.build.biped_female_rig.BipedFemaleRig(name='Biped_female')
-    elif variant == 'david':
-        biped_graph = rigrepo.templates.biped.rig.build.biped_david_rig.BipedDavidRig(name='Biped_david')
 
     if buildNow:
         nodeList = biped_graph.getNodes()
