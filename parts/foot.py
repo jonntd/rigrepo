@@ -102,14 +102,15 @@ class Foot(part.Part):
         # get all of the pivots
         pivotList = self.ikfkSystem.pivotList
 
+        # parent the ankle stretch target
         if mc.objExists(ankleStretchTarget):
             mc.parent(ankleStretchTarget, pivotList[-2])
 
-        #parent the ankle handle to the pivot hierarchy
+        # parent the ankle handle to the pivot hierarchy
         if mc.objExists(self._ikAnchor):
             mc.parent(self._anklePivot, self._ikAnchor)
             ikJointList = self.ikfkSystem.getIkJointList()
-            mc.pointConstraint(ankleStretchTarget, ikJointList[0])
+            #mc.pointConstraint(ankleStretchTarget, ikJointList[0])
 
 
         # get blend joint list
