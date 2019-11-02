@@ -138,13 +138,14 @@ def duplicateChain(jointList, names=None, parent=None):
     for joint, name in zip(jointList, names):
         if not mc.objExists(joint):
             continue
-        dupJoint = mc.duplicate(joint, po=True, rr=True, name=name)[0]
-        for a in ['rx', 'ry', 'rz', 'tx', 'ty', 'tz', 'sx', 'sy', 'sz']:
-            mc.setAttr(dupJoint+'.'+a, l=0)
+        dupJoint = mc.createNode('joint', name=name)
         newJointList.append(dupJoint)
         if parent:
             mc.parent(dupJoint, parent)
+        mc.delete(mc.parentConstraint(joint, dupJoint))
+        mc.makeIdentity(dupJoint, apply=1, r=1)
         parent = dupJoint
 
+    mc.select(dupJoint)
     return(newJointList)
 
