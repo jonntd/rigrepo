@@ -199,6 +199,8 @@ class IKFKBase(object):
 
             blendParent = blendJnt
 
+            mc.hide(self._ikJointList, self._fkJointList, self._blendJointList)
+
             if not blendJntExists:
                 # create the blend colors nodes and connect everything
                 rotbcn = mc.createNode("blendColors", n="{0}_rot_bcn".format(joint))

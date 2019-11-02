@@ -107,8 +107,6 @@ class Limb(part.Part):
         fkControlsNulList = list()
         parent = grp
 
-        mc.hide(self.jointList, blendJointList)
-
         # connect the blend joints to the bind joints
         for jnt, blendJnt in zip(self.jointList, blendJointList):
             mc.pointConstraint(blendJnt, jnt)
