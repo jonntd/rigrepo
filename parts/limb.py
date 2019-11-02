@@ -107,6 +107,8 @@ class Limb(part.Part):
         fkControlsNulList = list()
         parent = grp
 
+        mc.hide(self.jointList, blendJointList)
+
         # connect the blend joints to the bind joints
         for jnt, blendJnt in zip(self.jointList, blendJointList):
             mc.pointConstraint(blendJnt, jnt)
@@ -576,7 +578,7 @@ class Limb(part.Part):
         '''
         '''
         #turn of the visibility of the ikfk system
-        mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
+        #mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
         paramNodeName = self.getAttributeByName("paramNode").getValue()
         createProxyAttributes = self.getAttributeByName("createProxyAttributes").getValue()
 
