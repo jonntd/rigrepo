@@ -67,6 +67,7 @@ class Limb(part.Part):
         blendJointList = self.ikfkSystem.getBlendJointList()
         grp = self.ikfkSystem.getGroup()
         grp = mc.rename(grp, "{}_{}".format(self.name,grp))
+        self.ikfkSystem.setGroup(grp)
         handle = self.ikfkSystem.getHandle()
 
         # create the param node and ikfk attribute for it
@@ -575,7 +576,7 @@ class Limb(part.Part):
         '''
         '''
         #turn of the visibility of the ikfk system
-        #mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
+        mc.setAttr("{0}.v".format(self.ikfkSystem.getGroup()), 0)
         paramNodeName = self.getAttributeByName("paramNode").getValue()
         createProxyAttributes = self.getAttributeByName("createProxyAttributes").getValue()
 
