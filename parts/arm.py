@@ -87,6 +87,8 @@ class Arm(limb.Limb):
 
         # parent the shoulderSwing control to the clavicle control.
         mc.parent((self._fkControls[0], self._stretchTargetJointList[0]), swingCtrl)
+        ikJointList = self.ikfkSystem.getIkJointList()
+        mc.parentConstraint(swingCtrl, ikJointList[0], mo=True)
         mc.parent(swingNul, clavicleConnect)
         
         # Connect to passed anchor
