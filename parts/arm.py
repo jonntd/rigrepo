@@ -126,7 +126,8 @@ class Arm(limb.Limb):
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
         side = self.getAttributeByName("side").getValue()
-        
+        anchor = self.getAttributeByName("anchor").getValue()
+
         super(Arm, self).postBuild()
         rigrepo.libs.attribute.lockAndHide(swingCtrl,["sx","sy", "sz", "v"])
         rigrepo.libs.attribute.lockAndHide(clavicleCtrl,["sx","sy", "sz", "v"])
@@ -146,6 +147,7 @@ class Arm(limb.Limb):
 
         # Connect psd driver
         mc.parent(clavicleCtrl+'_driver', clavicleCtrl+'_driver_par')
+        mc.parent(clavicleCtrl+'_driver_par', anchor)
         mc.delete(mc.orientConstraint('clavicle_trans_'+self._side+'_bind', clavicleCtrl+'_driver_par'))
         mc.orientConstraint('clavicle_trans_'+self._side+'_bind', clavicleCtrl+'_driver')
         
