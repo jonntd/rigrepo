@@ -110,9 +110,9 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          parentControl='clavicle_'+side,
                                                          inputControls=['shoulderSwing_'+side,
                                                                         'shoulder_fk_'+side],
-                                                         ikJointList=['shoulder_fk_'+side,
-                                                                      'elbow_fk_'+side,
-                                                                      'wrist_fk_'+side],
+                                                         ikJointList=['shoulder_'+side+'_bind_ik',
+                                                                      'elbow_'+side+'_bind_ik',
+                                                                      'wrist_'+side+'_bind_ik'],
                                                          autoBlendAttr='autoClav',
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
@@ -122,7 +122,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         l_arm.addChildren([l_autoClav, leftArmAddSpaceNode,leftArmPvAddSpaceNode,leftArmIkAddSpaceNode,l_hand])
 
         # Turning off until cycle is fixed
-        l_autoClav.disable()
+        #l_autoClav.disable()
         r_arm = rigrepo.parts.arm.Arm("r_arm",
                                     ['clavicle_r_bind', 
                                      'shoulder_r_bind',
@@ -163,9 +163,9 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          parentControl='clavicle_'+side,
                                                          inputControls=['shoulderSwing_'+side,
                                                                         'shoulder_fk_'+side],
-                                                         ikJointList=['shoulder_fk_'+side,
-                                                                      'elbow_fk_'+side,
-                                                                      'wrist_fk_'+side],
+                                                         ikJointList=['shoulder_'+side+'_bind_ik',
+                                                                      'elbow_'+side+'_bind_ik',
+                                                                      'wrist_'+side+'_bind_ik'],
                                                          autoBlendAttr='autoClav',
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
@@ -175,7 +175,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         r_arm.addChildren([r_autoClav, rightArmAddSpaceNode,rightArmPvAddSpaceNode,rightArmIkAddSpaceNode,r_hand])
 
         # Turning off until cycle is fixed
-        r_autoClav.disable()
+        #r_autoClav.disable()
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",
                                 ['pelvis_l_bind', 'thigh_l_bind', 'knee_l_bind', 'ankle_l_bind'], 

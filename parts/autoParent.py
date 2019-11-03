@@ -113,6 +113,8 @@ class AutoParent(part.Part):
 
         # Connect rotation
         parentControlPar = mc.listRelatives(parentControl, p=1)[0]
+        # Go up one more to the nul, because the ort is getting inverted
+        parentControlPar = mc.listRelatives(parentControlPar, p=1)[0]
         mc.connectAttr(pb+'.outRotateX', parentControlPar+'.rotateAxisX')
         mc.connectAttr(pb+'.outRotateY', parentControlPar+'.rotateAxisY')
         mc.connectAttr(pb+'.outRotateZ', parentControlPar+'.rotateAxisZ')

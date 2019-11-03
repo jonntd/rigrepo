@@ -413,13 +413,15 @@ class Limb(part.Part):
         # connect the blend colors node to both ik joints and fk controls scale attributes
         mc.connectAttr("{}.output".format(pvPinMultDouble), 
                         "{}.blender".format(pvPinBlendNode), f=True)
-        mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.s{}".format(self._fkControls[0], 
+
+        # Connect the stretch blend output to the joint chains
+        mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.s{}".format(fkJointList[0],
+                                                                            aimAttr.strip("-")), f=True)
+        mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.s{}".format(fkJointList[1],
+                                                                            aimAttr.strip("-")), f=True)
+        mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.s{}".format(ikJointList[0],
                         aimAttr.strip("-")), f=True)
-        mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.s{}".format(self._fkControls[1], 
-                        aimAttr.strip("-")), f=True)
-        mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.s{}".format(ikJointList[0], 
-                        aimAttr.strip("-")), f=True)
-        mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.s{}".format(ikJointList[1], 
+        mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.s{}".format(ikJointList[1],
                         aimAttr.strip("-")), f=True)
 
         mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
