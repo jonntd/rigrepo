@@ -86,13 +86,13 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         l_arm.getAttributeByName("clavicleCtrl").setValue("clavicle_l")
 
         leftArmAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="shoulderSwing_l",
-            constraintNode="shoulderSwing_l_ort", parentNode='shoulderSwing_l_nul', targetList=['rig'], 
+            constraintNode="shoulderSwing_l_ort", parentNode='shoulderSwing_l_nul', targetList=['rig'],
         nameList=["world"], constraintType='orient')
 
 
         leftArmPvAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="arm_pv_l",
-            constraintNode="arm_pv_l_nul", parentNode='l_arm', targetList=['chest_bind', 'wrist_fk_l_offset_pv'], 
-        nameList=["chest","hand"], constraintType='parent')
+            constraintNode="arm_pv_l_nul", parentNode='l_arm', targetList=['chest_bind'],
+        nameList=["chest"], constraintType='parent')
 
         leftArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_L",
             constraintNode="arm_ik_l_ort", parentNode='l_arm', targetList=['chest_bind', 'skull_bind','hip_swivel','hips_bind'], 
@@ -137,12 +137,12 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         r_arm.getAttributeByName("clavicleCtrl").setValue("clavicle_r")
         
         rightArmAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="shoulderSwing_r",
-            constraintNode="shoulderSwing_r_ort", parentNode='shoulderSwing_r_nul', targetList=['rig'], 
+            constraintNode="shoulderSwing_r_ort", parentNode='shoulderSwing_r_nul', targetList=['rig'],
         nameList=["world"], constraintType='orient')
 
         rightArmPvAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="arm_pv_r",
-            constraintNode="arm_pv_r_nul", parentNode='r_arm', targetList=['chest_bind', 'wrist_fk_r_offset_pv'], 
-        nameList=["chest","hand"], constraintType='parent')
+            constraintNode="arm_pv_r_nul", parentNode='r_arm', targetList=['chest_bind'],
+        nameList=["chest"], constraintType='parent')
 
         rightArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_R",
             constraintNode="arm_ik_r_ort", parentNode='r_arm', targetList=['chest_bind', 'skull_bind','hip_swivel','hips_bind'], 
