@@ -313,7 +313,7 @@ def preserveLength(name='spineIk',
 
     # Create scale cluster
     scale_cluster, scale_cluster_handle = mc.cluster(curve, n=name + '_scale_cluster')
-    mc.hide(scale_cluster)
+    mc.hide(scale_cluster_handle)
     mc.parent(scale_cluster_handle, scale_pivot)
     rigrepo.libs.cluster.localize(scale_cluster, parent, parent,
                                   weightedCompensation=True)

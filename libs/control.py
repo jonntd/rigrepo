@@ -60,10 +60,16 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
             mc.rename(curveShape, "{}Shape".format(control))
             mc.delete(curve)
     elif controlType == "circle":
-        control = mc.createNode(transformType, name=name)
-        curve = mc.circle(name=name, c=(0, 0, 0), nr=(0, 1, 0), sw=360, r=1, 
-                                d=3, ut=0, tol=0.01, s=8, ch=False) [0]
-        mc.parent(mc.listRelatives(curve, c=True, shapes=True, type="nurbsCurve")[0], control, r=True, s=True)
+        if not hierarchy:
+            control = name
+        else:
+            control = mc.createNode(transformType, name=name)
+
+        curve = mc.circle(name=name+'_curve', c=(0, 0, 0), nr=(0, 1, 0), sw=360, r=1,
+                          d=3, ut=0, tol=0.01, s=8, ch=False) [0]
+        curveShape = mc.parent(mc.listRelatives(curve, c=True, shapes=True, type="nurbsCurve")[0], control, r=True, s=True)
+        mc.rename(curveShape, control+'Shape')
+
         mc.delete(curve)
     else:
         control = mc.createNode(transformType, name=name)

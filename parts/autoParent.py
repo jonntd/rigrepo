@@ -138,6 +138,7 @@ class AutoParent(part.Part):
         psdNumericBS = 'numeric_psd'
         if not mc.objExists(psdNumericGeo):
             psdNumericGeo = mc.polyPlane(n=psdNumericGeo, sx=1, sy=1, ch=0)[0]
+            mc.hide(psdNumericGeo)
         if not mc.objExists(psdNumericBS):
             mc.blendShape(psdNumericGeo, n=psdNumericBS)
 
