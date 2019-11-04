@@ -76,7 +76,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         controlDataNode = rigrepo.nodes.importDataNode.ImportDataNode('controlPositions', 
                 dataFile=self.resolveDataFilePath('control_positions.data', self.variant), 
                 dataType='curve',
-                attributes="['cvPositions']",
+                attributes="['cvPositions', 'rotateOrder', 'color']",
                 apply=True)
 
         controlOrientDataNode.getAttributeByName("Nodes").setValue("mc.ls('*_ort',type='transform')")

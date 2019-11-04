@@ -212,6 +212,7 @@ class Limb(part.Part):
         # ik control to drive the end joint
         mc.select(clear=True)
         dupEndJnt = mc.joint(name="{}_offset".format(self._fkControls[-1]))
+        mc.setAttr('{}.ro'.format(dupEndJnt), mc.getAttr("{}.ro".format(fkJointList[-1])))
         tempJnt = mc.joint(name="{}_offset_temp".format(self._fkControls[-1]))
         tempUpJnt = mc.joint(name="{}_offset_tempUp".format(self._fkControls[-1]))
         mc.parent(tempUpJnt, dupEndJnt)
@@ -257,7 +258,7 @@ class Limb(part.Part):
         # lock the scale attribute on the ikGimbal control
         rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["sx", "sy", "sz"])
         
-        mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.ikBlend".format(handle), f=True)
+        #mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.ikBlend".format(handle), f=True)
         # create the offset joint that will be used for ikfk switching. This is the offset of the
         # ik control from the fk control
         mc.select(clear=True)
@@ -415,15 +416,22 @@ class Limb(part.Part):
                         "{}.blender".format(pvPinBlendNode), f=True)
 
         # Connect the stretch blend output to the joint chains
+        '''
         mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.s{}".format(fkJointList[0],
                                                                             aimAttr.strip("-")), f=True)
         mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.s{}".format(fkJointList[1],
-                                                                            aimAttr.strip("-")), f=True)
+                                                                      aimAttr.strip("-")), f=True)
+        '''
         mc.connectAttr("{}.outputR".format(pvPinBlendNode), "{}.s{}".format(ikJointList[0],
                         aimAttr.strip("-")), f=True)
         mc.connectAttr("{}.outputG".format(pvPinBlendNode), "{}.s{}".format(ikJointList[1],
                         aimAttr.strip("-")), f=True)
-
+        
+        # this will connect the param stretch  top and bottom to the fk controls
+        mc.connectAttr("{}.stretchTop".format(paramNode), "{}.s{}".format(self._fkControls[0],
+                                                            aimAttr.strip("-")), f=True)
+        mc.connectAttr("{}.stretchBottom".format(paramNode), "{}.s{}".format(self._fkControls[1],
+                                                            aimAttr.strip("-")), f=True)
         mc.parent(self._stretchTargetJointList[-1], dupEndJnt)
 
         # delete the original tranform that came with the locator paramNode
@@ -531,7 +539,7 @@ class Limb(part.Part):
         # ik match attributes needed for the switch
         mc.addAttr(paramNode, ln="ikMatchTransforms", dt="string")
         mc.setAttr("{}.ikMatchTransforms".format(paramNode), 
-                '["{}","{}","{}"]'.format(self._fkControls[0], self._fkControls[1], dupEndJnt), 
+                '["{}","{}","{}"]'.format(ikJointList[0], ikJointList[1], dupEndJnt), 
                 type="string")
         mc.addAttr(paramNode, ln="ikControls", dt="string")
         mc.setAttr("{}.ikControls".format(paramNode), 

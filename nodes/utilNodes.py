@@ -236,7 +236,7 @@ def switch(paramNode, value):
         ikMatchTransforms = eval(mc.getAttr(paramNode + '.ikMatchTransforms'))
         
         aimAttr, vector= getDistanceVector(mc.getAttr("%s%s.t" % (namespace,fkControls[1]))[0])
-        scaleValues = [mc.getAttr('%s%s.s%s' % (namespace,ctrl,aimAttr.strip("-"))) for ctrl in (fkControls[0],fkControls[1])]
+        scaleValues = [mc.getAttr('%s%s.s%s' % (namespace,ctrl,aimAttr.strip("-"))) for ctrl in (ikMatchTransforms[0],ikMatchTransforms[1])]
         wristGimbal = "%s%s" % (namespace,fkControls.pop(-1))
         rotationList = list()
         for ctrl in ikMatchTransforms:
@@ -250,7 +250,6 @@ def switch(paramNode, value):
         mc.setAttr(wristGimbal + '.r',0, 0, 0)
         
         for rotation, ctrl in zip(rotationList,fkControls):
-            print ctrl
             mc.xform("%s%s" % (namespace, ctrl), ws=True, rotation=rotation)
     
         attrList = ('stretchTop', 'stretchBottom')

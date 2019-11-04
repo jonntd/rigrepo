@@ -103,9 +103,9 @@ class Arm(limb.Limb):
 
 
         # set the rotate order for the shoulder control
-        mc.setAttr("{}.rotateOrder".format(self._fkControls[0]), 2)
+        #mc.setAttr("{}.rotateOrder".format(self._fkControls[0]), 0)
         # set the rotate order for the swing control
-        mc.setAttr("{}.rotateOrder".format(swingCtrl), 2)
+        #mc.setAttr("{}.rotateOrder".format(swingCtrl), 0)
         #self._fkControls.extend([clavicleCtrl,swingCtrl])
 
         # PSD driver - transform that picks up the auto clav and anim control rotation

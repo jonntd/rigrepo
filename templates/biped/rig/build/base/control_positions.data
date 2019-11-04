@@ -1,10 +1,10 @@
 {
     "type": "CurveData", 
-    "user": "Matt", 
-    "time": "2019-09-05 17:27:34", 
+    "user": "Walter Yoder", 
+    "time": "2019-11-04 15:37:34", 
     "data": {
         "wrist_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r|wrist_fk_r", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r|wrist_fk_r", 
             "translate": [
                 -9.921, 
                 -0.0, 
@@ -20,7 +20,7 @@
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 0, 
+            "rotateOrder": 1, 
             "shapes": {
                 "wrist_fk_rShape": {
                     "cvPositions": [
@@ -112,7 +112,7 @@
             "color": 6
         }, 
         "wrist_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l|wrist_fk_l", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l|wrist_fk_l", 
             "translate": [
                 9.921, 
                 0.0, 
@@ -128,7 +128,7 @@
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 0, 
+            "rotateOrder": 1, 
             "shapes": {
                 "wrist_fk_lShape": {
                     "cvPositions": [
@@ -220,10 +220,10 @@
             "color": 6
         }, 
         "wrist_fk_gimbal_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r|wrist_fk_r|wrist_fk_gimbal_r", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r|wrist_fk_r|wrist_fk_gimbal_r", 
             "translate": [
                 0.0, 
-                0.0, 
+                -0.0, 
                 0.0
             ], 
             "rotate": [
@@ -236,7 +236,7 @@
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 0, 
+            "rotateOrder": 1, 
             "shapes": {
                 "wrist_fk_gimbal_rShape": {
                     "cvPositions": [
@@ -380,7 +380,7 @@
             "color": 6
         }, 
         "wrist_fk_gimbal_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l|wrist_fk_l|wrist_fk_gimbal_l", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l|wrist_fk_l|wrist_fk_gimbal_l", 
             "translate": [
                 -0.0, 
                 0.0, 
@@ -396,7 +396,7 @@
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 0, 
+            "rotateOrder": 1, 
             "shapes": {
                 "wrist_fk_gimbal_lShape": {
                     "cvPositions": [
@@ -920,8 +920,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort|thumb_001_l_bind_ctrl|thumb_002_l_bind_ctrl_nul|thumb_002_l_bind_ctrl_ort|thumb_002_l_bind_ctrl|thumb_003_l_bind_ctrl_nul|thumb_003_l_bind_ctrl_ort|thumb_003_l_bind_ctrl", 
             "translate": [
                 0.0, 
-                0.0, 
-                0.0
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -973,7 +973,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl|thumb_002_r_bind_ctrl_nul|thumb_002_r_bind_ctrl_ort|thumb_002_r_bind_ctrl", 
             "translate": [
                 -0.0, 
-                -0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -1078,9 +1078,9 @@
         "thumb_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl", 
             "translate": [
+                0.0, 
                 -0.0, 
-                -0.0, 
-                -0.0
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1184,9 +1184,9 @@
         "thumbCup_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1239,7 +1239,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1291,20 +1291,20 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_mirror_ort|thighSwing_r_ort|thighSwing_r|thigh_fk_r", 
             "translate": [
                 0.0, 
-                -0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
                 0.0, 
-                -0.0, 
-                3.6898
+                0.0, 
+                0.0
             ], 
             "scale": [
-                1.0024, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 2, 
+            "rotateOrder": 0, 
             "shapes": {
                 "thigh_fk_rShape": {
                     "cvPositions": [
@@ -1403,16 +1403,16 @@
                 0.0
             ], 
             "rotate": [
-                -0.0, 
-                -0.0, 
-                3.6898
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "scale": [
-                1.0024, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 2, 
+            "rotateOrder": 0, 
             "shapes": {
                 "thigh_fk_lShape": {
                     "cvPositions": [
@@ -1520,7 +1520,7 @@
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 2, 
+            "rotateOrder": 0, 
             "shapes": {
                 "thighSwing_rShape": {
                     "cvPositions": [
@@ -1573,7 +1573,7 @@
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 2, 
+            "rotateOrder": 0, 
             "shapes": {
                 "thighSwing_lShape": {
                     "cvPositions": [
@@ -1628,6 +1628,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "spine_bend_4Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "spine_bend_9Shape": {
                     "cvPositions": [
                         [
@@ -1696,6 +1742,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "spine_bend_3Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "spine_bend_8Shape": {
                     "cvPositions": [
                         [
@@ -1764,6 +1856,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "spine_bend_2Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "spine_bend_7Shape": {
                     "cvPositions": [
                         [
@@ -1832,6 +1970,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "spine_bend_1Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "spine_bend_6Shape": {
                     "cvPositions": [
                         [
@@ -1900,6 +2084,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "spine_bend_0Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "spine_bend_5Shape": {
                     "cvPositions": [
                         [
@@ -1950,11 +2180,11 @@
             "color": 17
         }, 
         "shoulder_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r", 
             "translate": [
                 -0.0, 
                 0.0, 
-                -0.0
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -1966,7 +2196,7 @@
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 2, 
+            "rotateOrder": 0, 
             "shapes": {
                 "shoulder_fk_rShape": {
                     "cvPositions": [
@@ -2058,7 +2288,7 @@
             "color": 6
         }, 
         "shoulder_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2074,7 +2304,7 @@
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 2, 
+            "rotateOrder": 0, 
             "shapes": {
                 "shoulder_fk_lShape": {
                     "cvPositions": [
@@ -2166,23 +2396,23 @@
             "color": 6
         }, 
         "shoulderSwing_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r", 
             "translate": [
                 0.0, 
                 0.0, 
                 0.0
             ], 
             "rotate": [
-                -0.5509, 
-                31.6935, 
-                0.8977
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "scale": [
                 1.0, 
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 2, 
+            "rotateOrder": 0, 
             "shapes": {
                 "shoulderSwing_rShape": {
                     "cvPositions": [
@@ -2219,23 +2449,23 @@
             "color": 6
         }, 
         "shoulderSwing_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l", 
             "translate": [
                 0.0, 
                 0.0, 
                 0.0
             ], 
             "rotate": [
-                -0.5509, 
-                31.6935, 
-                0.8977
+                0.0, 
+                0.0, 
+                0.0
             ], 
             "scale": [
                 1.0, 
                 1.0, 
                 1.0
             ], 
-            "rotateOrder": 2, 
+            "rotateOrder": 0, 
             "shapes": {
                 "shoulderSwing_lShape": {
                     "cvPositions": [
@@ -2327,7 +2557,7 @@
         "ring_004_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl|ring_003_l_bind_ctrl_nul|ring_003_l_bind_ctrl_ort|ring_003_l_bind_ctrl|ring_004_l_bind_ctrl_nul|ring_004_l_bind_ctrl_ort|ring_004_l_bind_ctrl", 
             "translate": [
-                -0.0, 
+                0.0, 
                 0.0, 
                 0.0
             ], 
@@ -2380,8 +2610,8 @@
         "ring_003_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl|ring_003_r_bind_ctrl_nul|ring_003_r_bind_ctrl_ort|ring_003_r_bind_ctrl", 
             "translate": [
-                0.0, 
-                0.0, 
+                -0.0, 
+                -0.0, 
                 0.0
             ], 
             "rotate": [
@@ -2488,7 +2718,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                -0.0
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -2592,9 +2822,9 @@
         "ring_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -2647,7 +2877,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -2714,6 +2944,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_leg_bend_4Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_leg_bend_9Shape": {
                     "cvPositions": [
                         [
@@ -2782,6 +3058,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_leg_bend_3Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_leg_bend_8Shape": {
                     "cvPositions": [
                         [
@@ -2850,6 +3172,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_leg_bend_2Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_leg_bend_7Shape": {
                     "cvPositions": [
                         [
@@ -2918,6 +3286,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_leg_bend_1Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_leg_bend_6Shape": {
                     "cvPositions": [
                         [
@@ -2986,6 +3400,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_leg_bend_0Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_leg_bend_5Shape": {
                     "cvPositions": [
                         [
@@ -3054,6 +3514,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_arm_bend_4Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_arm_bend_9Shape": {
                     "cvPositions": [
                         [
@@ -3122,6 +3628,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_arm_bend_3Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_arm_bend_8Shape": {
                     "cvPositions": [
                         [
@@ -3190,6 +3742,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_arm_bend_2Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_arm_bend_7Shape": {
                     "cvPositions": [
                         [
@@ -3258,6 +3856,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_arm_bend_1Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_arm_bend_6Shape": {
                     "cvPositions": [
                         [
@@ -3326,6 +3970,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "r_arm_bend_0Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "r_arm_bend_5Shape": {
                     "cvPositions": [
                         [
@@ -3379,8 +4069,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort|pinky_003_r_bind_ctrl|pinky_004_r_bind_ctrl_nul|pinky_004_r_bind_ctrl_ort|pinky_004_r_bind_ctrl", 
             "translate": [
                 0.0, 
-                -0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3484,8 +4174,8 @@
         "pinky_003_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort|pinky_003_r_bind_ctrl", 
             "translate": [
-                -0.0, 
-                -0.0, 
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -3696,8 +4386,8 @@
         "pinky_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl", 
             "translate": [
-                -0.0, 
-                -0.0, 
+                0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -3750,7 +4440,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl", 
             "translate": [
                 0.0, 
-                -0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -3802,9 +4492,9 @@
         "pinkyCup_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3857,7 +4547,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -3932,13 +4622,13 @@
                             -1.0
                         ], 
                         [
-                            1.0, 
+                            2.1371, 
                             -0.0, 
                             -1.0
                         ], 
                         [
-                            1.0, 
-                            0.0, 
+                            2.1371, 
+                            -0.0, 
                             1.0
                         ], 
                         [
@@ -3985,13 +4675,13 @@
                             -1.0
                         ], 
                         [
-                            1.0, 
-                            0.0, 
+                            2.1371, 
+                            -0.0, 
                             -1.0
                         ], 
                         [
-                            1.0, 
-                            0.0, 
+                            2.1371, 
+                            -0.0, 
                             1.0
                         ], 
                         [
@@ -4123,8 +4813,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl|middle_003_r_bind_ctrl_nul|middle_003_r_bind_ctrl_ort|middle_003_r_bind_ctrl|middle_004_r_bind_ctrl_nul|middle_004_r_bind_ctrl_ort|middle_004_r_bind_ctrl", 
             "translate": [
                 0.0, 
-                0.0, 
-                0.0
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4229,7 +4919,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl|middle_003_r_bind_ctrl_nul|middle_003_r_bind_ctrl_ort|middle_003_r_bind_ctrl", 
             "translate": [
                 0.0, 
-                -0.0, 
+                0.0, 
                 -0.0
             ], 
             "rotate": [
@@ -4281,8 +4971,8 @@
         "middle_003_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort|middle_002_l_bind_ctrl|middle_003_l_bind_ctrl_nul|middle_003_l_bind_ctrl_ort|middle_003_l_bind_ctrl", 
             "translate": [
-                0.0, 
-                0.0, 
+                -0.0, 
+                -0.0, 
                 0.0
             ], 
             "rotate": [
@@ -4334,8 +5024,8 @@
         "middle_002_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl", 
             "translate": [
-                -0.0, 
-                -0.0, 
+                0.0, 
+                0.0, 
                 -0.0
             ], 
             "rotate": [
@@ -4387,9 +5077,9 @@
         "middle_002_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort|middle_002_l_bind_ctrl", 
             "translate": [
-                0.0, 
-                0.0, 
-                -0.0
+                -0.0, 
+                -0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4440,9 +5130,9 @@
         "middle_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4495,7 +5185,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4698,8 +5388,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|r_leg_ikfk_grp|leg_pv_r_nul|leg_pv_r_ort|leg_pv_r", 
             "translate": [
                 -0.0, 
-                -0.1486, 
-                -0.1258
+                -0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4796,8 +5486,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|l_leg_ikfk_grp|leg_pv_l_nul|leg_pv_l_ort|leg_pv_l", 
             "translate": [
                 -0.0, 
-                -0.1486, 
-                -0.1258
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -4893,9 +5583,9 @@
         "leg_ik_r": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|r_leg_ikfk_grp|leg_ik_r_nul|leg_ik_r_ort|leg_ik_r", 
             "translate": [
-                0.0, 
                 -0.0, 
-                0.0
+                0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -5001,9 +5691,9 @@
         "leg_ik_l": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|l_leg_ikfk_grp|leg_ik_l_nul|leg_ik_l_ort|leg_ik_l", 
             "translate": [
+                -0.0, 
                 0.0, 
-                0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -5430,7 +6120,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_R", 
             "translate": [
                 -2.0906, 
-                3.6335, 
+                3.6336, 
                 -1.7088
             ], 
             "rotate": [
@@ -5538,13 +6228,13 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_L", 
             "translate": [
                 2.0906, 
-                3.6335, 
+                3.6336, 
                 -1.7088
             ], 
             "rotate": [
                 90.0, 
                 -0.0001, 
-                -450.0
+                -90.0
             ], 
             "scale": [
                 1.0, 
@@ -5661,6 +6351,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_leg_bend_4Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_leg_bend_9Shape": {
                     "cvPositions": [
                         [
@@ -5729,6 +6465,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_leg_bend_3Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_leg_bend_8Shape": {
                     "cvPositions": [
                         [
@@ -5797,6 +6579,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_leg_bend_2Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_leg_bend_7Shape": {
                     "cvPositions": [
                         [
@@ -5865,6 +6693,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_leg_bend_1Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_leg_bend_6Shape": {
                     "cvPositions": [
                         [
@@ -5933,6 +6807,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_leg_bend_0Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_leg_bend_5Shape": {
                     "cvPositions": [
                         [
@@ -6001,6 +6921,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_arm_bend_4Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_arm_bend_9Shape": {
                     "cvPositions": [
                         [
@@ -6069,6 +7035,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_arm_bend_3Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_arm_bend_8Shape": {
                     "cvPositions": [
                         [
@@ -6137,6 +7149,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_arm_bend_2Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_arm_bend_7Shape": {
                     "cvPositions": [
                         [
@@ -6205,6 +7263,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_arm_bend_1Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_arm_bend_6Shape": {
                     "cvPositions": [
                         [
@@ -6273,6 +7377,52 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
+                "l_arm_bend_0Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
+                }, 
                 "l_arm_bend_5Shape": {
                     "cvPositions": [
                         [
@@ -6330,12 +7480,12 @@
                 0.0
             ], 
             "rotate": [
-                -0.0, 
                 0.0, 
-                -8.4678
+                0.0, 
+                0.0
             ], 
             "scale": [
-                1.0024, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -6438,12 +7588,12 @@
                 0.0
             ], 
             "rotate": [
-                -0.0, 
                 0.0, 
-                -8.4678
+                0.0, 
+                0.0
             ], 
             "scale": [
-                1.0024, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -6542,8 +7692,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl|index_003_r_bind_ctrl_nul|index_003_r_bind_ctrl_ort|index_003_r_bind_ctrl|index_004_r_bind_ctrl_nul|index_004_r_bind_ctrl_ort|index_004_r_bind_ctrl", 
             "translate": [
                 0.0, 
-                0.0, 
-                0.0
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -6594,9 +7744,9 @@
         "index_004_l_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl|index_003_l_bind_ctrl_nul|index_003_l_bind_ctrl_ort|index_003_l_bind_ctrl|index_004_l_bind_ctrl_nul|index_004_l_bind_ctrl_ort|index_004_l_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -6647,9 +7797,9 @@
         "index_003_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl|index_003_r_bind_ctrl_nul|index_003_r_bind_ctrl_ort|index_003_r_bind_ctrl", 
             "translate": [
+                -0.0, 
                 0.0, 
-                0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -6753,8 +7903,8 @@
         "index_002_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl", 
             "translate": [
-                0.0, 
                 -0.0, 
+                0.0, 
                 0.0
             ], 
             "rotate": [
@@ -6807,8 +7957,8 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl", 
             "translate": [
                 0.0, 
-                -0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -6859,9 +8009,9 @@
         "index_001_r_bind_ctrl": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl", 
             "translate": [
-                -0.0, 
                 0.0, 
-                -0.0
+                0.0, 
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -6914,7 +8064,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -7200,82 +8350,82 @@
                 "hip_swivelShape": {
                     "cvPositions": [
                         [
-                            0.371, 
+                            1.5081, 
                             5.6556, 
                             5.563
                         ], 
                         [
-                            1.1147, 
+                            2.2518, 
                             5.6556, 
                             5.563
                         ], 
                         [
-                            1.1147, 
+                            2.2518, 
                             -5.6556, 
                             5.563
                         ], 
                         [
-                            0.371, 
+                            1.5081, 
                             -5.6556, 
                             5.563
                         ], 
                         [
-                            0.371, 
+                            1.5081, 
                             5.6556, 
                             5.563
                         ], 
                         [
-                            0.371, 
+                            1.5081, 
                             5.6556, 
                             -5.563
                         ], 
                         [
-                            1.1147, 
+                            2.2518, 
                             5.6556, 
                             -5.563
                         ], 
                         [
-                            1.1147, 
+                            2.2518, 
                             5.6556, 
                             5.563
                         ], 
                         [
-                            1.1147, 
+                            2.2518, 
                             -5.6556, 
                             5.563
                         ], 
                         [
-                            1.1147, 
+                            2.2518, 
                             -5.6556, 
                             -5.563
                         ], 
                         [
-                            1.1147, 
+                            2.2518, 
                             5.6556, 
                             -5.563
                         ], 
                         [
-                            0.371, 
+                            1.5081, 
                             5.6556, 
                             -5.563
                         ], 
                         [
-                            0.371, 
+                            1.5081, 
                             -5.6556, 
                             -5.563
                         ], 
                         [
-                            1.1147, 
+                            2.2518, 
                             -5.6556, 
                             -5.563
                         ], 
                         [
-                            0.371, 
+                            1.5081, 
                             -5.6556, 
                             -5.563
                         ], 
                         [
-                            0.371, 
+                            1.5081, 
                             -5.6556, 
                             5.563
                         ]
@@ -7737,52 +8887,6 @@
             ], 
             "rotateOrder": 0, 
             "shapes": {
-                "eye_r1Shape": {
-                    "cvPositions": [
-                        [
-                            0.7836, 
-                            0.0, 
-                            -0.7836
-                        ], 
-                        [
-                            0.0, 
-                            0.0, 
-                            -1.1082
-                        ], 
-                        [
-                            -0.7836, 
-                            0.0, 
-                            -0.7836
-                        ], 
-                        [
-                            -1.1082, 
-                            0.0, 
-                            -0.0
-                        ], 
-                        [
-                            -0.7836, 
-                            -0.0, 
-                            0.7836
-                        ], 
-                        [
-                            -0.0, 
-                            -0.0, 
-                            1.1082
-                        ], 
-                        [
-                            0.7836, 
-                            -0.0, 
-                            0.7836
-                        ], 
-                        [
-                            1.1082, 
-                            -0.0, 
-                            0.0
-                        ]
-                    ], 
-                    "degree": 3, 
-                    "form": "Periodic"
-                }, 
                 "eye_rShape": {
                     "cvPositions": [
                         [
@@ -7828,30 +8932,8 @@
                     ], 
                     "degree": 3, 
                     "form": "Periodic"
-                }
-            }, 
-            "color": 6
-        }, 
-        "eye_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|neck_grp|neck_nul|neck_ort|neck|head_nul|head|face_upper_nul|face_upper|eyeSocket_l_nul|eyeSocket_l|eye_l_nul|eye_l_ort|eye_l_def_auto|eye_l", 
-            "translate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "rotate": [
-                0.0, 
-                0.0, 
-                0.0
-            ], 
-            "scale": [
-                1.0, 
-                1.0, 
-                1.0
-            ], 
-            "rotateOrder": 0, 
-            "shapes": {
-                "eye_l1Shape": {
+                }, 
+                "eye_r1Shape": {
                     "cvPositions": [
                         [
                             0.7836, 
@@ -7896,7 +8978,29 @@
                     ], 
                     "degree": 3, 
                     "form": "Periodic"
-                }, 
+                }
+            }, 
+            "color": 6
+        }, 
+        "eye_l": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|neck_grp|neck_nul|neck_ort|neck|head_nul|head|face_upper_nul|face_upper|eyeSocket_l_nul|eyeSocket_l|eye_l_nul|eye_l_ort|eye_l_def_auto|eye_l", 
+            "translate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "rotate": [
+                0.0, 
+                0.0, 
+                0.0
+            ], 
+            "scale": [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "rotateOrder": 0, 
+            "shapes": {
                 "eye_lShape": {
                     "cvPositions": [
                         [
@@ -7942,16 +9046,62 @@
                     ], 
                     "degree": 3, 
                     "form": "Periodic"
+                }, 
+                "eye_l1Shape": {
+                    "cvPositions": [
+                        [
+                            0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            0.0, 
+                            0.0, 
+                            -1.1082
+                        ], 
+                        [
+                            -0.7836, 
+                            0.0, 
+                            -0.7836
+                        ], 
+                        [
+                            -1.1082, 
+                            0.0, 
+                            -0.0
+                        ], 
+                        [
+                            -0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            -0.0, 
+                            -0.0, 
+                            1.1082
+                        ], 
+                        [
+                            0.7836, 
+                            -0.0, 
+                            0.7836
+                        ], 
+                        [
+                            1.1082, 
+                            -0.0, 
+                            0.0
+                        ]
+                    ], 
+                    "degree": 3, 
+                    "form": "Periodic"
                 }
             }, 
             "color": 6
         }, 
         "elbow_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r|elbow_fk_r", 
             "translate": [
                 -9.8517, 
                 -0.0, 
-                -0.0
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -8055,11 +9205,11 @@
             "color": 6
         }, 
         "elbow_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l|elbow_fk_l", 
             "translate": [
                 9.8517, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -8163,7 +9313,7 @@
             "color": 6
         }, 
         "clavicle_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort|clavicle_r", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort|clavicle_r", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -8216,7 +9366,7 @@
             "color": 6
         }, 
         "clavicle_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort|clavicle_l", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort|clavicle_l", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -8269,7 +9419,7 @@
             "color": 6
         }, 
         "chest_top": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -8506,83 +9656,83 @@
                 "chestShape": {
                     "cvPositions": [
                         [
-                            1.6405, 
-                            4.253, 
+                            -3.8565, 
+                            4.3458, 
                             5.1153
                         ], 
                         [
-                            3.3095, 
-                            4.3865, 
+                            -2.1823, 
+                            4.3202, 
                             5.1153
                         ], 
                         [
-                            3.9991, 
-                            -4.2376, 
+                            -2.3146, 
+                            -4.3304, 
                             5.1153
                         ], 
                         [
-                            2.3301, 
-                            -4.3711, 
+                            -3.9887, 
+                            -4.3048, 
                             5.1153
                         ], 
                         [
-                            1.6405, 
-                            4.253, 
+                            -3.8565, 
+                            4.3458, 
                             5.1153
                         ], 
                         [
-                            1.6405, 
-                            4.253, 
+                            -3.8565, 
+                            4.3458, 
                             -5.1153
                         ], 
                         [
-                            3.3095, 
-                            4.3865, 
+                            -2.1823, 
+                            4.3202, 
                             -5.1153
                         ], 
                         [
-                            3.3095, 
-                            4.3865, 
+                            -2.1823, 
+                            4.3202, 
                             5.1153
                         ], 
                         [
-                            3.9991, 
-                            -4.2376, 
+                            -2.3146, 
+                            -4.3304, 
                             5.1153
                         ], 
                         [
-                            3.9991, 
-                            -4.2376, 
+                            -2.3146, 
+                            -4.3304, 
                             -5.1153
                         ], 
                         [
-                            3.3095, 
-                            4.3865, 
+                            -2.1823, 
+                            4.3202, 
                             -5.1153
                         ], 
                         [
-                            1.6405, 
-                            4.253, 
+                            -3.8565, 
+                            4.3458, 
                             -5.1153
                         ], 
                         [
-                            2.3301, 
-                            -4.3711, 
+                            -3.9887, 
+                            -4.3048, 
                             -5.1153
                         ], 
                         [
-                            3.9991, 
-                            -4.2376, 
+                            -2.3146, 
+                            -4.3304, 
                             -5.1153
                         ], 
                         [
-                            2.3301, 
-                            -4.3711, 
+                            -3.9887, 
+                            -4.3048, 
                             -5.1153
                         ], 
                         [
-                            2.3301, 
-                            -4.3711, 
+                            -3.9887, 
+                            -4.3048, 
                             5.1153
                         ]
                     ], 
@@ -9445,7 +10595,7 @@
             ], 
             "rotate": [
                 -0.5508, 
-                -0.131, 
+                -0.1338, 
                 31.6948
             ], 
             "scale": [
@@ -9553,7 +10703,7 @@
             ], 
             "rotate": [
                 -0.5508, 
-                0.131, 
+                0.1338, 
                 -31.6948
             ], 
             "scale": [
@@ -10193,7 +11343,7 @@
             "translate": [
                 -13.1703, 
                 0.0, 
-                -0.0
+                0.0
             ], 
             "rotate": [
                 0.0, 
@@ -10407,7 +11557,7 @@
         "ankle_fk_gimbal_r": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_mirror_ort|thighSwing_r_ort|thighSwing_r|thigh_fk_r|knee_fk_r|ankle_fk_r|ankle_fk_gimbal_r", 
             "translate": [
-                0.0, 
+                -0.0, 
                 0.0, 
                 -0.0
             ], 
