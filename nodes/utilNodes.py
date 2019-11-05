@@ -231,7 +231,16 @@ def switch(paramNode, value):
         namespace = ":".join(namespaceSplit[:-1]) 
         namespace = "%s:" % (namespace)
 
+    autoClavValue = 1.0
+    clavicleCtrl = None
+    if mc.objExists("%s.autoClav" % paramNode):
+        clavicleCtrl = mc.getAttr("%s.clavicleCtrl" % paramNode)
+        clavicleValue = mc.xform(clavicleCtrl, q=True, ws=True, matrix=True)
+
+    # To fk
     if value == 1:
+
+        # Get transforms
         fkControls = eval(mc.getAttr(paramNode + '.fkControls'))
         ikMatchTransforms = eval(mc.getAttr(paramNode + '.ikMatchTransforms'))
         
@@ -239,9 +248,11 @@ def switch(paramNode, value):
         scaleValues = [mc.getAttr('%s%s.s%s' % (namespace,ctrl,aimAttr.strip("-"))) for ctrl in (ikMatchTransforms[0],ikMatchTransforms[1])]
         wristGimbal = "%s%s" % (namespace,fkControls.pop(-1))
         rotationList = list()
+        
+        # Query transforms
         for ctrl in ikMatchTransforms:
-            print ctrl
             rotationList.append(mc.xform("%s%s" % (namespace, ctrl), q=True, ws=True, rotation=True))
+
         mc.setAttr("%s.pvPin" % (paramNode), 0)
         mc.setAttr("%s.twist" % (paramNode), 0)
         mc.setAttr("%s.ikfk" % (paramNode), 1)
@@ -249,6 +260,7 @@ def switch(paramNode, value):
         mc.setAttr("%s.ikfk" % (paramNode), 1)
         mc.setAttr(wristGimbal + '.r',0, 0, 0)
         
+        # Match limb
         for rotation, ctrl in zip(rotationList,fkControls):
             mc.xform("%s%s" % (namespace, ctrl), ws=True, rotation=rotation)
     
@@ -256,7 +268,18 @@ def switch(paramNode, value):
         for scaleValue, attr in zip(scaleValues, attrList):
             mc.setAttr(paramNode + '.' + attr, scaleValue)
 
+        # Auto clav requires itterative matching because I am dumb - schiller
+        if mc.objExists("%s.autoClav" % paramNode):
+            for i in xrange(20):
+                # limb
+                for rotation, ctrl in zip(rotationList,fkControls):
+                    mc.xform("%s%s" % (namespace, ctrl), ws=True, rotation=rotation) 
+                # clav    
+                mc.xform(clavicleCtrl, ws=True, matrix=clavicleValue)        
+    
+    # To ik
     elif value == 0:
+
         # get the ik controls
         ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
         # get the fk transforms
@@ -275,7 +298,13 @@ def switch(paramNode, value):
         
         mc.xform("%s%s" % (namespace, ikControls[1]), ws=True, matrix=endJntMatrix)
         mc.xform("%s%s" % (namespace, ikControls[0]), ws=True, t=newPvPos)
-        mc.setAttr("%s%s.r" % (namespace, ikControls[-1]), 0,0,0)
+        mc.setAttr("%s%s.r" % (namespace, ikControls[-1]), 0,0,0)        
+
+        # Match Clav 
+        if mc.objExists("%s.autoClav" % paramNode):
+            #mc.setAttr("%s.autoClav" % paramNode, autoClavValue)
+            if clavicleCtrl:
+                mc.xform(clavicleCtrl, ws=True, matrix=clavicleValue)     
     
 
 def armSwitch():
@@ -287,9 +316,10 @@ def armSwitch():
         connections = mc.listConnections("%s.ikfk" % paramNode, d=True)
         if len(connections) == 1:
             paramNode = connections[0]
-
+        valueCurrent =  mc.getAttr("%s.ikfk" % (paramNode))
         value = mc.getAttr("%s.ikfk_switch" % (paramNode))
-        switch(paramNode, value)
+        if valueCurrent != value:
+            switch(paramNode, value)
     except:
         print "can't run the switch"
     mc.undoInfo(closeChunk=1)

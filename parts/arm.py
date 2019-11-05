@@ -119,6 +119,7 @@ class Arm(limb.Limb):
             mc.setAttr("{}.fkControls".format(paramNodeName), 
                 '["{}",{}","{}","{}"]'.format(swingCtrl,*self._fkControls), type="string")
         '''
+        
 
     def postBuild(self):
         '''

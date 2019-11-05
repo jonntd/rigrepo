@@ -16,7 +16,7 @@ class AutoParent(part.Part):
     Builds a system so the child can affect the parent's movement
     '''
     def __init__(self, name, parentControl, inputControls, ikJointList=None,
-                 fkJointList=None, ikBlendAttr=None, autoBlendAttr=None, anchor=None, side='l'):
+                 fkJointList=None, ikBlendAttr=None, autoBlendAttr=None, anchor=None, side='l', paramNode="arm_L"):
         '''
         This is the constructor.
         '''
@@ -29,6 +29,7 @@ class AutoParent(part.Part):
         self.addAttribute("side", side, attrType=str)
         self.addAttribute("ikJointList", ikJointList,
                             attrType=list)
+        self.addAttribute("paramNode", paramNode, attrType=str)
 
     def build(self):
         parentControl = self.getAttributeByName('parentControl').getValue()
@@ -38,6 +39,7 @@ class AutoParent(part.Part):
         autoBlendAttr = self.getAttributeByName('autoBlendAttr').getValue()
         side = self.getAttributeByName("side").getValue()
         ikJointList = self.getAttributeByName("ikJointList").getValue()
+        paramNode = self.getAttributeByName("paramNode").getValue()
 
         names = ['start', 'mid', 'end']
         names = [parentControl+'_auto_'+x for x in names]
@@ -91,6 +93,14 @@ class AutoParent(part.Part):
 
         # Add blend attributes
         mc.addAttr(parentControl, ln=autoBlendAttr, at='double', min=0, max=1, dv=1, k=1)
+
+        if mc.objExists(paramNode):
+            # create proxy attribute on the paramNode for the auotClav
+            mc.addAttr(paramNode, ln=autoBlendAttr, at="double", min=0, max=1, dv=0, 
+                                keyable=True, proxy='{}.{}'.format(parentControl, autoBlendAttr))
+
+            mc.addAttr(paramNode, ln="clavicleCtrl", dt="string")
+            mc.setAttr("{}.clavicleCtrl".format(paramNode), parentControl, type="string")
 
         # Joint for inserting auto rotation into the parent controls hierarchy
         driver = self.jointList[0]
@@ -202,4 +212,5 @@ class AutoParent(part.Part):
         # Display attrs on poseControl also
         mc.addAttr(poseControl, ln=autoBlendAttr, proxy=parentControl+'.'+autoBlendAttr)
         mc.addAttr(poseControl, ln=autoInfoAttr, proxy=parentControl+'.'+autoInfoAttr)
+
 

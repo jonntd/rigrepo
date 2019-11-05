@@ -169,7 +169,8 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          autoBlendAttr='autoClav',
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
-                                                         anchor=side+'_arm_anchor_grp')
+                                                         anchor=side+'_arm_anchor_grp',
+                                                         paramNode='arm_R')
 
         # add hand to arm node.
         r_arm.addChildren([r_autoClav, rightArmAddSpaceNode,rightArmPvAddSpaceNode,rightArmIkAddSpaceNode,r_hand])
