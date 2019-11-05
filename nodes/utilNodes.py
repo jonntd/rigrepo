@@ -350,13 +350,14 @@ def legSwitch():
             switch(paramNode, value)
             mc.xform("%s%s" % (namespace, fkControl), ws=True, matrix=fkControlPos)
         elif value == 0:
-            ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
-            #attrs = mc.listAttr("%s%s" % (namespace, ikControls[1]), ud=True, keyable=True)
-            #for attr in attrs:
-            #    try:
-            #        mc.setAttr("%s%s.%s" % (namespace, ikControls[1], attr), 0)
-            #    except:
-            #        pass
+            footIkControls = eval(mc.getAttr(paramNode + '.footIkControls'))
+            for ctrl in footIkControls:
+                attrs = mc.listAttr("%s%s" % (namespace, ctrl), ud=False, keyable=True)
+                for attr in attrs:
+                    try:
+                        mc.setAttr("%s%s.%s" % (namespace,ctrl, attr), 0.0)
+                    except:
+                        pass
 
             switch(paramNode, value)
     except:
