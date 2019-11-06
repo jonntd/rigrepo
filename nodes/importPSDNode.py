@@ -139,6 +139,12 @@ for name in {psdNames}:
                 for pose in poses:
                     psd.setPoseKernalFalloff(poseInterp, pose)
                 psd.goToNeutralPose(poseInterp)
+                
+            # Temp setting specific targets to a kernal value, this wil be moved to auto parent
+            mc.setAttr("clavicle_l_auto_poseInterpolatorShape.pose[5].poseFalloff", .5)
+            mc.setAttr("clavicle_l_auto_poseInterpolatorShape.pose[8].poseFalloff", .5)
+            mc.setAttr("clavicle_r_auto_poseInterpolatorShape.pose[5].poseFalloff", .5)
+            mc.setAttr("clavicle_r_auto_poseInterpolatorShape.pose[8].poseFalloff", .5)
             
             # Import pose interpolators - Selection must be cleared for this command to work
             mc.select(cl=1)
