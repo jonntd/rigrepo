@@ -186,6 +186,8 @@ class SwitchExpressionNode(commandNode.CommandNode):
         self.addAttribute('legParamNodeList', '["leg_R", "leg_L"]', attrType=str, index=0)
         self.addAttribute('armParamNodeList', '["arm_L", "arm_R"]', attrType=str, index=0)
         self.addAttribute('elementName', 'biped', attrType=str, index=0)
+        self.addAttribute('recursiveThreshold', '.1', attrType=str, index=0)
+        self.addAttribute('recursiveAttempts', '20', attrType=str, index=0)
 
         commandAttribute = self.getAttributeByName('command')
 
@@ -193,6 +195,7 @@ class SwitchExpressionNode(commandNode.CommandNode):
         cmd="""
 # this is the switch command that should be made into a script node
 import maya.cmds as mc
+import maya.api.OpenMaya as om
 
 def getDistanceVector(distance):
         '''
@@ -282,6 +285,8 @@ def switch(paramNode, value):
 
         # get the ik controls
         ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
+        fkControls = eval(mc.getAttr(paramNode + '.fkControls'))
+        ikMatchTransforms = eval(mc.getAttr(paramNode + '.ikMatchTransforms'))
         # get the fk transforms
         fkMatchTransforms = eval(mc.getAttr(paramNode + '.fkMatchTransforms'))
         aimAttr, vector= getDistanceVector(mc.getAttr("%s%s.t" % (namespace,fkMatchTransforms[1]))[0])
@@ -298,14 +303,75 @@ def switch(paramNode, value):
         
         mc.xform("%s%s" % (namespace, ikControls[1]), ws=True, matrix=endJntMatrix)
         mc.xform("%s%s" % (namespace, ikControls[0]), ws=True, t=newPvPos)
-        mc.setAttr("%s%s.r" % (namespace, ikControls[-1]), 0,0,0)        
+        mc.setAttr("%s%s.r" % (namespace, ikControls[-1]), 0,0,0) 
 
         # Match Clav 
         if mc.objExists("%s.autoClav" % paramNode):
             #mc.setAttr("%s.autoClav" % paramNode, autoClavValue)
             if clavicleCtrl:
                 mc.xform(clavicleCtrl, ws=True, matrix=clavicleValue)     
-    
+        
+        # get the vector for the fk and ik middle match transforms
+        fkVector = om.MVector(*mc.xform(fkControls[1], q=True, ws=True, t=True))
+        ikVector = om.MVector(*mc.xform(ikMatchTransforms[1], q=True, ws=True, t=True))
+
+        # get the difference between the two vectors.
+        vector = fkVector - ikVector
+
+        # if the magnitude is not within the threshold passed by the user, then we will recursively
+        # go through and try to get as close as possible.
+        if not vector.length() <= {recursiveThreshold}:
+            recursiveMatch(paramNode, fkVector, ikMatchTransforms[1], {recursiveThreshold}, {recursiveAttempts})
+
+def recursiveMatch(paramNode, fkVector, ikMiddleJoint, threshold, attempts=5):
+    '''
+    This will recursively go through and try to match
+    the top and bottom stretch attributes to get the elbow
+    to be within a threshold.
+
+    :param paramNode: Node that holds the top/bottom attributes
+    :type paramNode: str
+
+    :param fkVector: fk original position we're trying to match
+    :type fkVector: MVector
+
+    :param ikMiddleJoint: ik joint
+    :type ikMiddleJoint: str
+
+    :param threshold: If we land within this distance, we will return
+    :type threshold: float
+
+    :param attempts: Number of time you want to try to match
+    :type attempts: int
+    '''
+    # first check and see if we need to return
+    if not mc.objExists(paramNode) or attempts == 0:
+        return
+
+    # get the new ikVector position.
+    ikVector = om.MVector(*mc.xform(ikMiddleJoint, q=True, ws=True, t=True))
+
+
+    # get the difference between the two vector's to be able to get the magnitude.
+    vector = fkVector - ikVector
+    magnitude = vector.length()
+
+    # if the magnitude is within a threshold, we will return
+    if magnitude <= threshold:
+        return
+
+    # if the magnitude is larger then we will subtract by .001
+    # NOTE:: We may want a user when building be able to pass this number in.
+    if magnitude > threshold:
+        mc.setAttr("%s.stretchTop" % paramNode, mc.getAttr("%s.stretchTop" % paramNode) - .001)
+        mc.setAttr("%s.stretchBottom" % paramNode, mc.getAttr("%s.stretchBottom" % paramNode) - .001)
+    else:
+        mc.setAttr("%s.stretchTop" % paramNode, mc.getAttr("%s.stretchTop" % paramNode) + .001)
+        mc.setAttr("%s.stretchBottom" % paramNode, mc.getAttr("%s.stretchBottom" % paramNode) + .001)
+
+    # return the recursive function that we're currently in.
+    return recursiveMatch(paramNode, fkVector, ikMiddleJoint, threshold, attempts=attempts-1)
+
 
 def armSwitch():
     '''
@@ -418,4 +484,11 @@ mc.evalDeferred("mc.scriptNode('%s', eb=True)" % scriptNode)
         elementName = self.getAttributeByName('elementName').getValue()
         legParamNodeList = eval(self.getAttributeByName('legParamNodeList').getValue())
         armParamNodeList = eval(self.getAttributeByName('armParamNodeList').getValue())
-        exec(self.getAttributeByName('command').getValue().format(elementName=elementName, legParamNodeList=legParamNodeList, armParamNodeList=armParamNodeList))
+        recursiveThreshold = float(eval(self.getAttributeByName('recursiveThreshold').getValue()))
+        recursiveAttempts = int(eval(self.getAttributeByName('recursiveAttempts').getValue()))
+        armParamNodeList = eval(self.getAttributeByName('armParamNodeList').getValue())
+        exec(self.getAttributeByName('command').getValue().format(elementName=elementName, 
+                                                                legParamNodeList=legParamNodeList, 
+                                                                armParamNodeList=armParamNodeList,
+                                                                recursiveThreshold=recursiveThreshold,
+                                                                recursiveAttempts=recursiveAttempts))
