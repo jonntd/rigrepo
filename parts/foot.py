@@ -144,7 +144,7 @@ class Foot(part.Part):
         ballJointMatrix = mc.xform(fkJointList[1], q=True, ws=True, matrix=True)
         mc.pointConstraint(self._fkAnchor,ballFkctrlHierarchy[0], mo=False)
         mc.xform(ballFkctrlHierarchy[1], ws=True, matrix=ballJointMatrix)
-        mc.pointConstraint(ballFkctrlHierarchy[-1], fkJointList[1])
+        #mc.pointConstraint(ballFkctrlHierarchy[-1], fkJointList[1])
         mc.orientConstraint(ballFkctrlHierarchy[-1], fkJointList[1])
         mc.parent(ballFkctrlHierarchy[0], self.name)
 
@@ -266,9 +266,9 @@ class Foot(part.Part):
         # turn of the joint display on the anklePivot
         if mc.nodeType(self._anklePivot) == "joint":
                 mc.setAttr("{}.drawStyle".format(self._anklePivot), 2)
-
+        handles = self.ikfkSystem.getHandles()
         # turn off the visibility of handles
-        for handle in self.ikfkSystem.getHandles():
+        for handle in handles:
             mc.setAttr("{}.v".format(handle), 0)
 
 
@@ -293,7 +293,10 @@ class Foot(part.Part):
         weightAlias = mc.parentConstraint(cst,q=True,wal=True)
         mc.connectAttr(ikfkAttr, "{}.{}".format(cst,weightAlias[1]), f=True)
         mc.connectAttr("{}.outputX".format(reverseNode), "{}.{}".format(cst,weightAlias[0]), f=True)
-        mc.parentConstraint(ballFkctrlHierarchy[-1], pivotList[-1], mo=True)
+        mc.parent(handles[-1],w=True)
+        mc.xform(pivotList[-1], ws=True, matrix=mc.xform(ballFkctrlHierarchy[-1], q=True, ws=True, matrix=True))
+        mc.parent(handles[-1], pivotList[-1])
+        mc.orientConstraint(ballFkctrlHierarchy[-1], pivotList[-1], mo=True)
 
         # create the offset joint for the matching to work
         ballOffsetJoint = mc.joint(name="{}_offset".format(ikControlList[-1]))

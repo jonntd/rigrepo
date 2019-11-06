@@ -112,6 +112,9 @@ class Arm(limb.Limb):
         clavicleDriverPar = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver_par')[0]
         clavicleDriver = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver')[0]
 
+        # make the node we can aim the wrist pv driver at for pv space switching to follow hand.
+        clavicleDuplicate = mc.duplicate(clavicleNul, po=True, rr=True, name=clavicleNul.replace("_nul","_pvSpaceAim"))[0]
+        self._pvSpaceAimNode = clavicleDuplicate
 
         # add the swing control to the string attribute for switching fk controls
         '''

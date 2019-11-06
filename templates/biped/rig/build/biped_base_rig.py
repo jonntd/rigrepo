@@ -91,8 +91,8 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
 
         leftArmPvAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="arm_pv_l",
-            constraintNode="arm_pv_l_nul", parentNode='l_arm', targetList=['chest_bind'],
-        nameList=["chest"], constraintType='parent')
+            constraintNode="arm_pv_l_nul", parentNode='l_arm', targetList=['chest_bind', 'wrist_fk_l_offset_pv'],
+        nameList=["chest", "hand"], constraintType='parent')
 
         leftArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_L",
             constraintNode="arm_ik_l_ort", parentNode='l_arm', targetList=['chest_bind', 'skull_bind','hip_swivel','hips_bind'], 
@@ -141,8 +141,8 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         nameList=["world"], constraintType='orient')
 
         rightArmPvAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="arm_pv_r",
-            constraintNode="arm_pv_r_nul", parentNode='r_arm', targetList=['chest_bind'],
-        nameList=["chest"], constraintType='parent')
+            constraintNode="arm_pv_r_nul", parentNode='r_arm', targetList=['chest_bind', 'wrist_fk_r_offset_pv'],
+        nameList=["chest", "hand"], constraintType='parent')
 
         rightArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_R",
             constraintNode="arm_ik_r_ort", parentNode='r_arm', targetList=['chest_bind', 'skull_bind','hip_swivel','hips_bind'], 

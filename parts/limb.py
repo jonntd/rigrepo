@@ -580,6 +580,7 @@ class Limb(part.Part):
         mc.setAttr(handle+'.tx', l=1)
         mc.setAttr(handle+'.ty', l=1)
         mc.setAttr(handle+'.tz', l=1)
+        self._pvSpaceAimNode = self._fkControls[0]
 
 
     def postBuild(self):
@@ -644,7 +645,7 @@ class Limb(part.Part):
                 mc.setAttr("{}.r".format(pvSpaceNode),0,0,0)
                 # turn off the visibility of the joint
                 mc.setAttr("{}.v".format(pvSpaceNode), 0)
-                mc.aimConstraint(self._fkControls[0], pvSpaceNode, mo=0, weight=1, 
+                mc.aimConstraint(self._pvSpaceAimNode, pvSpaceNode, mo=0, weight=1, 
                                     aimVector=aimVector, upVector=(0, 0, 0), worldUpType='none')
             mc.connectAttr('{}.decomposeTwist'.format(joint), 
                             '{}.r{}'.format(twistJoint, aimAttr.strip("-")), f=1)

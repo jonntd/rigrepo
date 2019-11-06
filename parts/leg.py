@@ -40,3 +40,4 @@ class Leg(arm.Arm):
         rigrepo.libs.joint.rotateToOrient(offsetJoint)
         ikAnkleMatrix=mc.xform(ikAnkleControl,q=True, ws=True, matrix=True)
         mc.xform(fkOffsetJoint, ws=True, matrix=ikAnkleMatrix)
+        self._pvSpaceAimNode = self._fkControls[0]
