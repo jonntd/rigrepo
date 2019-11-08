@@ -135,6 +135,23 @@ def tagAsControl(ctrl):
     return tagAttr
 
 
+def untagAsControl(ctrl):
+    '''
+    :param control: node to tag as a control
+    :type control: str or list
+    '''
+    if not isinstance(ctrl, (tuple,list)):
+        if not isinstance(ctrl, basestring):
+            raise TypeError('{0} must be of type str, unicode, or list'.format(ctrl))
+        ctrls = rigrepo.libs.common.toList(ctrl)
+    else:
+        ctrls = rigrepo.libs.common.toList(ctrl)
+
+    for ctrl in ctrls:
+        tagAttr = '{}.__control__'.format(ctrl)
+        if mc.objExists(tagAttr):
+            mc.deleteAttr(ctrl, at='__control__')
+
 
 def getControls(namespace = None):
     '''
