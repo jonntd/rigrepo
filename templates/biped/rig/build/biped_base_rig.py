@@ -397,6 +397,7 @@ for ctrl in ctrls:
         mc.setAttr(nul+'.r', 0, 0, 0)
         rotate = mc.xform(tempLoc, q=1, ws=1, rotation=1)
         mc.xform(ctrl, ws=1, rotation=rotate)
+mc.delete(tempLoc)
         '''
         orientToWorldNode.getAttributeByName('command').setValue(orientToWorldNodeCmd)
         orientToWorldNode.disable()

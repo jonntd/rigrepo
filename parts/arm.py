@@ -111,6 +111,8 @@ class Arm(limb.Limb):
         # PSD driver - transform that picks up the auto clav and anim control rotation
         clavicleDriverPar = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver_par')[0]
         clavicleDriver = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver')[0]
+        rigrepo.libs.control.untagAsControl(clavicleDriverPar)
+        rigrepo.libs.control.untagAsControl(clavicleDriver)
 
         # make the node we can aim the wrist pv driver at for pv space switching to follow hand.
         clavicleDuplicate = mc.duplicate(clavicleNul, po=True, rr=True, name=clavicleNul.replace("_nul","_pvSpaceAim"))[0]
@@ -221,6 +223,7 @@ class ArmOld(limb.Limb):
         # Hookup clavicle connect nul, the direct connection for the rotate allow keeps the auto
         # clav from causint a double rotation on the shoulder
         clavicleConnect = mc.duplicate(clavicleCtrl, po=1, n=clavicleCtrl+'_connect')[0]
+        rigrepo.libs.control.untagAsControl(clavicleConnect)
         mc.parent(clavicleConnect, clavicleNul)
         mc.connectAttr(clavicleCtrl+'.r', clavicleConnect+'.r')
         mc.connectAttr(clavicleCtrl+'.s', clavicleConnect+'.s')
