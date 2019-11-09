@@ -237,7 +237,7 @@ def switch(paramNode, value):
     autoClavValue = 1.0
     clavicleCtrl = None
     if mc.objExists("%s.autoClav" % paramNode):
-        clavicleCtrl = mc.getAttr("%s.clavicleCtrl" % paramNode)
+        clavicleCtrl = "%s%s" % (namespace, mc.getAttr("%s.clavicleCtrl" % paramNode))
         clavicleValue = mc.xform(clavicleCtrl, q=True, ws=True, matrix=True)
 
     # To fk
@@ -312,8 +312,8 @@ def switch(paramNode, value):
                 mc.xform(clavicleCtrl, ws=True, matrix=clavicleValue)     
         
         # get the vector for the fk and ik middle match transforms
-        fkVector = om.MVector(*mc.xform(fkControls[1], q=True, ws=True, t=True))
-        ikVector = om.MVector(*mc.xform(ikMatchTransforms[1], q=True, ws=True, t=True))
+        fkVector = om.MVector(*mc.xform("%s%s" % (namespace,fkControls[1]), q=True, ws=True, t=True))
+        ikVector = om.MVector(*mc.xform("%s%s" % (namespace,ikMatchTransforms[1]), q=True, ws=True, t=True))
 
         # get the difference between the two vectors.
         vector = fkVector - ikVector
@@ -321,7 +321,7 @@ def switch(paramNode, value):
         # if the magnitude is not within the threshold passed by the user, then we will recursively
         # go through and try to get as close as possible.
         if not vector.length() <= {recursiveThreshold}:
-            recursiveMatch(paramNode, fkVector, ikMatchTransforms[1], {recursiveThreshold}, {recursiveAttempts})
+            recursiveMatch(paramNode, fkVector, "%s%s" % (namespace,ikMatchTransforms[1]), {recursiveThreshold}, {recursiveAttempts})
 
 def recursiveMatch(paramNode, fkVector, ikMiddleJoint, threshold, attempts=5):
     '''
@@ -382,6 +382,7 @@ def armSwitch():
         connections = mc.listConnections("%s.ikfk" % paramNode, d=True)
         if len(connections) == 1:
             paramNode = connections[0]
+
         valueCurrent =  mc.getAttr("%s.ikfk" % (paramNode))
         value = mc.getAttr("%s.ikfk_switch" % (paramNode))
         if valueCurrent != value:
