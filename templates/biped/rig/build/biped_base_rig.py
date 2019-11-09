@@ -390,12 +390,13 @@ import maya.cmds as mc
 
 tempLoc = mc.spaceLocator()[0]
 for ctrl in ctrls:
-    mc.delete(mc.parentConstraint(ctrl, tempLoc))
+    matrix = mc.xform(ctrl, q=1, ws=1, matrix=1)
+    mc.xform(tempLoc, ws=1, matrix=matrix)
     nul = ctrl+'_nul'
     if mc.objExists(nul):
         mc.setAttr(nul+'.r', 0, 0, 0)
-        mc.delete(mc.orientConstraint(tempLoc, ctrl))
-mc.delete(tempLoc)
+        rotate = mc.xform(tempLoc, q=1, ws=1, rotation=1)
+        mc.xform(ctrl, ws=1, rotation=rotate)
         '''
         orientToWorldNode.getAttributeByName('command').setValue(orientToWorldNodeCmd)
         orientToWorldNode.disable()
