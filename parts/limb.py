@@ -659,8 +659,9 @@ class Limb(part.Part):
                 mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, 
                             keyable=True, enumName="Ik:FK", proxy='{}.ikfk'.format(paramNodeName))
                 mc.addAttr(control, ln='ikfk_switch', nn= "Snap IK FK", at='enum', 
-                            k=True, proxy='{}.ikfk_switch'.format(paramNodeName))
-                mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1, 
+                            k=False, proxy='{}.ikfk_switch'.format(paramNodeName))
+                mc.setAttr("{}.ikfk_switch".format(control), cb=True)
+                mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1,
                             k=True, proxy='{}.stretch'.format(paramNodeName))
                 mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, 
                             k=True, proxy='{}.stretchTop'.format(paramNodeName))
