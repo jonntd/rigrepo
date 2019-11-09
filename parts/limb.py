@@ -179,6 +179,7 @@ class Limb(part.Part):
         # set the pvMatch node attribute on the paramNode
         mc.addAttr(paramNode, ln="pvMatch", dt="string")
         pvMatchNode = mc.duplicate(pvCtrl, po=True, rr=True, name="{}_match".format(pvCtrl))[0]
+        rigrepo.libs.control.untagAsControl(pvMatchNode)
         mc.setAttr("{}.pvMatch".format(paramNode), pvMatchNode, type="string")
 
         mc.parent(pvMatchNode, self._fkControls[0])
@@ -1042,6 +1043,7 @@ class Limb(part.Part):
         # set the pvMatch node attribute on the paramNode
         mc.addAttr(paramNode, ln="pvMatch", dt="string")
         pvMatchNode = mc.duplicate(pvCtrl, po=True, rr=True, name="{}_match".format(pvCtrl))[0]
+        rigrepo.libs.control.untagAsControl(pvMatchNode)
         mc.setAttr("{}.pvMatch".format(paramNode), pvMatchNode, type="string")
 
         mc.parent(pvMatchNode, self._fkControls[0])

@@ -35,10 +35,6 @@ try:
         mc.select(cl=1)
         mc.select(sel)
         
-    skinClusters = mc.ls(type='skinCluster')
-    for sc in skinClusters:
-        mc.setAttr(sc+'.deformUserNormals', )
-
     mc.currentTime(-10)
     mc.currentTime(curTime)
 

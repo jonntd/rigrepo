@@ -72,6 +72,7 @@ class Arm(limb.Limb):
         # Hookup clavicle connect nul, the direct connection for the rotate allow keeps the auto
         # clav from causint a double rotation on the shoulder
         clavicleConnect = mc.duplicate(clavicleCtrl, po=1, n=clavicleCtrl+'_connect')[0]
+        rigrepo.libs.control.untagAsControl(clavicleConnect)
         mc.parent(clavicleConnect, clavicleNul)
         mc.connectAttr(clavicleCtrl+'.r', clavicleConnect+'.r')
         mc.connectAttr(clavicleCtrl+'.s', clavicleConnect+'.s')
@@ -229,6 +230,7 @@ class ArmOld(limb.Limb):
         mc.connectAttr(clavicleCtrl+'.s', clavicleConnect+'.s')
         # PSD driver - transform that picks up the auto clav and anim control rotation
         clavicleDriver = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver')[0]
+        rigrepo.libs.control.untagAsControl(clavicleDriver)
         mc.orientConstraint(clavicleCtrl, clavicleDriver)
 
         # This allows the translates to come through with auto clav
