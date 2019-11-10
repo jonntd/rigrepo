@@ -75,14 +75,33 @@ class Spine(part.Part):
         hipSwivelPivotValue = self.getAttributeByName("hipSwivelPivot").getValue()
         chestPivotValue = self.getAttributeByName("chestPivot").getValue()
         # Hips
+        hipMatrix = mc.xform(self._hipsBind, q=True, ws=True, matrix=True)
+        hipsPivotNul, hipsPivotCtrl = control.create(name="hipsPivot", 
+                                                controlType="cube",
+                                                hideAttrs=["sx", "sy", "sz","v"],
+                                                hierarchy=['nul'],
+                                                color=rigrepo.libs.common.RED)
+
+        # create the grp that we will use to move the pivot of the hips
+        movablePivotGrp = mc.createNode("transform", name="{}_grp".format(hipsPivotCtrl))
+        mc.xform(hipsPivotNul, ws=True, matrix=hipMatrix)
+        mc.xform(movablePivotGrp, ws=True, matrix=hipMatrix)
+        mc.parent(movablePivotGrp, hipsPivotNul)
+
+        # connect the movable pivot control to the grp
+        mc.connectAttr("{}.t".format(hipsPivotCtrl), "{}.rotatePivot".format(movablePivotGrp), f=True)
+        mc.connectAttr("{}.r".format(hipsPivotCtrl), "{}.r".format(movablePivotGrp), f=True)
+
+
         hipsCtrlHierarchy = control.create(name="hips", 
                                                 controlType="cube",
                                                 hideAttrs=["sx", "sy", "sz","v"],
                                                 hierarchy=['nul'])
+
+
         hipsCtrl = hipsCtrlHierarchy[-1]
         hipsNul = hipsCtrlHierarchy[0]
         rigrepo.libs.attribute.lockAndHide(hipsCtrl, ["sx", "sy", "sz","v"])
-        hipMatrix = mc.xform(self._hipsBind, q=True, ws=True, matrix=True)
         mc.xform(hipsNul, ws=True, matrix=hipMatrix)
 
         hipsGimbalCtrlHierarchy = control.create(name="hips_gimbal", 
@@ -303,7 +322,9 @@ class Spine(part.Part):
         mc.parentConstraint(hipSwivelGrp, self._hipsBind, mo=1) 
         mc.connectAttr(hipSwivelGrp+'.s', self._hipsBind+'.s')
 
-        mc.parent(hipsNul, self.name)
+        mc.parent(hipsPivotNul, self.name)
+        mc.parent(hipsNul, movablePivotGrp)
+        
         mc.hide(self.spline._group, clusters)
         
         if createBendySpline and mc.objExists(bendyCurve):
