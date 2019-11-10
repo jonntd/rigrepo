@@ -168,8 +168,6 @@ class Foot(part.Part):
         mc.orientConstraint(toeFkctrlHierarchy[-1], fkJointList[2])
         '''
         
-        parent = None
-
         #-------------------------------------------------------------------------------------------
         #IK SETUP
         #-------------------------------------------------------------------------------------------
@@ -204,13 +202,13 @@ class Foot(part.Part):
         ballPivotDistance = mc.getAttr("{}.tx".format(pivotList[1]))
 
         # set attributes for input/output min/max on the remap node.
-        mc.setAttr("{}.inputMin".format(bankRemapNode), ballPivotDistance*-1)
-        mc.setAttr("{}.inputMax".format(bankRemapNode), ballPivotDistance)
+        mc.setAttr("{}.inputMin".format(bankRemapNode), (ballPivotDistance * 2)*-1)
+        mc.setAttr("{}.inputMax".format(bankRemapNode), (ballPivotDistance * 2))
         mc.setAttr("{}.outputMin".format(bankRemapNode), -180)
         mc.setAttr("{}.outputMax".format(bankRemapNode), 180)
         mc.connectAttr("{}.outValue".format(bankRemapNode), "{}.input1".format(bankMdl))
         mc.setAttr("{}.input2".format(bankMdl), -1)
-
+        parent = None
         for pivot in pivotList:
             # if the pivot is a joint, we want to turn off it's joint display
             if mc.nodeType(pivot) == "joint":
@@ -221,11 +219,14 @@ class Foot(part.Part):
                 if pivot == pivotList[0]:
                     # create the control hierarchy
                     if  pivotPos > .01:
+                        print "nothing is happening"
                         mc.transformLimits(pivot, rz=(0,0), erz=(1,0))
                         mc.connectAttr("{}.output".format(bankMdl), "{}.rz".format(pivot))
                     else:
+                        print "something is happening"
                         mc.transformLimits(pivot, rz=(0,0), erz=(1,0))
                         mc.connectAttr("{}.outValue".format(bankRemapNode), "{}.rz".format(pivot))
+                        mc.setAttr("{}.sz".format(bankctrlHierarchy[-2]), -1)
                 elif pivot == pivotList[1]:
                     # create the control hierarchy
                     if  pivotPos > .01:
