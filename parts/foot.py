@@ -191,7 +191,7 @@ class Foot(part.Part):
         mc.xform(bankctrlHierarchy[0], ws=True, t=ballJntTrs)
 
         #lock all attributes except for translateX
-        rigrepo.libs.attribute.lockAndHide(bankctrlHierarchy[-1],['ty','tz','v','rx','ry','rz','sx','sy','sz'])
+        rigrepo.libs.attribute.lockAndHide(bankctrlHierarchy[-1],['ty','v','rx','ry','rz','sx','sy','sz'])
 
         # create the remap and multDoubleLinear node.
         bankRemapNode = mc.createNode("remapValue", name="{}_remap".format(bankctrlHierarchy[-1]))
@@ -219,11 +219,9 @@ class Foot(part.Part):
                 if pivot == pivotList[0]:
                     # create the control hierarchy
                     if  pivotPos > .01:
-                        print "nothing is happening"
                         mc.transformLimits(pivot, rz=(0,0), erz=(1,0))
                         mc.connectAttr("{}.output".format(bankMdl), "{}.rz".format(pivot))
                     else:
-                        print "something is happening"
                         mc.transformLimits(pivot, rz=(0,0), erz=(1,0))
                         mc.connectAttr("{}.outValue".format(bankRemapNode), "{}.rz".format(pivot))
                         mc.setAttr("{}.sz".format(bankctrlHierarchy[-2]), -1)
@@ -272,6 +270,20 @@ class Foot(part.Part):
         for handle in handles:
             mc.setAttr("{}.v".format(handle), 0)
 
+        # create setDriven keys for the ball roll
+        bankCtrl = bankctrlHierarchy[-1]
+        ballNul = mc.listRelatives(ikControlList[-2], p=True)[0]
+        heelNul = mc.listRelatives(ikControlList[-4], p=True)[0]
+        toeNul = mc.listRelatives(ikControlList[-3], p=True)[0]
+        mc.setDrivenKeyframe("{}.rx".format(ballNul), cd="{}.tz".format(bankCtrl), v=0, dv=0)
+        mc.setDrivenKeyframe("{}.rx".format(ballNul), cd="{}.tz".format(bankCtrl), v=60, dv=5)
+        mc.setDrivenKeyframe("{}.rx".format(ballNul), cd="{}.tz".format(bankCtrl), v=0, dv=10)
+        mc.setDrivenKeyframe("{}.rx".format(heelNul), cd="{}.tz".format(bankCtrl), v=0, dv=0)
+        mc.setDrivenKeyframe("{}.rx".format(heelNul), cd="{}.tz".format(bankCtrl), v=-90, dv=-10)
+
+        mc.setDrivenKeyframe("{}.rx".format(toeNul), cd="{}.tz".format(bankCtrl), v=0, dv=5)
+        mc.setDrivenKeyframe("{}.rx".format(toeNul), cd="{}.tz".format(bankCtrl), v=90, dv=10)
+               
 
         # if the param node that is past in exists then we will add attributes to it.
         # if not, we will make one of our own and put them on the controls
