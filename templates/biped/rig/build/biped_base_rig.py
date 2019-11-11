@@ -434,8 +434,72 @@ mc.delete(tempLoc)
         # get the postBuild node
         postBuild = animRigNode.getChild('postBuild')
 
+        # Control visibility switches
+        controlVis = rigrepo.nodes.commandNode.CommandNode('controlVisSwitches')
+        controlVisCmd = '''
+import maya.cmds as mc
+import rigrepo.libs.control 
+
+# Control Visibility switches
+controls = rigrepo.libs.control.getControls()
+node = 'trs_shot'
+
+if mc.objExists(node):
+    # Divider attribute
+    if not mc.objExists(node+'.CtrlVis'):
+        mc.addAttr(node, ln="CtrlVis", nn="Control Vis", at="enum", keyable=False, enumName="--------")
+        mc.setAttr(node+'.CtrlVis', l=1, cb=1)
+
+    # All Controls
+    attr = 'All'
+    if not mc.objExists(node+'.'+attr):
+        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=1) 
+        mc.setAttr(node+'.'+attr, cb=1) 
+    mc.connectAttr(node+'.'+attr, 'rig.v', f=1)
+
+    # Bendbow controls
+    attr = 'BendBows'
+    targets = list()
+    for ctrl in controls:
+        if 'bend' in ctrl:
+            shapes = mc.listRelatives(ctrl, s=1)
+            targets += shapes
+            targets.append(ctrl)
+    if not mc.objExists(node+'.'+attr):
+        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=1) 
+        mc.setAttr(node+'.'+attr, cb=1) 
+    for target in targets:
+        if mc.objExists(target+'.displayHandle'):
+            mc.connectAttr(node+'.'+attr, target+'.displayHandle', f=1)
+        else:
+            mc.connectAttr(node+'.'+attr, target+'.v', f=1)
+
+    # Gimbal controls
+    attr = 'Gimbals'
+    targets = list()
+    for ctrl in controls:
+        if 'gimbal' in ctrl:
+            shapes = mc.listRelatives(ctrl, s=1)
+            targets += shapes
+    if not mc.objExists(node+'.'+attr):
+        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=1) 
+        mc.setAttr(node+'.'+attr, cb=1) 
+    for target in targets:
+        mc.connectAttr(node+'.'+attr, target+'.v', f=1)
+            
+    # Hips Movable Pivot
+    attr = 'HipsMovablePivot'
+    target = 'hipsPivotShape.v'
+    if mc.objExists(target):
+        if not mc.objExists(node+'.'+attr):
+            mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=1) 
+            mc.setAttr(node+'.'+attr, cb=1) 
+        mc.connectAttr(node+'.'+attr, target, f=1)
+'''
+        controlVis.getAttributeByName('command').setValue(controlVisCmd)
+
         switchExpression = rigrepo.nodes.utilNodes.SwitchExpressionNode("SwitchExpression")
-        postBuild.addChildren([switchExpression, orientToWorldNode])
+        postBuild.addChildren([controlVis, switchExpression, orientToWorldNode])
         #switchExpression.disable()
 
         applyNode = animRigNode.getChild('apply')

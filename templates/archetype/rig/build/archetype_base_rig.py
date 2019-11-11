@@ -68,6 +68,16 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         # postBuild
         postBuild = pubs.pNode.PNode("postBuild")
 
+        # Create curve for the trs_shot
+        trsCurve = rigrepo.nodes.commandNode.CommandNode('trsCurve')
+        trsCurveCMD = """
+import maya.cmds as mc
+import rigrepo.libs.control  
+if mc.objExists('trs_shot'):
+    rigrepo.libs.control.create(name='trs_shot', controlType='circle', hierarchy=None)
+        """
+        trsCurve.getAttributeByName('command').setValue(trsCurveCMD)
+
         controlOrientDataNode = rigrepo.nodes.importDataNode.ImportDataNode('controlOrients', 
                 dataFile=self.resolveDataFilePath('control_orients.data', self.variant), 
                 dataType='node', 
@@ -82,6 +92,7 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
         controlOrientDataNode.getAttributeByName("Nodes").setValue("mc.ls('*_ort',type='transform')")
         controlDataNode.getAttributeByName("Nodes").setValue("rigrepo.libs.control.getControls()")
 
+        postBuild.addChild(trsCurve)
         postBuild.addChild(controlOrientDataNode)
         postBuild.addChild(controlDataNode)
 
