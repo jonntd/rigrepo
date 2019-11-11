@@ -252,21 +252,12 @@ if mc.objExists(node):
         driver = node+'.'+attr
         if mc.objExists(driven):
             mc.addAttr(node, ln=attr, at='double', dv=0, k=1) 
-            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="linear", ott="linear")
-            mc.setDrivenKeyframe(driven, cd=driver, value=1, dv=10, itt="linear", ott="linear")
+            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="spline", ott="spline")
+            mc.setDrivenKeyframe(driven, cd=driver, value=1, dv=10, itt="spline", ott="spline")
+            mc.setInfinity(driven, pri='linear', poi='linear')
         else:
             print('missing skin_psd.breathing_chest blendshape target')
-        
-    # Shoulders 
-    attr = 'Shoulders'
-    if not mc.objExists(node+'.'+attr):
-        mc.addAttr(node, ln=attr, at='double', dv=0, k=1) 
-        driver = node+'.'+attr
-        for side in ['l', 'r']:
-            driven = 'shoulderSwing_'+side+'_mirror_ort.tx'
-            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="linear", ott="linear")
-            mc.setDrivenKeyframe(driven, cd=driver, value=.4, dv=10, itt="linear", ott="linear")
-        
+            
     # Belly 
     attr = 'Belly'
     if not mc.objExists(node+'.'+attr):
@@ -274,11 +265,32 @@ if mc.objExists(node):
         driver = node+'.'+attr
         if mc.objExists(driven):
             mc.addAttr(node, ln=attr, at='double', dv=0, k=1) 
-            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="linear", ott="linear")
-            mc.setDrivenKeyframe(driven, cd=driver, value=1, dv=10, itt="linear", ott="linear")
+            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="spline", ott="spline")
+            mc.setDrivenKeyframe(driven, cd=driver, value=1, dv=10, itt="spline", ott="spline")
+            mc.setInfinity(driven, pri='linear', poi='linear')
         else:
             print('missing skin_psd.breathing_belly blendshape target')
-
+        
+    # Shoulders 
+    attr = 'Shoulders'
+    if not mc.objExists(node+'.'+attr):
+        mc.addAttr(node, ln=attr, at='double', dv=0, k=1) 
+        driver = node+'.'+attr
+        sideMul = 1.0
+        for side in ['l', 'r']:
+            if side == 'r':
+                sideMul = -1.0
+                
+            driven = 'shoulderSwing_'+side+'_mirror_ort.tx'
+            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="spline", ott="spline")
+            mc.setDrivenKeyframe(driven, cd=driver, value=.4*sideMul, dv=10, itt="spline", ott="spline")
+            mc.setInfinity(driven, pri='linear', poi='linear')
+            
+            driven = 'shoulderSwing_'+side+'_mirror_ort.tz'
+            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="spline", ott="spline")
+            mc.setDrivenKeyframe(driven, cd=driver, value=.4*sideMul, dv=10, itt="spline", ott="spline")
+            mc.setInfinity(driven, pri='linear', poi='linear')
+        
         """
         breathing.getAttributeByName('command').setValue(breathingCMD)
 
