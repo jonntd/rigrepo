@@ -338,19 +338,19 @@ def preserveLength(name='spineIk',
 
     # Add diagnostic attributes
     #   Current Length
-    mc.addAttr(primary_control, ln='currentLength', min=0, max=1, dv=1, at='double')
-    mc.setAttr(primary_control + '.currentLength', cb=1)
-    comp_mul = mc.createNode('multiplyDivide', n=name + '_current_length_mul')
-    mc.setAttr(comp_mul + '.operation', 2)
-    arc_length = mc.getAttr(info_full+'.arcLength')
-    mc.setAttr(comp_mul+'.input2X', arc_length)
-    info_main = mc.ls(mc.listConnections(mc.listRelatives(curve, s=1, ni=1)[0]), type='curveInfo')[0]
-    mc.connectAttr(info_main+'.arcLength', comp_mul+'.input1X')
-    mc.connectAttr(comp_mul + '.outputX', primary_control + '.currentLength')
-    #   Compensated Length
-    mc.addAttr(primary_control, ln='compensatedLength', min=0, max=1, dv=1, at='double')
-    mc.setAttr(primary_control + '.compensatedLength', cb=1)
-    mc.connectAttr(length_mul + '.outputX', primary_control+'.compensatedLength')
+    #mc.addAttr(primary_control, ln='currentLength', min=0, max=1, dv=1, at='double')
+    #mc.setAttr(primary_control + '.currentLength', cb=1)
+    #comp_mul = mc.createNode('multiplyDivide', n=name + '_current_length_mul')
+    #mc.setAttr(comp_mul + '.operation', 2)
+    #arc_length = mc.getAttr(info_full+'.arcLength')
+    #mc.setAttr(comp_mul+'.input2X', arc_length)
+    #info_main = mc.ls(mc.listConnections(mc.listRelatives(curve, s=1, ni=1)[0]), type='curveInfo')[0]
+    #mc.connectAttr(info_main+'.arcLength', comp_mul+'.input1X')
+    #mc.connectAttr(comp_mul + '.outputX', primary_control + '.currentLength')
+    ##   Compensated Length
+    #mc.addAttr(primary_control, ln='compensatedLength', min=0, max=1, dv=1, at='double')
+    #mc.setAttr(primary_control + '.compensatedLength', cb=1)
+    #mc.connectAttr(length_mul + '.outputX', primary_control+'.compensatedLength')
 
     # Create blend node for dial attribute
     blend = mc.createNode('blendTwoAttr', n=name + '_attr_blend')

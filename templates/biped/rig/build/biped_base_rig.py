@@ -57,8 +57,11 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # BODY
         #-------------------------------------------------------------------------------------------
         # center
+        #
+        # Spine
         spine = rigrepo.parts.spine.Spine(name='spine', jointList="mc.ls('spine_*_bind')")
 
+        # Neck
         neck = rigrepo.parts.neck.Neck(name='neck', 
                                         jointList="mc.ls('neck_?_bind')", 
                                         anchor="chest_top")
@@ -231,6 +234,53 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # add foot to the leg node
         r_leg.addChildren([r_foot,rightLegAddSpaceNode])
 
+        # Breathing
+        breathing = rigrepo.nodes.commandNode.CommandNode('breathing')
+        breathingCMD = """
+import maya.cmds as mc
+import rigrepo.libs.control  
+node = 'chest'
+if mc.objExists(node):
+    # Divider attribute
+    if not mc.objExists(node+'.breathing'):
+        mc.addAttr(node, ln="breathing", nn="Breathing", at="enum", keyable=False, enumName="--------")
+        mc.setAttr(node+'.breathing', l=1, cb=1)
+    # Chest 
+    attr = 'Chest'
+    if not mc.objExists(node+'.'+attr):
+        driven = 'skin_psd.breathing_chest'
+        driver = node+'.'+attr
+        if mc.objExists(driven):
+            mc.addAttr(node, ln=attr, at='double', dv=0, k=1) 
+            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="linear", ott="linear")
+            mc.setDrivenKeyframe(driven, cd=driver, value=1, dv=10, itt="linear", ott="linear")
+        else:
+            print('missing skin_psd.breathing_chest blendshape target')
+        
+    # Shoulders 
+    attr = 'Shoulders'
+    if not mc.objExists(node+'.'+attr):
+        mc.addAttr(node, ln=attr, at='double', dv=0, k=1) 
+        driver = node+'.'+attr
+        for side in ['l', 'r']:
+            driven = 'shoulderSwing_'+side+'_mirror_ort.tx'
+            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="linear", ott="linear")
+            mc.setDrivenKeyframe(driven, cd=driver, value=.4, dv=10, itt="linear", ott="linear")
+        
+    # Belly 
+    attr = 'Belly'
+    if not mc.objExists(node+'.'+attr):
+        driven = 'skin_psd.breathing_belly'
+        driver = node+'.'+attr
+        if mc.objExists(driven):
+            mc.addAttr(node, ln=attr, at='double', dv=0, k=1) 
+            mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="linear", ott="linear")
+            mc.setDrivenKeyframe(driven, cd=driver, value=1, dv=10, itt="linear", ott="linear")
+        else:
+            print('missing skin_psd.breathing_belly blendshape target')
+
+        """
+        breathing.getAttributeByName('command').setValue(breathingCMD)
 
         #-------------------------------------------------------------------------------------------
         # FACE
@@ -414,7 +464,7 @@ mc.delete(tempLoc)
 
         
         # add nodes ass children of body
-        bodyBuildNode.addChildren([spine, neck, l_arm, r_arm, l_leg, r_leg])
+        bodyBuildNode.addChildren([spine, neck, l_arm, r_arm, l_leg, r_leg, breathing])
         faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth, cheekClusterNode])
 
         bindMeshCurvePairs ="""[
@@ -453,7 +503,7 @@ if mc.objExists(node):
     # All Controls
     attr = 'All'
     if not mc.objExists(node+'.'+attr):
-        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=1) 
+        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=0) 
         mc.setAttr(node+'.'+attr, cb=1) 
     mc.connectAttr(node+'.'+attr, 'rig.v', f=1)
 
@@ -466,7 +516,7 @@ if mc.objExists(node):
             targets += shapes
             targets.append(ctrl)
     if not mc.objExists(node+'.'+attr):
-        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=1) 
+        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=0) 
         mc.setAttr(node+'.'+attr, cb=1) 
     for target in targets:
         if mc.objExists(target+'.displayHandle'):
@@ -482,7 +532,7 @@ if mc.objExists(node):
             shapes = mc.listRelatives(ctrl, s=1)
             targets += shapes
     if not mc.objExists(node+'.'+attr):
-        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=1) 
+        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=0) 
         mc.setAttr(node+'.'+attr, cb=1) 
     for target in targets:
         mc.connectAttr(node+'.'+attr, target+'.v', f=1)
@@ -492,7 +542,7 @@ if mc.objExists(node):
     target = 'hipsPivotShape.v'
     if mc.objExists(target):
         if not mc.objExists(node+'.'+attr):
-            mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=1) 
+            mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=0) 
             mc.setAttr(node+'.'+attr, cb=1) 
         mc.connectAttr(node+'.'+attr, target, f=1)
 '''
