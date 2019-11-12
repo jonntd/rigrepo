@@ -13,7 +13,7 @@ class SplineBase(object):
     This is the base class for all ik/fk classes.
     '''
 
-    def __init__(self,jointList,splineName='splineIk',curve=None):
+    def __init__(self,jointList,splineName='splineIk',curve=None,scaleFactor=1.0):
         '''
         This is the constructor
 
@@ -31,7 +31,8 @@ class SplineBase(object):
         self._ikJointList = list()
         self._clusters = list()
         self._startTwistNul = str()
-        self._endTwistNul = str() 
+        self._endTwistNul = str()
+        self._scaleFactor = scaleFactor
 
     #GET
     def getJointList(self):
@@ -230,7 +231,7 @@ class SplineBase(object):
 
         # set the scale for the spine
         setScaleList = list(self._ikJointList)
-        value = 1.0
+        value = self._scaleFactor
         size = len(setScaleList)
         valueScale = value/size
         for i in xrange(size):

@@ -15,7 +15,7 @@ import rigrepo.libs.transform
 class Neck(part.Part):
     '''
     '''
-    def __init__(self, name, jointList, skullBind='skull_bind', splineName='neckIk', anchor="chest_top",
+    def __init__(self, name, jointList, skullBind='skull_bind', splineName='neckIk', anchor="chest_top", scaleFactor=1.0,
         headPivot=3.5):
         '''
         This is the constructor.
@@ -24,6 +24,7 @@ class Neck(part.Part):
         self._skullBind=skullBind
         self.addAttribute("anchor", anchor, attrType='str')
         self.addAttribute("headPivot", headPivot, attrType='float')
+        self.addAttribute("scaleFactor", scaleFactor, attrType='float')
         self._splineName = splineName
         self.jointList = jointList
 
@@ -33,7 +34,8 @@ class Neck(part.Part):
         super(Neck, self).build()
         jointList = eval(self.jointList)
         headPivotValue = self.getAttributeByName("headPivot").getValue()
-        self.spline = spline.SplineBase(jointList=jointList + [self._skullBind], splineName=self._splineName)
+        scaleFactor = self.getAttributeByName('scaleFactor').getValue()
+        self.spline = spline.SplineBase(jointList=jointList + [self._skullBind], splineName=self._splineName, scaleFactor=scaleFactor)
         self.spline.create()
 
         # get the name of the curveInfo node. This is hard coded to be this way in the
@@ -175,4 +177,6 @@ class Neck(part.Part):
     def postBuild(self):
         '''
         '''
-        pass
+        # Something is cause flipping with the decompose unless this rotate order is changed.
+        # Needs to be debugged, setting here for now
+        mc.setAttr("neckIk_end_twist.rotateOrder", 5)

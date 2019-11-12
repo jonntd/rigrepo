@@ -17,7 +17,7 @@ class Spine(part.Part):
     '''
     def __init__(self, name, jointList, chestBind='chest_bind', hipsBind='hips_bind', 
                 splineName='spineIk', dataObj=None, createBendySpline=False, 
-                hipSwivelPivot=3.5, chestPivotHeight=4.5):
+                hipSwivelPivot=3.5, chestPivotHeight=4.5, scaleFactor=1.0):
         '''
         This is the constructor.
         '''
@@ -37,6 +37,8 @@ class Spine(part.Part):
         self.addAttribute("createBendySpline", True, attrType=bool)
         self.addAttribute("hipSwivelPivot", hipSwivelPivot, attrType=float)
         self.addAttribute("chestPivot", hipSwivelPivot, attrType=float)
+        self.addAttribute("scaleFactor", scaleFactor, attrType=float)
+
 
     def getChestCtrl(self):
         return(self._chestCtrl)
@@ -56,8 +58,9 @@ class Spine(part.Part):
         jointList = eval(self.jointList)
 
         # initialize the spline class
-        self.spline = spline.SplineBase(jointList=jointList + [self._chestBind], 
-                                        splineName=self._splineName)
+        scaleFactor = self.getAttributeByName('scaleFactor').getValue()
+        self.spline = spline.SplineBase(jointList=jointList + [self._chestBind],
+                                        splineName=self._splineName, scaleFactor=scaleFactor)
         # create the spline
         self.spline.create()
 
@@ -209,7 +212,7 @@ class Spine(part.Part):
         # ==========================================================================================
         # chest pivot
         # create pivot attributes to use for moving the pivot and tangent heights.
-        mc.addAttr(chestCtrl, ln="pivotHeight", at="double", dv=0, min=0, max=10, keyable=False)
+        mc.addAttr(chestCtrl, ln="pivotHeight", at="double", dv=0, min=0, max=10, keyable=True)
         mc.setAttr("{}.pivotHeight".format(chestCtrl), chestPivotValue)
 
         # create the remap node to use to remap the pivot height to the lenght of the curve
@@ -380,6 +383,10 @@ class Spine(part.Part):
         '''
         '''
         #turn of the visibility of the ikfk system
+
+        # Something is cause flipping with the decompose unless this rotate order is changed.
+        # Needs to be debugged, setting here for now
+        mc.setAttr("spineIk_end_twist.rotateOrder", 5)
 
     def _getDistanceVector(self, distance):
         '''

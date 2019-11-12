@@ -59,11 +59,12 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         # center
         #
         # Spine
-        spine = rigrepo.parts.spine.Spine(name='spine', jointList="mc.ls('spine_*_bind')")
+        spine = rigrepo.parts.spine.Spine(name='spine', jointList="mc.ls('spine_*_bind')", scaleFactor=0.5)
 
         # Neck
         neck = rigrepo.parts.neck.Neck(name='neck', 
-                                        jointList="mc.ls('neck_?_bind')", 
+                                        jointList="mc.ls('neck_?_bind')",
+                                        scaleFactor=.4,
                                         anchor="chest_top")
 
         neckAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="neck",
@@ -72,7 +73,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         headAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addHeadSpaces', attrNode="head",
             constraintNode="head_nul", parentNode='neck', targetList=['rig'], 
-        nameList=["world"], constraintType='orient')
+        nameList=["world"], constraintType='orient', defaultTargetIndex=0)
         
         neck.addChildren([neckAddSpaceNode,headAddSpaceNode])
 
@@ -243,7 +244,7 @@ node = 'chest'
 if mc.objExists(node):
     # Divider attribute
     if not mc.objExists(node+'.breathing'):
-        mc.addAttr(node, ln="breathing", nn="Breathing", at="enum", keyable=False, enumName="--------")
+        mc.addAttr(node, ln="breathing", nn="---------", at="enum", keyable=False, enumName="Breathing")
         mc.setAttr(node+'.breathing', l=1, cb=1)
     # Chest 
     attr = 'Chest'
@@ -283,12 +284,12 @@ if mc.objExists(node):
                 
             driven = 'shoulderSwing_'+side+'_mirror_ort.tx'
             mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="spline", ott="spline")
-            mc.setDrivenKeyframe(driven, cd=driver, value=.4*sideMul, dv=10, itt="spline", ott="spline")
+            mc.setDrivenKeyframe(driven, cd=driver, value=.2*sideMul, dv=10, itt="spline", ott="spline")
             mc.setInfinity(driven, pri='linear', poi='linear')
             
             driven = 'shoulderSwing_'+side+'_mirror_ort.tz'
             mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="spline", ott="spline")
-            mc.setDrivenKeyframe(driven, cd=driver, value=.4*sideMul, dv=10, itt="spline", ott="spline")
+            mc.setDrivenKeyframe(driven, cd=driver, value=.5*sideMul, dv=10, itt="spline", ott="spline")
             mc.setInfinity(driven, pri='linear', poi='linear')
         
         """
