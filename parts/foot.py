@@ -280,7 +280,6 @@ class Foot(part.Part):
         mc.setDrivenKeyframe("{}.rx".format(ballNul), cd="{}.tz".format(bankCtrl), v=0, dv=10)
         mc.setDrivenKeyframe("{}.rx".format(heelNul), cd="{}.tz".format(bankCtrl), v=0, dv=0)
         mc.setDrivenKeyframe("{}.rx".format(heelNul), cd="{}.tz".format(bankCtrl), v=-90, dv=-10)
-
         mc.setDrivenKeyframe("{}.rx".format(toeNul), cd="{}.tz".format(bankCtrl), v=0, dv=5)
         mc.setDrivenKeyframe("{}.rx".format(toeNul), cd="{}.tz".format(bankCtrl), v=90, dv=10)
                
