@@ -659,9 +659,10 @@ class Limb(part.Part):
                 rigrepo.libs.attribute.lock(control, ['settings'])
                 mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, 
                             keyable=True, enumName="Ik:FK", proxy='{}.ikfk'.format(paramNodeName))
-                mc.addAttr(control, ln='ikfk_switch', nn= "Snap IK FK", at='enum', 
-                            k=False, proxy='{}.ikfk_switch'.format(paramNodeName))
-                mc.setAttr("{}.ikfk_switch".format(control), cb=True)
+
+                mc.addAttr(mc.listRelatives(control, c=True, shapes=True)[0], 
+                            ln='ikfk_switch', nn= "Snap IK FK", at='enum', 
+                            proxy='{}.ikfk_switch'.format(paramNodeName))
                 mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1,
                             k=True, proxy='{}.stretch'.format(paramNodeName))
                 mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, 
