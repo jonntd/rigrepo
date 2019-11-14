@@ -206,8 +206,8 @@ class AutoParent(part.Part):
         # info attribute that displays the current auto contribution
         autoInfoAttr = autoBlendAttr+'AmountInfo'
         mc.addAttr(parentControl, ln=autoInfoAttr, at='double', min=0, max=1, k=False)
-        #mc.setAttr(parentControl+'.'+autoInfoAttr, cb=1)
         mc.connectAttr(mulDive+'.outputX', parentControl+'.'+autoInfoAttr)
+        mc.setAttr(parentControl+'.'+autoInfoAttr, cb=1, l=1)
 
         # Display attrs on poseControl also
         mc.addAttr(poseControl, ln=autoBlendAttr, proxy=parentControl+'.'+autoBlendAttr)
