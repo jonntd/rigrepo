@@ -145,7 +145,7 @@ class Limb(part.Part):
                                                 controlType="cube",
                                                 hierarchy=[],
                                                 transformType="joint",
-                                                hideAttrs=["tx", "ty", "tz", "sx", "sy", "sz", "v"],
+                                                hideAttrs=["tx", "ty", "tz", "v"],
                                                 parent=parent)
                 mc.xform(fkCtrl, ws=True, matrix=fkJntMatrix)
                 cstCtrl = fkCtrl
@@ -195,7 +195,6 @@ class Limb(part.Part):
                                                 color=rigrepo.libs.common.GREEN)     
 
         ikCtrl = ikCtrlHierarchy[-1]
-        rigrepo.libs.attribute.lockAndHide(ikCtrl, ["sx","sy","sz"])
 
         # add the gimbal control
 
@@ -256,10 +255,6 @@ class Limb(part.Part):
             if not mc.isConnected("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl)):
                 mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.v".format(ctrl), f=True)
 
-        # lock the scale attribute on the ikGimbal control
-        rigrepo.libs.attribute.lockAndHide(ikGimbalCtrl, ["sx", "sy", "sz"])
-        
-        #mc.connectAttr("{0}.outputX".format(reverseNode), "{0}.ikBlend".format(handle), f=True)
         # create the offset joint that will be used for ikfk switching. This is the offset of the
         # ik control from the fk control
         mc.select(clear=True)
@@ -562,7 +557,6 @@ class Limb(part.Part):
         mc.setAttr("{}.softStretch".format(paramNode), .001)
 
         # lock and hide attributes for the fk controls
-        #rigrepo.libs.attribute.lockAndHide(self._fkControls, ["tx", "ty", "tz", "sx", "sy", "sz", "v"])
         # add fk gimbal control to the fk control list
         self._fkControls.append(fkGimbalCtrl)
         if createDisplayLine:
@@ -582,6 +576,21 @@ class Limb(part.Part):
         mc.setAttr(handle+'.ty', l=1)
         mc.setAttr(handle+'.tz', l=1)
         self._pvSpaceAimNode = self._fkControls[0]
+
+        # ----------------------------------
+        # End ctrl scale
+        # ----------------------------------
+
+        # Nodes needed to hook up end overall scale
+        fkEndScale = (fkControlNames[-1], fkGimbalCtrl, self.ikfkSystem.getFkJointList()[-1])
+        ikEndScale = (ikCtrl, ikGimbalCtrl, self.ikfkSystem.getIkJointList()[-1])
+
+        for scale_ctrl in [fkEndScale, ikEndScale]:
+            add = mc.createNode('plusMinusAverage', n=scale_ctrl[0]+'_scale_add')
+            mc.connectAttr(scale_ctrl[0]+'.s', add+'.input3D[0]')
+            mc.connectAttr(scale_ctrl[1]+'.s', add+'.input3D[1]')
+            mc.setAttr(add+'.input3D[2]', -1, -1, -1)
+            mc.connectAttr(add+'.output3D', scale_ctrl[2]+'.s')
 
 
     def postBuild(self):

@@ -2,15 +2,13 @@
 //Name: curves.ma
 //Last modified: Wed, Sep 04, 2019 11:47:20 AM
 //Codeset: UTF-8
-requires maya "2019";
 requires "stereoCamera" "10.0";
-requires -dataType "sampleData" -dataType "locationData" "sampleData" "1.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
-fileInfo "product" "Maya 2019";
-fileInfo "version" "2019";
 fileInfo "cutIdentifier" "201907021615-48e59968a3";
 fileInfo "osv" "Linux 3.10.0-957.21.3.el7.x86_64 #1 SMP Fri Jun 14 02:54:29 EDT 2019 x86_64";
+fileInfo "product" "Maya 2019";
+fileInfo "version" "2019"; 
 createNode transform -n "lidLower_curves";
 	rename -uid "7986A9C0-0001-FBC1-5D70-0604000034B8";
 createNode transform -n "blinkLower_l_curve" -p "lidLower_curves";

@@ -345,6 +345,15 @@ class Foot(part.Part):
         mc.setAttr("{}.switchCommand".format(paramNode), "rigrepo.parts.foot.Foot.switch", 
                     type="string")
 
+        # --------------------
+        # Foot Scale
+        # --------------------
+        # Turn off scale compensate on children of bind joint
+        children = mc.listRelatives(self._jointList[0], c=1, type='joint')
+        if children:
+            for c in children:
+                mc.setAttr(c+'.segmentScaleCompensate', 0)
+
     def postBuild(self):
         '''
         '''

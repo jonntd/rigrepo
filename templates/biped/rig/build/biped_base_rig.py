@@ -77,7 +77,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         
         neck.addChildren([neckAddSpaceNode,headAddSpaceNode])
 
-        # Arm
+        # Left Arm
         l_arm = rigrepo.parts.arm.Arm("l_arm", 
                                     ['clavicle_l_bind', 
                                         'shoulder_l_bind', 
@@ -122,11 +122,31 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
                                                          anchor=side+'_arm_anchor_grp')
 
-        # add hand to arm node.
-        l_arm.addChildren([l_autoClav, leftArmAddSpaceNode,leftArmPvAddSpaceNode,leftArmIkAddSpaceNode,l_hand])
+        # Orient arm to world for anim pose
+        #
+        orientToWorldNode = rigrepo.nodes.commandNode.CommandNode('worldOrient')
+        world_ctrls  = [l_arm.getAttributeByName('swingCtrl').getValue()]
+        world_ctrls += l_arm.getAttributeByName('fkControls').getValue()
+        orientToWorldNodeCmd = 'ctrls = ' + str(world_ctrls)
+        orientToWorldNodeCmdMain = '''
+import maya.cmds as mc
 
-        # Turning off until cycle is fixed
-        #l_autoClav.disable()
+for ctrl in ctrls:
+    matrix = mc.xform(ctrl, q=1, ws=1, matrix=1)
+    nul = ctrl+'_nul'
+    if mc.objExists(nul):
+        mc.setAttr(nul+'.r', 0, 0, 0)
+        mc.xform(ctrl, ws=1, matrix=matrix)
+        '''
+        orientToWorldNodeCmd += orientToWorldNodeCmdMain
+
+        orientToWorldNode.getAttributeByName('command').setValue(orientToWorldNodeCmd)
+
+        # add hand to arm node.
+        l_arm.addChildren([orientToWorldNode, l_autoClav, leftArmAddSpaceNode, leftArmPvAddSpaceNode,leftArmIkAddSpaceNode,l_hand])
+
+        # Right arm
+        #
         r_arm = rigrepo.parts.arm.Arm("r_arm",
                                     ['clavicle_r_bind', 
                                      'shoulder_r_bind',
@@ -176,11 +196,18 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          anchor=side+'_arm_anchor_grp',
                                                          paramNode='arm_R')
 
-        # add hand to arm node.
-        r_arm.addChildren([r_autoClav, rightArmAddSpaceNode,rightArmPvAddSpaceNode,rightArmIkAddSpaceNode,r_hand])
+        # Orient arm to world for anim pose
+        #
+        orientToWorldNode = rigrepo.nodes.commandNode.CommandNode('worldOrient')
+        world_ctrls = [r_arm.getAttributeByName('swingCtrl').getValue()]
+        world_ctrls += r_arm.getAttributeByName('fkControls').getValue()
+        orientToWorldNodeCmd = 'ctrls = ' + str(world_ctrls)
+        orientToWorldNodeCmd += orientToWorldNodeCmdMain
+        orientToWorldNode.getAttributeByName('command').setValue(orientToWorldNodeCmd)
 
-        # Turning off until cycle is fixed
-        #r_autoClav.disable()
+        # add hand to arm node.
+        r_arm.addChildren([orientToWorldNode, r_autoClav, rightArmAddSpaceNode,rightArmPvAddSpaceNode,rightArmIkAddSpaceNode,r_hand])
+
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",
                                 ['pelvis_l_bind', 'thigh_l_bind', 'knee_l_bind', 'ankle_l_bind'], 
@@ -442,29 +469,6 @@ for side in ["l","r"]:
         mouthCornerDistanceNode.getAttributeByName('command').setValue(mouthCornerDistanceNodeCmd)
         cheekClusterNode.addChildren([leftCheekLiftClusterNode, rightCheekLiftClusterNode, mouthCornerDistanceNode])
 
-        orientToWorldNode = rigrepo.nodes.commandNode.CommandNode('worldOrient')
-        world_ctrls  = [l_arm.getAttributeByName('swingCtrl').getValue()]
-        world_ctrls += l_arm.getAttributeByName('fkControls').getValue()
-        world_ctrls += [r_arm.getAttributeByName('swingCtrl').getValue()]
-        world_ctrls += r_arm.getAttributeByName('fkControls').getValue()
-        orientToWorldNodeCmd = 'ctrls = ' + str(world_ctrls)
-        orientToWorldNodeCmd += '''
-import maya.cmds as mc
-
-tempLoc = mc.spaceLocator()[0]
-for ctrl in ctrls:
-    matrix = mc.xform(ctrl, q=1, ws=1, matrix=1)
-    mc.xform(tempLoc, ws=1, matrix=matrix)
-    nul = ctrl+'_nul'
-    if mc.objExists(nul):
-        mc.setAttr(nul+'.r', 0, 0, 0)
-        rotate = mc.xform(tempLoc, q=1, ws=1, rotation=1)
-        mc.xform(ctrl, ws=1, rotation=rotate)
-mc.delete(tempLoc)
-        '''
-        orientToWorldNode.getAttributeByName('command').setValue(orientToWorldNodeCmd)
-        orientToWorldNode.disable()
-
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
         faceBuildNode = pubs.pNode.PNode("face")
@@ -562,7 +566,7 @@ if mc.objExists(node):
         controlVis.getAttributeByName('command').setValue(controlVisCmd)
 
         switchExpression = rigrepo.nodes.utilNodes.SwitchExpressionNode("SwitchExpression")
-        postBuild.addChildren([controlVis, switchExpression, orientToWorldNode])
+        postBuild.addChildren([controlVis, switchExpression])
         #switchExpression.disable()
 
         applyNode = animRigNode.getChild('apply')

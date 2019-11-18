@@ -52,6 +52,16 @@ class Hand(part.Part):
         if mc.objExists(anchor):
             mc.pointConstraint(anchor, self._group)
             mc.orientConstraint(anchor, self._group)
+
+            # ------------------
+            # Hand Scale
+            # ------------------
+            mc.connectAttr(anchor+'.scale', self._group+'.s')
+            # Turn off scale compensate on children of bind joint
+            children = mc.listRelatives(anchor, c=1, type='joint')
+            if children:
+                for c in children:
+                    mc.setAttr(c+'.segmentScaleCompensate', 0)
         else:
             mc.warning("{} doesn't exists in the current Maya session!".format(anchor))
 
