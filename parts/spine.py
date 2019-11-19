@@ -455,8 +455,6 @@ class Spine(part.Part):
                 color= rigrepo.libs.common.YELLOW, 
                 parent=follicle)
 
-            rigrepo.libs.attribute.lockAndHide(ctrlHierarchy[-1], ["rx", "ry", "rz","sx", "sy", "sz"])
-
             # create the joint that will drive the curve.
             jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))
             # make sure the joint is in the correct space
@@ -464,11 +462,9 @@ class Spine(part.Part):
             mc.setAttr("{}.rotate".format(jnt), 0,0,0)
             mc.setAttr("{}.drawStyle".format(jnt),2)
             mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
-            #mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
 
             # zero out the nul for the control hierarchy so it's in the correct position.
             mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)
-            #mc.setAttr("{}.rotate".format(ctrlHierarchy[0]), 0,0,0)
             # set the visibility of the shape node for the follicle to be off.
             # append the control and the follicle transform to their lists
             controlHieracrchyList.append(ctrlHierarchy)
@@ -483,9 +479,6 @@ class Spine(part.Part):
         # This will parent all of the data for the rig to the system group "name"
         for data in (bindmeshGeometry, follicleList):
             mc.parent(data, name)
-
-        #mc.pointConstraint(controlHieracrchyList[0][-1],controlHieracrchyList[2][-1], controlHieracrchyList[1][2], mo=True)
-        #mc.pointConstraint(controlHieracrchyList[2][-1],controlHieracrchyList[4][-1], controlHieracrchyList[3][2], mo=True)
 
         # If parent the parent is passed in we will parent the system to the parent.
         if parent:

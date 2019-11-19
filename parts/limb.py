@@ -769,10 +769,6 @@ class Limb(part.Part):
                 hierarchy=['nul','ort','def_auto'], 
                 parent=follicle)
 
-            # this is meant to translate only. So we will lock and hide all other attributes.
-            rigrepo.libs.attribute.lockAndHide(ctrlHierarchy[-1], ['rx', 'ry', 'rz', 'r', 
-                                                                   'sx', 'sy', 'sz', 's'])
-
             # create the joint that will drive the curve.
             jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))
             # make sure the joint is in the correct space
@@ -780,11 +776,9 @@ class Limb(part.Part):
             mc.setAttr("{}.rotate".format(jnt), 0,0,0)
             mc.setAttr("{}.drawStyle".format(jnt),2)
             mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
-            #mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
 
             # zero out the nul for the control hierarchy so it's in the correct position.
             mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)
-            #mc.setAttr("{}.rotate".format(ctrlHierarchy[0]), 0,0,0)
             # set the visibility of the shape node for the follicle to be off.
             # append the control and the follicle transform to their lists
             controlHieracrchyList.append(ctrlHierarchy)
