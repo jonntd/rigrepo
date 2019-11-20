@@ -88,7 +88,10 @@ def getCVs(curve):
     :return: Returns the list of cv's
     :rtype: list
     '''
-    return mc.ls('%s.cv[*]' % curve, flatten = True)
+    # Splitting and re-adding curve shape name to ensure the shape name is
+    # in the cv names. Sometimes ls was using the transform when the shape was passed
+    cvs = [curve+'.'+x.split('.')[1] for x in mc.ls('%s.cv[*]' % curve, flatten=True)]
+    return cvs
     
     
 def getCVpositions(cvList):
@@ -193,28 +196,34 @@ def mirror (curve, axis = "x"):
     # loop through the curve list and mirror across worldspace
     for curveNode in curveList:
         if mc.nodeType(curveNode) == "transform" or mc.nodeType(curveNode) == "joint":
-            shapeList = mc.listRelatives(curveNode, c=True, shapes=True, type="nurbsCurve") 
+            shapeList = mc.listRelatives(curveNode, c=True, shapes=True, type="nurbsCurve", ni=1)
         else:
             shapeList = [curveNode]
         for curve in shapeList:
             cvList=getCVs(curve)
             mirrorCurve = getMirrorName(curve)
             if not mc.objExists(mirrorCurve):
+                print('No mirror curve found: {}'.format(mirrorCurve))
                 continue
             for cv in cvList:
-                toCV = cv.replace( curve, mirrorCurve )
+                toCV = cv.replace(curve, mirrorCurve)
 
                 # check to make sure that both objects exist in the scnene
-                if mc.objExists(cv) and mc.objExists(toCV) and cv != toCV:
-                    # get position and rotation
-                    pos = mc.xform( cv, q=True, t=True, ws=True )
+                if not mc.objExists(cv):
+                    print('Node not found: {}'.format(cv))
+                    continue
+                if not mc.objExists(toCV):
+                    print('Node not found: {}'.format(toCV))
+                    continue
+                if cv == toCV:
+                    print('No curve found to mirror to: {}'.format(cv))
+                    continue
 
-                    # set rotation orientation
-                    mc.xform( toCV, ws = True, t = ( pos[0]*posVector[0], pos[1]*posVector[1], pos[2]*posVector[2] ))
-                else:
-                    print 'Node not found: {}'.format(toCV)
-                    continue                    
-                    #raise RuntimeError, 'Node not found: {}'.format(toCV)
+                # get position and rotation
+                pos = mc.xform( cv, q=True, t=True, ws=True )
+
+                # set rotation orientation
+                mc.xform( toCV, ws = True, t = ( pos[0]*posVector[0], pos[1]*posVector[1], pos[2]*posVector[2] ))
 
     # --------------------------------------------------------------------------
     # re-select objects

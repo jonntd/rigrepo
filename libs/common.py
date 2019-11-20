@@ -12,7 +12,7 @@ SIDES   = {"left" : LEFT, "right" : RIGHT,
             "center" : CENTER}
 
 #location constants
-FRONT   = 'fr'
+FRONT   = 'fre'
 BACK    = 'bk'
 MIDDLE  = 'md'
 TOP     = 'tp'

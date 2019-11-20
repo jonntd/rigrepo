@@ -13,7 +13,8 @@ class MirrorWiresNode(commandNode.CommandNode):
         super(MirrorWiresNode, self).__init__(name, parent)
         self.addAttribute('lipCurves',  'mc.ls("lip*", type="nurbsCurve", ni=True)', attrType='str', index=0)
         self.addAttribute('lipCurveMapping', '{"center":(1, 9), "left":(0, 10, 11, 12, 13, 14 , 15), "right":(2, 8, 7, 6, 5, 4, 3)}', attrType='str', index=1)
-        self.addAttribute('blinkCurves', '[mc.listRelatives(curve, p=True)[0] for curve in mc.ls("lid*", type="nurbsCurve", ni=True)]', attrType='str', index=2)
+        eyeCurves = '[mc.listRelatives(curve, p=True)[0] for curve in mc.ls("lid*", type="nurbsCurve", ni=True) + mc.ls("blink*", type="nurbsCurve", ni=True)]'
+        self.addAttribute('eyeCurves', eyeCurves, attrType='str', index=2)
         commandAttribute = self.getAttributeByName('command')
         cmd = '''
 import maya.cmds as mc
@@ -24,7 +25,7 @@ from rigrepo.libs.common import getSideToken
 mc.undoInfo(openChunk=1)
 try:
     # Mirror
-    for n in {blinkCurves}:
+    for n in {eyeCurves}:
         if getSideToken(n) is 'l':
             rigrepo.libs.curve.mirror(n)
 
@@ -44,9 +45,9 @@ mc.undoInfo(closeChunk=1)
         Execute node code
         '''
         lipCurves = eval(self.getAttributeByName("lipCurves").getValue())
-        blinkCurves = eval(self.getAttributeByName("blinkCurves").getValue())
+        eyeCurves = eval(self.getAttributeByName("eyeCurves").getValue())
         lipCurveMapping = eval(self.getAttributeByName("lipCurveMapping").getValue())
-        exec(self.getAttributeByName('command').getValue().format(blinkCurves=blinkCurves,
+        exec(self.getAttributeByName('command').getValue().format(eyeCurves=eyeCurves,
                                                                     lipCurves=lipCurves,
                                                                     lipCurveMapping=lipCurveMapping))
 
