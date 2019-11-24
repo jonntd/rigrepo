@@ -136,6 +136,7 @@ for ctrl in ctrls:
     nul = ctrl+'_nul'
     if mc.objExists(nul):
         mc.setAttr(nul+'.r', 0, 0, 0)
+        mc.dgdirty(nul+'.r')
         mc.xform(ctrl, ws=1, matrix=matrix)
         '''
         orientToWorldNodeCmd += orientToWorldNodeCmdMain
