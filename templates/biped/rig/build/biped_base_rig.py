@@ -136,8 +136,11 @@ for ctrl in ctrls:
     nul = ctrl+'_nul'
     if mc.objExists(nul):
         mc.setAttr(nul+'.r', 0, 0, 0)
-        mc.dgdirty(nul+'.r')
         mc.xform(ctrl, ws=1, matrix=matrix)
+        
+        # Because of some insane refresh problem this is locking and unlocking is here.
+        mc.setAttr(ctrl+'.r', l=1)
+        mc.setAttr(ctrl+'.r', l=0)
         '''
         orientToWorldNodeCmd += orientToWorldNodeCmdMain
 
