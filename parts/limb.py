@@ -124,7 +124,7 @@ class Limb(part.Part):
                                                 controlType="cube",
                                                 hierarchy=[],
                                                 transformType="joint",
-                                                hideAttrs=["tx", "ty", "tz","v"],
+                                                hideAttrs=["radius", "tx", "ty", "tz","v"],
                                                 parent=parent)
 
                 # create the gimbal control for the end control
@@ -133,7 +133,7 @@ class Limb(part.Part):
                                                             controlType="sphere",
                                                             hierarchy=[],
                                                             transformType="joint",
-                                                            hideAttrs=["tx", "ty", "tz","v"],
+                                                            hideAttrs=["radius", "tx", "ty", "tz","v"],
                                                             parent=fkCtrl)[0]
 
                 # move the gimbal ctrl to the correct location
@@ -145,7 +145,7 @@ class Limb(part.Part):
                                                 controlType="cube",
                                                 hierarchy=[],
                                                 transformType="joint",
-                                                hideAttrs=["tx", "ty", "tz", "v"],
+                                                hideAttrs=["radius", "sx", "sy", "sz", "tx", "ty", "tz", "v"],
                                                 parent=parent)
                 mc.xform(fkCtrl, ws=True, matrix=fkJntMatrix)
                 cstCtrl = fkCtrl
