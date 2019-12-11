@@ -301,3 +301,39 @@ def mirror (trs, search = '_l_', replace = '_r_', axis = "x"):
         mc.select( selection, r=True )
     else:
         mc.select( cl= True)
+
+def getDistanceVector(distance):
+    '''
+    This is a very specific way we want to grab vector direction when looking for what the aim
+    vector is. Usually you want to us a child of a node transform values as the distance attribute.
+
+    :param distance: The vector you want to use to get the direction to be used
+    :type distance: list | tuple
+
+    :return: We will return the axis and vector for you to use.
+    :rtype: tuple
+    '''
+    distanceValue = max(distance, key=abs)
+    index = distance.index(distanceValue)
+    attr = ["x","y","z"][index]
+    value = round(distance[index], 4)
+    if attr == "x":
+        if value < 0:
+            attr = "-x"
+            vector = [-1,0,0]
+        else:
+            vector = [1,0,0]
+    elif attr == "y":
+        if value < 0:
+            attr = "-y"
+            vector = [0,-1,0]
+        else:
+            vector = [0,1,0]
+    elif attr == "z":
+        if value < 0:
+            attr = "-z"
+            vector = [0,0,-1]
+        else:
+            vector = [0,0,1]
+
+    return (attr, vector)
