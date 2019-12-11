@@ -91,7 +91,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
 
         leftArmAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="shoulderSwing_l",
             constraintNode="shoulderSwing_l_ort", parentNode='shoulderSwing_l_nul', targetList=['rig'],
-        nameList=["world"], constraintType='orient')
+            nameList=["world"], constraintType='orient', defaultTargetIndex=1)
 
 
         leftArmPvAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="arm_pv_l",
@@ -146,8 +146,35 @@ for ctrl in ctrls:
 
         orientToWorldNode.getAttributeByName('command').setValue(orientToWorldNodeCmd)
 
-        # add hand to arm node.
-        l_arm.addChildren([orientToWorldNode, l_autoClav, leftArmAddSpaceNode, leftArmPvAddSpaceNode,leftArmIkAddSpaceNode,l_hand])
+        # AutoClav World Orient
+        #    Hook the world space of the swing into the driver for the
+        #    auto clav. This is so the auto clav fires when the spine is rotated
+        #    and the swing is in world space.
+        #
+        l_autoClavWorldDriver = rigrepo.nodes.commandNode.CommandNode('l_autoClavWorldSpaceDriver')
+
+        side = "side = 'l' \n"
+        autoClavWorldDriverCmd = '''
+import maya.cmds as mc
+
+orient = 'shoulderSwing_'+side+'_ortSpaces_world'
+parent = 'chest_top'
+attr = 'shoulderSwing_'+side+'.space'
+add_matrix = 'clavicle_'+side+'_addRotation_multMatrix'
+
+space_grp = mc.createNode('transform', n=orient+'_autoClav_nul', p=orient)
+space = mc.createNode('transform', n=orient+'_autoClav', p=space_grp)
+mc.parent(space_grp, parent)
+con = mc.orientConstraint('rig', space, mo=1)[0]
+mc.connectAttr(attr, con+'.rigW0')
+mc.connectAttr(space+'.matrix', add_matrix+'.matrixIn[2]')
+        '''
+        l_autoClavWorldDriver.getAttributeByName('command').setValue(side+autoClavWorldDriverCmd)
+
+        # Left arm nodes
+        l_arm.addChildren([orientToWorldNode, l_autoClav, leftArmAddSpaceNode,
+                           l_autoClavWorldDriver, leftArmPvAddSpaceNode,
+                           leftArmIkAddSpaceNode, l_hand])
 
         # Right arm
         #
@@ -166,7 +193,7 @@ for ctrl in ctrls:
         
         rightArmAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('addSpaces', attrNode="shoulderSwing_r",
             constraintNode="shoulderSwing_r_ort", parentNode='shoulderSwing_r_nul', targetList=['rig'],
-        nameList=["world"], constraintType='orient')
+        nameList=["world"], constraintType='orient', defaultTargetIndex=1)
 
         rightArmPvAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('pvAddSpaces', attrNode="arm_pv_r",
             constraintNode="arm_pv_r_nul", parentNode='r_arm', targetList=['chest_bind', 'wrist_fk_r_offset_pv'],
@@ -209,8 +236,19 @@ for ctrl in ctrls:
         orientToWorldNodeCmd += orientToWorldNodeCmdMain
         orientToWorldNode.getAttributeByName('command').setValue(orientToWorldNodeCmd)
 
-        # add hand to arm node.
-        r_arm.addChildren([orientToWorldNode, r_autoClav, rightArmAddSpaceNode,rightArmPvAddSpaceNode,rightArmIkAddSpaceNode,r_hand])
+        # AutoClav World Orient
+        #    Hook the world space of the swing into the driver for the
+        #    auto clav. This is so the auto clav fires when the spine is rotated
+        #    and the swing is in world space.
+        #
+        r_autoClavWorldDriver = rigrepo.nodes.commandNode.CommandNode('r_autoClavWorldSpaceDriver')
+        side = "side = 'r' \n"
+        r_autoClavWorldDriver.getAttributeByName('command').setValue(side+autoClavWorldDriverCmd)
+
+        # Right arm nodes
+        r_arm.addChildren([orientToWorldNode, r_autoClav, rightArmAddSpaceNode,
+                           r_autoClavWorldDriver, rightArmPvAddSpaceNode,
+                           rightArmIkAddSpaceNode,r_hand])
 
         # Leg
         l_leg = rigrepo.parts.leg.Leg("l_leg",
