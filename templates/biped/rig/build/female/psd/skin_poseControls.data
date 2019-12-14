@@ -1,10 +1,10 @@
 {
     "type": "PSDData", 
     "user": "Matt", 
-    "time": "2019-10-12 21:06:04", 
+    "time": "2019-11-24 16:27:58", 
     "data": {
         "chest_driver_poseInterpolatorShape": {
-            "dagPath": "|chest_driver_poseInterpolator|chest_driver_poseInterpolatorShape", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|chest_driver_poseInterpolator|chest_driver_poseInterpolatorShape", 
             "drivers": {
                 "chest_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
@@ -142,11 +142,33 @@
                                     0.0
                                 ]
                             ]
+                        }, 
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[0].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
                         }
                     }
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
                         "wristSwing_l_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "wrist_fk_l.rotate", 
                             "type": 8, 
@@ -162,6 +184,17 @@
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
                         "wristSwing_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "wrist_fk_l.rotate", 
                             "type": 8, 
@@ -187,6 +220,17 @@
                                     0.0
                                 ]
                             ]
+                        }, 
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
                         }
                     }
                 }, 
@@ -202,11 +246,33 @@
                                     0.0
                                 ]
                             ]
+                        }, 
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[4].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
                         }
                     }
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[5].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
                         "wristSwing_l_driver_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "wrist_fk_l.rotate", 
                             "type": 8, 
@@ -232,11 +298,33 @@
                                     1.5707964
                                 ]
                             ]
+                        }, 
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[6].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
                         }
                     }
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[7]": {
                     "controllers": {
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[7].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -2.3561945, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
                         "wristSwing_l_driver_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "wrist_fk_l.rotate", 
                             "type": 8, 
@@ -262,11 +350,33 @@
                                     0.0
                                 ]
                             ]
+                        }, 
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[8].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    2.3561945, 
+                                    0.0
+                                ]
+                            ]
                         }
                     }
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[9]": {
                     "controllers": {
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[9].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -2.3561945
+                                ]
+                            ]
+                        }, 
                         "wristSwing_l_driver_poseInterpolatorShape.pose[9].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "wrist_fk_l.rotate", 
                             "type": 8, 
@@ -283,6 +393,17 @@
                 "wristSwing_l_driver_poseInterpolatorShape.pose[10]": {
                     "controllers": {
                         "wristSwing_l_driver_poseInterpolatorShape.pose[10].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    2.3561945
+                                ]
+                            ]
+                        }, 
+                        "wristSwing_l_driver_poseInterpolatorShape.pose[10].poseControllerData[1].poseControllerDataItem[0]": {
                             "name": "wrist_fk_l.rotate", 
                             "type": 8, 
                             "value": [
@@ -309,6 +430,17 @@
             "poses": {
                 "wristSwing_r_driver_poseInterpolatorShape.pose[0]": {
                     "controllers": {
+                        "wristSwing_r_driver_poseInterpolatorShape.pose[0].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "wrist_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
                         "wristSwing_r_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "wrist_fk_r.rotate", 
                             "type": 8, 
@@ -368,12 +500,12 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
                         "wristSwing_r_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
-                            "name": "wrist_fk_l.rotate", 
+                            "name": "wrist_fk_r.rotate", 
                             "type": 8, 
                             "value": [
                                 [
@@ -393,7 +525,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.5707964, 
+                                    -1.5707963267948966, 
                                     0.0
                                 ]
                             ]
@@ -405,7 +537,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -415,7 +547,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.5707964, 
+                                    -1.5707963267948966, 
                                     0.0
                                 ]
                             ]
@@ -427,7 +559,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }
@@ -442,7 +574,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -464,7 +596,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -486,7 +618,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }
@@ -501,7 +633,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -523,7 +655,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -534,7 +666,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -556,7 +688,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }
@@ -571,7 +703,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -582,7 +714,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -593,7 +725,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -615,7 +747,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -626,7 +758,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -652,7 +784,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -663,7 +795,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -685,7 +817,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -696,7 +828,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -707,7 +839,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -729,7 +861,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }
@@ -744,7 +876,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -777,7 +909,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -788,7 +920,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -799,7 +931,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -810,7 +942,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -821,7 +953,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -832,7 +964,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }
@@ -847,7 +979,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -858,7 +990,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -869,7 +1001,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -880,7 +1012,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -891,7 +1023,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -924,7 +1056,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -935,7 +1067,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -946,7 +1078,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }
@@ -972,7 +1104,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -983,7 +1115,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -994,7 +1126,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -1005,7 +1137,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -1016,7 +1148,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -1027,7 +1159,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -1038,7 +1170,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -1060,7 +1192,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }, 
@@ -1071,7 +1203,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    0.0
+                                    2.3561945
                                 ]
                             ]
                         }
@@ -2018,6 +2150,28 @@
                                 ]
                             ]
                         }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[1]": {
+                            "name": "shoulderSwing_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
                         "shoulder_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[1]": {
                             "name": "shoulderSwing_l.rotate", 
                             "type": 8, 
@@ -2054,6 +2208,28 @@
                                     0.0
                                 ]
                             ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[4].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[4].poseControllerData[1].poseControllerDataItem[1]": {
+                            "name": "shoulderSwing_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
                         }
                     }
                 }, 
@@ -2071,6 +2247,28 @@
                             ]
                         }, 
                         "shoulder_l_driver_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    1.5707964, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[5].poseControllerData[1].poseControllerDataItem[1]": {
+                            "name": "shoulderSwing_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[5].poseControllerData[1].poseControllerDataItem[0]": {
                             "name": "shoulder_fk_l.rotate", 
                             "type": 8, 
                             "value": [
@@ -2133,6 +2331,28 @@
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[7]": {
                     "controllers": {
+                        "shoulder_l_driver_poseInterpolatorShape.pose[7].poseControllerData[1].poseControllerDataItem[1]": {
+                            "name": "shoulderSwing_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[7].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    1.5707964
+                                ]
+                            ]
+                        }, 
                         "shoulder_l_driver_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[1]": {
                             "name": "shoulderSwing_l.rotate", 
                             "type": 8, 
@@ -2159,6 +2379,17 @@
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[8]": {
                     "controllers": {
+                        "shoulder_l_driver_poseInterpolatorShape.pose[8].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.78539819, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
                         "shoulder_l_driver_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "shoulder_fk_l.rotate", 
                             "type": 8, 
@@ -2180,11 +2411,33 @@
                                     0.0
                                 ]
                             ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[8].poseControllerData[1].poseControllerDataItem[1]": {
+                            "name": "shoulderSwing_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
                         }
                     }
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[9]": {
                     "controllers": {
+                        "shoulder_l_driver_poseInterpolatorShape.pose[9].poseControllerData[1].poseControllerDataItem[1]": {
+                            "name": "shoulderSwing_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
                         "shoulder_l_driver_poseInterpolatorShape.pose[9].poseControllerData[0].poseControllerDataItem[1]": {
                             "name": "shoulderSwing_l.rotate", 
                             "type": 8, 
@@ -2206,12 +2459,45 @@
                                     -0.78539819
                                 ]
                             ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[9].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -0.78539819
+                                ]
+                            ]
                         }
                     }
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[10]": {
                     "controllers": {
                         "shoulder_l_driver_poseInterpolatorShape.pose[10].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "shoulderSwing_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[10].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "shoulder_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.78539819
+                                ]
+                            ]
+                        }, 
+                        "shoulder_l_driver_poseInterpolatorShape.pose[10].poseControllerData[1].poseControllerDataItem[1]": {
                             "name": "shoulderSwing_l.rotate", 
                             "type": 8, 
                             "value": [
