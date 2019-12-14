@@ -57,7 +57,7 @@ for ctrl in mc.ls({armControls}):
     mc.setAttr(ctrl+".r", 0,0,0)
 
 rigrepo.libs.control.setPoseAttr(rigrepo.libs.control.getControls(), 1)
-rigrepo.libs.control.toPoseAttr(rigrepo.libs.control.getControls())
+rigrepo.libs.control.toPoseAttr(rigrepo.libs.control.getControls(), 1)
 '''
 
         # set the command to the attributes value

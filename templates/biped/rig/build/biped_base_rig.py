@@ -417,7 +417,7 @@ for mesh in mc.ls(["lip_main_bindmesh", "lip_bindmesh", "mouth_corner_bindmesh"]
         mouthBindGeometry.getAttributeByName('command').setValue(mouthBindGeometryCmd)
         mouth.addChildren([mouthBindGeometry])
         controlsDefaults = controlDefaultsNode.ControlDefaultsNode("control_defaults",
-                                armControls=["*shoulder","*elbow","*wrist"], 
+                                armControls=["shoulderSwing_?", "*shoulder","*elbow","*wrist"],
                                 armParams=["arm_?"])
         l_brow = rigrepo.parts.brow.Brow("l_brow", anchor="head_tip")
         r_brow = rigrepo.parts.brow.Brow("r_brow", side="r", anchor="head_tip")
