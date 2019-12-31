@@ -62,6 +62,9 @@ class AutoParent(part.Part):
         inputControls.reverse()
         for inputControl, i in zip(inputControls, xrange(len(inputControls))):
             mc.connectAttr(inputControl+'.matrix', addRotationMatrix+'.matrixIn[{}]'.format(i))
+        offset = mc.duplicate(inputControls[1], po=1, n=inputControls[0]+'_offset')[0]
+        mc.connectAttr(offset+'.inverseMatrix', addRotationMatrix+'.matrixIn[{}]'.format(2))
+
         addRotation = mc.createNode('decomposeMatrix', n=parentControl+'_addRotation_dcmpMatrix')
         mc.connectAttr(addRotationMatrix+'.matrixSum', addRotation+'.inputMatrix')
 

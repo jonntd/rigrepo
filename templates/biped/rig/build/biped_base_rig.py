@@ -167,7 +167,7 @@ space = mc.createNode('transform', n=orient+'_autoClav', p=space_grp)
 mc.parent(space_grp, parent)
 con = mc.orientConstraint('rig', space, mo=1)[0]
 mc.connectAttr(attr, con+'.rigW0')
-mc.connectAttr(space+'.matrix', add_matrix+'.matrixIn[2]')
+mc.connectAttr(space+'.matrix', add_matrix+'.matrixIn[3]')
         '''
         l_autoClavWorldDriver.getAttributeByName('command').setValue(side+autoClavWorldDriverCmd)
 
@@ -620,7 +620,7 @@ if mc.objExists(node):
                                                             target=["lid*_bindmesh", "lip*_bindmesh", "mouth*_bindmesh"],
                                                             deformerTypes = ["skinCluster"],
                                                             surfaceAssociation="closestPoint")
-        bindmeshTransferClusterBlinksNode = rigrepo.nodes.transferDeformer.TransferClusterBlinks('transferBlinkClusters', 
+        bindmeshTransferClusterBlinksNode = rigrepo.nodes.transferDeformer.TransferClusterBlinks('transferBlinkClusters',
                                                             source="body_geo")
         bindmeshTransferClusterLidsNode = rigrepo.nodes.transferDeformer.TransferClusterLids('transferLidsClusters', 
                                                             source="body_geo")
@@ -651,6 +651,13 @@ if mc.objExists(node):
         wiresToSkinClusterNode.disable()
         deliveryNode = self.getNodeByPath("|animRig|delivery")
         deliveryNode.addChild(wiresToSkinClusterNode, index=0)
+
+        # TEMP: Speed up face build
+        fastFace = True
+        if fastFace:
+            lipYankNode.disable()
+            bindmeshTransferClusterBlinksNode.disable()
+            bindmeshTransferClusterLidsNode.disable()
         
     
         # create a build node to put builds under.

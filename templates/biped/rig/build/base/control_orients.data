@@ -1,7 +1,7 @@
 {
     "type": "NodeData", 
     "user": "Matt", 
-    "time": "2019-09-05 17:24:48", 
+    "time": "2019-12-25 16:51:21", 
     "data": {
         "arm_ik_l_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_arm|l_arm_ikfk_grp|arm_ik_l_nul|arm_ik_l_ort", 
@@ -83,7 +83,7 @@
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_foot|ball_l_bind_fk_ctrl_nul|ball_l_bind_fk_ctrl_ort", 
             "translate": [
                 0.0, 
-                -2.647, 
+                -2.6471, 
                 5.3079
             ], 
             "rotate": [
@@ -101,8 +101,8 @@
         "ball_r_bind_fk_ctrl_ort": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_foot|ball_r_bind_fk_ctrl_nul|ball_r_bind_fk_ctrl_ort", 
             "translate": [
-                0.0, 
-                -2.647, 
+                -0.0, 
+                -2.6471, 
                 5.3079
             ], 
             "rotate": [
@@ -612,7 +612,7 @@
             "rotateOrder": 0
         }, 
         "clavicle_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -631,7 +631,7 @@
             "rotateOrder": 0
         }, 
         "clavicle_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -1665,7 +1665,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                45.0, 
                 0.0
             ], 
             "scale": [
@@ -1684,7 +1684,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                45.0, 
                 0.0
             ], 
             "scale": [
@@ -1703,7 +1703,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                41.125, 
                 0.0
             ], 
             "scale": [
@@ -1722,7 +1722,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                41.125, 
                 0.0
             ], 
             "scale": [
@@ -1741,7 +1741,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                34.9469, 
                 0.0
             ], 
             "scale": [
@@ -1760,7 +1760,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                34.9469, 
                 0.0
             ], 
             "scale": [
@@ -1779,7 +1779,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                17.1306, 
                 0.0
             ], 
             "scale": [
@@ -1798,7 +1798,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                17.1306, 
                 0.0
             ], 
             "scale": [
@@ -1817,7 +1817,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                41.125, 
                 0.0
             ], 
             "scale": [
@@ -1836,7 +1836,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                41.125, 
                 0.0
             ], 
             "scale": [
@@ -1855,7 +1855,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                34.9469, 
                 0.0
             ], 
             "scale": [
@@ -1874,7 +1874,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                34.9469, 
                 0.0
             ], 
             "scale": [
@@ -1893,7 +1893,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                17.1306, 
                 0.0
             ], 
             "scale": [
@@ -1912,7 +1912,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                17.1306, 
                 0.0
             ], 
             "scale": [
@@ -2026,7 +2026,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                48.5805, 
                 0.0
             ], 
             "scale": [
@@ -2064,7 +2064,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                48.5805, 
                 0.0
             ], 
             "scale": [
@@ -2102,7 +2102,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                41.125, 
                 0.0
             ], 
             "scale": [
@@ -2140,7 +2140,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                41.125, 
                 0.0
             ], 
             "scale": [
@@ -2178,7 +2178,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                34.9469, 
                 0.0
             ], 
             "scale": [
@@ -2216,7 +2216,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                34.9469, 
                 0.0
             ], 
             "scale": [
@@ -2254,7 +2254,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                17.1306, 
                 0.0
             ], 
             "scale": [
@@ -2292,7 +2292,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                17.1306, 
                 0.0
             ], 
             "scale": [
@@ -2349,7 +2349,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                41.125, 
                 0.0
             ], 
             "scale": [
@@ -2387,7 +2387,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                41.125, 
                 0.0
             ], 
             "scale": [
@@ -2425,7 +2425,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                34.9469, 
                 0.0
             ], 
             "scale": [
@@ -2463,7 +2463,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                34.9469, 
                 0.0
             ], 
             "scale": [
@@ -2501,7 +2501,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                17.1306, 
                 0.0
             ], 
             "scale": [
@@ -2539,7 +2539,7 @@
             ], 
             "rotate": [
                 0.0, 
-                0.0, 
+                17.1306, 
                 0.0
             ], 
             "scale": [
@@ -2786,11 +2786,11 @@
             ], 
             "rotate": [
                 0.0, 
-                -67.8628, 
+                67.8628, 
                 0.0
             ], 
             "scale": [
-                -1.0, 
+                1.0, 
                 1.0, 
                 1.0
             ], 
@@ -2801,7 +2801,7 @@
             "translate": [
                 0.0, 
                 0.0, 
-                0.0
+                -0.0
             ], 
             "rotate": [
                 0.0, 
@@ -2816,7 +2816,7 @@
             "rotateOrder": 0
         }, 
         "pelvis_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -2835,7 +2835,7 @@
             "rotateOrder": 0
         }, 
         "pelvis_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -3386,7 +3386,7 @@
             "rotateOrder": 0
         }, 
         "shoulderSwing_l_mirror_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -3405,16 +3405,16 @@
             "rotateOrder": 0
         }, 
         "shoulderSwing_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_mirror_ort|shoulderSwing_l_ort", 
             "translate": [
                 0.0, 
-                0.0, 
-                -0.0
+                -0.0, 
+                0.0
             ], 
             "rotate": [
-                0.0, 
-                0.0, 
-                0.0
+                0.0072, 
+                4.8123, 
+                0.1688
             ], 
             "scale": [
                 1.0, 
@@ -3424,7 +3424,7 @@
             "rotateOrder": 0
         }, 
         "shoulderSwing_r_mirror_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -3443,16 +3443,16 @@
             "rotateOrder": 0
         }, 
         "shoulderSwing_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|torso_nul|torso|chest_nul|chest|chest_ik_nul|chest_ik|chest_top_nul_length_input|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_mirror_ort|shoulderSwing_r_ort", 
             "translate": [
-                -0.0, 
                 0.0, 
-                0.0
+                -0.0, 
+                -0.0
             ], 
             "rotate": [
-                0.0, 
-                0.0, 
-                0.0
+                0.0072, 
+                4.8123, 
+                0.1688
             ], 
             "scale": [
                 1.0, 
@@ -3671,7 +3671,7 @@
             "rotateOrder": 0
         }, 
         "thighSwing_l_mirror_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_mirror_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_mirror_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -3690,7 +3690,7 @@
             "rotateOrder": 0
         }, 
         "thighSwing_l_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_mirror_ort|thighSwing_l_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_mirror_ort|thighSwing_l_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -3709,7 +3709,7 @@
             "rotateOrder": 0
         }, 
         "thighSwing_r_mirror_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_mirror_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_mirror_ort", 
             "translate": [
                 0.0, 
                 0.0, 
@@ -3728,7 +3728,7 @@
             "rotateOrder": 0
         }, 
         "thighSwing_r_ort": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_mirror_ort|thighSwing_r_ort", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_mirror_ort|thighSwing_r_ort", 
             "translate": [
                 0.0, 
                 0.0, 

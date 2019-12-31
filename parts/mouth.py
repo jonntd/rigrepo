@@ -162,16 +162,23 @@ class Mouth(part.Part):
             nodeDataObj = node_data.NodeData()
             nodeDataObj.read(orientFile)
 
+        driverMouthCorners = []
+        animMouthCorners = []
+        cornerControlHierarchyList = []
         for follicle in (mouthCorner_l_follicle, mouthCorner_r_follicle):
             parent = follicle
             controlName = follicle.split("_follicle")[0]
+            # Main mouth corner control
             # create the control with a large enough hierarchy to create proper SDK's
             ctrlHierarchy = control.create(name=controlName, 
                 controlType="square", 
                 hierarchy=['nul','ort', 'auto'], 
                 color=common.BLACK,
                 parent=parent)
+            cornerControlHierarchyList.append(ctrlHierarchy)
+            animMouthCorners.append(controlName)
             driverMouthCorner = mc.createNode("joint", name="{}_driver".format(controlName))
+            driverMouthCorners.append(driverMouthCorner)
             # mover the driver to the orient and parent it under the orient
             mc.parent(driverMouthCorner, ctrlHierarchy[1])
             #mc.xform(driverMouthCorner, ws=True, matrix=mc.xform(ctrlHierarchy[1], q=True, ws=True, matrix=True))
@@ -260,6 +267,18 @@ class Mouth(part.Part):
                                 cd="{}.t{}".format(driverMouthCorner,attr), v=10, dv=1)
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
                                 cd="{}.t{}".format(driverMouthCorner,attr), v=-10, dv=-1)
+
+        # Set driven keys to be post and pre infinity
+        driven_keys = mc.listConnections(driverMouthCorners[0], type='animCurveUL')
+        driven_keys += mc.listConnections(driverMouthCorners[1], type='animCurveUL')
+        driven_keys += mc.ls('lipMain_*_rot_def_auto*', type='animCurveUA')
+        for x in driven_keys:
+            mc.setAttr(x + '.preInfinity', 1)
+            mc.setAttr(x + '.postInfinity', 1)
+            mc.keyTangent(x, index=(0, 0), inTangentType='spline')
+            mc.keyTangent(x, index=(0, 0), outTangentType='spline')
+            mc.keyTangent(x, index=(2, 2), inTangentType='spline')
+            mc.keyTangent(x, index=(2, 2), outTangentType='spline')
 
         # control prefix for the lips
         controlPrefix = "lip"
@@ -384,6 +403,59 @@ class Mouth(part.Part):
             mc.connectAttr("{}.t".format(node), "{}_cluster_auto.t".format(node), f=True)
             mc.connectAttr("{}.r".format(node), "{}_cluster_ctrl.r".format(node), f=True)
             mc.connectAttr("{}.s".format(node), "{}_cluster_ctrl.s".format(node), f=True)
+
+        # Set the right side nuls to be mirrored
+        for ctrls in controlHieracrchyList + \
+                     lipMainControlHieracrchyList + \
+                     cornerControlHierarchyList:
+            nul = ctrls[0]
+            if nul.endswith('_r_nul'):
+                mc.setAttr(nul+'.ry', -180)
+                mc.setAttr(nul+'.sz', -1)
+
+        # Rig Sets
+        #
+        rigSets = 'RigSets'
+        if not mc.objExists(rigSets):
+            mc.sets(n=rigSets, empty=1)
+        mouthSet = mc.sets(n='Mouth', empty=1)
+        mc.sets(mouthSet, e=1, add=rigSets)
+        # Curves
+        mc.sets( ['lip_bindmesh', 'lip_main_bindmesh',
+                 lipCurve, lipMainCurve], e=1, add=mouthSet)
+
+        # Orient Sets
+        #
+        corner_set = mc.sets([x[1] for x in cornerControlHierarchyList], n='orients_MouthCorner')
+        main_set = mc.sets([x[1] for x in lipMainControlHieracrchyList], n='orients_lipMain')
+        tweak_set = mc.sets([x[1] for x in controlHieracrchyList], n='orients_lipTweakers')
+
+        mc.sets([main_set, tweak_set, corner_set], e=1, add=mouthSet)
+        # Driven Keys
+        #
+        driven_keys = mc.listConnections(driverMouthCorners[0], type='animCurveUL')
+        driven_keys += mc.listConnections(driverMouthCorners[1], type='animCurveUL')
+        for axis in ['X', 'Y', 'Z']:
+            d_keys = [n for n in driven_keys if 'translate' + axis in n]
+            d_set = mc.sets(d_keys, n='dkeys_T'+axis)
+            mc.sets(d_set, e=1, add=mouthSet)
+
+        # Rot Driven Keys
+        #
+        rot_def_auto = [x[2] for x in lipMainControlHieracrchyList]
+        rot_orient_keys = []
+        for rot in rot_def_auto:
+            driven_keys = mc.listConnections(rot, type='animCurveUA')
+            if driven_keys:
+                rot_orient_keys += driven_keys
+        rot_d_keys_set = mc.sets(rot_orient_keys, n='dkeys_RY')
+        mc.sets(rot_d_keys_set, e=1, add=mouthSet)
+
+        # Anim controls
+        #
+        animCtrls = animMouthCorners + [x[4] for x in controlHieracrchyList]
+        tweak_ctrl = mc.sets(animCtrls, n='anim')
+        mc.sets(tweak_ctrl, e=1, add=mouthSet)
 
     def __buildCurveRig(self, curve, name='lip', parent=None):
         '''
