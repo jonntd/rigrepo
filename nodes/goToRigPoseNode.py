@@ -68,12 +68,10 @@ try:
         mc.setAttr(deformer+".freezeGeometry", 1)
         
     # Doing lips again after because freezing other wires after seems to 
-    # be changing the results
-    for deformer in mc.ls('lip_main_wire'):
+    for deformer in mc.ls('lip_wire', 'lip_main_wire'):
         mc.setAttr(deformer+".freezeGeometry", 0)
         mc.refresh()
         mc.setAttr(deformer+".freezeGeometry", 1)
-        mc.refresh()
 
     # set poseAttr for freezing when rig is loaded.
     rigrepo.libs.control.setPoseAttr(controls, 9)

@@ -627,7 +627,6 @@ if mc.objExists(node):
         freezeWireNode = rigrepo.nodes.goToRigPoseNode.GoToFreezePoseNode('freezeWire')
         freezeWireExpression = rigrepo.nodes.utilNodes.FreezeWireExpressionNode("FreezeWireExpression")
 
-        freezeWireNode.addChild(freezeWireExpression)
 
         lipYankNode = rigrepo.nodes.yankClusterNode.YankClusterNode('WireToClusters',
                                                     clusters='[trs+"_cluster" for trs in mc.ls("lip_*.__control__", o=True)]',
@@ -651,6 +650,10 @@ if mc.objExists(node):
         wiresToSkinClusterNode.disable()
         deliveryNode = self.getNodeByPath("|animRig|delivery")
         deliveryNode.addChild(wiresToSkinClusterNode, index=0)
+
+        # This must be at the end of the build
+        applyNode.addChild(freezeWireNode)
+        freezeWireNode.addChild(freezeWireExpression)
 
         # TEMP: Speed up face build
         fastFace = True
