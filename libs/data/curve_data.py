@@ -5,7 +5,6 @@ import rigrepo.libs.data.node_data as node_data
 import rigrepo.libs.curve as curve
 import rigrepo.libs.common as common
 from collections import OrderedDict
-from pxr import Usd, UsdGeom
 import maya.cmds as mc
 
 class CurveData(node_data.NodeData):
