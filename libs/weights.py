@@ -285,7 +285,7 @@ def importWeights(geometry, deformer, filepath):
         mc.warning("couldn't apply {} to {}".format(filename, deformer))
 
 
-def applyWtsDir(directory):
+def applyWtsDir(directory, includeFilter=None, excludeFilter=None):
     '''
     This function will take a directory with properly named weight files,
     i.e.(geometryName__deformerName.xml), and apply them if both the deformer and geometry
@@ -303,11 +303,21 @@ def applyWtsDir(directory):
     # Check to see if the directory past into this function exists.
     if os.path.isdir(directory):
         # loop through all of the files in the directory and make sure they're weights files.
+        skippedFiles =  ''
+        loadedFiles = ''
         for filename in os.listdir(directory):
             filepath = os.path.join(directory, filename)
             fileSplit = filename.split("__")
             if ".xml" != os.path.splitext(filepath)[-1]:
                 continue
+            if includeFilter != '':
+                if includeFilter not in filename:
+                    skippedFiles+=('Load filter skipped: ' + filename + '\r')
+                    continue
+            if excludeFilter != '':
+                if excludeFilter in filename:
+                    skippedFiles+=('Load filter skipped: ' + filename + '\r')
+                    continue
             # get the geometry, deformer, and deformerType from the file name.
             geometry = fileSplit[0]
             deformer = fileSplit[1].split(".")[0]
@@ -345,3 +355,9 @@ def applyWtsDir(directory):
             # this ensures that our skinCluster is normalized. 
             if deformerType == "skinCluster":
                 mc.skinCluster(deformer, e=True, fnw=True)
+
+            loadedFiles+=('Loaded: ' + filename + '\r')
+
+        # Prints
+        print(skippedFiles)
+        print(loadedFiles)

@@ -615,7 +615,7 @@ if mc.objExists(node):
         applyNode.addChild(controlsDefaults)
 
         applyDeformerNode = applyNode.getChild('deformers')
-        bindmeshTransferSkinWtsNode = rigrepo.nodes.transferDeformer.TransferDeformerBindmesh('bindmesh', 
+        bindmeshTransferSkinWtsNode = rigrepo.nodes.transferDeformer.TransferDeformerBindmesh('bindmeshAuto',
                                                             source="body_geo",
                                                             target=["lid*_bindmesh", "lip*_bindmesh", "mouth*_bindmesh"],
                                                             deformerTypes = ["skinCluster"],

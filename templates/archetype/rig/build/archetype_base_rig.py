@@ -32,13 +32,30 @@ class ArchetypeBaseRig(pubs.pGraph.PGraph):
 
         # New Scene
         newSceneNode = rigrepo.nodes.newSceneNode.NewSceneNode('newScene')
-        
+
+        # Rig Sets
+        rigSetsNode = rigrepo.nodes.commandNode.CommandNode('rigSets')
+        cmd = """
+import maya.cmds as mc
+mc.sets(empty=1, n='RigSets')
+        """
+        rigSetsNode.getAttributeByName('command').setValue(cmd)
+
         # Load
         loadNode = pubs.pNode.PNode('load')
 
+        # Load Model
         modelFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("model", 
             filePath=self.resolveModelFilePath(self.variant))
-        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton", 
+        # Add model geo to RigSets
+        modelFileCMD = modelFileNode.getAttributeByName('command').getValue()
+        cmd = '''
+if mc.objExists('RigSets') & mc.objExists('model'):
+    mc.sets('model', add='RigSets')
+        '''
+        modelFileNode.getAttributeByName('command').setValue(modelFileCMD+cmd)
+
+        skeletonFileNode = rigrepo.nodes.loadFileNode.LoadFileNode("skeleton",
                 filePath=self.resolveDataFilePath('skeleton.ma', self.variant))
         jointDataNode = rigrepo.nodes.importDataNode.ImportDataNode('jointPositions', 
                 dataFile=self.resolveDataFilePath('joint_positions.data', self.variant), 
@@ -124,12 +141,15 @@ if mc.objExists('trs_shot'):
                 apply=True)
 
         skinWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("skinCluster", 
-            dirPath=self.resolveDirPath('skin_wts', self.variant))
+            dirPath=self.resolveDirPath('skin_wts', self.variant), excludeFilter='_bindmesh')
+
+        bindmeshWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("bindmeshLoad",
+                                                                      dirPath=self.resolveDirPath('skin_wts', self.variant), includeFilter='_bindmesh')
 
         deltaMushWtsFileNode = rigrepo.nodes.loadWtsDirNode.LoadWtsDirNode("deltaMush", 
             dirPath=self.resolveDirPath('deltaMush_wts', self.variant))
         applyNode.addChildren([deformersNode, importDeformerDataNode, importSdkDataNode])
-        deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, clusterWtsFileNode, importPSDSystemNode, deltaMushWtsFileNode])
+        deformersNode.addChildren([skinWtsFileNode, wireWtsFileNode, clusterWtsFileNode, importPSDSystemNode, deltaMushWtsFileNode, bindmeshWtsFileNode])
 
         importNodeEditorBookmarsNode = rigrepo.nodes.importNodeEditorBookmarksNode.ImportNodeEditorBookmarksNode("bookmarks",
             dirPath=self.resolveDirPath('bookmarks', self.variant))
@@ -204,7 +224,7 @@ for node in mc.ls("*"):
 
         deliveryNode.addChildren([localizeNode, lockNode, hideHistoryNode])
 
-        animRigNode.addChildren([newSceneNode, loadNode, postBuild, applyNode, deliveryNode, importNodeEditorBookmarsNode, frameNode])
+        animRigNode.addChildren([newSceneNode, rigSetsNode, loadNode, postBuild, applyNode, deliveryNode, importNodeEditorBookmarsNode, frameNode])
 
 
         # --------------------------------------------------------------------------------------------------------------

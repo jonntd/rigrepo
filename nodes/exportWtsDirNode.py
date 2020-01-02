@@ -53,10 +53,11 @@ print('\\nexported '+str(len(sc_nodes))+' skinClusters'),
 
 
 class ExportWtsDirNode(ExportSkinWtsDirNode):   
-    def __init__(self, name, parent=None, dirPath="/disk1/temp", deformerType="cluster", excludeNodes='[]'):
+    def __init__(self, name, parent=None, dirPath="/disk1/temp", deformerType="cluster", excludeNodes='[]', includeNodes='[]'):
         super(ExportWtsDirNode, self).__init__(name, parent, dirPath)
         self.addAttribute('deformerType', deformerType, attrType=str, index=1)
         self.addAttribute('excludeNodes', excludeNodes, attrType=str, index=2)
+        self.addAttribute('includeNodes', includeNodes, attrType=str, index=3)
         commandAttribute = self.getAttributeByName('command')
         cmd = '''
 import rigrepo.libs.weights
@@ -70,6 +71,8 @@ if mc.objExists(model_grp):
         deformer_nodes.extend(mc.ls(mc.listHistory(mesh, pdo=True, il=True), type="{deformerType}"))
     if {excludeNodes}:
         deformer_nodes = list(set(deformer_nodes).difference(set({excludeNodes})))
+    if {includeNodes}:
+        deformer_nodes = list(set(deformer_nodes).intersection(set({includeNodes})))
     for deformer in deformer_nodes:
         geo = mc.ls(list(set(mc.deformer(deformer, g=True, q=True)).intersection(set(meshes))))
         if geo:
@@ -77,7 +80,7 @@ if mc.objExists(model_grp):
             print('exporting ' + deformer)
             rigrepo.libs.weights.exportWeights(geo, deformer, "{dirPath}")
 
-    print('\\nexported '+str(len(deformer_nodes))+"{deformerType}"+' deformers')
+    print('\\nexported '+str(len(deformer_nodes))+" {deformerType}"+' deformers')
 '''
         # command 
         commandAttribute.setValue(cmd)
@@ -88,6 +91,8 @@ if mc.objExists(model_grp):
         dirPath = self.getAttributeByName("dirPath").getValue()
         deformerType = self.getAttributeByName("deformerType").getValue()
         excludeNodes = eval(self.getAttributeByName("excludeNodes").getValue())
+        includeNodes = eval(self.getAttributeByName("includeNodes").getValue())
         exec(self.getAttributeByName('command').getValue().format(dirPath=dirPath,
                                                                 deformerType=deformerType,
-                                                                excludeNodes=excludeNodes))
+                                                                excludeNodes=excludeNodes,
+                                                                includeNodes=includeNodes))
