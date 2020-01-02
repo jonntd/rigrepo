@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<deformerWeight>
+  <headerInfo fileName="C:/Users/Matt/Desktop/shows/template/collections/rigrepo/templates/biped/rig/build/base/skin_wts/lip_main_bindmesh__lip_main_bindmesh_skinCluster.xml"/>
+  <shape name="lip_main_bindmeshShape" group="4088" stride="3" size="64" max="64" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ">
+    <point index="0" value=" 0.453900 59.196602 4.028300"/>
+    <point index="1" value=" 0.473900 59.196602 4.028300"/>
+    <point index="2" value=" 0.453900 59.196602 4.008300"/>
+    <point index="3" value=" 0.473900 59.196602 4.008300"/>
+    <point index="4" value=" -0.010000 59.209000 4.199400"/>
+    <point index="5" value=" 0.010000 59.209000 4.199400"/>
+    <point index="6" value=" -0.010000 59.209000 4.179400"/>
+    <point index="7" value=" 0.010000 59.209000 4.179400"/>
+    <point index="8" value=" -0.473900 59.196602 4.028300"/>
+    <point index="9" value=" -0.453900 59.196602 4.028300"/>
+    <point index="10" value=" -0.473900 59.196602 4.008300"/>
+    <point index="11" value=" -0.453900 59.196602 4.008300"/>
+    <point index="12" value=" -0.911000 59.190701 3.745300"/>
+    <point index="13" value=" -0.891000 59.190701 3.745300"/>
+    <point index="14" value=" -0.911000 59.190701 3.725300"/>
+    <point index="15" value=" -0.891000 59.190701 3.725300"/>
+    <point index="16" value=" -1.189900 59.176399 3.497700"/>
+    <point index="17" value=" -1.169900 59.176399 3.497700"/>
+    <point index="18" value=" -1.189900 59.176399 3.477700"/>
+    <point index="19" value=" -1.169900 59.176399 3.477700"/>
+    <point index="20" value=" -1.443800 59.146500 3.231300"/>
+    <point index="21" value=" -1.423800 59.146500 3.231300"/>
+    <point index="22" value=" -1.443800 59.146500 3.211300"/>
+    <point index="23" value=" -1.423800 59.146500 3.211300"/>
+    <point index="24" value=" -1.179800 59.082100 3.479800"/>
+    <point index="25" value=" -1.159800 59.082100 3.479800"/>
+    <point index="26" value=" -1.179800 59.082100 3.459800"/>
+    <point index="27" value=" -1.159800 59.082100 3.459800"/>
+    <point index="28" value=" -0.906900 59.066200 3.718500"/>
+    <point index="29" value=" -0.886900 59.066200 3.718500"/>
+    <point index="30" value=" -0.906900 59.066200 3.698500"/>
+    <point index="31" value=" -0.886900 59.066200 3.698500"/>
+    <point index="32" value=" -0.473900 59.036098 3.963600"/>
+    <point index="33" value=" -0.453900 59.036098 3.963600"/>
+    <point index="34" value=" -0.473900 59.036098 3.943600"/>
+    <point index="35" value=" -0.453900 59.036098 3.943600"/>
+    <point index="36" value=" -0.010000 59.023201 4.042800"/>
+    <point index="37" value=" 0.010000 59.023201 4.042800"/>
+    <point index="38" value=" -0.010000 59.023201 4.022800"/>
+    <point index="39" value=" 0.010000 59.023201 4.022800"/>
+    <point index="40" value=" 0.453900 59.036098 3.963600"/>
+    <point index="41" value=" 0.473900 59.036098 3.963600"/>
+    <point index="42" value=" 0.453900 59.036098 3.943600"/>
+    <point index="43" value=" 0.473900 59.036098 3.943600"/>
+    <point index="44" value=" 0.886900 59.066200 3.718500"/>
+    <point index="45" value=" 0.906900 59.066200 3.718500"/>
+    <point index="46" value=" 0.886900 59.066200 3.698500"/>
+    <point index="47" value=" 0.906900 59.066200 3.698500"/>
+    <point index="48" value=" 1.159800 59.082100 3.479800"/>
+    <point index="49" value=" 1.179800 59.082100 3.479800"/>
+    <point index="50" value=" 1.159800 59.082100 3.459800"/>
+    <point index="51" value=" 1.179800 59.082100 3.459800"/>
+    <point index="52" value=" 1.423800 59.146500 3.231300"/>
+    <point index="53" value=" 1.443800 59.146500 3.231300"/>
+    <point index="54" value=" 1.423800 59.146500 3.211300"/>
+    <point index="55" value=" 1.443800 59.146500 3.211300"/>
+    <point index="56" value=" 1.169900 59.176399 3.497700"/>
+    <point index="57" value=" 1.189900 59.176399 3.497700"/>
+    <point index="58" value=" 1.169900 59.176399 3.477700"/>
+    <point index="59" value=" 1.189900 59.176399 3.477700"/>
+    <point index="60" value=" 0.891000 59.190701 3.745300"/>
+    <point index="61" value=" 0.911000 59.190701 3.745300"/>
+    <point index="62" value=" 0.891000 59.190701 3.725300"/>
+    <point index="63" value=" 0.911000 59.190701 3.725300"/>
+  </shape>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ankleTwist_l_bind" shape="lip_main_bindmeshShape" layer="0" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ankleTwist_r_bind" shape="lip_main_bindmeshShape" layer="1" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ankle_l_bind" shape="lip_main_bindmeshShape" layer="2" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ankle_r_bind" shape="lip_main_bindmeshShape" layer="3" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ball_l_bind" shape="lip_main_bindmeshShape" layer="4" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ball_r_bind" shape="lip_main_bindmeshShape" layer="5" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="chest_bind" shape="lip_main_bindmeshShape" layer="6" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="clavicle_l_bind" shape="lip_main_bindmeshShape" layer="7" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="clavicle_r_bind" shape="lip_main_bindmeshShape" layer="8" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="elbow_l_bind" shape="lip_main_bindmeshShape" layer="9" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="elbow_r_bind" shape="lip_main_bindmeshShape" layer="10" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="eyeSocket_l_bind" shape="lip_main_bindmeshShape" layer="11" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="eyeSocket_r_bind" shape="lip_main_bindmeshShape" layer="12" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="eye_l_bind" shape="lip_main_bindmeshShape" layer="13" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="eye_r_bind" shape="lip_main_bindmeshShape" layer="14" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="hips_bind" shape="lip_main_bindmeshShape" layer="15" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_001_l_bind" shape="lip_main_bindmeshShape" layer="16" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_001_r_bind" shape="lip_main_bindmeshShape" layer="17" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_002_l_bind" shape="lip_main_bindmeshShape" layer="18" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_002_r_bind" shape="lip_main_bindmeshShape" layer="19" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_003_l_bind" shape="lip_main_bindmeshShape" layer="20" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_003_r_bind" shape="lip_main_bindmeshShape" layer="21" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_004_l_bind" shape="lip_main_bindmeshShape" layer="22" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_004_r_bind" shape="lip_main_bindmeshShape" layer="23" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_005_l_bind" shape="lip_main_bindmeshShape" layer="24" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="index_005_r_bind" shape="lip_main_bindmeshShape" layer="25" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="knee_l_bind" shape="lip_main_bindmeshShape" layer="26" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="knee_r_bind" shape="lip_main_bindmeshShape" layer="27" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_001_l_bind" shape="lip_main_bindmeshShape" layer="28" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_001_r_bind" shape="lip_main_bindmeshShape" layer="29" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_002_l_bind" shape="lip_main_bindmeshShape" layer="30" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_002_r_bind" shape="lip_main_bindmeshShape" layer="31" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_003_l_bind" shape="lip_main_bindmeshShape" layer="32" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_003_r_bind" shape="lip_main_bindmeshShape" layer="33" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_004_l_bind" shape="lip_main_bindmeshShape" layer="34" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_004_r_bind" shape="lip_main_bindmeshShape" layer="35" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_005_l_bind" shape="lip_main_bindmeshShape" layer="36" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="middle_005_r_bind" shape="lip_main_bindmeshShape" layer="37" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="neck_0_bind" shape="lip_main_bindmeshShape" layer="38" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="neck_1_bind" shape="lip_main_bindmeshShape" layer="39" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="neck_2_bind" shape="lip_main_bindmeshShape" layer="40" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="neck_3_bind" shape="lip_main_bindmeshShape" layer="41" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pelvis_l_bind" shape="lip_main_bindmeshShape" layer="42" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pelvis_r_bind" shape="lip_main_bindmeshShape" layer="43" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinkyCup_l_bind" shape="lip_main_bindmeshShape" layer="44" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinkyCup_r_bind" shape="lip_main_bindmeshShape" layer="45" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_001_l_bind" shape="lip_main_bindmeshShape" layer="46" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_001_r_bind" shape="lip_main_bindmeshShape" layer="47" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_002_l_bind" shape="lip_main_bindmeshShape" layer="48" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_002_r_bind" shape="lip_main_bindmeshShape" layer="49" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_003_l_bind" shape="lip_main_bindmeshShape" layer="50" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_003_r_bind" shape="lip_main_bindmeshShape" layer="51" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_004_l_bind" shape="lip_main_bindmeshShape" layer="52" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_004_r_bind" shape="lip_main_bindmeshShape" layer="53" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_005_l_bind" shape="lip_main_bindmeshShape" layer="54" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="pinky_005_r_bind" shape="lip_main_bindmeshShape" layer="55" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_001_l_bind" shape="lip_main_bindmeshShape" layer="56" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_001_r_bind" shape="lip_main_bindmeshShape" layer="57" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_002_l_bind" shape="lip_main_bindmeshShape" layer="58" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_002_r_bind" shape="lip_main_bindmeshShape" layer="59" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_003_l_bind" shape="lip_main_bindmeshShape" layer="60" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_003_r_bind" shape="lip_main_bindmeshShape" layer="61" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_004_l_bind" shape="lip_main_bindmeshShape" layer="62" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_004_r_bind" shape="lip_main_bindmeshShape" layer="63" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_005_l_bind" shape="lip_main_bindmeshShape" layer="64" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="ring_005_r_bind" shape="lip_main_bindmeshShape" layer="65" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="shoulderNoTwist_l_bind" shape="lip_main_bindmeshShape" layer="66" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="shoulderNoTwist_r_bind" shape="lip_main_bindmeshShape" layer="67" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="shoulder_l_bind" shape="lip_main_bindmeshShape" layer="68" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="shoulder_r_bind" shape="lip_main_bindmeshShape" layer="69" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="skull_bind" shape="lip_main_bindmeshShape" layer="70" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="spine_0_bind" shape="lip_main_bindmeshShape" layer="71" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="spine_1_bind" shape="lip_main_bindmeshShape" layer="72" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="spine_2_bind" shape="lip_main_bindmeshShape" layer="73" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="spine_3_bind" shape="lip_main_bindmeshShape" layer="74" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="spine_4_bind" shape="lip_main_bindmeshShape" layer="75" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="spine_5_bind" shape="lip_main_bindmeshShape" layer="76" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thighNoTwist_l_bind" shape="lip_main_bindmeshShape" layer="77" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thigh_l_bind" shape="lip_main_bindmeshShape" layer="78" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thigh_r_bind" shape="lip_main_bindmeshShape" layer="79" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumbCup_l_bind" shape="lip_main_bindmeshShape" layer="80" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumbCup_r_bind" shape="lip_main_bindmeshShape" layer="81" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumb_001_l_bind" shape="lip_main_bindmeshShape" layer="82" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumb_001_r_bind" shape="lip_main_bindmeshShape" layer="83" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumb_002_l_bind" shape="lip_main_bindmeshShape" layer="84" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumb_002_r_bind" shape="lip_main_bindmeshShape" layer="85" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumb_003_l_bind" shape="lip_main_bindmeshShape" layer="86" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumb_003_r_bind" shape="lip_main_bindmeshShape" layer="87" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumb_004_l_bind" shape="lip_main_bindmeshShape" layer="88" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="thumb_004_r_bind" shape="lip_main_bindmeshShape" layer="89" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="toe_l_bind" shape="lip_main_bindmeshShape" layer="90" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="toe_r_bind" shape="lip_main_bindmeshShape" layer="91" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="wristTwist_l_bind" shape="lip_main_bindmeshShape" layer="92" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="wristTwist_r_bind" shape="lip_main_bindmeshShape" layer="93" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="wrist_l_bind" shape="lip_main_bindmeshShape" layer="94" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="wrist_r_bind" shape="lip_main_bindmeshShape" layer="95" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="jaw_bind" shape="lip_main_bindmeshShape" layer="96" defaultValue="0.000" size="64" max="63">
+    <point index="0" value="0.060"/>
+    <point index="1" value="0.060"/>
+    <point index="2" value="0.060"/>
+    <point index="3" value="0.060"/>
+    <point index="4" value="0.004"/>
+    <point index="5" value="0.004"/>
+    <point index="6" value="0.004"/>
+    <point index="7" value="0.004"/>
+    <point index="8" value="0.060"/>
+    <point index="9" value="0.060"/>
+    <point index="10" value="0.060"/>
+    <point index="11" value="0.060"/>
+    <point index="12" value="0.243"/>
+    <point index="13" value="0.243"/>
+    <point index="14" value="0.243"/>
+    <point index="15" value="0.243"/>
+    <point index="16" value="0.373"/>
+    <point index="17" value="0.373"/>
+    <point index="18" value="0.373"/>
+    <point index="19" value="0.373"/>
+    <point index="20" value="0.489"/>
+    <point index="21" value="0.489"/>
+    <point index="22" value="0.489"/>
+    <point index="23" value="0.489"/>
+    <point index="24" value="0.648"/>
+    <point index="25" value="0.648"/>
+    <point index="26" value="0.648"/>
+    <point index="27" value="0.648"/>
+    <point index="28" value="0.869"/>
+    <point index="29" value="0.869"/>
+    <point index="30" value="0.869"/>
+    <point index="31" value="0.869"/>
+    <point index="32" value="0.987"/>
+    <point index="33" value="0.987"/>
+    <point index="34" value="0.987"/>
+    <point index="35" value="0.987"/>
+    <point index="36" value="1.000"/>
+    <point index="37" value="1.000"/>
+    <point index="38" value="1.000"/>
+    <point index="39" value="1.000"/>
+    <point index="40" value="0.987"/>
+    <point index="41" value="0.987"/>
+    <point index="42" value="0.987"/>
+    <point index="43" value="0.987"/>
+    <point index="44" value="0.869"/>
+    <point index="45" value="0.869"/>
+    <point index="46" value="0.869"/>
+    <point index="47" value="0.869"/>
+    <point index="48" value="0.648"/>
+    <point index="49" value="0.648"/>
+    <point index="50" value="0.648"/>
+    <point index="51" value="0.648"/>
+    <point index="52" value="0.489"/>
+    <point index="53" value="0.489"/>
+    <point index="54" value="0.489"/>
+    <point index="55" value="0.489"/>
+    <point index="56" value="0.373"/>
+    <point index="57" value="0.373"/>
+    <point index="58" value="0.373"/>
+    <point index="59" value="0.373"/>
+    <point index="60" value="0.243"/>
+    <point index="61" value="0.243"/>
+    <point index="62" value="0.243"/>
+    <point index="63" value="0.243"/>
+  </weights>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="nose_bind" shape="lip_main_bindmeshShape" layer="97" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="nose_bridge_bind" shape="lip_main_bindmeshShape" layer="98" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="face_mid_bind" shape="lip_main_bindmeshShape" layer="99" defaultValue="0.000" size="52" max="63">
+    <point index="0" value="0.933"/>
+    <point index="1" value="0.933"/>
+    <point index="2" value="0.933"/>
+    <point index="3" value="0.933"/>
+    <point index="4" value="0.996"/>
+    <point index="5" value="0.996"/>
+    <point index="6" value="0.996"/>
+    <point index="7" value="0.996"/>
+    <point index="8" value="0.933"/>
+    <point index="9" value="0.933"/>
+    <point index="10" value="0.933"/>
+    <point index="11" value="0.933"/>
+    <point index="12" value="0.706"/>
+    <point index="13" value="0.706"/>
+    <point index="14" value="0.706"/>
+    <point index="15" value="0.706"/>
+    <point index="16" value="0.482"/>
+    <point index="17" value="0.482"/>
+    <point index="18" value="0.482"/>
+    <point index="19" value="0.482"/>
+    <point index="20" value="0.167"/>
+    <point index="21" value="0.167"/>
+    <point index="22" value="0.167"/>
+    <point index="23" value="0.167"/>
+    <point index="24" value="0.210"/>
+    <point index="25" value="0.210"/>
+    <point index="26" value="0.210"/>
+    <point index="27" value="0.210"/>
+    <point index="28" value="0.066"/>
+    <point index="29" value="0.066"/>
+    <point index="30" value="0.066"/>
+    <point index="31" value="0.066"/>
+    <point index="44" value="0.066"/>
+    <point index="45" value="0.066"/>
+    <point index="46" value="0.066"/>
+    <point index="47" value="0.066"/>
+    <point index="48" value="0.210"/>
+    <point index="49" value="0.210"/>
+    <point index="50" value="0.210"/>
+    <point index="51" value="0.210"/>
+    <point index="52" value="0.167"/>
+    <point index="53" value="0.167"/>
+    <point index="54" value="0.167"/>
+    <point index="55" value="0.167"/>
+    <point index="56" value="0.482"/>
+    <point index="57" value="0.482"/>
+    <point index="58" value="0.482"/>
+    <point index="59" value="0.482"/>
+    <point index="60" value="0.706"/>
+    <point index="61" value="0.706"/>
+    <point index="62" value="0.706"/>
+    <point index="63" value="0.706"/>
+  </weights>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="face_lower_bind" shape="lip_main_bindmeshShape" layer="100" defaultValue="0.000" size="56" max="63">
+    <point index="0" value="0.007"/>
+    <point index="1" value="0.007"/>
+    <point index="2" value="0.007"/>
+    <point index="3" value="0.007"/>
+    <point index="8" value="0.007"/>
+    <point index="9" value="0.007"/>
+    <point index="10" value="0.007"/>
+    <point index="11" value="0.007"/>
+    <point index="12" value="0.051"/>
+    <point index="13" value="0.051"/>
+    <point index="14" value="0.051"/>
+    <point index="15" value="0.051"/>
+    <point index="16" value="0.145"/>
+    <point index="17" value="0.145"/>
+    <point index="18" value="0.145"/>
+    <point index="19" value="0.145"/>
+    <point index="20" value="0.344"/>
+    <point index="21" value="0.344"/>
+    <point index="22" value="0.344"/>
+    <point index="23" value="0.344"/>
+    <point index="24" value="0.142"/>
+    <point index="25" value="0.142"/>
+    <point index="26" value="0.142"/>
+    <point index="27" value="0.142"/>
+    <point index="28" value="0.065"/>
+    <point index="29" value="0.065"/>
+    <point index="30" value="0.065"/>
+    <point index="31" value="0.065"/>
+    <point index="32" value="0.013"/>
+    <point index="33" value="0.013"/>
+    <point index="34" value="0.013"/>
+    <point index="35" value="0.013"/>
+    <point index="40" value="0.013"/>
+    <point index="41" value="0.013"/>
+    <point index="42" value="0.013"/>
+    <point index="43" value="0.013"/>
+    <point index="44" value="0.065"/>
+    <point index="45" value="0.065"/>
+    <point index="46" value="0.065"/>
+    <point index="47" value="0.065"/>
+    <point index="48" value="0.142"/>
+    <point index="49" value="0.142"/>
+    <point index="50" value="0.142"/>
+    <point index="51" value="0.142"/>
+    <point index="52" value="0.344"/>
+    <point index="53" value="0.344"/>
+    <point index="54" value="0.344"/>
+    <point index="55" value="0.344"/>
+    <point index="56" value="0.145"/>
+    <point index="57" value="0.145"/>
+    <point index="58" value="0.145"/>
+    <point index="59" value="0.145"/>
+    <point index="60" value="0.051"/>
+    <point index="61" value="0.051"/>
+    <point index="62" value="0.051"/>
+    <point index="63" value="0.051"/>
+  </weights>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="face_upper_bind" shape="lip_main_bindmeshShape" layer="101" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="head_tip_bind" shape="lip_main_bindmeshShape" layer="102" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="brow_inner_l_bind" shape="lip_main_bindmeshShape" layer="103" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="brow_main_l_bind" shape="lip_main_bindmeshShape" layer="104" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="brow_peak_l_bind" shape="lip_main_bindmeshShape" layer="105" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="brow_inner_r_bind" shape="lip_main_bindmeshShape" layer="106" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="brow_main_r_bind" shape="lip_main_bindmeshShape" layer="107" defaultValue="0.000" size="0" max="0"/>
+  <weights deformer="lip_main_bindmesh_skinCluster" source="brow_peak_r_bind" shape="lip_main_bindmeshShape" layer="108" defaultValue="0.000" size="0" max="0"/>
+</deformerWeight>
