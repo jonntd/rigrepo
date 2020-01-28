@@ -240,6 +240,10 @@ def getMirrorName(name):
         mirror = name.replace('left', 'right')
     elif 'right' in name:
         mirror = name.replace('right', 'left')
+    elif name.startswith('l_'):
+        mirror = name.replace('l_', 'r_')
+    elif name.startswith('r_'):
+        mirror = name.replace('r_', 'l_')
     return mirror
 
 def getSideToken(name):
@@ -260,7 +264,11 @@ def getSideToken(name):
         token = 'l'
     elif '_r.' in name:
         token = 'r'
-    
+    elif name.startswith('l_'):
+        token = 'l'
+    elif name.startswith('r_'):
+        token = 'r'
+
     return token
 
 def getIndex(name):

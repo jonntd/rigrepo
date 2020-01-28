@@ -13,6 +13,7 @@ import rigrepo.nodes.mirrorWiresNode
 import rigrepo.nodes.zeroJointsNode
 import rigrepo.nodes.labelJointsForMirroringNode
 import rigrepo.nodes.loadFileNode
+import rigrepo.nodes.mirrorDeformerNode
 import maya.cmds as mc
 from rigrepo.libs.fileIO import joinPath 
 import os
@@ -341,6 +342,9 @@ for node in mc.ls("*"):
         mirrorWireCurveNode = rigrepo.nodes.mirrorWiresNode.MirrorWiresNode('wireCurves')
         mirrorJointsNode = rigrepo.nodes.mirrorJointsNode.MirrorJointsNode('joints')
         mirrorSkinClusterNode = rigrepo.nodes.mirrorSkinClusterNode.MirrorSkinClusterNode('skinClusterSelected')
+        mirrorWireDeformerNode = rigrepo.nodes.mirrorDeformerNode.MirrorDeformerNode('wireDeformer', deformerType='wire')
+        mirrorClusterNode = rigrepo.nodes.mirrorDeformerNode.MirrorDeformerNode('clusters', deformerType='cluster')
+        #mirrorBlendShapeNode = rigrepo.nodes.mirrorDeformerNode.MirrorDeformerNode('blendShapes', deformerType='blendShape')
         mirrorPSDNode = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psdSystems', action='system')
         mirrorOrients = rigrepo.nodes.commandNode.CommandNode('orients')
         mirrorOrientsCmd = '''
@@ -364,7 +368,15 @@ currentData.applyData(data.keys())
         mirrorSDKNode.getAttributeByName('command').setValue(mirrorSDKCmd)
         #mirrorOrients = rigrepo.nodes.mirrorPSDNode.MirrorPSDNode('psd')
         # --------------------------------------------------------------------------------------------------------------
-        mirroring.addChildren([mirrorControlCurveNode, mirrorWireCurveNode, mirrorJointsNode, mirrorSkinClusterNode, mirrorOrients, mirrorPSDNode, mirrorSDKNode])
+        mirroring.addChildren([mirrorControlCurveNode,
+                               mirrorWireCurveNode,
+                               mirrorJointsNode,
+                               mirrorSkinClusterNode,
+                               mirrorWireDeformerNode,
+                               mirrorClusterNode,
+                               mirrorOrients,
+                               mirrorPSDNode,
+                               mirrorSDKNode])
 
         # --------------------------------------------------------------------------------------------------------------
         # Workflow nodes grouped by type

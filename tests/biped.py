@@ -171,6 +171,8 @@ import rigrepo.nodes.importAnimationNode
 reload(rigrepo.nodes.importAnimationNode)
 import rigrepo.nodes.wiresToSkinClusterNode
 reload(rigrepo.nodes.wiresToSkinClusterNode)
+import rigrepo.nodes.mirrorDeformerNode
+reload(rigrepo.nodes.mirrorDeformerNode)
 
 
 # reload parts

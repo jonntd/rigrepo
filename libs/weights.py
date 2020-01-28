@@ -69,7 +69,18 @@ def setWeights(deformer, weights, mapList=None, geometry=None):
         if geometry:
             geometryindex = mc.cluster(deformer,q=True, geometry=True).index(geoDagPath.partialPathName())
         for pntIndex, value in enumerate(weightList[0]):
-            mc.setAttr('{}.wl[{}].w[{}]'.format(deformer, geometryindex, pntIndex), value) 
+            mc.setAttr('{}.wl[{}].w[{}]'.format(deformer, geometryindex, pntIndex), value)
+
+    if mc.nodeType(deformer) == 'blendShape':
+        for map in mapList:
+            print('map', map)
+            targetIndex = rigrepo.libs.blendShape.getTargetIndex(deformer, map)
+            geometryindex = 0
+            if geometry:
+                geometryindex = mc.deformer(deformer,q=True, geometry=True).index(geoDagPath.partialPathName())
+            for pntIndex, value in enumerate(weightList[0]):
+                attr = deformer+'.it[0].itg[{}].tw[{}]'.format(targetIndex, pntIndex)
+                mc.setAttr(attr, value)
 
 def getWeights(deformer, mapList=None, geometry=None):
     '''
@@ -134,6 +145,21 @@ def getWeights(deformer, mapList=None, geometry=None):
                 geometryindex = geoList.index(geoDagPath.partialPathName())
         while not geoIterator.isDone():
             weightList[0] = numpy.append(weightList[0], numpy.array(round(mc.getAttr('{}.wl[{}].w[{}]'.format(deformer, geometryindex, geoIterator.index())), 4)))
+            geoIterator.next()
+
+    if mc.nodeType(deformer) == 'blendShape':
+        # iterate over the geometry
+        geometryindex = 0
+        targetIndex = rigrepo.libs.blendShape.getTargetIndex(deformer, mapList)
+
+        if geometry:
+            geoList = mc.deformer(deformer, q=True, geometry=True)
+            if geoList and deformer in geoList:
+                geometryindex = geoList.index(geoDagPath.partialPathName())
+
+        while not geoIterator.isDone():
+            attr = deformer+'.it[0].itg[{}].tw[{}]'.format(targetIndex, geoIterator.index())
+            weightList[0] = numpy.append(weightList[0], numpy.array(round(mc.getAttr(attr), 4)))
             geoIterator.next()
 
     return rigrepo.libs.weightObject.WeightObject(maps=mapList, weights=weightList)

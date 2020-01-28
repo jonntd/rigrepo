@@ -272,6 +272,27 @@ def clearTargetDeltas(bs, target):
     """
     setTargetDeltas(bs, [(0.1, 0.0, 0.0, 1.0)], ['vtx[0]'], target)
 
+def clearTargetDeltasByAxis(bs, target, axis='x'):
+    """
+    Clear deltas for a specific axis
+    :param bs: BlendShape node
+    :param target: String name of target or the target's index
+    :param axis: Axis to clear, defaults to x axis.
+    :return: None
+    """
+    deltas, indices = getTargetDeltas(bs, target)
+    if axis == 'x':
+        for i in range(len(deltas)):
+            deltas[i] = (0.0, deltas[i][1], deltas[i][2], deltas[i][3])
+    if axis == 'y':
+        for i in range(len(deltas)):
+            deltas[i] = (deltas[i][0], 0.0, deltas[i][2], deltas[i][3])
+    if axis == 'z':
+        for i in range(len(deltas)):
+            deltas[i] = (deltas[i][0], deltas[i][1], 0.0, deltas[i][3])
+
+    setTargetDeltas(bs, deltas, indices, target)
+
 def getAllTargetDeltas(bs):
     """
     Convenience method for getting all target deltas

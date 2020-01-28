@@ -1,7 +1,7 @@
 {
     "type": "PSDData", 
     "user": "Matt", 
-    "time": "2019-01-27 05:57:08", 
+    "time": "2020-01-20 20:08:34", 
     "data": {
         "blinkLower_l_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|blinkLower_l_driver_poseInterpolator|blinkLower_l_driver_poseInterpolatorShape", 
@@ -19,11 +19,21 @@
                             "name": "lidLower_l.rotateX", 
                             "type": 6, 
                             "value": 0.0
+                        }, 
+                        "blinkLower_l_driver_poseInterpolatorShape.pose[0].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidLower_l.rotateX", 
+                            "type": 6, 
+                            "value": 0.0
                         }
                     }
                 }, 
                 "blinkLower_l_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
+                        "blinkLower_l_driver_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidLower_l.rotateX", 
+                            "type": 6, 
+                            "value": 0.3490658503988659
+                        }, 
                         "blinkLower_l_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "lidLower_l.rotateX", 
                             "type": 6, 
@@ -33,6 +43,11 @@
                 }, 
                 "blinkLower_l_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
+                        "blinkLower_l_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidLower_l.rotateX", 
+                            "type": 6, 
+                            "value": 0.6981317007977318
+                        }, 
                         "blinkLower_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "lidLower_l.rotateX", 
                             "type": 6, 
@@ -54,6 +69,11 @@
             "poses": {
                 "blinkLower_r_driver_poseInterpolatorShape.pose[0]": {
                     "controllers": {
+                        "blinkLower_r_driver_poseInterpolatorShape.pose[0].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidLower_r.rotateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
                         "blinkLower_r_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "lidLower_r.rotateX", 
                             "type": 6, 
@@ -81,6 +101,11 @@
                             "name": "lidLower_r.rotateX", 
                             "type": 6, 
                             "value": 0.6981317007977318
+                        }, 
+                        "blinkLower_r_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidLower_r.rotateX", 
+                            "type": 6, 
+                            "value": 0.6981317007977318
                         }
                     }
                 }
@@ -98,6 +123,11 @@
             "poses": {
                 "blinkUpper_r_driver_poseInterpolatorShape.pose[0]": {
                     "controllers": {
+                        "blinkUpper_r_driver_poseInterpolatorShape.pose[0].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidUpper_r.rotateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
                         "blinkUpper_r_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "lidUpper_r.rotateX", 
                             "type": 6, 
@@ -111,11 +141,21 @@
                             "name": "lidUpper_r.rotateX", 
                             "type": 6, 
                             "value": 0.3490658503988659
+                        }, 
+                        "blinkUpper_r_driver_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidUpper_r.rotateX", 
+                            "type": 6, 
+                            "value": 0.3490658503988659
                         }
                     }
                 }, 
                 "blinkUpper_r_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
+                        "blinkUpper_r_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidUpper_r.rotateX", 
+                            "type": 6, 
+                            "value": 0.6981317007977318
+                        }, 
                         "blinkUpper_r_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "lidUpper_r.rotateX", 
                             "type": 6, 
@@ -137,6 +177,11 @@
             "poses": {
                 "blinkUpper_l_driver_poseInterpolatorShape.pose[0]": {
                     "controllers": {
+                        "blinkUpper_l_driver_poseInterpolatorShape.pose[0].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidUpper_l.rotateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
                         "blinkUpper_l_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "lidUpper_l.rotateX", 
                             "type": 6, 
@@ -150,11 +195,21 @@
                             "name": "lidUpper_l.rotateX", 
                             "type": 6, 
                             "value": 0.3490658503988659
+                        }, 
+                        "blinkUpper_l_driver_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidUpper_l.rotateX", 
+                            "type": 6, 
+                            "value": 0.3490658503988659
                         }
                     }
                 }, 
                 "blinkUpper_l_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
+                        "blinkUpper_l_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "lidUpper_l.rotateX", 
+                            "type": 6, 
+                            "value": 0.6981317007977318
+                        }, 
                         "blinkUpper_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
                             "name": "lidUpper_l.rotateX", 
                             "type": 6, 

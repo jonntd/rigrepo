@@ -1,8 +1,296 @@
 {
     "type": "PSDData", 
     "user": "Matt", 
-    "time": "2019-08-30 13:40:26", 
+    "time": "2020-01-20 20:08:34", 
     "data": {
+        "mouth_corner_l_driver_poseInterpolatorShape": {
+            "dagPath": "|mouth_corner_l_driver_poseInterpolator|mouth_corner_l_driver_poseInterpolatorShape", 
+            "drivers": {
+                "mouth_corner_l_driver_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "mouth_corner_l.translateY", 
+                        "mouth_corner_l.translateX"
+                    ]
+                }
+            }, 
+            "poses": {
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": -7.105427357601002e-15
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": -1.6
+                        }
+                    }
+                }, 
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": 1.6
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": -1.6
+                        }
+                    }
+                }, 
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": 1.6
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[7]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": 1.6
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": 1.6
+                        }
+                    }
+                }, 
+                "mouth_corner_l_driver_poseInterpolatorShape.pose[8]": {
+                    "controllers": {
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_l.translateX", 
+                            "type": 6, 
+                            "value": 1.6
+                        }, 
+                        "mouth_corner_l_driver_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_l.translateY", 
+                            "type": 6, 
+                            "value": -1.6000000000000072
+                        }
+                    }
+                }
+            }
+        }, 
+        "mouth_corner_r_driver_poseInterpolatorShape": {
+            "dagPath": "|mouth_corner_r_driver_poseInterpolator|mouth_corner_r_driver_poseInterpolatorShape", 
+            "drivers": {
+                "mouth_corner_r_driver_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "mouth_corner_r.translateY", 
+                        "mouth_corner_r.translateX"
+                    ]
+                }
+            }, 
+            "poses": {
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": -1.6
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": -1.6
+                        }
+                    }
+                }, 
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[4]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[4].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": 1.6
+                        }
+                    }
+                }, 
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[5]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": -1.6
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[5].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": 0.0
+                        }
+                    }
+                }, 
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[6]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": 0.0
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[6].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": 1.6
+                        }
+                    }
+                }, 
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[7]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": 1.6
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[7].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": 1.6
+                        }
+                    }
+                }, 
+                "mouth_corner_r_driver_poseInterpolatorShape.pose[8]": {
+                    "controllers": {
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[1]": {
+                            "name": "mouth_corner_r.translateX", 
+                            "type": 6, 
+                            "value": 1.6
+                        }, 
+                        "mouth_corner_r_driver_poseInterpolatorShape.pose[8].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "mouth_corner_r.translateY", 
+                            "type": 6, 
+                            "value": -1.6000000000000072
+                        }
+                    }
+                }
+            }
+        }, 
         "wristSwing_l_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|wristSwing_l_driver_poseInterpolator|wristSwing_l_driver_poseInterpolatorShape", 
             "drivers": {
@@ -1387,7 +1675,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -0.6108652381980153, 
+                                    -0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1402,7 +1690,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    0.6108652381980153, 
+                                    0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1418,7 +1706,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.0471975511965976
+                                    -1.0471976
                                 ]
                             ]
                         }
@@ -1433,7 +1721,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.0471975511965976
+                                    1.0471976
                                 ]
                             ]
                         }
@@ -1537,7 +1825,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -0.6108652381980153, 
+                                    -0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1596,7 +1884,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -0.6108652381980153, 
+                                    -0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1618,7 +1906,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    0.6108652381980153, 
+                                    0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1655,7 +1943,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    0.6108652381980153, 
+                                    0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1688,7 +1976,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -0.6108652381980153, 
+                                    -0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1700,7 +1988,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.0471975511965976
+                                    -1.0471976
                                 ]
                             ]
                         }
@@ -1715,7 +2003,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.0471975511965976
+                                    -1.0471976
                                 ]
                             ]
                         }, 
@@ -1725,7 +2013,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -0.6108652381980153, 
+                                    -0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1737,7 +2025,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.0471975511965976
+                                    1.0471976
                                 ]
                             ]
                         }, 
@@ -1747,7 +2035,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    0.6108652381980153, 
+                                    0.61086524, 
                                     0.0
                                 ]
                             ]
@@ -1790,7 +2078,7 @@
             }
         }, 
         "thigh_l_driver_poseInterpolatorShape": {
-            "dagPath": "|thigh_l_driver_poseInterpolator|thigh_l_driver_poseInterpolatorShape", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|thigh_l_driver_poseInterpolator|thigh_l_driver_poseInterpolatorShape", 
             "drivers": {
                 "thigh_l_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
@@ -1853,7 +2141,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.5707963267948966
+                                    1.5707964
                                 ]
                             ]
                         }
@@ -1868,7 +2156,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.5707963267948966
+                                    -1.5707964
                                 ]
                             ]
                         }
@@ -1882,7 +2170,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.5707963267948966, 
+                                    1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -1897,7 +2185,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.5707963267948966, 
+                                    -1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -1907,11 +2195,10 @@
             }
         }, 
         "thigh_r_driver_poseInterpolatorShape": {
-            "dagPath": "|thigh_r_driver_poseInterpolator|thigh_r_driver_poseInterpolatorShape", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|thigh_r_driver_poseInterpolator|thigh_r_driver_poseInterpolatorShape", 
             "drivers": {
                 "thigh_r_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
-                        "thigh_fk_r.rotate", 
                         "thigh_fk_r.rotate"
                     ]
                 }
@@ -2004,7 +2291,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.5707963267948966
+                                    1.5707964
                                 ]
                             ]
                         }, 
@@ -2015,7 +2302,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.5707963267948966
+                                    1.5707964
                                 ]
                             ]
                         }, 
@@ -2052,7 +2339,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.5707963267948966
+                                    -1.5707964
                                 ]
                             ]
                         }, 
@@ -2063,7 +2350,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.5707963267948966
+                                    -1.5707964
                                 ]
                             ]
                         }, 
@@ -2074,7 +2361,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.5707963267948966
+                                    1.5707964
                                 ]
                             ]
                         }, 
@@ -2121,7 +2408,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.5707963267948966, 
+                                    1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -2133,7 +2420,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.5707963267948966
+                                    1.5707964
                                 ]
                             ]
                         }, 
@@ -2154,7 +2441,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.5707963267948966, 
+                                    1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -2166,7 +2453,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.5707963267948966
+                                    -1.5707964
                                 ]
                             ]
                         }
@@ -2180,7 +2467,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.5707963267948966, 
+                                    -1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -2191,7 +2478,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.5707963267948966, 
+                                    -1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -2225,7 +2512,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.5707963267948966
+                                    1.5707964
                                 ]
                             ]
                         }, 
@@ -2235,7 +2522,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.5707963267948966, 
+                                    1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -2247,7 +2534,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.5707963267948966
+                                    -1.5707964
                                 ]
                             ]
                         }
@@ -2256,7 +2543,7 @@
             }
         }, 
         "knee_l_driver_poseInterpolatorShape": {
-            "dagPath": "|knee_l_driver_poseInterpolator|knee_l_driver_poseInterpolatorShape", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|knee_l_driver_poseInterpolator|knee_l_driver_poseInterpolatorShape", 
             "drivers": {
                 "knee_l_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
@@ -2272,8 +2559,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2287,8 +2574,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2302,8 +2589,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2317,9 +2604,9 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
-                                    -1.5707963267948966
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
+                                    -1.5707964
                                 ]
                             ]
                         }
@@ -2332,9 +2619,9 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
-                                    -2.356194490192345
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
+                                    -2.3561945
                                 ]
                             ]
                         }
@@ -2343,11 +2630,10 @@
             }
         }, 
         "knee_r_driver_poseInterpolatorShape": {
-            "dagPath": "|knee_r_driver_poseInterpolator|knee_r_driver_poseInterpolatorShape", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|knee_r_driver_poseInterpolator|knee_r_driver_poseInterpolatorShape", 
             "drivers": {
                 "knee_r_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
-                        "knee_fk_r.rotate", 
                         "knee_fk_r.rotate"
                     ]
                 }
@@ -2360,8 +2646,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2375,8 +2661,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2386,8 +2672,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2401,8 +2687,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2412,8 +2698,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2423,8 +2709,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2438,8 +2724,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2449,9 +2735,9 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
-                                    -1.5707963267948966
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
+                                    -1.5707964
                                 ]
                             ]
                         }, 
@@ -2460,9 +2746,9 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
-                                    -1.5707963267948966
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
+                                    -1.5707964
                                 ]
                             ]
                         }, 
@@ -2471,8 +2757,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2486,9 +2772,9 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
-                                    -2.356194490192345
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
+                                    -2.3561945
                                 ]
                             ]
                         }, 
@@ -2497,8 +2783,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2508,9 +2794,9 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
-                                    -2.356194490192345
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
+                                    -2.3561945
                                 ]
                             ]
                         }, 
@@ -2519,9 +2805,9 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
-                                    -1.5707963267948966
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
+                                    -1.5707964
                                 ]
                             ]
                         }, 
@@ -2530,8 +2816,8 @@
                             "type": 8, 
                             "value": [
                                 [
-                                    -9.573131953424081e-17, 
-                                    6.91817242232115e-16, 
+                                    -9.573131999999999e-17, 
+                                    6.9181723e-16, 
                                     0.0
                                 ]
                             ]
@@ -2541,7 +2827,7 @@
             }
         }, 
         "ankleSwing_l_driver_poseInterpolatorShape": {
-            "dagPath": "|ankleSwing_l_driver_poseInterpolator|ankleSwing_l_driver_poseInterpolatorShape", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|ankleSwing_l_driver_poseInterpolator|ankleSwing_l_driver_poseInterpolatorShape", 
             "drivers": {
                 "ankleSwing_l_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
@@ -2604,7 +2890,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.2217304763960306
+                                    1.2217305
                                 ]
                             ]
                         }
@@ -2619,7 +2905,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.2217304763960306
+                                    -1.2217305
                                 ]
                             ]
                         }
@@ -2633,7 +2919,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.2217304763960306, 
+                                    1.2217305, 
                                     0.0
                                 ]
                             ]
@@ -2648,7 +2934,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.2217304763960306, 
+                                    -1.2217305, 
                                     0.0
                                 ]
                             ]
@@ -2658,11 +2944,10 @@
             }
         }, 
         "ankleSwing_r_driver_poseInterpolatorShape": {
-            "dagPath": "|ankleSwing_r_driver_poseInterpolator|ankleSwing_r_driver_poseInterpolatorShape", 
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|ankleSwing_r_driver_poseInterpolator|ankleSwing_r_driver_poseInterpolatorShape", 
             "drivers": {
                 "ankleSwing_r_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
-                        "ankle_fk_r.rotate", 
                         "ankle_fk_r.rotate"
                     ]
                 }
@@ -2777,7 +3062,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.2217304763960306
+                                    1.2217305
                                 ]
                             ]
                         }, 
@@ -2788,7 +3073,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.2217304763960306
+                                    1.2217305
                                 ]
                             ]
                         }
@@ -2814,7 +3099,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.2217304763960306
+                                    -1.2217305
                                 ]
                             ]
                         }, 
@@ -2836,7 +3121,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.2217304763960306
+                                    -1.2217305
                                 ]
                             ]
                         }, 
@@ -2847,7 +3132,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.2217304763960306
+                                    1.2217305
                                 ]
                             ]
                         }
@@ -2861,7 +3146,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.2217304763960306, 
+                                    1.2217305, 
                                     0.0
                                 ]
                             ]
@@ -2873,7 +3158,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.2217304763960306
+                                    1.2217305
                                 ]
                             ]
                         }, 
@@ -2894,7 +3179,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.2217304763960306, 
+                                    1.2217305, 
                                     0.0
                                 ]
                             ]
@@ -2906,7 +3191,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.2217304763960306
+                                    -1.2217305
                                 ]
                             ]
                         }, 
@@ -2942,7 +3227,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.2217304763960306, 
+                                    -1.2217305, 
                                     0.0
                                 ]
                             ]
@@ -2965,7 +3250,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.2217304763960306
+                                    -1.2217305
                                 ]
                             ]
                         }, 
@@ -2975,7 +3260,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.2217304763960306, 
+                                    -1.2217305, 
                                     0.0
                                 ]
                             ]
@@ -2987,7 +3272,7 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.2217304763960306
+                                    1.2217305
                                 ]
                             ]
                         }, 
@@ -2997,7 +3282,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.2217304763960306, 
+                                    1.2217305, 
                                     0.0
                                 ]
                             ]

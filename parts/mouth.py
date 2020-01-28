@@ -49,7 +49,7 @@ class Mouth(part.Part):
         headPinTrs = self.getAttributeByName('headPin').getValue()
         jawPinTrs = self.getAttributeByName('jawPin').getValue()
         orientFile = self.getAttributeByName('orientFile').getValue()
-        
+
         bindmeshGeometry, follicleList, lipMainControlHieracrchyList, jointList = self.__buildCurveRig(lipMainCurve, "lip_main" , parentGroup)
         # delete the controls, tparent joint to the node above the control
         mainBaseCurveJointList = list()
@@ -237,8 +237,11 @@ class Mouth(part.Part):
                 cd="{}.pin".format(controlName), v=0, dv=10)
 
             # create the set driven keyframes
+            ty_tz_dkeys = []
             for attr in ['x','y','z']:
                 for lipMainControl in lipMainControlHieracrchyList:
+
+                    # Translates
                     if "_l_" in lipMainControl[3] and follicle == mouthCorner_l_follicle:
                         mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
                             cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
@@ -246,6 +249,11 @@ class Mouth(part.Part):
                             cd="{}.t{}".format(driverMouthCorner,attr), v=1, dv=1)
                         mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
                             cd="{}.t{}".format(driverMouthCorner,attr), v=-1, dv=-1)
+
+                        dkey = mc.listConnections("{}.t{}".format(driverMouthCorner,attr), type='animCurveUL')[-1]
+                        dkey = mc.rename(dkey, lipMainControl[3]+'_translate'+attr.upper())
+
+                        # RY Rotation driven by TX
                         if attr == "x":
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
                                 cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
@@ -253,13 +261,35 @@ class Mouth(part.Part):
                                 cd="{}.t{}".format(driverMouthCorner,attr), v=10, dv=1)
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
                                 cd="{}.t{}".format(driverMouthCorner,attr), v=-10, dv=-1)
+
+                        # TY driving TZ
+                        if attr == "y":
+                            mc.setDrivenKeyframe("{}.tz".format(lipMainControl[3]),
+                                                 cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
+                            mc.setDrivenKeyframe("{}.tz".format(lipMainControl[3]),
+                                                 cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=1)
+                            mc.setDrivenKeyframe("{}.tz".format(lipMainControl[3]),
+                                                 cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=-1)
+
+                            dkey = mc.listConnections("{}.t{}".format(driverMouthCorner,attr), type='animCurveUL')[-1]
+                            dkey = mc.rename(dkey, driverMouthCorner+'_TY__'+lipMainControl[3]+'_TZ')
+                            ty_tz_dkeys.append(dkey)
+
+
                     elif  "_r_" in lipMainControl[3] and follicle == mouthCorner_r_follicle:
+
+                        # Translates
                         mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
                             cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
                         mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
                             cd="{}.t{}".format(driverMouthCorner,attr), v=1, dv=1)
                         mc.setDrivenKeyframe("{}.t{}".format(lipMainControl[3],attr), 
                             cd="{}.t{}".format(driverMouthCorner,attr), v=-1, dv=-1)
+
+                        dkey = mc.listConnections("{}.t{}".format(driverMouthCorner,attr), type='animCurveUL')[-1]
+                        dkey = mc.rename(dkey, lipMainControl[3]+'_translate'+attr.upper())
+
+                        # RY Rotation driven by TX
                         if attr == "x":
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
                                 cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
@@ -267,6 +297,19 @@ class Mouth(part.Part):
                                 cd="{}.t{}".format(driverMouthCorner,attr), v=10, dv=1)
                             mc.setDrivenKeyframe("{}.ry".format(lipMainControl[2]), 
                                 cd="{}.t{}".format(driverMouthCorner,attr), v=-10, dv=-1)
+
+                        # TY driving TZ
+                        if attr == "y":
+                            mc.setDrivenKeyframe("{}.tz".format(lipMainControl[3]),
+                                                 cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=0)
+                            mc.setDrivenKeyframe("{}.tz".format(lipMainControl[3]),
+                                                 cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=1)
+                            mc.setDrivenKeyframe("{}.tz".format(lipMainControl[3]),
+                                                 cd="{}.t{}".format(driverMouthCorner,attr), v=0, dv=-1)
+
+                            dkey = mc.listConnections("{}.t{}".format(driverMouthCorner,attr), type='animCurveUL')[-1]
+                            dkey = mc.rename(dkey, driverMouthCorner+'_TY__'+lipMainControl[3]+'_TZ')
+                            ty_tz_dkeys.append(dkey)
 
         # Set driven keys to be post and pre infinity
         driven_keys = mc.listConnections(driverMouthCorners[0], type='animCurveUL')
@@ -369,7 +412,7 @@ class Mouth(part.Part):
         mc.parent(lipCurve, "lip")
 
         #deform the lip bindmesh with the lip_main curve using a wire deformer.
-        wireDeformer = mc.wire(bindmeshGeometry, gw=False, en=1.00, ce=0.00, li=0.00, 
+        wireDeformer = mc.wire(bindmeshGeometry, gw=False, en=1.00, ce=0.00, li=0.00,
                 w=lipMainCurve, name="{}_wire".format(lipMainCurve))[0]
         # set the default values for the wire deformer
         mc.setAttr("{}.rotation".format(wireDeformer), 0)
@@ -377,7 +420,7 @@ class Mouth(part.Part):
 
         # create skinCluster for the base wire
         baseCurve = "{}BaseWire".format(lipMainCurve)
-        lipMainBaseCurveSkin = mc.skinCluster(*mainBaseCurveJointList+mc.ls(baseCurve), 
+        lipMainBaseCurveSkin = mc.skinCluster(*mainBaseCurveJointList+mc.ls(baseCurve),
                                     n="{}_skinCluster".format(baseCurve),
                                     tsb=True)[0]
         # set the weights to have proper weighting
@@ -433,23 +476,33 @@ class Mouth(part.Part):
         mc.sets([main_set, tweak_set, corner_set], e=1, add=mouthSet)
         # Driven Keys
         #
-        driven_keys = mc.listConnections(driverMouthCorners[0], type='animCurveUL')
-        driven_keys += mc.listConnections(driverMouthCorners[1], type='animCurveUL')
-        for axis in ['X', 'Y', 'Z']:
-            d_keys = [n for n in driven_keys if 'translate' + axis in n]
-            d_set = mc.sets(d_keys, n='dkeys_T'+axis)
-            mc.sets(d_set, e=1, add=mouthSet)
+        #
+        for driver_axis in ['x', 'y', 'z']:
+            driven_keys = mc.listConnections(driverMouthCorners[0]+'.t'+driver_axis, type='animCurveUL')
+            driven_keys += mc.listConnections(driverMouthCorners[1]+'.t'+driver_axis, type='animCurveUL')
+            for slave_axis in ['X', 'Y', 'Z']:
+                d_keys = [n for n in driven_keys if 'translate' + slave_axis in n]
+                if not d_keys:
+                    d_keys = [n for n in driven_keys if '_T' + slave_axis in n]
+                if d_keys:
+                    d_set = mc.sets(d_keys, n='dkeys_T'+driver_axis.upper()+'_T'+slave_axis)
+                    mc.sets(d_set, e=1, add=mouthSet)
 
         # Rot Driven Keys
         #
         rot_def_auto = [x[2] for x in lipMainControlHieracrchyList]
-        rot_orient_keys = []
+        ry_d_keys = []
+        rx_d_keys = []
         for rot in rot_def_auto:
             driven_keys = mc.listConnections(rot, type='animCurveUA')
             if driven_keys:
-                rot_orient_keys += driven_keys
-        rot_d_keys_set = mc.sets(rot_orient_keys, n='dkeys_RY')
-        mc.sets(rot_d_keys_set, e=1, add=mouthSet)
+                for dkey in driven_keys:
+                    if 'rotateY' in dkey:
+                        ry_d_keys.append(dkey)
+                    if 'rotateX' in dkey:
+                        rx_d_keys.append(dkey)
+        ry_d_keys_set = mc.sets(ry_d_keys, n='dkeys_RY')
+        mc.sets([ry_d_keys_set], e=1, add=mouthSet)
 
         # Anim controls
         #

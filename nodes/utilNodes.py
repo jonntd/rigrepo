@@ -138,6 +138,10 @@ mc.autoKeyframe(state=False)
 setPoseAttr(controlList, poseAttr=10) 
 for wire in wireList:
     mc.setAttr("{}.freezeGeometry".format(wire), 0)
+    
+psdNodes = mc.ls('skin_psd', r=1)
+for psd in psdNodes:
+    mc.setAttr(psd+'.envelope', 0)
 
 toPoseAttr(controlList, 9)
 for wire in wireList:
@@ -148,6 +152,9 @@ toPoseAttr(controlList,10)
 
 for ctrl in controlList:
     mc.deleteAttr("{}.poseAttr_10".format(ctrl))
+    
+for psd in psdNodes:
+    mc.setAttr(psd+'.envelope', 1)
     
 mc.autoKeyframe(state=autoKeyframeState)
 '''

@@ -389,7 +389,7 @@ import rigrepo.libs.cluster
 for curve in ["lip_main_curve", "lip_curve"]:
     wireDeformer = "{}_wire".format(curve)
     if mc.objExists(wireDeformer):
-        mc.sets(mc.ls("body_geo.vtx[*]")[0], e=True, add="{}Set".format(wireDeformer))
+        mc.deformer(wireDeformer, e=1, g='body_geo')
         mc.rename(wireDeformer, curve.replace("_curve", "_wire"))
     else:
         wireDeformer = mc.wire("body_geo", gw=False, en=1.00, ce=0.00, li=0.00, 
@@ -455,8 +455,12 @@ for nul,parent in zip(brow_nuls, brow_nul_parents):
         mouthCornerDistanceNode = rigrepo.nodes.commandNode.CommandNode('mouthCornerDistance')
         mouthCornerDistanceNodeCmd = '''
 import maya.cmds as mc
+dkeys = []
+distanceLocs = []
+distanceNodes = []
 for side in ["l","r"]:
     distanceLoc = mc.createNode("transform", n="distance_loc_{}".format(side))
+    distanceLocs.append(distanceLoc)
     mc.xform(distanceLoc, ws=True, matrix=mc.xform("eye_{}_bind".format(side), q=True, ws=True, matrix=True))
     mc.parent(distanceLoc, "face_upper")
     mouthCornerDCM = mc.createNode("decomposeMatrix", name="mouth_corner_{}_decomposeMatrix".format(side))
@@ -466,16 +470,17 @@ for side in ["l","r"]:
     mc.connectAttr("distance_loc_{}.worldMatrix[0]".format(side), "{}.inputMatrix".format(distanceLocDCM))
     
     distanceNode = mc.createNode("distanceBetween", n="mouth_corner_{}_distance".format(side))
+    distanceNodes.append(distanceNode)
     mc.connectAttr("{}.outputTranslate".format(mouthCornerDCM), "{}.point1".format(distanceNode), f=True)
     mc.connectAttr("{}.outputTranslate".format(distanceLocDCM), "{}.point2".format(distanceNode), f=True)
         
 
     currentDistance = mc.getAttr("{}.distance".format(distanceNode))        
     for axis in ['x', 'y', 'z']:
-        mc.setDrivenKeyframe("cheekPuff_{}_def_auto.s{}".format(side, axis), 
-                                    cd="{}.distance".format(distanceNode), v=1, dv=currentDistance)
-        mc.setDrivenKeyframe("cheekPuff_{}_def_auto.s{}".format(side, axis), 
-                                    cd="{}.distance".format(distanceNode), v=2, dv=currentDistance-2)
+        #mc.setDrivenKeyframe("cheekPuff_{}_def_auto.s{}".format(side, axis), 
+        #                            cd="{}.distance".format(distanceNode), v=1, dv=currentDistance)
+        #mc.setDrivenKeyframe("cheekPuff_{}_def_auto.s{}".format(side, axis), 
+        #                            cd="{}.distance".format(distanceNode), v=2, dv=currentDistance-2)
                                     
                                     
         if axis == "y":
@@ -506,6 +511,21 @@ for side in ["l","r"]:
 
         # turn off display handles for cheek lift
         mc.setAttr("cheekLift_{}_def_auto.displayHandle".format(side), 0)
+        
+# Rig Sets
+# 
+mouthDistSet = mc.sets(distanceLocs + distanceNodes, n='MouthDist')
+
+# Driven keys 
+for node in distanceNodes:
+    current_dkeys = mc.listConnections(node+'.distance')
+    dkeys += current_dkeys
+dkeySet = mc.sets(dkeys, n='MouthDist_dkeys')
+mc.sets(dkeySet, add=mouthDistSet)
+
+mc.listConnections
+if mc.objExists('Mouth'):
+    mc.sets(mouthDistSet, add='Mouth')
                 
 '''
         mouthCornerDistanceNode.getAttributeByName('command').setValue(mouthCornerDistanceNodeCmd)

@@ -62,13 +62,17 @@ try:
         rigrepo.libs.control.toPoseAttr(controls, 0)
     if mc.objExists('jaw'):
         mc.setAttr('jaw.rx', -15)
+        
+    if mc.objExists('skin_psd'):
+        mc.setAttr('skin_psd.envelope', 0)
 
     for deformer in mc.ls(mc.listHistory("body_geo"), type="wire"):
         mc.setAttr(deformer+".freezeGeometry", 0)
         mc.setAttr(deformer+".freezeGeometry", 1)
         
     # Doing lips again after because freezing other wires after seems to 
-    for deformer in mc.ls('lip_wire', 'lip_main_wire'):
+    lipWires = mc.ls(['lip_wire', 'lip_main_wire'])
+    for deformer in lipWires:
         mc.setAttr(deformer+".freezeGeometry", 0)
         mc.refresh()
         mc.setAttr(deformer+".freezeGeometry", 1)
@@ -78,8 +82,12 @@ try:
     if controls:
         # Got to bind pose
         rigrepo.libs.control.toPoseAttr(controls, 0)
+        
     if mc.objExists('jaw'):
         mc.setAttr('jaw.rx', 0)
+        
+    if mc.objExists('skin_psd'):
+        mc.setAttr('skin_psd.envelope', 1)
 
 
 except:

@@ -24,7 +24,6 @@ import maya.mel as mm
 import rigrepo.libs.psd as psd
 import rigrepo.libs.data.psd_data
 import os
-error()
 
 if not mc.pluginInfo('poseInterpolator', q=1, l=1):  
     mc.loadPlugin('poseInterpolator')
@@ -103,7 +102,9 @@ import maya.cmds as mc
 import maya.mel as mm
 import rigrepo.libs.psd as psd
 import rigrepo.libs.data.psd_data
+import rigrepo.libs.weights
 import os
+import os.path
 
 if not mc.pluginInfo('poseInterpolator', q=1, l=1):  
     mc.loadPlugin('poseInterpolator')
@@ -114,7 +115,7 @@ for name in {psdNames}:
     fileShapeList = [shapeFile for shapeFile in os.listdir('{dirPath}') if ".shp" in shapeFile and name in shapeFile]
     if os.path.isfile(filePose):
         print('Loading PSD File: [ '+filePose + ' ]')
-        # DELTAS
+        # DELTAS and WEIGHTS
         #
         if loadDeltas:
             # Import shapes
@@ -125,6 +126,16 @@ for name in {psdNames}:
                 #mc.blendShape(fileName, e=1, ip=os.path.join('{dirPath}',fileShape),  name=fileName, frontOfChain=0, suppressDialog=1)
                 mc.blendShape(ip=os.path.join('{dirPath}',fileShape),  
                                name=fileName, ignoreSelected=1, topologyCheck=0, suppressDialog=1)
+            # Weights
+            deformer = name + '_psd'
+            if mc.objExists(deformer):
+                geos = mc.deformer(deformer, q=1, g=1)
+                for geo in geos:
+                    filename = geo+'__'+deformer+'.xml'
+                    filepath = os.path.join('{dirPath}',filename)
+                    if os.path.exists(filepath):
+                        rigrepo.libs.weights.importWeights(geo, deformer, filepath)
+            
         
         # INTERPOLATORS
         #

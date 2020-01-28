@@ -101,6 +101,15 @@ try:
         dataFile = '{dirPath}/'+group+'_poseControls.data'
         dataObj.write(dataFile)
         print('Writing: ' + dataFile)
+        
+        # Weights
+        deformer = group+'_psd'
+        print('deformer', deformer)
+        if mc.objExists(deformer):
+            geos = mc.deformer(deformer, q=1, g=1)
+            for geo in geos:
+                rigrepo.libs.weights.exportWeights(geo, deformer, "{dirPath}")
+                print('Writing: {dirPath}/' + deformer + '.xml')
 
 except:
     traceback.print_exc()
