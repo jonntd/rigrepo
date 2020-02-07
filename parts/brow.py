@@ -68,19 +68,44 @@ class Brow(part.Part):
                                                                     controlType="null", 
                                                                     hierarchy=['nul','ort'], 
                                                                     color=common.BLUE,
-                                                                    parent=browMainCtrl)
+                                                                    parent=anchor)
 
         browPeakNul, browPeakOrient, browPeakCtrl = control.create(name=browPeak, 
                                                                     controlType="null", 
                                                                     hierarchy=['nul','ort'], 
                                                                     color=common.BLUE,
-                                                                    parent=browMainCtrl)
+                                                                    parent=anchor)
 
+        # Position the controls
+        #
+        # Main
+        mc.xform(browMainNul, ws=1, t=mc.xform(browMainJoint, q=1, ws=1, t=1))
+        con = mc.orientConstraint(browMainJoint, browMainOrient)[0]
+        if '_r_' in browMainJoint:
+            mc.setAttr(con+'.offsetZ', -180)
+            mc.setAttr(browMainNul+'.ry', -180)
+            mc.setAttr(browMainNul+'.sz', -1)
+        mc.delete(con)
 
-        # position the controls
-        mc.xform(browMainNul, ws=True, matrix=mc.xform(browMainJoint, q=True, ws=True, matrix=True))
-        mc.xform(browInnerNul, ws=True, matrix=mc.xform(browInnerJoint, q=True, ws=True, matrix=True))
-        mc.xform(browPeakNul, ws=True, matrix=mc.xform(browPeakJoint, q=True, ws=True, matrix=True))
+        # Inner
+        mc.xform(browInnerNul, ws=1, t=mc.xform(browInnerJoint, q=1, ws=1, t=1))
+        con = mc.orientConstraint(browInnerJoint, browInnerOrient)[0]
+        if '_r_' in browInnerJoint:
+            mc.setAttr(con+'.offsetZ', -180)
+            mc.setAttr(browInnerNul+'.ry', -180)
+            mc.setAttr(browInnerNul+'.sz', -1)
+        mc.delete(con)
+
+        mc.xform(browPeakNul, ws=1, t=mc.xform(browPeakJoint, q=1, ws=1, t=1))
+        con = mc.orientConstraint(browPeakJoint, browPeakOrient)[0]
+        if '_r_' in browPeakJoint:
+            mc.setAttr(con+'.offsetZ', -180)
+            mc.setAttr(browPeakNul+'.ry', -180)
+            mc.setAttr(browPeakNul+'.sz', -1)
+        mc.delete(con)
+
+        mc.parent(browInnerNul, browMainCtrl)
+        mc.parent(browPeakNul, browMainCtrl)
 
         # create the driver nodes
         browMainDriverNul = mc.createNode("transform", name="{}_driver_nul".format(browMain), parent=self.name)
@@ -94,6 +119,12 @@ class Brow(part.Part):
 
         mc.pointConstraint(browMainCtrl, browMainDriver)
 
+        # TX and TY isolated drivers
+        browMain_TX_driver = mc.duplicate(browMainDriver, po=1, name="{}_TX_driver".format(browMain))[0]
+        browMain_TY_driver = mc.duplicate(browMainDriver, po=1, name="{}_TY_driver".format(browMain))[0]
+        mc.connectAttr(browMainDriver+'.tx', browMain_TX_driver+'.tx')
+        mc.connectAttr(browMainDriver+'.ty', browMain_TY_driver+'.ty')
+
         browInnerDriverNul = mc.createNode("transform", name="{}_driver_nul".format(browInner), parent=self.name)
         browInnerDriverOrt = mc.createNode("transform", name="{}_driver_ort".format(browInner), parent=browInnerDriverNul)
         browInnerDriver = mc.createNode("joint", name="{}_driver".format(browInner), parent=browInnerDriverOrt)
@@ -105,6 +136,12 @@ class Brow(part.Part):
             mc.connectAttr("{}.{}".format(browInnerOrient, attr), "{}.{}".format(browInnerDriverOrt, attr), f=True)
 
         mc.pointConstraint(browInnerCtrl, browInnerDriver)
+
+        # TX and TY isolated drivers
+        browInner_TX_driver = mc.duplicate(browInnerDriver, po=1, name="{}_TX_driver".format(browInner))[0]
+        browInner_TY_driver = mc.duplicate(browInnerDriver, po=1, name="{}_TY_driver".format(browInner))[0]
+        mc.connectAttr(browInnerDriver+'.tx', browInner_TX_driver+'.tx')
+        mc.connectAttr(browInnerDriver+'.ty', browInner_TY_driver+'.ty')
 
         browPeakDriverNul = mc.createNode("transform", name="{}_driver_nul".format(browPeak), parent=self.name)
         browPeakDriverOrt = mc.createNode("transform", name="{}_driver_ort".format(browPeak), parent=browPeakDriverNul)
@@ -124,23 +161,24 @@ class Brow(part.Part):
         browMainSdkRotDefAuto = mc.createNode("transform", name="{}_sdk_rot_def_auto".format(browMain), parent=browMainSdkDefAuto)
         browMainSdk = mc.createNode("transform", name="{}_sdk".format(browMain), parent=browMainSdkRotDefAuto)
 
-        # position the SDK nodes
+        # position the SDK nodes thanks
         mc.xform(browMainSdkNul, ws=True, matrix=mc.xform(browMainDriverOrt, q=True, ws=True, matrix=True))
-        mc.connectAttr("{}.s".format(browMainDriverOrt), "{}.s".format(browMainSdkNul), f=True)
-        
+
         # create the keys for the brow main sdk nodes
         for attribute in ['x','y','z']:
+
             mc.setDrivenKeyframe("{}.t{}".format(browMainSdkDefAuto,attribute), 
                                 cd="{}.t{}".format(browMainDriver,attribute), v=0, dv=0)
             mc.setDrivenKeyframe("{}.t{}".format(browMainSdkDefAuto,attribute), 
                                 cd="{}.t{}".format(browMainDriver,attribute), v=1, dv=1)
             mc.setDrivenKeyframe("{}.t{}".format(browMainSdkDefAuto,attribute), 
                                 cd="{}.t{}".format(browMainDriver,attribute), v=-1, dv=-1)
-            mc.setDrivenKeyframe("{}.r{}".format(browMainSdkRotDefAuto,attribute), 
+
+            mc.setDrivenKeyframe("{}.r{}".format(browMainSdkRotDefAuto,attribute),
                                 cd="{}.t{}".format(browMainDriver,attribute), v=0, dv=0)
-            mc.setDrivenKeyframe("{}.r{}".format(browMainSdkRotDefAuto,attribute), 
+            mc.setDrivenKeyframe("{}.r{}".format(browMainSdkRotDefAuto,attribute),
                                 cd="{}.t{}".format(browMainDriver,attribute), v=.1, dv=1)
-            mc.setDrivenKeyframe("{}.r{}".format(browMainSdkRotDefAuto,attribute), 
+            mc.setDrivenKeyframe("{}.r{}".format(browMainSdkRotDefAuto,attribute),
                                 cd="{}.t{}".format(browMainDriver,attribute), v=-.1, dv=-1)
 
         # create the set driven key nodes.
@@ -151,8 +189,7 @@ class Brow(part.Part):
 
         # position the SDK nodes
         mc.xform(browInnerSdkNul, ws=True, matrix=mc.xform(browInnerDriverOrt, q=True, ws=True, matrix=True))
-        mc.connectAttr("{}.s".format(browInnerDriverOrt), "{}.s".format(browInnerSdkNul), f=True)
-        
+
         # create the keys for the brow inner sdk nodes
         for attribute in ['x','y','z']:
             mc.setDrivenKeyframe("{}.t{}".format(browInnerSdkDefAuto,attribute), 
@@ -161,6 +198,7 @@ class Brow(part.Part):
                                 cd="{}.t{}".format(browInnerDriver,attribute), v=1, dv=1)
             mc.setDrivenKeyframe("{}.t{}".format(browInnerSdkDefAuto,attribute), 
                                 cd="{}.t{}".format(browInnerDriver,attribute), v=-1, dv=-1)
+
             mc.setDrivenKeyframe("{}.r{}".format(browInnerSdkRotDefAuto,attribute), 
                                 cd="{}.t{}".format(browInnerDriver,attribute), v=0, dv=0)
             mc.setDrivenKeyframe("{}.r{}".format(browInnerSdkRotDefAuto,attribute), 
@@ -177,8 +215,7 @@ class Brow(part.Part):
 
         # position the SDK nodes
         mc.xform(browPeakSdkNul, ws=True, matrix=mc.xform(browPeakDriverOrt, q=True, ws=True, matrix=True))
-        mc.connectAttr("{}.s".format(browPeakDriverOrt), "{}.s".format(browPeakSdkNul), f=True)
-        
+
         # create the keys for the brow peak sdk nodes
         for attribute in ['x','y','z']:
             mc.setDrivenKeyframe("{}.t{}".format(browPeakSdkDefAuto,attribute), 
@@ -187,6 +224,7 @@ class Brow(part.Part):
                                 cd="{}.t{}".format(browPeakDriver,attribute), v=1, dv=1)
             mc.setDrivenKeyframe("{}.t{}".format(browPeakSdkDefAuto,attribute), 
                                 cd="{}.t{}".format(browPeakDriver,attribute), v=-1, dv=-1)
+
             mc.setDrivenKeyframe("{}.r{}".format(browPeakSdkRotDefAuto,attribute), 
                                 cd="{}.t{}".format(browPeakDriver,attribute), v=0, dv=0)
             mc.setDrivenKeyframe("{}.r{}".format(browPeakSdkRotDefAuto,attribute), 
@@ -209,6 +247,22 @@ class Brow(part.Part):
         mc.xform("{}_nul".format(corrugatorName), ws=True, matrix=mc.xform(browInnerCtrl, q=True, ws=True, matrix=True))
         mc.setAttr("{}.displayHandle".format(corrugatorName), 1)
         control.tagAsControl(corrugatorName)
+
+        # Set driven keys to be post and pre infinity
+        driven_keys = mc.listConnections(browMainDriver, type='animCurveUA')
+        driven_keys += mc.listConnections(browMainDriver, type='animCurveUL')
+        driven_keys += mc.listConnections(browInnerDriver, type='animCurveUA')
+        driven_keys += mc.listConnections(browInnerDriver, type='animCurveUL')
+        driven_keys += mc.listConnections(browPeakDriver, type='animCurveUA')
+        driven_keys += mc.listConnections(browPeakDriver, type='animCurveUL')
+
+        for x in driven_keys:
+            mc.setAttr(x + '.preInfinity', 1)
+            mc.setAttr(x + '.postInfinity', 1)
+            mc.keyTangent(x, index=(0, 0), inTangentType='spline')
+            mc.keyTangent(x, index=(0, 0), outTangentType='spline')
+            mc.keyTangent(x, index=(2, 2), inTangentType='spline')
+            mc.keyTangent(x, index=(2, 2), outTangentType='spline')
 
 
     def postBuild(self):

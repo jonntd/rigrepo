@@ -421,21 +421,6 @@ for mesh in mc.ls(["lip_main_bindmesh", "lip_bindmesh", "mouth_corner_bindmesh"]
                                 armParams=["arm_?"])
         l_brow = rigrepo.parts.brow.Brow("l_brow", anchor="head_tip")
         r_brow = rigrepo.parts.brow.Brow("r_brow", side="r", anchor="head_tip")
-        r_brow_orient = rigrepo.nodes.commandNode.CommandNode('scaleOrients')
-        r_brow_orientCmd = '''
-import maya.cmds as mc
-brow_orients = mc.ls("brow*_r_ort")
-brow_nuls = mc.ls("brow*_r_nul")
-brow_nul_parents = [mc.listRelatives(nul, p=True)[0] for nul in brow_nuls]
-for nul, ort in zip(brow_nuls,brow_orients):
-    mc.parent(nul, w=True)
-    mc.setAttr("{}.sz".format(ort), -1)
-    
-for nul,parent in zip(brow_nuls, brow_nul_parents):
-    mc.parent(nul, parent)
-'''
-        r_brow_orient.getAttributeByName('command').setValue(r_brow_orientCmd)
-        r_brow.addChild(r_brow_orient)
 
         cheekClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("cheeks")
         cheekClusterNode.getAttributeByName("nameList").setValue("['cheekPuff_l', 'cheekPuff_r', 'cheek_l', 'cheek_r']")

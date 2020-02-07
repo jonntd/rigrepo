@@ -1,5 +1,6 @@
 import maya.cmds as mc
 import rigrepo.libs.common
+import traceback
 
 def rotateToOrient(jointList):
     '''
@@ -38,7 +39,7 @@ def rotateToOrient(jointList):
 
 
 
-def mirror (joint, search = '_l_', replace = '_r_', axis = "x"):
+def mirror (joint, search = '_l_', replace = '_r_', axis = "x", mode='rotate'):
     '''
     Mirror joint orientation
     It will not create a new joint. It will only mirror to an existing joint that has the same
@@ -52,6 +53,11 @@ def mirror (joint, search = '_l_', replace = '_r_', axis = "x"):
 
     :param search: Search side token
     :type search: str
+
+    :param mode: Type of mirror. 'rotate' or 'translate'
+                 rotation is for things like limbs generally.
+                 translation is for joints that need symmetric translation and rotation, like in the face.
+    :type mode: string
 
     :param replace: Replace side token
     :type replace: str
@@ -97,6 +103,17 @@ def mirror (joint, search = '_l_', replace = '_r_', axis = "x"):
                         t = ( trs[0]*trsVector[0], trs[1]*trsVector[1], trs[2]*trsVector[2] ), 
                         ro=rot )
             mc.xform( jnt2, ws = True, r = True, ro = rotVector )
+
+            # Mirror mode translate is for things like face joints where
+            # symmetric translation is needed
+            if mode == 'translate':
+                try:
+                    mc.makeIdentity(jnt2, apply=1, r=1)
+                    mc.setAttr(jnt2+'.rz', 180)
+                    mc.makeIdentity(jnt2, apply=1, r=1)
+                except:
+                    traceback.print_exc()
+                    print('Could not zero out {}'.format(jnt2))
 
             # set prefered angle
             if mc.objExists( '{}.{}'.format(jnt, 'preferredAngle') ):

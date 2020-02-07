@@ -271,6 +271,8 @@ def getGroupChildren(group):
         if name != group:
             continue
         childAttrs = mc.getAttr(groupAttr + '.childIndices')
+        if not childAttrs:
+            return []
         children = list()
         for childAttr in childAttrs:
             child = mc.listConnections(manager+'.poseInterpolatorParent[{}]'.format(childAttr))

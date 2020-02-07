@@ -23,7 +23,12 @@ try:
     nodes = mc.ls('*_bind', type='joint')
     for n in nodes:
         if getSideToken(n) is 'l':
-            rigrepo.libs.joint.mirror(n)
+            path = mc.ls(n, l=1)[0]
+            if '|skull_bind|' in path:
+                rigrepo.libs.joint.mirror(n, mode='translate')
+            else:
+                rigrepo.libs.joint.mirror(n, mode='rotate')
+
     # Freeze rotations
     mc.makeIdentity(nodes, apply=1, t=0, r=1, s=0, pn=1)
 except:
