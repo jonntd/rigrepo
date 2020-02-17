@@ -387,3 +387,25 @@ def applyWtsDir(directory, includeFilter=None, excludeFilter=None):
         # Prints
         print(skippedFiles)
         print(loadedFiles)
+
+def pruneWeights(deformer, geometry, mapList=None, threshold=.0001):
+    '''
+    :param deformer: Deformer to be pruned
+    :param threshold: Points with weight values be low this will be pruned
+    :return: None
+    '''
+    if mc.nodeType(deformer) in  ['cluster', 'wire']:
+        pointCount = mc.polyEvaluate(geometry, v=1)
+        attr = deformer + '.wl[0].w[0:{}]'.format(pointCount-1)
+        if not mc.objExists(attr):
+            return
+        values = mc.getAttr(attr)
+        nValues = numpy.array(values)
+        zeroValues = numpy.where(nValues < threshold)[0]
+        if zeroValues.size:
+            # Build string array of point indexes to remove
+            points = [geometry + '.vtx[{}]'.format(x) for x in zeroValues]
+
+            # Get the deformer set
+            deformerSet = mc.listConnections(deformer, type='objectSet')[-1]
+            mc.sets(points, remove=deformerSet)

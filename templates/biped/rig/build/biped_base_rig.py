@@ -380,6 +380,10 @@ if mc.objExists(node):
         r_blink = rigrepo.parts.blink.BlinkNew("r_blink",side="r", anchor="face_upper")
         r_blink.getAttributeByName("side").setValue("r")
         lookAtNode = rigrepo.parts.lookAt.LookAt("lookAt")
+        lookAtSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('lookAtSpaces', attrNode="lookAt_trs",
+                                                  constraintNode="lookAt_trs_nul", parentNode='rig',
+                                                  targetList=['rig'],
+                                                  nameList=["world"], constraintType='parent', defaultTargetIndex=0)
         mouth = rigrepo.parts.mouth.Mouth("mouth", lipMainCurve='lip_main_curve')
         mouth.getAttributeByName("orientFile").setValue(self.resolveDataFilePath('control_orients.data', self.variant))
         mouthBindGeometry = rigrepo.nodes.commandNode.CommandNode('bindGeometry')
@@ -524,7 +528,7 @@ if mc.objExists('Mouth'):
         browsNode.addChildren([l_brow, r_brow])
 
         eyesNode = pubs.pNode.PNode("eyes")
-        eyesNode.addChildren([l_blink, r_blink, lookAtNode])
+        eyesNode.addChildren([l_blink, r_blink, lookAtNode, lookAtSpaceNode])
 
         
         # add nodes ass children of body
@@ -646,15 +650,31 @@ if mc.objExists(node):
         applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode], 1)
         applyDeformerNode.addChildren([bindmeshTransferClusterBlinksNode, bindmeshTransferClusterLidsNode], 4)
 
-        wiresToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("wireToSkinCluster", 
+        uniqueDeformersNode = rigrepo.nodes.commandNode.CommandNode('uniqueDeformers')
+        uniqueDeformersCmd = '''
+import rigrepo.libs.deformer
+rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
+'''
+        uniqueDeformersNode.getAttributeByName('command').setValue(uniqueDeformersCmd)
+
+        convertToSkinClusterNode = pubs.pNode.PNode("convertToSkinCluster")
+        bodyWiresToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("bodyWiresToSkinCluster",
                                                                         wireList='mc.ls(["*leg*", "*arm*", "*spine*"], type="wire")', 
                                                                         targetGeometry='body_geo',
-                                                                        deformerName='body_wire', 
+                                                                        deformerName='body_wire_sc',
                                                                         keepWires=False,
                                                                         jointDepth=4)
-        wiresToSkinClusterNode.disable()
+        lipMainWiresToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("lipMainWireToSkinCluster",
+                                                                        wireList='mc.ls(["lip_main_wire"], type="wire")',
+                                                                        targetGeometry='body_geo',
+                                                                        deformerName='lip_main_wire_sc',
+                                                                        keepWires=False,
+                                                                        jointDepth=3)
+        bodyWiresToSkinClusterNode.disable()
         deliveryNode = self.getNodeByPath("|animRig|delivery")
-        deliveryNode.addChild(wiresToSkinClusterNode, index=0)
+        deliveryNode.addChild(uniqueDeformersNode, index=0)
+        deliveryNode.addChild(convertToSkinClusterNode, index=1)
+        convertToSkinClusterNode.addChildren([bodyWiresToSkinClusterNode, lipMainWiresToSkinClusterNode])
 
         # This must be at the end of the build
         applyNode.addChild(freezeWireNode)

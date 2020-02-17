@@ -459,13 +459,26 @@ class BlinkNew(part.Part):
 
             bindmeshGeometry, follicleList, jointList = self.__buildBlinkRig(sectionCurve, name="blink{0}_{1}".format(section, side), parent=self.name)
             # create the setDriven's for the cluster to follow the blink
-            for driverValue, value in zip((0, 20, 40, -20),(0, 35, 65, -15)):
+            values = zip((0, 20, 40, -20),(0, 35, 65, -15))
+            if section == "Lower":
+                values = zip((0, 20, 40, -20),(0, -35, -65, 15))
+            for driverValue, value in values:
+                currentDriver = "lid{0}_{1}_driver.rotateX".format(section, side)
                 mc.setDrivenKeyframe("{0}_def_auto.rotateX".format(lidCluster),
-                                        currentDriver="lid{0}_{1}_driver.rotateX".format(section, side), 
+                                        currentDriver=currentDriver,
                                         dv=driverValue,
                                         itt="linear",
                                         ott= "linear", 
                                         value=value)
+
+                # Set driven key post and pre infinity extrapolation
+                dkey = mc.listConnections(currentDriver, scn=1, type='animCurveUA')[-1]
+                mc.setAttr(dkey + '.preInfinity', 1)
+                mc.setAttr(dkey + '.postInfinity', 1)
+                mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+                mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+                mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+                mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
 
             # create the driver joint.
             mc.select("{}_ort".format(lidCluster))

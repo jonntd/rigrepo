@@ -314,7 +314,7 @@ for node in mc.ls("*"):
         clusterExportWtsNode = rigrepo.nodes.exportWtsDirNode.ExportWtsDirNode('cluster',
             dirPath=self.buildExportPath('cluster_wts', self.variant), 
             deformerType="cluster", 
-            excludeNodes='mc.ls("lip*",type="cluster")')
+            excludeNodes='mc.ls(["lip_*_?_?_*", "lip_corner_?_cluster", "lip_center_*_cluster", "lip*bindmesh*"],type="cluster")')
         skinClusterExportWtsSelectedNode = rigrepo.nodes.exportWtsSelectedNode.ExportWtsSelectedNode(
             'skinClusterSelected', dirPath=self.buildExportPath('skin_wts', self.variant))
         #exportPSDNode = rigrepo.nodes.exportPSDNode.ExportPSDNode('psd',

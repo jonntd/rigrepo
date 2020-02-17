@@ -259,22 +259,33 @@ def getAllGroups():
     groups = list()
     for group in groupIndexes:
         name = mc.getAttr(group + '.directoryName')
+        # Ignore the default groups named "Group"
+        if name == 'Group':
+            continue
+        # Ignore groups with no interpolator children
+        if not getGroupChildren(name):
+            continue
         groups.append(name)
-    # The first index is the default group, so we are excluding it
-    if len(groups) > 1:
-        return(groups[1:])
+    return groups
 
 def getGroupChildren(group):
+    # Directories are any pose interpoloator groups
     groupAttrs = mc.ls(manager + '.poseInterpolatorDirectory[*]')
     for groupAttr in groupAttrs:
         name = mc.getAttr(groupAttr + '.directoryName')
         if name != group:
             continue
+
         childAttrs = mc.getAttr(groupAttr + '.childIndices')
         if not childAttrs:
             return []
         children = list()
         for childAttr in childAttrs:
+            childAttr = int(childAttr)
+            # The child index is -2 if there are no children
+            # or if the only child is a group, guessing...
+            if childAttr == -2:
+                continue
             child = mc.listConnections(manager+'.poseInterpolatorParent[{}]'.format(childAttr))
             child = common.getFirstIndex(child)
             child = getPoseInterp(child)
@@ -295,3 +306,15 @@ def getGroup(poseInterp):
         childIndices = mc.getAttr(group + '.childIndices')
         if index in childIndices:
             return(name)
+
+def disablePose(poseInterp, pose):
+    poseInterp = getPoseInterp(poseInterp)
+    poseIndex = getPoseIndex(poseInterp, pose)
+    mc.setAttr('{}.pose[{}].isEnabled'.format(poseInterp, poseIndex), 0)
+
+def enablePose(poseInterp, pose):
+    poseInterp = getPoseInterp(poseInterp)
+    poseIndex = getPoseIndex(poseInterp, pose)
+    mc.setAttr('{}.pose[{}].isEnabled'.format(poseInterp, poseIndex), 1)
+
+
