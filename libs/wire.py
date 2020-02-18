@@ -167,11 +167,6 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
         else:
             mc.connectAttr(sc+'.outputGeometry[0]', sc_out, f=1)
 
-    # Reconnect to the rest of the chain of deformers
-    #mc.connectAttr(targetSkinCluster+'.outputGeometry[0]', sc_out, f=1)
-    # Reconnect he shape since the skinCluster command connects right to the shape
-    #mc.connectAttr(geo_input, targetGeometry+'.inMesh', f=1)
-
     # make sure we have the correct weights for the baseJnt
     # Create a numpy array the length of the number of verts and assigning
     # a value of 1.0 to each index

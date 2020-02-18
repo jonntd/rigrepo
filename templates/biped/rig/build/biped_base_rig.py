@@ -676,10 +676,19 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
                                                                                                     deformerName='lip_wire_sc',
                                                                                                     keepWires=False,
                                                                                                     jointDepth=3)
+        lidWireToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("lidWire_toSkinCluster",
+                                                                                               wireList='mc.ls(["lid_?_curve_wire"], type="wire")',
+                                                                                               targetGeometry='body_geo',
+                                                                                               deformerName='lid_wire_sc',
+                                                                                               keepWires=False,
+                                                                                               jointDepth=3)
         deliveryNode = self.getNodeByPath("|animRig|delivery")
         deliveryNode.addChild(uniqueDeformersNode, index=0)
         deliveryNode.addChild(convertToSkinClusterNode, index=1)
-        convertToSkinClusterNode.addChildren([bodyWiresToSkinClusterNode, lipMainWireToSkinClusterNode, lipWireToSkinClusterNode])
+        convertToSkinClusterNode.addChildren([bodyWiresToSkinClusterNode,
+                                              lipMainWireToSkinClusterNode,
+                                              lipWireToSkinClusterNode,
+                                              lidWireToSkinClusterNode])
 
         # This must be at the end of the build
         applyNode.addChild(freezeWireNode)
