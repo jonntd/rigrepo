@@ -695,13 +695,9 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
         freezeWireNode.addChild(freezeWireExpression)
 
         # TEMP: Speed up face build
-        fastFace = True
-        if fastFace:
-            lipYankNode.disable()
-            bindmeshTransferClusterBlinksNode.disable()
-            bindmeshTransferClusterLidsNode.disable()
-        
-    
+        lipYankNode.disable()
+        bindmeshTransferClusterLidsNode.disable()
+
         # create a build node to put builds under.
         buildNode = pubs.pNode.PNode("build")
         # add nodes to the build
