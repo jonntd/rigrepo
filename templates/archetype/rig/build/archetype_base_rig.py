@@ -205,7 +205,7 @@ for node in lockNodes:
     
 for ctrl in controls:
     if mc.objExists(ctrl+'.jointOrient'):
-        rigrepo.libs.attribute.lock(ctrl, ['jointOrient', 'rotateAxis'])
+        rigrepo.libs.attribute.lock(ctrl, ['jointOrient', 'rotateAxis', 'radius'])
     
 '''
         lockNode.getAttributeByName('command').setValue(lockNodeCmd)        

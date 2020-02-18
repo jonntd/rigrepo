@@ -75,7 +75,7 @@ class Hand(part.Part):
             children.reverse()
 
             # create the first finger control
-            fingerCtrlHierarchy = control.create(name="{0}_ctrl".format(jnt), 
+            fingerCtrlHierarchy = control.create(name="{}".format("".join(jnt.split("_bind"))), 
                                                 controlType="square",
                                                 hierarchy=['nul','ort'],
                                                 parent=parent)
@@ -95,7 +95,7 @@ class Hand(part.Part):
                     parent = self._group
                     break
                 # create the control for the child joints.
-                childCtrlierarchy = control.create(name="{0}_ctrl".format(childJoint), 
+                childCtrlierarchy = control.create(name="{}".format("".join(childJoint.split("_bind"))), 
                                                 controlType="square",
                                                 hierarchy=['nul','ort'],
                                                 parent=parent)

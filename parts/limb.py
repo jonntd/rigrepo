@@ -34,7 +34,6 @@ class Limb(part.Part):
         self.addAttribute("ikControls", ["{}_limb_pv".format(side),
                                         "{}_limb_ik".format(side)],
                             attrType=list)
-        side.capitalize()
         self.addAttribute("paramNode", "limb_{}".format(side.capitalize()), attrType=str)
         self.addAttribute("createBendyLimb", True, attrType=bool)
         self.addAttribute("displayLine", False, attrType=bool)
@@ -469,6 +468,9 @@ class Limb(part.Part):
                     mc.setAttr("{}.v".format(baseCurveJoint), 0)
                     mc.parent(baseCurveJoint, controlList[1])
                     mc.setAttr("{}.t".format(baseCurveJoint), 0, 0, 0)
+                    newControlName = '{}_{}'.format(controlList[-1].replace(self.getName(), paramNode.replace('_{}'.format(side.capitalize()),"")), side)
+                    controlList[-1] = mc.rename(controlList[-1] , newControlName)
+                    controlHieracrchyList[controlHieracrchyList.index(controlList)] = controlList
 
                 baseCurve = "{}BaseWire".format(curve)
                 mc.parent([curve,baseCurve], self.name)

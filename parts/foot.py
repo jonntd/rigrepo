@@ -237,7 +237,7 @@ class Foot(part.Part):
                 parent = pivot
                 continue
 
-            pivotctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(pivot), 
+            pivotctrlHierarchy = rigrepo.libs.control.create("{}".format("".join(pivot.split("_pivot"))), 
                                                             controlType = "cube", 
                                                             hierarchy=['nul'])
 
