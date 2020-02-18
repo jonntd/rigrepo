@@ -5,6 +5,7 @@ from collections import OrderedDict
 import rigrepo.libs.curve 
 import rigrepo.libs.common 
 import rigrepo.libs.data.curve_data
+import rigrepo.libs.attribute
 import maya.cmds as mc
 
 CONTROLPATH = os.path.join(os.path.dirname(os.path.dirname(__file__)),'etc','controls.data')
@@ -74,6 +75,10 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
     else:
         control = mc.createNode(transformType, name=name)
         mc.setAttr("{0}.displayHandle".format(control), 1)
+
+    if transformType == "joint":
+        hideAttrs.append("radius")
+
     for attr in hideAttrs:
         if mc.objExists(control+'.'+attr):
             mc.setAttr(control+'.'+attr, k=0, cb=0)

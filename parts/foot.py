@@ -132,7 +132,7 @@ class Foot(part.Part):
             print "{} is already connected.".format(fkJointList[0])
 
         # create the ball fk control
-        ballFkctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(fkJointList[1]), 
+        ballFkctrlHierarchy = rigrepo.libs.control.create("{}".format("".join(fkJointList[1].split("_bind"))), 
                                                             controlType = "cube", 
                                                             hierarchy=['nul','ort'],
                                                             transformType="joint")
@@ -176,9 +176,9 @@ class Foot(part.Part):
         pivotSide = mc.xform(self._jointList[0], q=True, ws=True, t=True)[0]
         # we will have to come up with a better way to handle this. Maybe make an attribue 
         # that a user can change.
-        bankCtrlName = "bank_l_ctrl"
+        bankCtrlName = "bank_l"
         if pivotPos < .01:
-            bankCtrlName = "bank_r_ctrl"
+            bankCtrlName = "bank_r"
 
         bankctrlHierarchy = rigrepo.libs.control.create(bankCtrlName, 
                                                 controlType = "cube", 

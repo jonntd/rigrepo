@@ -129,11 +129,15 @@ class Arm(limb.Limb):
 
     def postBuild(self):
         '''
+        This runs after the build method
         '''
+        # get the attribute values from the user.
         clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
         swingCtrl = self.getAttributeByName('swingCtrl').getValue()
         side = self.getAttributeByName("side").getValue()
         anchor = self.getAttributeByName("anchor").getValue()
+        paramNodeName = self.getAttributeByName("paramNode").getValue()
+        createProxyAttributes = self.getAttributeByName("createProxyAttributes").getValue()
 
         super(Arm, self).postBuild()
         rigrepo.libs.attribute.lockAndHide(swingCtrl,["sx","sy", "sz", "v"])
@@ -157,111 +161,24 @@ class Arm(limb.Limb):
         mc.parent(clavicleCtrl+'_driver_par', anchor)
         mc.delete(mc.orientConstraint('clavicle_trans_'+self._side+'_bind', clavicleCtrl+'_driver_par'))
         mc.orientConstraint('clavicle_trans_'+self._side+'_bind', clavicleCtrl+'_driver')
-        
 
-class ArmOld(limb.Limb):
-    '''
-    '''
-    def __init__(self, name, jointList, anchor='chest', dataObj=None, side='l'):
-        '''
-        This is the constructor.
-        '''
-        if len(jointList) != 4:
-            raise RuntimeError("""{0} must be an array of 4 elements
-                that exists in Maya.""".format(jointList))
+        if createProxyAttributes:
+            for control in [swingCtrl]:
+                mc.addAttr(control, ln="settings", at="enum", enumName="settings",keyable=True)
+                rigrepo.libs.attribute.lock(control, ['settings'])
+                mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, 
+                            keyable=True, enumName="Ik:FK", proxy='{}.ikfk'.format(paramNodeName))
 
-        self._clavicleJoint = jointList.pop(0)
-        
-        super(ArmOld, self).__init__(name, jointList, anchor, dataObj, side) 
-        self.addAttribute("clavicleCtrl", "clavicle_{}".format(side), attrType=str)
-        self.addAttribute("swingCtrl", "shoulderSwing_{}".format(side), attrType=str)
-
-    def build(self):
-        '''
-        '''
-        super(ArmOld, self).build()
-        clavicleCtrl = self.getAttributeByName('clavicleCtrl').getValue()
-        swingCtrl = self.getAttributeByName('swingCtrl').getValue()
-        swingCtrlHierarchy = control.create(name=swingCtrl, 
-                                                controlType="square",
-                                                hierarchy=['nul','ort'])
-        clavicleCtrlHierarchy = control.create(name=clavicleCtrl, 
-                                                controlType="square",
-                                                hierarchy=['nul','ort'])
-
-        
-
-        '''
-        clavicle = 'clavicle_l'
-        child = 'shoulderSwing_l_nul'
-
-        aimTarget = mc.duplicate(clavicle, po=1, n=clavicle + '_aim_target')[0]
-        aim = mc.duplicate(clavicle, po=1, n=clavicle + '_aim')[0]
-
-        mc.delete(mc.pointConstraint(child, aimTarget))
-        mc.parent(aimTarget, clavicle)
-        mc.setAttr(aimTarget + '.tx', 1)
-
-        mc.aimConstraint(aimTarget, aim, offset=[0, 0, 0],
-                         weight=1, aimVector=[1, 0, 0],
-                         worldUpType="none",
-                         upVector=[0, 0, 0])
-
-        mc.pointConstraint(aimTarget, child)
-        '''
-
-        clavicleCtrl = clavicleCtrlHierarchy[-1]
-        clavicleNul = clavicleCtrlHierarchy[0]
-        swingCtrl = swingCtrlHierarchy[-1]
-        swingNul = swingCtrlHierarchy[0]
-        clavicleJointMatrix = mc.xform(self._clavicleJoint, q=True, ws=True, matrix=True)
-        mc.xform(clavicleNul, ws=True, matrix=clavicleJointMatrix)
-
-        # move the shoulderSwing control to the correct location.
-        shoulderCtrlMatrix = mc.xform(self._fkControls[0], q=True, ws=True, matrix=True)
-        mc.xform(swingNul, ws=True, matrix=shoulderCtrlMatrix)
-
-        # Hookup clavicle connect nul, the direct connection for the rotate allow keeps the auto
-        # clav from causint a double rotation on the shoulder
-        clavicleConnect = mc.duplicate(clavicleCtrl, po=1, n=clavicleCtrl+'_connect')[0]
-        rigrepo.libs.control.untagAsControl(clavicleConnect)
-        mc.parent(clavicleConnect, clavicleNul)
-        mc.connectAttr(clavicleCtrl+'.r', clavicleConnect+'.r')
-        mc.connectAttr(clavicleCtrl+'.s', clavicleConnect+'.s')
-        # PSD driver - transform that picks up the auto clav and anim control rotation
-        clavicleDriver = mc.duplicate(clavicleConnect, po=1, n=clavicleCtrl+'_driver')[0]
-        rigrepo.libs.control.untagAsControl(clavicleDriver)
-        mc.orientConstraint(clavicleCtrl, clavicleDriver)
-
-        # This allows the translates to come through with auto clav
-        clavicleConnectTranslate = mc.duplicate(swingNul, po=1, n=clavicleCtrl+'_connect_trans')[0]
-        mc.parent(clavicleConnectTranslate, clavicleCtrl)
-        mc.pointConstraint(clavicleConnectTranslate, clavicleConnect)
-
-
-        mc.pointConstraint(clavicleCtrl, self._clavicleJoint)
-        mc.orientConstraint(clavicleCtrl, self._clavicleJoint)
-
-        # parent the shoulderSwing control to the clavicle control.
-        mc.parent(("{}_nul".format(self._fkControls[0]), self._stretchTargetJointList[0]), swingCtrl)
-        mc.parent(swingNul, clavicleConnect)
-
-        # parent constrain the shoulder ik joint to the clavicle joint.
-        mc.parentConstraint(self._clavicleJoint, self.ikfkSystem.getIkJointList()[0], mo=True)
-
-        # parent the clavicle to the group of this part.
-        mc.parent(clavicleNul, self.name)
-        
-        # Connect to passed anchor
-        #
-        anchor = self.getAttributeByName('anchor').getValue()
-        if mc.objExists(anchor):
-            mc.parent(clavicleNul, anchor) 
-        else:
-            mc.warning('Anchor object [ {} ] does not exist.'.format(anchor)) 
-
-
-        # set the rotate order for the shoulder control
-        mc.setAttr("{}.rotateOrder".format(self._fkControls[0]), 2)
-        # set the rotate order for the swing control
-        mc.setAttr("{}.rotateOrder".format(swingCtrl), 2)
+                mc.addAttr(mc.listRelatives(control, c=True, shapes=True)[0], 
+                            ln='ikfk_switch', nn= "Snap IK FK", at='enum', 
+                            proxy='{}.ikfk_switch'.format(paramNodeName))
+                mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1,
+                            k=True, proxy='{}.stretch'.format(paramNodeName))
+                mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, 
+                            k=True, proxy='{}.stretchTop'.format(paramNodeName))
+                mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, 
+                            k=True, proxy='{}.stretchBottom'.format(paramNodeName))
+                mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, 
+                            k=True, proxy='{}.softStretch'.format(paramNodeName))
+                mc.addAttr(control, ln='pvPin', at='double', min=0, max=1, dv=1, 
+                            k=True, proxy='{}.pvPin'.format(paramNodeName))
