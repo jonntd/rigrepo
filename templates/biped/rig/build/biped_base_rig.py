@@ -696,7 +696,7 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
 
         # TEMP: Speed up face build
         lipYankNode.disable()
-        bindmeshTransferClusterLidsNode.disable()
+        #bindmeshTransferClusterLidsNode.disable()
 
         # create a build node to put builds under.
         buildNode = pubs.pNode.PNode("build")
