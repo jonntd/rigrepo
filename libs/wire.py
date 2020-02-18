@@ -185,9 +185,27 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
 
     # delete the wire deformers
     if not keepWires:
-        mc.setAttr(convertWireList[0]+'.envelope', 0)
-    #    #mc.delete(convertWireList+curveList)
-    #    mc.delete(convertWireList)
+
+        # If the curve is being used for multiple wire deforms we need to disconnect it first
+        # or maya will delete it
+        delete_curves = True
+        for wire in convertWireList:
+            # wire
+            curve = mc.listConnections(wire+'.deformedWire[0]', p=1)
+            curveOutputs = mc.listConnections(curve[0])
+            if len(curveOutputs) > 1:
+                delete_curves = False
+                mc.disconnectAttr(curve[0], wire+'.deformedWire[0]')
+            # base wire
+            curve = mc.listConnections(wire+'.baseWire[0]', p=1)
+            curveOutputs = mc.listConnections(curve[0])
+            if len(curveOutputs) > 1:
+                mc.disconnectAttr(curve[0], wire+'.baseWire[0]')
+
+        # Delete the wire and curves
+        mc.delete(convertWireList)
+        if delete_curves:
+            mc.delete(curveList)
     mc.sets(influenceList, n='lip_wire_infs')
 
 def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterList, keepWires=False,
