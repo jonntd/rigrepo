@@ -25,6 +25,15 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
     # Store the connection to the shape
     geo_input = mc.listConnections(targetGeometry+'.inMesh', p=1)[0]
 
+    # Store deformation order
+    deformer_order = mc.listHistory(target, pdo=1, il=2)
+    reorder_deformer = None
+    for deformer in wireDeformerList:
+        orderIndex = deformer_order.index(deformer)
+        if orderIndex:
+            if not deformer_order[orderIndex-1] in wireDeformerList:
+                reorder_deformer = deformer_order[orderIndex-1]
+
     # Delete current skinCluster connections
     #     TODO: What should be done when multiple skinClusters already exist?
     #     TODO: Make a function for activating and deactiviing skinClusters
@@ -206,7 +215,10 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
         mc.delete(convertWireList)
         if delete_curves:
             mc.delete(curveList)
-    mc.sets(influenceList, n='lip_wire_infs')
+
+    # Reorder deformers
+    if reorder_deformer:
+        mc.reorderDeformers(reorder_deformer, targetSkinCluster, target)
 
 def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterList, keepWires=False,
                                  rootParentNode="rig", rootPreMatrixNode="trs_aux", jointDepth=2):
