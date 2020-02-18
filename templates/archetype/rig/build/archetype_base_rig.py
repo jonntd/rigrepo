@@ -221,9 +221,18 @@ for node in mc.ls("*"):
         if mc.objectType(node) in excludeType:
             mc.setAttr(node + '.isHistoricallyInteresting', 1)
 '''
-        hideHistoryNode.getAttributeByName('command').setValue(hideHistoryNodeCmd)        
+        hideHistoryNode.getAttributeByName('command').setValue(hideHistoryNodeCmd)    
 
-        deliveryNode.addChildren([localizeNode, lockNode, hideHistoryNode])
+        removeNodesNode = rigrepo.nodes.commandNode.CommandNode('removeNodes')
+        removeNodesNodeCmd = '''
+import maya.cmds as mc    
+removeNodes = mc.ls(("poseFreeze", "lip_up_*cluster", "lip_low_*cluster", "lip_corner_*cluster", "lip_center_*cluster", "?_leg_*wire", "?_arm_*wire"))
+
+mc.delete(removeNodes)       
+'''
+        removeNodesNode.getAttributeByName('command').setValue(removeNodesNodeCmd)       
+
+        deliveryNode.addChildren([removeNodesNode, localizeNode, lockNode, hideHistoryNode])
 
         animRigNode.addChildren([newSceneNode, rigSetsNode, loadNode, postBuild, applyNode, deliveryNode, importNodeEditorBookmarsNode, frameNode])
 
