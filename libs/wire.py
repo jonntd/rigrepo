@@ -22,17 +22,42 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
     # Get existing wire deformers from the wireDeformerList
     convertWireList = mc.ls(wireDeformerList, type="wire")
 
+    # Store the connection to the shape
+    geo_input = mc.listConnections(targetGeometry+'.inMesh', p=1)[0]
+
     # Delete current skinCluster connections
     #     TODO: What should be done when multiple skinClusters already exist?
     #     TODO: Make a function for activating and deactiviing skinClusters
-    sc = mc.ls(mc.listHistory(target), type='skinCluster')[0]
-    if sc:
+    #     1. Disconnect all the existing skinClusters and storing their
+    #        connections.
+    #     2. Build the new skinCluster
+    #     3. Reconnect all the skinClusters in reverse order
+    sc_hist_list = mc.ls(mc.listHistory(target, pdo=1, il=2),  type='skinCluster')
+    sc_list = []
+
+    for sc in sc_hist_list:
+        # OUTGOING
+        #
         # Get the outgoing geom connection of the skinCluster
+        sc_data = [sc]
         sc_out = mc.listConnections(sc+'.outputGeometry[0]', p=1)[0]
+        sc_data.append(sc_out)
+
+        # INCOMING
         # Get the group parts node of the skinCluster (incoming connection)
         sc_gp = mc.listConnections(sc+'.input[0].inputGeometry')[0]
+        sc_data.append(sc_gp)
+
         # Get the connection coming into the group parts node
         sc_pre_dfmr = mc.listConnections(sc_gp+'.inputGeometry', p=1)[0]
+        sc_data.append(sc_pre_dfmr)
+        # Remove the connection
+        mc.disconnectAttr(sc_pre_dfmr, sc_gp+'.inputGeometry')
+
+        # Store connection information
+        sc_list.append(sc_data)
+
+        # Disconnect the incoming connection
         # Bypass the skinCluster by connecting the incoming group parts connection
         # into the outgoing skinCluster destination connection
         mc.connectAttr(sc_pre_dfmr, sc_out, f=1)
@@ -121,9 +146,22 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
     index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, baseJnt)
     mc.connectAttr("{}.worldInverseMatrix[0]".format(rootPreMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, index), f=True)
 
-    # Reconnect other skinCluster
-    targ_sc_gp = mc.listConnections(targetSkinCluster+'.input[0].inputGeometry')[0]
-    mc.connectAttr(sc+'.outputGeometry[0]', targ_sc_gp+'.inputGeometry', f=1)
+    # RECONNECT other skinClusters
+    #
+    sc_list.reverse()
+    for sc_data in sc_list:
+        sc, sc_out, sc_gp, sc_pre_dfmr = sc_data
+        mc.connectAttr(sc_pre_dfmr, sc_gp+'.inputGeometry', f=1)
+        if '.inMesh' in sc_out:
+            targ_sc_gp = mc.listConnections(targetSkinCluster+'.input[0].inputGeometry')[0]
+            mc.connectAttr(sc+'.outputGeometry[0]', targ_sc_gp+'.inputGeometry', f=1)
+        else:
+            mc.connectAttr(sc+'.outputGeometry[0]', sc_out, f=1)
+
+    # Reconnect to the rest of the chain of deformers
+    #mc.connectAttr(targetSkinCluster+'.outputGeometry[0]', sc_out, f=1)
+    # Reconnect he shape since the skinCluster command connects right to the shape
+    #mc.connectAttr(geo_input, targetGeometry+'.inMesh', f=1)
 
     # make sure we have the correct weights for the baseJnt
     # Create a numpy array the length of the number of verts and assigning
@@ -147,7 +185,9 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
 
     # delete the wire deformers
     if not keepWires:
-        mc.delete(convertWireList+curveList)
+        mc.setAttr(convertWireList[0]+'.envelope', 0)
+    #    #mc.delete(convertWireList+curveList)
+    #    mc.delete(convertWireList)
     mc.sets(influenceList, n='lip_wire_infs')
 
 def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterList, keepWires=False,

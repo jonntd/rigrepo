@@ -658,23 +658,28 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
         uniqueDeformersNode.getAttributeByName('command').setValue(uniqueDeformersCmd)
 
         convertToSkinClusterNode = pubs.pNode.PNode("convertToSkinCluster")
-        bodyWiresToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("bodyWiresToSkinCluster",
+        bodyWiresToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("bodyWires_toSkinCluster",
                                                                         wireList='mc.ls(["*leg*", "*arm*", "*spine*"], type="wire")', 
                                                                         targetGeometry='body_geo',
                                                                         deformerName='body_wire_sc',
                                                                         keepWires=False,
                                                                         jointDepth=4)
-        lipMainWiresToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("lipMainWireToSkinCluster",
+        lipMainWireToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("lipMainWire_toSkinCluster",
                                                                         wireList='mc.ls(["lip_main_wire"], type="wire")',
                                                                         targetGeometry='body_geo',
                                                                         deformerName='lip_main_wire_sc',
                                                                         keepWires=False,
                                                                         jointDepth=3)
-        bodyWiresToSkinClusterNode.disable()
+        lipWireToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("lipWire_toSkinCluster",
+                                                                                                    wireList='mc.ls(["lip_wire"], type="wire")',
+                                                                                                    targetGeometry='body_geo',
+                                                                                                    deformerName='lip_wire_sc',
+                                                                                                    keepWires=False,
+                                                                                                    jointDepth=3)
         deliveryNode = self.getNodeByPath("|animRig|delivery")
         deliveryNode.addChild(uniqueDeformersNode, index=0)
         deliveryNode.addChild(convertToSkinClusterNode, index=1)
-        convertToSkinClusterNode.addChildren([bodyWiresToSkinClusterNode, lipMainWiresToSkinClusterNode])
+        convertToSkinClusterNode.addChildren([bodyWiresToSkinClusterNode, lipMainWireToSkinClusterNode, lipWireToSkinClusterNode])
 
         # This must be at the end of the build
         applyNode.addChild(freezeWireNode)
