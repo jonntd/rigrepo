@@ -31,52 +31,61 @@ class Tongue(part.Part):
         self.spline.create()
 
         # Tongue Base
-        tonugeBaseNul, tonugeBaseCtrl = control.create(name="tonuge_base", 
+        tongueBaseNul, tongueBaseCtrl = control.create(name="tongue_base",
                                           controlType=None,
                                           color=common.RED,
                                           hierarchy=['nul'])
 
+        # Hook up scale
+        scale_nul = mc.createNode('transform', p=jointList[0], n='tongue_scale_nul')
+        mc.parent(scale_nul, mc.listRelatives(jointList[0], p=1)[0])
+        mc.parent(jointList[0], scale_nul)
+        mc.connectAttr(tongueBaseCtrl+'.s', scale_nul+'.s')
+        mc.setAttr(jointList[0]+'.segmentScaleCompensate', 0)
+
         matrix = mc.xform(jointList[0], q=True, ws=True, matrix=True)
-        mc.xform(tonugeBaseNul, ws=True, matrix=matrix)
+        mc.xform(tongueBaseNul, ws=True, matrix=matrix)
 
         # Parent the entire ik group to the neck
-        mc.parent(self.spline.getGroup(), tonugeBaseCtrl) 
+        mc.parent(self.spline.getGroup(), tongueBaseCtrl)
 
         # tongue Mid
-        tonugeMidNul, tonugeMidCtrl = control.create(name="tonuge_mid", 
+        tongueMidNul, tongueMidCtrl = control.create(name="tongue_mid",
                                           controlType=None,
                                           color=common.RED,
+                                          hideAttrs=['sx', 'sy', 'sz', 'v'],
                                           hierarchy=['nul'])
 
         # move the middle control between the last the middle joints
-        mc.delete(mc.parentConstraint(jointList[-2], jointList[1], tonugeMidNul))
+        mc.delete(mc.parentConstraint(jointList[-2], jointList[1], tongueMidNul))
 
-        mc.parent(tonugeMidNul, tonugeBaseCtrl) 
+        mc.parent(tongueMidNul, tongueBaseCtrl)
 
         # tongue Tip
-        tonugeTipNul, tonugeTipCtrl = control.create(name="tonuge_tip", 
+        tongueTipNul, tongueTipCtrl = control.create(name="tongue_tip",
                                           controlType=None,
                                           color=common.RED,
+                                          hideAttrs=['sx', 'sy', 'sz', 'v'],
                                           hierarchy=['nul'])
 
         # make the tongue tip matches the last joint in the chain
         matrix=mc.xform(jointList[-1], q=True, ws=True, matrix=True)
-        mc.xform(tonugeTipNul, ws=True, matrix=matrix)
+        mc.xform(tongueTipNul, ws=True, matrix=matrix)
 
         clusters = self.spline._clusters
-        mc.parent(tonugeTipNul, tonugeMidCtrl) 
-        mc.parent(clusters[2:], tonugeTipCtrl)
-        mc.orientConstraint(tonugeTipCtrl, self.spline._endTwistNul, mo=1)
-        #mc.parentConstraint(tonugeTipCtrl, self._skullBind, mo=1)
+        mc.parent(tongueTipNul, tongueMidCtrl)
+        mc.parent(clusters[2:], tongueTipCtrl)
+        mc.orientConstraint(tongueTipCtrl, self.spline._endTwistNul, mo=1)
+        #mc.parentConstraint(tongueTipCtrl, self._skullBind, mo=1)
         #mc.connectAttr(headCtrl+'.s', self._skullBind+'.s')
 
         anchor = self.getAttributeByName('anchor').getValue()
         if mc.objExists(anchor):
-            mc.parentConstraint(anchor, tonugeBaseNul, mo=1)
+            mc.parentConstraint(anchor, tongueBaseNul, mo=1)
         else:
             mc.warning('Anchor object [ {} ] does not exist.'.format(anchor)) 
 
-        mc.parent(tonugeBaseNul, self.name)
+        mc.parent(tongueBaseNul, self.name)
         mc.hide(self.spline._group, clusters)
 
     def postBuild(self):

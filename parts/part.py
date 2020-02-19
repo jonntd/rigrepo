@@ -80,7 +80,7 @@ class Part(pubs.pNode.PNode):
 
         # set the model group to have an override on the display
         if not mc.objExists("{}.overrideModel".format(self.modelGroup)):
-            mc.addAttr(self.modelGroup, ln="overrideModel", at="bool", keyable=True, dv=1)
+            mc.addAttr(self.modelGroup, ln="overrideModel", at="bool", keyable=True, dv=0)
             mc.setAttr("{0}.overrideEnabled".format(self.modelGroup), 1)
             modelOverrideChoice = mc.createNode("choice", n="model_override_choice")
             mc.addAttr(modelOverrideChoice, ln = "on", at="byte",dv=2)

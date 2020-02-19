@@ -223,6 +223,7 @@ class Face(part.Part):
             mc.xform(noseBridgeNul, ws=True, matrix=mc.xform(noseBridgeJoint, q=True, ws=True, matrix=True))
             mc.pointConstraint(noseBridgeCtrl, noseBridgeJoint)
             mc.orientConstraint(noseBridgeCtrl, noseBridgeJoint)
+            mc.connectAttr(noseBridgeCtrl+'.s', noseBridgeJoint+'.s')
 
         if mc.objExists(noseJoint):
             # Create the faceLower and jaw control
@@ -240,6 +241,7 @@ class Face(part.Part):
             mc.xform(noseNul, ws=True, matrix=mc.xform(noseJoint, q=True, ws=True, matrix=True))
             mc.pointConstraint(noseCtrl, noseJoint)
             mc.orientConstraint(noseCtrl, noseJoint)
+            mc.connectAttr(noseCtrl+'.s', noseJoint+'.s')
 
             # create the left sneer cluster
             sneerNameL = "sneer_l"

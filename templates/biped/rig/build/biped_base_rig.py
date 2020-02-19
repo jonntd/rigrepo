@@ -427,9 +427,15 @@ for mesh in mc.ls(["lip_main_bindmesh", "lip_bindmesh", "mouth_corner_bindmesh"]
         r_brow = rigrepo.parts.brow.Brow("r_brow", side="r", anchor="head_tip")
 
         cheekClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("cheeks")
-        cheekClusterNode.getAttributeByName("nameList").setValue("['cheekPuff_l', 'cheekPuff_r', 'cheek_l', 'cheek_r']")
+        cheekClusterNode.getAttributeByName("nameList").setValue("['cheek_l', 'cheek_r']")
         cheekClusterNode.getAttributeByName("geometry").setValue("body_geo")
-        cheekClusterNode.getAttributeByName("parent").setValue("face_mid_driver")
+        cheekClusterNode.getAttributeByName("parent").setValue("face_upper")
+
+        cheekPuffClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("cheekPuffs")
+        cheekPuffClusterNode.getAttributeByName("nameList").setValue("['cheekPuff_l', 'cheekPuff_r']")
+        cheekPuffClusterNode.getAttributeByName("geometry").setValue("body_geo")
+        cheekPuffClusterNode.getAttributeByName("parent").setValue("face_mid_driver")
+
         leftCheekLiftClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("l_cheekLift")
         leftCheekLiftClusterNode.getAttributeByName("nameList").setValue("['cheekLift_l']")
         leftCheekLiftClusterNode.getAttributeByName("geometry").setValue("body_geo")
@@ -518,7 +524,7 @@ if mc.objExists('Mouth'):
                 
 '''
         mouthCornerDistanceNode.getAttributeByName('command').setValue(mouthCornerDistanceNodeCmd)
-        cheekClusterNode.addChildren([leftCheekLiftClusterNode, rightCheekLiftClusterNode, mouthCornerDistanceNode])
+        cheekClusterNode.addChildren([cheekPuffClusterNode, leftCheekLiftClusterNode, rightCheekLiftClusterNode, mouthCornerDistanceNode])
 
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
@@ -696,7 +702,11 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
 
         # TEMP: Speed up face build
         lipYankNode.disable()
-        #bindmeshTransferClusterLidsNode.disable()
+        fastFace = False
+        if fastFace:
+            bindmeshTransferClusterLidsNode.disable()
+            bindmeshTransferClusterBlinksNode.disable()
+            self.getNodeByPath('|animRig|load|psdDeltas').disable()
 
         # create a build node to put builds under.
         buildNode = pubs.pNode.PNode("build")

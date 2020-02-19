@@ -170,6 +170,7 @@ for skinCluster in mc.ls(type="skinCluster"):
         # --------------------------------------------------------------------------------------------------------------
         deliveryNode = pubs.pNode.PNode("delivery")
         deliveryNode.disable()
+
         localizeNode = rigrepo.nodes.commandNode.CommandNode('localize')
         localizeNodeCmd = '''
 import rigrepo.libs.skinCluster
@@ -230,9 +231,17 @@ removeNodes = mc.ls(("poseFreeze", "lip_up_*cluster", "lip_low_*cluster", "lip_c
 
 mc.delete(removeNodes)       
 '''
-        removeNodesNode.getAttributeByName('command').setValue(removeNodesNodeCmd)       
 
-        deliveryNode.addChildren([removeNodesNode, localizeNode, lockNode, hideHistoryNode])
+        modelOverrideNode = rigrepo.nodes.commandNode.CommandNode('modelOverride')
+        modelOverrideCmd = '''
+import maya.cmds as mc
+mc.setAttr("{0}.overrideModel".format('model'), 1)
+        '''
+        modelOverrideNode.getAttributeByName('command').setValue(modelOverrideCmd)
+
+        removeNodesNode.getAttributeByName('command').setValue(removeNodesNodeCmd)
+
+        deliveryNode.addChildren([removeNodesNode, localizeNode, lockNode, hideHistoryNode, modelOverrideNode])
 
         animRigNode.addChildren([newSceneNode, rigSetsNode, loadNode, postBuild, applyNode, deliveryNode, importNodeEditorBookmarsNode, frameNode])
 
