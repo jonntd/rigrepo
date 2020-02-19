@@ -214,9 +214,8 @@ for ctrl in mc.ls("mouth_corner_?"):
 for ctrl in mc.ls(("trs_master", "trs_shot", "trs_aux")):
     rigrepo.libs.attribute.lockAndHide(ctrl, ['v'])
 
-rigrepo.libs.attribute.lockAndHide(mc.ls('{}'), ['tx', 'ty', 'tz', 'rx', 'ry', 'rz', 'sx', 'sy', 'sz','t','r','s','v'])
-
-'''.format(self.element)
+rigrepo.libs.attribute.lockAndHide(mc.listRelatives("trs_master", p=True), ['tx', 'ty', 'tz', 'rx', 'ry', 'rz', 'sx', 'sy', 'sz','t','r','s','v'])
+'''
         lockNode.getAttributeByName('command').setValue(lockNodeCmd)        
 
         hideHistoryNode = rigrepo.nodes.commandNode.CommandNode('hideHistory')
