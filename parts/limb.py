@@ -665,7 +665,21 @@ class Limb(part.Part):
             print('No twist joint found', twistJoint)
 
         if createProxyAttributes:
-            for control in self._ikControls + self._fkControls:
+            for control in self._fkControls:
+                mc.addAttr(control, ln="settings", at="enum", enumName="settings",keyable=True)
+                rigrepo.libs.attribute.lock(control, ['settings'])
+                mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, 
+                            keyable=True, enumName="Ik:FK", proxy='{}.ikfk'.format(paramNodeName))
+
+                mc.addAttr(mc.listRelatives(control, c=True, shapes=True)[0], 
+                            ln='ikfk_switch', nn= "Snap IK FK", at='enum', 
+                            proxy='{}.ikfk_switch'.format(paramNodeName))
+                mc.addAttr(control, ln='stretchTop', at='double', min=0.01, dv = 1, 
+                            k=True, proxy='{}.stretchTop'.format(paramNodeName))
+                mc.addAttr(control, ln='stretchBottom', at='double', min=0.01, dv = 1, 
+                            k=True, proxy='{}.stretchBottom'.format(paramNodeName))
+                
+            for control in self._ikControls:
                 mc.addAttr(control, ln="settings", at="enum", enumName="settings",keyable=True)
                 rigrepo.libs.attribute.lock(control, ['settings'])
                 mc.addAttr(control, ln="ikfk", at="double", min=0, max=1, dv=0, 
