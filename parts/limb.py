@@ -273,9 +273,9 @@ class Limb(part.Part):
 
         #create attributes on param node and connect them to the grp node
         mc.addAttr(paramNode, ln='stretch', at='double', dv = 1, min = 0, max = 1, k=True)
-        mc.addAttr(paramNode, ln='stretchTop', at='double', min=0, dv = 1, k=True)
-        mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0, dv = 1, k=True)
-        mc.addAttr(paramNode, ln='softStretch', at='double', min=0, max=1, dv=0.2, k=True)
+        mc.addAttr(paramNode, ln='stretchTop', at='double', min=0.01, dv = 1, k=True)
+        mc.addAttr(paramNode, ln='stretchBottom', at='double', min=0.01, dv = 1, k=True)
+        mc.addAttr(paramNode, ln='softStretch', at='double', min=0.001, max=1, dv=0.2, k=True)
         mc.addAttr(paramNode, ln='pvPin', at='double', min=0, max=1, dv=0, k=True)
         mc.addAttr(paramNode, ln='pvVis', at='long', min=0, max=1, dv=1, k=True)
         #rigrepo.libs.control.tagAsControl(paramNode)
@@ -676,11 +676,11 @@ class Limb(part.Part):
                             proxy='{}.ikfk_switch'.format(paramNodeName))
                 mc.addAttr(control, ln='stretch', at='double', dv = 1, min = 0, max = 1,
                             k=True, proxy='{}.stretch'.format(paramNodeName))
-                mc.addAttr(control, ln='stretchTop', at='double', min=0, dv = 1, 
+                mc.addAttr(control, ln='stretchTop', at='double', min=0.01, dv = 1, 
                             k=True, proxy='{}.stretchTop'.format(paramNodeName))
-                mc.addAttr(control, ln='stretchBottom', at='double', min=0, dv = 1, 
+                mc.addAttr(control, ln='stretchBottom', at='double', min=0.01, dv = 1, 
                             k=True, proxy='{}.stretchBottom'.format(paramNodeName))
-                mc.addAttr(control, ln='softStretch', at='double', min=0, max=1, dv=0.2, 
+                mc.addAttr(control, ln='softStretch', at='double', min=0.001, max=1, dv=0.2, 
                             k=True, proxy='{}.softStretch'.format(paramNodeName))
                 mc.addAttr(control, ln='pvPin', at='double', min=0, max=1, dv=1, 
                             k=True, proxy='{}.pvPin'.format(paramNodeName))
