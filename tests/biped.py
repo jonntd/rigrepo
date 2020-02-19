@@ -226,9 +226,9 @@ def nodes(variant='base', buildNow=False, debug=True, graph=None):
         print('graph')
         biped_graph = graph
     elif variant == 'base':
-        biped_graph = rigrepo.templates.biped.rig.build.biped_base_rig.BipedBaseRig(name='Biped_base')
+        biped_graph = rigrepo.templates.biped.rig.build.biped_base_rig.BipedBaseRig(name='biped', variant='base')
     elif variant == 'female':
-        biped_graph = rigrepo.templates.biped.rig.build.biped_female_rig.BipedFemaleRig(name='Biped_female')
+        biped_graph = rigrepo.templates.biped.rig.build.biped_female_rig.BipedFemaleRig(name='biped', variant='female')
 
     if buildNow:
         nodeList = biped_graph.getNodes()

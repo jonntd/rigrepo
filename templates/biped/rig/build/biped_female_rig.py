@@ -1,7 +1,7 @@
 import rigrepo.templates.biped.rig.build.biped_base_rig as biped_base_rig
 
 class BipedFemaleRig(biped_base_rig.BipedBaseRig):
-    def __init__(self,name, variant='female'):
+    def __init__(self,name, element='biped', variant='female'):
         '''
         This is the constructor for the biped template. Here is where you will put nodes onto 
         the graph. 
@@ -13,7 +13,7 @@ class BipedFemaleRig(biped_base_rig.BipedBaseRig):
         :type variant: str
         '''
         
-        super(BipedFemaleRig, self).__init__(name, variant)
+        super(BipedFemaleRig, self).__init__(name, element, variant)
         nodes = self.getNodes()
         face = self.getNodeByPath('|animRig|build|face')
         face.disable()

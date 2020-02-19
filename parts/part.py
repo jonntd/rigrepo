@@ -100,6 +100,8 @@ class Part(pubs.pNode.PNode):
         # turn off the visibility of the bind group.
         mc.setAttr("{}.v".format(self.bindGroup), 0)
 
+        #rigrepo.libs.attribute.lockAndHide([self.trsMaster, self.trsShot, self.trsAux])
+
 
     def execute(self, *args, **kwargs):
         '''

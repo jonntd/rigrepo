@@ -22,10 +22,10 @@ import copy
 import rigrepo.tests as tests
 
 class ArchetypeBaseRig(pubs.pGraph.PGraph):
-    def __init__(self,name, variant='base'):
+    def __init__(self,name, element='archetype', variant='base'):
         super(ArchetypeBaseRig, self).__init__(name)
 
-        self.element = self._name
+        self.element = element
         self.variant = variant
 
         buildPath = joinPath(os.path.dirname(inspect.getfile(self.__class__)), self.variant)
@@ -207,8 +207,16 @@ for node in lockNodes:
 for ctrl in controls:
     if mc.objExists(ctrl+'.jointOrient'):
         rigrepo.libs.attribute.lock(ctrl, ['jointOrient', 'rotateAxis', 'radius'])
-    
-'''
+
+for ctrl in mc.ls("mouth_corner_?"):
+    rigrepo.libs.attribute.lockAndHide(ctrl, ['r', 'rx', 'ry', 'rz', 's', 'sx', 'sy', 'sz'])
+
+for ctrl in mc.ls(("trs_master", "trs_shot", "trs_aux")):
+    rigrepo.libs.attribute.lockAndHide(ctrl, ['v'])
+
+rigrepo.libs.attribute.lockAndHide(mc.ls('{}'), ['tx', 'ty', 'tz', 'rx', 'ry', 'rz', 'sx', 'sy', 'sz','t','r','s','v'])
+
+'''.format(self.element)
         lockNode.getAttributeByName('command').setValue(lockNodeCmd)        
 
         hideHistoryNode = rigrepo.nodes.commandNode.CommandNode('hideHistory')

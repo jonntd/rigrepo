@@ -33,7 +33,7 @@ import rigrepo.nodes.controlDefaultsNode as controlDefaultsNode
 import os
 
 class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
-    def __init__(self,name, variant='base'):
+    def __init__(self,name, element='biped', variant='base'):
         '''
         This is the constructor for the biped template. Here is where you will put nodes onto 
         the graph. 
@@ -45,7 +45,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
         :type variant: str
         '''
         
-        super(BipedBaseRig, self).__init__(name, variant)
+        super(BipedBaseRig, self).__init__(name, element, variant)
 
         animRigNode = self.getNodeByName("animRig")
 

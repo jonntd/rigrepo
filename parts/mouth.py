@@ -175,6 +175,7 @@ class Mouth(part.Part):
                 hierarchy=['nul','ort', 'auto'], 
                 color=common.BLACK,
                 parent=parent)
+            attribute.lockAndHide(ctrlHierarchy[-1], ['r', 'rx', 'ry', 'rz', 's', 'sx', 'sy', 'sz'])
             cornerControlHierarchyList.append(ctrlHierarchy)
             animMouthCorners.append(controlName)
             driverMouthCorner = mc.createNode("joint", name="{}_driver".format(controlName))
