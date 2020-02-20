@@ -682,6 +682,12 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
                                                                                                     deformerName='lip_wire_sc',
                                                                                                     keepWires=False,
                                                                                                     jointDepth=3)
+        lipBindmeshWireToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("lipWireBindmesh_toSkinCluster",
+                                                                                               wireList='mc.ls(["lip_bindmesh_wire"], type="wire")',
+                                                                                               targetGeometry='lip_bindmesh',
+                                                                                               deformerName='lip_bindmesh_wire_sc',
+                                                                                               keepWires=False,
+                                                                                               jointDepth=3)
         lidWireToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("lidWire_toSkinCluster",
                                                                                                wireList='mc.ls(["lid_?_curve_wire"], type="wire")',
                                                                                                targetGeometry='body_geo',
@@ -694,6 +700,7 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
         convertToSkinClusterNode.addChildren([bodyWiresToSkinClusterNode,
                                               lipMainWireToSkinClusterNode,
                                               lipWireToSkinClusterNode,
+                                              lipBindmeshWireToSkinClusterNode,
                                               lidWireToSkinClusterNode])
 
         # This must be at the end of the build
