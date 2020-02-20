@@ -507,13 +507,13 @@ class BlinkNew(part.Part):
 
 
         # create the lid tweaker rig
-        bindmeshGeometry, follicleList, controlHieracrchyList, jointList = self.__buildCurveRig(lidCurve, "lid_{}".format(side), 'rig' )
+        bindmeshGeometry, follicleList, controlHierarchyList, jointList = self.__buildCurveRig(lidCurve, "lid_{}".format(side), 'rig' )
 
         #deform the lid bindmesh with the lid curve using a wire deformer.
         wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00, 
                 w=lidCurve, name="{}_wire".format(lidCurve))[0]
         baseCurveJointList=list()
-        for jnt, controlList in zip(jointList, controlHieracrchyList):
+        for jnt, controlList in zip(jointList, controlHierarchyList):
             # create the joint that we will use later to deform the base wire.
             baseCurveJoint = mc.joint(name=jnt.replace("_jnt","_baseCurve_jnt"))
             baseCurveJointList.append(baseCurveJoint)
@@ -521,6 +521,62 @@ class BlinkNew(part.Part):
             mc.setAttr("{}.v".format(baseCurveJoint), 0)
             mc.parent(baseCurveJoint, controlList[1])
             mc.setAttr("{}.t".format(baseCurveJoint), 0, 0, 0)
+
+        # ------------------
+        # ATTEMP TO RENAME
+
+        eyeCenterPos = mc.xform(eyeCenter, q=True, ws=True, t=True)
+        yvalueList = [mc.xform(controlList[0], q=True, ws=True, t=True)[1] for controlList in controlHierarchyList]
+        yvalueListCopy = list(yvalueList)
+        yvalueListCopy.sort()
+        controlSplitSize = (len(controlHierarchyList) - 2) / 2
+
+        xvalueList = [mc.xform(controlHierarchyList[yvalueList.index(value)][0], q=True, ws=True, t=True)[0] for value in yvalueListCopy[controlSplitSize+2:]]
+        xvalueListCopy = list(xvalueList)
+        xvalueListCopy.sort()
+        index = 0
+        if eyeCenterPos[0] <= 0:
+            xvalueListCopy.reverse()
+        for value in yvalueListCopy[controlSplitSize+2:]:
+            controlHierarchy = controlHierarchyList[yvalueList.index(value)]
+            newControlName = 'lid_up_{}_{}'.format(xvalueListCopy.index(xvalueList[index])+1, side)
+            oldControlName = controlHierarchy[-1]
+            for node in controlHierarchy:
+                controlHierarchy[controlHierarchy.index(node)] = mc.rename(node, node.replace(oldControlName, newControlName))
+            index += 1
+        xvalueList = [mc.xform(controlHierarchyList[yvalueList.index(value)][0], q=True, ws=True, t=True)[0] for value in yvalueListCopy[:controlSplitSize+2]]
+        xvalueListCopy = list(xvalueList)
+        xvalueListCopy.sort()
+        if eyeCenterPos[0] <= 0:
+            xvalueListCopy.reverse()
+        index = 0
+        for value in yvalueListCopy[:controlSplitSize+2]:
+            controlHierarchy = controlHierarchyList[yvalueList.index(value)]
+            print yvalueList.index(value), len(xvalueList)
+            newControlName = 'lid_low_{}_{}'.format(xvalueListCopy.index(xvalueList[index])+1, side)
+            oldControlName = controlHierarchy[-1]
+            for node in controlHierarchy:
+                controlHierarchy[controlHierarchy.index(node)] = mc.rename(node, node.replace(oldControlName, newControlName))
+            index += 1
+
+        for value in yvalueListCopy[controlSplitSize:-controlSplitSize]:
+            controlHierarchy = controlHierarchyList[yvalueList.index(value)]
+            oldControlName = controlHierarchy[-1]
+            controlPos = mc.xform(oldControlName, q=True, ws=True, t=True)
+            if eyeCenterPos[0] >= 0:
+                if controlPos[0] > eyeCenterPos[0]:
+                    newControlName = 'lid_corner_outer_{}'.format(side)
+                else:
+                    newControlName = 'lid_corner_inner_{}'.format(side)
+            elif eyeCenterPos[0] < 0: 
+                if controlPos[0] < eyeCenterPos[0]:
+                    newControlName = 'lid_corner_outer_{}'.format(side)
+                else:
+                    newControlName = 'lid_corner_inner_{}'.format(side)
+
+            for node in controlHierarchy:
+                controlHierarchy[controlHierarchy.index(node)] = mc.rename(node, node.replace(oldControlName, newControlName))
+                
 
         baseCurve = "{}BaseWire".format(lidCurve)
         mc.parent(baseCurve, "lid_{}".format(side))
@@ -648,7 +704,7 @@ class BlinkNew(part.Part):
         #
         bindmeshGeometry, follicleList = bindmesh.createFromCurve(name, curve)
         # emptry list to append controls to in the loop
-        controlHieracrchyList = list()
+        controlHierarchyList = list()
         jointList = list()
 
         # loop through and create controls on the follicles so we have controls to deform the wire.
@@ -711,7 +767,7 @@ class BlinkNew(part.Part):
         #
         bindmeshGeometry, follicleList = bindmesh.createFromCurve(name, curve)
         # emptry list to append controls to in the loop
-        controlHieracrchyList = list()
+        controlHierarchyList = list()
         jointList = list()
 
         # loop through and create controls on the follicles so we have controls to deform the wire.
@@ -738,7 +794,7 @@ class BlinkNew(part.Part):
             #mc.setAttr("{}.rotate".format(ctrlHierarchy[0]), 0,0,0)
             # set the visibility of the shape node for the follicle to be off.
             # append the control and the follicle transform to their lists
-            controlHieracrchyList.append(ctrlHierarchy)
+            controlHierarchyList.append(ctrlHierarchy)
             jointList.append(jnt)
 
         # This will parent all of the data for the rig to the system group "name"
@@ -759,4 +815,4 @@ class BlinkNew(part.Part):
         # set the visibility of the bindmesh.
         mc.setAttr("{}.v".format(bindmeshGeometry), 0 )
         mc.setAttr("{}.v".format(curve), 0 )
-        return bindmeshGeometry, follicleList, controlHieracrchyList, jointList
+        return bindmeshGeometry, follicleList, controlHierarchyList, jointList
