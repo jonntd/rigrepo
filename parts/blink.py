@@ -120,6 +120,10 @@ class Blink(part.Part):
         mc.pointConstraint(eyeSocketCtrl, eyeCenter)
         mc.orientConstraint(eyeSocketCtrl, eyeCenter)
         mc.scaleConstraint(eyeSocketCtrl, eyeCenter)
+        children = mc.listRelatives(eyeCenter, c=True, type="joint") or list()
+
+        for jnt in children:
+            mc.setAttr("{}.segmentScaleCompensate".format(jnt), 0)
         #mc.connectAttr("{}.scale".format(eyeSocketCtrl), "{}.scale".format(eyeCenter), f=True)
 
         lidControlList = list()
@@ -448,7 +452,11 @@ class BlinkNew(part.Part):
         #point, orient constraint the socket joint to the socket control. Also connect scale
         mc.parentConstraint(eyeSocketCtrl, eyeCenter)
         mc.scaleConstraint(eyeSocketCtrl, eyeCenter)
-        mc.connectAttr("{}.scale".format(eyeSocketCtrl), "{}.scale".format(eyeCenter), f=True)
+        
+        children = mc.listRelatives(eyeCenter, c=True, type="joint") or list()
+
+        for jnt in children:
+            mc.setAttr("{}.segmentScaleCompensate".format(jnt), 0)
 
         for section in ["Upper", "Lower"]:
             group = "lid{0}_{1}_{2}".format(section, side, rigrepo.libs.common.GROUP)

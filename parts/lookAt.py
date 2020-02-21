@@ -78,7 +78,7 @@ class LookAt(part.Part):
             rigrepo.libs.attribute.lockAndHide(eyeCtrl,['t', 'tx', 'ty', 'tz', 's', 'sx', 'sy', 'sz'])
 
             mc.xform(eyeNul, ws=True, matrix=mc.xform(joint, q=True, ws=True, matrix=True))
-            mc.pointConstraint(eyeCtrl, joint)
+            #mc.pointConstraint(eyeCtrl, joint)
             mc.orientConstraint(eyeCtrl, joint)
 
             offsetJoint = mc.duplicate(joint, name="{}_offset".format(joint), rr=True, po=True)[0]

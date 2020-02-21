@@ -325,7 +325,8 @@ class Face(part.Part):
 
                 mc.xform(teethUpperNul, ws=True, matrix=mc.xform(teethUpperJoint, q=True, ws=True, matrix=True))
                 mc.pointConstraint(teethUpperCtrl, teethUpperJoint)
-                mc.orientConstraint(teethUpperCtrl, teethUpperJoint)        
+                mc.orientConstraint(teethUpperCtrl, teethUpperJoint)
+                mc.scaleConstraint(teethUpperCtrl, teethUpperJoint)
 
 
 
