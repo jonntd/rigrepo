@@ -24,6 +24,7 @@ class ClusterControlNode(commandNode.CommandNode):
         self.addAttribute('displayHandle', True, attrType=bool, index=0)
         self.addAttribute('parent', 'rig', attrType=str, index=0)
         self.addAttribute('nameList', '["cluster_control"]', attrType=str, index=0)
+        self.addAttribute('hideControlAttributes', '["v"]', attrType=str, index=0)
         self.addAttribute('geometry', 'body_geo', attrType=str, index=0)
 
 
@@ -42,6 +43,7 @@ for name in {nameList}:
     if {displayHandle}:
         mc.setAttr("%s.displayHandle" % name, 1)
     rigrepo.libs.control.tagAsControl(name)
+    rigrepo.libs.attribute.lockAndHide(name, {hideControlAttributes})
 '''
 
         # set the command to the attributes value
@@ -54,10 +56,11 @@ for name in {nameList}:
         # get the attributes that were set by the user so we can pass it to the command.
         parent = self.getAttributeByName("parent").getValue()
         nameList = eval(self.getAttributeByName("nameList").getValue())
+        hideControlAttributes = eval(self.getAttributeByName("hideControlAttributes").getValue())
         geometry = self.getAttributeByName('geometry').getValue()
         displayHandle = self.getAttributeByName('displayHandle').getValue()
         exec(self.getAttributeByName('command').getValue().format(nameList=nameList,parent=parent, 
-            geometry=geometry, displayHandle=displayHandle))
+            geometry=geometry, displayHandle=displayHandle, hideControlAttributes=hideControlAttributes))
 
 
 class FreezeWireExpressionNode(commandNode.CommandNode):

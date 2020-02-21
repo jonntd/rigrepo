@@ -7,6 +7,7 @@ import rigrepo.parts.part as part
 import rigrepo.libs.control as control
 import rigrepo.libs.cluster as cluster
 import rigrepo.libs.common as common
+import rigrepo.libs.attribute
 
 class Face(part.Part):
     '''
@@ -107,6 +108,7 @@ class Face(part.Part):
                 mc.xform(teethLowerNul, ws=True, matrix=mc.xform(teethLowerJoint, q=True, ws=True, matrix=True))
                 mc.pointConstraint(teethLowerCtrl, teethLowerJoint)
                 mc.orientConstraint(teethLowerCtrl, teethLowerJoint)
+                mc.connectAttr('{}.s'.format(teethLowerCtrl), '{}.s'.format(teethLowerJoint), f=True)
 
         # FACE LOWER
         if mc.objExists(faceLowerJoint):
@@ -310,6 +312,8 @@ class Face(part.Part):
             mc.xform("{}_nul".format(lipUpper), ws=True, matrix=mc.xform(midDriver, q=True, ws=True, matrix=True))
             mc.setAttr("{}.displayHandle".format(lipUpper), 1)
             control.tagAsControl(lipUpper)   
+            # lock and hide the visibility attribute on the lip upper and lower
+            rigrepo.libs.attribute.lockAndHide([lipUpper,lipLower], ['v'])
 
             # Lowerteeth control
             if mc.objExists(teethUpperJoint):

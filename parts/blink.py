@@ -97,6 +97,9 @@ class Blink(part.Part):
                                               hierarchy=['nul', 'def_auto'],
                                               parent=eyeSocketCtrl)
 
+        # lock and hide scale attributes on the lid controls
+        rigrepo.libs.attribute.lockAndHide([upperLidCtrl, lowerLidCtrl], ['s', 'sx', 'sy', 'sz', 't', 'tx', 'ty', 'tz'])
+
         # move the eyeSocket control to the position of the eyeCenter joint
         mc.xform(eyeSocketNul, ws=True, t=mc.xform(eyeCenter, q=True, ws=True, t=True))
 
@@ -408,6 +411,9 @@ class BlinkNew(part.Part):
                                               hierarchy=['nul', 'def_auto'],
                                               parent=eyeSocketCtrl)
 
+        # lock and hide scale attributes on the lid controls
+        rigrepo.libs.attribute.lockAndHide([upperLidCtrl, lowerLidCtrl], ['s', 'sx', 'sy', 'sz', 't', 'tx', 'ty', 'tz'])
+
         # create drivers for the the lids.
         lowerLidDriver = mc.createNode("joint", name="lidLower_{0}_driver".format(side))
         mc.parent(lowerLidDriver, lowerLidNul)
@@ -440,8 +446,7 @@ class BlinkNew(part.Part):
             mc.connectAttr("{}.output".format(mdl), "{}.rotateAxisX".format(node), f=True)
 
         #point, orient constraint the socket joint to the socket control. Also connect scale
-        mc.pointConstraint(eyeSocketCtrl, eyeCenter)
-        mc.orientConstraint(eyeSocketCtrl, eyeCenter)
+        mc.parentConstraint(eyeSocketCtrl, eyeCenter)
         mc.scaleConstraint(eyeSocketCtrl, eyeCenter)
         mc.connectAttr("{}.scale".format(eyeSocketCtrl), "{}.scale".format(eyeCenter), f=True)
 
@@ -524,13 +529,14 @@ class BlinkNew(part.Part):
 
         # ------------------
         # ATTEMP TO RENAME
-
+        # get the y positions and the eye center position
         eyeCenterPos = mc.xform(eyeCenter, q=True, ws=True, t=True)
         yvalueList = [mc.xform(controlList[0], q=True, ws=True, t=True)[1] for controlList in controlHierarchyList]
         yvalueListCopy = list(yvalueList)
         yvalueListCopy.sort()
         controlSplitSize = (len(controlHierarchyList) - 2) / 2
 
+        # get the x positions for the controls highest
         xvalueList = [mc.xform(controlHierarchyList[yvalueList.index(value)][0], q=True, ws=True, t=True)[0] for value in yvalueListCopy[controlSplitSize+2:]]
         xvalueListCopy = list(xvalueList)
         xvalueListCopy.sort()
@@ -544,6 +550,8 @@ class BlinkNew(part.Part):
             for node in controlHierarchy:
                 controlHierarchy[controlHierarchy.index(node)] = mc.rename(node, node.replace(oldControlName, newControlName))
             index += 1
+
+        # get the x positions for the controls lowest
         xvalueList = [mc.xform(controlHierarchyList[yvalueList.index(value)][0], q=True, ws=True, t=True)[0] for value in yvalueListCopy[:controlSplitSize+2]]
         xvalueListCopy = list(xvalueList)
         xvalueListCopy.sort()
@@ -552,13 +560,13 @@ class BlinkNew(part.Part):
         index = 0
         for value in yvalueListCopy[:controlSplitSize+2]:
             controlHierarchy = controlHierarchyList[yvalueList.index(value)]
-            print yvalueList.index(value), len(xvalueList)
             newControlName = 'lid_low_{}_{}'.format(xvalueListCopy.index(xvalueList[index])+1, side)
             oldControlName = controlHierarchy[-1]
             for node in controlHierarchy:
                 controlHierarchy[controlHierarchy.index(node)] = mc.rename(node, node.replace(oldControlName, newControlName))
             index += 1
 
+        # name the corner controls.
         for value in yvalueListCopy[controlSplitSize:-controlSplitSize]:
             controlHierarchy = controlHierarchyList[yvalueList.index(value)]
             oldControlName = controlHierarchy[-1]

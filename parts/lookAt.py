@@ -6,6 +6,7 @@ import rigrepo.parts.part as part
 import rigrepo.libs.control
 import rigrepo.libs.common
 import rigrepo.libs.transform
+import rigrepo.libs.attribute
 
 class LookAt(part.Part):
     '''
@@ -51,6 +52,10 @@ class LookAt(part.Part):
                                                               hierarchy=['nul', 'aim'],
                                                               parent=self.name)
 
+
+        rigrepo.libs.attribute.lockAndHide(lookAtRotCtrl, ['t', 'tx', 'ty', 'tz', 's', 'sx', 'sy', 'sz'])
+        rigrepo.libs.attribute.lockAndHide(lookAtCtrl, ['r', 'rx', 'ry', 'rz', 's', 'sx', 'sy', 'sz'])
+
         # put both lookAt and lookAt rot at the loaction between the eyes
         for nul in (lookAtNul, lookAtRotNul):
             eyePosition = rigrepo.libs.transform.getAveragePosition(eyeJointList)
@@ -69,6 +74,8 @@ class LookAt(part.Part):
                                                                       color=rigrepo.libs.common.BLUE,
                                                                       hierarchy=['nul', 'ort', 'def_auto'],
                                                                       parent=eyeAnchorList[i])
+
+            rigrepo.libs.attribute.lockAndHide(eyeCtrl,['t', 'tx', 'ty', 'tz', 's', 'sx', 'sy', 'sz'])
 
             mc.xform(eyeNul, ws=True, matrix=mc.xform(joint, q=True, ws=True, matrix=True))
             mc.pointConstraint(eyeCtrl, joint)

@@ -9,6 +9,7 @@ import rigrepo.parts.part as part
 import rigrepo.libs.control as control
 import rigrepo.libs.common as common
 import rigrepo.libs.cluster as cluster
+import rigrepo.libs.attribute
 
 class Brow(part.Part):
     '''
@@ -75,6 +76,7 @@ class Brow(part.Part):
                                                                     hierarchy=['nul','ort'], 
                                                                     color=common.BLUE,
                                                                     parent=anchor)
+
 
         # Position the controls
         #
@@ -247,6 +249,9 @@ class Brow(part.Part):
         mc.xform("{}_nul".format(corrugatorName), ws=True, matrix=mc.xform(browInnerCtrl, q=True, ws=True, matrix=True))
         mc.setAttr("{}.displayHandle".format(corrugatorName), 1)
         control.tagAsControl(corrugatorName)
+
+        # lock and hide scale and rotates for all of the brow controls
+        rigrepo.libs.attribute.lockAndHide([browMainCtrl, browInnerCtrl, browPeakCtrl, corrugatorName], ['r', 'rx', 'ry', 'rz', 's', 'sx', 'sy', 'sz'])
 
         # Set driven keys to be post and pre infinity
         driven_keys = mc.listConnections(browMainDriver, type='animCurveUA')
