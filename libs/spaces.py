@@ -106,7 +106,10 @@ def addSpace(node, targetList, nameList, spaceGroup, attrNode=None, constraintTy
         # create new space
         newSpace = mc.createNode('transform', name='{}_{}'.format(spaceGroup, name), parent=spaceGroup)
         mc.xform(newSpace, ws=True, matrix=mc.xform(node, q=True, ws=True, matrix=True))
-        #mc.setAttr( '{}.{}' .format (newSpace, 'displayLocalAxis') , True)
+        if mc.objExists(attrNode+'.rotatePivot'):
+            rotatePivot = mc.xform(attrNode, q=1, rotatePivot=1)
+            mc.xform(newSpace, rotatePivot=rotatePivot, preserve=1)
+
         if constraintType == 'orient':
             mc.orientConstraint( target, newSpace, mo=True )
         else:
