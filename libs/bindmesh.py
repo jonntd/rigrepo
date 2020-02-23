@@ -4,7 +4,7 @@ This module will handle everything to do with how bindmesh's are handled.
 import maya.cmds as mc
 import maya.api.OpenMaya as om
 
-def create(name, positionList):
+def create(name, positionList, cv_names=[]):
     '''
     This will create a bindmesh based on the give N amount of positions. 
     .. note::
@@ -25,6 +25,8 @@ def create(name, positionList):
         follicleNameList = list()
         for i in xrange(len(positionList)):
             follicleName = "{0}_{1}_follicle".format(name, i)
+            if cv_names:
+                follicleName = cv_names[i]+'_follicle'
             follicleNameList.append(follicleName)
         return newGeoName, follicleNameList
 
@@ -57,7 +59,10 @@ def create(name, positionList):
     # iterate through the cv points and connect the follictles to the bindmesh.
     for i,point in enumerate(pointList):
         uPosition,vPosition = newGeoFn.getUVAtPoint(point)[:-1]
-        follicle = mc.createNode("transform", n="{0}_{1}_follicle".format(name,i))
+        follicle_name = "{0}_{1}_follicle".format(name,i)
+        if cv_names:
+            follicle_name = cv_names[i]+'_follicle'
+        follicle = mc.createNode("transform", n=follicle_name)
         constraint = mc.pointOnPolyConstraint(newGeoDagPath.fullPathName(), follicle)[0]
         u,v,id = newGeoFn.getUVAtPoint(point,om.MSpace.kWorld)
         mc.setAttr("{}.{}U0".format(constraint, newGeoDagPath.partialPathName()), u)
@@ -66,7 +71,7 @@ def create(name, positionList):
     # return the bindmesh
     return newGeo, follicleList
 
-def createFromCurve(name, curve):
+def createFromCurve(name, curve, cv_names=[]):
     '''
     This will create a bindmesh based on the given curve. 
     .. note::
@@ -79,4 +84,4 @@ def createFromCurve(name, curve):
     # get the cv list from the curve
     cvList = mc.ls("{0}.cv[*]".format(curve),flatten=True)
     cvPositionList = [mc.xform(cv,q=True,ws=True,t=True) for cv in cvList]
-    return create(name, cvPositionList)
+    return create(name, cvPositionList, cv_names=cv_names)

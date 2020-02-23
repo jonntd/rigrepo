@@ -5,6 +5,8 @@ import numpy
 import rigrepo.libs.weights
 import rigrepo.libs.shape
 import rigrepo.libs.skinCluster
+import rigrepo.libs.transform
+import rigrepo.libs.bindmesh
 
 def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, keepWires=False, 
     rootParentNode="rig", rootPreMatrixNode="trs_aux", jointDepth=2):
@@ -214,6 +216,114 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
     # Reorder deformers
     if reorder_deformer:
         mc.reorderDeformers(reorder_deformer, targetSkinCluster, target)
+
+
+def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None):
+    '''
+    This will build a rig setup based on the curve that is passed in.
+
+    :param curve: NurbsCurve name you want to build the rig on.
+    :type curve: str
+
+    :param name: This will be used to name the control hierachy and joints in the rig.
+    :type name: str
+
+    :return: This method will return the data needed to make adjustments to rig.
+    :rtype: tuple
+    '''
+
+    # If the name passed in doesn't exist, we will create a transform as the parent group
+    # for the rig.
+    if not mc.objExists(name):
+        mc.createNode("transform", n=name)
+
+    # create the bindmesh
+    bindmeshGeometry, follicleList = rigrepo.libs.bindmesh.createFromCurve(name, curve, cv_names=ctrl_names)
+
+    # emptry list to append controls to in the loop
+    controlHieracrchyList = list()
+    # Joints built for each curve cv
+    jointList = list()
+
+    # loop through and create controls on the follicles so we have controls to deform the wire.
+    for follicle in follicleList:
+        # get the follicle transform so we can use it to parent the control to it.
+        follicleIndex = follicleList.index(follicle)
+
+        # ctrl names: default name is used if ctrl_names list is not passed
+        ctrl_name = "{}_{}".format(name, follicleIndex)
+        if ctrl_names:
+            ctrl_name = ctrl_names[follicleIndex]
+        # create the control with a large enough hierarchy to create proper SDK's
+        ctrlHierarchy = rigrepo.libs.control.create(name=ctrl_name,
+                                                    controlType="circle",
+                                                    hierarchy=['nul','ort','def_auto'],
+                                                    parent=follicle)
+
+        # create the joint that will drive the curve.
+        jnt_name = "{}_{}_jnt".format(name, follicleIndex)
+        if ctrl_names:
+            jnt_name = ctrl_names[follicleIndex]+'_jnt'
+        jnt = mc.joint(n=jnt_name)
+        # make sure the joint is in the correct space
+        mc.setAttr("{}.translate".format(jnt), 0,0,0)
+        mc.setAttr("{}.rotate".format(jnt), 0,0,0)
+        mc.setAttr("{}.drawStyle".format(jnt),2)
+        mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
+
+        # zero out the nul for the control hierarchy so it's in the correct position.
+        mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)
+        # set the visibility of the shape node for the follicle to be off.
+        # append the control and the follicle transform to their lists
+        controlHieracrchyList.append(ctrlHierarchy)
+        jointList.append(jnt)
+
+    # This will parent all of the data for the rig to the system group "name"
+    for data in (bindmeshGeometry, follicleList):
+        mc.parent(data, name)
+
+    # AIM CONSTRRAINTS
+    ##
+    ## This is dumb but the most consitent way for me to get the right behavior
+    ## parenting the last joint to the first on to grab the axis I want to use for aiming
+    #mc.parent(jointList[-1], jointList[0])
+    ## get the axis we want to use to aim.
+    #aimDistance = mc.getAttr("{}.t".format(jointList[-1]))[0]
+    #aimAttr, aimVector = rigrepo.libs.transform.getDistanceVector(aimDistance)
+    ## parent the joint back to the control
+    #mc.parent(jointList[-1], controlHieracrchyList[-1][-1])
+    #mc.pointConstraint(controlHieracrchyList[0][-1],controlHieracrchyList[2][-1], controlHieracrchyList[1][2], mo=True)
+    #mc.aimConstraint(jointList[2], controlHieracrchyList[1][2], mo=True, w=1, upVector=(0,0,0), aimVector=aimVector, wut="none")
+    #mc.aimConstraint(jointList[1], jointList[0], upVector=(0,0,0), mo=True, w=1, aimVector=aimVector, wut="none")
+
+
+    ## This is dumb but the most consitent way for me to get the right behavior
+    ## parenting the last joint to the first on to grab the axis I want to use for aiming
+    #mc.parent(jointList[0], jointList[-1])
+    #aimDistance = mc.getAttr("{}.t".format(jointList[0]))[0]
+    #aimAttr, aimVector = rigrepo.libs.transform.getDistanceVector(aimDistance)
+    ## parent the joint back to the control
+    #mc.parent(jointList[0], controlHieracrchyList[0][-1])
+    #mc.pointConstraint(controlHieracrchyList[2][-1],controlHieracrchyList[4][-1], controlHieracrchyList[3][2], mo=True)
+    #mc.aimConstraint(jointList[2], controlHieracrchyList[3][2], mo=True, w=1, upVector=(0,0,0), aimVector=aimVector, wut="none")
+    #mc.aimConstraint(jointList[-2], jointList[-1], upVector=(0,0,0), mo=True, w=1, aimVector=aimVector, wut="none")
+
+
+    # If parent the parent is passed in we will parent the system to the parent.
+    if parent:
+        if not mc.objExists(parent):
+            mc.warning('Created the system but the current parent "{}" does not exist in the \
+                current Maya session.'.format(parent))
+        else:
+            mc.parent(name, parent)
+
+    # create the skinCluster for the curve
+    mc.skinCluster(*jointList + [curve], tsb=True, name="{}_skinCluster".format(curve))
+
+    # set the visibility of the bindmesh.
+    mc.setAttr("{}.v".format(bindmeshGeometry), 0 )
+    mc.setAttr("{}.v".format(curve), 0 )
+    return bindmeshGeometry, follicleList, controlHieracrchyList, jointList
 
 def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterList, keepWires=False,
                                  rootParentNode="rig", rootPreMatrixNode="trs_aux", jointDepth=2):

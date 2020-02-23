@@ -165,6 +165,8 @@ class Mouth(part.Part):
         driverMouthCorners = []
         animMouthCorners = []
         cornerControlHierarchyList = []
+        jawPins = []
+        headPins = []
         for follicle in (mouthCorner_l_follicle, mouthCorner_r_follicle):
             parent = follicle
             controlName = follicle.split("_follicle")[0]
@@ -195,24 +197,22 @@ class Mouth(part.Part):
             mc.delete(mc.listRelatives(ctrlHierarchy[-1], c=True, shapes=True)[0])
 
             # create the drivers for the lip_L/R
-            neutral = mc.createNode("transform", name="{}_neutral".format(controlName))
-            headPin = mc.createNode("transform", name="{}_headPin".format(controlName))
-            jawPin = mc.createNode("transform", name="{}_jawPin".format(controlName))
+            neutral = mc.createNode("transform", name="{}_neutral".format(controlName), parent=ctrlHierarchy[1])
+            headPin = mc.createNode("transform", name="{}_headPin".format(controlName), parent=ctrlHierarchy[1])
+            jawPin = mc.createNode("transform", name="{}_jawPin".format(controlName), parent=ctrlHierarchy[1])
+            # Store for constraining later
+            headPins.append(headPin)
+            jawPins.append(jawPin)
 
             for pinGrp in [neutral, headPin, jawPin]:
-                mc.xform(pinGrp, ws=True, matrix=mc.xform(ctrlHierarchy[1], q=True, ws=True, matrix=True))
-                mc.parent(pinGrp, ctrlHierarchy[1])
                 cst = mc.parentConstraint(pinGrp, ctrlHierarchy[2])[0]
+                mc.setAttr(cst+'.interpType', 2)
 
             # constrain the driver to the control
             mc.pointConstraint(ctrlHierarchy[-1], driverMouthCorner, mo=True)
 
             if nodeDataObj:
                 nodeDataObj.applyData([ctrlHierarchy[1]])
-
-            # constrain the head and jaw pinning.
-            mc.parentConstraint(jawPinTrs, jawPin, mo=True)
-            mc.parentConstraint(headPinTrs, headPin, mo=True)
 
             # create the head and jaw pinning.
             mc.addAttr(controlName, ln="pinning", nn="----------", at="enum", enumName="Pinning", keyable=True)
@@ -456,6 +456,12 @@ class Mouth(part.Part):
             if nul.endswith('_r_nul'):
                 mc.setAttr(nul+'.ry', -180)
                 mc.setAttr(nul+'.sz', -1)
+
+        # constrain the head and jaw pinning. Needs to be done after nul's are mirrored
+        for jawPin in jawPins:
+            mc.parentConstraint(jawPinTrs, jawPin, mo=True)
+        for headPin in headPins:
+            mc.parentConstraint(headPinTrs, headPin, mo=True)
 
         # Rig Sets
         #
