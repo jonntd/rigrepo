@@ -234,8 +234,9 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None):
 
     # If the name passed in doesn't exist, we will create a transform as the parent group
     # for the rig.
-    if not mc.objExists(name):
-        mc.createNode("transform", n=name)
+    grp = name+'_grp'
+    if not mc.objExists(grp):
+        mc.createNode("transform", n=grp)
 
     # create the bindmesh
     bindmeshGeometry, follicleList = rigrepo.libs.bindmesh.createFromCurve(name, curve, cv_names=ctrl_names)
@@ -280,7 +281,7 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None):
 
     # This will parent all of the data for the rig to the system group "name"
     for data in (bindmeshGeometry, follicleList):
-        mc.parent(data, name)
+        mc.parent(data, grp)
 
     # AIM CONSTRRAINTS
     ##
@@ -315,7 +316,7 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None):
             mc.warning('Created the system but the current parent "{}" does not exist in the \
                 current Maya session.'.format(parent))
         else:
-            mc.parent(name, parent)
+            mc.parent(grp, parent)
 
     # create the skinCluster for the curve
     mc.skinCluster(*jointList + [curve], tsb=True, name="{}_skinCluster".format(curve))

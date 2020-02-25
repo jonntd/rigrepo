@@ -526,6 +526,63 @@ if mc.objExists('Mouth'):
         mouthCornerDistanceNode.getAttributeByName('command').setValue(mouthCornerDistanceNodeCmd)
         cheekClusterNode.addChildren([cheekPuffClusterNode, leftCheekLiftClusterNode, rightCheekLiftClusterNode, mouthCornerDistanceNode])
 
+        # Head wire
+
+        headWireNode = rigrepo.nodes.commandNode.CommandNode('headWire')
+        headWireNodeCmd = '''
+import maya.cmds as mc
+import rigrepo.libs.wire
+import rigrepo.libs.bindmesh
+
+curve = 'head_curve'
+name = 'head_wire'
+parent = 'rig'
+bind_joints = ['skull_bind']
+ctrl_names = ['headwire_top', 'headwire_mid', 'headwire_low']
+geometry = ['body_geo', 'topgums_geo', 'topteeth_geo', 
+            'bottomteeth_geo', 'bottomgums_geo', 'tongue_geo', 
+            'r_eyeinside_geo', 'l_eyeinside_geo']       
+# Add bindmeshes
+#geometry += ['blinkLower_l_bindmesh', 'blinkLower_r_bindmesh', 
+#             'blinkUpper_l_bindmesh', 'blinkUpper_r_bindmesh', 'lip_main_bindmesh', 
+#             'lid_l_bindmesh', 'lid_r_bindmesh',
+#             'lip_bindmesh', 'mouth_corner_bindmesh']
+
+# Curve rig            
+curve_rig = rigrepo.libs.wire.buildCurveRig(curve, name=name, ctrl_names=ctrl_names, parent=parent)                                
+bindmeshGeometry, follicleList, controlHieracrchyList, jointList = curve_rig
+
+# Create deformer
+deformer_name = name
+if not '_wire' in name:
+    deformer_name = name+'_wire'
+wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00, w=curve, name=deformer_name)[0]
+mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
+
+baseCurveJointList=list()
+for jnt, controlList in zip(jointList, controlHieracrchyList):
+    # create the joint that we will use later to deform the base wire.
+    baseCurveJoint = mc.joint(name=jnt.replace("_jnt","_baseCurve_jnt"))
+    baseCurveJointList.append(baseCurveJoint)
+    # hide the base curve joint. Then parent it under the null node
+    mc.setAttr("{}.v".format(baseCurveJoint), 0)
+    mc.parent(baseCurveJoint, controlList[1])
+    mc.setAttr("{}.t".format(baseCurveJoint), 0, 0, 0)
+    
+baseCurve = "{}BaseWire".format(curve)
+mc.parent([curve,baseCurve], name+'_grp')
+
+
+baseCurveSkin = mc.skinCluster(baseCurveJointList+mc.ls(baseCurve), 
+                            n="{}_skinCluster".format(baseCurve),
+                            tsb=True)[0]
+                            
+bindMeshSkin = mc.skinCluster(bind_joints, bindmeshGeometry, 
+                                n="{}_skinCluster".format(bindmeshGeometry),
+                                tsb=True)[0]
+'''
+        headWireNode.getAttributeByName('command').setValue(headWireNodeCmd)
+
         # create both face and body builds
         bodyBuildNode = pubs.pNode.PNode("body")
         faceBuildNode = pubs.pNode.PNode("face")
@@ -539,7 +596,7 @@ if mc.objExists('Mouth'):
         
         # add nodes ass children of body
         bodyBuildNode.addChildren([spine, neck, l_arm, r_arm, l_leg, r_leg, breathing])
-        faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth, cheekClusterNode])
+        faceBuildNode.addChildren([faceParts, tongueNode, browsNode, eyesNode, mouth, cheekClusterNode, headWireNode])
 
         bindMeshCurvePairs ="""[
 ('blinkUpper_l_curve', 'blinkUpper_l'),
@@ -694,6 +751,21 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
                                                                                                deformerName='lid_wire_sc',
                                                                                                keepWires=False,
                                                                                                jointDepth=3)
+        pruneDeformersNode = rigrepo.nodes.commandNode.CommandNode('pruneDeformers')
+        pruneDeformersCmd = '''
+import maya.cmds as mc
+import rigrepo.libs.weights
+
+geo = 'body_geo'
+deformers = mc.ls(mc.listHistory(geo), type='wire')
+deformers += mc.ls(mc.listHistory(geo), type='cluster')
+
+for deformer in deformers:
+    rigrepo.libs.weights.pruneWeights(deformer, geometry=geo)
+'''
+        pruneDeformersNode.getAttributeByName('command').setValue(pruneDeformersCmd)
+        pruneDeformersNode.disable()
+
         deliveryNode = self.getNodeByPath("|animRig|delivery")
         deliveryNode.addChild(uniqueDeformersNode, index=0)
         deliveryNode.addChild(convertToSkinClusterNode, index=1)
@@ -702,6 +774,7 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
                                               lipWireToSkinClusterNode,
                                               lipBindmeshWireToSkinClusterNode,
                                               lidWireToSkinClusterNode])
+        deliveryNode.addChild(pruneDeformersNode)
 
         # This must be at the end of the build
         applyNode.addChild(freezeWireNode)
