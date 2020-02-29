@@ -63,19 +63,22 @@ class Brow(part.Part):
                                                                     controlType="null", 
                                                                     hierarchy=['nul','ort'], 
                                                                     color=common.BLUE,
-                                                                    parent=anchor)
+                                                                    parent=anchor,
+                                                                    type='face')
 
         browInnerNul, browInnerOrient, browInnerCtrl = control.create(name=browInner, 
                                                                     controlType="null", 
                                                                     hierarchy=['nul','ort'], 
                                                                     color=common.BLUE,
-                                                                    parent=anchor)
+                                                                    parent=anchor,
+                                                                    type='face')
 
         browPeakNul, browPeakOrient, browPeakCtrl = control.create(name=browPeak, 
                                                                     controlType="null", 
                                                                     hierarchy=['nul','ort'], 
                                                                     color=common.BLUE,
-                                                                    parent=anchor)
+                                                                    parent=anchor,
+                                                                    type='face')
 
 
         # Position the controls
@@ -248,7 +251,7 @@ class Brow(part.Part):
         mc.rename('{}_ctrl'.format(corrugatorName), corrugatorName)
         mc.xform("{}_nul".format(corrugatorName), ws=True, matrix=mc.xform(browInnerCtrl, q=True, ws=True, matrix=True))
         mc.setAttr("{}.displayHandle".format(corrugatorName), 1)
-        control.tagAsControl(corrugatorName)
+        control.tagAsControl(corrugatorName, type='face')
 
         # lock and hide scale and rotates for all of the brow controls
         rigrepo.libs.attribute.lockAndHide([browMainCtrl, browInnerCtrl, browPeakCtrl, corrugatorName], ['r', 'rx', 'ry', 'rz', 's', 'sx', 'sy', 'sz'])

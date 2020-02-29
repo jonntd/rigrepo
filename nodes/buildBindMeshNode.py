@@ -20,7 +20,9 @@ import rigrepo.libs.bindmesh as bindmesh
 import rigrepo.libs.common as common
 
 if {curves}:
-    grp = mc.group(empty=1, n='bindmeshes_grp')
+    grp = 'bindmeshes_grp'
+    if not mc.objExists(grp):
+        mc.group(empty=1, n=grp)
     if mc.objExists('rig'):
         mc.parent(grp, 'rig')
     for curve, name in {curves}:

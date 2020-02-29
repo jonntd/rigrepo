@@ -25,6 +25,7 @@ class ClusterControlNode(commandNode.CommandNode):
         self.addAttribute('parent', 'rig', attrType=str, index=0)
         self.addAttribute('nameList', '["cluster_control"]', attrType=str, index=0)
         self.addAttribute('hideControlAttributes', '["v"]', attrType=str, index=0)
+        self.addAttribute('controlType', '', attrType=str, index=0)
         self.addAttribute('geometry', 'body_geo', attrType=str, index=0)
 
 
@@ -42,7 +43,7 @@ for name in {nameList}:
     mc.xform("%s_nul" % name, ws=True, matrix=mc.xform("{parent}", q=True, ws=True, matrix=True))
     if {displayHandle}:
         mc.setAttr("%s.displayHandle" % name, 1)
-    rigrepo.libs.control.tagAsControl(name)
+    rigrepo.libs.control.tagAsControl(name, type='{controlType}')
     rigrepo.libs.attribute.lockAndHide(name, {hideControlAttributes})
 '''
 
@@ -55,11 +56,12 @@ for name in {nameList}:
         '''
         # get the attributes that were set by the user so we can pass it to the command.
         parent = self.getAttributeByName("parent").getValue()
+        controlType = self.getAttributeByName("controlType").getValue()
         nameList = eval(self.getAttributeByName("nameList").getValue())
         hideControlAttributes = eval(self.getAttributeByName("hideControlAttributes").getValue())
         geometry = self.getAttributeByName('geometry').getValue()
         displayHandle = self.getAttributeByName('displayHandle').getValue()
-        exec(self.getAttributeByName('command').getValue().format(nameList=nameList,parent=parent, 
+        exec(self.getAttributeByName('command').getValue().format(nameList=nameList,parent=parent, controlType=controlType,
             geometry=geometry, displayHandle=displayHandle, hideControlAttributes=hideControlAttributes))
 
 

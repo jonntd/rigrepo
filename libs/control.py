@@ -12,7 +12,7 @@ CONTROLPATH = os.path.join(os.path.dirname(os.path.dirname(__file__)),'etc','con
 DEBUG = False
 def create(name="control", controlType = "square", hierarchy=['nul'], position=[0,0,0],
         rotation=[0,0,0], hideAttrs=['v'], parent=None, color=rigrepo.libs.common.BLUE, 
-        transformType="transform"):
+        transformType="transform", type=''):
     '''
     This function will create a control hierarchy based on the arguments that are passed in. 
     It will also make sure the control is tagged properly.
@@ -114,13 +114,13 @@ def create(name="control", controlType = "square", hierarchy=['nul'], position=[
     if mc.nodeType(control) == "joint":
         mc.setAttr("{}.drawStyle".format(control), 2)
 
-    tagAsControl(control)
+    tagAsControl(control, type=type)
 
     return hierarchyList + [control]
 
 
 
-def tagAsControl(ctrl):
+def tagAsControl(ctrl, type=''):
     '''
     :param control: node to tag as a control
     :type control: str or list
@@ -135,7 +135,11 @@ def tagAsControl(ctrl):
     for ctrl in ctrls:
         tagAttr = '{}.__control__'.format(ctrl)
         if not mc.objExists(tagAttr):
-            mc.addAttr(ctrl, ln='__control__', at = 'message')
+            mc.addAttr(ctrl, ln='__control__', at='message')
+        if type:
+            typeTagAttr = '__{}_control__'.format(type)
+            if not mc.objExists(ctrl+'.'+typeTagAttr):
+                mc.addAttr(ctrl, ln=typeTagAttr, at='message')
 
     return tagAttr
 
@@ -240,7 +244,7 @@ def toPoseAttr(controls, poseAttr=0):
         if not poseAttrName in mc.listAttr(ctrl):
             continue
 
-        # if the attribute exists then we can eval it into an OrderedDict        
+        # if the attribute exists then we can eval it into an OrderedDict
         ctrlAttrDict = eval(mc.getAttr(ctrlPoseAttr))
 
         # loop through the attributes and set them if we can.
@@ -249,7 +253,7 @@ def toPoseAttr(controls, poseAttr=0):
                 # set the attributes if we can.
                 mc.setAttr("{}.{}".format(ctrl,attr), ctrlAttrDict[attr])
             except:
-                # raise a warning for now if we can't set it. 
+                # raise a warning for now if we can't set it.
                 #Usually this is because it's connected or locked.
                 if DEBUG:
                     mc.warning("Couldn't set {}.".format(attr))

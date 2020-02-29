@@ -56,7 +56,7 @@ class Part(pubs.pNode.PNode):
         if not mc.objExists(self.name):
             mc.createNode("transform", n=self.name)
 
-        rigrepo.libs.control.tagAsControl([self.trsMaster, self.trsShot, self.trsAux])
+        rigrepo.libs.control.tagAsControl([self.trsMaster, self.trsShot, self.trsAux], type='trs')
         
         mc.parent(self.name, self.rigGroup)
 

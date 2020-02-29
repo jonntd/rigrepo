@@ -34,7 +34,8 @@ class Tongue(part.Part):
         tongueBaseNul, tongueBaseCtrl = control.create(name="tongue_base",
                                           controlType=None,
                                           color=common.RED,
-                                          hierarchy=['nul'])
+                                          hierarchy=['nul'],
+                                          type='face')
 
         # Hook up scale
         scale_nul = mc.createNode('transform', p=jointList[0], n='tongue_scale_nul')
@@ -54,7 +55,8 @@ class Tongue(part.Part):
                                           controlType=None,
                                           color=common.RED,
                                           hideAttrs=['sx', 'sy', 'sz', 'v'],
-                                          hierarchy=['nul'])
+                                          hierarchy=['nul'],
+                                          type='face')
 
         # move the middle control between the last the middle joints
         mc.delete(mc.parentConstraint(jointList[-2], jointList[1], tongueMidNul))
@@ -66,7 +68,8 @@ class Tongue(part.Part):
                                           controlType=None,
                                           color=common.RED,
                                           hideAttrs=['sx', 'sy', 'sz', 'v'],
-                                          hierarchy=['nul'])
+                                          hierarchy=['nul'],
+                                          type='face')
 
         # make the tongue tip matches the last joint in the chain
         matrix=mc.xform(jointList[-1], q=True, ws=True, matrix=True)

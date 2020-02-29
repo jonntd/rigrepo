@@ -66,7 +66,8 @@ class Face(part.Part):
             jawNul, jawDefAuto, jawCtrl = control.create(name="jaw", 
                                               controlType="null",
                                               color=common.YELLOW,
-                                              hierarchy=['nul', 'def_auto'])
+                                              hierarchy=['nul', 'def_auto'],
+                                              type='face')
 
             # position the jaw control and connect the joint to the control
             mc.xform(jawNul, ws=True, matrix=mc.xform(jawJoint, q=True, ws=True, matrix=True))
@@ -95,7 +96,7 @@ class Face(part.Part):
             mc.rename('{}_ctrl'.format(lipLower), lipLower)
             mc.xform("{}_nul".format(lipLower), ws=True, matrix=mc.xform(jawCtrl, q=True, ws=True, matrix=True))
             mc.setAttr("{}.displayHandle".format(lipLower), 1)
-            control.tagAsControl(lipLower)   
+            control.tagAsControl(lipLower, type='face')
 
             # Lowerteeth control
             if mc.objExists(teethLowerJoint):
@@ -103,7 +104,8 @@ class Face(part.Part):
                                                                       controlType="null",
                                                                       color=common.RED,
                                                                       hierarchy=['nul', 'def_auto'],
-                                                                      parent=jawCtrl)
+                                                                      parent=jawCtrl,
+                                                                      type='face')
 
                 mc.xform(teethLowerNul, ws=True, matrix=mc.xform(teethLowerJoint, q=True, ws=True, matrix=True))
                 mc.pointConstraint(teethLowerCtrl, teethLowerJoint)
@@ -117,7 +119,8 @@ class Face(part.Part):
                                               controlType="null",
                                               color=common.YELLOW,
                                               hierarchy=['nul'],
-                                              parent=anchor)
+                                              parent=anchor,
+                                              type='face')
 
             # position the faceLowerNul and connect the joint to the control
             mc.xform(faceLowerNul, ws=True, matrix=mc.xform(faceLowerJoint, q=True, ws=True, matrix=True))
@@ -136,7 +139,7 @@ class Face(part.Part):
             mc.rename('{}_ctrl'.format(mouthMainName), mouthMainName)
             mc.xform("{}_nul".format(mouthMainName), ws=True, matrix=mc.xform(faceLowerCtrl, q=True, ws=True, matrix=True))
             mc.setAttr("{}.displayHandle".format(mouthMainName), 1)
-            control.tagAsControl(mouthMainName)
+            control.tagAsControl(mouthMainName, type='face')
 
         elif mc.objExists(jawJoint) and mc.objExists(anchor):
             mc.parent(jawNul, anchor)
@@ -147,7 +150,8 @@ class Face(part.Part):
                                               controlType="null",
                                               color=common.YELLOW,
                                               hierarchy=['nul'],
-                                              parent=anchor)
+                                              parent=anchor,
+                                              type='face')
 
             # position the faceLowerNul and connect the joint to the control
             mc.xform(faceUpperNul, ws=True, matrix=mc.xform(faceUpperJoint, q=True, ws=True, matrix=True))
@@ -193,7 +197,8 @@ class Face(part.Part):
                                               controlType="null",
                                               color=common.YELLOW,
                                               hierarchy=['nul'],
-                                              parent=faceUpperCtrl)
+                                              parent=faceUpperCtrl,
+                                              type='face')
 
             # position the faceLowerNul and connect the joint to the control
             mc.xform(headTipNul, ws=True, matrix=mc.xform(headTipJoint, q=True, ws=True, matrix=True))
@@ -205,7 +210,8 @@ class Face(part.Part):
             noseBridgeNul, noseBridgeDefAuto, noseBridgeRotDefAuto, noseBridgeCtrl = control.create(name="nose_bridge", 
                                               controlType="null",
                                               color=common.YELLOW,
-                                              hierarchy=['nul', 'def_auto', 'rot_def_auto'])
+                                              hierarchy=['nul', 'def_auto', 'rot_def_auto'],
+                                              type='face')
 
             if mc.objExists(faceUpperJoint):
                 mc.parent(noseBridgeNul, faceUpperCtrl)
@@ -232,7 +238,8 @@ class Face(part.Part):
             noseNul, noseDefAuto, noseCtrl = control.create(name="nose", 
                                               controlType="null",
                                               color=common.YELLOW,
-                                              hierarchy=['nul', 'def_auto'])
+                                              hierarchy=['nul', 'def_auto'],
+                                              type='face')
 
             if mc.objExists(noseBridgeJoint):
                 mc.parent(noseNul, noseBridgeCtrl)
@@ -254,7 +261,7 @@ class Face(part.Part):
             mc.rename('{}_ctrl'.format(sneerNameL), sneerNameL)
             mc.xform("{}_nul".format(sneerNameL), ws=True, matrix=mc.xform(noseCtrl, q=True, ws=True, matrix=True))
             mc.setAttr("{}.displayHandle".format(sneerNameL), 1)
-            control.tagAsControl(sneerNameL)
+            control.tagAsControl(sneerNameL, type='face')
 
             # create the right sneer cluster
             sneerNameR = "sneer_r"
@@ -265,7 +272,7 @@ class Face(part.Part):
             mc.rename('{}_ctrl'.format(sneerNameR), sneerNameR)
             mc.xform("{}_nul".format(sneerNameR), ws=True, matrix=mc.xform(noseCtrl, q=True, ws=True, matrix=True))
             mc.setAttr("{}.displayHandle".format(sneerNameR), 1)
-            control.tagAsControl(sneerNameR)
+            control.tagAsControl(sneerNameR, type='face')
 
         if mc.objExists(faceMidJoint):
             parent = faceLowerCtrl
@@ -311,7 +318,7 @@ class Face(part.Part):
             mc.rename('{}_ctrl'.format(lipUpper), lipUpper)
             mc.xform("{}_nul".format(lipUpper), ws=True, matrix=mc.xform(midDriver, q=True, ws=True, matrix=True))
             mc.setAttr("{}.displayHandle".format(lipUpper), 1)
-            control.tagAsControl(lipUpper)   
+            control.tagAsControl(lipUpper, type='face')
             # lock and hide the visibility attribute on the lip upper and lower
             rigrepo.libs.attribute.lockAndHide([lipUpper,lipLower], ['v'])
 
@@ -321,7 +328,8 @@ class Face(part.Part):
                                                                       controlType="null",
                                                                       color=common.RED,
                                                                       hierarchy=['nul', 'def_auto'],
-                                                                      parent=midDriver)
+                                                                      parent=midDriver,
+                                                                      type='face')
 
                 mc.xform(teethUpperNul, ws=True, matrix=mc.xform(teethUpperJoint, q=True, ws=True, matrix=True))
                 mc.pointConstraint(teethUpperCtrl, teethUpperJoint)

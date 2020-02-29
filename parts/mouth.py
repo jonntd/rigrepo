@@ -176,7 +176,8 @@ class Mouth(part.Part):
                 controlType="square", 
                 hierarchy=['nul','ort', 'auto'], 
                 color=common.BLACK,
-                parent=parent)
+                parent=parent,
+                type='face')
             attribute.lockAndHide(ctrlHierarchy[-1], ['r', 'rx', 'ry', 'rz', 's', 'sx', 'sy', 'sz'])
             cornerControlHierarchyList.append(ctrlHierarchy)
             animMouthCorners.append(controlName)
@@ -555,7 +556,8 @@ class Mouth(part.Part):
             ctrlHierarchy = control.create(name="{}_{}".format(name, follicleIndex), 
                 controlType="square", 
                 hierarchy=['nul','ort','rot_def_auto','def_auto'], 
-                parent=follicle)
+                parent=follicle,
+                type='face')
 
             # create the joint that will drive the curve.
             jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))

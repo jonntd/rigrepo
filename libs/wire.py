@@ -218,7 +218,7 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
         mc.reorderDeformers(reorder_deformer, targetSkinCluster, target)
 
 
-def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None):
+def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None, control_type=''):
     '''
     This will build a rig setup based on the curve that is passed in.
 
@@ -259,7 +259,8 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None):
         ctrlHierarchy = rigrepo.libs.control.create(name=ctrl_name,
                                                     controlType="circle",
                                                     hierarchy=['nul','ort','def_auto'],
-                                                    parent=follicle)
+                                                    parent=follicle,
+                                                    type=control_type)
 
         # create the joint that will drive the curve.
         jnt_name = "{}_{}_jnt".format(name, follicleIndex)

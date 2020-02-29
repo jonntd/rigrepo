@@ -75,7 +75,8 @@ class Blink(part.Part):
         eyeSocketNul, eyeSocketCtrl = rigrepo.libs.control.create(name="eyeSocket_{0}".format(side), 
                                           controlType="null",
                                           color=rigrepo.libs.common.YELLOW,
-                                          hierarchy=['nul'])
+                                          hierarchy=['nul'],
+                                          type='face')
 
         #parent the socket control to the anchor if it exist in the scene.
         if mc.objExists(anchor):
@@ -89,13 +90,15 @@ class Blink(part.Part):
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul', 'def_auto'],
-                                              parent=eyeSocketCtrl)
+                                              parent=eyeSocketCtrl,
+                                              type='face')
 
         lowerLidNul, lowerLidDefAuto, lowerLidCtrl = rigrepo.libs.control.create(name="lidLower_{0}".format(side), 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul', 'def_auto'],
-                                              parent=eyeSocketCtrl)
+                                              parent=eyeSocketCtrl,
+                                              type='face')
 
         # lock and hide scale attributes on the lid controls
         rigrepo.libs.attribute.lockAndHide([upperLidCtrl, lowerLidCtrl], ['s', 'sx', 'sy', 'sz', 't', 'tx', 'ty', 'tz'])
@@ -229,7 +232,8 @@ class Blink(part.Part):
                 ctrlHierarchy = rigrepo.libs.control.create(name=jntBind.replace("_bind",""), 
                                                             controlType = "null", 
                                                             hierarchy=['nul','ort'],
-                                                            parent=None)
+                                                            parent=None,
+                                                            type='face')
                 jntDriver = mc.joint(name="{0}_{1}_driver".format(neutralCurve, str(i).zfill(3)))
                 mc.setAttr("{0}.radius".format(jntDriver),.08)
                 mc.setAttr("{0}.v".format(jntDriver), 0)
@@ -274,13 +278,15 @@ class Blink(part.Part):
                                           controlType="diamond",
                                           color=rigrepo.libs.common.BLUE,
                                           hierarchy=['nul'],
-                                          parent=eyeSocketCtrl)
+                                          parent=eyeSocketCtrl,
+                                          type='face')
 
         lidOuterNul, lidOuterCtrl = rigrepo.libs.control.create(name="lidOuterCorner_{0}".format(side), 
                                           controlType="diamond",
                                           color=rigrepo.libs.common.BLUE,
                                           hierarchy=['nul'],
-                                          parent=eyeSocketCtrl)
+                                          parent=eyeSocketCtrl,
+                                          type='face')
 
         # create joints that can be used to skin the neutral curve and help drive the corners
         lidCornerJointList = list()
@@ -393,7 +399,8 @@ class BlinkNew(part.Part):
         eyeSocketNul, eyeSocketCtrl = rigrepo.libs.control.create(name="eyeSocket_{0}".format(side), 
                                           controlType="null",
                                           color=rigrepo.libs.common.YELLOW,
-                                          hierarchy=['nul'])
+                                          hierarchy=['nul'],
+                                          type='face')
 
         #parent the socket control to the anchor if it exist in the scene.
         if mc.objExists(anchor):
@@ -407,13 +414,15 @@ class BlinkNew(part.Part):
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul', 'def_auto'],
-                                              parent=eyeSocketCtrl)
+                                              parent=eyeSocketCtrl,
+                                              type='face')
 
         lowerLidNul, lowerLidDefAuto, lowerLidCtrl = rigrepo.libs.control.create(name="lidLower_{0}".format(side), 
                                               controlType="null",
                                               color=rigrepo.libs.common.YELLOW,
                                               hierarchy=['nul', 'def_auto'],
-                                              parent=eyeSocketCtrl)
+                                              parent=eyeSocketCtrl,
+                                              type='face')
 
         # lock and hide scale attributes on the lid controls
         rigrepo.libs.attribute.lockAndHide([upperLidCtrl, lowerLidCtrl], ['s', 'sx', 'sy', 'sz', 't', 'tx', 'ty', 'tz'])
@@ -794,7 +803,8 @@ class BlinkNew(part.Part):
             ctrlHierarchy = rigrepo.libs.control.create(name="{}_{}".format(name, follicleIndex), 
                 controlType="square", 
                 hierarchy=['nul','ort','rot_def_auto','def_auto'], 
-                parent=follicle)
+                parent=follicle,
+                type='face')
 
             # create the joint that will drive the curve.
             jnt = mc.joint(n="{}_{}_jnt".format(name, follicleIndex))

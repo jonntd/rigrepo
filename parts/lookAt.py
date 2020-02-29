@@ -44,13 +44,15 @@ class LookAt(part.Part):
                                                               controlType="square",
                                                               color=rigrepo.libs.common.GREEN,
                                                               hierarchy=['nul', 'ort'],
-                                                              parent=self.name)
+                                                              parent=self.name,
+                                                              type='face')
 
         lookAtRotNul, lookAtRotAim, lookAtRotCtrl = rigrepo.libs.control.create(name="lookAt_rot", 
                                                               controlType="diamond",
                                                               color=rigrepo.libs.common.GREEN,
                                                               hierarchy=['nul', 'aim'],
-                                                              parent=self.name)
+                                                              parent=self.name,
+                                                              type='face')
 
 
         rigrepo.libs.attribute.lockAndHide(lookAtRotCtrl, ['t', 'tx', 'ty', 'tz', 's', 'sx', 'sy', 'sz'])
@@ -73,7 +75,8 @@ class LookAt(part.Part):
                                                                       controlType="circle",
                                                                       color=rigrepo.libs.common.BLUE,
                                                                       hierarchy=['nul', 'ort', 'def_auto'],
-                                                                      parent=eyeAnchorList[i])
+                                                                      parent=eyeAnchorList[i],
+                                                                      type='face')
 
             rigrepo.libs.attribute.lockAndHide(eyeCtrl,['t', 'tx', 'ty', 'tz', 's', 'sx', 'sy', 'sz'])
 

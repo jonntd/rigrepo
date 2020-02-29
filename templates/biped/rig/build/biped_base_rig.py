@@ -372,7 +372,8 @@ if mc.objExists(node):
         earClusterNode.getAttributeByName("nameList").setValue("['ear_l', 'ear_r']")
         earClusterNode.getAttributeByName("geometry").setValue("body_geo")
         earClusterNode.getAttributeByName("parent").setValue("face_upper")
-        tongueNode = rigrepo.parts.tongue.Tongue(name='tongue', 
+        earClusterNode.getAttributeByName("controlType").setValue("face")
+        tongueNode = rigrepo.parts.tongue.Tongue(name='tongue',
                                         jointList="mc.ls('tongue_?_bind')", 
                                         anchor="jaw")
         faceParts.addChildren([earClusterNode])
@@ -430,23 +431,27 @@ for mesh in mc.ls(["lip_main_bindmesh", "lip_bindmesh", "mouth_corner_bindmesh"]
         cheekClusterNode.getAttributeByName("nameList").setValue("['cheek_l', 'cheek_r']")
         cheekClusterNode.getAttributeByName("geometry").setValue("body_geo")
         cheekClusterNode.getAttributeByName("parent").setValue("face_upper")
+        cheekClusterNode.getAttributeByName("controlType").setValue("face")
 
         cheekPuffClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("cheekPuffs")
         cheekPuffClusterNode.getAttributeByName("nameList").setValue("['cheekPuff_l', 'cheekPuff_r']")
         cheekPuffClusterNode.getAttributeByName("geometry").setValue("body_geo")
         cheekPuffClusterNode.getAttributeByName("parent").setValue("face_mid_driver")
+        cheekPuffClusterNode.getAttributeByName("controlType").setValue("face")
 
         leftCheekLiftClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("l_cheekLift")
         leftCheekLiftClusterNode.getAttributeByName("nameList").setValue("['cheekLift_l']")
         leftCheekLiftClusterNode.getAttributeByName("geometry").setValue("body_geo")
         leftCheekLiftClusterNode.getAttributeByName("parent").setValue("lidLower_l")
         leftCheekLiftClusterNode.getAttributeByName("displayHandle").setValue(False)
+        leftCheekLiftClusterNode.getAttributeByName("controlType").setValue("face")
 
         rightCheekLiftClusterNode = rigrepo.nodes.utilNodes.ClusterControlNode("r_cheekLift")
         rightCheekLiftClusterNode.getAttributeByName("nameList").setValue("['cheekLift_r']")
         rightCheekLiftClusterNode.getAttributeByName("geometry").setValue("body_geo")
         rightCheekLiftClusterNode.getAttributeByName("parent").setValue("lidLower_r")
         rightCheekLiftClusterNode.getAttributeByName("displayHandle").setValue(False)
+        rightCheekLiftClusterNode.getAttributeByName("controlType").setValue("face")
         mouthCornerDistanceNode = rigrepo.nodes.commandNode.CommandNode('mouthCornerDistance')
         mouthCornerDistanceNodeCmd = '''
 import maya.cmds as mc
@@ -549,7 +554,7 @@ geometry = ['body_geo', 'topgums_geo', 'topteeth_geo',
 #             'lip_bindmesh', 'mouth_corner_bindmesh']
 
 # Curve rig            
-curve_rig = rigrepo.libs.wire.buildCurveRig(curve, name=name, ctrl_names=ctrl_names, parent=parent)                                
+curve_rig = rigrepo.libs.wire.buildCurveRig(curve, name=name, ctrl_names=ctrl_names, parent=parent, control_type='face')                               
 bindmeshGeometry, follicleList, controlHieracrchyList, jointList = curve_rig
 
 # Create deformer
@@ -751,6 +756,13 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
                                                                                                deformerName='lid_wire_sc',
                                                                                                keepWires=False,
                                                                                                jointDepth=3)
+        headWireToSkinClusterNode = rigrepo.nodes.wiresToSkinClusterNode.WiresToSkinClusterNode("headWire_toSkinCluster",
+                                                                                               wireList='mc.ls(["head_wire"], type="wire")',
+                                                                                               targetGeometry='body_geo',
+                                                                                               deformerName='head_wire_sc',
+                                                                                               keepWires=False,
+                                                                                               jointDepth=3)
+        headWireToSkinClusterNode.disable()
         pruneDeformersNode = rigrepo.nodes.commandNode.CommandNode('pruneDeformers')
         pruneDeformersCmd = '''
 import maya.cmds as mc
@@ -766,6 +778,39 @@ for deformer in deformers:
         pruneDeformersNode.getAttributeByName('command').setValue(pruneDeformersCmd)
         pruneDeformersNode.disable()
 
+
+        deleteRigSetsNode= rigrepo.nodes.commandNode.CommandNode('deleteRigSets')
+        deleteRigSetsCmd = '''
+import maya.cmds as mc
+
+if mc.objExists('bindmeshes_grp'):
+    mc.delete('bindmeshes_grp')
+
+rig_sets = ['RigSets']
+
+if mc.objExists(rig_sets[0]):
+    rig_sets_all = rig_sets[:]
+
+    while rig_sets:
+        current_children = []
+        for rig_set in rig_sets:
+            children = mc.sets(rig_set, q=1)
+            if children:
+                for child in children:
+                    if mc.nodeType(child) == 'objectSet':
+                        current_children.append(child)
+        if current_children:
+            rig_sets = current_children
+            rig_sets_all += current_children
+        else:
+            rig_sets = None
+
+    if rig_sets_all:
+        mc.delete(rig_sets_all)
+        
+'''
+        deleteRigSetsNode.getAttributeByName('command').setValue(deleteRigSetsCmd)
+
         deliveryNode = self.getNodeByPath("|animRig|delivery")
         deliveryNode.addChild(uniqueDeformersNode, index=0)
         deliveryNode.addChild(convertToSkinClusterNode, index=1)
@@ -773,8 +818,9 @@ for deformer in deformers:
                                               lipMainWireToSkinClusterNode,
                                               lipWireToSkinClusterNode,
                                               lipBindmeshWireToSkinClusterNode,
-                                              lidWireToSkinClusterNode])
-        deliveryNode.addChild(pruneDeformersNode)
+                                              lidWireToSkinClusterNode,
+                                              headWireToSkinClusterNode])
+        deliveryNode.addChildren([pruneDeformersNode, deleteRigSetsNode])
 
         # This must be at the end of the build
         applyNode.addChild(freezeWireNode)
