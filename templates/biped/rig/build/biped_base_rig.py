@@ -377,8 +377,8 @@ if mc.objExists(node):
                                         jointList="mc.ls('tongue_?_bind')", 
                                         anchor="jaw")
         faceParts.addChildren([earClusterNode])
-        l_blink = rigrepo.parts.blink.BlinkNew("l_blink", anchor="face_upper")
-        r_blink = rigrepo.parts.blink.BlinkNew("r_blink",side="r", anchor="face_upper")
+        l_blink = rigrepo.parts.blink.Blink("l_blink", anchor="face_upper")
+        r_blink = rigrepo.parts.blink.Blink("r_blink",side="r", anchor="face_upper")
         r_blink.getAttributeByName("side").setValue("r")
         lookAtNode = rigrepo.parts.lookAt.LookAt("lookAt")
         lookAtSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('lookAtSpaces', attrNode="lookAt_trs",
@@ -595,8 +595,157 @@ bindMeshSkin = mc.skinCluster(bind_joints, bindmeshGeometry,
         browsNode = pubs.pNode.PNode("brows")
         browsNode.addChildren([l_brow, r_brow])
 
+        eyeDragNode = rigrepo.nodes.commandNode.CommandNode('eyeDrag')
+        eyeDragNodeCmd = '''
+import rigrepo.libs.cluster
+import maya.cmds as mc
+cluster = rigrepo.libs.cluster.create(("blinkUpper_l_bindmesh", "blinkLower_l_bindmesh", "lid_l_bindmesh"), "eyeDrag_l_cluster",parent='l_blink', parallel=False)
+mc.xform("eyeDrag_l_cluster_nul", ws=True, matrix=mc.xform('eye_l',q=True,ws=True, matrix=True))
+#cluster_lid = rigrepo.libs.cluster.create("lid_l_bindmesh", "eyeDrag_lid_l_cluster",parent='eyeSocket_l', parallel=False)
+#mc.xform("eyeDrag_lid_l_cluster_nul", ws=True, matrix=mc.xform('eye_l',q=True,ws=True, matrix=True))
+#mc.orientConstraint('eyeDrag_l_cluster_ctrl', 'eyeDrag_lid_l_cluster_ctrl')
+currentDriver = "eye_l_bind.rotateY"
+mc.setDrivenKeyframe("eyeDrag_l_cluster_def_auto.rotateY", 
+                        currentDriver=currentDriver,
+                        dv=60,
+                        itt="linear",
+                        ott= "linear", 
+                        value=30)
+mc.setDrivenKeyframe("eyeDrag_l_cluster_def_auto.rotateY", 
+                        currentDriver=currentDriver,
+                        dv=-60,
+                        itt="linear",
+                        ott= "linear", 
+                        value=-30)
+
+# Set driven key post and pre infinity extrapolation
+dkey = mc.listConnections(currentDriver, scn=1, type    ='animCurveUA')[-1]
+mc.setAttr(dkey + '.preInfinity', 1)
+mc.setAttr(dkey + '.postInfinity', 1)
+mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
+
+# Set driven key post and pre infinity extrapolation
+dkey = mc.listConnections(currentDriver, scn=1, type    ='animCurveUA')[-1]
+mc.setAttr(dkey + '.preInfinity', 1)
+mc.setAttr(dkey + '.postInfinity', 1)
+mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
+
+
+currentDriver = "eye_l_bind.rotateX"
+mc.setDrivenKeyframe("eyeDrag_l_cluster_def_auto.rotateX", 
+                        currentDriver=currentDriver,
+                        dv=60,
+                        itt="linear",
+                        ott= "linear", 
+                        value=30)
+mc.setDrivenKeyframe("eyeDrag_l_cluster_def_auto.rotateX", 
+                        currentDriver=currentDriver,
+                        dv=-60,
+                        itt="linear",
+                        ott= "linear", 
+                        value=-30)
+
+# Set driven key post and pre infinity extrapolation
+dkey = mc.listConnections(currentDriver, scn=1, type    ='animCurveUA')[-1]
+mc.setAttr(dkey + '.preInfinity', 1)
+mc.setAttr(dkey + '.postInfinity', 1)
+mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
+
+# Set driven key post and pre infinity extrapolation
+dkey = mc.listConnections(currentDriver, scn=1, type    ='animCurveUA')[-1]
+mc.setAttr(dkey + '.preInfinity', 1)
+mc.setAttr(dkey + '.postInfinity', 1)
+mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
+
+
+
+
+
+cluster = rigrepo.libs.cluster.create(("blinkUpper_r_bindmesh", "blinkLower_r_bindmesh", "lid_r_bindmesh"), "eyeDrag_r_cluster",parent='r_blink', parallel=False)
+mc.xform("eyeDrag_r_cluster_nul", ws=True, matrix=mc.xform('eye_r',q=True,ws=True, matrix=True))
+#cluster_lid = rigrepo.libs.cluster.create("lid_r_bindmesh", "eyeDrag_lid_r_cluster",parent='eyeSocket_r', parallel=False)
+#mc.xform("eyeDrag_lid_l_cluster_nul", ws=True, matrix=mc.xform('eye_r',q=True,ws=True, matrix=True))
+#mc.orientConstraint('eyeDrag_r_cluster_ctrl', 'eyeDrag_lid_r_cluster_ctrl')
+currentDriver = "eye_r_bind.rotateY"
+mc.setDrivenKeyframe("eyeDrag_r_cluster_def_auto.rotateY", 
+                        currentDriver=currentDriver,
+                        dv=60,
+                        itt="linear",
+                        ott= "linear", 
+                        value=30)
+mc.setDrivenKeyframe("eyeDrag_r_cluster_def_auto.rotateY", 
+                        currentDriver=currentDriver,
+                        dv=-60,
+                        itt="linear",
+                        ott= "linear", 
+                        value=-30)
+
+# Set driven key post and pre infinity extrapolation
+dkey = mc.listConnections(currentDriver, scn=1, type    ='animCurveUA')[-1]
+mc.setAttr(dkey + '.preInfinity', 1)
+mc.setAttr(dkey + '.postInfinity', 1)
+mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
+
+# Set driven key post and pre infinity extrapolation
+dkey = mc.listConnections(currentDriver, scn=1, type    ='animCurveUA')[-1]
+mc.setAttr(dkey + '.preInfinity', 1)
+mc.setAttr(dkey + '.postInfinity', 1)
+mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
+
+
+currentDriver = "eye_r_bind.rotateX"
+mc.setDrivenKeyframe("eyeDrag_r_cluster_def_auto.rotateX", 
+                        currentDriver=currentDriver,
+                        dv=60,
+                        itt="linear",
+                        ott= "linear", 
+                        value=30)
+mc.setDrivenKeyframe("eyeDrag_r_cluster_def_auto.rotateX", 
+                        currentDriver=currentDriver,
+                        dv=-60,
+                        itt="linear",
+                        ott= "linear", 
+                        value=-30)
+
+# Set driven key post and pre infinity extrapolation
+dkey = mc.listConnections(currentDriver, scn=1, type    ='animCurveUA')[-1]
+mc.setAttr(dkey + '.preInfinity', 1)
+mc.setAttr(dkey + '.postInfinity', 1)
+mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
+
+# Set driven key post and pre infinity extrapolation
+dkey = mc.listConnections(currentDriver, scn=1, type    ='animCurveUA')[-1]
+mc.setAttr(dkey + '.preInfinity', 1)
+mc.setAttr(dkey + '.postInfinity', 1)
+mc.keyTangent(dkey, index=(0, 0), inTangentType='spline')
+mc.keyTangent(dkey, index=(0, 0), outTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), inTangentType='spline')
+mc.keyTangent(dkey, index=(3, 3), outTangentType='spline')
+'''
+        eyeDragNode.getAttributeByName('command').setValue(eyeDragNodeCmd)
         eyesNode = pubs.pNode.PNode("eyes")
-        eyesNode.addChildren([l_blink, r_blink, lookAtNode, lookAtSpaceNode])
+        eyesNode.addChildren([l_blink, r_blink, lookAtNode, eyeDragNode, lookAtSpaceNode])
 
         
         # add nodes ass children of body
