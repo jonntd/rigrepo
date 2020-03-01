@@ -31,6 +31,7 @@ class Blink(part.Part):
         self.addAttribute("upperCurve", "blinkUpper_{}_curve".format(side), attrType=str)
         self.addAttribute("lidCurve", "lid_{}_curve".format(side), attrType=str)
         self.addAttribute("geometry", "body_geo", attrType=str)
+        self.addAttribute("eyeGeometry", "eye_{}_geo".format(side), attrType=str)
 
         self.controlGroup = "{}_controls".format(self.name)
         self._skinClusters = list()
@@ -63,6 +64,7 @@ class Blink(part.Part):
         side = self.getAttributeByName("side").getValue()
         anchor = self.getAttributeByName("anchor").getValue()
         geometry = self.getAttributeByName("geometry").getValue()
+        eyeGeometry = self.getAttributeByName("eyeGeometry").getValue()
         upperCurve = self.getAttributeByName("upperCurve").getValue()
         lowerCurve = self.getAttributeByName("lowerCurve").getValue()
         lidCurve = self.getAttributeByName("lidCurve").getValue()
@@ -307,7 +309,7 @@ class Blink(part.Part):
                                         parallel=False)
 
         # create the socket lift cluster
-        socketStretchCluster = rigrepo.libs.cluster.create(geometry, 
+        socketStretchCluster = rigrepo.libs.cluster.create(mc.ls([geometry,eyeGeometry]), 
                                         "socketStretch_{0}_cluster".format(side),
                                         parent=anchor, 
                                         parallel=False)
