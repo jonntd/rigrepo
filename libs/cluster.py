@@ -9,7 +9,7 @@ def create(mesh,name,parent=None,contraintTypes=['point','orient','scale'],
     This will create a localized cluster.
 
     :param mesh: mesh to create cluster on.
-    :type mesh: str
+    :type mesh: str | list
 
     :param name: The name you wish to use for the cluster when naming it.
     :type name: str
@@ -34,7 +34,7 @@ def create(mesh,name,parent=None,contraintTypes=['point','orient','scale'],
         mc.parent(node,parent)
         parent = node
     
-    mc.select(mesh,r=True)
+    mc.select(mc.ls(mesh),r=True)
     # create and localize the cluster
     cls = mc.cluster(name=name, wn=[name+'_cls_hdl',name+'_cls_hdl'],bs=1, par=parallel)[0]
     if local:
@@ -104,7 +104,7 @@ def transferCluster(source, target, deformer, handle=False, surfaceAssociation="
             continue
 
         # check to see if there is a cluster already  on the target mesh
-        hist = [node for node in mc.listHistory(mesh, pdo=True, lv=1) if mc.nodeType(node) == "cluster"]
+        hist = [node for node in mc.ls(mc.listHistory(mesh, pdo=True, il=1), type='geometryFilter') if mc.nodeType(node) == "cluster"]
 
         # if there is no cluster, we will create one.
         newDeformer = "{}__{}".format(mesh, deformer)

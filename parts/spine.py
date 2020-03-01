@@ -363,9 +363,9 @@ class Spine(part.Part):
                                                 tsb=True)[0]
 
             mc.skinPercent(bindMeshSkin , '{}.vtx[0:3]'.format(bindmeshGeometry), transformValue=[(self._hipsBind, 1.0), (jointList[0], 0.0)])
-            mc.skinPercent(bindMeshSkin , '{}.vtx[4:7]'.format(bindmeshGeometry),  transformValue=[(jointList[0], 0.0), (jointList[1], 0.5), (jointList[2],0.0)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[4:7]'.format(bindmeshGeometry),  transformValue=[(jointList[0], 0.0), (jointList[1], 1.0), (jointList[2],0.0)])
             mc.skinPercent(bindMeshSkin , '{}.vtx[8:11]'.format(bindmeshGeometry), transformValue=[(jointList[3], 1.0), (jointList[1], 0.0)])
-            mc.skinPercent(bindMeshSkin , '{}.vtx[12:15]'.format(bindmeshGeometry), transformValue=[(jointList[2], 0.0), (jointList[4], 0.5), (self._chestBind, .5)])
+            mc.skinPercent(bindMeshSkin , '{}.vtx[12:15]'.format(bindmeshGeometry), transformValue=[(jointList[2], 0.0), (jointList[4], 0.0), (self._chestBind, 1.0)])
             mc.skinPercent(bindMeshSkin , '{}.vtx[16:19]'.format(bindmeshGeometry), transformValue=[(self._chestBind, 1.0), (jointList[1], 0.0), (jointList[2],0.0)])
 
         # ------------------------------------------------------------------------------------
