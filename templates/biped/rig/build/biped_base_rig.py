@@ -778,7 +778,6 @@ for deformer in deformers:
         pruneDeformersNode.getAttributeByName('command').setValue(pruneDeformersCmd)
         pruneDeformersNode.disable()
 
-
         deleteRigSetsNode= rigrepo.nodes.commandNode.CommandNode('deleteRigSets')
         deleteRigSetsCmd = '''
 import maya.cmds as mc

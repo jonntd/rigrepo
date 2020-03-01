@@ -110,9 +110,159 @@ if mc.objExists('trs_shot'):
         controlOrientDataNode.getAttributeByName("Nodes").setValue("mc.ls('*_ort',type='transform')")
         controlDataNode.getAttributeByName("Nodes").setValue("rigrepo.libs.control.getControls()")
 
+        tagControllersNode= rigrepo.nodes.commandNode.CommandNode('tagControllers')
+        tagControllersCmd = '''
+import maya.cmds as mc
+import maya.mel as mm
+
+import rigrepo.libs.control
+
+controls = rigrepo.libs.control.getControls()
+
+mc.select(controls)
+mm.eval('TagAsController')
+
+# --------------------------------------------------
+# Pickwalking
+# --------------------------------------------------
+
+# Face upper children - note: excluding 'eyeSocket_l', 'eyeSocket_r' because it is making the lide tweakers not go all the way around
+children = ['face_lower', 'head_tip',  'cheek_r', 'cheek_l', 'nose_bridge']
+parent = 'head'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Lid Tweakers
+
+children = [u'lid_up_3_l', u'lid_up_4_l', u'lid_up_5_l', u'lid_corner_outer_l', u'lid_low_6_l', u'lid_low_5_l', u'lid_low_4_l', u'lid_low_3_l', u'lid_low_2_l', u'lid_corner_inner_l', u'lid_up_1_l', u'lid_up_2_l']
+parent = 'lidLower_l'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+children = [u'lid_up_3_r', u'lid_up_2_r', u'lid_up_1_r', u'lid_corner_inner_r', u'lid_low_2_r', u'lid_low_3_r', u'lid_low_4_r', u'lid_low_5_r', u'lid_low_6_r', u'lid_corner_outer_r', u'lid_up_5_r', u'lid_up_4_r']
+parent = 'lidLower_r'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Upper lids
+children = ['lidLower_l']
+parent = 'lidUpper_l'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+children = ['lidLower_r']
+parent = 'lidUpper_r'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Lower lids
+children = ['lidUpper_l']
+parent = 'eyeSocket_l'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+children = ['lidUpper_r']
+parent = 'eyeSocket_r'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Brows
+
+children = [u'brow_peak_r', u'brow_main_r', u'brow_corrugator_r', u'brow_inner_r', u'brow_inner_l', u'brow_corrugator_l', 'brow_main_l', u'brow_peak_l']
+parent = 'head_tip'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+
+# lip twweakers
+children = [u'lip_center_up', u'lip_up_2_l', u'lip_up_1_l', u'lip_up_0_l', u'lip_corner_l', u'lip_low_0_l', u'lip_low_1_l', u'lip_low_2_l', u'lip_center_low', u'lip_low_2_r', u'lip_low_1_r', u'lip_low_0_r', u'lip_corner_r', u'lip_up_0_r', u'lip_up_1_r', u'lip_up_2_r']
+parent = 'lip_lower'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Lip lower
+children = ['lip_lower']
+parent = 'lip_upper'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Lip upper and mouth corners
+children = ['mouth_corner_r', 'mouth_corner_l']
+parent = 'mouthMain'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Mouth main and tongue base - 'lip_upper' removed 
+children = ['mouthMain', 'tongue_base', 'teeth_upper']
+parent = 'jaw'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Tongue mid
+children = ['tongue_mid']
+parent = 'tongue_base'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Tongue tip
+children = ['tongue_tip']
+parent = 'tongue_mid'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Lower teeth
+children = ['teeth_lower']
+parent = 'teeth_upper'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Nose and sneers
+children = ['sneer_r', 'sneer_l', 'nose', ]
+parent = 'nose_bridge'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Cheek puff
+children = ['cheekPuff_l']
+parent = 'cheek_l'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+children = ['cheekPuff_r']
+parent = 'cheek_r'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Head wire mid
+children = ['headwire_mid']
+parent = 'headwire_top'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# Head wire low
+children = ['headwire_low']
+parent = 'headwire_mid'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# jaw
+children = ['jaw']
+parent = 'face_lower'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+
+# face upper and head wire top
+children = ['headwire_top', 'face_upper']
+parent = 'head'
+mc.select(children, parent)
+mm.eval('TagAsControllerParent')
+        
+'''
+        tagControllersNode.getAttributeByName('command').setValue(tagControllersCmd)
         postBuild.addChild(trsCurve)
         postBuild.addChild(controlOrientDataNode)
         postBuild.addChild(controlDataNode)
+        postBuild.addChild(tagControllersNode)
 
         #perspective frame
         frameNode = rigrepo.nodes.commandNode.CommandNode('frameCamera')
