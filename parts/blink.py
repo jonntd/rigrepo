@@ -100,7 +100,7 @@ class Blink(part.Part):
                                               type='face')
 
         # lock and hide scale attributes on the lid controls
-        rigrepo.libs.attribute.lockAndHide([upperLidCtrl, lowerLidCtrl], ['s', 'sx', 'sy', 'sz', 't', 'tx', 'ty', 'tz'])
+        rigrepo.libs.attribute.lockAndHide([upperLidCtrl, lowerLidCtrl], ['s', 'sx', 'sy', 'sz', 't', 'tx', 'ty', 'tz', 'ry', 'rz'])
 
         # create drivers for the the lids.
         lowerLidDriver = mc.createNode("joint", name="lidLower_{0}_driver".format(side))
