@@ -931,8 +931,6 @@ for deformer in deformers:
         deleteRigSetsCmd = '''
 import maya.cmds as mc
 
-if mc.objExists('bindmeshes_grp'):
-    mc.delete('bindmeshes_grp')
 
 rig_sets = ['RigSets']
 
@@ -955,6 +953,14 @@ if mc.objExists(rig_sets[0]):
 
     if rig_sets_all:
         mc.delete(rig_sets_all)
+        
+        
+# Random stuff
+if mc.objExists('head_wire'):
+    mc.setAttr('head_wire.freezeGeometry', 0)
+if mc.objExists('bindmeshes_grp'):
+    mc.delete('bindmeshes_grp')
+    
         
 '''
         deleteRigSetsNode.getAttributeByName('command').setValue(deleteRigSetsCmd)

@@ -122,6 +122,11 @@ controls = rigrepo.libs.control.getControls()
 mc.select(controls)
 mm.eval('TagAsController')
 
+#for ctrl in controls:
+#    tag = mc.listConnections(ctrl, type='controller')
+#    if tag:
+#        mc.setAttr(tag[0]+'.visibilityMode', 2)
+
 # --------------------------------------------------
 # Pickwalking
 # --------------------------------------------------
@@ -304,6 +309,7 @@ mm.eval('TagAsControllerParent')
 
         importNodeEditorBookmarsNode = rigrepo.nodes.importNodeEditorBookmarksNode.ImportNodeEditorBookmarksNode("bookmarks",
             dirPath=self.resolveDirPath('bookmarks', self.variant))
+        importNodeEditorBookmarsNode.disable()
 
         # this will make sure that if the skinCluster is DQ it will support nonRigidScale
         setDqScaleNode = rigrepo.nodes.commandNode.CommandNode('NonRigidScale')
