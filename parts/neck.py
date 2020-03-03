@@ -174,6 +174,11 @@ class Neck(part.Part):
         mc.parent(neckNul, grp)
         mc.hide(self.spline._group, clusters)
 
+        # Head psd driver
+        driver_nul = mc.duplicate(headNul, po=1, n='head_driver_nul')[0]
+        driver = mc.createNode('transform', n='head_driver', p=driver_nul)
+        mc.orientConstraint(headCtrl, driver)
+
     def postBuild(self):
         '''
         '''
