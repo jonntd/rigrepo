@@ -55,7 +55,7 @@ class LookAt(part.Part):
                                                               type='face')
 
 
-        rigrepo.libs.attribute.lockAndHide(lookAtRotCtrl, ['t', 'tx', 'ty', 'tz', 's', 'sx', 'sy', 'sz'])
+        rigrepo.libs.attribute.lockAndHide(lookAtRotCtrl, ['rz', 't', 'tx', 'ty', 'tz', 's', 'sx', 'sy', 'sz'])
         rigrepo.libs.attribute.lockAndHide(lookAtCtrl, ['r', 'rx', 'ry', 'rz', 's', 'sx', 'sy', 'sz'])
 
         # put both lookAt and lookAt rot at the loaction between the eyes

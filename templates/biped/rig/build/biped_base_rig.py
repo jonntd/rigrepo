@@ -546,7 +546,7 @@ bind_joints = ['skull_bind']
 ctrl_names = ['headwire_top', 'headwire_mid', 'headwire_low']
 geometry = ['body_geo', 'topgums_geo', 'topteeth_geo', 
             'bottomteeth_geo', 'bottomgums_geo', 'tongue_geo', 
-            'r_eyeinside_geo', 'l_eyeinside_geo']       
+            'r_eyeinside_geo', 'l_eyeinside_geo', 'hair_prx']       
 # Add bindmeshes
 #geometry += ['blinkLower_l_bindmesh', 'blinkLower_r_bindmesh', 
 #             'blinkUpper_l_bindmesh', 'blinkUpper_r_bindmesh', 'lip_main_bindmesh', 

@@ -261,6 +261,64 @@ children = ['headwire_top', 'face_upper']
 parent = 'head'
 mc.select(children, parent)
 mm.eval('TagAsControllerParent')
+
+pickwalk = [
+
+# Hands
+[u'thumbCup_l',   u'thumb_001_l',  u'thumb_002_l',  u'thumb_003_l'],
+[u'index_001_l',  u'index_002_l',  u'index_003_l',  u'index_004_l'],
+[u'middle_001_l', u'middle_002_l', u'middle_003_l', u'middle_004_l'],
+[u'ring_001_l',   u'ring_002_l',   u'ring_003_l',   u'ring_004_l'],
+[u'pinky_001_l',  u'pinky_002_l',  u'pinky_003_l', u'pinky_004_l'],
+['wrist_fk_gimbal_l', ['thumbCup_l', 'index_001_l', 'middle_001_l', 'ring_001_l', 'pinky_001_l']],
+
+[u'thumbCup_r',   u'thumb_001_r',  u'thumb_002_r',  u'thumb_003_r'],
+[u'index_001_r',  u'index_002_r',  u'index_003_r',  u'index_004_r'],
+[u'middle_001_r', u'middle_002_r', u'middle_003_r', u'middle_004_r'],
+[u'ring_001_r',   u'ring_002_r',   u'ring_003_r',   u'ring_004_r'],
+[u'pinky_001_r',  u'pinky_002_r',  u'pinky_003_r', u'pinky_004_r'],
+['wrist_fk_gimbal_r', ['thumbCup_r', 'index_001_r', 'middle_001_r', 'ring_001_r', 'pinky_001_r']],
+
+# Arms
+[u'clavicle_l', u'shoulderSwing_l', u'shoulder_fk_l', u'elbow_fk_l', u'wrist_fk_l', u'wrist_fk_gimbal_l'],
+[u'clavicle_r', u'shoulderSwing_r', u'shoulder_fk_r', u'elbow_fk_r', u'wrist_fk_r', u'wrist_fk_gimbal_r'],
+
+# Arm Bend bows
+[u'arm_bend_0_l', u'arm_bend_1_l', u'arm_bend_2_l', u'arm_bend_3_l', u'arm_bend_4_l'],
+[u'arm_bend_0_r', u'arm_bend_1_r', u'arm_bend_2_r', u'arm_bend_3_r', u'arm_bend_4_r'],
+
+# Legs
+[ u'thighSwing_l', u'leg_pv_l', u'leg_ik_l', u'leg_ik_gimbal_l', u'heel_l', u'ballRoll_l', u'ball_l_fk', u'toe_l'],
+[ u'thighSwing_r', u'leg_pv_r', u'leg_ik_r', u'leg_ik_gimbal_r', u'heel_r', u'ballRoll_r', u'ball_r_fk', u'toe_r'],
+
+# Leg bendbows
+[u'leg_bend_0_l', u'leg_bend_1_l', u'leg_bend_2_l', u'leg_bend_3_l', u'leg_bend_4_l'],
+[u'leg_bend_0_r', u'leg_bend_1_r', u'leg_bend_2_r', u'leg_bend_3_r', u'leg_bend_4_r'],
+
+# Spine
+[u'head', u'neck', u'chest_top', u'chest', u'torso', u'hip_swivel', u'hips'],
+
+# Clavs to chest
+['chest', ['clavicle_r', 'clavicle_l']],
+
+# pelvis to hips
+['hips', ['thighSwing_r', 'thighSwing_l']],
+
+]
+
+for data in pickwalk:
+    if not isinstance(data[0], str): 
+        for i in range(len(data)):
+            if i < len(data)-1:
+                parent = data[i]
+                child = data[i+1]  
+                mc.select(child, parent)
+                mm.eval('TagAsControllerParent')
+    else:
+        parent = data[0]
+        children = data[1]
+        mc.select(children, parent)
+        mm.eval('TagAsControllerParent')
         
 '''
         tagControllersNode.getAttributeByName('command').setValue(tagControllersCmd)
