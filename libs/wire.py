@@ -7,6 +7,7 @@ import rigrepo.libs.shape
 import rigrepo.libs.skinCluster
 import rigrepo.libs.transform
 import rigrepo.libs.bindmesh
+import rigrepo.libs.common
 
 def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, keepWires=False, 
     rootParentNode="rig", rootPreMatrixNode="trs_aux", jointDepth=2):
@@ -218,7 +219,7 @@ def convertWiresToSkinCluster(newSkinName, targetGeometry, wireDeformerList, kee
         mc.reorderDeformers(reorder_deformer, targetSkinCluster, target)
 
 
-def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None, control_type=''):
+def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None, control_type='', control_color=rigrepo.libs.common.BLUE):
     '''
     This will build a rig setup based on the curve that is passed in.
 
@@ -245,6 +246,7 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None, control_t
     controlHieracrchyList = list()
     # Joints built for each curve cv
     jointList = list()
+    baseCurveJointList = list()
 
     # loop through and create controls on the follicles so we have controls to deform the wire.
     for follicle in follicleList:
@@ -260,6 +262,7 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None, control_t
                                                     controlType="circle",
                                                     hierarchy=['nul','ort','def_auto'],
                                                     parent=follicle,
+                                                    color=control_color,
                                                     type=control_type)
 
         # create the joint that will drive the curve.
@@ -267,11 +270,15 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None, control_t
         if ctrl_names:
             jnt_name = ctrl_names[follicleIndex]+'_jnt'
         jnt = mc.joint(n=jnt_name)
+        baseCurveJnt = mc.joint(n=jnt.replace('_jnt', '_baseCurve_jnt'))
+
         # make sure the joint is in the correct space
         mc.setAttr("{}.translate".format(jnt), 0,0,0)
         mc.setAttr("{}.rotate".format(jnt), 0,0,0)
         mc.setAttr("{}.drawStyle".format(jnt),2)
         mc.setAttr("{}.displayHandle".format(ctrlHierarchy[-1]), 1)
+        mc.parent(baseCurveJnt, ctrlHierarchy[0])
+        mc.setAttr('{}.v'.format(baseCurveJnt), 0)
 
         # zero out the nul for the control hierarchy so it's in the correct position.
         mc.setAttr("{}.translate".format(ctrlHierarchy[0]), 0,0,0)
@@ -279,6 +286,7 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None, control_t
         # append the control and the follicle transform to their lists
         controlHieracrchyList.append(ctrlHierarchy)
         jointList.append(jnt)
+        baseCurveJointList.append(baseCurveJnt)
 
     # This will parent all of the data for the rig to the system group "name"
     for data in (bindmeshGeometry, follicleList):
@@ -325,7 +333,7 @@ def buildCurveRig(curve, name='limb_bend', ctrl_names=[], parent=None, control_t
     # set the visibility of the bindmesh.
     mc.setAttr("{}.v".format(bindmeshGeometry), 0 )
     mc.setAttr("{}.v".format(curve), 0 )
-    return bindmeshGeometry, follicleList, controlHieracrchyList, jointList
+    return bindmeshGeometry, follicleList, controlHieracrchyList, jointList, baseCurveJointList
 
 def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterList, keepWires=False,
                                  rootParentNode="rig", rootPreMatrixNode="trs_aux", jointDepth=2):

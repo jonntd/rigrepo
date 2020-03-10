@@ -38,6 +38,7 @@ class Brow(part.Part):
         self.addAttribute("browMainJoint", "{browMain}_bind", attrType=str)
         self.addAttribute("browPeakJoint", "{browPeak}_bind", attrType=str)
         self.addAttribute("driverParent", "face_upper", attrType=str)
+        self.addAttribute("curve", "brow_{side}_curve", attrType=str)
         self.addAttribute("geometry", "body_geo", attrType=str)
         
     def build(self):
@@ -52,6 +53,7 @@ class Brow(part.Part):
         browInner = self.getAttributeByName("browInner").getValue().format(side=side)
         browMain = self.getAttributeByName("browMain").getValue().format(side=side)
         browPeak = self.getAttributeByName("browPeak").getValue().format(side=side)
+        curve = self.getAttributeByName("curve").getValue().format(side=side)
         browInnerJoint = self.getAttributeByName("browInnerJoint").getValue().format(browInner=browInner)
         browMainJoint = self.getAttributeByName("browMainJoint").getValue().format(browMain=browMain)
         browPeakJoint = self.getAttributeByName("browPeakJoint").getValue().format(browPeak=browPeak)
@@ -272,6 +274,32 @@ class Brow(part.Part):
             mc.keyTangent(x, index=(2, 2), inTangentType='spline')
             mc.keyTangent(x, index=(2, 2), outTangentType='spline')
 
+        # create the curve rig for the brows.
+        curveControlNames = ['brow_bend_{}_{}'.format(index, side) for index in range(len(mc.ls('{}.cv'.format(curve), fl=True)))]
+        curveRig = rigrepo.libs.wire.buildCurveRig(curve, 
+                                            name='brow_bend_{}'.format(side), 
+                                            ctrl_names=curveControlNames, 
+                                            parent=self.name, 
+                                            control_type='face',
+                                            control_color=rigrepo.libs.common.YELLOW)
+        bindmeshGeometry, follicleList, controlHieracrchyList, jointList, baseCurveJointList = curveRig
+
+        # create the wire deformer.
+        # create the skinCluster for the curve
+        #mc.skinCluster(*jointList + [curve], tsb=True, name="{}_skinCluster".format(curve))
+
+        #deform the lip bindmesh with the lip_main curve using a wire deformer.
+        wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00,
+                w=curve, name="{}_wire".format(curve))[0]
+        # set the default values for the wire deformer
+        mc.setAttr("{}.rotation".format(wireDeformer), 0)
+        mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), 100)
+
+        # create skinCluster for the base wire
+        baseCurve = "{}BaseWire".format(curve)
+        baseCurveSkin = mc.skinCluster(*baseCurveJointList+mc.ls(baseCurve),
+                                    n="{}_skinCluster".format(baseCurve),
+                                    tsb=True)[0]
 
     def postBuild(self):
         '''
