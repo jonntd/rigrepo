@@ -279,16 +279,17 @@ class Brow(part.Part):
         curveRig = rigrepo.libs.wire.buildCurveRig(curve, 
                                             name='brow_bend_{}'.format(side), 
                                             ctrl_names=curveControlNames, 
-                                            parent=self.name, 
+                                            parent=self.rigGroup, 
                                             control_type='face',
-                                            control_color=rigrepo.libs.common.YELLOW)
+                                            control_color=rigrepo.libs.common.RED)
         bindmeshGeometry, follicleList, controlHieracrchyList, jointList, baseCurveJointList = curveRig
+
+        for controlHieracrchy in controlHieracrchyList:
+            shapeNode = mc.listRelatives(controlHieracrchy[-1], c=True, shapes=True)[0]
+            mc.setAttr('{}.lodv'.format(shapeNode), 0)
 
         # create the wire deformer.
         # create the skinCluster for the curve
-        #mc.skinCluster(*jointList + [curve], tsb=True, name="{}_skinCluster".format(curve))
-
-        #deform the lip bindmesh with the lip_main curve using a wire deformer.
         wireDeformer = mc.wire(geometry, gw=False, en=1.00, ce=0.00, li=0.00,
                 w=curve, name="{}_wire".format(curve))[0]
         # set the default values for the wire deformer
@@ -300,6 +301,9 @@ class Brow(part.Part):
         baseCurveSkin = mc.skinCluster(*baseCurveJointList+mc.ls(baseCurve),
                                     n="{}_skinCluster".format(baseCurve),
                                     tsb=True)[0]
+
+        # parent the curves into the hiearchy.
+        mc.parent([curve, baseCurve], 'brow_bend_{}_grp'.format(side))
 
     def postBuild(self):
         '''
