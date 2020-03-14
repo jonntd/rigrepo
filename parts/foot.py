@@ -83,10 +83,10 @@ class Foot(part.Part):
         ankleStretchTarget=self.getAttributeByName("ankleStretchTarget").getValue()
 
         if not mc.objExists(self._anklePivot):
-            raise RuntimeError("{0} doesn't exist in the current Maya seesion.".format(self._anklePivot))
+            raise RuntimeError("{0} doesn't exist in the current Maya session.".format(self._anklePivot))
 
         if not mc.objExists(self._ankleHandle):
-            raise RuntimeError("{0} doesn't exist in the current Maya seesion.".format(self._ankleHandle))
+            raise RuntimeError("{0} doesn't exist in the current Maya session.".format(self._ankleHandle))
 
         self.ikfkSystem = rigrepo.libs.ikfk.IkFkFoot(self._jointList, self._anklePivot)
 
@@ -147,26 +147,6 @@ class Foot(part.Part):
         #mc.pointConstraint(ballFkctrlHierarchy[-1], fkJointList[1])
         mc.orientConstraint(ballFkctrlHierarchy[-1], fkJointList[1])
         mc.parent(ballFkctrlHierarchy[0], self.name)
-
-
-        #if mc.objExists(self._fkAnchor):
-        #    mc.parent(ballFkctrlHierarchy[0], self._fkAnchor)
-        # create the toe fk control
-        # TAKING OUT THE TOE FK CONTROL FOR NOW.
-        '''
-        toeFkctrlHierarchy = rigrepo.libs.control.create("{}_ctrl".format(fkJointList[2]), 
-                                                            controlType = "cube", 
-                                                            hierarchy=['nul'], 
-                                                            parent= ballFkctrlHierarchy[-1])
-        
-        rigrepo.libs.attribute.lockAndHide(toeFkctrlHierarchy[-1],
-                                            ['v', 'sx','sy','sz'])
-
-        toeJointMatrix = mc.xform(fkJointList[2], q=True, ws=True, matrix=True)
-        mc.xform(toeFkctrlHierarchy[0], ws=True, matrix=toeJointMatrix)
-        mc.pointConstraint(toeFkctrlHierarchy[-1], fkJointList[2])
-        mc.orientConstraint(toeFkctrlHierarchy[-1], fkJointList[2])
-        '''
         
         #-------------------------------------------------------------------------------------------
         #IK SETUP

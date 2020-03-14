@@ -157,9 +157,10 @@ def untagAsControl(ctrl):
         ctrls = rigrepo.libs.common.toList(ctrl)
 
     for ctrl in ctrls:
-        tagAttr = '{}.__control__'.format(ctrl)
-        if mc.objExists(tagAttr):
-            mc.deleteAttr(ctrl, at='__control__')
+        userAttributes = mc.listAttr(ctrl, ud=True) or list()
+        for tagAttr in userAttributes:
+            if 'control__' in tagAttr:
+                mc.deleteAttr(ctrl, at=tagAttr)
 
 
 def getControls(namespace = None):
