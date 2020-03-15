@@ -255,3 +255,58 @@ mc.delete(temp)
         # get the attributes that were set by the user so we can pass it to the command.
         source = self.getAttributeByName("source").getValue()
         exec(self.getAttributeByName('command').getValue().format(source=source))
+
+
+
+
+class TransferClusterLips(commandNode.CommandNode):
+    '''
+    '''
+    def __init__(self,name='transferLidClusters', parent=None, source="body_geo", 
+                    target='lip_bindmesh', deformerList=["lip_upper_cluster", "lip_lower_cluster"]):
+        '''
+        This is the constructor
+        '''
+        super(TransferClusterLips, self).__init__(name, parent)
+        self.addAttribute('source', source, attrType='str', index=0)
+        self.addAttribute('target', target, attrType='str', index=1)
+        self.addAttribute('deformerList', deformerList, attrType='str', index=2)
+        # create the command that the user can change later.
+        commandAttribute = self.getAttributeByName('command')
+        cmd='''
+import maya.cmds as mc
+import maya.api.OpenMaya as om
+import rigrepo.libs.weights
+import rigrepo.libs.cluster
+import rigrepo.libs.curve
+import rigrepo.libs.transform
+source = "{source}"
+target = "{target}"
+deltaMush = mc.deltaMush(source, smoothingIterations=10,smoothingStep=1.0, pinBorderVertices=True,envelope=1, foc=True)[0]
+mc.setAttr(deltaMush+".displacement", 0)
+for cluster in mc.ls({deformerList}):
+    newClusterList=rigrepo.libs.cluster.transferCluster(source, target, cluster, handle=True, surfaceAssociation="closestPoint", createNew=True)
+    for deformer in newClusterList:
+        wtObj = rigrepo.libs.weights.getWeights(deformer, geometry=target)
+        sourceWtObj = rigrepo.libs.weights.getWeights(deformer.split("__")[-1], geometry=source)
+        weightList = list()
+        
+mc.delete(deltaMush)
+'''
+        # set the command to the attributes value
+        commandAttribute.setValue(cmd)
+
+    def execute(self, *args, **kwargs):
+        '''
+        Here is where the code will run for this node.
+        '''
+        # get the attributes that were set by the user so we can pass it to the command.
+        source = self.getAttributeByName("source").getValue()
+        target = self.getAttributeByName("target").getValue()
+        deformerList = self.getAttributeByName("deformerList").getValue()
+        exec(self.getAttributeByName('command').getValue().format(source=source, 
+                                                                    target=target, 
+                                                                    deformerList=deformerList))
+
+
+

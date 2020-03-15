@@ -114,9 +114,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
                                                          parentControl='clavicle_'+side,
                                                          inputControls=['shoulderSwing_'+side,
                                                                         'shoulder_fk_'+side],
-                                                         ikJointList=['shoulder_'+side+'_bind_ik',
-                                                                      'elbow_'+side+'_bind_ik',
-                                                                      'wrist_'+side+'_bind_ik'],
+                                                         ikJointList=['shoulder_'+side+'_bind_ik','elbow_'+side+'_bind_ik','wrist_'+side+'_bind_ik'],
                                                          autoBlendAttr='autoClav',
                                                          side=side,
                                                          ikBlendAttr=side+'_arm_rvr.output.outputX',
@@ -836,6 +834,9 @@ if mc.objExists(node):
                                                             target=["lid*_bindmesh", "lip*_bindmesh", "mouth*_bindmesh", 'brow*_bindmesh'],
                                                             deformerTypes = ["skinCluster"],
                                                             surfaceAssociation="closestPoint")
+        bindmeshTransferClusterLipsNode = rigrepo.nodes.transferDeformer.TransferClusterLips('transferLipClusters',
+                                                            source="body_geo", target="lip_bindmesh", 
+                                                            deformerList=["lip_upper_cluster", "lip_lower_cluster"])
         bindmeshTransferClusterBlinksNode = rigrepo.nodes.transferDeformer.TransferClusterBlinks('transferBlinkClusters',
                                                             source="body_geo")
         bindmeshTransferClusterLidsNode = rigrepo.nodes.transferDeformer.TransferClusterLids('transferLidsClusters', 
@@ -855,7 +856,7 @@ if mc.objExists(node):
 
 
         applyDeformerNode.addChildren([bindmeshTransferSkinWtsNode], 1)
-        applyDeformerNode.addChildren([bindmeshTransferClusterBlinksNode, bindmeshTransferClusterLidsNode], 4)
+        applyDeformerNode.getChild('cluster').addChildren([bindmeshTransferClusterBlinksNode, bindmeshTransferClusterLidsNode, bindmeshTransferClusterLipsNode], 4)
 
         uniqueDeformersNode = rigrepo.nodes.commandNode.CommandNode('uniqueDeformers')
         uniqueDeformersCmd = '''
