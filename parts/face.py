@@ -69,6 +69,8 @@ class Face(part.Part):
                                               hierarchy=['nul', 'def_auto'],
                                               type='face')
 
+            rigrepo.libs.attribute.lockAndHide(jawCtrl ,["v", "sx", "sy", "sz"])
+
             # position the jaw control and connect the joint to the control
             mc.xform(jawNul, ws=True, matrix=mc.xform(jawJoint, q=True, ws=True, matrix=True))
             mc.pointConstraint(jawCtrl, jawJoint)
@@ -122,6 +124,7 @@ class Face(part.Part):
                                               parent=anchor,
                                               type='face')
 
+            rigrepo.libs.attribute.lockAndHide(faceLowerCtrl ,["v", "sx", "sy", "sz"])
             # position the faceLowerNul and connect the joint to the control
             mc.xform(faceLowerNul, ws=True, matrix=mc.xform(faceLowerJoint, q=True, ws=True, matrix=True))
             mc.pointConstraint(faceLowerCtrl, faceLowerJoint)
@@ -153,6 +156,7 @@ class Face(part.Part):
                                               parent=anchor,
                                               type='face')
 
+            rigrepo.libs.attribute.lockAndHide(faceUpperCtrl,["v", "sx", "sy", "sz"])
             # position the faceLowerNul and connect the joint to the control
             mc.xform(faceUpperNul, ws=True, matrix=mc.xform(faceUpperJoint, q=True, ws=True, matrix=True))
             mc.pointConstraint(faceUpperCtrl, faceUpperJoint)
@@ -200,6 +204,7 @@ class Face(part.Part):
                                               parent=faceUpperCtrl,
                                               type='face')
 
+            rigrepo.libs.attribute.lockAndHide(headTipCtrl, ["v", "sx", "sy", "sz"])
             # position the faceLowerNul and connect the joint to the control
             mc.xform(headTipNul, ws=True, matrix=mc.xform(headTipJoint, q=True, ws=True, matrix=True))
             mc.pointConstraint(headTipCtrl, headTipJoint)
@@ -212,6 +217,8 @@ class Face(part.Part):
                                               color=common.YELLOW,
                                               hierarchy=['nul', 'def_auto', 'rot_def_auto'],
                                               type='face')
+
+            rigrepo.libs.attribute.lockAndHide(noseBridgeCtrl, ["v", "sx", "sy", "sz"])
 
             if mc.objExists(faceUpperJoint):
                 mc.parent(noseBridgeNul, faceUpperCtrl)
