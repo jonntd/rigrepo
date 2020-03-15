@@ -263,7 +263,8 @@ class TransferClusterLips(commandNode.CommandNode):
     '''
     '''
     def __init__(self,name='transferLidClusters', parent=None, source="body_geo", 
-                    target='lip_bindmesh', deformerList=["lip_upper_cluster", "lip_lower_cluster"]):
+                    target='lip_bindmesh', deformerList=["lip_upper_cluster", "lip_lower_cluster"],
+                    localizeList=['lip_upper_auto', 'lip_lower_auto']):
         '''
         This is the constructor
         '''
@@ -271,6 +272,7 @@ class TransferClusterLips(commandNode.CommandNode):
         self.addAttribute('source', source, attrType='str', index=0)
         self.addAttribute('target', target, attrType='str', index=1)
         self.addAttribute('deformerList', deformerList, attrType='str', index=2)
+        self.addAttribute('localizeList', localizeList, attrType='str', index=2)
         # create the command that the user can change later.
         commandAttribute = self.getAttributeByName('command')
         cmd='''
@@ -284,13 +286,13 @@ source = "{source}"
 target = "{target}"
 deltaMush = mc.deltaMush(source, smoothingIterations=10,smoothingStep=1.0, pinBorderVertices=True,envelope=1, foc=True)[0]
 mc.setAttr(deltaMush+".displacement", 0)
-for cluster in mc.ls({deformerList}):
+for cluster, localNode in zip(mc.ls({deformerList}), mc.ls({localizeList})):
     newClusterList=rigrepo.libs.cluster.transferCluster(source, target, cluster, handle=True, surfaceAssociation="closestPoint", createNew=True)
     for deformer in newClusterList:
         wtObj = rigrepo.libs.weights.getWeights(deformer, geometry=target)
         sourceWtObj = rigrepo.libs.weights.getWeights(deformer.split("__")[-1], geometry=source)
+        rigrepo.libs.cluster.localize(deformer, localNode, "model")
         weightList = list()
-        
 mc.delete(deltaMush)
 '''
         # set the command to the attributes value
@@ -304,9 +306,11 @@ mc.delete(deltaMush)
         source = self.getAttributeByName("source").getValue()
         target = self.getAttributeByName("target").getValue()
         deformerList = self.getAttributeByName("deformerList").getValue()
+        localizeList = self.getAttributeByName("localizeList").getValue()
         exec(self.getAttributeByName('command').getValue().format(source=source, 
                                                                     target=target, 
-                                                                    deformerList=deformerList))
+                                                                    deformerList=deformerList,
+                                                                    localizeList=localizeList))
 
 
 
