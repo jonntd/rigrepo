@@ -104,9 +104,14 @@ class Blink(part.Part):
 
         # create drivers for the the lids.
         lowerLidDriver = mc.createNode("joint", name="lidLower_{0}_driver".format(side))
+        lowerLidCollision = mc.createNode("joint", name="lidLower_{0}_collision_driver".format(side))
+        mc.xform(lowerLidCollision, ws=True, matrix=mc.xform(lowerLidCtrl, q=True, ws=True, matrix=True))
         mc.parent(lowerLidDriver, lowerLidNul)
-        mc.pointConstraint(lowerLidCtrl, lowerLidDriver)
-        mc.orientConstraint(lowerLidCtrl, lowerLidDriver)
+        mc.parent(lowerLidCollision, lowerLidNul)
+        mc.pointConstraint(lowerLidCtrl, lowerLidCollision)
+        mc.orientConstraint(lowerLidCtrl, lowerLidCollision)
+        mc.pointConstraint(lowerLidCollision, lowerLidDriver)
+        mc.orientConstraint(lowerLidCollision, lowerLidDriver, skip='x')
         mc.setAttr("{}.drawStyle".format(lowerLidDriver), 2)
 
         # create drivers for the the lids.
@@ -116,9 +121,58 @@ class Blink(part.Part):
         mc.orientConstraint(upperLidCtrl, upperLidDriver)
         mc.setAttr("{}.drawStyle".format(upperLidDriver), 2)
 
+        # ----------------------------------------------------------
+        # Blink collision setup
+        # ----------------------------------------------------------
+        sumPlusMinusAverage = mc.createNode('plusMinusAverage', name='{}_sum_pma'.format(self.name))
+        mc.connectAttr('{}.rx'.format(upperLidCtrl), '{}.input1D[0]'.format(sumPlusMinusAverage), f=True)
+        mc.connectAttr('{}.rx'.format(lowerLidCollision), '{}.input1D[1]'.format(sumPlusMinusAverage), f=True)
+
+        diffPlusMinusAverage = mc.createNode('plusMinusAverage', name='{}_diff_pma'.format(self.name))
+        mc.setAttr('{}.input1D[0]'.format(diffPlusMinusAverage), 40)
+        mc.connectAttr('{}.output1D'.format(sumPlusMinusAverage), '{}.input1D[1]'.format(diffPlusMinusAverage), f=True)
+        mc.setAttr('{}.operation'.format(diffPlusMinusAverage), 2)
+
+        scaleMultDoubleLinear = mc.createNode('multDoubleLinear', name='{}_scale_mdl'.format(self.name))
+        mc.connectAttr('{}.output1D'.format(diffPlusMinusAverage), '{}.input1'.format(scaleMultDoubleLinear), f=True)
+        mc.setAttr('{}.input2'.format(scaleMultDoubleLinear), -.010)
+
+        scalePlusMinusAverage = mc.createNode('plusMinusAverage', name='{}_scale_pma'.format(self.name))
+        mc.connectAttr('{}.output'.format(scaleMultDoubleLinear), '{}.input1D[1]'.format(scalePlusMinusAverage), f=True)
+        mc.setAttr('{}.input1D[0]'.format(scalePlusMinusAverage), 1)
+
+        lowerLidSumPlusMinusAverage = mc.createNode('plusMinusAverage', name='{}_lower_sum_pma'.format(self.name))
+        mc.connectAttr('{}.rx'.format(lowerLidCollision), '{}.input1D[0]'.format(lowerLidSumPlusMinusAverage), f=True)
+        mc.connectAttr('{}.output1D'.format(diffPlusMinusAverage), '{}.input1D[1]'.format(lowerLidSumPlusMinusAverage), f=True)
+
+        collisionCondition = mc.createNode('condition', name='{}_collision_cnd'.format(self.name))
+        mc.setAttr('{}.operation'.format(collisionCondition), 4)
+        mc.connectAttr('{}.output1D'.format(diffPlusMinusAverage), '{}.firstTerm'.format(collisionCondition), f=True)
+        mc.connectAttr('{}.rx'.format(lowerLidCollision), '{}.colorIfFalseR'.format(collisionCondition), f=True)
+        mc.connectAttr('{}.output1D'.format(lowerLidSumPlusMinusAverage), '{}.colorIfTrueR'.format(collisionCondition), f=True)
+
+        scaleCondition = mc.createNode('condition', name='{}_scale_cnd'.format(self.name))
+        mc.setAttr('{}.operation'.format(scaleCondition), 0)
+        mc.connectAttr('{}.outColorR'.format(collisionCondition), '{}.firstTerm'.format(scaleCondition), f=True)
+        mc.connectAttr('{}.output1D'.format(scalePlusMinusAverage), '{}.colorIfTrueR'.format(scaleCondition), f=True)
+        mc.connectAttr('{}.output1D'.format(lowerLidSumPlusMinusAverage), '{}.secondTerm'.format(scaleCondition), f=True)
+
+        mc.connectAttr('{}.outColorR'.format(collisionCondition), '{}.rx'.format(lowerLidDriver), f=True)
 
         # move the eyeSocket control to the position of the eyeCenter joint
         mc.xform(eyeSocketNul, ws=True, t=mc.xform(eyeCenter, q=True, ws=True, t=True))
+
+        lidSqaushCluster = rigrepo.libs.cluster.create(geometry, 
+                                        "lid_squash_{}_cluster".format(side),
+                                        parent=self.name, 
+                                        parallel=False)
+
+        # move the lid sqaush cluster to match the eye center joint
+        mc.xform("{}_nul".format(lidSqaushCluster), ws=True, matrix=mc.xform(eyeCenter, q=True, ws=True, matrix=True))
+
+        mc.connectAttr('{}.outColorR'.format(scaleCondition), '{}_ctrl.sx'.format(lidSqaushCluster), f=True)
+        mc.connectAttr('{}.outColorR'.format(scaleCondition), '{}_ctrl.sy'.format(lidSqaushCluster), f=True)
+        mc.connectAttr('{}.outColorR'.format(scaleCondition), '{}_ctrl.sz'.format(lidSqaushCluster), f=True)
 
         # rotate the lower lid so it's inverted to match the rotation on x for the upper lid.
         mc.setAttr("{0}.rotateZ".format(lowerLidNul), 180)
