@@ -776,7 +776,7 @@ if mc.objExists(node):
     # All Controls
     attr = 'All'
     if not mc.objExists(node+'.'+attr):
-        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=0) 
+        mc.addAttr(node, ln=attr, at='bool', dv=1, k=0) 
         mc.setAttr(node+'.'+attr, cb=1) 
     mc.connectAttr(node+'.'+attr, 'rig.v', f=1)
 
@@ -789,7 +789,7 @@ if mc.objExists(node):
             targets += shapes
             targets.append(ctrl)
     if not mc.objExists(node+'.'+attr):
-        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=0) 
+        mc.addAttr(node, ln=attr, at='bool', dv=1, k=0) 
         mc.setAttr(node+'.'+attr, cb=1) 
     for target in targets:
         if mc.objExists(target+'.displayHandle'):
@@ -805,7 +805,7 @@ if mc.objExists(node):
             shapes = mc.listRelatives(ctrl, s=1)
             targets += shapes
     if not mc.objExists(node+'.'+attr):
-        mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=0) 
+        mc.addAttr(node, ln=attr, at='bool', dv=1, k=0) 
         mc.setAttr(node+'.'+attr, cb=1) 
     for target in targets:
         mc.connectAttr(node+'.'+attr, target+'.v', f=1)
@@ -815,7 +815,7 @@ if mc.objExists(node):
     target = 'hipsPivotShape.v'
     if mc.objExists(target):
         if not mc.objExists(node+'.'+attr):
-            mc.addAttr(node, ln=attr, at='double', min=0, max=1, dv=1, k=0) 
+            mc.addAttr(node, ln=attr, at='bool', dv=1, k=0) 
             mc.setAttr(node+'.'+attr, cb=1) 
         mc.connectAttr(node+'.'+attr, target, f=1)
 '''
