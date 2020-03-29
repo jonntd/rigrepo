@@ -12,6 +12,9 @@ import rigrepo.nodes.yankClusterNode
 import rigrepo.nodes.utilNodes 
 import rigrepo.nodes.addSpaceNode
 import rigrepo.nodes.wiresToSkinClusterNode
+import rigrepo.nodes.buildBindMeshNode
+import rigrepo.nodes.transferDeformer
+import rigrepo.nodes.goToRigPoseNode
 
 # body parts import
 import rigrepo.parts.arm
@@ -20,6 +23,7 @@ import rigrepo.parts.spine
 import rigrepo.parts.neck
 import rigrepo.parts.hand
 import rigrepo.parts.foot
+import rigrepo.parts.autoParent
 
 # face parts import
 import rigrepo.parts.mouth

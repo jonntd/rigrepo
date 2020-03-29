@@ -3,6 +3,14 @@
 import traceback
 import pubs.pGraph
 import pubs.pNode
+import maya.cmds as mc
+from rigrepo.libs.fileIO import joinPath 
+import os
+import inspect
+import copy
+import rigrepo.tests as tests
+
+# import nodes
 import rigrepo.nodes.newSceneNode
 import rigrepo.nodes.commandNode 
 import rigrepo.nodes.exportDataNode
@@ -14,12 +22,25 @@ import rigrepo.nodes.zeroJointsNode
 import rigrepo.nodes.labelJointsForMirroringNode
 import rigrepo.nodes.loadFileNode
 import rigrepo.nodes.mirrorDeformerNode
-import maya.cmds as mc
-from rigrepo.libs.fileIO import joinPath 
-import os
-import inspect
-import copy
-import rigrepo.tests as tests
+import rigrepo.nodes.importPSDNode
+import rigrepo.nodes.loadWtsDirNode
+import rigrepo.nodes.importNodeEditorBookmarksNode
+import rigrepo.nodes.modelOverrideToggleNode
+import rigrepo.nodes.goToRigPoseNode
+import rigrepo.nodes.gpuSpeedKey
+import rigrepo.nodes.shapeAuthoringNode
+import rigrepo.nodes.updateTopologyNode
+import rigrepo.nodes.importAnimationNode
+import rigrepo.nodes.zeroJointsNode
+import rigrepo.nodes.addPosePSDNode
+import rigrepo.nodes.mirrorPSDNode
+import rigrepo.nodes.yankSkinClusterNode
+import rigrepo.nodes.mirrorSkinClusterNode
+import rigrepo.nodes.mirrorJointsNode
+import rigrepo.nodes.exportWtsSelectedNode
+import rigrepo.nodes.exportPSDNode
+import rigrepo.nodes.exportNodeEditorBookmarksNode
+
 
 class ArchetypeBaseRig(pubs.pGraph.PGraph):
     def __init__(self,name, element='archetype', variant='base'):

@@ -27,8 +27,7 @@ class AutoParent(part.Part):
         self.addAttribute("ikBlendAttr", ikBlendAttr, attrType=str)
         self.addAttribute("autoBlendAttr", autoBlendAttr, attrType=str)
         self.addAttribute("side", side, attrType=str)
-        self.addAttribute("ikJointList", ikJointList,
-                            attrType=list)
+        self.addAttribute("ikJointList", ikJointList, attrType=list)
         self.addAttribute("paramNode", paramNode, attrType=str)
 
     def build(self):

@@ -48,7 +48,7 @@ def copyDeformer(deformer, target):
         # Get data
         curve = mc.wire(deformer, q=1, wire=1)[0]
         baseCurve = mc.listConnections(deformer+'.baseWire[0]', p=1)[0]
-        deformerOrder= mc.listHistory(target, pdo=1, il=2)
+        deformerOrder= mc.ls(mc.listHistory(target, pdo=1, il=1), type="geometryFilter")
         print('order', deformerOrder)
         orderIndex = deformerOrder.index(deformer)
         # Note: wire command has issues when passing the shape, so get the transform
