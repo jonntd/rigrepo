@@ -100,6 +100,18 @@ class Face(part.Part):
             mc.setAttr("{}.displayHandle".format(lipLower), 1)
             control.tagAsControl(lipLower, type='face')
 
+            for side in ['l', 'r']:
+                # create the lip lower cluster
+                lipLower_side = "lip_lower_{}".format(side)
+                cluster.create(geometry, name=lipLower_side, parent=jawCtrl)
+
+                # rename the cluster and control                                    
+                mc.rename(lipLower_side, '{}_cluster'.format(lipLower_side))
+                mc.rename('{}_ctrl'.format(lipLower_side), lipLower_side)
+                mc.xform("{}_nul".format(lipLower_side), ws=True, matrix=mc.xform(jawCtrl, q=True, ws=True, matrix=True))
+                mc.setAttr("{}.displayHandle".format(lipLower_side), 1)
+                control.tagAsControl(lipLower_side, type='face')
+
             # Lowerteeth control
             if mc.objExists(teethLowerJoint):
                 teethLowerNul, teethLowerDefAuto, teethLowerCtrl = control.create(name="teeth_lower", 
@@ -328,6 +340,18 @@ class Face(part.Part):
             control.tagAsControl(lipUpper, type='face')
             # lock and hide the visibility attribute on the lip upper and lower
             rigrepo.libs.attribute.lockAndHide([lipUpper,lipLower], ['v'])
+
+            for side in ['l', 'r']:
+                # create the lip lower cluster
+                lipUpper_side = "lip_upper_{}".format(side)
+                cluster.create(geometry, name=lipUpper_side, parent=midDriver)
+
+                # rename the cluster and control                                    
+                mc.rename(lipUpper_side, '{}_cluster'.format(lipUpper_side))
+                mc.rename('{}_ctrl'.format(lipUpper_side), lipUpper_side)
+                mc.xform("{}_nul".format(lipUpper_side), ws=True, matrix=mc.xform(midDriver, q=True, ws=True, matrix=True))
+                mc.setAttr("{}.displayHandle".format(lipUpper_side), 1)
+                control.tagAsControl(lipUpper_side, type='face')
 
             # Lowerteeth control
             if mc.objExists(teethUpperJoint):
