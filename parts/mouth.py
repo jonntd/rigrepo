@@ -436,7 +436,7 @@ class Mouth(part.Part):
         rigrepo.libs.weights.setWeights(lipMainBaseCurveSkin, wtObj)
 
         # create all of the lip clusters
-        lipControls = list(set(mc.ls("lip_*.__control__", o=True)).difference(set(mc.ls(["lip_upper","lip_lower"]))))
+        lipControls = list(set(mc.ls("lip_*.__control__", o=True)).difference(set(mc.ls(["lip_upper", "lip_lower", "lip_upper_?", "lip_lower_?"]))))
         for node in lipControls:
             rigrepo.libs.cluster.create(geometry, 
                                         "{}_cluster".format(node), 
