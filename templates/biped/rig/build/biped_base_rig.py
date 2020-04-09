@@ -840,6 +840,7 @@ if mc.objExists(node):
                                                             surfaceAssociation="closestPoint")
         bindmeshTransferClusterLipsNode = rigrepo.nodes.transferDeformer.TransferClusterLips('transferLipClusters',
                                                             source="body_geo", target="lip_bindmesh", 
+                                                            localizeList=['lip_upper_auto', 'lip_lower_auto',  'lip_upper_?_auto', 'lip_lower_?_auto'],
                                                             deformerList=["lip_upper_cluster", "lip_lower_cluster" , 'lip_upper_?_cluster', 'lip_lower_?_cluster'])
         bindmeshTransferClusterBlinksNode = rigrepo.nodes.transferDeformer.TransferClusterBlinks('transferBlinkClusters',
                                                             source="body_geo")
