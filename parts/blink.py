@@ -273,6 +273,10 @@ class Blink(part.Part):
             mc.parent(baseCurveJoint, controlList[1])
             mc.setAttr("{}.t".format(baseCurveJoint), 0, 0, 0)
 
+            if controlList[0].endswith('_r_nul'):
+                mc.setAttr(controlList[0]+'.ry', -180)
+                mc.setAttr(controlList[0]+'.sz', -1)
+
         # ------------------
         # ATTEMP TO RENAME
         # get the y positions and the eye center position

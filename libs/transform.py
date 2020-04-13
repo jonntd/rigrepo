@@ -337,3 +337,56 @@ def getDistanceVector(distance):
             vector = [0,0,1]
 
     return (attr, vector)
+
+def newMirror (trs, search = '_l_', replace = '_r_', posVector=(-1,1,1), rotVector = (-1,1,1), scaleVector = (1,1,-1)):
+    '''
+    Mirror trs
+    It won't create a new trs, it will only mirror the if there is an existing trs with the 
+    replace in it matching the name of search and the currvent trs hase search in it.
+
+    ..example ::
+         mirror( mc.ls(sl=True) )
+
+    :param joint: Point you want to mirror
+    :type joint: str | list
+
+    :param search: Search side token
+    :type search: str
+
+    :param replace: Replace side token
+    :type replace: str
+    '''
+
+    # get given points
+    trsList = common.toList(trs)
+
+    # get selection
+    selection = mc.ls(sl=True)
+
+    # loop through the trs list and mirror across worldspace
+    for trs in trsList:
+        toTrs = trs.replace( search, replace )
+        trsPos = mc.xform(trs, q=True, ws=True, t=True)
+        # check to make sure that both objects exist in the scnene
+        if mc.objExists(trs) and mc.objExists(toTrs) and trs != toTrs:
+            ortMatrix = om.MMatrix(mc.xform(trs,q=True, ws=True,matrix=True))
+            trsMatrix = om.MTransformationMatrix(ortMatrix)
+            mc.select(toTrs, r=True)
+            selectionList = om.MGlobal.getActiveSelectionList()
+            dagNode = selectionList.getDagPath(0)
+            fnTransform = om.MFnTransform(dagNode)
+            rotation = trsMatrix.rotation(True)
+            transformVector = om.MVector(trsPos[0] * posVector[0], trsPos[1] * posVector[1], trsPos[2] * posVector[2])
+            dagNodeOrtMatrix = om.MMatrix(mc.xform(dagNode.fullPathName(),q=True, ws=True,matrix=True))
+            newMatrix = om.MTransformationMatrix(trsMatrix.asMatrixInverse())
+            newMatrix.setRotation(om.MQuaternion(rotation.x * rotVector[0], rotation.y * rotVector[1], rotation.z * rotVector[2], rotation.w))
+            fnTransform.setTransformation(newMatrix)
+            fnTransform.setTranslation(transformVector, om.MSpace.kWorld)
+            mc.setAttr("{}.scale".format(toTrs), *scaleVector)
+
+    # --------------------------------------------------------------------------
+    # re-select objects
+    if selection:
+        mc.select( selection, r=True )
+    else:
+        mc.select( cl= True)

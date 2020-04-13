@@ -12,6 +12,7 @@ import rigrepo.nodes.yankClusterNode
 import rigrepo.nodes.utilNodes 
 import rigrepo.nodes.addSpaceNode
 import rigrepo.nodes.wiresToSkinClusterNode
+import rigrepo.nodes.clustersToSkinClusterNode
 import rigrepo.nodes.buildBindMeshNode
 import rigrepo.nodes.transferDeformer
 import rigrepo.nodes.goToRigPoseNode
@@ -910,6 +911,13 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
                                                                                                keepWires=False,
                                                                                                jointDepth=3)
 
+        faceClusterSkinClusterNode = rigrepo.nodes.clustersToSkinClusterNode.ClustersToSkinClusterNode("face_cluster_skinCluster",
+                                                                        clusterList='mc.ls(["socketStretch_?_cluster", "lip_upper?cluster", "lip_lower_?_cluster", "sneer_?_cluster", "cheek*_cluster"], type="cluster")', 
+                                                                        targetGeometry='body_geo',
+                                                                        deformerName='face_cluster_sc',
+                                                                        keepClusters=False,
+                                                                        jointDepth=2)
+
         headWireToSkinClusterNode.disable()
         pruneDeformersNode = rigrepo.nodes.commandNode.CommandNode('pruneDeformers')
         pruneDeformersCmd = '''
@@ -971,7 +979,8 @@ if mc.objExists('bindmeshes_grp'):
                                               facePostSkinClusterNode,
                                               faceSkinClusterNode,
                                               lipBindmeshFacePostSkinClusterNode,
-                                              headWireToSkinClusterNode])
+                                              headWireToSkinClusterNode,
+                                              faceClusterSkinClusterNode])
         deliveryNode.addChildren([pruneDeformersNode, deleteRigSetsNode])
 
         # This must be at the end of the build

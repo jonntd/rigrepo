@@ -3,6 +3,9 @@ This is the module that will house functions and classes that have to do with cl
 '''
 import maya.cmds as mc
 import rigrepo.libs.common
+import rigrepo.libs.weights
+import numpy
+
 def create(mesh,name,parent=None,contraintTypes=['point','orient','scale'], 
     parallel=False, modelTransform="model", local=True):
     '''
@@ -139,7 +142,7 @@ def mirror():
     pass
 
 
-def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerList, keepCluster=False, 
+def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerList, keepClusters=False, 
     rootParentNode="rig", rootPreMatrixNode="trs_aux", jointDepth=2):
     '''
     This function will take in a wire deformer list and create a new skinCluster
@@ -151,7 +154,6 @@ def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerLis
     :type targetGeometry: str
     '''
     target = targetGeometry
-    base = mc.duplicate(target)[0]
     # Get existing wire deformers from the wireDeformerList
     convertClusterList = mc.ls(clusterDeformerList, type="cluster")
 
@@ -213,53 +215,34 @@ def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerLis
 
     # create a target skinCluster that will replace the wire defomer
     targetSkinCluster = mc.skinCluster(target, baseJnt, tsb=1, name=newSkinName)[0]
-
+    # Hook up the bind preMatrix node for the root joint
+    index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, baseJnt)
+    mc.connectAttr("{}.worldInverseMatrix[0]".format(rootPreMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, index), f=True)
+    mc.setAttr('{}.skinningMethod'.format(targetSkinCluster), 1)
+    mc.setAttr('{}.normalizeWeights'.format(targetSkinCluster), 0)
+    
     # get the influences to be used for the target skinCluster
     preMatrixNodeList = list()
     influenceList = list()
     weightList = list()
-    curveList = list()
 
     for clusterDeformer in convertClusterList:
         # get the curve
-        curve = mc.wire(wireDeformer, q=True, wire=True)[0]
-        curveList.append(curve)
-        # get the skinCluster associated with that curve
-        curveSkin = mc.ls(mc.listHistory(curve, il=1, pdo=True), type="skinCluster")[0]
-        # get the influences associated with the skinCluster
-        curveSkinInfluenceList = mc.skinCluster(curveSkin, q=True, inf=True)
-        # get the nuls to use as bindPreMatrix nodes
-        curveSkinPreMatrixNodes = list()
-        for jnt in curveSkinInfluenceList:
-            # Travel up the ancestry of the joint, jointDepth number of times to find
-            # the transform to be used for the preMatrix connection
-            preMatrixNode = jnt
-            for i in xrange(jointDepth):
-                parent = mc.listRelatives(preMatrixNode, p=True)[0]
-                if i == (jointDepth - 1):
-                    curveSkinPreMatrixNodes.append(parent)
-                preMatrixNode = parent
+        handleNode = mc.listConnections('{}.matrix'.format(clusterDeformer), s=True, type='transform')[0]
+        preMatrixNode = mc.listConnections('{}.bindPreMatrix'.format(clusterDeformer), s=True, type='transform')[0]
+        joint = mc.createNode('joint', n=handleNode.replace('_hdl', '_bind'))
+        mc.xform(joint, ws=True, matrix=mc.xform(handleNode, q=True, ws=True, matrix=True))
+        mc.parent(joint, handleNode)
+        influenceList.append(joint)
+        preMatrixNodeList.extend(preMatrixNode)
 
-        # Compile the influences and preMatrix nodes for all curves
-        influenceList.extend(curveSkinInfluenceList)
-        preMatrixNodeList.extend(curveSkinPreMatrixNodes)
-
-    # Add curve joints as influces to targetSkinCluster and hook up bindPreMatrix nuls
-    # TODO: i var is not doing anything here
-    i=0
-    for jnt, preMatrixNode in zip(influenceList,preMatrixNodeList):
         # Add jnt as influnce
-        mc.skinCluster(targetSkinCluster, e=1, ai=jnt)
+        mc.skinCluster(targetSkinCluster, e=1, ai=joint)
         # Get index
-        index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, jnt)
+        index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, joint)
         # Connect bindPreMatrixNode
         mc.connectAttr("{}.worldInverseMatrix[0]".format(preMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, index), f=True)
-        i += 1
-        
-    # connect the base joint so we have somewhere to put the weights not being used.
-    # Hook up the bind preMatrix node for the root joint
-    index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, baseJnt)
-    mc.connectAttr("{}.worldInverseMatrix[0]".format(rootPreMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, index), f=True)
+        weightList.append(rigrepo.libs.weights.getWeights(clusterDeformer, geometry=targetGeometry).getWeights()[0])
 
     # RECONNECT other skinClusters
     #
@@ -290,6 +273,8 @@ def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerLis
     # Set all the weights on the new target skinCluster
     rigrepo.libs.weights.setWeights(targetSkinCluster, rigrepo.libs.weightObject.WeightObject(maps=influenceList, weights=weightList)) 
 
+    if not keepClusters:
+        mc.delete(clusterDeformerList)
 
     # Reorder deformers
     if reorder_deformer:
