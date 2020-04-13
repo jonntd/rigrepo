@@ -219,7 +219,7 @@ def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerLis
     index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, baseJnt)
     mc.connectAttr("{}.worldInverseMatrix[0]".format(rootPreMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, index), f=True)
     mc.setAttr('{}.skinningMethod'.format(targetSkinCluster), 1)
-    mc.setAttr('{}.normalizeWeights'.format(targetSkinCluster), 0)
+    #mc.setAttr('{}.normalizeWeights'.format(targetSkinCluster), 0)
     
     # get the influences to be used for the target skinCluster
     preMatrixNodeList = list()
