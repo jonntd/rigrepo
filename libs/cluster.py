@@ -231,6 +231,7 @@ def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerLis
         handleNode = mc.listConnections('{}.matrix'.format(clusterDeformer), s=True, type='transform')[0]
         preMatrixNode = mc.listConnections('{}.bindPreMatrix'.format(clusterDeformer), s=True, type='transform')[0]
         joint = mc.createNode('joint', n=handleNode.replace('_hdl', '_bind'))
+        mc.setAttr('{}.drawStyle'.format(joint), 2)
         mc.xform(joint, ws=True, matrix=mc.xform(handleNode, q=True, ws=True, matrix=True))
         mc.parent(joint, handleNode)
         influenceList.append(joint)
