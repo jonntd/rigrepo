@@ -143,7 +143,7 @@ def mirror():
 
 
 def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerList, keepClusters=False, 
-    rootParentNode="rig", rootPreMatrixNode="trs_aux", jointDepth=2):
+    rootParentNode="rig", rootPreMatrixNode="trs_aux"):
     '''
     This function will take in a wire deformer list and create a new skinCluster
 
@@ -214,12 +214,12 @@ def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerLis
         mc.parent(baseJnt,rootParentNode)
 
     # create a target skinCluster that will replace the wire defomer
-    targetSkinCluster = mc.skinCluster(target, baseJnt, tsb=1, name=newSkinName)[0]
+    targetSkinCluster = mc.skinCluster(target, baseJnt, tsb=1, name=newSkinName, sm=1)[0]
     # Hook up the bind preMatrix node for the root joint
     index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, baseJnt)
     mc.connectAttr("{}.worldInverseMatrix[0]".format(rootPreMatrixNode), "{}.bindPreMatrix[{}]".format(targetSkinCluster, index), f=True)
-    mc.setAttr('{}.skinningMethod'.format(targetSkinCluster), 1)
-    #mc.setAttr('{}.normalizeWeights'.format(targetSkinCluster), 0)
+    # make sure scaling is turned on so the scale works properly.
+    mc.setAttr('{}.dqsSupportNonRigid'.format(targetSkinCluster), 1)
     
     # get the influences to be used for the target skinCluster
     preMatrixNodeList = list()
@@ -238,7 +238,7 @@ def convertClustersToSkinCluster(newSkinName, targetGeometry, clusterDeformerLis
         preMatrixNodeList.extend(preMatrixNode)
 
         # Add jnt as influnce
-        mc.skinCluster(targetSkinCluster, e=1, ai=joint)
+        mc.skinCluster(targetSkinCluster, e=True, ai=joint)
         # Get index
         index = rigrepo.libs.skinCluster.getInfIndex(targetSkinCluster, joint)
         # Connect bindPreMatrixNode

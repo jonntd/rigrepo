@@ -912,11 +912,27 @@ rigrepo.libs.deformer.makeDeformerUnique('lip_main_wire', 'lip_bindmesh')
                                                                                                jointDepth=3)
 
         faceClusterSkinClusterNode = rigrepo.nodes.clustersToSkinClusterNode.ClustersToSkinClusterNode("face_cluster_skinCluster",
-                                                                        clusterList='mc.ls(["socketStretch_?_cluster", "lip_upper?cluster", "lip_lower_?_cluster", "sneer_?_cluster", "cheek*_cluster"], type="cluster")', 
+                                                                        clusterList='mc.ls(["ear_?_cluster", "brow_corrugator_?_cluster","socketStretch_?_cluster", "lip_upper_?_cluster", "lip_lower_?_cluster", "sneer_?_cluster", "cheekPuff_?_cluster", "cheekLift_*_cluster"], type="cluster")', 
                                                                         targetGeometry='body_geo',
                                                                         deformerName='face_cluster_sc',
-                                                                        keepClusters=False,
-                                                                        jointDepth=2)
+                                                                        keepClusters=False)
+        blinkClusterSkinClusterNode = rigrepo.nodes.clustersToSkinClusterNode.ClustersToSkinClusterNode("blink_cluster_skinCluster",
+                                                                        clusterList='mc.ls(["blinkUpper_?_cluster", "blinkLower_?_cluster"], type="cluster")', 
+                                                                        targetGeometry='body_geo',
+                                                                        deformerName='blink_cluster_sc',
+                                                                        keepClusters=False)
+
+        facePreClusterSkinClusterNode = rigrepo.nodes.clustersToSkinClusterNode.ClustersToSkinClusterNode("face_pre_cluster_skinCluster",
+                                                                        clusterList='mc.ls(["lipUpper_?_cluster", "lipLower_?_cluster", "lid_squash_?_cluster", "socketLift_?_cluster", "cheek_?_cluster"], type="cluster")', 
+                                                                        targetGeometry='body_geo',
+                                                                        deformerName='face_pre_cluster_sc',
+                                                                        keepClusters=False)
+        lipClusterSkinClusterNode = rigrepo.nodes.clustersToSkinClusterNode.ClustersToSkinClusterNode("lip_cluster_skinCluster",
+                                                                        clusterList='mc.ls(["lip_upper_cluster", "lip_lower_cluster"], type="cluster")', 
+                                                                        targetGeometry='body_geo',
+                                                                        deformerName='lip_cluster_sc',
+                                                                        keepClusters=False)
+
 
         headWireToSkinClusterNode.disable()
         pruneDeformersNode = rigrepo.nodes.commandNode.CommandNode('pruneDeformers')
@@ -976,11 +992,14 @@ if mc.objExists('bindmeshes_grp'):
         deliveryNode.addChild(uniqueDeformersNode, index=0)
         deliveryNode.addChild(convertToSkinClusterNode, index=1)
         convertToSkinClusterNode.addChildren([bodyWiresSkinClusterNode,
-                                              facePostSkinClusterNode,
-                                              faceSkinClusterNode,
-                                              lipBindmeshFacePostSkinClusterNode,
-                                              headWireToSkinClusterNode,
-                                              faceClusterSkinClusterNode])
+                                            facePostSkinClusterNode,
+                                            faceSkinClusterNode,
+                                            lipBindmeshFacePostSkinClusterNode,
+                                            headWireToSkinClusterNode,
+                                            faceClusterSkinClusterNode,
+                                            facePreClusterSkinClusterNode,
+                                            blinkClusterSkinClusterNode,
+                                            lipClusterSkinClusterNode])
         deliveryNode.addChildren([pruneDeformersNode, deleteRigSetsNode])
 
         # This must be at the end of the build

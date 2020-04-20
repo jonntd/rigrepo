@@ -1,729 +1,560 @@
 {
     "type": "DeformerOrderData", 
     "user": "Walter Yoder", 
-    "time": "2019-01-29 08:56:20", 
+    "time": "2020-04-16 10:49:01", 
     "data": {
         "blinkLower_l_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|blinkLower_l_grp|blinkLower_l_bindmesh", 
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|l_blink|blinkLower_l_grp|blinkLower_l_bindmesh", 
             "deformerOrder": [
+                "eyeDrag_l_cluster", 
                 "blinkLower_l_bindmesh__blinkLower_l_cluster", 
-                "blinkLower_l_bindmesh_facePSD", 
-                "tweak1"
-            ]
-        }, 
-        "blinkLower_r_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|blinkLower_r_grp|blinkLower_r_bindmesh", 
-            "deformerOrder": [
-                "blinkLower_r_bindmesh__blinkLower_r_cluster", 
-                "blinkLower_r_bindmesh_facePSD", 
-                "tweak2"
-            ]
-        }, 
-        "blinkUpper_l_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_blink|blinkUpper_l_grp|blinkUpper_l_bindmesh", 
-            "deformerOrder": [
-                "blinkUpper_l_bindmesh__blinkUpper_l_cluster", 
-                "blinkUpper_l_bindmesh_facePSD", 
-                "tweak3"
-            ]
-        }, 
-        "blinkUpper_r_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_blink|blinkUpper_r_grp|blinkUpper_r_bindmesh", 
-            "deformerOrder": [
-                "blinkUpper_r_bindmesh__blinkUpper_r_cluster", 
-                "blinkUpper_r_bindmesh_facePSD", 
-                "tweak4"
-            ]
-        }, 
-        "body_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|body_geo", 
-            "deformerOrder": [
-                "lid_r_curve_wire", 
-                "lid_l_curve_wire", 
-                "socketLift_l_cluster", 
-                "socketLift_r_cluster", 
-                "socketStretch_l_cluster", 
-                "socketStretch_r_cluster", 
-                "brow_corrugator_l_cluster", 
-                "brow_corrugator_r_cluster", 
-                "lip_center_low_cluster", 
-                "lip_center_up_cluster", 
-                "lip_corner_l_cluster", 
-                "lip_corner_r_cluster", 
-                "lip_low_0_l_cluster", 
-                "lip_low_0_r_cluster", 
-                "lip_low_1_l_cluster", 
-                "lip_low_1_r_cluster", 
-                "lip_low_2_l_cluster", 
-                "lip_low_2_r_cluster", 
-                "lip_up_0_l_cluster", 
-                "lip_up_0_r_cluster", 
-                "lip_up_1_l_cluster", 
-                "lip_up_1_r_cluster", 
-                "lip_up_2_l_cluster", 
-                "lip_up_2_r_cluster", 
-                "cheekLift_r_cluster", 
-                "cheekLift_l_cluster", 
-                "cheek_r_cluster", 
-                "cheekPuff_l_cluster", 
-                "cheekPuff_r_cluster", 
-                "cheek_l_cluster", 
-                "ear_l_cluster", 
-                "ear_r_cluster", 
-                "sneer_l_cluster", 
-                "sneer_r_cluster", 
-                "lip_wire", 
-                "lip_main_wire", 
-                "mouthMain_cluster", 
-                "lip_upper_cluster", 
-                "lip_lower_cluster", 
-                "body_geo_skinCluster", 
-                "blinkUpper_r_curve_wire", 
-                "blinkLower_l_curve_wire", 
-                "blinkLower_r_curve_wire", 
-                "blinkUpper_l_curve_wire", 
-                "blinkUpper_l_cluster", 
-                "blinkLower_r_cluster", 
-                "blinkUpper_r_cluster", 
-                "blinkLower_l_cluster", 
-                "tweak8"
-            ]
-        }, 
-        "brow_l_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|brow_l_geo", 
-            "deformerOrder": [
-                "brow_l_geo_skinCluster", 
-                "tweak31"
-            ]
-        }, 
-        "brow_r_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|brow_r_geo", 
-            "deformerOrder": [
-                "brow_r_geo_skinCluster", 
-                "tweak32"
-            ]
-        }, 
-        "eye_l_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|eye_mod|eye_l_geo", 
-            "deformerOrder": [
-                "eye_l_geo_skinCluster", 
-                "tweak33"
-            ]
-        }, 
-        "eye_r_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|eye_mod|eye_r_geo", 
-            "deformerOrder": [
-                "eye_r_geo_skinCluster", 
-                "tweak34"
-            ]
-        }, 
-        "gum_upper_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|mouth_mod|gum_upper_geo", 
-            "deformerOrder": [
-                "gum_upper_geo_skinCluster", 
-                "tweak35"
-            ]
-        }, 
-        "lash_upper_l_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|lash_upper_l_geo", 
-            "deformerOrder": [
-                "lash_upper_l_geo_skinCluster", 
-                "tweak36"
-            ]
-        }, 
-        "lash_upper_r_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|lash_upper_r_geo", 
-            "deformerOrder": [
-                "lash_upper_r_geo_skinCluster", 
-                "tweak37"
-            ]
-        }, 
-        "lid_l_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_bindmesh", 
-            "deformerOrder": [
-                "lid_l_bindmesh__socketStretch_l_cluster", 
-                "lid_l_bindmesh_skinCluster", 
-                "lid_l_bindmesh__blinkLower_l_cluster", 
-                "lid_l_bindmesh__blinkUpper_l_cluster", 
-                "tweak16"
-            ]
-        }, 
-        "lid_r_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_bindmesh", 
-            "deformerOrder": [
-                "lid_r_bindmesh__socketStretch_r_cluster", 
-                "lid_r_bindmesh_skinCluster", 
-                "lid_r_bindmesh__blinkUpper_r_cluster", 
-                "lid_r_bindmesh__blinkLower_r_cluster", 
-                "tweak23"
-            ]
-        }, 
-        "lip_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_bindmesh", 
-            "deformerOrder": [
-                "lip_main_wire", 
-                "lip_bindmesh_mouthMain_cluster", 
-                "lip_bindmesh_skinCluster", 
-                "tweak26"
-            ]
-        }, 
-        "lip_main_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip_main|lip_main_bindmesh", 
-            "deformerOrder": [
-                "lip_main_bindmesh_mouthMain_cluster", 
-                "lip_main_bindmesh_skinCluster", 
-                "tweak29"
-            ]
-        }, 
-        "mouth_corner_bindmesh": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|mouth_corner_bindmesh", 
-            "deformerOrder": [
-                "mouth_corner_bindmesh_mouthMain_cluster", 
-                "mouth_corner_bindmesh_skinCluster", 
                 "tweak30"
             ]
         }, 
-        "numericPSD_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|numericPSD_geo", 
+        "blinkLower_r_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|r_blink|blinkLower_r_grp|blinkLower_r_bindmesh", 
             "deformerOrder": [
-                "numeric_psd", 
-                "tweak7"
-            ]
-        }, 
-        "teeth_lower_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|mouth_mod|teeth_lower_geo", 
-            "deformerOrder": [
-                "teeth_lower_geo_skinCluster", 
-                "tweak38"
-            ]
-        }, 
-        "teeth_upper_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|mouth_mod|teeth_upper_geo", 
-            "deformerOrder": [
-                "teeth_upper_geo_skinCluster", 
-                "tweak39"
-            ]
-        }, 
-        "tongue_geo": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|model|face_mod|mouth_mod|tongue_geo", 
-            "deformerOrder": [
-                "tongue_geo_skinCluster", 
+                "eyeDrag_r_cluster", 
+                "blinkLower_r_bindmesh__blinkLower_r_cluster", 
                 "tweak40"
             ]
         }, 
-        "ankle_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort|ankle_fk_l", 
-            "deformerOrder": []
-        }, 
-        "ankle_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort|thigh_fk_r|knee_fk_r_nul|knee_fk_r_ort|knee_fk_r|ankle_fk_r_nul|ankle_fk_r_ort|ankle_fk_r", 
-            "deformerOrder": []
-        }, 
-        "arm_ik_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_arm|arm_ik_l_nul|arm_ik_l_ort|arm_ik_l", 
-            "deformerOrder": []
-        }, 
-        "arm_ik_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_arm|arm_ik_r_nul|arm_ik_r_ort|arm_ik_r", 
-            "deformerOrder": []
-        }, 
-        "arm_pv_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_arm|arm_pv_l_nul|arm_pv_l_ort|arm_pv_l", 
-            "deformerOrder": []
-        }, 
-        "arm_pv_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_arm|arm_pv_r_nul|arm_pv_r_ort|arm_pv_r", 
-            "deformerOrder": []
-        }, 
-        "ballRoll_l_pivot_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_ik_l_nul|leg_ik_l_ort|leg_ik_l|ankle_l_bind_ik_offset|ankle_l_pivot|bankIn_l_pivot|bankOut_l_pivot|heel_l_pivot_ctrl_nul|heel_l_pivot_ctrl|heel_l_pivot|ball_l_pivot|toe_l_pivot_ctrl_nul|toe_l_pivot_ctrl|toe_l_pivot|ballRoll_l_pivot_ctrl_nul|ballRoll_l_pivot_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ballRoll_r_pivot_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_ik_r_nul|leg_ik_r_ort|leg_ik_r|ankle_r_bind_ik_offset|ankle_r_pivot|bankIn_r_pivot|bankOut_r_pivot|heel_r_pivot_ctrl_nul|heel_r_pivot_ctrl|heel_r_pivot|ball_r_pivot|toe_r_pivot_ctrl_nul|toe_r_pivot_ctrl|toe_r_pivot|ballRoll_r_pivot_ctrl_nul|ballRoll_r_pivot_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ball_l_bind_fk_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l|ankle_fk_l_nul|ankle_fk_l_ort|ankle_fk_l|ball_l_bind_fk_ctrl_nul|ball_l_bind_fk_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ball_r_bind_fk_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort|thigh_fk_r|knee_fk_r_nul|knee_fk_r_ort|knee_fk_r|ankle_fk_r_nul|ankle_fk_r_ort|ankle_fk_r|ball_r_bind_fk_ctrl_nul|ball_r_bind_fk_ctrl", 
-            "deformerOrder": []
-        }, 
-        "bank_l_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_ik_l_nul|leg_ik_l_ort|leg_ik_l|ankle_l_bind_ik_offset|ankle_l_pivot|bank_l_ctrl_nul|bank_l_ctrl_ort|bank_l_ctrl", 
-            "deformerOrder": []
-        }, 
-        "bank_r_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_ik_r_nul|leg_ik_r_ort|leg_ik_r|ankle_r_bind_ik_offset|ankle_r_pivot|bank_r_ctrl_nul|bank_r_ctrl_ort|bank_r_ctrl", 
-            "deformerOrder": []
-        }, 
-        "blinkLower_l_curveBaseWire": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lidLower_curves|blinkLower_l_curveBaseWire", 
+        "blinkUpper_l_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|l_blink|blinkUpper_l_grp|blinkUpper_l_bindmesh", 
             "deformerOrder": [
-                "blinkLower_l_curveBaseWire__blinkLower_l_cluster", 
-                "tweak13"
-            ]
-        }, 
-        "blinkLower_l_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lidLower_curves|blinkLower_l_curve", 
-            "deformerOrder": [
-                "blinkLower_l_curve_skinCluster", 
-                "tweak12"
-            ]
-        }, 
-        "blinkLower_r_curveBaseWire": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lidLower_curves|blinkLower_r_curveBaseWire", 
-            "deformerOrder": [
-                "blinkLower_r_curveBaseWire__blinkLower_r_cluster", 
-                "tweak20"
-            ]
-        }, 
-        "blinkLower_r_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lidLower_curves|blinkLower_r_curve", 
-            "deformerOrder": [
-                "blinkLower_r_curve_skinCluster", 
-                "tweak19"
-            ]
-        }, 
-        "blinkUpper_l_curveBaseWire": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lidUpper_curves|blinkUpper_l_curveBaseWire", 
-            "deformerOrder": [
-                "blinkUpper_l_curveBaseWire__blinkUpper_l_cluster", 
-                "tweak11"
-            ]
-        }, 
-        "blinkUpper_l_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lidUpper_curves|blinkUpper_l_curve", 
-            "deformerOrder": [
-                "blinkUpper_l_curve_skinCluster", 
-                "tweak10"
-            ]
-        }, 
-        "blinkUpper_r_curveBaseWire": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lidUpper_curves|blinkUpper_r_curveBaseWire", 
-            "deformerOrder": [
-                "blinkUpper_r_curveBaseWire__blinkUpper_r_cluster", 
-                "tweak18"
-            ]
-        }, 
-        "blinkUpper_r_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lidUpper_curves|blinkUpper_r_curve", 
-            "deformerOrder": [
-                "blinkUpper_r_curve_skinCluster", 
-                "tweak17"
-            ]
-        }, 
-        "chest": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest", 
-            "deformerOrder": []
-        }, 
-        "chest_top": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top", 
-            "deformerOrder": []
-        }, 
-        "clavicle_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_ort|clavicle_l", 
-            "deformerOrder": []
-        }, 
-        "clavicle_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_ort|clavicle_r", 
-            "deformerOrder": []
-        }, 
-        "elbow_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort|shoulder_fk_l|elbow_fk_l_nul|elbow_fk_l_ort|elbow_fk_l", 
-            "deformerOrder": []
-        }, 
-        "elbow_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort|shoulder_fk_r|elbow_fk_r_nul|elbow_fk_r_ort|elbow_fk_r", 
-            "deformerOrder": []
-        }, 
-        "eye_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|eyeSocket_l_nul|eyeSocket_l|eye_l_nul|eye_l_ort|eye_l_def_auto|eye_l", 
-            "deformerOrder": []
-        }, 
-        "eye_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|eyeSocket_r_nul|eyeSocket_r|eye_r_nul|eye_r_ort|eye_r_def_auto|eye_r", 
-            "deformerOrder": []
-        }, 
-        "head": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head", 
-            "deformerOrder": []
-        }, 
-        "heel_l_pivot_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_ik_l_nul|leg_ik_l_ort|leg_ik_l|ankle_l_bind_ik_offset|ankle_l_pivot|bankIn_l_pivot|bankOut_l_pivot|heel_l_pivot_ctrl_nul|heel_l_pivot_ctrl", 
-            "deformerOrder": []
-        }, 
-        "heel_r_pivot_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_ik_r_nul|leg_ik_r_ort|leg_ik_r|ankle_r_bind_ik_offset|ankle_r_pivot|bankIn_r_pivot|bankOut_r_pivot|heel_r_pivot_ctrl_nul|heel_r_pivot_ctrl", 
-            "deformerOrder": []
-        }, 
-        "hip_swivel": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel", 
-            "deformerOrder": []
-        }, 
-        "hips": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips", 
-            "deformerOrder": []
-        }, 
-        "index_001_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "index_001_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "index_002_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "index_002_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "index_003_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl|index_003_l_bind_ctrl_nul|index_003_l_bind_ctrl_ort|index_003_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "index_003_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl|index_003_r_bind_ctrl_nul|index_003_r_bind_ctrl_ort|index_003_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "index_004_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|index_001_l_bind_ctrl_nul|index_001_l_bind_ctrl_ort|index_001_l_bind_ctrl|index_002_l_bind_ctrl_nul|index_002_l_bind_ctrl_ort|index_002_l_bind_ctrl|index_003_l_bind_ctrl_nul|index_003_l_bind_ctrl_ort|index_003_l_bind_ctrl|index_004_l_bind_ctrl_nul|index_004_l_bind_ctrl_ort|index_004_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "index_004_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|index_001_r_bind_ctrl_nul|index_001_r_bind_ctrl_ort|index_001_r_bind_ctrl|index_002_r_bind_ctrl_nul|index_002_r_bind_ctrl_ort|index_002_r_bind_ctrl|index_003_r_bind_ctrl_nul|index_003_r_bind_ctrl_ort|index_003_r_bind_ctrl|index_004_r_bind_ctrl_nul|index_004_r_bind_ctrl_ort|index_004_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "knee_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l|knee_fk_l_nul|knee_fk_l_ort|knee_fk_l", 
-            "deformerOrder": []
-        }, 
-        "knee_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort|thigh_fk_r|knee_fk_r_nul|knee_fk_r_ort|knee_fk_r", 
-            "deformerOrder": []
-        }, 
-        "leg_ik_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_ik_l_nul|leg_ik_l_ort|leg_ik_l", 
-            "deformerOrder": []
-        }, 
-        "leg_ik_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_ik_r_nul|leg_ik_r_ort|leg_ik_r", 
-            "deformerOrder": []
-        }, 
-        "leg_pv_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_pv_l_nul|leg_pv_l_ort|leg_pv_l", 
-            "deformerOrder": []
-        }, 
-        "leg_pv_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_pv_r_nul|leg_pv_r_ort|leg_pv_r", 
-            "deformerOrder": []
-        }, 
-        "lid_l_curveBaseWire": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_curveBaseWire", 
-            "deformerOrder": [
-                "lid_l_curveBaseWire_skinCluster", 
-                "tweak15"
-            ]
-        }, 
-        "lid_l_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_curve", 
-            "deformerOrder": [
-                "lid_l_curve_skinCluster", 
-                "tweak14"
-            ]
-        }, 
-        "lid_r_curveBaseWire": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_curveBaseWire", 
-            "deformerOrder": [
-                "lid_r_curveBaseWire_skinCluster", 
-                "tweak22"
-            ]
-        }, 
-        "lid_r_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_curve", 
-            "deformerOrder": [
-                "lid_r_curve_skinCluster", 
-                "tweak21"
-            ]
-        }, 
-        "lip_curveBaseWire": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_curveBaseWire", 
-            "deformerOrder": [
-                "lip_curveBaseWire_skinCluster", 
-                "tweak28"
-            ]
-        }, 
-        "lip_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_curve", 
-            "deformerOrder": [
-                "lip_curve_skinCluster", 
-                "tweak25"
-            ]
-        }, 
-        "lip_main_curveBaseWire": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip_main|lip_main_curveBaseWire", 
-            "deformerOrder": [
-                "lip_main_curveBaseWire_skinCluster", 
+                "eyeDrag_l_cluster", 
+                "blinkUpper_l_bindmesh__blinkUpper_l_cluster", 
                 "tweak27"
             ]
         }, 
-        "lip_main_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|mouth|lip_main|lip_main_curve", 
+        "blinkUpper_r_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|r_blink|blinkUpper_r_grp|blinkUpper_r_bindmesh", 
             "deformerOrder": [
-                "lip_main_curve_skinCluster", 
+                "eyeDrag_r_cluster", 
+                "blinkUpper_r_bindmesh__blinkUpper_r_cluster", 
+                "tweak37"
+            ]
+        }, 
+        "body_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|body_geo", 
+            "deformerOrder": [
+                "head_wire", 
+                "lip_wire", 
+                "lip_main_wire", 
+                "lid_r_curve_wire", 
+                "lid_l_curve_wire", 
+                "brow_l_curve_wire", 
+                "brow_r_curve_wire", 
+                "lip_up_0_l_cluster", 
+                "lip_corner_r_cluster", 
+                "lip_center_low_cluster", 
+                "lip_low_2_r_cluster", 
+                "lip_low_1_l_cluster", 
+                "lip_up_1_l_cluster", 
+                "lip_low_0_l_cluster", 
+                "lip_corner_l_cluster", 
+                "lip_center_up_cluster", 
+                "lip_low_0_r_cluster", 
+                "lip_up_2_r_cluster", 
+                "lip_up_1_r_cluster", 
+                "lip_up_0_r_cluster", 
+                "lip_low_2_l_cluster", 
+                "lip_low_1_r_cluster", 
+                "lip_up_2_l_cluster", 
+                "cheekPuff_r_cluster", 
+                "cheekPuff_l_cluster", 
+                "cheekLift_l_cluster", 
+                "cheekLift_r_cluster", 
+                "cheek_l_cluster", 
+                "cheek_r_cluster", 
+                "socketStretch_r_cluster", 
+                "socketLift_r_cluster", 
+                "socketStretch_l_cluster", 
+                "socketLift_l_cluster", 
+                "brow_corrugator_r_cluster", 
+                "brow_corrugator_l_cluster", 
+                "ear_r_cluster", 
+                "ear_l_cluster", 
+                "sneer_r_cluster", 
+                "sneer_l_cluster", 
+                "mouthMain_cluster", 
+                "lip_upper_cluster", 
+                "lip_upper_l_cluster", 
+                "lip_upper_r_cluster", 
+                "lid_squash_r_cluster", 
+                "lid_squash_l_cluster", 
+                "lip_lower_cluster", 
+                "lip_lower_r_cluster", 
+                "lip_lower_l_cluster", 
+                "r_leg_curve_wire", 
+                "l_leg_curve_wire", 
+                "r_arm_curve_wire", 
+                "l_arm_curve_wire", 
+                "spine_curve_wire", 
+                "body_geo_skinCluster", 
+                "blinkLower_l_curve_wire", 
+                "blinkUpper_l_curve_wire", 
+                "blinkLower_r_curve_wire", 
+                "blinkUpper_r_curve_wire", 
+                "blinkUpper_l_cluster", 
+                "blinkUpper_r_cluster", 
+                "blinkLower_l_cluster", 
+                "blinkLower_r_cluster", 
+                "skin_psd", 
+                "tweak1"
+            ]
+        }, 
+        "bottomgums_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|mouth_mod|bottomgums_geo", 
+            "deformerOrder": [
+                "head_wire", 
+                "bottomgums_geo_skinCluster", 
+                "tweak57"
+            ]
+        }, 
+        "bottomteeth_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|mouth_mod|bottomteeth_geo", 
+            "deformerOrder": [
+                "head_wire", 
+                "bottomteeth_geo_skinCluster", 
+                "tweak56"
+            ]
+        }, 
+        "brow_bend_l_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|brow_bend_l_grp|brow_bend_l_bindmesh", 
+            "deformerOrder": [
+                "brow_bend_l_bindmesh_skinCluster", 
+                "tweak63"
+            ]
+        }, 
+        "brow_bend_r_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|brow_bend_r_grp|brow_bend_r_bindmesh", 
+            "deformerOrder": [
+                "brow_bend_r_bindmesh_skinCluster", 
+                "tweak64"
+            ]
+        }, 
+        "brow_prx": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|brow_prx", 
+            "deformerOrder": [
+                "brow_prx_skinCluster", 
+                "tweak62"
+            ]
+        }, 
+        "hair_prx": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|hair_prx", 
+            "deformerOrder": [
+                "head_wire", 
+                "hair_prx_skinCluster", 
+                "tweak59"
+            ]
+        }, 
+        "head_wire_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|head_wire_grp|head_wire_bindmesh", 
+            "deformerOrder": [
+                "head_wire_bindmesh_skinCluster", 
+                "tweak61"
+            ]
+        }, 
+        "l_arm_bend_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|l_arm|l_arm_bend|l_arm_bend_bindmesh", 
+            "deformerOrder": [
+                "l_arm_bend_bindmesh_skinCluster", 
+                "tweak10"
+            ]
+        }, 
+        "l_eyeinside_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|eyes_mod|l_eye_mod|l_eyeinside_geo", 
+            "deformerOrder": [
+                "head_wire", 
+                "socketStretch_l_cluster", 
+                "l_eyeinside_geo_skinCluster", 
+                "tweak34"
+            ]
+        }, 
+        "l_leg_bend_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|l_leg|l_leg_bend|l_leg_bend_bindmesh", 
+            "deformerOrder": [
+                "l_leg_bend_bindmesh_skinCluster", 
+                "tweak17"
+            ]
+        }, 
+        "lid_l_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_bindmesh", 
+            "deformerOrder": [
+                "lid_l_bindmesh__socketStretch_l_cluster", 
+                "lid_l_bindmesh_skinCluster", 
+                "eyeDrag_l_cluster", 
+                "lid_l_bindmesh__blinkUpper_l_cluster", 
+                "lid_l_bindmesh__blinkLower_l_cluster", 
+                "tweak35"
+            ]
+        }, 
+        "lid_r_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_bindmesh", 
+            "deformerOrder": [
+                "lid_r_bindmesh__socketStretch_r_cluster", 
+                "lid_r_bindmesh_skinCluster", 
+                "eyeDrag_r_cluster", 
+                "lid_r_bindmesh__blinkUpper_r_cluster", 
+                "lid_r_bindmesh__blinkLower_r_cluster", 
+                "tweak45"
+            ]
+        }, 
+        "lip_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_bindmesh", 
+            "deformerOrder": [
+                "lip_bindmesh__lip_lower_r_cluster", 
+                "lip_bindmesh__lip_lower_l_cluster", 
+                "lip_bindmesh__lip_upper_r_cluster", 
+                "lip_bindmesh__lip_upper_l_cluster", 
+                "lip_main_wire", 
+                "lip_bindmesh_mouthMain_cluster", 
+                "lip_bindmesh__lip_lower_cluster", 
+                "lip_bindmesh__lip_upper_cluster", 
+                "lip_bindmesh_skinCluster", 
+                "tweak48"
+            ]
+        }, 
+        "lip_main_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|mouth|lip_main|lip_main_bindmesh", 
+            "deformerOrder": [
+                "lip_main_bindmesh_mouthMain_cluster", 
+                "lip_main_bindmesh_skinCluster", 
+                "tweak51"
+            ]
+        }, 
+        "mouth_corner_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|mouth|mouth_corner_bindmesh", 
+            "deformerOrder": [
+                "mouth_corner_bindmesh_mouthMain_cluster", 
+                "mouth_corner_bindmesh_skinCluster", 
+                "tweak52"
+            ]
+        }, 
+        "numericPSD_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|psd_grp|numericPSD_geo", 
+            "deformerOrder": [
+                "numeric_psd", 
+                "tweak11"
+            ]
+        }, 
+        "r_arm_bend_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|r_arm|r_arm_bend|r_arm_bend_bindmesh", 
+            "deformerOrder": [
+                "r_arm_bend_bindmesh_skinCluster", 
+                "tweak14"
+            ]
+        }, 
+        "r_eyeinside_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|eyes_mod|r_eye_mod|r_eyeinside_geo", 
+            "deformerOrder": [
+                "head_wire", 
+                "socketStretch_r_cluster", 
+                "r_eyeinside_geo_skinCluster", 
+                "tweak44"
+            ]
+        }, 
+        "r_leg_bend_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|r_leg|r_leg_bend|r_leg_bend_bindmesh", 
+            "deformerOrder": [
+                "r_leg_bend_bindmesh_skinCluster", 
+                "tweak20"
+            ]
+        }, 
+        "spine_bend_bindmesh": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|spine|spine_bend|spine_bend_bindmesh", 
+            "deformerOrder": [
+                "spine_bend_bindmesh_skinCluster", 
+                "tweak5"
+            ]
+        }, 
+        "tongue_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|mouth_mod|tongue_geo", 
+            "deformerOrder": [
+                "head_wire", 
+                "tongue_geo_skinCluster", 
+                "tweak58"
+            ]
+        }, 
+        "topgums_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|mouth_mod|topgums_geo", 
+            "deformerOrder": [
+                "head_wire", 
+                "topgums_geo_skinCluster", 
+                "tweak54"
+            ]
+        }, 
+        "topteeth_geo": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|model|mouth_mod|topteeth_geo", 
+            "deformerOrder": [
+                "head_wire", 
+                "topteeth_geo_skinCluster", 
+                "tweak55"
+            ]
+        }, 
+        "blinkLower_l_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lidLower_curves|blinkLower_l_curveBaseWire", 
+            "deformerOrder": [
+                "blinkLower_l_curveBaseWire__blinkLower_l_cluster", 
+                "tweak31"
+            ]
+        }, 
+        "blinkLower_l_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lidLower_curves|blinkLower_l_curve", 
+            "deformerOrder": [
+                "blinkLower_l_curve_skinCluster", 
+                "tweak29"
+            ]
+        }, 
+        "blinkLower_r_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lidLower_curves|blinkLower_r_curveBaseWire", 
+            "deformerOrder": [
+                "blinkLower_r_curveBaseWire__blinkLower_r_cluster", 
+                "tweak41"
+            ]
+        }, 
+        "blinkLower_r_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lidLower_curves|blinkLower_r_curve", 
+            "deformerOrder": [
+                "blinkLower_r_curve_skinCluster", 
+                "tweak39"
+            ]
+        }, 
+        "blinkUpper_l_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lidUpper_curves|blinkUpper_l_curveBaseWire", 
+            "deformerOrder": [
+                "blinkUpper_l_curveBaseWire__blinkUpper_l_cluster", 
+                "tweak28"
+            ]
+        }, 
+        "blinkUpper_l_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lidUpper_curves|blinkUpper_l_curve", 
+            "deformerOrder": [
+                "blinkUpper_l_curve_skinCluster", 
+                "tweak26"
+            ]
+        }, 
+        "blinkUpper_r_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lidUpper_curves|blinkUpper_r_curveBaseWire", 
+            "deformerOrder": [
+                "blinkUpper_r_curveBaseWire__blinkUpper_r_cluster", 
+                "tweak38"
+            ]
+        }, 
+        "blinkUpper_r_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lidUpper_curves|blinkUpper_r_curve", 
+            "deformerOrder": [
+                "blinkUpper_r_curve_skinCluster", 
+                "tweak36"
+            ]
+        }, 
+        "brow_l_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|brow_bend_l_grp|brow_l_curveBaseWire", 
+            "deformerOrder": [
+                "brow_l_curveBaseWire_skinCluster", 
+                "tweak23"
+            ]
+        }, 
+        "brow_l_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|brow_bend_l_grp|brow_l_curve", 
+            "deformerOrder": [
+                "brow_l_curve_skinCluster", 
+                "tweak22"
+            ]
+        }, 
+        "brow_r_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|brow_bend_r_grp|brow_r_curveBaseWire", 
+            "deformerOrder": [
+                "brow_r_curveBaseWire_skinCluster", 
+                "tweak25"
+            ]
+        }, 
+        "brow_r_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|brow_bend_r_grp|brow_r_curve", 
+            "deformerOrder": [
+                "brow_r_curve_skinCluster", 
                 "tweak24"
             ]
         }, 
-        "lookAt_rot": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|lookAt|lookAt_rot_nul|lookAt_rot_aim|lookAt_rot", 
-            "deformerOrder": []
+        "head_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|head_wire_grp|head_curveBaseWire", 
+            "deformerOrder": [
+                "head_curveBaseWire_skinCluster", 
+                "tweak60"
+            ]
         }, 
-        "lookAt_trs": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|head_nul|head|face_upper_nul|face_upper|lookAt|lookAt_trs_nul|lookAt_trs_ort|lookAt_trs", 
-            "deformerOrder": []
+        "head_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|head_wire_grp|head_curve", 
+            "deformerOrder": [
+                "head_curve_skinCluster", 
+                "tweak53"
+            ]
         }, 
-        "middle_001_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl", 
-            "deformerOrder": []
+        "l_arm_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|l_arm|l_arm_curveBaseWire", 
+            "deformerOrder": [
+                "l_arm_curveBaseWire_skinCluster", 
+                "tweak9"
+            ]
         }, 
-        "middle_001_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl", 
-            "deformerOrder": []
+        "l_arm_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|l_arm|l_arm_curve", 
+            "deformerOrder": [
+                "l_arm_curve_skinCluster", 
+                "tweak8"
+            ]
         }, 
-        "middle_002_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort|middle_002_l_bind_ctrl", 
-            "deformerOrder": []
+        "l_leg_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|l_leg|l_leg_curveBaseWire", 
+            "deformerOrder": [
+                "l_leg_curveBaseWire_skinCluster", 
+                "tweak16"
+            ]
         }, 
-        "middle_002_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl", 
-            "deformerOrder": []
+        "l_leg_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|l_leg|l_leg_curve", 
+            "deformerOrder": [
+                "l_leg_curve_skinCluster", 
+                "tweak15"
+            ]
         }, 
-        "middle_003_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort|middle_002_l_bind_ctrl|middle_003_l_bind_ctrl_nul|middle_003_l_bind_ctrl_ort|middle_003_l_bind_ctrl", 
-            "deformerOrder": []
+        "lid_l_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_curveBaseWire", 
+            "deformerOrder": [
+                "lid_l_curveBaseWire_skinCluster", 
+                "tweak33"
+            ]
         }, 
-        "middle_003_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl|middle_003_r_bind_ctrl_nul|middle_003_r_bind_ctrl_ort|middle_003_r_bind_ctrl", 
-            "deformerOrder": []
+        "lid_l_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lid_l|lid_l_curve", 
+            "deformerOrder": [
+                "lid_l_curve_skinCluster", 
+                "tweak32"
+            ]
         }, 
-        "middle_004_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|middle_001_l_bind_ctrl_nul|middle_001_l_bind_ctrl_ort|middle_001_l_bind_ctrl|middle_002_l_bind_ctrl_nul|middle_002_l_bind_ctrl_ort|middle_002_l_bind_ctrl|middle_003_l_bind_ctrl_nul|middle_003_l_bind_ctrl_ort|middle_003_l_bind_ctrl|middle_004_l_bind_ctrl_nul|middle_004_l_bind_ctrl_ort|middle_004_l_bind_ctrl", 
-            "deformerOrder": []
+        "lid_r_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_curveBaseWire", 
+            "deformerOrder": [
+                "lid_r_curveBaseWire_skinCluster", 
+                "tweak43"
+            ]
         }, 
-        "middle_004_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|middle_001_r_bind_ctrl_nul|middle_001_r_bind_ctrl_ort|middle_001_r_bind_ctrl|middle_002_r_bind_ctrl_nul|middle_002_r_bind_ctrl_ort|middle_002_r_bind_ctrl|middle_003_r_bind_ctrl_nul|middle_003_r_bind_ctrl_ort|middle_003_r_bind_ctrl|middle_004_r_bind_ctrl_nul|middle_004_r_bind_ctrl_ort|middle_004_r_bind_ctrl", 
-            "deformerOrder": []
+        "lid_r_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|lid_r|lid_r_curve", 
+            "deformerOrder": [
+                "lid_r_curve_skinCluster", 
+                "tweak42"
+            ]
+        }, 
+        "lip_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_curveBaseWire", 
+            "deformerOrder": [
+                "lip_curveBaseWire_skinCluster", 
+                "tweak50"
+            ]
+        }, 
+        "lip_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|mouth|lip|lip_curve", 
+            "deformerOrder": [
+                "lip_curve_skinCluster", 
+                "tweak47"
+            ]
+        }, 
+        "lip_main_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|mouth|lip_main|lip_main_curveBaseWire", 
+            "deformerOrder": [
+                "lip_main_curveBaseWire_skinCluster", 
+                "tweak49"
+            ]
+        }, 
+        "lip_main_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|mouth|lip_main|lip_main_curve", 
+            "deformerOrder": [
+                "lip_main_curve_skinCluster", 
+                "tweak46"
+            ]
         }, 
         "neckIk_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck|neckIk_grp|neckIk_curve", 
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|neck_grp|neck_nul|neck_ort|neck|neckIk_grp|neckIk_curve", 
             "deformerOrder": [
                 "neckIk_cluster_3", 
                 "neckIk_cluster_2", 
                 "neckIk_cluster_1", 
                 "neckIk_cluster_0", 
-                "tweak6"
+                "tweak7"
             ]
         }, 
-        "neck": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pNeck|neck_nul|neck", 
-            "deformerOrder": []
+        "r_arm_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|r_arm|r_arm_curveBaseWire", 
+            "deformerOrder": [
+                "r_arm_curveBaseWire_skinCluster", 
+                "tweak13"
+            ]
         }, 
-        "pelvis_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_ort|pelvis_l", 
-            "deformerOrder": []
+        "r_arm_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|r_arm|r_arm_curve", 
+            "deformerOrder": [
+                "r_arm_curve_skinCluster", 
+                "tweak12"
+            ]
         }, 
-        "pelvis_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_ort|pelvis_r", 
-            "deformerOrder": []
+        "r_leg_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|r_leg|r_leg_curveBaseWire", 
+            "deformerOrder": [
+                "r_leg_curveBaseWire_skinCluster", 
+                "tweak19"
+            ]
         }, 
-        "pinkyCup_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinkyCup_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinky_001_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinky_001_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinky_002_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinky_002_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinky_003_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl|pinky_003_l_bind_ctrl_nul|pinky_003_l_bind_ctrl_ort|pinky_003_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinky_003_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort|pinky_003_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinky_004_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|pinkyCup_l_bind_ctrl_nul|pinkyCup_l_bind_ctrl_ort|pinkyCup_l_bind_ctrl|pinky_001_l_bind_ctrl_nul|pinky_001_l_bind_ctrl_ort|pinky_001_l_bind_ctrl|pinky_002_l_bind_ctrl_nul|pinky_002_l_bind_ctrl_ort|pinky_002_l_bind_ctrl|pinky_003_l_bind_ctrl_nul|pinky_003_l_bind_ctrl_ort|pinky_003_l_bind_ctrl|pinky_004_l_bind_ctrl_nul|pinky_004_l_bind_ctrl_ort|pinky_004_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "pinky_004_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|pinkyCup_r_bind_ctrl_nul|pinkyCup_r_bind_ctrl_ort|pinkyCup_r_bind_ctrl|pinky_001_r_bind_ctrl_nul|pinky_001_r_bind_ctrl_ort|pinky_001_r_bind_ctrl|pinky_002_r_bind_ctrl_nul|pinky_002_r_bind_ctrl_ort|pinky_002_r_bind_ctrl|pinky_003_r_bind_ctrl_nul|pinky_003_r_bind_ctrl_ort|pinky_003_r_bind_ctrl|pinky_004_r_bind_ctrl_nul|pinky_004_r_bind_ctrl_ort|pinky_004_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ring_001_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ring_001_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ring_002_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ring_002_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ring_003_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl|ring_003_l_bind_ctrl_nul|ring_003_l_bind_ctrl_ort|ring_003_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ring_003_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl|ring_003_r_bind_ctrl_nul|ring_003_r_bind_ctrl_ort|ring_003_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ring_004_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|ring_001_l_bind_ctrl_nul|ring_001_l_bind_ctrl_ort|ring_001_l_bind_ctrl|ring_002_l_bind_ctrl_nul|ring_002_l_bind_ctrl_ort|ring_002_l_bind_ctrl|ring_003_l_bind_ctrl_nul|ring_003_l_bind_ctrl_ort|ring_003_l_bind_ctrl|ring_004_l_bind_ctrl_nul|ring_004_l_bind_ctrl_ort|ring_004_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "ring_004_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|ring_001_r_bind_ctrl_nul|ring_001_r_bind_ctrl_ort|ring_001_r_bind_ctrl|ring_002_r_bind_ctrl_nul|ring_002_r_bind_ctrl_ort|ring_002_r_bind_ctrl|ring_003_r_bind_ctrl_nul|ring_003_r_bind_ctrl_ort|ring_003_r_bind_ctrl|ring_004_r_bind_ctrl_nul|ring_004_r_bind_ctrl_ort|ring_004_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "shoulderSwing_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l", 
-            "deformerOrder": []
-        }, 
-        "shoulderSwing_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r", 
-            "deformerOrder": []
-        }, 
-        "shoulder_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort|shoulder_fk_l", 
-            "deformerOrder": []
-        }, 
-        "shoulder_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort|shoulder_fk_r", 
-            "deformerOrder": []
+        "r_leg_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|r_leg|r_leg_curve", 
+            "deformerOrder": [
+                "r_leg_curve_skinCluster", 
+                "tweak18"
+            ]
         }, 
         "spineIk_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|spineIk_grp|spineIk_curve", 
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|spine|hipsPivot_nul|hipsPivot_grp|hips_nul|hips|hips_gimbal_nul|hips_gimbal|spineIk_grp|spineIk_curve", 
             "deformerOrder": [
                 "spineIk_cluster_3", 
                 "spineIk_cluster_2", 
                 "spineIk_cluster_1", 
                 "spineIk_cluster_0", 
-                "tweak5"
+                "tweak2", 
+                "spineIk_length_scale_cluster"
             ]
         }, 
-        "thighSwing_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l", 
-            "deformerOrder": []
+        "spineIk_length": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|spine|spineIk_length", 
+            "deformerOrder": [
+                "spineIk_length_no_rotate_cluster_3", 
+                "spineIk_length_no_rotate_cluster_2", 
+                "tweak6"
+            ]
         }, 
-        "thighSwing_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r", 
-            "deformerOrder": []
+        "spine_curveBaseWire": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|spine|spine_curveBaseWire", 
+            "deformerOrder": [
+                "spine_curveBaseWire_skinCluster", 
+                "tweak4"
+            ]
         }, 
-        "thigh_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_l_nul|pelvis_l_connect|thighSwing_l_nul|thighSwing_l_ort|thighSwing_l|thigh_fk_l_nul|thigh_fk_l_ort|thigh_fk_l", 
-            "deformerOrder": []
-        }, 
-        "thigh_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|hip_swivel_nul|hip_swivel|pelvis_r_nul|pelvis_r_connect|thighSwing_r_nul|thighSwing_r_ort|thighSwing_r|thigh_fk_r_nul|thigh_fk_r_ort|thigh_fk_r", 
-            "deformerOrder": []
-        }, 
-        "thumbCup_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "thumbCup_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "thumb_001_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort|thumb_001_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "thumb_001_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "thumb_002_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort|thumb_001_l_bind_ctrl|thumb_002_l_bind_ctrl_nul|thumb_002_l_bind_ctrl_ort|thumb_002_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "thumb_002_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl|thumb_002_r_bind_ctrl_nul|thumb_002_r_bind_ctrl_ort|thumb_002_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "thumb_003_l_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_hand|l_hand_grp|thumbCup_l_bind_ctrl_nul|thumbCup_l_bind_ctrl_ort|thumbCup_l_bind_ctrl|thumb_001_l_bind_ctrl_nul|thumb_001_l_bind_ctrl_ort|thumb_001_l_bind_ctrl|thumb_002_l_bind_ctrl_nul|thumb_002_l_bind_ctrl_ort|thumb_002_l_bind_ctrl|thumb_003_l_bind_ctrl_nul|thumb_003_l_bind_ctrl_ort|thumb_003_l_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "thumb_003_r_bind_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_hand|r_hand_grp|thumbCup_r_bind_ctrl_nul|thumbCup_r_bind_ctrl_ort|thumbCup_r_bind_ctrl|thumb_001_r_bind_ctrl_nul|thumb_001_r_bind_ctrl_ort|thumb_001_r_bind_ctrl|thumb_002_r_bind_ctrl_nul|thumb_002_r_bind_ctrl_ort|thumb_002_r_bind_ctrl|thumb_003_r_bind_ctrl_nul|thumb_003_r_bind_ctrl_ort|thumb_003_r_bind_ctrl", 
-            "deformerOrder": []
-        }, 
-        "toeBend_l_pivot_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_ik_l_nul|leg_ik_l_ort|leg_ik_l|ankle_l_bind_ik_offset|ankle_l_pivot|bankIn_l_pivot|bankOut_l_pivot|heel_l_pivot_ctrl_nul|heel_l_pivot_ctrl|heel_l_pivot|ball_l_pivot|toe_l_pivot_ctrl_nul|toe_l_pivot_ctrl|toe_l_pivot|toeBend_l_pivot_ctrl_nul|toeBend_l_pivot_ctrl", 
-            "deformerOrder": []
-        }, 
-        "toeBend_r_pivot_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_ik_r_nul|leg_ik_r_ort|leg_ik_r|ankle_r_bind_ik_offset|ankle_r_pivot|bankIn_r_pivot|bankOut_r_pivot|heel_r_pivot_ctrl_nul|heel_r_pivot_ctrl|heel_r_pivot|ball_r_pivot|toe_r_pivot_ctrl_nul|toe_r_pivot_ctrl|toe_r_pivot|toeBend_r_pivot_ctrl_nul|toeBend_r_pivot_ctrl", 
-            "deformerOrder": []
-        }, 
-        "toe_l_pivot_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|l_leg|leg_ik_l_nul|leg_ik_l_ort|leg_ik_l|ankle_l_bind_ik_offset|ankle_l_pivot|bankIn_l_pivot|bankOut_l_pivot|heel_l_pivot_ctrl_nul|heel_l_pivot_ctrl|heel_l_pivot|ball_l_pivot|toe_l_pivot_ctrl_nul|toe_l_pivot_ctrl", 
-            "deformerOrder": []
-        }, 
-        "toe_r_pivot_ctrl": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|r_leg|leg_ik_r_nul|leg_ik_r_ort|leg_ik_r|ankle_r_bind_ik_offset|ankle_r_pivot|bankIn_r_pivot|bankOut_r_pivot|heel_r_pivot_ctrl_nul|heel_r_pivot_ctrl|heel_r_pivot|ball_r_pivot|toe_r_pivot_ctrl_nul|toe_r_pivot_ctrl", 
-            "deformerOrder": []
+        "spine_curve": {
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|spine|spine_curve", 
+            "deformerOrder": [
+                "spine_curve_skinCluster", 
+                "tweak3"
+            ]
         }, 
         "tongueIk_curve": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|tongue|tonuge_base_nul|tonuge_base|tongueIk_grp|tongueIk_curve", 
+            "dagPath": "|david|trs_master|trs_shot|trs_aux|rig|tongue|tongue_base_nul|tongue_base|tongueIk_grp|tongueIk_curve", 
             "deformerOrder": [
                 "tongueIk_cluster_3", 
                 "tongueIk_cluster_2", 
                 "tongueIk_cluster_1", 
                 "tongueIk_cluster_0", 
-                "tweak9"
+                "tweak21"
             ]
-        }, 
-        "torso": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso", 
-            "deformerOrder": []
-        }, 
-        "wrist_fk_l": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_l_nul|clavicle_l_connect|shoulderSwing_l_nul|shoulderSwing_l_ort|shoulderSwing_l|shoulder_fk_l_nul|shoulder_fk_l_ort|shoulder_fk_l|elbow_fk_l_nul|elbow_fk_l_ort|elbow_fk_l|wrist_fk_l_nul|wrist_fk_l_ort|wrist_fk_l", 
-            "deformerOrder": []
-        }, 
-        "wrist_fk_r": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|pSpine|hips_nul|hips|torso_nul|torso|chest_nul|chest|chest_top_nul|chest_top|clavicle_r_nul|clavicle_r_connect|shoulderSwing_r_nul|shoulderSwing_r_ort|shoulderSwing_r|shoulder_fk_r_nul|shoulder_fk_r_ort|shoulder_fk_r|elbow_fk_r_nul|elbow_fk_r_ort|elbow_fk_r|wrist_fk_r_nul|wrist_fk_r_ort|wrist_fk_r", 
-            "deformerOrder": []
         }
     }
 }
