@@ -16,8 +16,8 @@ import pubs.ui.fields
 reload(pubs.ui.fields)
 import pubs.ui.layerGraphModel
 reload(pubs.ui.layerGraphModel)
-import pubs.ui.widgets
-reload(pubs.ui.widgets)
+#import pubs.ui.widgets
+#reload(pubs.ui.widgets)
 #import pubs.ui.browser
 #reload(pubs.ui.browser)
 import pubs.ui.centralWidget
