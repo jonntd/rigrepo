@@ -43,20 +43,19 @@ def copyDeformer(deformer, target):
     :param deformers: deformers to copy
     :return: Copied deformers
     '''
-
+    deformerOrder= mc.ls(mc.listHistory(target, pdo=1, il=1), type="geometryFilter")
+    print('order', deformerOrder)
+    orderIndex = deformerOrder.index(deformer)
     if mc.nodeType(deformer) == 'wire':
         # Get data
         curve = mc.wire(deformer, q=1, wire=1)[0]
         baseCurve = mc.listConnections(deformer+'.baseWire[0]', p=1)[0]
-        deformerOrder= mc.ls(mc.listHistory(target, pdo=1, il=1), type="geometryFilter")
-        print('order', deformerOrder)
-        orderIndex = deformerOrder.index(deformer)
         # Note: wire command has issues when passing the shape, so get the transform
         curve = mc.listRelatives(curve, p=1)[0]
         rotation = mc.getAttr(deformer+'.rotation')
         dropOffDistance = mc.getAttr(deformer+'.dropoffDistance[0]')
         mc.select(cl=1)
-        wireDeformer = mc.wire(target,
+        newDeformer = mc.wire(target,
                                groupWithBase=False,
                                envelope=1.00,
                                crossingEffect=0.00,
@@ -64,18 +63,29 @@ def copyDeformer(deformer, target):
                                wire=curve,
                                name="{}_wire".format(target))[0]
         # Replace base curve
-        newBaseCurve = mc.listConnections(wireDeformer+'.baseWire[0]')
-        mc.connectAttr(baseCurve, wireDeformer+'.baseWire[0]', f=1)
+        newBaseCurve = mc.listConnections(newDeformer+'.baseWire[0]')
+        mc.connectAttr(baseCurve, newDeformer+'.baseWire[0]', f=1)
         mc.delete(newBaseCurve)
 
-        # Reorder deformer
-        if orderIndex:
-            mc.reorderDeformers(deformerOrder[orderIndex-1], wireDeformer, target)
-
         # set the default values for the wire deformer
-        mc.setAttr("{}.rotation".format(wireDeformer), rotation)
-        mc.setAttr("{}.dropoffDistance[0]".format(wireDeformer), dropOffDistance)
-        return wireDeformer
+        mc.setAttr("{}.rotation".format(newDeformer), rotation)
+        mc.setAttr("{}.dropoffDistance[0]".format(newDeformer), dropOffDistance)
+
+    if mc.nodeType(deformer) == 'cluster':
+        mc.select(cl=1)
+        deformerWts = rigrepo.libs.weights.getWeights(deformer, geometry=target)
+        bindPreMatrixAttr = mc.listConnections('{}.bindPreMatrix'.format(deformer), source=True, plugs=True)[0]
+        handle = mc.listConnections('{}.matrix'.format(deformer), source=True)[0]
+        newDeformer = mc.cluster(target, name="{}_{}".format(target, deformer), wn=[handle,handle])[0]
+        mc.connectAttr('{}.worldMatrix'.format(target), '{}.geomMatrix[0]'.format(newDeformer), f=True)
+        mc.connectAttr(bindPreMatrixAttr, '{}.bindPreMatrix'.format(newDeformer), f=True)
+        rigrepo.libs.weights.setWeights(newDeformer,deformerWts, geometry=target)
+
+    # Reorder deformer
+    if orderIndex:
+        mc.reorderDeformers(deformerOrder[orderIndex-1], newDeformer, target)
+
+        return newDeformer
 
 def makeDeformerUnique(deformer, target):
     '''

@@ -106,13 +106,16 @@ def getWeights(deformer, mapList=None, geometry=None):
         # make sure we have the shape of the geometry for all deformers except the skinCluster
         geoDagPath = rigrepo.libs.transform.getDagPath(geometry)
         geoDagPath.extendToShape()
-        geometry = geoDagPath.fullPathName()
+        geometryFullPath = geoDagPath.fullPathName()
     else:
         # get the geometry and the iterator to use for looping through the mesh points for wts.
         geometry = mc.deformer(deformer, q=True, g=True)[0]
+        geoDagPath = rigrepo.libs.transform.getDagPath(geometry)
+        geoDagPath.extendToShape()
+        geometryFullPath = geoDagPath.fullPathName()
 
     selList = OpenMaya.MSelectionList()
-    selList.add(geometry)
+    selList.add(geometryFullPath)
     geoDagPath = OpenMaya.MDagPath()
     selList.getDagPath(0, geoDagPath)
     geoIterator = OpenMaya.MItGeometry(geoDagPath)
@@ -140,9 +143,10 @@ def getWeights(deformer, mapList=None, geometry=None):
         # iterate over the geometry
         geometryindex = 0
         if geometry:
-            geoList = mc.cluster(deformer,q=True, geometry=True)
-            if geoList and deformer in geoList:
-                geometryindex = geoList.index(geoDagPath.partialPathName())
+            geoList = mc.ls(mc.cluster(deformer,q=True, geometry=True), l=True)
+
+            if geoList and geometryFullPath in geoList:
+                geometryindex = geoList.index(geometryFullPath)
         while not geoIterator.isDone():
             weightList[0] = numpy.append(weightList[0], numpy.array(round(mc.getAttr('{}.wl[{}].w[{}]'.format(deformer, geometryindex, geoIterator.index())), 4)))
             geoIterator.next()
@@ -153,9 +157,9 @@ def getWeights(deformer, mapList=None, geometry=None):
         targetIndex = rigrepo.libs.blendShape.getTargetIndex(deformer, mapList)
 
         if geometry:
-            geoList = mc.deformer(deformer, q=True, geometry=True)
-            if geoList and deformer in geoList:
-                geometryindex = geoList.index(geoDagPath.partialPathName())
+            geoList = mc.ls(mc.deformer(deformer, q=True, geometry=True), l=True)
+            if geoList and geometryFullPath in geoList:
+                geometryindex = geoList.index(geometryFullPath)
 
         while not geoIterator.isDone():
             attr = deformer+'.it[0].itg[{}].tw[{}]'.format(targetIndex, geoIterator.index())

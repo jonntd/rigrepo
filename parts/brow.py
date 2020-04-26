@@ -10,6 +10,7 @@ import rigrepo.libs.control as control
 import rigrepo.libs.common as common
 import rigrepo.libs.cluster as cluster
 import rigrepo.libs.attribute
+import rigrepo.libs.wire
 
 class Brow(part.Part):
     '''
