@@ -103,7 +103,7 @@ class BipedBaseRig(archetype_base_rig.ArchetypeBaseRig):
             constraintNode="arm_pv_l_nul", parentNode='l_arm', targetList=['chest_bind', 'wrist_fk_l_offset_pv'],
         nameList=["chest", "hand"], constraintType='parent')
 
-        leftArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_L",
+        leftArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_ik_l",
             constraintNode="arm_ik_l_ort", parentNode='l_arm', targetList=['chest_bind', 'skull_bind','hip_swivel','hips_bind'], 
         nameList=["chest","head","hips","root"], constraintType='parent')
 
@@ -202,7 +202,7 @@ mc.connectAttr(space+'.matrix', add_matrix+'.matrixIn[3]')
             constraintNode="arm_pv_r_nul", parentNode='r_arm', targetList=['chest_bind', 'wrist_fk_r_offset_pv'],
         nameList=["chest", "hand"], constraintType='parent')
 
-        rightArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_R",
+        rightArmIkAddSpaceNode = rigrepo.nodes.addSpaceNode.AddSpaceNode('ikAddSpaces', attrNode="arm_ik_r",
             constraintNode="arm_ik_r_ort", parentNode='r_arm', targetList=['chest_bind', 'skull_bind','hip_swivel','hips_bind'], 
         nameList=["chest","head","hips","root"], constraintType='parent')
 
