@@ -32,7 +32,7 @@ if not mc.pluginInfo('poseInterpolator', q=1, l=1):
 # Note: Not sure why this can't be done when the procedural system is built
 #       but it is not working when I do it at the same time.
 for poseInterp in {nodes}:
-    poses = psd.getPoses(poseInterp)
+    poses = psd.getPoseNames(poseInterp)
     for pose in poses:
         psd.syncPose(poseInterp, pose)
     for pose in poses:
@@ -144,7 +144,7 @@ for name in {psdNames}:
             # Note: Not sure why this can't be done when the procedural system is built
             #       but it is not working when I do it at the same time.
             for poseInterp in {nodes}:
-                poses = psd.getPoses(poseInterp)
+                poses = psd.getPoseNames(poseInterp)
                 for pose in poses:
                     psd.syncPose(poseInterp, pose)
                 for pose in poses:

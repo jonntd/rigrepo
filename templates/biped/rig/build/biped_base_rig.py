@@ -266,8 +266,9 @@ mc.connectAttr(space+'.matrix', add_matrix+'.matrixIn[3]')
 
         l_foot = rigrepo.parts.foot.Foot("l_foot", ['ankle_l_bind', 'ball_l_bind', 'toe_l_bind'], 
                                         'ankle_l_bind_ik_hdl',
-                                        fkAnchor='ankle_fk_gimbal_l', 
-                                        ikAnchor='leg_ik_gimbal_l', 
+                                        fkAnchor='ankle_fk_gimbal_l',
+                                        ikAnchor='leg_ik_mpivot_grp_l',
+                                        #ikAnchor='leg_ik_gimbal_l',
                                         anklePivot='ankle_l_pivot', 
                                         ankleStretchTarget="ankle_fk_l_offset",
                                         ikfkGroup='l_leg_ikfk_grp',
@@ -292,8 +293,9 @@ mc.connectAttr(space+'.matrix', add_matrix+'.matrixIn[3]')
 
         r_foot = rigrepo.parts.foot.Foot("r_foot", ['ankle_r_bind', 'ball_r_bind', 'toe_r_bind'], 
                                         'ankle_r_bind_ik_hdl',
-                                        fkAnchor='ankle_fk_gimbal_r', 
-                                        ikAnchor='leg_ik_gimbal_r', 
+                                        fkAnchor='ankle_fk_gimbal_r',
+                                        ikAnchor='leg_ik_mpivot_grp_r',
+                                        #ikAnchor='leg_ik_gimbal_r',
                                         anklePivot='ankle_r_pivot',
                                         ankleStretchTarget="ankle_fk_r_offset",
                                         ikfkGroup='r_leg_ikfk_grp',
@@ -547,9 +549,9 @@ name = 'head_wire'
 parent = 'rig'
 bind_joints = ['skull_bind']
 ctrl_names = ['headwire_top', 'headwire_mid', 'headwire_low']
-geometry = ['body_geo', 'topgums_geo', 'topteeth_geo', 
+geometry = mc.ls(['body_geo', 'topgums_geo', 'topteeth_geo', 
             'bottomteeth_geo', 'bottomgums_geo', 'tongue_geo', 
-            'r_eyeinside_geo', 'l_eyeinside_geo', 'hair_prx']       
+            'r_eyeinside_geo', 'l_eyeinside_geo', 'hair_prx'])      
 # Add bindmeshes
 #geometry += ['blinkLower_l_bindmesh', 'blinkLower_r_bindmesh', 
 #             'blinkUpper_l_bindmesh', 'blinkUpper_r_bindmesh', 'lip_main_bindmesh', 

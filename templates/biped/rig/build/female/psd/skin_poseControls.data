@@ -1,15 +1,23 @@
 {
     "type": "PSDData", 
     "user": "Matt", 
-    "time": "2019-11-24 16:27:58", 
+    "time": "2020-05-11 05:40:16", 
     "data": {
         "chest_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|chest_driver_poseInterpolator|chest_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "chest_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "chest.rotate"
-                    ]
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -26,7 +34,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "chest_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -41,7 +57,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "chest_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -56,7 +80,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "chest_driver_poseInterpolatorShape.pose[3]": {
                     "controllers": {
@@ -67,11 +99,21 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    -1.5707963267948966
+                                    -1.5707964
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "chest_front_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.chest_front_090"
+                    ]
                 }, 
                 "chest_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -82,11 +124,21 @@
                                 [
                                     0.0, 
                                     0.0, 
-                                    1.5707963267948966
+                                    1.5707964
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "chest_back_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.chest_back_090"
+                    ]
                 }, 
                 "chest_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -96,12 +148,22 @@
                             "value": [
                                 [
                                     0.0, 
-                                    1.5707963267948966, 
+                                    1.5707964, 
                                     0.0
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "chest_left_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.chest_left_090"
+                    ]
                 }, 
                 "chest_driver_poseInterpolatorShape.pose[6]": {
                     "controllers": {
@@ -111,22 +173,40 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.5707963267948966, 
+                                    -1.5707964, 
                                     0.0
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "chest_right_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.chest_right_090"
+                    ]
                 }
             }
         }, 
         "wristSwing_l_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|wristSwing_l_driver_poseInterpolator|wristSwing_l_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "wristSwing_l_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "wrist_fk_l.rotate"
-                    ]
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -154,7 +234,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -180,7 +268,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -206,7 +302,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[3]": {
                     "controllers": {
@@ -232,7 +336,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_l_up_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.3499999940395355, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_l_up_090"
+                    ]
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -258,7 +372,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_l_down_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.3499999940395355, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_l_down_090"
+                    ]
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -284,7 +408,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_l_front_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.3499999940395355, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_l_front_090"
+                    ]
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[6]": {
                     "controllers": {
@@ -310,7 +444,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_l_back_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.3499999940395355, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_l_back_090"
+                    ]
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[7]": {
                     "controllers": {
@@ -336,7 +480,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_l_up_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_l_up_135"
+                    ]
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[8]": {
                     "controllers": {
@@ -362,7 +516,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_l_down_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_l_down_135"
+                    ]
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[9]": {
                     "controllers": {
@@ -388,7 +552,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_l_front_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_l_front_135"
+                    ]
                 }, 
                 "wristSwing_l_driver_poseInterpolatorShape.pose[10]": {
                     "controllers": {
@@ -414,17 +588,35 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_l_back_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_l_back_135"
+                    ]
                 }
             }
         }, 
         "wristSwing_r_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|wristSwing_r_driver_poseInterpolator|wristSwing_r_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "wristSwing_r_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "wrist_fk_r.rotate"
-                    ]
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -452,7 +644,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -478,7 +678,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -515,7 +723,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[3]": {
                     "controllers": {
@@ -525,7 +741,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.5707963267948966, 
+                                    -1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -547,7 +763,7 @@
                             "value": [
                                 [
                                     0.0, 
-                                    -1.5707963267948966, 
+                                    -1.5707964, 
                                     0.0
                                 ]
                             ]
@@ -563,7 +779,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_r_up_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.3499999940395355, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_r_up_090"
+                    ]
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -622,7 +848,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_r_down_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.3499999940395355, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_r_down_090"
+                    ]
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -692,7 +928,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_r_front_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.3499999940395355, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_r_front_090"
+                    ]
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[6]": {
                     "controllers": {
@@ -773,7 +1019,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_r_back_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.3499999940395355, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_r_back_090"
+                    ]
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[7]": {
                     "controllers": {
@@ -865,7 +1121,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_r_up_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_r_up_135"
+                    ]
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[8]": {
                     "controllers": {
@@ -968,7 +1234,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_r_down_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_r_down_135"
+                    ]
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[9]": {
                     "controllers": {
@@ -1082,7 +1358,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_r_front_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_r_front_135"
+                    ]
                 }, 
                 "wristSwing_r_driver_poseInterpolatorShape.pose[10]": {
                     "controllers": {
@@ -1207,17 +1493,35 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "wrist_r_back_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.wrist_r_back_135"
+                    ]
                 }
             }
         }, 
         "elbow_l_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|elbow_l_driver_poseInterpolator|elbow_l_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "elbow_l_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "elbow_fk_l.rotate"
-                    ]
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -1234,7 +1538,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_l_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -1249,7 +1561,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_l_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -1264,7 +1584,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_l_driver_poseInterpolatorShape.pose[3]": {
                     "controllers": {
@@ -1290,7 +1618,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_l_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_l_090"
+                    ]
                 }, 
                 "elbow_l_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -1305,7 +1643,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_l_045", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_l_045"
+                    ]
                 }, 
                 "elbow_l_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -1320,17 +1668,35 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_l_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_l_135"
+                    ]
                 }
             }
         }, 
         "elbow_r_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|elbow_r_driver_poseInterpolator|elbow_r_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "elbow_r_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "elbow_fk_r.rotate"
-                    ]
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -1358,7 +1724,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_r_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -1384,7 +1758,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_r_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -1421,7 +1803,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_r_driver_poseInterpolatorShape.pose[3]": {
                     "controllers": {
@@ -1469,7 +1859,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_r_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_r_090"
+                    ]
                 }, 
                 "elbow_r_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -1528,7 +1928,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_r_045", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_r_045"
+                    ]
                 }, 
                 "elbow_r_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -1598,17 +2008,35 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_r_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_r_135"
+                    ]
                 }
             }
         }, 
         "elbow_l_muscle_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|elbow_l_muscle_driver_poseInterpolator|elbow_l_muscle_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "elbow_l_muscle_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "elbow_fk_l.rotate"
-                    ]
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -1625,7 +2053,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_l_muscle_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -1640,7 +2076,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_l_muscle_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -1655,7 +2099,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_l_muscle_driver_poseInterpolatorShape.pose[3]": {
                     "controllers": {
@@ -1670,7 +2122,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_l_muscle_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_l_muscle_090"
+                    ]
                 }, 
                 "elbow_l_muscle_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -1685,7 +2147,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_l_muscle_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_l_muscle_135"
+                    ]
                 }, 
                 "elbow_l_muscle_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -1700,17 +2172,35 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_l_muscle_045", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_l_muscle_045"
+                    ]
                 }
             }
         }, 
         "elbow_r_muscle_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|elbow_r_muscle_driver_poseInterpolator|elbow_r_muscle_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "elbow_r_muscle_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "elbow_fk_r.rotate"
-                    ]
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -1738,7 +2228,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_r_muscle_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -1764,7 +2262,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_r_muscle_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -1801,7 +2307,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "elbow_r_muscle_driver_poseInterpolatorShape.pose[3]": {
                     "controllers": {
@@ -1849,7 +2363,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_r_muscle_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_r_muscle_090"
+                    ]
                 }, 
                 "elbow_r_muscle_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -1908,7 +2432,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_r_muscle_135", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_r_muscle_135"
+                    ]
                 }, 
                 "elbow_r_muscle_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -1978,18 +2512,36 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "elbow_r_muscle_045", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.elbow_r_muscle_045"
+                    ]
                 }
             }
         }, 
         "shoulder_l_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|shoulder_l_driver_poseInterpolator|shoulder_l_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "shoulder_l_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "shoulder_fk_l.rotate", 
-                        "shoulderSwing_l.rotate"
-                    ]
+                        "shoulderSwing_r.rotate"
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -2039,7 +2591,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -2087,7 +2647,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -2135,55 +2703,15 @@
                                 ]
                             ]
                         }
-                    }
-                }, 
-                "shoulder_l_driver_poseInterpolatorShape.pose[3]": {
-                    "controllers": {
-                        "shoulder_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
-                            "name": "shoulder_fk_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_l_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[1]": {
-                            "name": "shoulderSwing_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_l_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
-                            "name": "shoulder_fk_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[1]": {
-                            "name": "shoulderSwing_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -2231,7 +2759,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_l_up_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.5, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_l_up_090"
+                    ]
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -2279,7 +2817,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_l_down_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.5, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_l_down_090"
+                    ]
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[6]": {
                     "controllers": {
@@ -2327,7 +2875,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_l_front_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.5, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_l_front_090"
+                    ]
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[7]": {
                     "controllers": {
@@ -2375,7 +2933,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_l_back_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.5, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_l_back_090"
+                    ]
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[8]": {
                     "controllers": {
@@ -2423,7 +2991,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_l_up_045", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_l_up_045"
+                    ]
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[9]": {
                     "controllers": {
@@ -2471,7 +3049,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_l_front_045", 
+                    "isEnabled": false, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_l_front_045"
+                    ]
                 }, 
                 "shoulder_l_driver_poseInterpolatorShape.pose[10]": {
                     "controllers": {
@@ -2519,18 +3107,624 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_l_back_045", 
+                    "isEnabled": false, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_l_back_045"
+                    ]
+                }
+            }
+        }, 
+        "clavicle_l_driver_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|clavicle_l_driver_poseInterpolator|clavicle_l_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 0, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
+            "drivers": {
+                "clavicle_l_driver_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "clavicle_l.rotate"
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
+                }
+            }, 
+            "poses": {
+                "clavicle_l_driver_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "clavicle_l_driver_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "clavicle_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.87266463, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "clavicle_l_up_050", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.clavicle_l_up_050"
+                    ]
+                }
+            }
+        }, 
+        "knee_l_driver_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|knee_l_driver_poseInterpolator|knee_l_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 0, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
+            "drivers": {
+                "knee_l_driver_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "knee_fk_l.rotate"
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
+                }
+            }, 
+            "poses": {
+                "knee_l_driver_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "knee_l_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "knee_l_driver_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "knee_l_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "knee_l_driver_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "knee_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "knee_l_driver_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "knee_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "knee_l_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.knee_l_090"
+                    ]
+                }
+            }
+        }, 
+        "knee_r_driver_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|knee_r_driver_poseInterpolator|knee_r_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 0, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
+            "drivers": {
+                "knee_r_driver_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "knee_fk_r.rotate"
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
+                }
+            }, 
+            "poses": {
+                "knee_r_driver_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "knee_r_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "knee_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "knee_r_driver_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "knee_r_driver_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }, 
+                        "knee_r_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "knee_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "knee_r_driver_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "knee_r_driver_poseInterpolatorShape.pose[2].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }, 
+                        "knee_r_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }, 
+                        "knee_r_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "knee_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "knee_r_driver_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "knee_r_driver_poseInterpolatorShape.pose[3].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }, 
+                        "knee_r_driver_poseInterpolatorShape.pose[3].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "knee_r_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "knee_fk_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    -1.5707964
+                                ]
+                            ]
+                        }, 
+                        "knee_r_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "knee_fk_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    -9.9508421e-18, 
+                                    2.7737731999999997e-16, 
+                                    -0.071718745
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "knee_r_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.knee_r_090"
+                    ]
+                }
+            }
+        }, 
+        "clavicle_r_driver_poseInterpolatorShape": {
+            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|clavicle_r_driver_poseInterpolator|clavicle_r_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 0, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
+            "drivers": {
+                "clavicle_r_driver_poseInterpolatorShape.driver[0]": {
+                    "controllers": [
+                        "clavicle_r.rotate"
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
+                }
+            }, 
+            "poses": {
+                "clavicle_r_driver_poseInterpolatorShape.pose[0]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[1]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[1].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[2]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[2].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[2].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
+                }, 
+                "clavicle_r_driver_poseInterpolatorShape.pose[3]": {
+                    "controllers": {
+                        "clavicle_r_driver_poseInterpolatorShape.pose[3].poseControllerData[3].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.87266463, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
+                            "name": "clavicle_r.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    -0.87266463, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }, 
+                        "clavicle_r_driver_poseInterpolatorShape.pose[3].poseControllerData[2].poseControllerDataItem[0]": {
+                            "name": "clavicle_l.rotate", 
+                            "type": 8, 
+                            "value": [
+                                [
+                                    0.0, 
+                                    0.0, 
+                                    0.0
+                                ]
+                            ]
+                        }
+                    }, 
+                    "poseName": "clavicle_r_up_050", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.clavicle_r_up_050"
+                    ]
                 }
             }
         }, 
         "shoulder_r_driver_poseInterpolatorShape": {
             "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|shoulder_r_driver_poseInterpolator|shoulder_r_driver_poseInterpolatorShape", 
+            "regularization": 0.0, 
+            "outputSmoothing": 0.0, 
+            "interpolation": 1, 
+            "allowNegativeWeights": true, 
+            "enableRotation": true, 
+            "enableTranslation": false, 
             "drivers": {
                 "shoulder_r_driver_poseInterpolatorShape.driver[0]": {
                     "controllers": [
                         "shoulder_fk_r.rotate", 
                         "shoulderSwing_r.rotate"
-                    ]
+                    ], 
+                    "driverEulerTwist": false, 
+                    "driverTwistAxis": 0
                 }
             }, 
             "poses": {
@@ -2580,7 +3774,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutral", 
+                    "isEnabled": true, 
+                    "poseType": 0, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[1]": {
                     "controllers": {
@@ -2628,7 +3830,15 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "neutralSwing", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[2]": {
                     "controllers": {
@@ -2698,99 +3908,15 @@
                                 ]
                             ]
                         }
-                    }
-                }, 
-                "shoulder_r_driver_poseInterpolatorShape.pose[3]": {
-                    "controllers": {
-                        "shoulder_r_driver_poseInterpolatorShape.pose[3].poseControllerData[2].poseControllerDataItem[0]": {
-                            "name": "shoulder_fk_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_r_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[1]": {
-                            "name": "shoulderSwing_r.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_r_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
-                            "name": "shoulder_fk_r.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_r_driver_poseInterpolatorShape.pose[3].poseControllerData[2].poseControllerDataItem[1]": {
-                            "name": "shoulderSwing_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    -0.014766691, 
-                                    0.78309476, 
-                                    0.014833248
-                                ]
-                            ]
-                        }, 
-                        "shoulder_r_driver_poseInterpolatorShape.pose[3].poseControllerData[3].poseControllerDataItem[1]": {
-                            "name": "shoulderSwing_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_r_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[0]": {
-                            "name": "shoulder_fk_r.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_r_driver_poseInterpolatorShape.pose[3].poseControllerData[1].poseControllerDataItem[1]": {
-                            "name": "shoulderSwing_r.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }, 
-                        "shoulder_r_driver_poseInterpolatorShape.pose[3].poseControllerData[3].poseControllerDataItem[0]": {
-                            "name": "shoulder_fk_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }
-                    }
+                    }, 
+                    "poseName": "neutralTwist", 
+                    "isEnabled": true, 
+                    "poseType": 2, 
+                    "isIndependent": false, 
+                    "poseFalloff": 1.0, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": null
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[4]": {
                     "controllers": {
@@ -2904,7 +4030,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_r_up_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.5, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_r_up_090"
+                    ]
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[5]": {
                     "controllers": {
@@ -3040,7 +4176,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_r_down_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.5, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_r_down_090"
+                    ]
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[6]": {
                     "controllers": {
@@ -3198,7 +4344,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_r_front_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.5, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_r_front_090"
+                    ]
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[7]": {
                     "controllers": {
@@ -3378,7 +4534,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_r_back_090", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.5, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_r_back_090"
+                    ]
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[8]": {
                     "controllers": {
@@ -3580,7 +4746,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_r_up_045", 
+                    "isEnabled": true, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_r_up_045"
+                    ]
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[9]": {
                     "controllers": {
@@ -3804,7 +4980,17 @@
                                 ]
                             ]
                         }
-                    }
+                    }, 
+                    "poseName": "shoulder_r_front_045", 
+                    "isEnabled": false, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_r_front_045"
+                    ]
                 }, 
                 "shoulder_r_driver_poseInterpolatorShape.pose[10]": {
                     "controllers": {
@@ -4050,79 +5236,17 @@
                                 ]
                             ]
                         }
-                    }
-                }
-            }
-        }, 
-        "clavicle_l_driver_poseInterpolatorShape": {
-            "dagPath": "|biped|trs_master|trs_shot|trs_aux|rig|psd_grp|clavicle_l_driver_poseInterpolator|clavicle_l_driver_poseInterpolatorShape", 
-            "drivers": {
-                "clavicle_l_driver_poseInterpolatorShape.driver[0]": {
-                    "controllers": [
-                        "clavicle_l.rotate"
+                    }, 
+                    "poseName": "shoulder_r_back_045", 
+                    "isEnabled": false, 
+                    "poseType": 1, 
+                    "isIndependent": false, 
+                    "poseFalloff": 0.25, 
+                    "poseRotationFalloff": 180.0, 
+                    "poseTranslationFalloff": 0.0, 
+                    "drivens": [
+                        "skin_psd.shoulder_r_back_045"
                     ]
-                }
-            }, 
-            "poses": {
-                "clavicle_l_driver_poseInterpolatorShape.pose[0]": {
-                    "controllers": {
-                        "clavicle_l_driver_poseInterpolatorShape.pose[0].poseControllerData[0].poseControllerDataItem[0]": {
-                            "name": "clavicle_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }
-                    }
-                }, 
-                "clavicle_l_driver_poseInterpolatorShape.pose[1]": {
-                    "controllers": {
-                        "clavicle_l_driver_poseInterpolatorShape.pose[1].poseControllerData[0].poseControllerDataItem[0]": {
-                            "name": "clavicle_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }
-                    }
-                }, 
-                "clavicle_l_driver_poseInterpolatorShape.pose[2]": {
-                    "controllers": {
-                        "clavicle_l_driver_poseInterpolatorShape.pose[2].poseControllerData[0].poseControllerDataItem[0]": {
-                            "name": "clavicle_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    0.0, 
-                                    0.0
-                                ]
-                            ]
-                        }
-                    }
-                }, 
-                "clavicle_l_driver_poseInterpolatorShape.pose[3]": {
-                    "controllers": {
-                        "clavicle_l_driver_poseInterpolatorShape.pose[3].poseControllerData[0].poseControllerDataItem[0]": {
-                            "name": "clavicle_l.rotate", 
-                            "type": 8, 
-                            "value": [
-                                [
-                                    0.0, 
-                                    -0.8726646259971648, 
-                                    0.0
-                                ]
-                            ]
-                        }
-                    }
                 }
             }
         }

@@ -71,7 +71,7 @@ try:
     # ------------------------------------
     
     for node in nodes:
-        node = psd.getPoseInterp(node)
+        node = psd.getInterp(node)
         mirrorToken = common.getSideToken(node)
         if mirrorToken == 'r':
             print('mirror only works for left to right'),
@@ -95,7 +95,7 @@ try:
                 for poseControl in mirPoseControls:
                     psd.removePoseControl(mirNode, poseControl)
                     
-            poses = common.pyListToMelArray(psd.getPoses(node))
+            poses = common.pyListToMelArray(psd.getPoseNames(node))
             try:
                 mm.eval('poseInterpolatorMirror '+node+' '+poses+' _l_ _r_ 1 1 1')
             except:
@@ -140,7 +140,7 @@ try:
             deltas_list = list()
             
             # Get Deltas
-            for pose in psd.getPoses(node):
+            for pose in psd.getPoseNames(node):
                 if pose not in targets:
                     continue
                 index = psd.getPoseShapeIndex(node, pose)

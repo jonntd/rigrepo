@@ -15,7 +15,7 @@ def getSelectedPoses():
     poseConnections = mm.eval('getPoseEditorTreeviewSelection(2)')
     for poseConnection in poseConnections:
         interp, index = poseConnection.split('.')
-        interp = rigrepo.libs.psd.getPoseInterp(interp)
+        interp = rigrepo.libs.psd.getInterp(interp)
         if index:
             pose = mc.getAttr(interp+'.pose['+str(index)+'].poseName')
             if pose:
@@ -29,7 +29,7 @@ def getSelectedInterps():
     """
 
     interps = mm.eval('getPoseEditorTreeviewSelection(1)')
-    interps = [rigrepo.libs.psd.getPoseInterp(x) for x in interps]
+    interps = [rigrepo.libs.psd.getInterp(x) for x in interps]
     return interps
 
 def getPoseEditorWidget():
@@ -77,9 +77,10 @@ def performUpdatePoseShape():
     if mirrorInterp != interp:
         mirrorTarget = rigrepo.libs.common.getMirrorName(target)
         if mirrorTarget != target:
-            mirrorTargetIndex = rigrepo.libs.psd.getPoseIndex(mirrorInterp, mirrorTarget)
-            if mirrorTargetIndex:
-                doMirror = True
+            if mc.objExists(mirrorInterp):
+                mirrorTargetIndex = rigrepo.libs.psd.getPoseIndex(mirrorInterp, mirrorTarget)
+                if mirrorTargetIndex:
+                    doMirror = True
 
     if doMirror:
         print('*'*100)

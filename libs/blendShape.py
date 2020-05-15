@@ -144,6 +144,7 @@ def addTarget(bs, name=None):
     shapeIndex = mm.eval('doBlendShapeAddTarget("{bs}", 1, 1, "", 0, 0, {{}})'.format(bs=bs))[0]
     mc.aliasAttr(name, bs+'.w[{index}]'.format(index=shapeIndex))
     targetName = mc.aliasAttr(bs+'.w[{index}]'.format(index=shapeIndex), q=1)
+    geo = mc.deformer(bs, q=1, g=1)[0]
     return targetName
 
 def getBlendShapes(geometry):
@@ -334,12 +335,63 @@ def getTargetWeight(bs, target):
     """
     Get target values by index
     :param bs: BlendShape node
-    :param target: String name of target or the target's index
+    :param target: String name of target
     :return: None
     """
 
     targetIndex = getTargetIndex(bs, target)
     return mc.getAttr(bs+'.w[{}]'.format(targetIndex))
+
+def getTargetMapWeights(bs, target, default_value=0):
+    """
+    Get target point weight values
+    :param bs: BlendShape node
+    :param target: String name of target
+    :param default_value: When true a -1 is returned if the weights have not been changed from the default
+    :return: List if weighs exist, -1 if it is the default value
+    """
+    # Get point count
+    source_geo = mc.deformer(bs, q=1, g=1)[0]
+    pnt_count = mc.polyEvaluate(source_geo, v=1) - 1
+
+    # Get index
+    targetIndex = getTargetIndex(bs, target)
+
+    # Define attrs
+    attr = bs+'.it[0].itg[{}].tw[0:{}]'.format(targetIndex, pnt_count)
+    attr_default_test = bs+'.it[0].itg[{}].tw[*]'.format(targetIndex)
+
+    # When no values have ever been set the attribute will not exist
+    if not mc.objExists(attr_default_test):
+        if default_value:
+            values = -1
+        else:
+            values = [1.0] * (pnt_count+1)
+    else:
+        # Get weights
+        values = mc.getAttr(attr)
+
+    return values
+
+def setTargetMapWeights(bs, target, values):
+    """
+    Set target point weight values
+    :param bs: BlendShape node
+    :param target: String name of target
+    :return: None
+    """
+    # Get point count
+    source_geo = mc.deformer(bs, q=1, g=1)[0]
+    pnt_count = mc.polyEvaluate(source_geo, v=1) - 1
+
+    # Get index
+    targetIndex = getTargetIndex(bs, target)
+
+    # Define attrs
+    attr = bs+'.it[0].itg[{}].tw[0:{}]'.format(targetIndex, pnt_count)
+
+    # Set weights
+    mc.setAttr(attr, *values)
 
 def invertShape(bs, target, geo):
 

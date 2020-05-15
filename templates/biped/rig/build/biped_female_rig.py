@@ -14,13 +14,15 @@ class BipedFemaleRig(biped_base_rig.BipedBaseRig):
         '''
         
         super(BipedFemaleRig, self).__init__(name, element, variant)
-        nodes = self.getNodes()
-        face = self.getNodeByPath('|animRig|build|face')
-        face.disable()
-        cluster = self.getNodeByPath('|animRig|apply|deformers|cluster')
-        cluster.disable()
-        cluster = self.getNodeByPath('|animRig|apply|deformers|transferBlinkClusters')
-        cluster.disable()
-        cluster = self.getNodeByPath('|animRig|apply|deformers|transferLidsClusters')
-        cluster.disable()
+        disable_paths = [
+            '|animRig|build|face',
+            '|animRig|apply|deformers|cluster',
+            '|animRig|apply|deformers|cluster|transferBlinkClusters',
+            '|animRig|apply|deformers|cluster|transferLidsClusters',
+            '|animRig|apply|deformers|cluster|transferLipClusters',
+            '|animRig|load|curves'
+        ]
+        for path in disable_paths:
+            node = self.getNodeByPath(path)
+            node.disable()
 

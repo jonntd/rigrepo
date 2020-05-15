@@ -205,6 +205,22 @@ class Limb(part.Part):
                                                 color=rigrepo.libs.common.MIDBLUE,
                                                 parent=ikCtrl)[-1]
 
+        ikPivotCtrl = rigrepo.libs.control.create(name=ikControlNames[1].replace("_{}".format(side),
+                                                  "_mpivot_{}".format(side)),
+                                                  controlType="sphere",
+                                                  hierarchy=['nul'],
+                                                  position=endJointPos,
+                                                  color=rigrepo.libs.common.MIDBLUE,
+                                                  parent=ikGimbalCtrl)[-1]
+
+        # Moveable pivot group
+        ikPivotGrpName = ikControlNames[1].replace("_{}".format(side), "_mpivot_grp_{}".format(side))
+        ikPivotGrp = mc.createNode('transform', p=ikGimbalCtrl, n=ikPivotGrpName)
+        mc.connectAttr(ikPivotCtrl+'.rotate', ikPivotGrp+'.rotate')
+        add = mc.createNode('plusMinusAverage', n=ikPivotGrpName+'_add')
+        mc.connectAttr(ikPivotCtrl+'.translate', add+'.input3D[0]')
+        mc.connectAttr(add+'.output3D', ikPivotGrp+'.rotatePivot')
+
         mc.xform(ikGimbalCtrl,ws=True,matrix=mc.xform(ikCtrl,q=True,ws=True,matrix=True))
 
         # duplicate the end ik joint and make it offset joint for the 
@@ -233,7 +249,9 @@ class Limb(part.Part):
                                 aimVector=aimVector ,upVector=upVector)[0])
         mc.setAttr('{0}.drawStyle'.format(dupEndJnt), 2)
         mc.setAttr("{0}.v".format(handle), 0)
-        mc.parent(dupEndJnt,ikGimbalCtrl)
+        #mc.parent(dupEndJnt,ikGimbalCtrl)
+        #mc.parent(dupEndJnt, ikPivotCtrl)
+        mc.parent(dupEndJnt, ikPivotGrp)
         mc.setAttr("{0}.t".format(dupEndJnt),0,0,0)
         cst = mc.orientConstraint(dupEndJnt, ikJointList[-1])[0]
         #wal = mc.orientConstraint(cst, q=True, wal=True)
@@ -247,7 +265,7 @@ class Limb(part.Part):
         # parent the controls to the parent group
         mc.parent((pvCtrlHierarchy[0],ikCtrlHierarchy[0]), parent)
 
-        self._ikControls.extend([str(pvCtrl), str(ikCtrl),str(ikGimbalCtrl)])
+        self._ikControls.extend([str(pvCtrl), str(ikCtrl), str(ikGimbalCtrl)])
 
         # setup the visibility and switch
         for ctrl in self._ikControls:
@@ -585,7 +603,7 @@ class Limb(part.Part):
 
         # Nodes needed to hook up end overall scale
         fkEndScale = (fkControlNames[-1], fkGimbalCtrl, self.ikfkSystem.getFkJointList()[-1])
-        ikEndScale = (ikCtrl, ikGimbalCtrl, self.ikfkSystem.getIkJointList()[-1])
+        ikEndScale = (ikCtrl, ikGimbalCtrl, ikPivotCtrl, self.ikfkSystem.getIkJointList()[-1])
 
         for scale_ctrl in [fkEndScale, ikEndScale]:
             add = mc.createNode('plusMinusAverage', n=scale_ctrl[0]+'_scale_add')

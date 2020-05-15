@@ -35,7 +35,7 @@ try:
     poseConnections = mm.eval('getPoseEditorTreeviewSelection(2)') 
     for poseConnection in poseConnections:
         interp, index = poseConnection.split('.')
-        interp = psd.getPoseInterp(interp)
+        interp = psd.getInterp(interp)
         if index:
             bs = psd.getDeformer(interp)
             
@@ -52,7 +52,7 @@ try:
         poseName = 'NEW_POSE'
         
         for interp in interps:
-            interp = psd.getPoseInterp(interp)
+            interp = psd.getInterp(interp)
             psd.addPose(interp, poseName, type='swing')
             bs = psd.getDeformer(interp)
             if not bs:

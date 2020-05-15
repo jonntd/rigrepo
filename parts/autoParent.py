@@ -11,6 +11,34 @@ import rigrepo.libs.common as common
 import rigrepo.libs.psd as psd
 import rigrepo.libs.joint
 
+'''     Logging levels
+50 CRITICAL
+40 ERROR
+30 WARNING
+20 INFO
+10 DEBUG
+0  NOTSET
+'''
+import logging
+logger_level = logging.NOTSET
+logger = logging.getLogger(__name__)
+logger.setLevel(logger_level)
+logger_format = '%(levelname)s - %(name)s.%(funcName)s %(lineno)s - %(message)s'
+
+if not logger.handlers:
+    # create console handler and set level to debug
+    handler = logging.StreamHandler()
+    # create formatter
+    formatter = logging.Formatter(logger_format)
+    # add formatter to ch
+    handler.setFormatter(formatter)
+    # add ch to logger
+    logger.addHandler(handler)
+else:
+    handler = logger.handlers[0]
+    handler.setLevel(logger_level)
+
+
 class AutoParent(part.Part):
     '''
     Builds a system so the child can affect the parent's movement
@@ -135,7 +163,7 @@ class AutoParent(part.Part):
         mc.setAttr(parentControlPar+'.rotateAxisZ', k=1)
 
         # Make a pose interpolator to control the strength of the auto behaviour in different poses
-        poseInterp = psd.addPoseInterp(parentControl+'_auto_poseInterpolator', driver=driver,
+        poseInterp = psd.addInterp(parentControl+'_auto_poseInterpolator', driver=driver,
                                        createNeutralPose=0)
         mc.setAttr(poseInterp+'.interpolation', 1)
         mc.setAttr(poseInterp+'.outputSmoothing', 1)
@@ -184,7 +212,10 @@ class AutoParent(part.Part):
 
             # Add pose
             mc.setAttr(poseControl+'.'+attr, *value)
-            poseIndex = psd.addPose(poseInterp, poseName)
+            poseName = psd.addPose(poseInterp, poseName)
+            poseIndex = psd.getPoseIndex(poseInterp, poseName)
+            logger.info('pose name %s ', poseName)
+            logger.info('pose index %s ', poseIndex)
             if pose != 'neutral':
                 psd.addShape(poseInterp, poseName, psdNumericBS)
             mc.setAttr(poseControl+'.'+attr, *(0, 0, 0))
@@ -192,6 +223,8 @@ class AutoParent(part.Part):
             # Create driven key
             driver = poseInterp+'.output[{}]'.format(poseIndex)
             driven = add+'.input1D[{}]'.format(poseIndex)
+            logger.info('driver %s ', driver)
+            logger.info('driven %s ', driven)
             mc.setDrivenKeyframe(driven, cd=driver, value=0, dv=0, itt="linear", ott="linear")
             mc.setDrivenKeyframe(driven, cd=driver, value=drivenKeyValue, dv=1, itt="linear", ott="linear")
             node = mc.listConnections(driven)[0]

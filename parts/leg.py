@@ -31,7 +31,7 @@ class Leg(arm.Arm):
         fkAnkleControl = self._fkControls[-2]
         fkGimbalControl = self._fkControls[-1]
 
-        offsetJoint = mc.listRelatives(ikGimbleControl, c=True, type="joint")[0]
+        offsetJoint = mc.listRelatives(ikGimbleControl, ad=True, type="joint")[-1]
         fkOffsetJoint = mc.listRelatives(fkGimbalControl, c=True, type="joint")[0]
         mc.setAttr("{}.r".format(ikAnkleControl), 0,0,0)
         fkAnkleMatrix=mc.xform(fkAnkleControl,q=True, ws=True, matrix=True)
