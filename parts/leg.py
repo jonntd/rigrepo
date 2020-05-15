@@ -26,8 +26,9 @@ class Leg(arm.Arm):
         '''
         super(Leg, self).build()
 
-        ikAnkleControl = self._ikControls[-2]
-        ikGimbleControl = self._ikControls[-1]
+        ikAnkleControl = self._ikControls[1]
+        ikGimbleControl = self._ikControls[2]
+        ikPivotControl = self._ikControls[3]
         fkAnkleControl = self._fkControls[-2]
         fkGimbalControl = self._fkControls[-1]
 

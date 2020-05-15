@@ -210,6 +210,7 @@ class Limb(part.Part):
                                                   controlType="sphere",
                                                   hierarchy=['nul'],
                                                   position=endJointPos,
+                                                  hideAttrs=["sx", "sy", "sz", "v"],
                                                   color=rigrepo.libs.common.MIDBLUE,
                                                   parent=ikGimbalCtrl)[-1]
 
@@ -222,6 +223,8 @@ class Limb(part.Part):
         mc.connectAttr(add+'.output3D', ikPivotGrp+'.rotatePivot')
 
         mc.xform(ikGimbalCtrl,ws=True,matrix=mc.xform(ikCtrl,q=True,ws=True,matrix=True))
+        # The last xform call is moving the pivot control... ? Not sure why
+        mc.setAttr(ikPivotCtrl+'_nul.t', 0, 0, 0)
 
         # duplicate the end ik joint and make it offset joint for the 
         # ik control to drive the end joint
@@ -238,7 +241,7 @@ class Limb(part.Part):
         # move the dupJnt and setup the tmp joints
         mc.xform(dupEndJnt, ws=True, matrix=mc.xform(self._fkControls[-1], 
                                                         q=True, ws=True, matrix=True))
-        mc.setAttr('{}.t{}'.format(tempJnt, aimAttr.strip("-")), 
+        mc.setAttr('{}.t{}'.format(tempJnt, aimAttr.strip("-")),
                     mc.getAttr('{}.t{}'.format(self._fkControls[-1], aimAttr.strip("-")))+2)
         mc.setAttr('{0}.ty'.format(tempUpJnt), 2)
         mc.parent([tempUpJnt,tempJnt], ikCtrl)
@@ -265,7 +268,7 @@ class Limb(part.Part):
         # parent the controls to the parent group
         mc.parent((pvCtrlHierarchy[0],ikCtrlHierarchy[0]), parent)
 
-        self._ikControls.extend([str(pvCtrl), str(ikCtrl), str(ikGimbalCtrl)])
+        self._ikControls.extend([str(pvCtrl), str(ikCtrl), str(ikGimbalCtrl), str(ikPivotCtrl)])
 
         # setup the visibility and switch
         for ctrl in self._ikControls:
@@ -559,7 +562,7 @@ class Limb(part.Part):
                 type="string")
         mc.addAttr(paramNode, ln="ikControls", dt="string")
         mc.setAttr("{}.ikControls".format(paramNode), 
-                '["{}","{}", "{}"]'.format(*self._ikControls), 
+                '["{}","{}", "{}", "{}"]'.format(*self._ikControls),
                 type="string")
 
         # command to be called when switch is being used.

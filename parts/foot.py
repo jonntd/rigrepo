@@ -178,7 +178,6 @@ class Foot(part.Part):
             mc.setAttr(self._ikAnchor+'_add.input3D[1].input3Dx', trans[0])
             mc.setAttr(self._ikAnchor+'_add.input3D[1].input3Dy', trans[1])
             mc.setAttr(self._ikAnchor+'_add.input3D[1].input3Dz', trans[2])
-        mc.select(ikPivot)
 
         #lock all attributes except for translateX
         rigrepo.libs.attribute.lockAndHide(bankctrlHierarchy[-1],['ty','v','rx','ry','rz','sx','sy','sz'])

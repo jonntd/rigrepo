@@ -208,6 +208,7 @@ class SwitchExpressionNode(commandNode.CommandNode):
 # this is the switch command that should be made into a script node
 import maya.cmds as mc
 import maya.api.OpenMaya as om
+import traceback
 
 def getDistanceVector(distance):
         '''
@@ -315,7 +316,11 @@ def switch(paramNode, value):
         
         mc.xform("%s%s" % (namespace, ikControls[1]), ws=True, matrix=endJntMatrix)
         mc.xform("%s%s" % (namespace, ikControls[0]), ws=True, t=newPvPos)
-        mc.setAttr("%s%s.r" % (namespace, ikControls[-1]), 0,0,0) 
+        # Gimbal ctrl
+        mc.setAttr("%s%s.r" % (namespace, ikControls[2]), 0,0,0) 
+        # Pivot ctrl
+        mc.setAttr("%s%s.r" % (namespace, ikControls[3]), 0,0,0) 
+        mc.setAttr("%s%s.t" % (namespace, ikControls[3]), 0,0,0) 
 
         # Match Clav 
         if mc.objExists("%s.autoClav" % paramNode):
@@ -440,7 +445,11 @@ def legSwitch():
 
             switch(paramNode, value)
     except:
-        print "can't run the switch"
+        print "ikfk switch - Can't run the switch"
+        print "-"*100
+        traceback.print_exc()
+        print "-"*100
+        print "ikfk switch - Can't run the switch"
     mc.undoInfo(closeChunk=1)
 
     
