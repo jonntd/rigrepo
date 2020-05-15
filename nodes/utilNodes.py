@@ -299,6 +299,11 @@ def switch(paramNode, value):
         # get the ik controls
         ikControls = eval(mc.getAttr(paramNode + '.ikControls'))
         fkControls = eval(mc.getAttr(paramNode + '.fkControls'))
+        
+        # Zero out pivot ctrl
+        mc.setAttr("%s%s.r" % (namespace, ikControls[3]), 0,0,0) 
+        mc.setAttr("%s%s.t" % (namespace, ikControls[3]), 0,0,0) 
+        
         ikMatchTransforms = eval(mc.getAttr(paramNode + '.ikMatchTransforms'))
         # get the fk transforms
         fkMatchTransforms = eval(mc.getAttr(paramNode + '.fkMatchTransforms'))
@@ -318,9 +323,6 @@ def switch(paramNode, value):
         mc.xform("%s%s" % (namespace, ikControls[0]), ws=True, t=newPvPos)
         # Gimbal ctrl
         mc.setAttr("%s%s.r" % (namespace, ikControls[2]), 0,0,0) 
-        # Pivot ctrl
-        mc.setAttr("%s%s.r" % (namespace, ikControls[3]), 0,0,0) 
-        mc.setAttr("%s%s.t" % (namespace, ikControls[3]), 0,0,0) 
 
         # Match Clav 
         if mc.objExists("%s.autoClav" % paramNode):
