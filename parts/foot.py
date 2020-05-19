@@ -174,10 +174,6 @@ class Foot(part.Part):
         if mc.objExists(ikPivot):
             ikPivotNul= mc.listRelatives(ikPivot, p=1)[0]
             mc.xform(ikPivotNul, ws=True, t=ballJntTrs)
-            trans = mc.getAttr(ikPivotNul+'.t')[0]
-            mc.setAttr(self._ikAnchor+'_add.input3D[1].input3Dx', trans[0])
-            mc.setAttr(self._ikAnchor+'_add.input3D[1].input3Dy', trans[1])
-            mc.setAttr(self._ikAnchor+'_add.input3D[1].input3Dz', trans[2])
 
         #lock all attributes except for translateX
         rigrepo.libs.attribute.lockAndHide(bankctrlHierarchy[-1],['ty','v','rx','ry','rz','sx','sy','sz'])
@@ -213,7 +209,9 @@ class Foot(part.Part):
                     else:
                         mc.transformLimits(pivot, rz=(0,0), erz=(1,0))
                         mc.connectAttr("{}.outValue".format(bankRemapNode), "{}.rz".format(pivot))
-                        mc.setAttr("{}.sz".format(bankctrlHierarchy[-2]), -1)
+                        mc.setAttr("{}.rx".format(bankctrlHierarchy[0]), 0)
+                        mc.setAttr("{}.ry".format(bankctrlHierarchy[0]), 180)
+                        #mc.setAttr("{}.sz".format(bankctrlHierarchy[-2]), -1)
                 elif pivot == pivotList[1]:
                     # create the control hierarchy
                     if  pivotPos > .01:

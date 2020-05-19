@@ -205,8 +205,10 @@ class Limb(part.Part):
                                                 color=rigrepo.libs.common.MIDBLUE,
                                                 parent=ikCtrl)[-1]
 
-        ikPivotCtrl = rigrepo.libs.control.create(name=ikControlNames[1].replace("_{}".format(side),
-                                                  "_mpivot_{}".format(side)),
+        mc.xform(ikGimbalCtrl,ws=True,matrix=mc.xform(ikCtrl,q=True,ws=True,matrix=True))
+
+        ikPivotCtrl = ikControlNames[1].replace("_{}".format(side), "_mpivot_{}".format(side))
+        ikPivotCtrl = rigrepo.libs.control.create(name=ikPivotCtrl,
                                                   controlType="sphere",
                                                   hierarchy=['nul'],
                                                   position=endJointPos,
@@ -215,16 +217,12 @@ class Limb(part.Part):
                                                   parent=ikGimbalCtrl)[-1]
 
         # Moveable pivot group
-        ikPivotGrpName = ikControlNames[1].replace("_{}".format(side), "_mpivot_grp_{}".format(side))
-        ikPivotGrp = mc.createNode('transform', p=ikGimbalCtrl, n=ikPivotGrpName)
+        ikPivotGrp = mc.createNode('transform', p=ikGimbalCtrl, n='{}_grp'.format(ikPivotCtrl))
         mc.connectAttr(ikPivotCtrl+'.rotate', ikPivotGrp+'.rotate')
-        add = mc.createNode('plusMinusAverage', n=ikPivotGrpName+'_add')
+        add = mc.createNode('plusMinusAverage', n='{}_add'.format(ikPivotGrp))
         mc.connectAttr(ikPivotCtrl+'.translate', add+'.input3D[0]')
+        mc.connectAttr(ikPivotCtrl+'_nul.translate', add+'.input3D[1]')
         mc.connectAttr(add+'.output3D', ikPivotGrp+'.rotatePivot')
-
-        mc.xform(ikGimbalCtrl,ws=True,matrix=mc.xform(ikCtrl,q=True,ws=True,matrix=True))
-        # The last xform call is moving the pivot control... ? Not sure why
-        mc.setAttr(ikPivotCtrl+'_nul.t', 0, 0, 0)
 
         # duplicate the end ik joint and make it offset joint for the 
         # ik control to drive the end joint
